@@ -1,3 +1,6 @@
+const { data }  = require('./database list/index')
+const axios = require('axios')
+
 //                       _oo0oo_
 //                      o8888888o
 //                      88" . "88
@@ -23,6 +26,11 @@ const { conn } = require('./src/db.js');
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
+
+    // levantando base de datos
+    
+
+
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
