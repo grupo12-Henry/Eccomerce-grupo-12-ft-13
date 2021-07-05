@@ -3,10 +3,10 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('', {
-    name: {
+  // sequelize.define('', {
+  //   name: {
      
-    },
-  });
+  //   },
+  // });
 };
 //ACA IRIAN TODAS LAS TABLAS DE NUESTRA DB
