@@ -1,6 +1,3 @@
-const { data }  = require('./database list/index')
-const axios = require('axios')
-
 //                       _oo0oo_
 //                      o8888888o
 //                      88" . "88
