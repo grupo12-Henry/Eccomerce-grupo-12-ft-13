@@ -1372,4 +1372,3 @@ var datab=  [
 module.exports = {
     datab
 }
-console.log(datab)
