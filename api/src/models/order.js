@@ -16,10 +16,10 @@ module.exports = (sequelize) => {
             type: DataTypes.NUMBER,
             allowNull: false,
         },
-        // paymentMethod:{
-        //   type: DataTypes.STRING,
-        //   allowNull: false,
-        // },
+        paymentMethod:{
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
         adress: {
             type: DataTypes.STRING,
             allowNull: false,
