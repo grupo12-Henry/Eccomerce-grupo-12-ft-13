@@ -9,13 +9,21 @@ module.exports = (sequelize) => {
             primaryKey: true,
         },
         number: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         expirationDate: {
             type: DataTypes.STRING,
             allowNull: true,
         },
+        type: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
 
-    })
+    },{timestamps: false,})
 }

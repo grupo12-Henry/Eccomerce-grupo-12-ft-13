@@ -12,18 +12,19 @@ module.exports = (sequelize) => {
             type: DataTypes.DATE,
             allowNull: false,
         },
-        // bill: {
-        //     type: DataTypes.NUMBER,
-        //     allowNull: false,
-        // },
+        bill: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+
         paymentMethod:{
           type: DataTypes.STRING,
           allowNull: false,
         },
-        // adress: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // },
+         adress: {
+             type: DataTypes.STRING,
+             allowNull: false,
+        },
         ticket: {
             type: DataTypes.STRING,
             allowNull: false,
