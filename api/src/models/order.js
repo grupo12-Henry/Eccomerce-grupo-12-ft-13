@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         bill: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         paymentMethod:{
