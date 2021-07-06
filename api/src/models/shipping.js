@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         cost: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
     })
