@@ -8,11 +8,11 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
-    initialDate: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
+    // initialDate: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   unique: true,
+    // },
     expirationDate: {
       type: DataTypes.STRING,
       allowNull: true,
