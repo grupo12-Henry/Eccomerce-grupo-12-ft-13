@@ -35,6 +35,11 @@ module.exports = (sequelize) => {
         identityCard: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        admin:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            default: false
         }
     });
 };
