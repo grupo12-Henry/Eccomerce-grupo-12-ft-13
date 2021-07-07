@@ -5,11 +5,12 @@ module.exports = (sequelize) => {
   sequelize.define('product', {
     id:{
       primaryKey: true,
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
+      autoIncrement: true
     },
     stock: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     name: {
@@ -25,12 +26,16 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     price:{
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     image:{
       type: DataTypes.TEXT,
       allowNull: false,
+    },
+    maker:{
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 };

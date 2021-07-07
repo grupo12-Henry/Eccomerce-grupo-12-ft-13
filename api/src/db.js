@@ -1,11 +1,12 @@
 require('dotenv').config();
+const { DataTypes } = require('sequelize');
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
-
+  
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecommerce`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -30,9 +31,40 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
+const { Product, Card, Category, Client, Invoice, Login, Order, Shipping} = sequelize.models;
 
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+Login.belongsTo(Client);
+Client.hasMany(Login);
+
+Client.hasMany(Card);
+Card.belongsTo(Client);
+
+// Client.hasMany(Order, {as: 'id_cliente', constraints: false, allowNull:true, defaultValue:null});
+Client.hasMany(Order);
+Order.belongsTo(Client);
+
+Order.hasOne(Shipping);
+Shipping.belongsTo(Order);
+
+Invoice.belongsTo(Order);
+Order.hasOne(Invoice);
+
+Product.belongsToMany(Category, { through: 'product_category',timestamps: false });
+Category.belongsToMany(Product, { through: 'product_category',timestamps: false });
+
+const order_detail = sequelize.define('order_detail', {
+  cantidad: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  subTotal:{
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  }
+});
+
+Order.belongsToMany(Product, { through: order_detail,timestamps: false });
+Product.belongsToMany(Order, { through: order_detail,timestamps: false });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
