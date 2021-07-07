@@ -24,27 +24,27 @@ router.get('/productos',async (req,res) => {
 })
 
 
- router.put('/productos/:id',(req, res)=>{
-    const id = req.params.id
-    const {stock, name, type, description, price, img }=req.body
-    try {
-        const product = await Product.findByPk(id)
-    product={
-        name: name||product.name, 
-        type: type||product.type,
-        Description: description||product.Description, 
-        price: price||product.price,
-        img: img||product.img,
-        stock: stock||product.stock
-    }
-    product.save({fields:['name','type','description','price','stock','img']})
-    //product.reload()
-    res.send(product).status(200)
-    } catch (error) {
-        res.send(error).status(404)
-    }
+//  router.put('/productos/:id',(req, res)=>{
+//     const id = req.params.id
+//     const {stock, name, type, description, price, img }=req.body
+//     try {
+//         const product = await Product.findByPk(id)//
+//     product={
+//         name: name||product.name, 
+//         type: type||product.type,
+//         Description: description||product.Description, 
+//         price: price||product.price,
+//         img: img||product.img,
+//         stock: stock||product.stock
+//     }
+//     product.save({fields:['name','type','description','price','stock','img']})
+//     //product.reload()
+//     res.send(product).status(200)
+//     } catch (error) {
+//         res.send(error).status(404)
+//     }
     
- })
+//  })
 
 
 //ver de cambiar el campo Description de tabla Product, esta con Mayusculas la D
