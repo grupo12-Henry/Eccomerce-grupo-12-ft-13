@@ -1,6 +1,6 @@
-//aca todavia hay que importar un monton de cosas para ir trabajando
-import React from 'react'
-import { Route } from 'react-router'
+// aca todavia hay que importar un monton de cosas para ir trabajando
+import React from 'react';
+import { Route } from 'react-router';
 import LandingPage from './components/landing/landing';
 
 function App() {
