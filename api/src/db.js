@@ -33,7 +33,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Product, Card, Category, Client, Invoice, Login, Order, Shipping} = sequelize.models;
 // Aca vendrian las relaciones
-//prueba de configuracion
+
+
 
 Login.belongsTo(Client);
 Client.hasMany(Login);
