@@ -5,8 +5,9 @@ module.exports = (sequelize) => {
   sequelize.define('product', {
     id:{
       primaryKey: true,
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
+      autoIncrement: true
     },
     stock: {
       type: DataTypes.INTEGER,
@@ -31,6 +32,10 @@ module.exports = (sequelize) => {
     image:{
       type: DataTypes.TEXT,
       allowNull: false,
+    },
+    maker:{
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 };

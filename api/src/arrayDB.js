@@ -1,5 +1,9 @@
+const { Product } = require('./db.js')
+const { v4: uuid } = require('uuid');
 
-var datab=  [
+// let id= uuid();
+
+var datab = [
     {
       PRODUCTOS: 'Coca-Cola 1.5L',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
@@ -1367,8 +1371,60 @@ var datab=  [
         PRECIO: 305,
         CATEGORIA: 'Espumantes'
       }
-    ]
+];
 
+async function base (){
+  try {
+    const DBCreation = await datab.map (el => {
+      Product.findOrCreate({
+        where:{
+          name: el.PRODUCTOS,
+          image: el.URL,
+          maker: el.Fabricante,
+          Description: el.Detalle,
+          stock: el.STOCK,
+          price: el.PRECIO,
+          type: el.CATEGORIA
+        }
+      });
+    });    
+    console.log('La Base se cargo correctamente');
+  } catch (err) {
+    console.log(err);
+  }
+  
+  // temps.map(el => Temperament.findOrCreate({ //si ya existe la tabla, no hace nada.
+  //   where:{
+  //       name:el
+  //   }
+  // try {
+  //     const chargeDB = await datab.map( el => {
+  //       // let {PRODUCTOS, URL, Fabricante, Detalle, STOCK, PRECIO, CATEGORIA} = e;
+  //     Product.create({
+  //       id: id,
+  //       name: el.PRODUCTOS,
+  //       image: el.URL,
+  //       maker: el.Fabricante,
+  //       Description: el.Detalle,
+  //       stock: el.STOCK,
+  //       price: el.PRECIO,
+  //       type: el.CATEGORIA
+  //     });
+  //     // console.log(product);
+  //   });
+  //   return;
+  // } catch (err) {
+  //   consol.log(err)
+  // }
+};
+
+function charger(){
+  setTimeout(base, 5000)
+};
+charger()
+      
+    
 module.exports = {
+    base,
     datab
-}
+};
