@@ -24,38 +24,48 @@ router.get('/productos',async (req,res) => {
 })
 
 
-//  router.put('/productos/:id',(req, res)=>{
-//     const id = req.params.id
-//     const {stock, name, type, description, price, img }=req.body
-//     try {
-//         const product = await Product.findByPk(id)//
-//     product={
-//         name: name||product.name, 
-//         type: type||product.type,
-//         Description: description||product.Description, 
-//         price: price||product.price,
-//         img: img||product.img,
-//         stock: stock||product.stock
-//     }
-//     product.save({fields:['name','type','description','price','stock','img']})
-//     //product.reload()
-//     res.send(product).status(200)
-//     } catch (error) {
-//         res.send(error).status(404)
-//     }
+ router.put('/productos/:id', async (req, res)=>{
+    const id = req.params.id
+    const {stock, name, type, Description, price, image, maker }=req.body
+    try {
+        const product = await Product.findByPk(id)
+        await product.update({
+          
+            name: name||product.dataValues.name, 
+            type: type||product.dataValues.type,
+            Description: Description||product.dataValues.Description, 
+            price: price||product.dataValues.price,
+            image: image||product.dataValues.image,
+            stock: stock||product.dataValues.stock,
+            maker: maker||product.dataValues.maker
+        });
+        
+        if(product){        
+    res.send(product).status(200)
+}
+else{ res.sendStatus(400)}
+    } catch (error) {
+        res.send(error).status(404)
+    }
     
-//  })
+ })
 
 
 //ver de cambiar el campo Description de tabla Product, esta con Mayusculas la D
 router.post('/productos',async(req, res)=>{
-const { stock, name, type, description, price, img }=req.body
+const { stock, name, type, Description, price, image, maker }=req.body
 if(typeof price ==='number' ){
 try {
-   const [producto,status ]=Product.findOrCreate({
-       where:{
-           name:name,type:type,Description:description,price:price,image:img,stock:stock}})
-status?res.send(producto).status(200):res.send('Producto ya existente').status(400)
+   const {producto }= await Product.findOrCreate({
+        where:{name:name,type:type,Description:Description,price:price,image:image,stock:stock, maker: maker},
+        default:{name:name,type:type,Description:Description,price:price,image:image,stock:stock, maker: maker}
+            })
+        const newProduct =await Product.findOne({
+            where:{ name:name}
+        })
+        
+        // console.log(newProduct)
+res.send(newProduct.dataValues).status(200)
 } catch (error) {
     res.send(error).status(404)
 }}
