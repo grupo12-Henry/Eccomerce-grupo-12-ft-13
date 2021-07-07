@@ -1,5 +1,9 @@
+const { Product } = require('./db.js')
+const { v4: uuid } = require('uuid');
 
-var datab=  [
+// let id= uuid();
+
+var datab = [
     {
       PRODUCTOS: 'Coca-Cola 1.5L',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
@@ -1367,8 +1371,30 @@ var datab=  [
         PRECIO: 305,
         CATEGORIA: 'Espumantes'
       }
-    ]
+];
 
+async function base (){
+  try {
+    const DBCreation = await datab.map (el => { //el 'const DBCreation =' se puede sacar y funciona igual
+      Product.findOrCreate({
+        where:{
+          name: el.PRODUCTOS,
+          image: el.URL,
+          maker: el.Fabricante,
+          Description: el.Detalle,
+          stock: el.STOCK,
+          price: el.PRECIO,
+          type: el.CATEGORIA
+        }
+      });
+    });    
+    console.log('La Base se cargo correctamente');
+  } catch (err) {
+    console.log(err);
+  }
+};    
+    
 module.exports = {
+    base,
     datab
-}
+};

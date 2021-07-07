@@ -35,6 +35,7 @@ const { Product, Card, Category, Client, Invoice, Login, Order, Shipping} = sequ
 // Aca vendrian las relaciones
 
 
+
 Login.belongsTo(Client);
 Client.hasMany(Login);
 
