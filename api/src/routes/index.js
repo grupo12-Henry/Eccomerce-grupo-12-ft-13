@@ -4,7 +4,7 @@ const routesUser = require('./routesUser/index.js')
 
 const router = Router();
 router.use('/admin',routesAdmin)
-router.use('/user',routesUser)
+router.use('/',routesUser)
 
 module.exports = router;
 // Importar todos los routers;
