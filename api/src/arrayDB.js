@@ -1392,37 +1392,7 @@ async function base (){
   } catch (err) {
     console.log(err);
   }
-  
-  // temps.map(el => Temperament.findOrCreate({ //si ya existe la tabla, no hace nada.
-  //   where:{
-  //       name:el
-  //   }
-  // try {
-  //     const chargeDB = await datab.map( el => {
-  //       // let {PRODUCTOS, URL, Fabricante, Detalle, STOCK, PRECIO, CATEGORIA} = e;
-  //     Product.create({
-  //       id: id,
-  //       name: el.PRODUCTOS,
-  //       image: el.URL,
-  //       maker: el.Fabricante,
-  //       Description: el.Detalle,
-  //       stock: el.STOCK,
-  //       price: el.PRECIO,
-  //       type: el.CATEGORIA
-  //     });
-  //     // console.log(product);
-  //   });
-  //   return;
-  // } catch (err) {
-  //   consol.log(err)
-  // }
-};
-
-// function charger(){
-//   setTimeout(base, 5000)
-// };
-// charger()
-      
+};    
     
 module.exports = {
     base,
