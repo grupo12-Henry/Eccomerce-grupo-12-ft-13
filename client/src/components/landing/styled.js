@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import image from '../../assets/images/landing.jpg';
+import image from '../../assets/images/landing2.jpg';
 
 export const StyledDiv = styled.div`
 display: flex;
@@ -20,8 +20,10 @@ overflow: hidden
 
 .div_btn {
     display: flex;
-    align-items: flex-end;
-    margin-bottom: 120px
+    align-items: center;
+    justify-content: center;
+    margin-top:50px;
+    margin-bottom: 60px
 		
    
 }
