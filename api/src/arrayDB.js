@@ -1375,7 +1375,7 @@ var datab = [
 
 async function base (){
   try {
-    const DBCreation = await datab.map (el => {
+    const DBCreation = await datab.map (el => { //el 'const DBCreation =' se puede sacar y funciona igual
       Product.findOrCreate({
         where:{
           name: el.PRODUCTOS,
@@ -1418,10 +1418,10 @@ async function base (){
   // }
 };
 
-function charger(){
-  setTimeout(base, 5000)
-};
-charger()
+// function charger(){
+//   setTimeout(base, 5000)
+// };
+// charger()
       
     
 module.exports = {

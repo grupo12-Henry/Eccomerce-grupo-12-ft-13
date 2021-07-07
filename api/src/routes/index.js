@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const routesAdmin = require('./routesAdmin/index.js')
 const routesUser = require('./routesUser/index.js')
-const { base } = require('../arrayDB.js')
 
 
 const router = Router();

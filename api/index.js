@@ -19,13 +19,14 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const { base } = require('./src/arrayDB.js')
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
 
-    // levantando base de datos
-    
+    // levanta base de datos
+    base();
 
 
     console.log('%s listening at 3001'); // eslint-disable-line no-console
