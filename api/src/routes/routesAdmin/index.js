@@ -2,8 +2,37 @@ const { Router } = require('express');
 const { Product }=require('../../db')
 //modelos acá:
 const router = Router();
+router.get('/productos/all',async (req,res) => {
+    const offset=req.query.offset ? parseInt(req.query.offset,10): 0
 
-router.get('/productos/:id',async(req,res)=>{
+    try {
+        const product= await Product.findAndCountAll({
+            limit: 8,
+            offset: offset
+        })
+        res.send(product).status(200)
+    } catch (error) {
+        res.send(error).status(404)
+    }
+})
+router.get('/productos/order', async(req,res)=>{
+    const offset=req.query.offset? parseInt(req.query.offset,10): 0
+    const order=req.query.order?req.query.order.toUpperCase(): 'ASC'
+    const tipo=req.query.type
+    
+   try {
+       const productos = await Product.findAndCountAll({
+            offset:offset,
+            order:[[tipo,order]],
+            limit:8
+        })
+        res.send(productos).status(200)
+   } catch (error) {
+        res.send(error).status(404)  
+   }
+        
+})
+router.get('/productos/id/:id',async(req,res)=>{
     const id=req.params.id
     try {
         const product = await Product.findByPk(id)
@@ -13,15 +42,7 @@ router.get('/productos/:id',async(req,res)=>{
     }
 })
 
-router.get('/productos',async (req,res) => {
-     try {
-        const array_product = await Product.findAll()
-        res.send(array_product).status(200)}
-     catch(error){
-        res.send(error).status(404)
-     }
-   
-})
+
 
 
  router.put('/productos/:id', async (req, res)=>{
