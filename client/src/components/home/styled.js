@@ -14,7 +14,10 @@ display: flex;
 }
 
 .div_container{
+<<<<<<< HEAD
     border: solid blue 7px;
+=======
+>>>>>>> main
     display: flex;
     margin-top: 150px;
     height: 100%;
@@ -45,4 +48,8 @@ display: flex;
 }
 
 `
+<<<<<<< HEAD
 export default StyledDiv
+=======
+export default StyledDiv
+>>>>>>> main

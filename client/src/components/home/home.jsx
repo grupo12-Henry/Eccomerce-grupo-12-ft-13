@@ -4,7 +4,9 @@ import { getProducts } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
+
 import HomeProductsCards from '../homeProductsCards/homeProductsCards';
+
 
 export default function Home() {
     const dispatch = useDispatch();

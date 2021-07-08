@@ -1,5 +1,6 @@
 import axios from 'axios';
 export const GETCARDS = 'GETCARDS';
+export const GETDETAILS = 'GETDETAILS'
 
 export function getProducts () {
     return (dispatch) => {
@@ -13,7 +14,18 @@ export function getProducts () {
     }
 };
 
-
+export function getDetail (id) {
+    return (dispatch) => {
+        axios.get('http://localhost:3001/admin/productos/' + id)
+        .then(response => {
+            dispatch({ type: GETDETAILS, payload: response.data})
+            console.log('DATA',response.data)
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+    }
+};
 
 
 
