@@ -4,42 +4,42 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('client', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             primaryKey: true,
             allowNull: false,
         },
         name: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
         },
         lastName: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
         },
         phone: {
             type: DataTypes.INTEGER,
-            // allowNull: false,
+            allowNull: false,
         },
         state: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
         },
         adress: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
         },
         mail: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
         },
         identityCard: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
+        },
+        admin:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            default: false
         }
-        // admin:{
-        //     type: DataTypes.BOOLEAN,
-        //     allowNull: false,
-        //     default: false
-        // }
     });
 };
