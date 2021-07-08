@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, getDetail } from "../../actions/index";
+import { getDetail } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";

@@ -36,10 +36,10 @@ return (
                         <div className='help-menu col-sm-4 col-md-4 col-lg-4'>
                         
                         <ul className="d-flex justify-content-center" style={style}>
-                            <Auto/>
                             <li className="col-3"><img className='cart' alt='cart img' src={cart} width='20px' /></li>
                             <li className="col-3"><img alt='user img' src={user} width='20px'/></li>
                         </ul>
+                            <Auto/>
                         
                     </div>
                         

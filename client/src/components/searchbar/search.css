@@ -1,59 +1,76 @@
-.main {
-    background-color: grey;
-      padding: 50px;
-      width: 250px;
-      height: 300px;
-      display: block;
-      margin: auto;
-  }
-  
-  .text-desc {
-    font-size: 1.1 rem;
-  }
-  .input-wrapper {
+.searchInputs {
+    /* margin-top: 105px; */
+    /* position: fixed; */
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 13rem;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .input-user {
-    height: 20px;
-  }
-  
-  .btn-next {
-    display: block;
-    margin:auto;
-    height: 50px;
-    width: 100px;
-    font-size: 2rem;
-    color: white;
-    background-color: cornflowerblue;
-  
-  }
-  .option {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    position: fixed;
     
-  }
-  .option span{
-    border:solid 1 px rgba(163, 7, 7, 0.418);
-  }
-  #input{
-    margin: 18px 120px;
-    position: fixed;
-  }
+}
 
-  
-  .autoContainer {
-      margin-top: 8%;
-    margin-left: 144px;
-    position: fixed;
+.search{
+  margin-top: 50%;
+ position: fixed;
+}
+
+.search input {
     background-color: white;
-    width: 120px;
-    border: 2px solid rgba(163, 7, 7, 0.418);
+    border: 0;
     border-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: 18px;
+    padding: 15px;
+    height: 30px;
+    width: 300px;
+  }
+  
+  .searchIcon {
+    height: 60px;
+    width: 50px;
+    background-color: white;
+    display: grid;
+    place-items: center;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  .searchIcon svg {
+    font-size: 35px;
+  }
+  
+  .dataResult {
+    margin-top: 5px;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+  
+  /* .dataResult::-webkit-scrollbar {
+    display: none;
+  } */
+  
+  .dataResult .dataItem {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: black;
+  }
+  
+  .dataItem p {
+    margin-left: 10px;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    background-color: lightgrey;
+  }
+  
+  #clearBtn {
+    cursor: pointer;
   }

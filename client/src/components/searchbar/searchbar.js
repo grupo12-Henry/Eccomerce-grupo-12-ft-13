@@ -1,16 +1,38 @@
-
-import React, { useEffect, useState, useRef } from "react";
+import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getNames } from "../../actions";
-import "./search.css";
+import SearchIcon from "@material-ui/icons/Search";
+import CloseIcon from "@material-ui/icons/Close";
+
+// import "./search.css";
 
 const Auto = () => {
-  const [display, setDisplay] = useState(false);
-  const [options, setOptions] = useState("");
-  const [search, setSearch] = useState("");
-  const wrapperRef = useRef(null);
-
-
+//   function SearchBar({ placeholder}) {
+    const [filteredData, setFilteredData] = useState([]);
+    const [wordEntered, setWordEntered] = useState("");
+  
+    const handleFilter = (event) => {
+      const searchWord = event.target.value;
+      setWordEntered(searchWord);
+    //   console.log(searchWord)
+      const newFilter = product.filter((value) => {
+        return value.name.toLowerCase().includes(searchWord.toLowerCase());
+      });
+  
+      if (searchWord === "") {
+        setFilteredData([]);
+      } else {
+        setFilteredData(newFilter);
+        console.log(newFilter)
+      }
+    };
+  
+    const clearInput = () => {
+      setFilteredData([]);
+      setWordEntered("");
+    };
+  
 
   const dispatch = useDispatch();
   const product = useSelector((state) => state.names)
@@ -23,124 +45,39 @@ const Auto = () => {
       dbProducts();
   }, [dispatch]);
 
-//   useEffect(() => {
-//       const dbProducts = () => {
-//           setAllProducts(product);
-//       };
-//       dbProducts();
-//   }, [product]);
 
-
-
-
-  useEffect(() => {
-    window.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-    };
-  });
-
-  const handleClickOutside = event => {
-    const { current: wrap } = wrapperRef;
-    if (wrap && !wrap.contains(event.target)) {
-      setDisplay(false);
-    }
-  };
-
-  const updateProducts = product => {
-    setSearch(product);
-    setDisplay(false);
-  };
-
-  function handleChange(e) {
-      e.preventDefault()	
-      setOptions({
-          name: e.target.value
-      })
-      
-          function handleSubmit(e) {
-              e.preventDefault()
-              if (input.name) {
-                  getName(input.name)
-              } else if (!input.name){
-                  alert('❌ Enter a name of a country')
-              } 
-              setInput({name:''})
-          }
-  };
-  /*
-
-	return (
-		<div >
-			<form onSubmit={(e) => handleSubmit(e)}>
-				<input className={style.input} type='text' placeholder='Search Country...' name='name'	value={input.name}	onChange={(e) => handleChange(e)}/>
-				
-                </form>
-                </div>
-            )
-        }
-        
-        function mapDispatchToProps(dispatch) {
-            return {
-                searchCountry: name => dispatch(searchCountry(name))
-            };
-        }
-        
-        export default connect(null, mapDispatchToProps)(SearchBar)
-
-
-
-  */
-  
-
-  return (
-    <div ref={wrapperRef} className="flex-container flex-column pos-rel">
-        <form onSubmit={(e) => handleSubmit(e)}>
-         <input
-            id="input"
-            name='name'
-            type='text'
-            onClick={() => setDisplay(!display)}
-            placeholder="search product..."
-            value={search}//value={input.name}
-            onChange={event => setSearch(event.target.value)}
-        />
-
-        </form>
-      {display && (
-        <div className="autoContainer">
-          {product
-            .filter(({ name }) => name.toLowerCase().includes(search.toLocaleLowerCase()))
-            .map((value, i) => {
-              return (
-                <div
-                  className="option"
-                  onClick={() => updateProducts(value.name)}
-                  key={i}
-                  tabIndex="0"
-                >
-                  <span>{value.name}</span>
-                  {/* <img src={value.image} alt="GETNAMES" /> */}
-                </div>
-              );
-            })}
-        </div>
-      )}
-    </div>
-  );
+        return (
+          <div className="search">
+            <div className="searchInputs">
+              <input
+                type="text"
+                placeholder='busca un producto'
+                value={wordEntered}
+                onChange={handleFilter}
+              />
+              <div className="searchIcon">
+                {filteredData.length === 0 ? (
+                  <SearchIcon />
+                ) : (
+                  <CloseIcon id="clearBtn" onClick={clearInput} />
+                )}
+              </div>
+            </div>
+            {filteredData.length !== 0 && (
+              <div className="dataResult">
+                {filteredData.slice(0, 5).map((value, key) => {
+                  return (
+                    <a className="dataItem" href = {`/detail/${value.id}`}>
+                       
+                      <p>{value.name} </p>
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        );
 };
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <h1>Custom AutoComplete React</h1>
-//       <div className="logo"></div>
-//       <div className="auto-container">
-//         <Auto />
-//       </div>
-//     </div>
-//   );
-// }
 
 export default Auto;
 
