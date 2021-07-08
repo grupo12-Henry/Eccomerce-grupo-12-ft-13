@@ -32,8 +32,11 @@ export const StyledDiv = styled.div`
 .d-flex {
     list-style: none;
 }
-
+.Auto{
+    position: fixed;
+}
 .d-flex input {
+    
     margin-left: 70%;
     border-radius: 50px;
     padding: 2%;
