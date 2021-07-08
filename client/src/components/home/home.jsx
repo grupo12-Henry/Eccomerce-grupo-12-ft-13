@@ -20,7 +20,7 @@ export default function Home() {
     const showProducts = allProducts.slice(conteoInicial, conteoFinal)
 
 
-    console.log(product);
+    //console.log(product);
 
 
     useEffect(() => {

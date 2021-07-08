@@ -6,9 +6,9 @@ export const GETNAMES = 'GETNAMES'
 
 export function getProducts () {
     return (dispatch) => {
-        axios.get('http://localhost:3001/admin/productos')
+        axios.get('http://localhost:3001/admin/productos/all')
         .then(response => {
-            dispatch({ type: GETCARDS, payload: response.data.filter(el => el.id < 50)})
+            dispatch({ type: GETCARDS, payload: response.data.rows.filter(el => el.id < 50)})
         })
         .catch((err) =>{
             console.log(err)
@@ -18,7 +18,7 @@ export function getProducts () {
 
 export function getDetail (id) {
     return (dispatch) => {
-        axios.get('http://localhost:3001/admin/productos/' + id)
+        axios.get('http://localhost:3001/admin/productos/id/' + id)
         .then(response => {
             dispatch({ type: GETDETAILS, payload: response.data})
             console.log('DATA',response.data)
@@ -31,7 +31,7 @@ export function getDetail (id) {
 
 export function getNames(){
     return (dispatch) => {
-        axios.get('http://localhost:3001/admin/names/')
+        axios.get('http://localhost:3001/admin/productos/names')
         .then(response => {
             dispatch({ type: GETNAMES, payload: response.data})
         })
