@@ -4,22 +4,22 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   sequelize.define('login', {
     id: {
-      type: DataTypes.INTEGER,
-      // allowNull: false,
+      type: DataTypes.UUID,
+      allowNull: false,
       primaryKey: true,
     },
     initialDate: {
       type: DataTypes.STRING,
-      // allowNull: false,
+      allowNull: false,
       unique: true,
     },
     expirationDate: {
       type: DataTypes.STRING,
-      // allowNull: true,
+      allowNull: true,
     },
     lastLogin: {
       type: DataTypes.STRING,
     },
   });
 };
-
+//ACA IRIAN TODAS LAS TABLAS DE NUESTRA DB
