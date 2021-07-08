@@ -36,8 +36,8 @@ const { Product, Card, Category, Client, Invoice, Login, Order, Shipping} = sequ
 
 
 
-Login.belongsTo(Client);
-Client.hasMany(Login);
+Login.Client = Login.belongsTo(Client);
+Client.Login = Client.hasMany(Login);
 
 Client.hasMany(Card);
 Card.belongsTo(Client);
