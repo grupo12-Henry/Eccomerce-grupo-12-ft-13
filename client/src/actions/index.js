@@ -1,12 +1,14 @@
 import axios from 'axios';
 export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS'
+export const GETNAMES = 'GETNAMES'
+
 
 export function getProducts () {
     return (dispatch) => {
         axios.get('http://localhost:3001/admin/productos')
         .then(response => {
-            dispatch({ type: GETCARDS, payload: response.data.filter(el => el.id < 10)})
+            dispatch({ type: GETCARDS, payload: response.data.filter(el => el.id < 50)})
         })
         .catch((err) =>{
             console.log(err)
@@ -26,6 +28,18 @@ export function getDetail (id) {
         })
     }
 };
+
+export function getNames(){
+    return (dispatch) => {
+        axios.get('http://localhost:3001/admin/names/')
+        .then(response => {
+            dispatch({ type: GETNAMES, payload: response.data})
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+    }
+}
 
 
 
