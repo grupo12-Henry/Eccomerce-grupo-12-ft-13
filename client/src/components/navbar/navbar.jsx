@@ -8,7 +8,6 @@ import facebook from '../../assets/images/logo-de-facebook.png';
 import logo from '../../assets/images/logo.png';
 import cart from '../../assets/images/cart.png';
 import user from '../../assets/images/user.png';
-import Auto from "../searchbar/searchbar";
 
 const Nav = () => {
     const style = {
@@ -36,7 +35,7 @@ return (
                         <div className='help-menu col-sm-4 col-md-4 col-lg-4'>
                         
                         <ul className="d-flex justify-content-center" style={style}>
-                            <Auto/>
+                            <input className='input' placeholder='Busca tu producto...'></input>
                             <li className="col-3"><img className='cart' alt='cart img' src={cart} width='20px' /></li>
                             <li className="col-3"><img alt='user img' src={user} width='20px'/></li>
                         </ul>
