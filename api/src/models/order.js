@@ -4,10 +4,11 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('order', {
         id: {
+            type: DataTypes.UUID,
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
-        },
+                    },
         date: {
             type: DataTypes.DATE,
             // allowNull: false,
