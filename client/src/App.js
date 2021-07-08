@@ -15,7 +15,7 @@ function App() {
             {/* <div className="w-100" style={{maxWidth: '400px'}}> */}
               <Route exact path='/' component={SignUp} />
             {/* </div> */}
-          {/* <Route exact path='/' component={LandingPage}/> */}
+          <Route exact path='/' component={LandingPage}/>
           {/* </Container> */}
       </AuthProvider>
     </div>
