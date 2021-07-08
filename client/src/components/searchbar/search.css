@@ -42,14 +42,16 @@
   .option span{
     border:solid 1 px rgba(163, 7, 7, 0.418);
   }
-  #auto{
-      margin-left:50px;
+  #input{
+    margin: 18px 120px;
+    position: fixed;
   }
 
   
   .autoContainer {
+      margin-top: 8%;
     margin-left: 144px;
-    position: absolute;
+    position: fixed;
     background-color: white;
     width: 120px;
     border: 2px solid rgba(163, 7, 7, 0.418);

@@ -6,7 +6,7 @@ import "./search.css";
 
 const Auto = () => {
   const [display, setDisplay] = useState(false);
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState("");
   const [search, setSearch] = useState("");
   const wrapperRef = useRef(null);
 
@@ -51,17 +51,62 @@ const Auto = () => {
     setSearch(product);
     setDisplay(false);
   };
+
+  function handleChange(e) {
+      e.preventDefault()	
+      setOptions({
+          name: e.target.value
+      })
+      
+          function handleSubmit(e) {
+              e.preventDefault()
+              if (input.name) {
+                  getName(input.name)
+              } else if (!input.name){
+                  alert('❌ Enter a name of a country')
+              } 
+              setInput({name:''})
+          }
+  };
+  /*
+
+	return (
+		<div >
+			<form onSubmit={(e) => handleSubmit(e)}>
+				<input className={style.input} type='text' placeholder='Search Country...' name='name'	value={input.name}	onChange={(e) => handleChange(e)}/>
+				
+                </form>
+                </div>
+            )
+        }
+        
+        function mapDispatchToProps(dispatch) {
+            return {
+                searchCountry: name => dispatch(searchCountry(name))
+            };
+        }
+        
+        export default connect(null, mapDispatchToProps)(SearchBar)
+
+
+
+  */
   
 
   return (
     <div ref={wrapperRef} className="flex-container flex-column pos-rel">
-      <input
-        id="auto"
-        onClick={() => setDisplay(!display)}
-        placeholder="search product..."
-        value={search}
-        onChange={event => setSearch(event.target.value)}
-      />
+        <form onSubmit={(e) => handleSubmit(e)}>
+         <input
+            id="input"
+            name='name'
+            type='text'
+            onClick={() => setDisplay(!display)}
+            placeholder="search product..."
+            value={search}//value={input.name}
+            onChange={event => setSearch(event.target.value)}
+        />
+
+        </form>
       {display && (
         <div className="autoContainer">
           {product
