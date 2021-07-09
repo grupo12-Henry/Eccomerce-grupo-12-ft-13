@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getNames, getNamesQuery } from "../../actions";
+import { getNames } from "../../actions";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import Styled from './styled'
@@ -36,13 +36,6 @@ const Auto = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.names)
     // console.log(product)
-
-  useEffect(() => {
-      const dbProducts = () => {
-          dispatch(getNames());
-      };
-      dbProducts();
-  }, [dispatch]);
 
   useEffect(() => {
       const dbProducts = () => {
