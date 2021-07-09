@@ -1387,13 +1387,13 @@ async function base (){
           type: el.CATEGORIA
         }
       });
-    });    
+    });
     console.log('La Base se cargo correctamente');
   } catch (err) {
     console.log(err);
   }
-};    
-    
+};
+
 module.exports = {
     base,
     datab

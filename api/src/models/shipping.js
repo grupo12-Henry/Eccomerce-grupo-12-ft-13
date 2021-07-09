@@ -3,30 +3,30 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
     sequelize.define('shipping', {
-        idShipping: {
+       /*  idShipping: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             allowNull: false,
-        },
+        }, */
         shippingDate: {
             type: DataTypes.STRING,
-            allowNull: false,
+            //allowNull: false,
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
+            //allowNull: false,
         },
         freight: {
             type: DataTypes.STRING,
-            allowNull: false,
+            //allowNull: false,
         },
         guideNumber: {
             type: DataTypes.STRING,
-            allowNull: false,
+            //allowNull: false,
         },
         cost: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            //allowNull: false,
         },
     })
 }
