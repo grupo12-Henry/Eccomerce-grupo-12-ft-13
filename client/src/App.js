@@ -1,26 +1,23 @@
-//aca todavia hay que importar un monton de cosas para ir trabajando
-import React from 'react'
-import { Route } from 'react-router'
+// //aca todavia hay que importar un monton de cosas para ir trabajando
+// import React from "react";
+// import { Route } from 'react-router-dom';
+
+
 // import LandingPage from './components/landing/landing';
-import Home from './components/home/home';
-import Detail from './components/detail/detail';
-import SignUp from './components/sign-up/sign-up';
-import {AuthProvider} from '../src/contexts/AuthContext';
+// import Home from './components/home/home';
+// // import Detail from './components/detail/detail';
+import SignUp from "./components/signUp/SignUp";
+import { Container } from "react-bootstrap";
+import { AuthProvider } from "../src/contexts/AuthContext";
 
 function App() {
   return (
-    <div className="App">
-        <AuthProvider>
-      <React.Fragment>
-        {/* <Route exact path='/' component={LandingPage}/> */}
-        <Route exact path='/' component={SignUp} />
-        <Route exact path='/home' component={Home}/>
-        <Route path='/detail/:id' component={Detail}/>
-
-      </React.Fragment>
-        </AuthProvider>
-    </div>
-  );
+      <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+        <div className="w-100" style={{maxWidth:'400px'}}>
+        <SignUp />
+        </div>
+      </Container>
+  )
 }
 
 export default App;
