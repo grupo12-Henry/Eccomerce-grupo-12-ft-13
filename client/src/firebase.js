@@ -2,12 +2,12 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const app = firebase.initializeApp({
-  apiKey: 'AIzaSyCmscd5bzxqA5YCyt0UqBwlBpw7kWCBrXY',
-  authDomain: 'login-81951.firebaseapp.com',
-  projectId: 'login-81951',
-  storageBucket: 'login-81951.appspot.com',
-  messagingSenderId: '896879206448',
-  appId: '1:896879206448:web:9161dcea8b648d7de18df5'
+  apiKey:'AIzaSyChEGmicshEtY-It3vS6EFwbjKoRlywa_I',
+  authDomain: 'auth-development-94247.firebaseapp.com',
+  projectId: 'auth-development-94247',
+  storageBucket: 'auth-development-94247.appspot.com',
+  messagingSenderId: '885431481774',
+  appId: '1:885431481774:web:2e75ee3bc123f19211843f'
 });
 
 export const auth = app.auth();

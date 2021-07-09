@@ -5,6 +5,7 @@ import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
 import HomeProductsCards from '../homeProductsCards/homeProducts';
+// import SignUp from '../signUp/SignUp';
 
 export default function Home() {
     const dispatch = useDispatch();
