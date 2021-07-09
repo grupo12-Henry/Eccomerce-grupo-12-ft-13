@@ -2,13 +2,15 @@ import axios from 'axios';
 export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS'
 export const GETNAMES = 'GETNAMES'
+// export const GETNAMESQ = 'GETNAMESQ'
+
 
 
 export function getProducts () {
     return (dispatch) => {
-        axios.get('http://localhost:3001/admin/productos/all')
+        axios.get('http://localhost:3001/productos/all')
         .then(response => {
-            dispatch({ type: GETCARDS, payload: response.data.rows.filter(el => el.id < 50)})
+            dispatch({ type: GETCARDS, payload: response.data.filter(el => el.id)})
         })
         .catch((err) =>{
             console.log(err)
@@ -29,6 +31,17 @@ export function getDetail (id) {
     }
 };
 
+// export function getNamesQuery(name){
+//     return (dispatch) => {
+//         axios.get('http://localhost:3001/productos/?name='+ name)
+//         .then(response => {
+//             dispatch({ type: GETNAMESQ, payload: response.data})
+//         })
+//         .catch((err) =>{
+//             console.log(err)
+//         })
+//     }
+// }
 export function getNames(){
     return (dispatch) => {
         axios.get('http://localhost:3001/admin/productos/names')

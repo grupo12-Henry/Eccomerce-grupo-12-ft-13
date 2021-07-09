@@ -50,12 +50,13 @@ const Auto = () => {
           <Styled>
           <div className="search">
             <div className="searchInputs">
+              <form>
               <input
                 type="text"
                 placeholder='busca un producto'
                 value={wordEntered}
                 onChange={handleFilter}
-              />
+              /></form>
               <div className="searchIcon">
                 {filteredData.length === 0 ? (
                   <SearchIcon  />
