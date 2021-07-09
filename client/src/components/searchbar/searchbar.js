@@ -1,11 +1,11 @@
-import {Link} from 'react-router-dom'
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getNames } from "../../actions";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
+import Styled from './styled'
 
-// import "./search.css";
+
 
 const Auto = () => {
 //   function SearchBar({ placeholder}) {
@@ -47,6 +47,7 @@ const Auto = () => {
 
 
         return (
+          <Styled>
           <div className="search">
             <div className="searchInputs">
               <input
@@ -57,7 +58,7 @@ const Auto = () => {
               />
               <div className="searchIcon">
                 {filteredData.length === 0 ? (
-                  <SearchIcon />
+                  <SearchIcon  />
                 ) : (
                   <CloseIcon id="clearBtn" onClick={clearInput} />
                 )}
@@ -76,12 +77,11 @@ const Auto = () => {
               </div>
             )}
           </div>
+          </Styled>
         );
 };
 
 export default Auto;
-
-
 
 
 

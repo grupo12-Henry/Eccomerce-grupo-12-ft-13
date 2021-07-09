@@ -3,50 +3,45 @@ import styled from 'styled-components';
 export const StyledDiv = styled.div`
 .header-container{
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content:space-between;
+    justify-content:center;
     width: 100%;
-	height: 14%;
+	height: 20%;
 	overflow: hidden;
-	background-color: #FFFFFFF;
-	position: absolute;
+	background-color: #ffff;
+	position: fixed;
 	top: 0px;
 	left: 0px;
 	box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
-.help-menu {
-    align-items: center;
-    justify-content:space-around;
-}
-.help-menu img {
-    margin-right: 5%;
-}
-.help-menu img:hover {
-   bacground-color:red;
-    margin-right: 5%;
+.help-menu-izq img{
+    margin-right: 3%;
 }
 .row {
+    align-items:center;
     margin-right: 1%;
     list-style: none;
 }
-.d-flex {
-    list-style: none;
+.help-menu {
+    display: ruby;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: space-around;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: space-around;
+    justify-content: space-around;
+    margin-bottom: 2%;
 }
-.Auto{
-    position: fixed;
-}
-.d-flex input {
-    
-    margin-left: 70%;
-    border-radius: 50px;
-    padding: 2%;
-    outline: none;
-    background-color: rgba(238, 238, 238, 0.932);
-    border: 0;
-}
-.d-flex li {
-    margin-left: 6%;
+.help-menu img {
+    margin: 10px;
 }
 
+.d-flex {
+    margin: 1px 1px 1px 1px;
+    list-style: none;
+}
 	 
 `;
