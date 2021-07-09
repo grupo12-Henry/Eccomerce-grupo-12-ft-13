@@ -215,15 +215,16 @@ var datab = [
       PRODUCTOS: 'The Glenlivet 12 años 700 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/glen-elgin-121-8b706dbbd7685346a216079712209554-480-0.jpg?alt=media&token=fcb52ae0-31ef-495d-8d66-a8695968a444',  
       Fabricante: 'The Glenlivet',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'The Glenlivet 12 Años Single Malt es un referente mundial de la categoría Scotch Single Malt, considerado también como el whisky Single Malt "Patrón" de la región Speyside. De color dorado claro. Elegante y balanceada nariz, con notas frutadas, delicada fragancia floral, miel y leve ahumado. Suave, balanceado, frutado y floral. De final liso, cálido y elegante.',
       STOCK: 24,
       PRECIO: 4900,
       CATEGORIA: 'Whiskys'
     },
     {
       PRODUCTOS: 'Macallan Double Cask 12 Años 700 ml',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Medium-MAC_2018_Double%20Cask_12YO_BottleCarton_RGB_Tif.jpg?alt=media&token=7d739e33-d176-4b41-a8ac-0a0288ae8bd2',    Fabricante: 'Macallan',
-      Detalle: 'ACA LA INFO',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Medium-MAC_2018_Double%20Cask_12YO_BottleCarton_RGB_Tif.jpg?alt=media&token=7d739e33-d176-4b41-a8ac-0a0288ae8bd2',    
+      Fabricante: 'Macallan',
+      Detalle: 'La obsesión con la calidad ha sido la impronta de The Macallan desde que Alexander Reid la fundara en una meseta situada sobre el río Spey, en el noreste de Escocia. Macallan 12 años Double Cask es la asociación perfecta de barricas de roble americano y europeo sazonadas con jerez oloroso para crea el carácter acogedor y distintivo de este armonioso single malt.',
       STOCK: 24,
       PRECIO: 9393,
       CATEGORIA: 'Whiskys'
@@ -232,7 +233,7 @@ var datab = [
       PRODUCTOS: 'Macallan Triple Cask 12 Años 700 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Copia-de-Copia-de-Copia-de-Copia-de-Copia-de-Sin-t%C3%ADtuloI-12.jpg?alt=media&token=3852c070-3bc7-4011-9a8b-b4a748a0abb3',
       Fabricante: 'Macallan',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'La obsesión con la calidad ha sido la impronta de The Macallan desde que Alexander Reid la fundara en una meseta situada sobre el río Spey, en el noreste de Escocia. Macallan 12 años Triple Cask es la asociación perfecta de barricas de roble americano y europeo sazonadas con jerez oloroso para crea el carácter acogedor y distintivo de este armonioso single malt.',
       STOCK: 24,
       PRECIO: 8945,
       CATEGORIA: 'Whiskys'
@@ -241,7 +242,7 @@ var datab = [
       PRODUCTOS: 'Ballantines Finest 1000 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Ballantines%20Finest%201000%20ml.jpg?alt=media&token=72df9330-7320-458d-8c9a-0eab29abdc60',
       Fabricante: 'Ballantines',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Ballantine’s es un whisky escocés blended creado en 1827 por George Ballantine, un empresario que inventó un método propio para producir un whisky de la mejor calidad. Su color dorado claro y su sabor inconfundible provienen de una compleja mezcla de whiskies de malta y cereales cuidadosamente seleccionados. Todos se dejan añejar durante varios años en barricas de gran calidad.',
       STOCK: 24,
       PRECIO: 1653,
       CATEGORIA: 'Whiskys'
@@ -250,7 +251,7 @@ var datab = [
       PRODUCTOS: 'Chivas Regal 18 años 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Chivas%20Regal%2018%20a%C3%B1os%20750%20ml.jpg?alt=media&token=467b6836-b182-4707-bb2b-7e281891d631',
       Fabricante: 'Chivas Regal',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Whisky premium escocés, mezcla de las mejores maltas de Speyside. 18 años de envejecimiento en barricas de roble francés. Sabor balanceado a miel y manzana madura. ',
       STOCK: 24,
       PRECIO: 7779,
       CATEGORIA: 'Whiskys'
@@ -259,7 +260,7 @@ var datab = [
       PRODUCTOS: 'Chivas Regal 12 años 1000 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Chivas%20Regal%2012%20a%C3%B1os%201000%20ml.png?alt=media&token=a64fe852-0807-4ebd-864a-be0df9285f20',
       Fabricante: 'Chivas Regal',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Es una mezcla de los mejores whiskies con una ola de malta y granos madurados durante al menos 12 años. Los barriles de jerez imprimen un color profundo y rico al whisky, mientras el barril de bourbon le da un tono más dorado. Pero todo depende de la mezcla. ',
       STOCK: 24,
       PRECIO: 3369,
       CATEGORIA: 'Whiskys'
@@ -268,7 +269,7 @@ var datab = [
       PRODUCTOS: 'Chivas Regal EXTRA 13 Años 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Chivas%20Regal%20EXTRA%2013%20A%C3%B1os%20750%20ml.jpg?alt=media&token=b47c186d-62a5-49c5-91d6-f9590f810435',     
       Fabricante: 'Chivas Regal',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Es una mezcla de los mejores whiskies con una ola de malta y granos madurados durante al menos 12 años. Durante su ultimo año es terminado en barricas de tequila. ',
       STOCK: 24,
       PRECIO: 3315,
       CATEGORIA: 'Whiskys'
@@ -286,7 +287,7 @@ var datab = [
       PRODUCTOS: 'Johnnie Walker Black Label 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Johnnie%20Walker%20Black%20Label%20750%20ml.jpg?alt=media&token=30042346-bc7c-485b-8347-eacb8f057949',
       Fabricante: 'Johnnie Walker',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Mezcla que combina whiskies ligeros de la costa este escocesa y whiskies ahumados de la costa oeste. En boca se perciben sabores de manzana y pera fresca con notas de vainilla. Final persistente y ahumado.',
       STOCK: 24,
       PRECIO: 2883,
       CATEGORIA: 'Whiskys'
@@ -304,7 +305,7 @@ var datab = [
       PRODUCTOS: 'Johnnie Walker Green Label 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Johnnie%20Walker%20Green%20Label%20750%20ml.jpg?alt=media&token=a566c4dd-5bc9-4127-94aa-5cebfc29dfc0',
       Fabricante: 'Johnnie Walker',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Cuando hablamos de la etiqueta negra de JW encontramos un whisky blended muy redondo donde es evidente la presencia de los whiskys de grano pero muy matizados con notas de especias dulces, notas oscuras y ahumadas',
       STOCK: 24,
       PRECIO: 6879,
       CATEGORIA: 'Whiskys'
@@ -313,7 +314,7 @@ var datab = [
       PRODUCTOS: 'Johnnie Walker Double Black 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Johnnie%20Walker%20Double%20Black%20750%20ml.jpg?alt=media&token=c8d56148-f29a-4da7-9714-cf574768c580',
       Fabricante: 'Johnnie Walker',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Johnnie Walker Double Black está inspirado en los sabores icónicos de Johnnie Walker Black Label, acentuándolos para crear una mezcla con una intensidad sin precedentes. Influenciado por los poderosos whiskies de la costa oeste y la región de las Islas, Johnnie Walker Double Black se disfruta mejor con agua para liberar sus complejas notas de especias ardientes y humo. Una mezcla increíble para compartir sin importar la ocasión.',
       STOCK: 24,
       PRECIO: 4190,
       CATEGORIA: 'Whiskys'
@@ -322,7 +323,7 @@ var datab = [
       PRODUCTOS: 'Johnnie Walker Gold Reserve 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Johnnie%20Walker%20Gold%20Reserve%20750%20ml.jpg?alt=media&token=39ad9122-d26d-4b4f-8e53-33d4743a0030',
       Fabricante: 'Johnnie Walker',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Johnnie Walker Gold Label Reserve es mejor conocida por su suavidad cremosa y lujosa. Apertura con un estallido de néctar aromático, antes de profundizar, en tonos más aterciopelados y melosos; este galardonado whisky da paso a una persistente textura de roble en el acabado. Johnnie Walker Gold Label Reserve transforma cualquier momento de celebración en algo verdaderamente extraordinario.',
       STOCK: 24,
       PRECIO: 5900,
       CATEGORIA: 'Whiskys'
@@ -331,7 +332,7 @@ var datab = [
       PRODUCTOS: 'Johnnie Walker Blue Label 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Johnnie%20Walker%20Blue%20Label%20750%20ml.jpg?alt=media&token=e817855d-4304-4b14-8e4f-78d10e23f244',
       Fabricante: 'Johnnie Walker',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'JOHNNIE WALKER BLUE LABEL pone las reglas, con capas y capas de sabor y raras barricas seleccionadas a mano de todas las regiones de destilación de Escocia. Sus aromas son influenciados por el humo del oeste y los ricos whiskies dulces del este.',
       STOCK: 24,
       PRECIO: 24300,
       CATEGORIA: 'Whiskys'
@@ -340,7 +341,7 @@ var datab = [
       PRODUCTOS: 'J&B 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/J%26B%20750%20ml.jpg?alt=media&token=18e80e3d-0c6d-4215-82f3-fa70f358e14c',
       Fabricante: 'J&B',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'El corazón de J&B Rare es formado por Speyside Malt Whiskies. Ellos proporcionan el sabor a fruta, calidad de frescura que podés degustar, y dar a J&B su color claro. Speyside es reconocida como la mejor zona en Escocia para la fabricación de malta.',
       STOCK: 24,
       PRECIO: 1383,
       CATEGORIA: 'Whiskys'
@@ -349,7 +350,7 @@ var datab = [
       PRODUCTOS: 'Vat 69 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Vat%2069%20750%20ml.png?alt=media&token=40bd2574-96d0-46f6-81af-03ecfc44aa95',
       Fabricante: 'Vat 69',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Las barricas utilizadas para el envejecimiento de los whiskies de VAT 69 todavía se eligen con el mismo cuidado que mantenía William Sanderson, su fundador en 1882. Los whiskies son madurados en barricas, que fueron previamente utilizadas para bourbon americano o jerez español. Las maltas de las destilerías de Clynelish y Ord representan el estilo más auténtico de la región de las Highlands escocesas y están en el corazón del blend de VAT 69.',
       STOCK: 24,
       PRECIO: 487,
       CATEGORIA: 'Whiskys'
@@ -358,7 +359,7 @@ var datab = [
       PRODUCTOS: 'White Horse 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/White%20Horse%20750%20ml.jpg?alt=media&token=d33b9781-00d7-4c73-887b-21421d85d983',
       Fabricante: 'White Horse',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Blend 8 años de más de 35 whiskies de malta y grano, siendo su corazón 3 single malts: Lagavulin, Craigellachie y Glen Elgin. Sobresale por la forma singular de su botella, su etiqueta tradicional y su nombre, recibido de una histórica posada de Edimburgo fundada en 1742.Con un bouquet muy sutil, las notas mas sobresalientes recuerdan directamente al roble, luego se aprecian terrosas, algo animales, minerales y aceitosas, sin que sea un espectro de notas muy atractivo.',
       STOCK: 24,
       PRECIO: 737,
       CATEGORIA: 'Whiskys'
@@ -367,7 +368,7 @@ var datab = [
       PRODUCTOS: 'Jack Daniels 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Jack%20Daniels%20750%20ml.jpg?alt=media&token=9f0635d9-db0e-43ba-a082-0e104164f506',
       Fabricante: 'Jack Daniels',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Ningún barril es idéntico en color, aroma y sabor. Debido a una posición diferente en las plantas altas de los almacenes, el tiempo de maduración y la individualidad de la madera de roble blanco, cada barril desarrolla un carácter único. Solo después de la elección estricta de nuestro Maestro Destilador, Jeff Arnett, y su equipo de degustación, los mejores barriles serán seleccionados para ser Single Barrel.',
       STOCK: 24,
       PRECIO: 4327,
       CATEGORIA: 'Whiskys'
@@ -376,7 +377,7 @@ var datab = [
       PRODUCTOS: 'Jack Daniels Honey 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Jack%20Daniels%20Honey%20750%20ml.png?alt=media&token=81438d90-f762-4edc-b28f-2bf180263c35',
       Fabricante: 'Jack Daniels',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Entre sus principales características el Whisky Jack Daniel´s Honey destaca por su auténtico toque de miel. Además de que su maridaje te permite beberlo congelado en un shot, mezclado con agua mineral o refresco. Originario de Estados Unidos, fue la región de Tennessee la que lo vio nacer.',
       STOCK: 24,
       PRECIO: 4327,
       CATEGORIA: 'Whiskys'
@@ -385,7 +386,7 @@ var datab = [
       PRODUCTOS: 'Jameson Caskmates Ipa 750 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Jameson%20Caskmates%20Ipa%20750%20ml.jpg?alt=media&token=36315795-8d63-4472-a31e-23471eb2ab71',
       Fabricante: 'Jameson',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'OLFATO: Floral, lúpulo de hierbas y pomelo. Complementario con madera y un poco de nuez. GUSTO: Lúpulo y cítricos livianos con dulces notas hierbas y tonos ligeramente picantes. La persistencia de la fruta fresca y el lúpulo dan paso a la cebada crujiente y suave.',
       STOCK: 24,
       PRECIO: 1885,
       CATEGORIA: 'Whiskys'
@@ -394,7 +395,7 @@ var datab = [
       PRODUCTOS: 'Jameson 1000 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Jameson%201000%20ml.jpg?alt=media&token=53eb5a76-88f8-4be8-bc88-0bc259b2c776',
       Fabricante: 'Jameson',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'El Whiskey Irlandés Jameson es una mezcla de whiskies de alambique y de grano, es tan versátil como suave debido a su triple destilacion. Es un perfecto equilibrio de notas especiadas, de nuez y vainilla con toques de jerez dulce y la suavidad excepcional, no ahumado.',
       STOCK: 24,
       PRECIO: 2190,
       CATEGORIA: 'Whiskys'
@@ -403,7 +404,7 @@ var datab = [
       PRODUCTOS: 'Old Smuggler 1000 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Old%20Smuggler%201000%20ml.jpg?alt=media&token=42c8b865-3008-4404-ae22-d1cda2f648cb',
       Fabricante: 'Old Smuggler',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Old Smuggler es una reconocida marca de whisky propiedad desde el año 2006 del Gruppo Campari. Es un whisky escocés fino, cuya primer producción data del año 1835 y que hasta el día de hoy se sigue produciendo con el clásico proceso de destilación empleado en Escocia en el siglo 18.',
       STOCK: 24,
       PRECIO: 397,
       CATEGORIA: 'Whiskys'
@@ -412,7 +413,7 @@ var datab = [
       PRODUCTOS: 'Blenders Pride 1000 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Blenders%20Pride%201000%20ml.jpg?alt=media&token=ee36b498-b398-4990-8df1-e47ad816be5c',
       Fabricante: 'Blenders Pride',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Blenders Pride es un whisky elaborado a base de maltas provenientes de Escocia añejadas por un mínimo de 3 años, combinadas con whiskies de grano añejos locales. De color dorado pálido, gracias a su maduración en barricas de roble.',
       STOCK: 24,
       PRECIO: 463,
       CATEGORIA: 'Whiskys'
@@ -421,7 +422,7 @@ var datab = [
       PRODUCTOS: 'Campari 750',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/campari.jpg?alt=media&token=e738227c-e523-4e78-b230-942a23551162',
       Fabricante: 'Campari',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Fue Gaspare Campari el que inventó la bebida que lleva su nombre. En 1867 solía agasajar a sus clientes en su café de Milán con un aperitivo elaborado a base de hierbas y cortezas de naranjas amargas. Aunque se conocen los ingredientes, la fórmula exacta que empleaba Gaspar se mantiene aún hoy en secreto.',
       STOCK: 24,
       PRECIO: 750,
       CATEGORIA: 'varios'
@@ -430,7 +431,7 @@ var datab = [
       PRODUCTOS: 'Gin Beefeater 750',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/beefeater-75-cl.jpg?alt=media&token=e293ab0e-a32c-41bf-9d49-a477e6cb3c0f',
       Fabricante: 'Beefeater',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Beefeater es el gin Premium más exportado del mundo, su distinguido sabor se puede disfrutar en más de 170 países. Beefeater fue creado en 1820 por James Burrough, cuya receta secreta se sigue utilizando en nuestros días.',
       STOCK: 24,
       PRECIO: 3100,
       CATEGORIA: 'varios'
@@ -439,7 +440,7 @@ var datab = [
       PRODUCTOS: 'Gin Apostoles 750',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/apostoles.jpg?alt=media&token=b5811c8c-17d0-4f95-8821-5ad1ad997f8e',
       Fabricante: 'Apostoles',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'APÓSTOLES es el primer gin premium de latinoamérica. Sus botánicos principales son las hojas frescas de yerba mate, pieles de pomelo rosado, eucalipto y menta peperina. En el pueblo de Apóstoles en Misiones fué la primera plantación y es hoy la capital de la yerba mate en la Argentina',
       STOCK: 24,
       PRECIO: 2340,
       CATEGORIA: 'varios'
@@ -448,7 +449,7 @@ var datab = [
       PRODUCTOS: 'Gin Bombay 750ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bombay.jpeg?alt=media&token=00453cec-7c39-4dd8-8f5b-f8dd30a2626b',
       Fabricante: 'Bombay',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Ginebra Bombay Original es una ginebra de 40º de alcohol fabricada en Inglaterra. El sabor de esta ginebra es el de una ginebra clásica, ligeramente seca y con un sutil acabado a enebro. Ginebra Bombay Sapphire es una ginebra de 40º de alcohol elaborado con el exclusivo alambique de cobre Carterhead.',
       STOCK: 24,
       PRECIO: 2630,
       CATEGORIA: 'varios'
@@ -457,7 +458,7 @@ var datab = [
       PRODUCTOS: 'Vodka Absolut 750ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/absolut.jpg?alt=media&token=15f4d84c-f89f-4d95-a89e-a3bc44f9ea90',
       Fabricante: 'Absolut',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'ABSOLUT VODKA está elaborado exclusivamente con ingredientes naturales, y a diferencia de otros vodkas, no contiene azúcares añadidos. Absolut es, de hecho, tan puro como puede ser el vodka. Aún así, la pureza tiene un sabor: rico, con cuerpo y complejo, pero suave y maduro con el carácter distintivo del grano de trigo, seguido de un toque a frutas secas.',
       STOCK: 24,
       PRECIO: 2580,
       CATEGORIA: 'varios'
@@ -466,7 +467,7 @@ var datab = [
       PRODUCTOS: 'Vodka Grey Goose 700ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/grey%20goose.jpg?alt=media&token=a167d114-2f54-4795-8f71-b885002a0c7e',
       Fabricante: 'Grey Goose',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'El "maître de chai” se asegura de que cada ingrediente que interviene en la producción sea de la más alta calidad. Selecciona personalmente el 100% del mejor trigo francés, el mismo trigo utilizado en la elaboración de la deliciosa bollería francesa, y emplea un proceso de destilación en cinco fases para otorgar al licor su sabor más excepcional y refinado. Posteriormente es mezclado con agua natural totalmente pura filtrada a través de la piedra caliza de la región de Grand Champagne. Este vodka francés es exuberante, suave, meloso y redondo, dejando en el paladar un gusto duradero.',
       STOCK: 24,
       PRECIO: 4540,
       CATEGORIA: 'varios'
@@ -475,7 +476,7 @@ var datab = [
       PRODUCTOS: 'Vodka Belvedere 1L',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/belvedere.jpg?alt=media&token=609f5033-d7f7-40f9-974e-295d4b08e58c',
       Fabricante: 'Belvedere',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Belvedere Vodka es el primer vodka súper premium, creado a partir de 600 años de tradición polaca en la fabricación de vodka. Hecho a mano con centeno 100% de procedencia de Polonia y agua natural de su propio pozo, Belvedere es totalmente natural, contiene cero aditivos o azúcar, está certificado como Kosher por la Unión Ortodoxa y se produce de acuerdo con los requisitos legales del Vodka polaco. Su perfil de sabor es estructurado, elegante y equilibrado, con una dulzura sutil, una sensación en boca rica y aterciopelada y un acabado suave y limpio.',
       STOCK: 24,
       PRECIO: 6845,
       CATEGORIA: 'varios'
@@ -484,7 +485,7 @@ var datab = [
       PRODUCTOS: 'Vodka Oddka 750ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/oddka.jpg?alt=media&token=95b03f72-1ffc-43b7-bacd-6e128ea29890',
       Fabricante: 'wyborowa',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Fresco Y elegante, ODDKA Original Posee Una Textura Suave Ideal Para Coctelería. ODDKA es la nueva marca polaca de vodka de la familia Wyborowa. Es un vodka a base de maíz, que trae una propuesta de sabores diferencial y única.',
       STOCK: 24,
       PRECIO: 400,
       CATEGORIA: 'varios'
@@ -493,7 +494,7 @@ var datab = [
       PRODUCTOS: 'Fernet Branca 750ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/branca%20750.jpg?alt=media&token=4570f6d7-baec-4765-a6aa-f9c5b7bca2ee',
       Fabricante: 'Branca',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Fernet Branca se elabora a partir de la combinación de 27 plantas y especias. Se madurada en barricas de roble durante 12 meses, lo que le confiere su marcado carácter. El proceso de producción es complejo e incluye diferentes tipos de maceraciones.',
       STOCK: 24,
       PRECIO: 805,
       CATEGORIA: 'varios'
@@ -502,7 +503,7 @@ var datab = [
       PRODUCTOS: 'Fernet Branca 1L',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/branca%201L.jpg?alt=media&token=4b89b0a0-4bf2-47f9-9a6b-e7f03a091915',
       Fabricante: 'Branca',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Fernet Branca se elabora a partir de la combinación de 27 plantas y especias. Se madurada en barricas de roble durante 12 meses, lo que le confiere su marcado carácter. El proceso de producción es complejo e incluye diferentes tipos de maceraciones.',
       STOCK: 24,
       PRECIO: 1000,
       CATEGORIA: 'varios'
@@ -511,7 +512,7 @@ var datab = [
       PRODUCTOS: 'Fernet 1882 750ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/1882.jpg?alt=media&token=c70b1314-382f-4221-a1a4-3bb6f5b05635',
       Fabricante: 'Porta Hnos.',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Fernet 1882 es el primer Fernet argentino. De origen cordobés. Fue catado a ciegas por más de 20.000 fanáticos cordobeses de Fernet que antes de su lanzamiento le dieron la nota máxima en espuma y sabor, ubicándolo entre los mejores Fernet. Es conocido por su calidad y por sus kits especiales, ediciones limitadas que siempre son muy apreciadas por los seguidores de Fernet 1882.',
       STOCK: 24,
       PRECIO: 460,
       CATEGORIA: 'varios'
@@ -520,7 +521,7 @@ var datab = [
       PRODUCTOS: 'Ron Bacardi 750ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bacardi.jpeg?alt=media&token=56df9ad8-5eb6-4438-8370-456e161374d7',
       Fabricante: 'Bacardi',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Un clásico ron blanco con notas distintivas de vainilla y almendra, elaborado en barriles de roble blanco y moldeado con una mezcla secreta de carbón vegetal para lograr una suavidad inconfundible.',
       STOCK: 24,
       PRECIO: 1000,
       CATEGORIA: 'varios'
@@ -529,7 +530,7 @@ var datab = [
       PRODUCTOS: 'Ron Havana club añejo 750ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/havana.jpg?alt=media&token=b948f943-3591-4e44-ba4c-f3fa42b4ec19',
       Fabricante: 'Havana Club',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Su añejamiento natural realza las propiedades de la madera, dándole al ron un aroma más profundo y natural. Havana Club Añejo 3 años es intenso y característico, ya que se puede apreciar con facilidad el sabor de la caña de azúcar en su mejor expresión.',
       STOCK: 24,
       PRECIO: 1615,
       CATEGORIA: 'varios'
@@ -538,7 +539,7 @@ var datab = [
       PRODUCTOS: 'Ron Capitan Morgan 750ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/morgan.jpeg?alt=media&token=831c8347-7194-4edf-ba0f-264215164f39',
       Fabricante: 'Capitan Morgan',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Captain Morgan Original Spiced Gold es una mezcla secreta de rones caribeños con especias añejadas y otros sabores naturales. Este ron obtiene su distintiva riqueza y color ámbar gracias a su añejamiento en barricas de roble blanco carbonizadas',
       STOCK: 24,
       PRECIO: 830,
       CATEGORIA: 'varios'
@@ -546,8 +547,8 @@ var datab = [
     {
       PRODUCTOS: 'QUILMES CERVEZA SIN ALCOHOL LATA 473 ML',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/quilmesLata.jpeg?alt=media&token=55da38f0-e8ea-41ec-adb1-1feefc445f64',
-      Fabricante: 'quilmes',
-      Detalle: 'ACA LA INFO',
+      Fabricante: 'Quilmes',
+      Detalle: 'Es una cerveza equilibrada, de gran refrescancia y cuerpo balanceado, que marida con platos más bien grasosos o pesados.',
       STOCK: 24,
       PRECIO: 102,
       CATEGORIA: 'cervezas'
@@ -555,8 +556,8 @@ var datab = [
     {
       PRODUCTOS: 'MILLER GENUINE DRAFT CERVEZA 330 ML',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/millerBot.jpeg?alt=media&token=8809e29a-6d01-4ce4-97ec-f8e23950c2d4',
-      Fabricante: 'miller',
-      Detalle: 'ACA LA INFO',
+      Fabricante: 'Miller',
+      Detalle: 'Miller es una cerveza que se caracteriza por su color dorado, claridad increíble y sabor suave y refrescante, lo cual se consigue gracias a un proceso especial de cuádruple filtrado.',
       STOCK: 24,
       PRECIO: 110,
       CATEGORIA: 'cervezas'
@@ -564,8 +565,8 @@ var datab = [
     {
       PRODUCTOS: 'STELLA ARTOIS CERVEZA 330 ML',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/stellaArtois.jpeg?alt=media&token=5ff52514-9d75-48a9-8932-2a84074509ef',
-      Fabricante: 'stella artois',
-      Detalle: 'ACA LA INFO',
+      Fabricante: 'Stella Artois',
+      Detalle: 'Lager de color dorado pálido, muy brillante y con una espuma consistente. Una cerveza muy equilibrada donde predominan moderadas notas a frutas blancas y de cereal que resaltan levemente sobre el aroma herbal del lúpulo Saaz. En boca presenta una sensación suave, ligera de amargo y con efecto refrescante.',
       STOCK: 24,
       PRECIO: 110,
       CATEGORIA: 'cervezas'
@@ -573,8 +574,8 @@ var datab = [
     {
       PRODUCTOS: 'CORONA EXTRA CERVEZA LATA 269 ML',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coronaLata.jpeg?alt=media&token=96070486-e416-4139-b728-8ec2597f4145',
-      Fabricante: 'corona',
-      Detalle: 'ACA LA INFO',
+      Fabricante: 'Corona',
+      Detalle: 'Destacan sus ligeras notas afrutadas, resultado de la fermentación. De cuerpo medio, fresca, balanceada y muy fácil de beber. En boca es moderadamente dulce y recuerda al sabor del cereal.',
       STOCK: 24,
       PRECIO: 102,
       CATEGORIA: 'cervezas'
@@ -582,8 +583,8 @@ var datab = [
     {
       PRODUCTOS: 'HEINEKEN CERVEZA LATA 473 ML',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/heinekenLata.jpeg?alt=media&token=369a70ac-aa23-46f5-ab72-a0ca46d43387',
-      Fabricante: 'heineken',
-      Detalle: 'ACA LA INFO',
+      Fabricante: 'Heineken',
+      Detalle: ' Es una cerveza de tipo Lager y estilo Pilsen de color amarillo claro y brillante, con una espuma blanca intensa, cremosa y persistente en el vaso. Su aroma frutal a plátano, procedente de su fermentación lenta a baja temperatura, perdura el consumo final mezclándose con el ligero sabor dulce de la malta pilsen y su amargor suave. Es una cerveza seca de cuerpo ligero con buen paso de boca, que proporciona un final amargo muy fresco y nada astringente.',
       STOCK: 24,
       PRECIO: 110,
       CATEGORIA: 'cervezas'
@@ -591,7 +592,7 @@ var datab = [
     {
       PRODUCTOS: 'GROLSCH CERVEZA LATA 473 ML',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/groslch.jpeg?alt=media&token=01304999-438a-4967-bf7c-08540ea2bfd9',
-      Fabricante: 'grolsh',
+      Fabricante: 'Grolsh',
       Detalle: 'ACA LA INFO',
       STOCK: 24,
       PRECIO: 140,
@@ -600,8 +601,8 @@ var datab = [
     {
       PRODUCTOS: 'PATAGONIA KM 24.7 SESSION IPA CON SAUCO CERVEZA 710 ',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/patagonia.jpeg?alt=media&token=b57565ba-a7b4-470e-91c6-4bbdb775398e',
-      Fabricante: 'patagonia',
-      Detalle: 'ACA LA INFO',
+      Fabricante: 'Patagonia',
+      Detalle: 'Cerveza estilo Session IPA, muy tomable y refrescante, de amargor marcado otorgado por una combinación de lúpulos patagónicos. Cuenta con un intenso aroma a cítrico y frutal gracias a la de agregado de lúpulo en frío llamada Dry Hopping. El agregado de sauco y miel en frio balancean el amargor del lúpulo, aportando cierta acidez y final seco.',
       STOCK: 24,
       PRECIO: 140,
       CATEGORIA: 'cervezas'
@@ -609,8 +610,8 @@ var datab = [
     {
       PRODUCTOS: 'ANDES ORIGEN ROJA CERVEZA LATA LATA 473 ML',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/andesLata.jpeg?alt=media&token=30004f97-9dd9-4be5-8065-092a1cb12a2e',
-      Fabricante: 'andes',
-      Detalle: 'ACA LA INFO',
+      Fabricante: 'Andes',
+      Detalle: 'Es una cerveza estilo Vienna Lager, su aroma a suave caramelo y leve lúpulo logran un balance perfecto. La Andes origen Roja, color ámbar cobrizo, es una cerveza de deleite. Ideal para acompañar pescados o carnes rojas, elaborados con verduras frescas o grilladas.',
       STOCK: 24,
       PRECIO: 170,
       CATEGORIA: 'cervezas'
