@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import './Pages.css';
+import './Pages.css';
 
 export default function Pages({ allProducts, page }) {
   const totalPages = Math.ceil(allProducts.length / 9)
