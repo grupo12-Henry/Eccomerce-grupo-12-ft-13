@@ -58,11 +58,11 @@ Category.belongsToMany(Product, { through: 'product_category',timestamps: false 
 const order_detail = sequelize.define('order_detail', {
   cantidad: {
     type: DataTypes.INTEGER,
-    //allowNull: false
+    allowNull: false
   },
   subTotal:{
     type: DataTypes.INTEGER,
-    //allowNull: false,
+    allowNull: false,
   }
 });
 

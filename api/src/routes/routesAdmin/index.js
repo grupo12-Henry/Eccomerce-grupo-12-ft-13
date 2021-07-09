@@ -1,6 +1,10 @@
 const { Router } = require('express');
 const { routes } = require('../../../../../PI\'S/PI-Countries-FT12/api/src/app');
 const { Product, Client , Order, Shipping, Invoice} = require('../../db');
+const Sequelize = require('sequelize');
+
+const Op = Sequelize.Op;
+
 //modelos acá:
 const router = Router();
 router.get('/productos/all', async (req, res) => {
@@ -19,14 +23,18 @@ router.get('/productos/all', async (req, res) => {
 router.get('/productos/order', async (req, res) => {
     const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0
     const order = req.query.order ? req.query.order.toUpperCase() : 'ASC'
-    const tipo = req.query.type
+    const tipo = req.query.type ?req.query.type:'name'
+    const type=req.query.name?req.query.name:'Vinos'
 
     try {
         const productos = await Product.findAndCountAll({
-            offset: offset,
+           where: {type:type}, 
+           offset: offset,
             order: [[tipo, order]],
-            limit: 8
+            limit: 10,
+            
         })
+        
         res.send(productos).status(200)
     } catch (error) {
         res.send(error).status(404)
@@ -101,7 +109,7 @@ router.post('/productos', async (req, res) => {
     }
 
 })
-routes.get('/users/all', async (req,res)=>{//cambiar los nombres de las llamadas
+router.get('/users/all', async (req,res)=>{//cambiar los nombres de las llamadas
 try {
     const users= await Client.findAll()
     res.send(users)
@@ -109,7 +117,7 @@ try {
     res.send(error).status(404)
 }
 })
-routes.get('/users/id/:id', async (req,res)=>{//cambiar los nombres de las llamadas
+router.get('/users/id/:id', async (req,res)=>{//cambiar los nombres de las llamadas
     const id = req.params.id
     try {
         const user = await Client.findByPk(id,{
@@ -125,15 +133,15 @@ routes.get('/users/id/:id', async (req,res)=>{//cambiar los nombres de las llama
         res.send(error).status(404)
     }
 })
-/* routes.get('/pedidos/all',(req,res)=>{//cambiar los nombres de las llamadas
-try {
-    const pedidos = await Order.findAll()
-    res.send(pedidos)
-}catch(error){
-    res.send(error).status(404)  
-}
-}) */
-routes.get('pedidos/filter',(req,res)=>{//cambiar los nombres de las llamadas
+router.get('/pedidos/all',async (req,res)=>{//cambiar los nombres de las llamadas
+    try {
+        const pedidos = await Order.findAll()
+        res.send(pedidos)
+    }catch(error){
+        res.send(error).status(404)  
+    }
+})
+router.get('pedidos/filter',async(req,res)=>{//cambiar los nombres de las llamadas
 const valor=req.query.valor;
 
     try {
@@ -163,16 +171,18 @@ const {fecha, pago, id_Cliente}=req.body
 
     try {
             
-        const array_ModelosProductos= req.body.productos.map(producto=>{
-            return Product.findOne({where:{name:producto}}) 
+        const array_ModelosProductos=  req.body.productos.map(async(producto)=>{
+            return await Product.findOne({where:{name:producto}}) 
         })
-        const order = await Order.Create({
+        //console.log( await Promise.all(array_ModelosProductos))
+        
+         const order = await Order.Create({
             date:fecha,
             paymentMethod:pago,
         }) 
         order.addProducts(array_ModelosProductos)
         Client.findByPk(id_Cliente).addOrder(order)
-
+        res.send(await order)
     } catch (error) {
         res.send(error).status(404)  
     }
