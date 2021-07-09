@@ -23,6 +23,10 @@ display: flex;
     box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
 
 }
+#order{
+    position:absolut;
+    margin-top: 2rem;
+}
 
 .div_cards{
     position: relative;

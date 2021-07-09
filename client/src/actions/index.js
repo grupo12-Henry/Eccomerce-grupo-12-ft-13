@@ -2,6 +2,8 @@ import axios from 'axios';
 export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS'
 export const GETNAMES = 'GETNAMES'
+export const ORDERPRODUCT = 'ORDERPRODUCT'
+
 // export const GETNAMESQ = 'GETNAMESQ'
 
 
@@ -23,7 +25,18 @@ export function getDetail (id) {
         axios.get('http://localhost:3001/admin/productos/id/' + id)
         .then(response => {
             dispatch({ type: GETDETAILS, payload: response.data})
-            console.log('DATA',response.data)
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+    }
+};
+export function orderProduct ({offset, type, order, name}) {
+    return (dispatch) => {
+        const datos = `offset=${offset}&${type}=type&${order}=order&${name}=name`
+        axios.get('http://localhost:3001/admin/productos/order?' + datos )
+        .then(response => {
+            dispatch({ type: ORDERPRODUCT, payload: response.data})
         })
         .catch((err) =>{
             console.log(err)
