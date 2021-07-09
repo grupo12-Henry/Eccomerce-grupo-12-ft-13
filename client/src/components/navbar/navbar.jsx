@@ -12,14 +12,12 @@ import Auto from "../searchbar/searchbar";
 
 const Nav = () => {
     const style = {
-        marginTop: "60px"
+        marginTop: "1%"
     }
 return (
     <StyledDiv>
         <div className='header-container'>
-            <div className='container'>
-                <div className='row'>
-                    <div className='help-menu col-sm-4 col-md-4 col-lg-4' style={style}>
+                    <div className='help-menu-izq col-sm-4 col-md-4 col-lg-4' style={style}>
                         <img className='delivery' src={delivery} alt='delivery img' width='22px'></img>
                         <i className="text-envio">Envíos sin cargo a CABA y GBA</i>
                         <ul className="row">
@@ -33,18 +31,14 @@ return (
                             <a className="link-logo" href='/'><img className='img-responsive' src={logo} alt='logo img' width='360px'></img>
                             </a>
                         </div>
-                        <div className='help-menu col-sm-4 col-md-4 col-lg-4'>
-                        
-                        <ul className="d-flex justify-content-center" style={style}>
-                            <li className="col-3"><img className='cart' alt='cart img' src={cart} width='20px' /></li>
-                            <li className="col-3"><img alt='user img' src={user} width='20px'/></li>
+                        <div className='help-menu'>
+                            <div clasname='Auto'><Auto/></div>
+                        <ul className="d-flex" >
+                            <a href='compras' className='carrito'><img className='cart' alt='cart img' src={cart} width='20px' /></a>
+                           
+                            <a href='/user' ><img alt='user img' src={user} width='20px'/></a>
                         </ul>
-                            <Auto/>
-                        
                     </div>
-                        
-                </div>
-            </div>
         </div>
     </StyledDiv>
 );

@@ -5,19 +5,17 @@ export default function HomeProductsCards({ name, price, image, id }) {
   return (
     <div className="cardContainer">
       <div className="" key={id}>
-        <h2 className="">{name}</h2>
-        <p className="">{price}</p>
+        <h4 className="">{name}</h4>
+        <p className="">${price}</p>
         <Link to={`/detail/${id}`}>
           <img
             src={image}
             width="100px"
             className=""
-            alt="No cargo, al horno papurri"
+            alt="image product"
           />
-        </Link>
-        <Link to={`/detail/${id}`}>
-          <p className="">Learn more...</p>
-        </Link>
+        </Link><br></br>
+        <button type="button" class="btn btn-dark">Agregar</button>
       </div>
     </div>
   );
