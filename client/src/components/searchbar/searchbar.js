@@ -11,7 +11,7 @@ const Auto = () => {
 //   function SearchBar({ placeholder}) {
     const [filteredData, setFilteredData] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
-  
+
     const handleFilter = (event) => {
       const searchWord = event.target.value;
       setWordEntered(searchWord);
@@ -19,7 +19,7 @@ const Auto = () => {
       const newFilter = product.filter((value) => {
         return value.name.toLowerCase().includes(searchWord.toLowerCase());
       });
-  
+
       if (searchWord === "") {
         setFilteredData([]);
       } else {
@@ -27,12 +27,11 @@ const Auto = () => {
         console.log(newFilter)
       }
     };
-  
+
     const clearInput = () => {
       setFilteredData([]);
       setWordEntered("");
     };
-  
 
   const dispatch = useDispatch();
   const product = useSelector((state) => state.names)
