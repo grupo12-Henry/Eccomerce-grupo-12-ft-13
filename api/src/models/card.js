@@ -4,25 +4,25 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('card', {
         id: {
-            type: DataTypes.UUID,
-            allowNull: false,
+            type: DataTypes.INTEGER,
+            // allowNull: false,
             primaryKey: true,
         },
         number: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            // allowNull: false,
         },
         expirationDate: {
             type: DataTypes.STRING,
-            allowNull: true,
+            // allowNull: true,
         },
         type: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: true,
+            // allowNull: true,
         },
 
     },{timestamps: false,})

@@ -20,7 +20,7 @@ export default function Home() {
     const showProducts = allProducts.slice(conteoInicial, conteoFinal)
 
 
-    console.log(product);
+    //console.log(product);
 
 
     useEffect(() => {
@@ -47,7 +47,7 @@ export default function Home() {
                 <Nav />
                 <div className="div_container">
                     <div className=''>
-                        <button onClick={() => setnumberPage(numberPage - 1)}> 👈🏼 </button>
+                        <button onClick={() => setnumberPage(numberPage - 1)}> - </button>
                     </div>
                     {showProducts && showProducts.map(el => (
                         <HomeProductsCards
@@ -60,7 +60,7 @@ export default function Home() {
                     ))}
                     <div className=''>
                     <div className=''>
-                        <button onClick={() => setnumberPage(numberPage + 1)}> 👉🏼 </button>
+                        <button onClick={() => setnumberPage(numberPage + 1)}> + </button>
                     </div>
                 </div>
                 </div>
