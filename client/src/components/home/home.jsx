@@ -5,7 +5,6 @@ import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
 import HomeProductsCards from '../homeProductsCards/homeProducts';
-// import SignUp from '../signUp/SignUp';
 import Pages from "./paginado";
 
 export default function Home({location}) {
@@ -66,10 +65,11 @@ export default function Home({location}) {
 
     return (
         <StyledDiv>
-            <div>
+            <div>        
                     {allProducts.length > 0 ? allProducts.slice((page - 1) * 9, page * 9).map(el => <div key={el.id}>
                 <Nav />
                 <div className="div_container">
+                   
                         <HomeProductsCards
                         key={el.id}
                         id={el.id}
