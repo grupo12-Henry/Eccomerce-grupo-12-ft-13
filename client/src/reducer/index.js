@@ -4,7 +4,8 @@ import { GETCARDS, GETDETAILS, GETNAMES } from '../actions'
 const initialState = {
     products: [],
     productDetail: {},
-    names: []
+    names: [],
+    // namesq: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 names: action.payload
             };
+        // case GETNAMESQ:
+        //     return {
+        //         ...state,
+        //         namesq: action.payload
+        //     };
             
         case GETDETAILS:
             return {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function HomeProductsCards({ name, price, image, id }) {
+export default function HomeCards({ name, price, image, id }) {
   return (
     <div className="cardContainer">
       <div className="" key={id}>

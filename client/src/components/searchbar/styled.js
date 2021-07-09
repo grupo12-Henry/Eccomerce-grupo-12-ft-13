@@ -1,3 +1,6 @@
+import styled from 'styled-components';
+
+const Styled = styled.div`
 
 .search{
   align-items: center;
@@ -20,10 +23,12 @@
   }
   
   .searchIcon {
-    height: 40px;
-    width: 30px;
-    background-color: white;
     place-items: center;
+    position: absolute;
+    margin-top: -29px;
+    height: 40px;
+    width:40px;
+    margin-left: 14%
   }
   
   input:focus {
@@ -71,3 +76,6 @@
   #clearBtn {
     cursor: pointer;
   }
+
+`
+export default Styled

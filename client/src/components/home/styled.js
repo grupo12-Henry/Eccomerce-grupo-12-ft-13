@@ -18,13 +18,13 @@ display: flex;
     margin-top: 150px;
     height: 100%;
     width: 100%;
-    border: solid 3px;
     align-items: center;
-    border: solid 4px;
+    margin-left: 25%;
+    box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
+
 }
 
 .div_cards{
-    border: solid blue 7px;
     position: relative;
     display: block;
     width: 20%;

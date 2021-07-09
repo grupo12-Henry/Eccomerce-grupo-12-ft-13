@@ -8,7 +8,7 @@ import pagos from '../../assets/images/pagos.png'
 const Footer = () => {
     return (
         <StyledDiv>
-            <div className='div_container'>
+            <div className='div_conteiner'>
                 <div className='div_pagos'>
                     <i>MEDIOS DE PAGO</i>
                     <hr/>
