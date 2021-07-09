@@ -1,11 +1,10 @@
-import {Link} from 'react-router-dom'
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getNames } from "../../actions";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 
-// import "./search.css";
+import "./search.css";
 
 const Auto = () => {
 //   function SearchBar({ placeholder}) {
@@ -51,7 +50,7 @@ const Auto = () => {
             <div className="searchInputs">
               <input
                 type="text"
-                placeholder='busca un producto'
+                placeholder='Buscar un producto...'
                 value={wordEntered}
                 onChange={handleFilter}
               />
