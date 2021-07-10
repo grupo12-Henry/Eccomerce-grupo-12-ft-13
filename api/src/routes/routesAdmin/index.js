@@ -1,12 +1,13 @@
 const { Router } = require('express');
 const { routes } = require('../../../../../PI\'S/PI-Countries-FT12/api/src/app');
 const { Product, Client , Order, Shipping, Invoice} = require('../../db');
-const Sequelize = require('sequelize');
 
-const Op = Sequelize.Op;
 
 //modelos acá:
 const router = Router();
+
+
+
 router.get('/productos/all', async (req, res) => {
     const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0
 
@@ -123,13 +124,14 @@ router.get('/users/id/:id', async (req,res)=>{//cambiar los nombres de las llama
     try {
         const user = await Client.findByPk(id,{
             include:{
-                model:TouristActivity,
+                model:Order,
                 attributes:{
                     exclude:['createdAt','updatedAt']
                 }
             }
         })
-        res.send(user)
+
+       user? res.send(user):res.sendStatus(400)
     } catch (error) {
         res.send(error).status(404)
     }
@@ -137,6 +139,8 @@ router.get('/users/id/:id', async (req,res)=>{//cambiar los nombres de las llama
 router.get('/pedidos/all',async (req,res)=>{//cambiar los nombres de las llamadas
     try {
         const pedidos = await Order.findAll()
+        
+
         res.send(pedidos)
     }catch(error){
         res.send(error).status(404)  
@@ -158,6 +162,7 @@ const valor=req.query.valor;
                     }
                 }
             })
+            console.log(product)
             res.send(product).status(200)
         }else{
             res.send('ingresar clave-valor').status(400)
@@ -167,30 +172,82 @@ const valor=req.query.valor;
     }
 
 })
-router.post('/pedidos', async (req, res) => {
-const {fecha, pago, id_Cliente}=req.body
 
+
+router.put('/pedidos/id/:id',async(req, res)=>{//modificar nombre de rutas
+    const id = req.params.id
+    const { bill, date, paymentMethod, adress, ticket, mail} = req.body
     try {
-            
-        const array_ModelosProductos=  req.body.productos.map(async(producto)=>{
-            return await Product.findOne({where:{name:producto}}) 
-        })
-        //console.log( await Promise.all(array_ModelosProductos))
-        
-         const order = await Order.Create({
-            date:fecha,
-            paymentMethod:pago,
-        }) 
-        order.addProducts(array_ModelosProductos)
-        Client.findByPk(id_Cliente).addOrder(order)
-        res.send(await order)
+        const order = await Order.findByPk(id)
+         if (order) {
+
+            await order.update({
+                bill: bill || order.dataValues.bill,
+                date: date || order.dataValues.date,
+                paymentMethod: paymentMethod || order.dataValues.paymentMethod,
+                adress: adress || order.dataValues.adress,
+                ticket: ticket || order.dataValues.ticket,
+                mail: mail || order.dataValues.mail,
+            });
+            res.send(order).status(200)
+        }
+        else {
+             res.sendStatus(400) }
     } catch (error) {
-        res.send(error).status(404)  
+        res.send(error).status(404)
     }
 
+})
+router.put('/envio/id/:id', async  (req, res)=> {
 
+    const id = req.params.id
+    const { shippingDate, state, freight, guideNumber, cost} = req.body
+    try {
+        const envio = await Shipping.findByPk(id)
+         if (envio) {
+
+            await envio.update({
+                shippingDate: shippingDate || envio.dataValues.shippingDate,
+                state: state || envio.dataValues.state,
+                freight: freight || envio.dataValues.freight,
+                guideNumber: guideNumber || envio.dataValues.guideNumber,
+                cost: cost || envio.dataValues.cost
+               
+            });
+            res.send(envio).status(200)
+        }
+        else {
+             res.sendStatus(400) }
+    } catch (error) {
+        res.send(error).status(404)
+    }
 
 })
+
+
+router.put('/factura/id/:id', async  (req, res)=> {
+
+    const id = req.params.id
+    const { ivaCondition, ivaCost} = req.body
+    try {
+        const factura = await Invoice.findByPk(id)
+         if (factura) {
+
+            await factura.update({
+                ivaCondition: ivaCondition || factura.dataValues.ivaCondition,
+                ivaCost: ivaCost || factura.dataValues.ivaCost
+            });
+            res.send(factura).status(200)
+        }
+        else {
+             res.sendStatus(400) }
+    } catch (error) {
+        res.send(error).status(404)
+    }
+
+})
+
+
 
 
 
