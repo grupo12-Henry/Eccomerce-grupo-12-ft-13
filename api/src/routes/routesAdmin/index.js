@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const { Product, Client , Order, Shipping, Invoice} = require('../../db');
 const Sequelize = require('sequelize');
 
 const Op = Sequelize.Op;
