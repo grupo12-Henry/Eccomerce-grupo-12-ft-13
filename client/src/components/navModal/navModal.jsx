@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import SignUp from '../register/userRegister/signUp/SignUp';
 import Login from '../register/userRegister/login/login';
+import { useAuth } from '../../contexts/AuthContext';
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -26,6 +27,7 @@ const OVERLAY_STYLES = {
 export default function NavModal({open,children,onClose}) {
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
+  const { googleLogin } = useAuth()
 
   if (!open) return null;
 
@@ -45,6 +47,16 @@ export default function NavModal({open,children,onClose}) {
     setSignup(false);
     onClose();
   }
+  const handleBackClose = (e) =>{
+    e.preventDefault();
+    setLogin(false);
+    setSignup(false);
+
+  }
+  const handleGoogle = (e) =>{
+    e.preventDefault();
+    googleLogin()
+  }
 
   return ReactDom.createPortal(
     <>
@@ -56,7 +68,7 @@ export default function NavModal({open,children,onClose}) {
         {login === true ? (<Login />) : null}
       </div>
           <button onClick={handleClose}>X</button>
-        { signup === true || login === true ? (<button onClick={handleClose}>Back</button>) :
+        { signup === true || login === true ? (<button onClick={handleBackClose}>Back</button>) :
           (
             <div>
               <button onClick={handleSignup}>
@@ -64,6 +76,9 @@ export default function NavModal({open,children,onClose}) {
               </button>
               <button onClick={handleLogin1}>
                 Login
+              </button>
+              <button onClick={handleGoogle}>
+                Login with Google
               </button>
             </div>
           )
