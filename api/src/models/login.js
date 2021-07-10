@@ -5,21 +5,20 @@ module.exports = (sequelize) => {
   sequelize.define('login', {
     id: {
       type: DataTypes.INTEGER,
-      // allowNull: false,
+      autoIncrement:true,
       primaryKey: true,
+      allowNull: false,
     },
     initialDate: {
-      type: DataTypes.STRING,
-      // allowNull: false,
-      unique: true,
+      type: DataTypes.STRING,    
     },
     expirationDate: {
       type: DataTypes.STRING,
-      // allowNull: true,
+      
     },
     lastLogin: {
       type: DataTypes.STRING,
     },
-  });
+  },{timestamps: false,});
 };
 

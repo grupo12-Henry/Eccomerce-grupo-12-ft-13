@@ -1,11 +1,21 @@
 const { Router } = require('express');
-const { Product, Client , Order, Shipping, Invoice} = require('../../db');
+const { Product, Client, Order, Shipping, Invoice } = require('../../db');
 
 
 //modelos acá:
 const router = Router();
 
-
+router.post('/clientesPost', async (req, res) => {
+    const { id, name,lastname, phone , state, adress, mail, identityCard  } = req.body;
+  try {
+    const newClient = await Client.create({
+      name, lastname, phone, state, adress, mail, identityCard
+    })
+    return res.send(newClient)
+    } catch(error){
+     res.send(error).status(404);
+  }
+  })
 
 router.get('/productos/all', async (req, res) => {
     const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0
@@ -23,18 +33,18 @@ router.get('/productos/all', async (req, res) => {
 router.get('/productos/order', async (req, res) => {
     const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0
     const order = req.query.order ? req.query.order.toUpperCase() : 'ASC'
-    const tipo = req.query.type ?req.query.type:'name'
-    const type=req.query.name?req.query.name:'Vinos'
+    const tipo = req.query.type ? req.query.type : 'name'
+    const type = req.query.name ? req.query.name : 'Vinos'
 
     try {
         const productos = await Product.findAndCountAll({
-           where: {type:type}, 
-           offset: offset,
+            where: { type: type },
+            offset: offset,
             order: [[tipo, order]],
             limit: 10,
-            
+
         })
-        
+
         res.send(productos).status(200)
     } catch (error) {
         res.send(error).status(404)
@@ -110,60 +120,58 @@ router.post('/productos', async (req, res) => {
     }
 
 })
-router.get('/users/all', async (req,res)=>{//cambiar los nombres de las llamadas
-try {
-    const users= await Client.findAll()
-    res.send(users)
-} catch (error) {
-    res.send(error).status(404)
-}
-})
-router.get('/users/id/:id', async (req,res)=>{//cambiar los nombres de las llamadas
-    const id = req.params.id
+router.get('/users/all', async (req, res) => {//cambiar los nombres de las llamadas
     try {
-        const user = await Client.findByPk(id,{
-            include:{
-                model:Order,
-                attributes:{
-                    exclude:['createdAt','updatedAt']
-                }
-            }
-        })
-
-       user? res.send(user):res.sendStatus(400)
+        const users = await Client.findAll()
+        res.send(users)
     } catch (error) {
         res.send(error).status(404)
     }
 })
-router.get('/pedidos/all',async (req,res)=>{//cambiar los nombres de las llamadas
+router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las llamadas
+    const id = req.params.id
     try {
-        const pedidos = await Order.findAll()
-        
+        const user = await Client.findByPk(id, {
+            include: {
+                model: Order,
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt']
+                }
+            }
+        })
 
-        res.send(pedidos)
-    }catch(error){
-        res.send(error).status(404)  
+        user ? res.send(user) : res.sendStatus(400)
+    } catch (error) {
+        res.send(error).status(404)
     }
 })
-router.get('pedidos/filter',async(req,res)=>{//cambiar los nombres de las llamadas
-const valor=req.query.valor;
+router.get('/pedidos/all', async (req, res) => {//cambiar los nombres de las llamadas
+    try {
+        const pedidos = await Order.findAll()
+        res.send(pedidos)
+    } catch (error) {
+        res.send(error).status(404)
+    }
+})
+router.get('pedidos/filter', async (req, res) => {//cambiar los nombres de las llamadas
+    const valor = req.query.valor;
 
     try {
-        if(parametro && valor){
+        if (parametro && valor) {
             const product = await Order.findAll({
-                include:{
-                    model:Shipping,
+                include: {
+                    model: Shipping,
                     attributes:{
-                        exclude:['createdAt','updatedAt']
+                        exclude: ['createdAt', 'updatedAt']
                     },
-                    where:{
-                        state:valor
+                    where: {
+                        state: valor
                     }
                 }
             })
             console.log(product)
             res.send(product).status(200)
-        }else{
+        } else {
             res.send('ingresar clave-valor').status(400)
         }
     } catch (error) {
@@ -173,12 +181,12 @@ const valor=req.query.valor;
 })
 
 
-router.put('/pedidos/id/:id',async(req, res)=>{//modificar nombre de rutas
+router.put('/pedidos/id/:id', async (req, res) => {//modificar nombre de rutas
     const id = req.params.id
-    const { bill, date, paymentMethod, adress, ticket, mail} = req.body
+    const { bill, date, paymentMethod, adress, ticket, mail } = req.body
     try {
         const order = await Order.findByPk(id)
-         if (order) {
+        if (order) {
 
             await order.update({
                 bill: bill || order.dataValues.bill,
@@ -191,19 +199,20 @@ router.put('/pedidos/id/:id',async(req, res)=>{//modificar nombre de rutas
             res.send(order).status(200)
         }
         else {
-             res.sendStatus(400) }
+            res.sendStatus(400)
+        }
     } catch (error) {
         res.send(error).status(404)
     }
 
 })
-router.put('/envio/id/:id', async  (req, res)=> {
+router.put('/envio/id/:id', async (req, res) => {
 
     const id = req.params.id
-    const { shippingDate, state, freight, guideNumber, cost} = req.body
+    const { shippingDate, state, freight, guideNumber, cost } = req.body
     try {
         const envio = await Shipping.findByPk(id)
-         if (envio) {
+        if (envio) {
 
             await envio.update({
                 shippingDate: shippingDate || envio.dataValues.shippingDate,
@@ -211,12 +220,12 @@ router.put('/envio/id/:id', async  (req, res)=> {
                 freight: freight || envio.dataValues.freight,
                 guideNumber: guideNumber || envio.dataValues.guideNumber,
                 cost: cost || envio.dataValues.cost
-               
             });
             res.send(envio).status(200)
         }
         else {
-             res.sendStatus(400) }
+            res.sendStatus(400)
+        }
     } catch (error) {
         res.send(error).status(404)
     }
@@ -224,14 +233,14 @@ router.put('/envio/id/:id', async  (req, res)=> {
 })
 
 
-router.put('/factura/id/:id', async  (req, res)=> {
+router.put('/factura/id/:id', async (req, res) => {
 
     const id = req.params.id
-    const { ivaCondition, ivaCost} = req.body
+    const { ivaCondition, ivaCost } = req.body
     try {
         const factura = await Invoice.findByPk(id)
-         if (factura) {
-//prueba
+        if (factura) {
+          
             await factura.update({
                 ivaCondition: ivaCondition || factura.dataValues.ivaCondition,
                 ivaCost: ivaCost || factura.dataValues.ivaCost
@@ -239,7 +248,8 @@ router.put('/factura/id/:id', async  (req, res)=> {
             res.send(factura).status(200)
         }
         else {
-             res.sendStatus(400) }
+            res.sendStatus(400)
+        }
     } catch (error) {
         res.send(error).status(404)
     }
@@ -247,6 +257,77 @@ router.put('/factura/id/:id', async  (req, res)=> {
 })
 
 
+router.put('/users/:id', async (req, res)=>{
+    const id = req.params.id
+    let phone = parseInt(req.body.phone,10)
+    const {name, lastName, state, adress, mail, identityCard }=req.body
+    try {
+        const user = await Client.findByPk(id)
+        
+        await user.update({
+            name: name||user.dataValues.name, 
+            lastName: lastName||user.dataValues.lastName,
+            phone: phone|| user.dataValues.phone, 
+            state: state||user.dataValues.state,
+            adress: adress||user.dataValues.adress,
+            mail: mail||user.dataValues.mail,
+            identityCard: identityCard||user.dataValues.identityCard
+       })
+          if(user){        
+              res.send(user).status(200)
+          }else{ res.sendStatus(400)}
+    }catch (error) {
+        res.send(error).status(404)
+    }  
+}) 
+router.post('/pedidos', async (req, res) => {
+    const {date, paymentMethod, ticket, clientId}=req.body
+    const order1 = await Order.create({ //crea el pedido (la compra)
+      date, 
+      paymentMethod,
+      ticket,
+      shipping: {
+        shippingDate:'12-07-2021',
+        state:'pending',
+        cost:1,
+      },
+      invoice: {
+        ivaCondition:'exento',
+        ivaCost: 21
+      }
+    }, {
+      include: ["shipping", "invoice"]
+    }) .then (async order => {
+      let clienteEnCuestion = await Client.findByPk(clientId); //busca al cliente con ese Id
+      clienteEnCuestion.addOrders(order); //addOrder le agrega el Id del cliente a la tabla Orders
+    }) 
+    
+    .then(response => {
+      res.json('El pedido se creo correctamente')
+    }) .catch (err => {
+      res.json(err)
+    })
+  })
+
+  router.get('/pedidos/:id',async (req, res)=>{
+    const {id} = req.params;
+    try {
+      console.log('entro al try')
+     const clientPedidos = await Client.findAll({
+      include:[{
+       model: Order,
+       attributes:['date','ticket'],
+       include:{model: Shipping,attributes:['state']}
+      }],
+     attributes: ['name', 'lastName'],
+     where:{ id: id }
+    })
+    console.log(clientPedidos)
+    clientPedidos?res.send(clientPedidos):res.sendStatus(400);
+    } catch (error) {
+      res.send(error).status(404);
+    }
+  })
 
 
 
