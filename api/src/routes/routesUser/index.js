@@ -28,7 +28,7 @@ const Op = Sequelize.Op;
 //      res.send(error).status(404);
 //   }
 // })
-
+//prueba
 // router.post('/clientesPost', async (req, res) => {
 //   try {
 //     console.log(req.body,'reqbody')

@@ -51,7 +51,7 @@ Shipping.belongsTo(Order);
 
 Invoice.belongsTo(Order);
 Order.hasOne(Invoice);
-
+//prueba
 Product.belongsToMany(Category, { through: 'product_category',timestamps: false });
 Category.belongsToMany(Product, { through: 'product_category',timestamps: false });
 
