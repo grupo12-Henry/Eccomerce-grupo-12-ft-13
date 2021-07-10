@@ -230,8 +230,8 @@ router.put('/factura/id/:id', async  (req, res)=> {
     const { ivaCondition, ivaCost} = req.body
     try {
         const factura = await Invoice.findByPk(id)
-         if (factura) {
-
+         if (factura) {}
+//prueba
             await factura.update({
                 ivaCondition: ivaCondition || factura.dataValues.ivaCondition,
                 ivaCost: ivaCost || factura.dataValues.ivaCost
