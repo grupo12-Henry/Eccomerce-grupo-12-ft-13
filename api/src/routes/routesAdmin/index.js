@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const { routes } = require('../../../../../PI\'S/PI-Countries-FT12/api/src/app');
 const { Product, Client , Order, Shipping, Invoice} = require('../../db');
 const Sequelize = require('sequelize');
 
@@ -43,7 +42,7 @@ router.get('/productos/order', async (req, res) => {
 })
 router.get('/productos/names', async (req, res) => {
     try {
-        const productos = await Product.findAll({ attributes: { exclude: ['id', 'createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
+        const productos = await Product.findAll({ attributes: { exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
 
         res.send(productos)
     } catch (error) {
