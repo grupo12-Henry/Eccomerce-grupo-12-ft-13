@@ -19,7 +19,8 @@ export function AuthProvider({ children }) {
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password)
   }
-  function loginGoogle() {
+
+  function googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider()
     auth.signInWithPopup(provider)
   }
@@ -54,7 +55,7 @@ export function AuthProvider({ children }) {
   const value = {
     currentUser,
     login,
-    loginGoogle,
+    googleLogin,
     signup,
     logout,
     resetPassword,

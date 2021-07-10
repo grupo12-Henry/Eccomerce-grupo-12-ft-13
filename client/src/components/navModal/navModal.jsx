@@ -5,6 +5,7 @@ import Login from '../register/userRegister/login/login';
 import { useAuth } from '../../contexts/AuthContext';
 import '../navModal/navModal';
 
+
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
@@ -27,14 +28,16 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 }
 
-export default function NavModal({open,children,onClose}) {
+export default function NavModal({ open, children, onClose }) {
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
+
   const { loginGoogle } = useAuth()
+
 
   if (!open) return null;
 
-  const handleSignup= (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
     setSignup(true);
   };
@@ -44,51 +47,53 @@ export default function NavModal({open,children,onClose}) {
     setLogin(true);
   };
 
-  const handleClose = (e) =>{
+  const handleClose = (e) => {
     e.preventDefault();
     setLogin(false);
     setSignup(false);
     onClose();
   }
-
-  const handbleBack = (e) =>{
+  const handleBackClose = (e) => {
+    e.preventDefault();
     setLogin(false);
     setSignup(false);
   }
-
-  const handleGoogleLogin = (e) =>{
+  
+  const handleGoogleLogin = (e) => {
     e.preventDefault()
-     loginGoogle()
+    loginGoogle()
   }
 
   return ReactDom.createPortal(
     <>
       <div style={OVERLAY_STYLES}>
         <div style={MODAL_STYLES}>
-      <div>
-        {children}
-        {signup === true ? ( <SignUp />) : null}
-        {login === true ? (<Login />) : null}
-      </div>
-          <button className='closeXbutton' onClick={handleClose}>X</button>
-        { signup === true || login === true ? (<button onClick={handbleBack}>Back</button>) :
-          (
-            <div>
-              <button onClick={handleSignup}>
-                SignUp
-              </button>
-              <button onClick={handleLogin1}>
-                Login
-              </button>
-              <button  onClick={handleGoogleLogin}>
-                Login with google
-              </button>
-            </div>
-          )
-        }
+          <div>
+            {children}
+            {signup === true ? (<SignUp />) : null}
+            {login === true ? (<Login />) : null}
+          </div>
+
+          <button onClick={handleClose}>X</button>
+          {signup === true || login === true ? (<button onClick={handleBackClose}>Back</button>) :
+
+            (
+              <div>
+                <button onClick={handleSignup}>
+                  SignUp
+                </button>
+                <button onClick={handleLogin1}>
+                  Login
+                </button>
+                <button onClick={handleGoogleLogin}>
+                  Login with Google
+                </button>
+              </div>
+            )
+          }
         </div>
       </div>
     </>,
     document.getElementById('portal')
-)
+  )
 }

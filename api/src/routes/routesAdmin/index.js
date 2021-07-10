@@ -1,8 +1,6 @@
 const { Router } = require('express');
-<<<<<<< HEAD
 const { Product, Client , Order, Shipping, Invoice} = require('../../db');
-=======
->>>>>>> 1078ca06157d224e3d80b44d028aab96c2ab5fff
+
 const Sequelize = require('sequelize');
 
 const Op = Sequelize.Op;
@@ -42,11 +40,6 @@ router.get('/productos/order', async(req,res)=>{
 router.get('/productos/names', async(req, res)=>{
     try {
         const productos = await Product.findAll({ attributes: { exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
-<<<<<<< HEAD
-=======
-
->>>>>>> 1078ca06157d224e3d80b44d028aab96c2ab5fff
-
         res.send(productos)
     } catch (error) {
         res.send(error).status(404)  

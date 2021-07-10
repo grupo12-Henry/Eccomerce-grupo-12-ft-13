@@ -11,11 +11,8 @@ export default function Home() {
     const product = useSelector((state) => state.products);
 
     const [allProducts, setAllProducts] = useState([]);
-<<<<<<< HEAD
     const showProducts = allProducts
-    const [page, setPage] = useState(1);
-=======
->>>>>>> 73f56f07ee18b13f449c016513a0ad18436e6413
+
 
     const [numberPage, setnumberPage] = useState(1);
     const initialProducts = 4;
