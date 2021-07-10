@@ -12,7 +12,7 @@ export default function HomeProductsCards({ name, price, image, id }) {
             src={image}
             width="100px"
             className=""
-            alt="image product"
+            alt="foto product"
           />
         </Link><br></br>
         <button type="button" class="btn btn-dark">Agregar</button>

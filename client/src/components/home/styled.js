@@ -25,7 +25,7 @@ display: flex;
 }
 
 .div_cards{
-    position: relative;
+    position: ;
     display: block;
     width: 20%;
     height: 58%;
