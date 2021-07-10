@@ -28,7 +28,7 @@ return (
                         </ul>
                     </div>
                         <div className="logo col-sm-6 col-md-4 col-lg-4">
-                            <a className="link-logo" href='/'><img className='img-responsive' src={logo} alt='logo img' width='360px'></img>
+                            <a className="link-logo" href='/home'><img className='img-responsive' src={logo} alt='logo img' width='360px'></img>
                             </a>
                         </div>
                         <div className='help-menu'>
