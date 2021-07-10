@@ -7,7 +7,7 @@ import Footer from "../footer/footer";
 import HomeProductsCards from '../homeProductsCards/homeProducts';
 // import SignUp from '../signUp/SignUp';
 import Pages from "./paginado";
-import Order from "../order/order";
+// import Order from "../order/order";
 
 
 export default function Home({location}) {
