@@ -33,6 +33,7 @@ export default function Home({location}) {
             dbProducts();
         }, [dispatch]);
     
+        
         useEffect(() => {
             const dbProducts = () => {
                 setAllProducts(product);
