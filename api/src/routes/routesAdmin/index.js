@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const { routes } = require('../../../../../PI\'S/PI-Countries-FT12/api/src/app');
 const { Product, Client , Order, Shipping, Invoice} = require('../../db');
 const Sequelize = require('sequelize');
 
