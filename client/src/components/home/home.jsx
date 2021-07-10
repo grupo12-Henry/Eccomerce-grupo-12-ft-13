@@ -15,7 +15,7 @@ export default function Home({location}) {
     const product = useSelector((state) => state.products);
 
     const [allProducts, setAllProducts] = useState([]);
-     const showProducts = allProducts
+    const showProducts = allProducts
     const [page, setPage] = useState(1);
 
     useEffect(() => {

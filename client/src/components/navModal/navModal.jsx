@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import SignUp from '../register/userRegister/signUp/SignUp';
 import Login from '../register/userRegister/login/login';
+import { useAuth } from '../../contexts/AuthContext';
+import '../navModal/navModal';
 
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
   left: '50%',
+  width: '280px',
+  height: '400px',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
   padding: '50px',
@@ -26,6 +30,7 @@ const OVERLAY_STYLES = {
 export default function NavModal({open,children,onClose}) {
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
+  const { loginGoogle } = useAuth()
 
   if (!open) return null;
 
@@ -46,6 +51,16 @@ export default function NavModal({open,children,onClose}) {
     onClose();
   }
 
+  const handbleBack = (e) =>{
+    setLogin(false);
+    setSignup(false);
+  }
+
+  const handleGoogleLogin = (e) =>{
+    e.preventDefault()
+     loginGoogle()
+  }
+
   return ReactDom.createPortal(
     <>
       <div style={OVERLAY_STYLES}>
@@ -55,8 +70,8 @@ export default function NavModal({open,children,onClose}) {
         {signup === true ? ( <SignUp />) : null}
         {login === true ? (<Login />) : null}
       </div>
-          <button onClick={handleClose}>X</button>
-        { signup === true || login === true ? (<button onClick={handleClose}>Back</button>) :
+          <button className='closeXbutton' onClick={handleClose}>X</button>
+        { signup === true || login === true ? (<button onClick={handbleBack}>Back</button>) :
           (
             <div>
               <button onClick={handleSignup}>
@@ -64,6 +79,9 @@ export default function NavModal({open,children,onClose}) {
               </button>
               <button onClick={handleLogin1}>
                 Login
+              </button>
+              <button  onClick={handleGoogleLogin}>
+                Login with google
               </button>
             </div>
           )

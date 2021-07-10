@@ -44,12 +44,6 @@ const Auto = () => {
       dbProducts();
   }, [dispatch]);
 
-  useEffect(() => {
-      const dbProducts = () => {
-          dispatch(getNames());
-      };
-      dbProducts();
-  }, [dispatch]);
 
 
         return (
@@ -75,7 +69,7 @@ const Auto = () => {
               <div className="dataResult">
                 {filteredData.slice(0, 5).map((value, key) => {
                   return (
-                    <a className="dataItem" href = {`/detail/${value.id}`}>
+                    <a className="dataItem" href={`/detail/${value.id}`}>
                        
                       <p>{value.name} </p>
                     </a>
