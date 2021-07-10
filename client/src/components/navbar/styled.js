@@ -5,11 +5,7 @@ export const StyledDiv = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-<<<<<<< HEAD
-    justify-content:space-around;
-=======
     justify-content:center;
->>>>>>> main
     width: 100%;
 	height: 20%;
 	overflow: hidden;
@@ -25,18 +21,8 @@ export const StyledDiv = styled.div`
 .row {
     align-items:center;
     margin-right: 1%;
+    margin-top: 2%;
     list-style: none;
-<<<<<<< HEAD
-}
-.help-menu {
-    display:flex;
-    align-items: center;
-    justify-content:space-around;
-}
-.help-menu img {
-    margin: 10px;
-}
-=======
 }
 .help-menu {
     display: ruby;
@@ -49,15 +35,19 @@ export const StyledDiv = styled.div`
     -ms-flex-pack: space-around;
     justify-content: space-around;
     margin-bottom: 2%;
+
+    a{
+        margin-right:50%;
+    }
 }
 .help-menu img {
     margin: 10px;
 }
->>>>>>> main
 
 .d-flex {
     margin: 1px 1px 1px 1px;
     list-style: none;
 }
 	 
+
 `;

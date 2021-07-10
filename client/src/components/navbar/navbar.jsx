@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { StyledDiv } from "./styled";
 import delivery from "../../assets/images/delivery-truck.png";
-import instagram from "../../assets/images/instagram.png";
-import twitter from "../../assets/images/gorjeo(1).png";
-import whatsapp from "../../assets/images/Loco wsap.png";
-import facebook from "../../assets/images/logo-de-facebook.png";
+import instagram from "../../assets/images/instagram.jpeg";
+import twitter from "../../assets/images/gorjeo(1).jpeg";
+import whatsapp from "../../assets/images/Loco wsap.jpeg";
+import facebook from "../../assets/images/logo-de-facebook.jpeg";
 import logo from "../../assets/images/logo.png";
 import cart from "../../assets/images/cart.png";
 import user from "../../assets/images/user.png";
@@ -25,7 +25,7 @@ const Nav = () => {
   return (
     <StyledDiv>
       <div className="header-container">
-        <div className="help-menu-izq col-sm-4 col-md-4 col-lg-4" style={style}>
+        <div className="help-menu-izq col-sm-3 col-md-3 col-lg-3" style={style}>
           <img
             className="delivery"
             src={delivery}
@@ -49,7 +49,7 @@ const Nav = () => {
           </ul>
         </div>
         <div className="logo col-sm-6 col-md-4 col-lg-4">
-          <a className="link-logo" href="/">
+          <a className="link-logo" href="/home">
             <img
               className="img-responsive"
               src={logo}
