@@ -9,9 +9,6 @@ export const StyledDiv = styled.div`
 	height: 30%;
 	overflow: hidden;
 	background-color: #FFFFFFF;
-	position: absolute;
-	top: 730px;
-	left: 0px;
 	box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 .div_pagos{
