@@ -1,10 +1,12 @@
-import { GETCARDS, GETDETAILS, GETNAMES } from '../actions'
+import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT } from '../actions'
 
 
 const initialState = {
     products: [],
     productDetail: {},
-    names: []
+    names: [],
+    orderProd: [],
+    // namesq: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -20,6 +22,16 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 names: action.payload
             };
+        case ORDERPRODUCT:
+            return {
+                ...state,
+                orderProd: action.payload
+            };
+        // case GETNAMESQ:
+        //     return {
+        //         ...state,
+        //         namesq: action.payload
+        //     };
             
         case GETDETAILS:
             return {

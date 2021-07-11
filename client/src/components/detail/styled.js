@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledDiv = styled.div`
 #container{
-    margin-top: 15%;
+    margin-top: 5%;
     display: flex;
     flex-direction: row;
     margin-left: 10%;
@@ -25,7 +25,10 @@ const StyledDiv = styled.div`
 
 
 }
-
+ #home{
+    position: static important!;
+    margin-top: 10rem important!;
+ }
 
 #maker {
     margin-top: 10%;
