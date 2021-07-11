@@ -20,6 +20,8 @@ module.exports = (sequelize) => {
     lastLogin: {
       type: DataTypes.STRING,
     },
-  });
+  },
+  {timestamps: false}
+  );
 };
 

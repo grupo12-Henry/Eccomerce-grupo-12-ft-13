@@ -6,8 +6,11 @@ module.exports = (sequelize) => {
         /* id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            //allowNull: false,
-        }, */
+
+            allowNull: false,
+            autoIncrement: true
+        },
+
         name: {
             type: DataTypes.STRING,
             // allowNull: false,
@@ -35,11 +38,11 @@ module.exports = (sequelize) => {
         identityCard: {
             type: DataTypes.STRING,
             // allowNull: false,
+        },
+        admin:{
+            type: DataTypes.BOOLEAN,
+            // allowNull: false,
+            default: false
         }
-        // admin:{
-        //     type: DataTypes.BOOLEAN,
-        //     allowNull: false,
-        //     default: false
-        // }
     });
 };

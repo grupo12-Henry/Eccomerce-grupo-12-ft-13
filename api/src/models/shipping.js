@@ -6,27 +6,30 @@ module.exports = (sequelize) => {
        /*  idShipping: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            allowNull: false,
-        }, */
+
+            // allowNull: true,
+            autoIncrement: true
+        },
         shippingDate: {
             type: DataTypes.STRING,
-            //allowNull: false,
+            allowNull: true,
         },
         state: {
             type: DataTypes.STRING,
-            //allowNull: false,
+            allowNull: true,
         },
         freight: {
             type: DataTypes.STRING,
-            //allowNull: false,
+            allowNull: true,
         },
         guideNumber: {
             type: DataTypes.STRING,
-            //allowNull: false,
+            allowNull: true,
         },
         cost: {
             type: DataTypes.INTEGER,
-            //allowNull: false,
+            allowNull: true,
+
         },
     })
 }
