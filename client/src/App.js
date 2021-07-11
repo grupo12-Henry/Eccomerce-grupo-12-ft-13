@@ -8,6 +8,7 @@ import Dashboard from './components/register/userRegister/dashboard/dashboard';
 import UpdateProfile from './components/register/userRegister/updateProfile/updateProfile';
 import Login from './components/register/userRegister/login/login';
 import ForgotPassword from './components/register/userRegister/forgotPassword/forgotPassword';
+import Vinos from './components/categories/vinos/vinos';
 import { AuthProvider } from "../src/contexts/AuthContext";
 import PrivateRouteUser from './components/register/userRegister/privateRouteUser/privateRouteUser';
 import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteAdmin/privateRouteAdmin";
@@ -24,6 +25,7 @@ function App() {
         <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
         <Route component={LandingPage} exact path='/'/>
         <Route component={Home} exact path='/home'/>
+        <Route component={Vinos} exact path='/vinos'/>
         <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/>
         <Route component={ForgotPassword} exact path='/forgotPassword'/>

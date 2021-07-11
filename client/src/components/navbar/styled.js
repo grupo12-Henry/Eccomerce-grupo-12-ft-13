@@ -10,7 +10,6 @@ export const StyledDiv = styled.div`
 	height: 20%;
 	overflow: hidden;
 	background-color: #ffff;
-	position: fixed;
 	top: 0px;
 	left: 0px;
 	box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
