@@ -7,33 +7,26 @@ module.exports = (sequelize) => {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            // allowNull: false,
             autoIncrement: true
              },
 
         date: {
             type: DataTypes.STRING,
-            // allowNull: false,
         },
         bill: {
             type: DataTypes.INTEGER,
-            // allowNull: false,
         },
         paymentMethod:{
           type: DataTypes.STRING,
-        //   allowNull: false,
         },
         adress: {
              type: DataTypes.STRING,
-            //  allowNull: false,
         },
         ticket: {
             type: DataTypes.STRING,
-            // allowNull: false,
         },
         mail: {
             type: DataTypes.STRING,
-            // allowNull: false,
         }
     });
 };
