@@ -14,23 +14,18 @@ module.exports = (sequelize) => {
         },
         bill: {
             type: DataTypes.INTEGER,
-            
         },
         paymentMethod:{
           type: DataTypes.STRING,
-        
         },
         adress: {
              type: DataTypes.STRING,
-           
         },
         ticket: {
             type: DataTypes.STRING,
-          
         },
         mail: {
             type: DataTypes.STRING,
-           
         }
     },{timestamps: false});
 };

@@ -14,7 +14,6 @@ module.exports = (sequelize) => {
     },
     expirationDate: {
       type: DataTypes.STRING,
-      
     },
     lastLogin: {
       type: DataTypes.STRING,

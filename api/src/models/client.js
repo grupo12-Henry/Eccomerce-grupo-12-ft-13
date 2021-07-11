@@ -13,35 +13,28 @@ module.exports = (sequelize) => {
 
         name: {
             type: DataTypes.STRING,
-            
         },
         lastName: {
-            type: DataTypes.STRING
-            
+            type: DataTypes.STRING,
         },
         phone: {
             type: DataTypes.INTEGER,
-            
         },
         state: {
             type: DataTypes.STRING,
-
         },
         adress: {
             type: DataTypes.STRING,
-
         },
         mail: {
             type: DataTypes.STRING,
-            
         },
         identityCard: {
             type: DataTypes.STRING,
-
-            
         },
         admin:{
             type: DataTypes.BOOLEAN,
+            default: false
         }
     },{timestamps: false,});
 

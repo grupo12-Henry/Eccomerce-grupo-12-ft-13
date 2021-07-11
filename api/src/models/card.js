@@ -11,19 +11,15 @@ module.exports = (sequelize) => {
         },
         number: {
             type: DataTypes.INTEGER,
-           
         },
         expirationDate: {
             type: DataTypes.STRING,
-           
         },
         type: {
             type: DataTypes.STRING,
-           
         },
         name: {
             type: DataTypes.STRING,
-     
         },
 
     },{timestamps: false,})
