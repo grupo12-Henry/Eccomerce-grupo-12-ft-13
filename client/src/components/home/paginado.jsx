@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Pages.css';
 
-export default function Pages({ allProducts, page }) {
-  const totalPages = Math.ceil(allProducts.length / 9)
+export default function Pages({ product, page }) {
+  
+  const totalPages = Math.ceil( product.length / 9)
   const pagesAround = 2;
   const totalNumbers = (pagesAround * 2) + 3;
   const totalButtons = totalNumbers + 2;

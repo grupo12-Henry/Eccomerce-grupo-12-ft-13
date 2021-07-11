@@ -11,7 +11,6 @@ module.exports = (sequelize) => {
         },  
         date: {
             type: DataTypes.STRING,
-           
         },
         bill: {
             type: DataTypes.INTEGER,
@@ -21,7 +20,7 @@ module.exports = (sequelize) => {
           type: DataTypes.STRING,
         
         },
-         adress: {
+        adress: {
              type: DataTypes.STRING,
            
         },

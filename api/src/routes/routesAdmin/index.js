@@ -1,9 +1,9 @@
 const { Router } = require('express');
 const { Product, Client, Order, Shipping, Invoice } = require('../../db');
 
-
 //modelos acá:
 const router = Router();
+
 
 router.post('/clientesPost', async (req, res) => {
     const { id, name,lastname, phone , state, adress, mail, identityCard  } = req.body;
@@ -53,7 +53,7 @@ router.get('/productos/order', async (req, res) => {
 })
 router.get('/productos/names', async (req, res) => {
     try {
-        const productos = await Product.findAll({ attributes: { exclude: ['id', 'createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
+        const productos = await Product.findAll({ attributes: { exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
 
         res.send(productos)
     } catch (error) {
@@ -141,6 +141,7 @@ router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las ll
         })
 
         user ? res.send(user) : res.sendStatus(400)
+
     } catch (error) {
         res.send(error).status(404)
     }
@@ -148,6 +149,8 @@ router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las ll
 router.get('/pedidos/all', async (req, res) => {//cambiar los nombres de las llamadas
     try {
         const pedidos = await Order.findAll()
+        
+
         res.send(pedidos)
     } catch (error) {
         res.send(error).status(404)
