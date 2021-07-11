@@ -6,15 +6,12 @@ module.exports = (sequelize) => {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
-            //allowNull: false,
         },
         ivaCondition: {
             type: DataTypes.STRING,
-           // allowNull: false,
         },
         ivaCost:{
             type: DataTypes.INTEGER,
-            //allowNull: false,
         }
     },
      {timestamps: false})
