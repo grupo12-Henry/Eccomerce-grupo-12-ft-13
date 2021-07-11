@@ -5,11 +5,7 @@ export const StyledDiv = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-<<<<<<< HEAD
-    justify-content:space-around;
-=======
     justify-content:center;
->>>>>>> main
     width: 100%;
 	height: 20%;
 	overflow: hidden;
@@ -26,17 +22,6 @@ export const StyledDiv = styled.div`
     align-items:center;
     margin-right: 1%;
     list-style: none;
-<<<<<<< HEAD
-}
-.help-menu {
-    display:flex;
-    align-items: center;
-    justify-content:space-around;
-}
-.help-menu img {
-    margin: 10px;
-}
-=======
 }
 .help-menu {
     display: ruby;
@@ -53,7 +38,6 @@ export const StyledDiv = styled.div`
 .help-menu img {
     margin: 10px;
 }
->>>>>>> main
 
 .d-flex {
     margin: 1px 1px 1px 1px;
