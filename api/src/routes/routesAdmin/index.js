@@ -280,34 +280,52 @@ router.put('/users/:id', async (req, res)=>{
         res.send(error).status(404)
     }  
 }) 
-router.post('/pedidos', async (req, res) => {
-    const {date, paymentMethod, ticket, clientId}=req.body
-    const order1 = await Order.create({ //crea el pedido (la compra)
-      date, 
-      paymentMethod,
-      ticket,
-      shipping: {
-        shippingDate:'12-07-2021',
-        state:'pending',
-        cost:1,
-      },
-      invoice: {
-        ivaCondition:'exento',
-        ivaCost: 21
-      }
-    }, {
-      include: ["shipping", "invoice"]
-    }) .then (async order => {
-      let clienteEnCuestion = await Client.findByPk(clientId); //busca al cliente con ese Id
-      clienteEnCuestion.addOrders(order); //addOrder le agrega el Id del cliente a la tabla Orders
-    }) 
-    
-    .then(response => {
-      res.json('El pedido se creo correctamente')
-    }) .catch (err => {
-      res.json(err)
-    })
+
+ 
+router.post('/orderPost', async (req, res) => {
+  const {date, paymentMethod, ticket, clientId, productos, cantidad, subTotal}=req.body
+  let RTA = [];
+  const order1 = await Order.create({ //crea el pedido (la compra)
+    date, 
+    paymentMethod,
+    ticket,
+    shipping: {
+      state:'pending',
+    },
+    invoice: { // asi vacío solo le agrega el OrderId a la tabla Invoices
+      // ivaCondition:'Exento',
+      // ivaCost: 21
+    },
+    // products: {
+    //   id: productId
+    // }
+    // order_details: {
+    //   cantidad: cantidad,
+    //   subTotal: subTotal
+    // }
+  }, {
+    include: ["shipping", "invoice"]
+  }) 
+
+  .then (async order => {
+    let clienteEnCuestion = await Client.findByPk(clientId); //busca al cliente con ese Id
+    clienteEnCuestion.addOrders(order); //addOrder le agrega el Id del cliente a la tabla Orders
+    //ACA ABAJO ESTA LO QUE ESCRIBIO NICO
+    const array_ModelosProductos = await Promise.all( productos.map(async(producto)=>{
+      return await Product.findOne({where:{id:producto}}) //recorre 'productos', que es un array de id de productos, y por cada id se trae el modelo de ese producto.
+     }))
+    array_ModelosProductos.forEach(async modelo=>await order.addProducts(modelo))
+  }) 
+  //LO UNICO QUE FALTA ES QUE AGREGUE cantidad y subTotal a la tabla intermedia
+  
+  .then(response => {
+    res.json('El pedido se creo correctamente')
+  }) 
+  
+  .catch (err => {
+    res.json(err)
   })
+})
 
   router.get('/pedidos/:id',async (req, res)=>{
     const {id} = req.params;
