@@ -5,6 +5,8 @@ module.exports = (sequelize) => {
     sequelize.define('card', {
         id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
             primaryKey: true,
         },
         number: {

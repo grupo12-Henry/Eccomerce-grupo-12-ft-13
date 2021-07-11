@@ -3,13 +3,12 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
     sequelize.define('order', {
-
-        id: {
-            type: DataTypes.INTEGER,
+          id: {
             primaryKey: true,
+            type: DataTypes.INTEGER,
+            allowNull: false,
             autoIncrement: true
-             },
-
+        },  
         date: {
             type: DataTypes.STRING,
         },
@@ -28,5 +27,5 @@ module.exports = (sequelize) => {
         mail: {
             type: DataTypes.STRING,
         }
-    });
+    },{timestamps: false});
 };

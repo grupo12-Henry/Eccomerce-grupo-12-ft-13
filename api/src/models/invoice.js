@@ -4,8 +4,10 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('invoice', {
         id: {
-            type: DataTypes.UUID,
+            type: DataTypes.INTEGER,
             primaryKey: true,
+            allowNull: false,
+            autoIncrement: true
         },
         ivaCondition: {
             type: DataTypes.STRING,
@@ -13,6 +15,5 @@ module.exports = (sequelize) => {
         ivaCost:{
             type: DataTypes.INTEGER,
         }
-    },
-     {timestamps: false})
+    },{timestamps: false,})
 }

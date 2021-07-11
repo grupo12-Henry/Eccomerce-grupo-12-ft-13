@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       allowNull: false,
       autoIncrement: true
     },
-    stock: {
+    stock:{
       type: DataTypes.INTEGER,
     },
     name: {
