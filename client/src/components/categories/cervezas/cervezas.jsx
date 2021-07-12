@@ -61,7 +61,7 @@ function Cervezas () {
     return (
         <>
             <Nav />
-            <NavCategories/>
+            <NavCategories />
                 {/* <div className='Filtering'>
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>
@@ -124,7 +124,7 @@ function Cervezas () {
                                     ))}
                             </div>
                             <div className=''>
-                                <button onClick={() => setnumberPage(numberPage + 1)}>FORWARD</button>
+                            <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
                             </div>
                         </div>
                     </div>

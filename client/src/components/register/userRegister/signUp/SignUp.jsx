@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 // import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import { StyledDiv } from "./styled";
+
 
 export default function Signup() {
   const emailRef = useRef();
@@ -32,38 +34,48 @@ export default function Signup() {
   }
 
   return (
-    <>
+    <StyledDiv>
       {/* <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}> */}
       <header className="navbar">
         <nav>
           <ul className="list">
             <li className="list-item">
               <div>
-                <h2>Sign Up</h2>
+                <h2>Registrate</h2>
                 <p>{error}</p>
                 <form onSubmit={handleSubmit}>
-                  <label>Email</label>
-                  <input type="text" name="email" ref={emailRef}></input>
-                  <label>Password</label>
-                  <input type="password" name="email" ref={passwordRef}></input>
-                  <label>Password Confirmation</label>
+                  <div className='email'>
+                  <label>Correo Electronico:</label>
+                  <input className='input_email' type="text" name="email" ref={emailRef}></input>
+                  </div>
+                  <br/>
+                  <div className='password'>
+                  <label>Crea tu contraseña:</label>
+                  <input  className='input_password'type="password" name="email" ref={passwordRef}></input>
+                  </div>
+                  <br/>
+                  <div className='password_confirmation'>
+                  <label>Confirma contraseña:</label>
                   <input
+                    className='input_passwordconfirmation'
                     type="password"
                     name="email"
                     ref={passwordConfirmRef}
                   ></input>
-                  <button disabled={loading} className="SignUp" type="submit">
+                  </div>
+                  <br/>
+                  <button disabled={loading} className="btn btn-success" type="submit">
                     Sign Up
                   </button>
                 </form>
               </div>
-              <div>
-                {/* Already have an account? Sign Up <Link to="/login">Log In</Link> */}
+              <div className='registred'>
+              Ya estás registrado? <Link to="/login">Logueate!</Link>
               </div>
             </li>
           </ul>
         </nav>
       </header>
-    </>
+    </StyledDiv>
   );
 }
