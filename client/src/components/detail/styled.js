@@ -37,9 +37,26 @@ const StyledDiv = styled.div`
 
 
 }
+.card-img img-fluid{
+  
+ 
+    object-fit: scale-down;
+    max-height: 8rem;
+
+
+}
+
+.img-fluid{
+    object-fit: scale-down;
+    max-height: 10rem;
+}
 
 #description {
     text-align: center
+}
+#botonazo{
+    margin: 0.3rem;
+
 }
 
 

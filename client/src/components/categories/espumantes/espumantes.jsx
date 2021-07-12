@@ -119,7 +119,7 @@ function Espumantes() {
                                     ))}
                             </div>
                             <div className=''>
-                                <button onClick={() => setnumberPage(numberPage + 1)}>FORWARD</button>
+                            <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
                             </div>
                         </div>
                     </div>

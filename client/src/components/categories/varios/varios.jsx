@@ -69,7 +69,7 @@ function Varios() {
                     <div className="div_container">
                         <div class="container d-flex justify-content-center mt-50 mb-50">
                             <div className=''>
-                                <button onClick={() => setnumberPage(numberPage - 1)}>BACK</button>
+                            <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
                             </div>
                             <div class="row">
                                 {showProducts &&
@@ -119,7 +119,7 @@ function Varios() {
                                     ))}
                             </div>
                             <div className=''>
-                                <button onClick={() => setnumberPage(numberPage + 1)}>FORWARD</button>
+                            <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
                             </div>
                         </div>
                     </div>

@@ -38,7 +38,8 @@ display: flex;
 }
 
 .card-img {
-    width: 350px
+    object-fit: scale-down;
+    max-height:11rem;
 }
 
 .star {
@@ -83,6 +84,8 @@ a {
     width: 100%;
     align-items: center;
     margin-left: 25%;
+    position: relative;
+    bottom: 5%;
     box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
 
 }
@@ -105,6 +108,7 @@ a {
     height: 200px;
     width: 200px;
 }
+
 
 `
 export default StyledDiv

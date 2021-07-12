@@ -865,7 +865,7 @@ var datab = [
     },
     {
       PRODUCTOS: 'Trumpeter Reserve Blend',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Trumpeter%20Reserve%20Blend.jpg?alt=media&token=b913f1a1-914c-451e-a26e-43efa9411e3a',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Trumpeter%20Reserve%20Blend.jpg?alt=media&token=947cae00-b8ec-4fe2-8521-fe58298ccdca',
       Fabricante: 'BODEGA LA RURAL',
       Detalle: 'ACA LA INFO',
       STOCK: 24,
