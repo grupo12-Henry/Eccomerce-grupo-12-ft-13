@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { useAuth } from "../../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { StyledDiv } from "./styled";
+import '../signUp/signup.css'
 
 
 export default function Signup() {

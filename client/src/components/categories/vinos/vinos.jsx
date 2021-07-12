@@ -7,7 +7,6 @@ import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
 
 
-
 function Vinos() {
     const dispatch = useDispatch();
     const product = useSelector((state) => state.products);
