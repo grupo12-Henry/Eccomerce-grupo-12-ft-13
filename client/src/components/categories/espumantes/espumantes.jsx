@@ -4,6 +4,7 @@ import { getProducts } from "../../../actions/index";
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
+import NavCategories from "../../navCategories/navCategories";
 
 function Espumantes() {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function Espumantes() {
     const [allProducts, setAllProducts] = useState([]);
 
     const [numberPage, setnumberPage] = useState(1);
-    const initialProducts = 8;
+    const initialProducts = 9;
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
@@ -57,6 +58,7 @@ function Espumantes() {
     return (
         <>
             <Nav />
+            <NavCategories/>
                 <div className='Filtering'>
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>
