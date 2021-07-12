@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom'
+import { StyledDiv } from "./styled";
+
 
 export function validate(input) {
     let errors = {}
@@ -67,33 +69,34 @@ export default function Login() {
     //<div className='back'><Link to='/'>BACK TO ANIME DATABASE</Link></div>
 
     return (
-
+        <StyledDiv>
         <div className='center' >
             <form method='post' onSubmit={HandleSubmit}>
-                <h2>Log In</h2>
+                <h2>Logueate</h2>
                 <p>{error}</p>
-                <div className='txt_field'>
+                <div className='email'>
+                    <label>Correo Electronico: </label>
                     <input type='text' name='email' ref={emailRef} value={input.email} onChange={handleInputChange} required />
-                    <label>Email</label>
                     <span></span>
                     {errors.email && (
                         <p className="danger">{errors.email}</p>
                     )}
                 </div>
-                <div className='txt_field'>
+                <div className='password'>
+                    <label>Contraseña: </label>
                     <input type='password' name='password' ref={passwordRef} value={input.password} onChange={handleInputChange} required />
-                    <label>Password</label>
                     <span></span>
                     {errors.password && (
                         <p className="danger">{errors.password}</p>
                     )}
                 </div>
                 <div className='pass'>
-                    <Link className='pass' to='/forgotpassword'>Forgot Password?</Link>
+                    <Link className='pass' to='/forgot-password'>Olvidaste tu contraseña?</Link>
                 </div>
-                <button disabled={loading} className='LogIn' type='submit'>Log In</button>
+                <button disabled={loading} className='btn btn-success LogIn' type='submit'>Ingresar</button>
             </form>
-            {/* <div className='signup_link'>Need an account?<Link className='signup_link2' to='/signup'>Sign Up</Link></div> */}
+            <div className='signup_link'>No estas registrado?<Link className='signup_link2' to='/signup'>Registrate!</Link></div>
         </div>
+        </StyledDiv>
     )
 }

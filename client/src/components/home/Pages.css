@@ -1,21 +1,19 @@
 .all{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 .nums{
-    text-decoration: none;
-    display: inline-block    ;
-    padding: 12px 20px 12px 20px;
-    background-color: turquoise;
-    font-size: 25px;
-    transition: 0.4s;
+  text-decoration: none;
+  display: inline-block    ;
+  padding: 12px 20px 12px 20px;
+  background-color: turquoise;
+  font-size: 25px;
+  transition: 0.4s;
 }
 .nums:hover{
-    background-color: rgb(47, 173, 47);
+  background-color: rgb(47, 173, 47);
 }
-
-
 
 .Pagination {
     width: 100%;
@@ -43,9 +41,3 @@
     cursor: pointer;
   }
   
-  .PaginationLink{
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.63);
-    cursor: default;
-    
-  }
