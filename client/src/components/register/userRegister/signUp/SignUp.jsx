@@ -58,7 +58,7 @@ export default function Signup() {
                 </form>
               </div>
               <div>
-                Already have an account? Sign Up <Link to="/login">Log In</Link>
+                {/* Already have an account? Sign Up <Link to="/login">Log In</Link> */}
               </div>
             </li>
           </ul>

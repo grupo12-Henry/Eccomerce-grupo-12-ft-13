@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../../actions/index";
-import Nav from '../../navbar/navbar';
-import StyledDiv from "../../detail/styled";
+import { getProducts } from "../../actions/index";
+import Nav from '../navbar/navbar';
+import StyledDiv from "../detail/styled";
 import { Link } from 'react-router-dom';
+import NavCategories from "../navCategories/navCategories";
 
-function Vinos() {
+function Espumantes() {
     const dispatch = useDispatch();
     const product = useSelector((state) => state.products);
     console.log(product)
@@ -24,17 +25,14 @@ function Vinos() {
     
     */
 
-    const categoriesWhines = ['Malbec', 'Tinto', 'Torrontes', 'Blanco', 'Cabernet']
-
-
     const [allProducts, setAllProducts] = useState([]);
 
     const [numberPage, setnumberPage] = useState(1);
-    const initialProducts = 8;
+    const initialProducts = 9;
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
-    const showProducts = allProducts.filter(el => el.type === 'Vinos').slice(conteoInicial, conteoFinal);
+    let showProducts = allProducts.filter(el => el.type === 'Espumantes').slice(conteoInicial, conteoFinal);
 
 
     useEffect(() => {
@@ -54,17 +52,13 @@ function Vinos() {
     if (numberPage < 1) setnumberPage(1);
     if (numberPage > 25) setnumberPage(25);
 
+    
+
 
     return (
         <>
             <Nav />
-                <div className='Filtering'>
-                    <button className='DropdownButton'>Filter</button>
-                    <div className='Filters'>
-                        {categoriesWhines.map(d => <button key={d}
-                            onClick={(e) => { e.preventDefault(); allProducts.filter(d =>{ console.log(d) })} }> {d} </button>)}
-                    </div>
-                </div>
+            <NavCategories/>
             <StyledDiv>
                 <div>
                     <div className="div_container">
@@ -73,6 +67,7 @@ function Vinos() {
                                 <button onClick={() => setnumberPage(numberPage - 1)}>BACK</button>
                             </div>
                             <div class="row">
+                                {console.log(1)}
                                 {showProducts &&
                                     showProducts.map(el =>
                                     (
@@ -129,4 +124,4 @@ function Vinos() {
         </>
     );
 }
-export default Vinos;
+export default Espumantes;

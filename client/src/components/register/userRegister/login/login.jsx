@@ -89,11 +89,11 @@ export default function Login() {
                     )}
                 </div>
                 <div className='pass'>
-                    <Link className='pass' to='/forgot-password'>Forgot Password?</Link>
+                    <Link className='pass' to='/forgotpassword'>Forgot Password?</Link>
                 </div>
                 <button disabled={loading} className='LogIn' type='submit'>Log In</button>
             </form>
-            <div className='signup_link'>Need an account?<Link className='signup_link2' to='/signup'>Sign Up</Link></div>
+            {/* <div className='signup_link'>Need an account?<Link className='signup_link2' to='/signup'>Sign Up</Link></div> */}
         </div>
     )
 }

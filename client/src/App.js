@@ -8,12 +8,17 @@ import Dashboard from './components/register/userRegister/dashboard/dashboard';
 import UpdateProfile from './components/register/userRegister/updateProfile/updateProfile';
 import Login from './components/register/userRegister/login/login';
 import ForgotPassword from './components/register/userRegister/forgotPassword/forgotPassword';
-import Vinos from './components/categories/vinos/vinos';
+import Vinos from './components/categories/vinos';
 import { AuthProvider } from "../src/contexts/AuthContext";
 import PrivateRouteUser from './components/register/userRegister/privateRouteUser/privateRouteUser';
 import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteAdmin/privateRouteAdmin";
 import AdminComponent from './components/register/adminRegister/component/AdminComponent';
+import Whiskys from './components/categories/whiskys'
 import Delivery from './components/register/userRegister/component/confirmDelivery';
+import Bebidas from "./components/categories/Bebidas";
+import Varios from "./components/categories/varios";
+import Cervezas from "./components/categories/cervezas";
+import Espumantes from "./components/categories/espumantes";
 
 function App() {
   return (
@@ -26,6 +31,11 @@ function App() {
         <Route component={LandingPage} exact path='/'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Vinos} exact path='/vinos'/>
+        <Route component={Whiskys} exact path='/whiskys'/>
+        <Route component={Bebidas} exact path='/bebidas'/>
+        <Route component={Varios} exact path='/varios'/>
+        <Route component={Espumantes} exact path='/espumantes'/>
+        <Route component={Cervezas} exact path='/cervezas'/>
         <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/>
         <Route component={ForgotPassword} exact path='/forgotPassword'/>
