@@ -53,7 +53,7 @@ function Vinos() {
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>
                         {subCategories.map(d => <button key={d}
-                            onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d) ) )} }> {d}</button>)}
+                            onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d) ) )} }>{d}</button>)}
                     </div>
                 </div>
             <StyledDiv>
@@ -66,7 +66,7 @@ function Vinos() {
                             <div class="row">
                                 {showProducts &&
                                     showProducts.map(el =>
-                                    (
+                                     (
                                         <div class="col-md-4 mt-2">
                                             <div class="card">
                                                 <div class="card-body">
