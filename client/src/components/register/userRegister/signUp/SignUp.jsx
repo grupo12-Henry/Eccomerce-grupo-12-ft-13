@@ -2,7 +2,10 @@ import React, { useRef, useState } from "react";
 // import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+<<<<<<< HEAD
 import '../signUp/signup.css'
+=======
+>>>>>>> 58c4f90a9e45caa53e268a861b8c97610886b860
 
 export default function Signup() {
   const emailRef = useRef();
@@ -59,7 +62,11 @@ export default function Signup() {
                 </form>
               </div>
               <div>
+<<<<<<< HEAD
                 Already have an account? Sign Up <Link to="/login">Log In</Link>
+=======
+                {/* Already have an account? Sign Up <Link to="/login">Log In</Link> */}
+>>>>>>> 58c4f90a9e45caa53e268a861b8c97610886b860
               </div>
             </li>
           </ul>

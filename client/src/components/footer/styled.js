@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledDiv = styled.div`
 .div_conteiner{
+    border: 3px solid black;
     display: flex;
     align-items: center;
     justify-content:center;
@@ -9,9 +10,6 @@ export const StyledDiv = styled.div`
 	height: 30%;
 	overflow: hidden;
 	background-color: #FFFFFFF;
-	position: absolute;
-	top: 730px;
-	left: 0px;
 	box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 .div_pagos{
@@ -21,7 +19,7 @@ export const StyledDiv = styled.div`
 }
 .div_logo {
     margin-bottom: 4%;
-    margin-top: 1%;
+    margin-top: 15%;
     margin-left: 10%;
     margin-right: 10%;
     font-size: 15px;

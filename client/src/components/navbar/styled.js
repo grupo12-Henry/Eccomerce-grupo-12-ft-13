@@ -16,7 +16,6 @@ export const StyledDiv = styled.div`
 	height: 20%;
 	overflow: hidden;
 	background-color: #ffff;
-	position: fixed;
 	top: 0px;
 	left: 0px;
 	box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
@@ -27,6 +26,7 @@ export const StyledDiv = styled.div`
 .row {
     align-items:center;
     margin-right: 1%;
+    margin-top: 2%;
     list-style: none;
 }
 .help-menu {
@@ -40,6 +40,10 @@ export const StyledDiv = styled.div`
     -ms-flex-pack: space-around;
     justify-content: space-around;
     margin-bottom: 2%;
+
+    a{
+        margin-right:50%;
+    }
 }
 .help-menu img {
     margin: 10px;
@@ -50,4 +54,5 @@ export const StyledDiv = styled.div`
     list-style: none;
 }
 	 
+
 `;

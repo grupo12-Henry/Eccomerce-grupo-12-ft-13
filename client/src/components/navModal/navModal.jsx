@@ -3,8 +3,11 @@ import ReactDom from 'react-dom';
 import SignUp from '../register/userRegister/signUp/SignUp';
 import Login from '../register/userRegister/login/login';
 import { useAuth } from '../../contexts/AuthContext';
+<<<<<<< HEAD
 import '../navModal/navModal';
 
+=======
+>>>>>>> 58c4f90a9e45caa53e268a861b8c97610886b860
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -31,6 +34,7 @@ const OVERLAY_STYLES = {
 export default function NavModal({ open, children, onClose }) {
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
+  const { googleLogin } = useAuth()
 
   const { loginGoogle } = useAuth()
 
@@ -53,6 +57,7 @@ export default function NavModal({ open, children, onClose }) {
     setSignup(false);
     onClose();
   }
+<<<<<<< HEAD
   const handleBackClose = (e) => {
     e.preventDefault();
     setLogin(false);
@@ -62,6 +67,17 @@ export default function NavModal({ open, children, onClose }) {
   const handleGoogleLogin = (e) => {
     e.preventDefault()
     loginGoogle()
+=======
+  const handleBackClose = (e) =>{
+    e.preventDefault();
+    setLogin(false);
+    setSignup(false);
+
+  }
+  const handleGoogle = (e) =>{
+    e.preventDefault();
+    googleLogin()
+>>>>>>> 58c4f90a9e45caa53e268a861b8c97610886b860
   }
 
   return ReactDom.createPortal(
@@ -75,6 +91,7 @@ export default function NavModal({ open, children, onClose }) {
           </div>
 
           <button onClick={handleClose}>X</button>
+<<<<<<< HEAD
           {signup === true || login === true ? (<button onClick={handleBackClose}>Back</button>) :
 
             (
@@ -91,6 +108,23 @@ export default function NavModal({ open, children, onClose }) {
               </div>
             )
           }
+=======
+        { signup === true || login === true ? (<button onClick={handleBackClose}>Back</button>) :
+          (
+            <div>
+              <button onClick={handleSignup}>
+                SignUp
+              </button>
+              <button onClick={handleLogin1}>
+                Login
+              </button>
+              <button onClick={handleGoogle}>
+                Login with Google
+              </button>
+            </div>
+          )
+        }
+>>>>>>> 58c4f90a9e45caa53e268a861b8c97610886b860
         </div>
       </div>
     </>,

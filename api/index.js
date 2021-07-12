@@ -24,7 +24,7 @@ const { base } = require('./src/arrayDB.js')
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
-
+//prueba
     // levanta base de datos
     base();
 
