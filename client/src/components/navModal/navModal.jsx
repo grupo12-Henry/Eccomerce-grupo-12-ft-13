@@ -3,6 +3,10 @@ import ReactDom from 'react-dom';
 import SignUp from '../register/userRegister/signUp/SignUp';
 import Login from '../register/userRegister/login/login';
 import { useAuth } from '../../contexts/AuthContext';
+import StyledDiv from "./styled";
+import CloseIcon from "@material-ui/icons/Close";
+import logo from "../../assets/images/logo-google.png";
+
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -59,33 +63,36 @@ export default function NavModal({open,children,onClose}) {
   }
 
   return ReactDom.createPortal(
-    <>
-      <div style={OVERLAY_STYLES}>
+    <StyledDiv>
+        <div style={OVERLAY_STYLES}>
         <div style={MODAL_STYLES}>
       <div>
         {children}
         {signup === true ? ( <SignUp />) : null}
         {login === true ? (<Login />) : null}
       </div>
-          <button onClick={handleClose}>X</button>
-        { signup === true || login === true ? (<button onClick={handleBackClose}>Back</button>) :
+        <div className='div_button'>
+          <button  class="btn btn-danger" margin-right='1rem' width='3rem' onClick={handleClose}><CloseIcon/></button>
+        </div>
+        { signup === true || login === true ? (<button className="btn btn-dark" onClick={handleBackClose}>Volver</button>) :
           (
-            <div>
-              <button onClick={handleSignup}>
-                SignUp
+            <div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
+              <button class="btn btn-primary" onClick={handleSignup}>
+                Registrate
               </button>
-              <button onClick={handleLogin1}>
-                Login
+              <button class="btn btn-primary" onClick={handleLogin1}>
+                Logueate con tu mail
               </button>
-              <button onClick={handleGoogle}>
-                Login with Google
+              <button  class="btn btn-primary" onClick={handleGoogle}>
+              Logueate con <img className='logo-google'src={logo}/>
               </button>
-            </div>
+              </div>
           )
         }
+        
         </div>
       </div>
-    </>,
+    </StyledDiv>,
     document.getElementById('portal')
 )
 }
