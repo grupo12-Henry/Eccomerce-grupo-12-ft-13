@@ -11,30 +11,14 @@ const StyledDiv = styled.div`
 
 }
 
-.card-img img-fluid{
-  
- 
-    object-fit: scale-down;
-    max-height: 8rem;
-
-
-}
-
-.img-fluid{
-    object-fit: scale-down;
-    max-height: 10rem;
+#image{
+    height: 55vh;
 }
 
 #name {
     text-align: center
 }
 
-.card{
-
-    object-fit: scale-down;
-   
-
-}
 
 #price {
     text-align: center

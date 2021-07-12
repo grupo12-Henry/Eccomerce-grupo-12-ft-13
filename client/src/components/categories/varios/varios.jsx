@@ -58,7 +58,7 @@ function Varios() {
     return (
         <>
             <Nav />
-            <NavCategories/>
+            <NavCategories />
                 {/* <div className='Filtering'>
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>

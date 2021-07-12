@@ -70,8 +70,8 @@ export default function Signup() {
                   </button>
                 </form>
               </div>
-              <div>
-                {/* Already have an account? Sign Up <Link to="/login">Log In</Link> */}
+              <div className='registred'>
+              Ya estás registrado? <Link to="/login">Logueate!</Link>
               </div>
             </li>
           </ul>

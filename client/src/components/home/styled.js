@@ -3,9 +3,6 @@ import styled from 'styled-components';
 
 const StyledDiv = styled.div`
 display: flex;
-max-width:80rem;
-margin-left: -10rem;
-margin right: 0;
 
 .mt-50 {
     margin-top: 50px
@@ -86,7 +83,7 @@ a {
     height: 100%;
     width: 100%;
     align-items: center;
-    margin-left: 25%;
+    margin-left: 10%;
     position: relative;
     bottom: 5%;
     box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
