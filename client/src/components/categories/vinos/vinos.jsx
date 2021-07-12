@@ -4,37 +4,27 @@ import { getProducts } from "../../../actions/index";
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
-import NavCategories from "../../navCategories/navCategories";
 
 function Vinos() {
     const dispatch = useDispatch();
     const product = useSelector((state) => state.products);
     console.log(product)
-    /*
-    
-  <div className='Filtering'>
-          <button className='DropdownButton'>Filter</button>
-          <div className='Filters'>
-          <button onClick={(e) => { e.preventDefault(); props.filter('');}}>Clean Filters</button>
-          {categoriesWhines.map(d => <button key={d}
-            onClick={(e) => {e.preventDefault(); allProducts.filter(d=>{d.name.includes(e)})}}>{d}</button>)}
-        </div>
-      </div>
-
-
-    
-    */
-    const categoriesWhines = ['Malbec', 'Tinto', 'Torrontes', 'Blanco', 'Cabernet']
+   
 
 
     const [allProducts, setAllProducts] = useState([]);
 
     const [numberPage, setnumberPage] = useState(1);
-    const initialProducts = 9;
+    const initialProducts = 8;
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
     const showProducts = allProducts.filter(el => el.type === 'Vinos').slice(conteoInicial, conteoFinal);
+
+    let subCategories = []
+    product.filter(el => el.type === 'Vinos').map(e => e.subcategories.forEach( c => ((subCategories.indexOf(c) === -1) ? subCategories.push(c) : null)))
+
+    console.log(subCategories)
 
 
     useEffect(() => {
@@ -59,12 +49,11 @@ function Vinos() {
     return (
         <>
             <Nav />
-            <NavCategories/>
                 <div className='Filtering'>
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>
-                        {categoriesWhines.map(d => <button key={d}
-                            onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.name.includes(d) ) )} }> {d} </button>)}
+                        {subCategories.map(d => <button key={d}
+                            onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d) ) )} }>{d}</button>)}
                     </div>
                 </div>
             <StyledDiv>
@@ -77,7 +66,7 @@ function Vinos() {
                             <div class="row">
                                 {showProducts &&
                                     showProducts.map(el =>
-                                    (
+                                     (
                                         <div class="col-md-4 mt-2">
                                             <div class="card">
                                                 <div class="card-body">
@@ -104,7 +93,7 @@ function Vinos() {
                                                             </a>
                                                         </h6>{" "}
                                                     </div>
-                                                    <h3 class="mb-0 font-weight-semibold">{el.price}</h3>
+                                                    <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
                                                     <div>
                                                         {" "}
                                                         <i class="fa fa-star star"></i>{" "}
