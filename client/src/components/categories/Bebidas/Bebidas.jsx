@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../actions/index";
-import Nav from '../navbar/navbar';
-import StyledDiv from "../detail/styled";
+import { getProducts } from "../../../actions/index";
+import Nav from '../../navbar/navbar';
+import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
-import NavCategories from "../navCategories/navCategories";
+import NavCategories from "../../navCategories/navCategories";
 
 function Bebidas() {
     const dispatch = useDispatch();

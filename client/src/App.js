@@ -13,16 +13,13 @@ import Espumantes from './components/categories/espumantes/espumantes';
 import Cervezas from "./components/categories/cervezas/cervezas";
 import Whiskys from './components/categories/whiskys/whiskys';
 import Varios from "./components/categories/varios/varios";
+import Bebidas from "./components/categories/Bebidas/Bebidas";
 import { AuthProvider } from "../src/contexts/AuthContext";
 import PrivateRouteUser from './components/register/userRegister/privateRouteUser/privateRouteUser';
 import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteAdmin/privateRouteAdmin";
 import AdminComponent from './components/register/adminRegister/component/AdminComponent';
-import Whiskys from './components/categories/whiskys'
 import Delivery from './components/register/userRegister/component/confirmDelivery';
-import Bebidas from "./components/categories/Bebidas";
-import Varios from "./components/categories/varios";
-import Cervezas from "./components/categories/cervezas";
-import Espumantes from "./components/categories/espumantes";
+
 
 function App() {
   return (
@@ -39,6 +36,7 @@ function App() {
         <Route component={Espumantes} exact path='/espumantes'/>
         <Route component={Cervezas} exact path='/cervezas'/>
         <Route component={Vinos} exact path='/vinos'/>
+        <Route component={Bebidas} exact path='/bebidas'/>
         {/* <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/> */}
         <Route component={ForgotPassword} exact path='/forgotPassword'/>
