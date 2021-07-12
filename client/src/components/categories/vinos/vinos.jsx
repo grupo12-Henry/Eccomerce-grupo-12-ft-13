@@ -4,14 +4,9 @@ import { getProducts } from "../../../actions/index";
 import { Link } from 'react-router-dom';
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
-<<<<<<< HEAD
-import NavCategories from "../../navCategories/navCategories";
-
-
-=======
 import { Link } from 'react-router-dom';
 import NavCategories from "../../navCategories/navCategories";
->>>>>>> main
+
 
 function Vinos() {
     const dispatch = useDispatch();
@@ -68,12 +63,8 @@ function Vinos() {
     return (
         <>
             <Nav />
-<<<<<<< HEAD
             <NavCategories />
             <StyledDiv>
-=======
-            <NavCategories/>
->>>>>>> main
                 <div className='Filtering'>
                     <button id='botonazo'className='btn btn-success' onClick={handleCategories}>CATEGORIAS</button>
                     <div className='Filters'>

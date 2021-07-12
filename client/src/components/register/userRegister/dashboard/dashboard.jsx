@@ -20,11 +20,7 @@ export default function Dashboard() {
 
     return (
         <div>
-<<<<<<< HEAD
             <div><Link to='/home'>BACK</Link></div>
-=======
-            <div><Link to='/'>BACK TO ANIME DATABASE</Link></div>
->>>>>>> 58c4f90a9e45caa53e268a861b8c97610886b860
             <h2>Profile</h2>
             <p>{error}</p>
             <strong>Email:</strong>{currentUser.email}

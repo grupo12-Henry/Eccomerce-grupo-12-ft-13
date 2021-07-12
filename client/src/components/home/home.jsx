@@ -9,12 +9,6 @@ import Pages from "./paginado";
 import NavCategories from "../navCategories/navCategories";
 
 
-<<<<<<< HEAD
-    const [allProducts, setAllProducts] = useState([]);
-    const showProducts = allProducts
-
-=======
->>>>>>> 58c4f90a9e45caa53e268a861b8c97610886b860
 
 export default function Home({ location }) {
   const dispatch = useDispatch();

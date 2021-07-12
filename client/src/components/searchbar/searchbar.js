@@ -45,10 +45,6 @@ const Auto = () => {
       dbProducts();
   }, [dispatch]);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1078ca06157d224e3d80b44d028aab96c2ab5fff
 
         return (
           <Styled>
