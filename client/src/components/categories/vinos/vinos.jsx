@@ -1,30 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../actions/index";
+import { Link } from 'react-router-dom';
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
-import { Link } from 'react-router-dom';
+import NavCategories from "../../navCategories/navCategories";
+
+
 
 function Vinos() {
     const dispatch = useDispatch();
     const product = useSelector((state) => state.products);
-    console.log(product)
-   
+    // console.log(product)
+
 
 
     const [allProducts, setAllProducts] = useState([]);
 
     const [numberPage, setnumberPage] = useState(1);
-    const initialProducts = 8;
+    const initialProducts = 9;
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
     const showProducts = allProducts.filter(el => el.type === 'Vinos').slice(conteoInicial, conteoFinal);
 
     let subCategories = []
-    product.filter(el => el.type === 'Vinos').map(e => e.subcategories.forEach( c => ((subCategories.indexOf(c) === -1) ? subCategories.push(c) : null)))
+    let counts = {}
+    product.filter(el => el.type === 'Vinos').map(e => e.subcategories.forEach(c => ((subCategories.indexOf(c) === -1) ? subCategories.push(c) : null)))
 
-    console.log(subCategories)
+
+    product.filter(el => el.type === 'Vinos').map(e => e.subcategories.forEach((el) => {
+        counts[el] = counts[el] ? (counts[el] += 1) : 1;
+    }));
+
+    const countsSorted = Object.entries(counts).sort(([, b], [_, a]) => a - b)
+
+    console.log(countsSorted)
+    // console.log(subCategories)
 
 
     useEffect(() => {
@@ -45,28 +57,32 @@ function Vinos() {
     if (numberPage < 1) setnumberPage(1);
     if (numberPage > 8) setnumberPage(8);
 
-
+    const handleCategories = () =>{
+        setAllProducts(product)
+    }
     return (
         <>
             <Nav />
+            <NavCategories />
+            <StyledDiv>
                 <div className='Filtering'>
-                    <button className='DropdownButton'>Filter</button>
+                    <button id='botonazo'className='btn btn-success' onClick={handleCategories}>CATEGORIAS</button>
                     <div className='Filters'>
-                        {subCategories.map(d => <button key={d}
-                            onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d) ) )} }>{d}</button>)}
+                        {subCategories.map(d => <button id='botonazo'className='btn btn-dark' key={d}
+                            onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d))) }}>{d} ({counts[d]})</button>)
+                        }
                     </div>
                 </div>
-            <StyledDiv>
                 <div>
                     <div className="div_container">
                         <div class="container d-flex justify-content-center mt-50 mb-50">
                             <div className=''>
-                                <button onClick={() => setnumberPage(numberPage - 1)}>BACK</button>
+                                <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
                             </div>
                             <div class="row">
                                 {showProducts &&
                                     showProducts.map(el =>
-                                     (
+                                    (
                                         <div class="col-md-4 mt-2">
                                             <div class="card">
                                                 <div class="card-body">
@@ -111,7 +127,7 @@ function Vinos() {
                                     ))}
                             </div>
                             <div className=''>
-                                <button onClick={() => setnumberPage(numberPage + 1)}>FORWARD</button>
+                                <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
                             </div>
                         </div>
                     </div>

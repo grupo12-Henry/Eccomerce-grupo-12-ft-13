@@ -4,226 +4,204 @@ const { v4: uuid } = require('uuid');
 // let id= uuid();
 
 var datab = [
-    {
-      PRODUCTOS: 'Coca-Cola 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca-500.jpg?alt=media&token=7593f731-eeec-4c89-bdf1-697530b632d0',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Light 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%201.5.jpg?alt=media&token=48f68d10-54df-45e6-a6b8-79a92309966e',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Light 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%20500.png?alt=media&token=8aebe303-2840-4513-8797-093dddd4400f',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Zero 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20zero%201.5.jpg?alt=media&token=5e110c8c-b821-4727-9ac4-007be52f52e5',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Zero 0.6L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%20Zero%20600.jpg?alt=media&token=1ba73b3f-0844-4d8f-a469-4361f309cc2f',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Sprite 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/SPRITE%201.5.jpg?alt=media&token=1952ad32-59c2-4823-a606-201bb004303b',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Sprite 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20500.jpg?alt=media&token=4a6388d6-f3ba-405f-b1c4-b13585b0da04',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Sprite Zero 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20zero.jpg?alt=media&token=fdba1d4d-ae5c-49f4-9011-53359900084a',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Fanta 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/fanta%201.5.jpg?alt=media&token=273fff40-02b3-40bc-b53e-14b51ddbd4e2',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Bon Aqua 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bon%20aqua%201.5.jpg?alt=media&token=5c537402-a1f4-4b1f-b6b2-a73280f6efa7',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Bon Aqua 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bonAqua%200.5.jpg?alt=media&token=ecd728b3-c336-4a64-8c05-4d96650f77a5',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 60,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Pepsi-Cola 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%201.5.webp?alt=media&token=c54476f5-3b26-4695-8d24-1bf8459c25f8',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: '7-Up 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%201.5.png?alt=media&token=cca94133-1cbf-45cc-8e26-63ebf0bc215e',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Mirinda 1.5 L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/MIRINDA-1.5.jpg?alt=media&token=1d11682b-df2d-4e8c-9475-839a6a17539b',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Pepsi Black 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%20zero%201.5.jpg?alt=media&token=219da780-8be3-4e8b-802c-1c98d4ab66f8',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: '7-Up Free 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%20free%201.5.jpg?alt=media&token=b9bd2487-7755-4fb7-be85-260ce37f74da',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Gatorade naranja 1L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Gatorade manzana 1.25L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 160,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'AquaFina 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%20500.jpg?alt=media&token=2d2524d0-9cb5-44c4-855d-393c3380efdd',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 50,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'AquaFina 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%201500.jpg?alt=media&token=2e2e7953-158f-40a4-bc72-3cd052b17755',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 80,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Tropicana naranja 1L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20naranja.jpg?alt=media&token=eaae8877-a6d3-424a-b761-8903e19b2456',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 75,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
+    // {
+    //   PRODUCTOS: 'Coca-Cola 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas',
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca-500.jpg?alt=media&token=7593f731-eeec-4c89-bdf1-697530b632d0',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 70,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola Light 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%201.5.jpg?alt=media&token=48f68d10-54df-45e6-a6b8-79a92309966e',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola Light 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%20500.png?alt=media&token=8aebe303-2840-4513-8797-093dddd4400f',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 70,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola Zero 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20zero%201.5.jpg?alt=media&token=5e110c8c-b821-4727-9ac4-007be52f52e5',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola Zero 0.6L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%20Zero%20600.jpg?alt=media&token=1ba73b3f-0844-4d8f-a469-4361f309cc2f',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 70,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Sprite 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/SPRITE%201.5.jpg?alt=media&token=1952ad32-59c2-4823-a606-201bb004303b',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Sprite 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20500.jpg?alt=media&token=4a6388d6-f3ba-405f-b1c4-b13585b0da04',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 70,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Sprite Zero 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20zero.jpg?alt=media&token=fdba1d4d-ae5c-49f4-9011-53359900084a',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Fanta 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/fanta%201.5.jpg?alt=media&token=273fff40-02b3-40bc-b53e-14b51ddbd4e2',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Bon Aqua 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bon%20aqua%201.5.jpg?alt=media&token=5c537402-a1f4-4b1f-b6b2-a73280f6efa7',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Bon Aqua 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bonAqua%200.5.jpg?alt=media&token=ecd728b3-c336-4a64-8c05-4d96650f77a5',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 60,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Pepsi-Cola 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%201.5.webp?alt=media&token=c54476f5-3b26-4695-8d24-1bf8459c25f8',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: '7-Up 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%201.5.png?alt=media&token=cca94133-1cbf-45cc-8e26-63ebf0bc215e',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Mirinda 1.5 L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/MIRINDA-1.5.jpg?alt=media&token=1d11682b-df2d-4e8c-9475-839a6a17539b',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Pepsi Black 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%20zero%201.5.jpg?alt=media&token=219da780-8be3-4e8b-802c-1c98d4ab66f8',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: '7-Up Free 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%20free%201.5.jpg?alt=media&token=b9bd2487-7755-4fb7-be85-260ce37f74da',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Gatorade naranja 1L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Gatorade manzana 1.25L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 160,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'AquaFina 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%20500.jpg?alt=media&token=2d2524d0-9cb5-44c4-855d-393c3380efdd',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 50,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'AquaFina 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%201500.jpg?alt=media&token=2e2e7953-158f-40a4-bc72-3cd052b17755',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 80,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Tropicana naranja 1L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20naranja.jpg?alt=media&token=eaae8877-a6d3-424a-b761-8903e19b2456',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 75,
+    //   CATEGORIA: 'Bebidas'
+    // },
     {
       PRODUCTOS: 'Tropicana manzana 1L',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20manzana.jpg?alt=media&token=56101870-3f87-404e-b750-ca36bfbfa897',
@@ -887,7 +865,7 @@ var datab = [
     },
     {
       PRODUCTOS: 'Trumpeter Reserve Blend',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Trumpeter%20Reserve%20Blend.jpg?alt=media&token=b913f1a1-914c-451e-a26e-43efa9411e3a',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Trumpeter%20Reserve%20Blend.jpg?alt=media&token=947cae00-b8ec-4fe2-8521-fe58298ccdca',
       Fabricante: 'BODEGA LA RURAL',
       Detalle: 'ACA LA INFO',
       STOCK: 24,
