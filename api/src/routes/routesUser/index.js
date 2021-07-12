@@ -1,7 +1,7 @@
 const { Router } = require('express');
 //modelos acá:
 const router = Router();
-const { Client, Order, Product, Shipping } = require('../../db');
+const { Client, Order, Product, Shipping , order_detail} = require('../../db');
 const { v4: uuidv4 } = require('uuid');
 const Sequelize = require('sequelize');
 const order = require('../../models/order');
@@ -40,26 +40,75 @@ router.post('/enviosPost', async (req, res) => {
 
 //GET PEDIDOS'/pedidos/:id'  (donde id es el id de cliente)
 //te devuelvo los pedidos especificos para un cliente y el estado del envio de cada pedido
+//FALTA PONERLE QUE MUESTRE EL DETALLE DE LOS PEDIDOS 
 router.get('/pedidos/:id',async (req, res)=>{
   const {id} = req.params;
   try {
     console.log('entro al try')
    const clientPedidos = await Client.findAll({
-    include:[{
+    include:{
      model: Order,
      attributes:['date','ticket'],
-     include:{model: Shipping,attributes:['state']}
-    }],
+     include:[{model: Shipping,attributes:['state']},
+             {model: Product,atributes:['name','price','image']}],
+    //  include:{Product} ,
+    // //  include:{model: Shipping,attributes:['state']},
+    //  include:{model: Shipping,attributes:['state']}
+    },
    attributes: ['name', 'lastName'],
    where:{ id: id }
   })
-  console.log(clientPedidos)
+  console.log(clientPedidos[0].dataValues.orders[0])
+  // console.log(clientPedidos.options.orders)
+  // console.log(clientPedidos.orders.order)
   clientPedidos?res.send(clientPedidos):res.sendStatus(400);
   } catch (error) {
     res.send(error).status(404);
   }
 })
 
+router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las llamadas
+  const id = req.params.id
+  try {
+      const user = await Client.findByPk(id, {
+          include: {
+              model: Order,
+              include:[{model: Shipping,attributes:['state']},
+             {model: Product,atributes:['name','price','image']}],
+             attributes: {
+              exclude: ['createdAt', 'updatedAt']
+          }        
+          }
+      })
+
+      user ? res.send(user) : res.sendStatus(400)
+
+  } catch (error) {
+      res.send(error).status(404)
+  }
+})
+
+
+router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las llamadas
+  const id = req.params.id
+  try {
+      const user = await Client.findByPk(id, {
+          include: {
+              model: Order,
+              include:{model: Shipping,attributes:['state']},
+              include:{model: Product},
+              attributes: {
+                  exclude: ['createdAt', 'updatedAt']
+              }
+          }
+      })
+
+      user ? res.send(user) : res.sendStatus(400)
+
+  } catch (error) {
+      res.send(error).status(404)
+  }
+})
 
 // -Al hacer un GET a '/users/:id' me deberá permitir ver mi información de usuario registrada.
 //trae el detalle de un producto -->LISTO
@@ -138,22 +187,22 @@ router.get('/pedidos',async (req, res)=>{
 // put envio => solo admin
 // put/productos x ej /admin
 
-router.post('/orderPost', async (req, res) => {
-   //ver como hacer para meter los productos 
-    const { id, ticket} = req.body;
-    try {
-      const user = await Client.findByPk(id)
-      console.log(user)
-      const newOrder = await Order.create({
-       ticket: ticket
-     })   
-      newOrder.setClient(user)
-      console.log('Pedido creado y asociado al cliente')
-      return res.send(newOrder)
-      } catch(error){
-       res.send(error).status(404);
-    }
-  })
+// router.post('/orderPost', async (req, res) => {
+//    //ver como hacer para meter los productos 
+//     const { id, ticket} = req.body;
+//     try {
+//       const user = await Client.findByPk(id)
+//       console.log(user)
+//       const newOrder = await Order.create({
+//        ticket: ticket
+//      })   
+//       newOrder.setClient(user)
+//       console.log('Pedido creado y asociado al cliente')
+//       return res.send(newOrder)
+//       } catch(error){
+//        res.send(error).status(404);
+//     }
+//   })
 
 
 
