@@ -6,7 +6,7 @@ import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
 import NavCategories from "../../navCategories/navCategories";
 
-function Varios() {
+function Bebidas() {
     const dispatch = useDispatch();
     const product = useSelector((state) => state.products);
     console.log(product)
@@ -20,11 +20,10 @@ function Varios() {
             onClick={(e) => {e.preventDefault(); allProducts.filter(d=>{d.name.includes(e)})}}>{d}</button>)}
         </div>
       </div>
+
+
     
     */
-
-    // const categoriesEspumantes = ['Brut Nature', 'Extra Brut', 'Brut', 'Demisec', 'Moscato', 'Dulces']
-
 
     const [allProducts, setAllProducts] = useState([]);
 
@@ -33,7 +32,7 @@ function Varios() {
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
-    const showProducts = allProducts.filter(el => el.type === 'varios').slice(conteoInicial, conteoFinal);
+    let showProducts = allProducts.filter(el => el.type === 'Bebidas').slice(conteoInicial, conteoFinal);
 
 
     useEffect(() => {
@@ -50,30 +49,25 @@ function Varios() {
         dbProducts();
     }, [product]);
 
-
     if (numberPage < 1) setnumberPage(1);
-    if (numberPage > 2) setnumberPage(2);
+    if (numberPage > 25) setnumberPage(25);
+
+    
 
 
     return (
         <>
-            <Nav />
-            <NavCategories/>
-                {/* <div className='Filtering'>
-                    <button className='DropdownButton'>Filter</button>
-                    <div className='Filters'>
-                        {categoriesEspumantes.map(d => <button key={d}
-                            onClick={(e) => { e.preventDefault(); setAllProducts(allProducts.filter(el => el.name.includes(d) ) )} }> {d} </button>)}
-                    </div>
-                </div> */}
+         <Nav />
+            <NavCategories />
             <StyledDiv>
                 <div>
                     <div className="div_container">
                         <div class="container d-flex justify-content-center mt-50 mb-50">
                             <div className=''>
-                            <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
+                                <button onClick={() => setnumberPage(numberPage - 1)}>BACK</button>
                             </div>
                             <div class="row">
+                                {console.log(1)}
                                 {showProducts &&
                                     showProducts.map(el =>
                                     (
@@ -121,7 +115,7 @@ function Varios() {
                                     ))}
                             </div>
                             <div className=''>
-                            <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
+                                <button onClick={() => setnumberPage(numberPage + 1)}>FORWARD</button>
                             </div>
                         </div>
                     </div>
@@ -130,4 +124,4 @@ function Varios() {
         </>
     );
 }
-export default Varios;
+export default Bebidas;

@@ -5,7 +5,13 @@ export const StyledDiv = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+<<<<<<< HEAD
+
+    justify-content:space-around;
+
+=======
     justify-content:center;
+>>>>>>> 1078ca06157d224e3d80b44d028aab96c2ab5fff
     width: 100%;
 	height: 20%;
 	overflow: hidden;

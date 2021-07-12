@@ -12,6 +12,8 @@ const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
   left: '50%',
+  width: '280px',
+  height: '400px',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
   padding: '50px',
@@ -28,14 +30,17 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 }
 
-export default function NavModal({open,children,onClose}) {
+export default function NavModal({ open, children, onClose }) {
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
   const { googleLogin } = useAuth()
 
+  const { loginGoogle } = useAuth()
+
+
   if (!open) return null;
 
-  const handleSignup= (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
     setSignup(true);
   };
@@ -45,7 +50,7 @@ export default function NavModal({open,children,onClose}) {
     setLogin(true);
   };
 
-  const handleClose = (e) =>{
+  const handleClose = (e) => {
     e.preventDefault();
     setLogin(false);
     setSignup(false);
@@ -66,15 +71,14 @@ export default function NavModal({open,children,onClose}) {
     <StyledDiv>
         <div style={OVERLAY_STYLES}>
         <div style={MODAL_STYLES}>
-      <div>
-        {children}
-        {signup === true ? ( <SignUp />) : null}
-        {login === true ? (<Login />) : null}
-      </div>
-        <div className='div_button'>
-          <button  class="btn btn-danger" margin-right='1rem' width='3rem' onClick={handleClose}><CloseIcon/></button>
-        </div>
-        { signup === true || login === true ? (<button className="btn btn-dark" onClick={handleBackClose}>Volver</button>) :
+          <div>
+            {children}
+            {signup === true ? (<SignUp />) : null}
+            {login === true ? (<Login />) : null}
+          </div>
+
+          <button onClick={handleClose}>X</button>
+        { signup === true || login === true ? (<button onClick={handleBackClose}>Back</button>) :
           (
             <div class="btn-group-vertical" role="group" aria-label="Basic outlined example">
               <button class="btn btn-primary" onClick={handleSignup}>
@@ -89,10 +93,10 @@ export default function NavModal({open,children,onClose}) {
               </div>
           )
         }
-        
         </div>
       </div>
     </StyledDiv>,
     document.getElementById('portal')
-)
+  )
 }
+

@@ -4,6 +4,7 @@ import { getProducts } from "../../../actions/index";
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
+import NavCategories from "../../navCategories/navCategories";
 
 function Whiskys () {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function Whiskys () {
     const [allProducts, setAllProducts] = useState([]);
 
     const [numberPage, setnumberPage] = useState(1);
-    const initialProducts = 8;
+    const initialProducts = 9;
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
@@ -56,6 +57,7 @@ function Whiskys () {
     return (
         <>
             <Nav />
+            <NavCategories/>
                 <div className='Filtering'>
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>
@@ -80,10 +82,10 @@ function Whiskys () {
                                                     <div class="card-img-actions">
                                                         <Link to={`/detail/${el.id}`}>
                                                             <img
-                                                                src={el.image}
+                                                               src={el.image}
                                                                 class="card-img img-fluid"
                                                                 height="100"
-                                                                alt=""
+                                                                alt=''
                                                             />
                                                         </Link>
                                                     </div>

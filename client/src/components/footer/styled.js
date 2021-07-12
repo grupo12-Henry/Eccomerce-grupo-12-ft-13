@@ -19,7 +19,7 @@ export const StyledDiv = styled.div`
 }
 .div_logo {
     margin-bottom: 4%;
-    margin-top: 1%;
+    margin-top: 15%;
     margin-left: 10%;
     margin-right: 10%;
     font-size: 15px;

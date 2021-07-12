@@ -45,6 +45,10 @@ const Auto = () => {
       dbProducts();
   }, [dispatch]);
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1078ca06157d224e3d80b44d028aab96c2ab5fff
 
         return (
           <Styled>
@@ -68,7 +72,7 @@ const Auto = () => {
               <div className="dataResult">
                 {filteredData.slice(0, 5).map((value, key) => {
                   return (
-                    <a className="dataItem" href = {`/detail/${value.id}`}>
+                    <a className="dataItem" href={`/detail/${value.id}`}>
                        
                       <p>{value.name} </p>
                     </a>

@@ -51,18 +51,18 @@ Shipping.belongsTo(Order);
 
 Invoice.belongsTo(Order);
 Order.hasOne(Invoice);
-
+//prueba
 Product.belongsToMany(Category, { through: 'product_category',timestamps: false });
 Category.belongsToMany(Product, { through: 'product_category',timestamps: false });
 
 const order_detail = sequelize.define('order_detail', {
   cantidad: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    
   },
   subTotal:{
     type: DataTypes.INTEGER,
-    allowNull: false,
+    
   }
 });
 
@@ -70,6 +70,7 @@ Order.belongsToMany(Product, { through: order_detail,timestamps: false });
 Product.belongsToMany(Order, { through: order_detail,timestamps: false });
 
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
+  ...sequelize.models,
+  order_detail, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };
