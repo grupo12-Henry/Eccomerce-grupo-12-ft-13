@@ -17,7 +17,12 @@ import { AuthProvider } from "../src/contexts/AuthContext";
 import PrivateRouteUser from './components/register/userRegister/privateRouteUser/privateRouteUser';
 import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteAdmin/privateRouteAdmin";
 import AdminComponent from './components/register/adminRegister/component/AdminComponent';
+import Whiskys from './components/categories/whiskys'
 import Delivery from './components/register/userRegister/component/confirmDelivery';
+import Bebidas from "./components/categories/Bebidas";
+import Varios from "./components/categories/varios";
+import Cervezas from "./components/categories/cervezas";
+import Espumantes from "./components/categories/espumantes";
 
 function App() {
   return (

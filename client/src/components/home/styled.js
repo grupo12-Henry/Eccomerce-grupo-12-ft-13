@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 const StyledDiv = styled.div`
 display: flex;
+max-width:80rem;
+margin-left: -10rem;
+margin right: 0;
 
 .mt-50 {
     margin-top: 50px
@@ -38,7 +41,8 @@ display: flex;
 }
 
 .card-img {
-    width: 350px
+    object-fit: scale-down;
+    max-height:11rem;
 }
 
 .star {

@@ -4,13 +4,14 @@ const { DataTypes, UUID } = require('sequelize');
 module.exports = (sequelize) => {
   sequelize.define('category', {
     id:{
-      type: DataTypes.UUID,
-      allowNull: false,
-      primaryKey: true,
-    },
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
       detail:{
         type: DataTypes.TEXT,
-        allowNull: false,
+      
       }
   },{timestamps: false,})
 }
