@@ -4,6 +4,70 @@ import styled from 'styled-components';
 const StyledDiv = styled.div`
 display: flex;
 
+.mt-50 {
+    margin-top: 50px
+}
+
+.mb-50 {
+    margin-bottom: 50px
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .1875rem
+}
+
+.card-img-actions {
+    position: relative
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    text-align: center
+}
+
+.card-img {
+    object-fit: scale-down;
+    max-height:11rem;
+}
+
+.star {
+    color: red
+}
+
+.bg-cart {
+    background-color: orange;
+    color: #fff
+}
+
+.bg-cart:hover {
+    color: #fff
+}
+
+.bg-buy {
+    background-color: green;
+    color: #fff;
+    padding-right: 29px
+}
+
+.bg-buy:hover {
+    color: #fff
+}
+
+a {
+    text-decoration: none !important
+}
 
 .promo{
     
@@ -19,7 +83,9 @@ display: flex;
     height: 100%;
     width: 100%;
     align-items: center;
-    margin-left: 25%;
+    margin-left: 10%;
+    position: relative;
+    bottom: 5%;
     box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
 
 }
@@ -42,6 +108,7 @@ display: flex;
     height: 200px;
     width: 200px;
 }
+
 
 `
 export default StyledDiv
