@@ -36,6 +36,9 @@ module.exports = (sequelize) => {
     maker:{
       type: DataTypes.STRING,
       allowNull: false
+    },
+    subcategories:{
+      type: DataTypes.ARRAY(DataTypes.STRING),
     }
   });
 };

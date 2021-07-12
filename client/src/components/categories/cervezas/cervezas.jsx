@@ -5,12 +5,13 @@ import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
 
-function Vinos() {
+
+function Cervezas () {
     const dispatch = useDispatch();
     const product = useSelector((state) => state.products);
     console.log(product)
     /*
-    
+
   <div className='Filtering'>
           <button className='DropdownButton'>Filter</button>
           <div className='Filters'>
@@ -23,7 +24,8 @@ function Vinos() {
 
     
     */
-    const categoriesWhines = ['Malbec', 'Tinto', 'Torrontes', 'Blanco', 'Cabernet']
+
+    // const categoriesWhines = ['Malbec', 'Tinto', 'Torrontes', 'Blanco', 'Cabernet']
 
 
     const [allProducts, setAllProducts] = useState([]);
@@ -33,7 +35,7 @@ function Vinos() {
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
-    const showProducts = allProducts.filter(el => el.type === 'Vinos').slice(conteoInicial, conteoFinal);
+    const showProducts = allProducts.filter(el => el.type === 'cervezas').slice(conteoInicial, conteoFinal);
 
 
     useEffect(() => {
@@ -52,19 +54,19 @@ function Vinos() {
 
 
     if (numberPage < 1) setnumberPage(1);
-    if (numberPage > 8) setnumberPage(8);
+    if (numberPage > 2) setnumberPage(2);
 
 
     return (
         <>
             <Nav />
-                <div className='Filtering'>
+                {/* <div className='Filtering'>
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>
                         {categoriesWhines.map(d => <button key={d}
-                            onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.name.includes(d) ) )} }> {d} </button>)}
+                            onClick={(e) => { e.preventDefault(); setAllProducts(allProducts.filter(el => el.name.includes(d) ) )} }> {d} </button>)}
                     </div>
-                </div>
+                </div> */}
             <StyledDiv>
                 <div>
                     <div className="div_container">
@@ -72,7 +74,7 @@ function Vinos() {
                             <div className=''>
                                 <button onClick={() => setnumberPage(numberPage - 1)}>BACK</button>
                             </div>
-                            <div class="row">
+                            <div class="row" >
                                 {showProducts &&
                                     showProducts.map(el =>
                                     (
@@ -129,4 +131,4 @@ function Vinos() {
         </>
     );
 }
-export default Vinos;
+export default Cervezas;

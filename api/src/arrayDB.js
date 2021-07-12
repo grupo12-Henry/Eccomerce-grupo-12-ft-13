@@ -4,204 +4,204 @@ const { v4: uuid } = require('uuid');
 // let id= uuid();
 
 var datab = [
-    {
-      PRODUCTOS: 'Coca-Cola 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Coca-Cola 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca-500.jpg?alt=media&token=7593f731-eeec-4c89-bdf1-697530b632d0',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Light 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%201.5.jpg?alt=media&token=48f68d10-54df-45e6-a6b8-79a92309966e',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Light 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%20500.png?alt=media&token=8aebe303-2840-4513-8797-093dddd4400f',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Zero 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20zero%201.5.jpg?alt=media&token=5e110c8c-b821-4727-9ac4-007be52f52e5',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Zero 0.6L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%20Zero%20600.jpg?alt=media&token=1ba73b3f-0844-4d8f-a469-4361f309cc2f',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Sprite 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/SPRITE%201.5.jpg?alt=media&token=1952ad32-59c2-4823-a606-201bb004303b',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Sprite 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20500.jpg?alt=media&token=4a6388d6-f3ba-405f-b1c4-b13585b0da04',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Sprite Zero 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20zero.jpg?alt=media&token=fdba1d4d-ae5c-49f4-9011-53359900084a',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Fanta 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/fanta%201.5.jpg?alt=media&token=273fff40-02b3-40bc-b53e-14b51ddbd4e2',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Bon Aqua 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bon%20aqua%201.5.jpg?alt=media&token=5c537402-a1f4-4b1f-b6b2-a73280f6efa7',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Bon Aqua 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bonAqua%200.5.jpg?alt=media&token=ecd728b3-c336-4a64-8c05-4d96650f77a5',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 60,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Pepsi-Cola 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%201.5.webp?alt=media&token=c54476f5-3b26-4695-8d24-1bf8459c25f8',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: '7-Up 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%201.5.png?alt=media&token=cca94133-1cbf-45cc-8e26-63ebf0bc215e',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Mirinda 1.5 L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/MIRINDA-1.5.jpg?alt=media&token=1d11682b-df2d-4e8c-9475-839a6a17539b',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Pepsi Black 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%20zero%201.5.jpg?alt=media&token=219da780-8be3-4e8b-802c-1c98d4ab66f8',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: '7-Up Free 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%20free%201.5.jpg?alt=media&token=b9bd2487-7755-4fb7-be85-260ce37f74da',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Gatorade naranja 1L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Gatorade manzana 1.25L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 160,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'AquaFina 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%20500.jpg?alt=media&token=2d2524d0-9cb5-44c4-855d-393c3380efdd',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 50,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'AquaFina 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%201500.jpg?alt=media&token=2e2e7953-158f-40a4-bc72-3cd052b17755',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 80,
-      CATEGORIA: 'Bebidas'
-    },
-    {
-      PRODUCTOS: 'Tropicana naranja 1L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20naranja.jpg?alt=media&token=eaae8877-a6d3-424a-b761-8903e19b2456',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 75,
-      CATEGORIA: 'Bebidas'
-    },
+    // {
+    //   PRODUCTOS: 'Coca-Cola 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas',
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca-500.jpg?alt=media&token=7593f731-eeec-4c89-bdf1-697530b632d0',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 70,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola Light 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%201.5.jpg?alt=media&token=48f68d10-54df-45e6-a6b8-79a92309966e',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola Light 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%20500.png?alt=media&token=8aebe303-2840-4513-8797-093dddd4400f',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 70,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola Zero 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20zero%201.5.jpg?alt=media&token=5e110c8c-b821-4727-9ac4-007be52f52e5',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Coca-Cola Zero 0.6L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%20Zero%20600.jpg?alt=media&token=1ba73b3f-0844-4d8f-a469-4361f309cc2f',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 70,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Sprite 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/SPRITE%201.5.jpg?alt=media&token=1952ad32-59c2-4823-a606-201bb004303b',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Sprite 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20500.jpg?alt=media&token=4a6388d6-f3ba-405f-b1c4-b13585b0da04',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 70,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Sprite Zero 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20zero.jpg?alt=media&token=fdba1d4d-ae5c-49f4-9011-53359900084a',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Fanta 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/fanta%201.5.jpg?alt=media&token=273fff40-02b3-40bc-b53e-14b51ddbd4e2',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Bon Aqua 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bon%20aqua%201.5.jpg?alt=media&token=5c537402-a1f4-4b1f-b6b2-a73280f6efa7',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Bon Aqua 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bonAqua%200.5.jpg?alt=media&token=ecd728b3-c336-4a64-8c05-4d96650f77a5',
+    //   Fabricante: 'The Coca-Cola Company',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 60,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Pepsi-Cola 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%201.5.webp?alt=media&token=c54476f5-3b26-4695-8d24-1bf8459c25f8',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: '7-Up 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%201.5.png?alt=media&token=cca94133-1cbf-45cc-8e26-63ebf0bc215e',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Mirinda 1.5 L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/MIRINDA-1.5.jpg?alt=media&token=1d11682b-df2d-4e8c-9475-839a6a17539b',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Pepsi Black 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%20zero%201.5.jpg?alt=media&token=219da780-8be3-4e8b-802c-1c98d4ab66f8',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: '7-Up Free 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%20free%201.5.jpg?alt=media&token=b9bd2487-7755-4fb7-be85-260ce37f74da',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 100,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Gatorade naranja 1L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 125,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Gatorade manzana 1.25L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 160,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'AquaFina 0.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%20500.jpg?alt=media&token=2d2524d0-9cb5-44c4-855d-393c3380efdd',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 50,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'AquaFina 1.5L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%201500.jpg?alt=media&token=2e2e7953-158f-40a4-bc72-3cd052b17755',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 80,
+    //   CATEGORIA: 'Bebidas'
+    // },
+    // {
+    //   PRODUCTOS: 'Tropicana naranja 1L',
+    //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20naranja.jpg?alt=media&token=eaae8877-a6d3-424a-b761-8903e19b2456',
+    //   Fabricante: 'PepsiCo',
+    //   Detalle: 'ACA LA INFO',
+    //   STOCK: 24,
+    //   PRECIO: 75,
+    //   CATEGORIA: 'Bebidas'
+    // },
     {
       PRODUCTOS: 'Tropicana manzana 1L',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20manzana.jpg?alt=media&token=56101870-3f87-404e-b750-ca36bfbfa897',
@@ -209,7 +209,8 @@ var datab = [
       Detalle: 'ACA LA INFO',
       STOCK: 24,
       PRECIO: 75,
-      CATEGORIA: 'Bebidas'
+      CATEGORIA: 'Bebidas',
+      SUBCATEGORIAS: []
     },
     {
       PRODUCTOS: 'The Glenlivet 12 años 700 ml',
@@ -218,7 +219,8 @@ var datab = [
       Detalle: 'The Glenlivet 12 Años Single Malt es un referente mundial de la categoría Scotch Single Malt, considerado también como el whisky Single Malt "Patrón" de la región Speyside. De color dorado claro. Elegante y balanceada nariz, con notas frutadas, delicada fragancia floral, miel y leve ahumado. Suave, balanceado, frutado y floral. De final liso, cálido y elegante.',
       STOCK: 24,
       PRECIO: 4900,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Macallan Double Cask 12 Años 700 ml',
@@ -227,7 +229,8 @@ var datab = [
       Detalle: 'La obsesión con la calidad ha sido la impronta de The Macallan desde que Alexander Reid la fundara en una meseta situada sobre el río Spey, en el noreste de Escocia. Macallan 12 años Double Cask es la asociación perfecta de barricas de roble americano y europeo sazonadas con jerez oloroso para crea el carácter acogedor y distintivo de este armonioso single malt.',
       STOCK: 24,
       PRECIO: 9393,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Macallan Triple Cask 12 Años 700 ml',
@@ -236,7 +239,8 @@ var datab = [
       Detalle: 'La obsesión con la calidad ha sido la impronta de The Macallan desde que Alexander Reid la fundara en una meseta situada sobre el río Spey, en el noreste de Escocia. Macallan 12 años Triple Cask es la asociación perfecta de barricas de roble americano y europeo sazonadas con jerez oloroso para crea el carácter acogedor y distintivo de este armonioso single malt.',
       STOCK: 24,
       PRECIO: 8945,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Ballantines Finest 1000 ml',
@@ -245,7 +249,8 @@ var datab = [
       Detalle: 'Ballantine’s es un whisky escocés blended creado en 1827 por George Ballantine, un empresario que inventó un método propio para producir un whisky de la mejor calidad. Su color dorado claro y su sabor inconfundible provienen de una compleja mezcla de whiskies de malta y cereales cuidadosamente seleccionados. Todos se dejan añejar durante varios años en barricas de gran calidad.',
       STOCK: 24,
       PRECIO: 1653,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Chivas Regal 18 años 750 ml',
@@ -254,7 +259,8 @@ var datab = [
       Detalle: 'Whisky premium escocés, mezcla de las mejores maltas de Speyside. 18 años de envejecimiento en barricas de roble francés. Sabor balanceado a miel y manzana madura. ',
       STOCK: 24,
       PRECIO: 7779,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Chivas Regal 12 años 1000 ml',
@@ -263,7 +269,8 @@ var datab = [
       Detalle: 'Es una mezcla de los mejores whiskies con una ola de malta y granos madurados durante al menos 12 años. Los barriles de jerez imprimen un color profundo y rico al whisky, mientras el barril de bourbon le da un tono más dorado. Pero todo depende de la mezcla. ',
       STOCK: 24,
       PRECIO: 3369,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Chivas Regal EXTRA 13 Años 750 ml',
@@ -272,7 +279,8 @@ var datab = [
       Detalle: 'Es una mezcla de los mejores whiskies con una ola de malta y granos madurados durante al menos 12 años. Durante su ultimo año es terminado en barricas de tequila. ',
       STOCK: 24,
       PRECIO: 3315,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Johnnie Walker Red Label 1000 ml',
@@ -281,7 +289,8 @@ var datab = [
       Detalle: 'ACA LA INFO',
       STOCK: 24,
       PRECIO: 2027,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS:['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Johnnie Walker Black Label 750 ml',
@@ -290,7 +299,8 @@ var datab = [
       Detalle: 'Mezcla que combina whiskies ligeros de la costa este escocesa y whiskies ahumados de la costa oeste. En boca se perciben sabores de manzana y pera fresca con notas de vainilla. Final persistente y ahumado.',
       STOCK: 24,
       PRECIO: 2883,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Johnnie Walker Black Label 1000 ml',
@@ -299,7 +309,8 @@ var datab = [
       Detalle: 'ACA LA INFO',
       STOCK: 24,
       PRECIO: 3490,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Johnnie Walker Green Label 750 ml',
@@ -308,7 +319,8 @@ var datab = [
       Detalle: 'Cuando hablamos de la etiqueta negra de JW encontramos un whisky blended muy redondo donde es evidente la presencia de los whiskys de grano pero muy matizados con notas de especias dulces, notas oscuras y ahumadas',
       STOCK: 24,
       PRECIO: 6879,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Johnnie Walker Double Black 750 ml',
@@ -317,7 +329,8 @@ var datab = [
       Detalle: 'Johnnie Walker Double Black está inspirado en los sabores icónicos de Johnnie Walker Black Label, acentuándolos para crear una mezcla con una intensidad sin precedentes. Influenciado por los poderosos whiskies de la costa oeste y la región de las Islas, Johnnie Walker Double Black se disfruta mejor con agua para liberar sus complejas notas de especias ardientes y humo. Una mezcla increíble para compartir sin importar la ocasión.',
       STOCK: 24,
       PRECIO: 4190,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Johnnie Walker Gold Reserve 750 ml',
@@ -326,7 +339,8 @@ var datab = [
       Detalle: 'Johnnie Walker Gold Label Reserve es mejor conocida por su suavidad cremosa y lujosa. Apertura con un estallido de néctar aromático, antes de profundizar, en tonos más aterciopelados y melosos; este galardonado whisky da paso a una persistente textura de roble en el acabado. Johnnie Walker Gold Label Reserve transforma cualquier momento de celebración en algo verdaderamente extraordinario.',
       STOCK: 24,
       PRECIO: 5900,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Johnnie Walker Blue Label 750 ml',
@@ -335,7 +349,8 @@ var datab = [
       Detalle: 'JOHNNIE WALKER BLUE LABEL pone las reglas, con capas y capas de sabor y raras barricas seleccionadas a mano de todas las regiones de destilación de Escocia. Sus aromas son influenciados por el humo del oeste y los ricos whiskies dulces del este.',
       STOCK: 24,
       PRECIO: 24300,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'J&B 750 ml',
@@ -344,7 +359,8 @@ var datab = [
       Detalle: 'El corazón de J&B Rare es formado por Speyside Malt Whiskies. Ellos proporcionan el sabor a fruta, calidad de frescura que podés degustar, y dar a J&B su color claro. Speyside es reconocida como la mejor zona en Escocia para la fabricación de malta.',
       STOCK: 24,
       PRECIO: 1383,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Vat 69 750 ml',
@@ -353,7 +369,8 @@ var datab = [
       Detalle: 'Las barricas utilizadas para el envejecimiento de los whiskies de VAT 69 todavía se eligen con el mismo cuidado que mantenía William Sanderson, su fundador en 1882. Los whiskies son madurados en barricas, que fueron previamente utilizadas para bourbon americano o jerez español. Las maltas de las destilerías de Clynelish y Ord representan el estilo más auténtico de la región de las Highlands escocesas y están en el corazón del blend de VAT 69.',
       STOCK: 24,
       PRECIO: 487,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'White Horse 750 ml',
@@ -362,7 +379,8 @@ var datab = [
       Detalle: 'Blend 8 años de más de 35 whiskies de malta y grano, siendo su corazón 3 single malts: Lagavulin, Craigellachie y Glen Elgin. Sobresale por la forma singular de su botella, su etiqueta tradicional y su nombre, recibido de una histórica posada de Edimburgo fundada en 1742.Con un bouquet muy sutil, las notas mas sobresalientes recuerdan directamente al roble, luego se aprecian terrosas, algo animales, minerales y aceitosas, sin que sea un espectro de notas muy atractivo.',
       STOCK: 24,
       PRECIO: 737,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Escoces', 'Importado']
     },
     {
       PRODUCTOS: 'Jack Daniels 750 ml',
@@ -371,7 +389,8 @@ var datab = [
       Detalle: 'Ningún barril es idéntico en color, aroma y sabor. Debido a una posición diferente en las plantas altas de los almacenes, el tiempo de maduración y la individualidad de la madera de roble blanco, cada barril desarrolla un carácter único. Solo después de la elección estricta de nuestro Maestro Destilador, Jeff Arnett, y su equipo de degustación, los mejores barriles serán seleccionados para ser Single Barrel.',
       STOCK: 24,
       PRECIO: 4327,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['EEUU', 'Importado']
     },
     {
       PRODUCTOS: 'Jack Daniels Honey 750 ml',
@@ -380,7 +399,8 @@ var datab = [
       Detalle: 'Entre sus principales características el Whisky Jack Daniel´s Honey destaca por su auténtico toque de miel. Además de que su maridaje te permite beberlo congelado en un shot, mezclado con agua mineral o refresco. Originario de Estados Unidos, fue la región de Tennessee la que lo vio nacer.',
       STOCK: 24,
       PRECIO: 4327,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['EEUU', 'Importado']
     },
     {
       PRODUCTOS: 'Jameson Caskmates Ipa 750 ml',
@@ -389,7 +409,8 @@ var datab = [
       Detalle: 'OLFATO: Floral, lúpulo de hierbas y pomelo. Complementario con madera y un poco de nuez. GUSTO: Lúpulo y cítricos livianos con dulces notas hierbas y tonos ligeramente picantes. La persistencia de la fruta fresca y el lúpulo dan paso a la cebada crujiente y suave.',
       STOCK: 24,
       PRECIO: 1885,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Irlandes', 'Importado']
     },
     {
       PRODUCTOS: 'Jameson 1000 ml',
@@ -398,7 +419,8 @@ var datab = [
       Detalle: 'El Whiskey Irlandés Jameson es una mezcla de whiskies de alambique y de grano, es tan versátil como suave debido a su triple destilacion. Es un perfecto equilibrio de notas especiadas, de nuez y vainilla con toques de jerez dulce y la suavidad excepcional, no ahumado.',
       STOCK: 24,
       PRECIO: 2190,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Irlandes', 'Importado']
     },
     {
       PRODUCTOS: 'Old Smuggler 1000 ml',
@@ -407,7 +429,8 @@ var datab = [
       Detalle: 'Old Smuggler es una reconocida marca de whisky propiedad desde el año 2006 del Gruppo Campari. Es un whisky escocés fino, cuya primer producción data del año 1835 y que hasta el día de hoy se sigue produciendo con el clásico proceso de destilación empleado en Escocia en el siglo 18.',
       STOCK: 24,
       PRECIO: 397,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Nacional']
     },
     {
       PRODUCTOS: 'Blenders Pride 1000 ml',
@@ -416,7 +439,8 @@ var datab = [
       Detalle: 'Blenders Pride es un whisky elaborado a base de maltas provenientes de Escocia añejadas por un mínimo de 3 años, combinadas con whiskies de grano añejos locales. De color dorado pálido, gracias a su maduración en barricas de roble.',
       STOCK: 24,
       PRECIO: 463,
-      CATEGORIA: 'Whiskys'
+      CATEGORIA: 'Whiskys',
+      SUBCATEGORIAS: ['Nacional']
     },
     {
       PRODUCTOS: 'Campari 750',
@@ -425,7 +449,8 @@ var datab = [
       Detalle: 'Fue Gaspare Campari el que inventó la bebida que lleva su nombre. En 1867 solía agasajar a sus clientes en su café de Milán con un aperitivo elaborado a base de hierbas y cortezas de naranjas amargas. Aunque se conocen los ingredientes, la fórmula exacta que empleaba Gaspar se mantiene aún hoy en secreto.',
       STOCK: 24,
       PRECIO: 750,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Aperitivos']
     },
     {
       PRODUCTOS: 'Gin Beefeater 750',
@@ -434,7 +459,8 @@ var datab = [
       Detalle: 'Beefeater es el gin Premium más exportado del mundo, su distinguido sabor se puede disfrutar en más de 170 países. Beefeater fue creado en 1820 por James Burrough, cuya receta secreta se sigue utilizando en nuestros días.',
       STOCK: 24,
       PRECIO: 3100,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Bebidas Blancas']
     },
     {
       PRODUCTOS: 'Gin Apostoles 750',
@@ -443,7 +469,8 @@ var datab = [
       Detalle: 'APÓSTOLES es el primer gin premium de latinoamérica. Sus botánicos principales son las hojas frescas de yerba mate, pieles de pomelo rosado, eucalipto y menta peperina. En el pueblo de Apóstoles en Misiones fué la primera plantación y es hoy la capital de la yerba mate en la Argentina',
       STOCK: 24,
       PRECIO: 2340,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Bebidas Blancas']
     },
     {
       PRODUCTOS: 'Gin Bombay 750ml',
@@ -452,7 +479,8 @@ var datab = [
       Detalle: 'Ginebra Bombay Original es una ginebra de 40º de alcohol fabricada en Inglaterra. El sabor de esta ginebra es el de una ginebra clásica, ligeramente seca y con un sutil acabado a enebro. Ginebra Bombay Sapphire es una ginebra de 40º de alcohol elaborado con el exclusivo alambique de cobre Carterhead.',
       STOCK: 24,
       PRECIO: 2630,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Bebidas Blancas']
     },
     {
       PRODUCTOS: 'Vodka Absolut 750ml',
@@ -461,7 +489,8 @@ var datab = [
       Detalle: 'ABSOLUT VODKA está elaborado exclusivamente con ingredientes naturales, y a diferencia de otros vodkas, no contiene azúcares añadidos. Absolut es, de hecho, tan puro como puede ser el vodka. Aún así, la pureza tiene un sabor: rico, con cuerpo y complejo, pero suave y maduro con el carácter distintivo del grano de trigo, seguido de un toque a frutas secas.',
       STOCK: 24,
       PRECIO: 2580,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Bebidas Blancas']
     },
     {
       PRODUCTOS: 'Vodka Grey Goose 700ml',
@@ -470,7 +499,8 @@ var datab = [
       Detalle: 'El "maître de chai” se asegura de que cada ingrediente que interviene en la producción sea de la más alta calidad. Selecciona personalmente el 100% del mejor trigo francés, el mismo trigo utilizado en la elaboración de la deliciosa bollería francesa, y emplea un proceso de destilación en cinco fases para otorgar al licor su sabor más excepcional y refinado. Posteriormente es mezclado con agua natural totalmente pura filtrada a través de la piedra caliza de la región de Grand Champagne. Este vodka francés es exuberante, suave, meloso y redondo, dejando en el paladar un gusto duradero.',
       STOCK: 24,
       PRECIO: 4540,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Bebidas Blancas']
     },
     {
       PRODUCTOS: 'Vodka Belvedere 1L',
@@ -479,7 +509,8 @@ var datab = [
       Detalle: 'Belvedere Vodka es el primer vodka súper premium, creado a partir de 600 años de tradición polaca en la fabricación de vodka. Hecho a mano con centeno 100% de procedencia de Polonia y agua natural de su propio pozo, Belvedere es totalmente natural, contiene cero aditivos o azúcar, está certificado como Kosher por la Unión Ortodoxa y se produce de acuerdo con los requisitos legales del Vodka polaco. Su perfil de sabor es estructurado, elegante y equilibrado, con una dulzura sutil, una sensación en boca rica y aterciopelada y un acabado suave y limpio.',
       STOCK: 24,
       PRECIO: 6845,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Bebidas Blancas']
     },
     {
       PRODUCTOS: 'Vodka Oddka 750ml',
@@ -488,7 +519,8 @@ var datab = [
       Detalle: 'Fresco Y elegante, ODDKA Original Posee Una Textura Suave Ideal Para Coctelería. ODDKA es la nueva marca polaca de vodka de la familia Wyborowa. Es un vodka a base de maíz, que trae una propuesta de sabores diferencial y única.',
       STOCK: 24,
       PRECIO: 400,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Bebidas Blancas']
     },
     {
       PRODUCTOS: 'Fernet Branca 750ml',
@@ -497,7 +529,8 @@ var datab = [
       Detalle: 'Fernet Branca se elabora a partir de la combinación de 27 plantas y especias. Se madurada en barricas de roble durante 12 meses, lo que le confiere su marcado carácter. El proceso de producción es complejo e incluye diferentes tipos de maceraciones.',
       STOCK: 24,
       PRECIO: 805,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Aperitivos']
     },
     {
       PRODUCTOS: 'Fernet Branca 1L',
@@ -506,7 +539,8 @@ var datab = [
       Detalle: 'Fernet Branca se elabora a partir de la combinación de 27 plantas y especias. Se madurada en barricas de roble durante 12 meses, lo que le confiere su marcado carácter. El proceso de producción es complejo e incluye diferentes tipos de maceraciones.',
       STOCK: 24,
       PRECIO: 1000,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Aperitivos']
     },
     {
       PRODUCTOS: 'Fernet 1882 750ml',
@@ -515,7 +549,8 @@ var datab = [
       Detalle: 'Fernet 1882 es el primer Fernet argentino. De origen cordobés. Fue catado a ciegas por más de 20.000 fanáticos cordobeses de Fernet que antes de su lanzamiento le dieron la nota máxima en espuma y sabor, ubicándolo entre los mejores Fernet. Es conocido por su calidad y por sus kits especiales, ediciones limitadas que siempre son muy apreciadas por los seguidores de Fernet 1882.',
       STOCK: 24,
       PRECIO: 460,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Aperitivos']
     },
     {
       PRODUCTOS: 'Ron Bacardi 750ml',
@@ -524,7 +559,8 @@ var datab = [
       Detalle: 'Un clásico ron blanco con notas distintivas de vainilla y almendra, elaborado en barriles de roble blanco y moldeado con una mezcla secreta de carbón vegetal para lograr una suavidad inconfundible.',
       STOCK: 24,
       PRECIO: 1000,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Espirituosa']
     },
     {
       PRODUCTOS: 'Ron Havana club añejo 750ml',
@@ -533,7 +569,8 @@ var datab = [
       Detalle: 'Su añejamiento natural realza las propiedades de la madera, dándole al ron un aroma más profundo y natural. Havana Club Añejo 3 años es intenso y característico, ya que se puede apreciar con facilidad el sabor de la caña de azúcar en su mejor expresión.',
       STOCK: 24,
       PRECIO: 1615,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Espirituosa']
     },
     {
       PRODUCTOS: 'Ron Capitan Morgan 750ml',
@@ -542,7 +579,8 @@ var datab = [
       Detalle: 'Captain Morgan Original Spiced Gold es una mezcla secreta de rones caribeños con especias añejadas y otros sabores naturales. Este ron obtiene su distintiva riqueza y color ámbar gracias a su añejamiento en barricas de roble blanco carbonizadas',
       STOCK: 24,
       PRECIO: 830,
-      CATEGORIA: 'varios'
+      CATEGORIA: 'varios',
+      SUBCATEGORIAS:['Espirituosa']
     },
     {
       PRODUCTOS: 'QUILMES CERVEZA SIN ALCOHOL LATA 473 ML',
@@ -551,7 +589,8 @@ var datab = [
       Detalle: 'Es una cerveza equilibrada, de gran refrescancia y cuerpo balanceado, que marida con platos más bien grasosos o pesados.',
       STOCK: 24,
       PRECIO: 102,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['sin alcohol' , 'rubia']
     },
     {
       PRODUCTOS: 'MILLER GENUINE DRAFT CERVEZA 330 ML',
@@ -560,7 +599,8 @@ var datab = [
       Detalle: 'Miller es una cerveza que se caracteriza por su color dorado, claridad increíble y sabor suave y refrescante, lo cual se consigue gracias a un proceso especial de cuádruple filtrado.',
       STOCK: 24,
       PRECIO: 110,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['rubia', 'lager']
     },
     {
       PRODUCTOS: 'STELLA ARTOIS CERVEZA 330 ML',
@@ -569,7 +609,8 @@ var datab = [
       Detalle: 'Lager de color dorado pálido, muy brillante y con una espuma consistente. Una cerveza muy equilibrada donde predominan moderadas notas a frutas blancas y de cereal que resaltan levemente sobre el aroma herbal del lúpulo Saaz. En boca presenta una sensación suave, ligera de amargo y con efecto refrescante.',
       STOCK: 24,
       PRECIO: 110,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['rubia', 'lager']
     },
     {
       PRODUCTOS: 'CORONA EXTRA CERVEZA LATA 269 ML',
@@ -578,7 +619,8 @@ var datab = [
       Detalle: 'Destacan sus ligeras notas afrutadas, resultado de la fermentación. De cuerpo medio, fresca, balanceada y muy fácil de beber. En boca es moderadamente dulce y recuerda al sabor del cereal.',
       STOCK: 24,
       PRECIO: 102,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['rubia', 'lager']
     },
     {
       PRODUCTOS: 'HEINEKEN CERVEZA LATA 473 ML',
@@ -587,7 +629,8 @@ var datab = [
       Detalle: ' Es una cerveza de tipo Lager y estilo Pilsen de color amarillo claro y brillante, con una espuma blanca intensa, cremosa y persistente en el vaso. Su aroma frutal a plátano, procedente de su fermentación lenta a baja temperatura, perdura el consumo final mezclándose con el ligero sabor dulce de la malta pilsen y su amargor suave. Es una cerveza seca de cuerpo ligero con buen paso de boca, que proporciona un final amargo muy fresco y nada astringente.',
       STOCK: 24,
       PRECIO: 110,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['rubia', 'lager']
     },
     {
       PRODUCTOS: 'GROLSCH CERVEZA LATA 473 ML',
@@ -596,7 +639,8 @@ var datab = [
       Detalle: 'ACA LA INFO',
       STOCK: 24,
       PRECIO: 140,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['rubia', 'lager']
     },
     {
       PRODUCTOS: 'PATAGONIA KM 24.7 SESSION IPA CON SAUCO CERVEZA 710 ',
@@ -605,7 +649,8 @@ var datab = [
       Detalle: 'Cerveza estilo Session IPA, muy tomable y refrescante, de amargor marcado otorgado por una combinación de lúpulos patagónicos. Cuenta con un intenso aroma a cítrico y frutal gracias a la de agregado de lúpulo en frío llamada Dry Hopping. El agregado de sauco y miel en frio balancean el amargor del lúpulo, aportando cierta acidez y final seco.',
       STOCK: 24,
       PRECIO: 140,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['rubia', 'ipa']
     },
     {
       PRODUCTOS: 'ANDES ORIGEN ROJA CERVEZA LATA LATA 473 ML',
@@ -614,7 +659,8 @@ var datab = [
       Detalle: 'Es una cerveza estilo Vienna Lager, su aroma a suave caramelo y leve lúpulo logran un balance perfecto. La Andes origen Roja, color ámbar cobrizo, es una cerveza de deleite. Ideal para acompañar pescados o carnes rojas, elaborados con verduras frescas o grilladas.',
       STOCK: 24,
       PRECIO: 170,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['roja', 'ipa']
     },
     {
       PRODUCTOS: 'ANTARES INDIA PALE ALE CERVEZA 500 ML',
@@ -623,7 +669,8 @@ var datab = [
       Detalle: 'De Inglaterra a India hay un largo recorrido. En 1780, Mr. Hodgson descubrió que elevando el lúpulo y la graduación alcohólica, la cerveza llegaba a destino intacta. Bautizó a su fórmula India Pale Ale. Antares, le sumó lúpulos americanos con presencia de flores y cítricos.',
       STOCK: 24,
       PRECIO: 170,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['roja', 'ipa']
     },
     {
       PRODUCTOS: 'BUDWEISER CERVEZA LATA 355 ML',
@@ -632,7 +679,8 @@ var datab = [
       Detalle: 'Budweiser es una de las cervezas más icónicas e internacionales. Esta American Lager se mantiene fiel a su receta original de 1876. Además de la malta y el lúpulo, el ingrediente clave es el arroz, que le aporta ese frescor característico y sabor ligero.',
       STOCK: 24,
       PRECIO: 170,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['rubia', 'lager']
     },
     {
       PRODUCTOS: 'CAPE HORN HONEY CERVEZA 500 ML',
@@ -641,7 +689,8 @@ var datab = [
       Detalle: 'De color rubio y de amargor y cuerpo medios, con el aporte de los aromas y delicados sabores provistos por la miel. Este último ingrediente aporta azúcares fermentables adicionales que la hacen una cerveza más alcohólica.',
       STOCK: 24,
       PRECIO: 170,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['rubia', 'miel']
     },
     {
       PRODUCTOS: 'Cordoba 473ml',
@@ -650,7 +699,8 @@ var datab = [
       Detalle: 'De color rubio y de amargor y cuerpo medios, con el aporte de los aromas y delicados sabores provistos por la miel. Este último ingrediente aporta azúcares fermentables adicionales que la hacen una cerveza más alcohólica.',
       STOCK: 24,
       PRECIO: 80,
-      CATEGORIA: 'cervezas'
+      CATEGORIA: 'cervezas',
+      SUBCATEGORIAS: ['rubia','pilsen']
     },
     {
       PRODUCTOS: 'Familia Gascon Estuche Malbec 750 ml',
@@ -659,7 +709,8 @@ var datab = [
       Detalle: 'Familia Gascón es una línea de vinos jóvenes, con los primitivos aromas de cada variedad y la intensidad de la fruta fresca en boca. Cuerpo medio, fluye fresco y sutil con taninos suaves y redondos. Final medio que lo convierte en buen compañero de carnes rojas grilladas y pastas.',
       STOCK: 24,
       PRECIO: 373,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec', 'Bodega Familia Gascon']
     },
     {
       PRODUCTOS: 'Circus Roble Malbec Estuche 750 ml',
@@ -668,7 +719,8 @@ var datab = [
       Detalle: 'Familia Gascón es una línea de vinos jóvenes, con los primitivos aromas de cada variedad y la intensidad de la fruta fresca en boca. En nariz destaca su característico varietal de frutos negros y rojos.',
       STOCK: 24,
       PRECIO: 289,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec', 'Bodega Circus']
     },
     {
       PRODUCTOS: 'Trumpeter Malbec Estuche 750 ml',
@@ -677,7 +729,8 @@ var datab = [
       Detalle: 'Rojo violáceo brillante, seduce con sus aromas frutales (ciruela) y especiados (canela, cardamomo, pimienta negra). Posee gran cuerpo y su vivaz estructura acentúa los taninos intensos que se vuelven aterciopelados en el retrogusto.',
       STOCK: 24,
       PRECIO: 705,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec', 'Bodega Trumpeter']
     },
     {
       PRODUCTOS: 'Rutini Cabernet Malbec Estuche 750 ml',
@@ -686,7 +739,8 @@ var datab = [
       Detalle: 'Rojo intenso, con matices azulados. En nariz, se presenta frutado, con notas de ciruela, vainilla y anís; mientras, en boca, se reafirman los acentos aciruelados. Los taninos, muy presentes pero amables, destacan su personalidad.',
       STOCK: 24,
       PRECIO: 1173,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec', 'Bodega Rutini', 'Cabernet']
     },
     {
       PRODUCTOS: 'Rutini Malbec Estuche 750 ml',
@@ -695,7 +749,8 @@ var datab = [
       Detalle: 'Rojo intenso, con matices azulados. En nariz, se presenta frutado, con notas de ciruela, vainilla y anís; mientras, en boca, se reafirman los acentos aciruelados. Los taninos, muy presentes pero amables, destacan su personalidad.',
       STOCK: 24,
       PRECIO: 2009,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec', 'Bodega Rutini']
     },
     {
       PRODUCTOS: 'Trumpeter Reserva Malbec Estuche',
@@ -704,7 +759,8 @@ var datab = [
       Detalle: 'ACA LA INFO',
       STOCK: 24,
       PRECIO: 769,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec']
     },
     {
       PRODUCTOS: 'Encuentro Malbec Rutini',
@@ -713,7 +769,8 @@ var datab = [
       Detalle: 'Rojo granate intenso y concentrado, con destellos violáceos. La impetuosa nariz típica de la variedad regala además armonías florales (violeta) y el brío de los frutos rojos y negros frescos (cereza, cassis). En boca, los taninos son corpóreos y ricos en vahos a cacao amargo y a frutas maceradas.',
       STOCK: 24,
       PRECIO: 729,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec']
     },
     {
       PRODUCTOS: 'Rutini Malbec Cosecha 2018',
@@ -722,7 +779,8 @@ var datab = [
       Detalle: 'Los primeros acentos a frutos rojos (cereza) completan el paladar, seguidos de una elegante acidez fresca y suave con algún vestigio salino. Año de cosecha: 2018. Composición: 100% Malbec de Valle de Uco, Mendoza. Tipo de barrica: 100% roble francés nuevo tostado liviano.',
       STOCK: 24,
       PRECIO: 1920,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec']
     },
     {
       PRODUCTOS: 'Rutini Malbec Cosecha 2019',
@@ -731,7 +789,8 @@ var datab = [
       Detalle: 'Los primeros acentos a frutos rojos (cereza) completan el paladar, seguidos de una elegante acidez fresca y suave con algún vestigio salino. Año de cosecha: 2019. Composición: 100% Malbec de Valle de Uco, Mendoza. Tipo de barrica: 100% roble francés nuevo tostado liviano.',
       STOCK: 24,
       PRECIO: 1560,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec']
     },
     {
       PRODUCTOS: 'Rutini Cabernet-Malbec Cosecha 2018',
@@ -740,7 +799,8 @@ var datab = [
       Detalle: 'El dúo de cepas de origen bordelés da como resultado un tinto armonioso y equilibrado: la Cabernet Sauvignon entrega su carácter corpóreo y pleno y la Malbec matiza de suaves y dulces taninos el assemblage, realzando una combinación única de aromas y sabor frutados. ',
       STOCK: 24,
       PRECIO: 1060,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec', 'Cabernet']
     },
     {
       PRODUCTOS: 'Rutini Cabernet-Malbec Cosecha 2019',
@@ -749,7 +809,8 @@ var datab = [
       Detalle: 'El dúo de cepas de origen bordelés da como resultado un tinto armonioso y equilibrado: la Cabernet Sauvignon entrega su carácter corpóreo y pleno y la Malbec matiza de suaves y dulces taninos el assemblage, realzando una combinación única de aromas y sabor frutados. ',
       STOCK: 24,
       PRECIO: 860,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec', 'Cabernet']
     },
     {
       PRODUCTOS: 'Rutini Sauvignon Blanc',
@@ -758,7 +819,8 @@ var datab = [
       Detalle: 'Intenso, en sus fragantes notas cítricas (pomelo rosado) y características de la variedad (hierbas, pasto recién cortado, mineral), tiene también un equilibrado parangón azúcar-acidez en el que además tiene cabida un dejo a vainilla, recreado por el discreto tiempo de crianza en roble.',
       STOCK: 24,
       PRECIO: 769,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS:['Bodega Rutini', 'Sauvignon Blanc']
     },
     {
       PRODUCTOS: 'Rutini Cabernet Franc Malbec',
@@ -767,7 +829,19 @@ var datab = [
       Detalle: 'Granate purpúreo intenso y brillante. Vivaz y aromático, este tinto regala fragantes acentos a fruta roja fresca y en confitura (guinda), bien matiza- dos con ligeros toques mentolados y de vainilla y tabaco, propios de la crianza robliza. La entrada en boca revela taninos suaves y dulces.',
       STOCK: 24,
       PRECIO: 860,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS:['Bodega Rutini', 'Cabernet', 'Malbec']
+    },
+    {
+      PRODUCTOS: 'Rutini Cabernet Franc Malbec',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Rutini%20Cabernet%20Franc%20Malbec.jpg?alt=media&token=5ed96015-0e70-4df2-94e9-7965dc4e6c0b',
+      Fabricante: 'BODEGA LA RURAL',
+      Detalle: 'Granate purpúreo intenso y brillante. Vivaz y aromático, este tinto regala fragantes acentos a fruta roja fresca y en confitura (guinda), bien matiza- dos con ligeros toques mentolados y de vainilla y tabaco, propios de la crianza robliza. La entrada en boca revela taninos suaves y dulces.',
+      STOCK: 24,
+      PRECIO: 860,
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS:['Bodega Rutini', 'Cabernet', 'Malbec']
+      
     },
     {
       PRODUCTOS: 'Trumpeter Malbec',
@@ -776,7 +850,8 @@ var datab = [
       Detalle: 'Rojo violáceo brillante, seduce con sus aromas frutales (ciruela) y especiados (canela, cardamomo, pimienta negra). Posee gran cuerpo y su vivaz estructura acentúa los taninos intensos que se vuelven aterciopelados en el retrogusto. Variedad: 100% Malbec.',
       STOCK: 24,
       PRECIO: 513,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega La Rural', 'Malbec']
     },
     {
       PRODUCTOS: 'Trumpeter Cabernet Franc',
@@ -785,7 +860,8 @@ var datab = [
       Detalle: 'ACA LA INFO',
       STOCK: 24,
       PRECIO: 513,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega La Rural', 'Cabernet Franc']
     },
     {
       PRODUCTOS: 'Trumpeter Reserve Blend',
@@ -794,7 +870,8 @@ var datab = [
       Detalle: 'ACA LA INFO',
       STOCK: 24,
       PRECIO: 669,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega La Rural', 'Blend']
     },
     {
       PRODUCTOS: 'Trumpeter Reserve Malbec',
@@ -803,7 +880,8 @@ var datab = [
       Detalle: 'De color rojo profundo, de intensidad alta. En nariz aparece muy frutado con notas de vainilla y chocolate cedidos por el roble. En boca es balanceado , estructurado y muy complejo, con taninos suaves y gruesos envolventes y larga permanencia en boca.',
       STOCK: 24,
       PRECIO: 669,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega La Rural', 'Reserve', 'Malbec']
     },
     {
       PRODUCTOS: 'San Felipe 750 ml Blanco Caramañola',
@@ -812,7 +890,8 @@ var datab = [
       Detalle: 'Inspirada en el nombre de la cantimplora que daba de beber a los soldados españoles en otra época, la clásica caramañola que impuso la familia Rutini para su bodega La Rural en la década del ‘30 como un formato innovador para la industria cumple sus primeros 80 años de vida con un lugar entre quienes disfrutan del vino que ni sus mentores podrían imaginar.',
       STOCK: 24,
       PRECIO: 247,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega La Rural', 'Blanco']
     },
     {
       PRODUCTOS: 'Latitud 33 Malbec',
@@ -821,7 +900,8 @@ var datab = [
       Detalle: 'Es un vino joven y de alta calidad, de color rojo rubí con reflejos azulados y aroma intenso a cereza y ciruela. Su crianza aporta aromas y notas de especias, vainilla y caramelo. En boca es redondo, vivo y frutado con cuerpo graso y suave.',
       STOCK: 24,
       PRECIO: 275,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega Chandon', 'Malbec']
     },
     {
       PRODUCTOS: 'Valmont Tinto',
@@ -830,7 +910,8 @@ var datab = [
       Detalle: 'Presenta un color rojo rubí, aroma a fruta fresca de frutilla y frambuesa con notas especiadas. En boca se muestra suave y sucroso, con taninos amables y final jugoso.',
       STOCK: 24,
       PRECIO: 217,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega Chandon']
     },
     {
       PRODUCTOS: 'Elementos Malbec',
@@ -839,16 +920,18 @@ var datab = [
       Detalle: 'Rojo rubí con marcados destellos violáceos, muy vivaz. Sus tonalidades vivas indican un vino joven de gran intensidad, profundo, brillante. Aroma: La presencia de aromas frutados a cerezas, ciruelas, guindas definen los típicos descriptores del varietal',
       STOCK: 24,
       PRECIO: 255,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega El Esteco', 'Malbec']
     },
     {
-      PRODUCTOS: 'Don David (Malbec, Torrontes)',
+      PRODUCTOS: 'Don David Malbec',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Don%20David%20(Malbec%2C%20Torrontes).jpg?alt=media&token=0db8595e-441e-4934-a0b6-badf9929b000',
       Fabricante: 'BODEGA EL ESTECO',
       Detalle: 'Color rojo vivaz con destellos violáceos y tonos de cereza. Lágrima noble. Aroma: Mermeladas de ciruelas y pasas de uvas combinan con notas de tabaco de pipa, vainilla y tostado. Sabor: Vino equilibrado, con taninos dulces y suaves con notas de frutas secas y tabaco.',
       STOCK: 24,
       PRECIO: 407,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega El Esteco', 'Malbec']
     },
     {
       PRODUCTOS: 'Luigi Bosca Malbec',
@@ -857,7 +940,8 @@ var datab = [
       Detalle: 'un vino de un color rojo intenso y tintes violaceos. Tiene aromas expresivos y agradables a frutos rojos maduros (ciruela) y sutiles notas especiadas y de granos de cafe producto de su crianza en barricas. En boca es compacto, intenso, de sabores frutales y buen volumen.',
       STOCK: 24,
       PRECIO: 795,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega Luigi Bosca', 'Malbec']
     },
     {
       PRODUCTOS: 'Finca La Linda Malbec',
@@ -866,7 +950,8 @@ var datab = [
       Detalle: 'Vino de un color rojo intenso y tintes violaceos. Tiene aromas expresivos y agradables a frutos rojos maduros (ciruela) y sutiles notas especiadas y de granos de cafe producto de su crianza en barricas. En boca es compacto, intenso, de sabores frutales y buen volumen.',
       STOCK: 24,
       PRECIO: 455,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega Luigi Bosca', 'Malbec']
     },
     {
       PRODUCTOS: 'Frizze Evolution Blue 1000 ml',
@@ -875,7 +960,8 @@ var datab = [
       Detalle: ' “Frizze Evolution” que se propuso con sus vinos Blue y Violet innovar en el atractivo del producto para segmentos de consumidores jóvenes',
       STOCK: 24,
       PRECIO: 133,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega Andean Viñas', 'Blue']
     },
     {
       PRODUCTOS: 'Nieto Senetiner Malbec 750 ml',
@@ -884,7 +970,8 @@ var datab = [
       Detalle: 'Vino definido e intenso, de color rojo profundo. Sus notas a frutos rojos pequeños y ciruela se combinan con el aroma a vainilla entregado durante su crianza en roble francés. En boca se presenta con gran personalidad, cuerpo distinguido y armónico.',
       STOCK: 24,
       PRECIO: 489,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega Nieto Senetiner', 'Blend']
     },
     {
       PRODUCTOS: 'Emilia Malbec',
@@ -893,7 +980,8 @@ var datab = [
       Detalle: 'Emilia Nieto Senetiner nace como un vino equilibrado, de inconfundible aroma frutado y delicado sabor. Color rojo gránate intenso, que denota juventud. Brillante y límpido. En nariz tiene aromas a ciruela madura, mermelada de frutos rojos. En boca es elegante y equilibrado. Taninos suaves y largo final de boca. Temperatura ideal de consumo: 14-16°C',
       STOCK: 24,
       PRECIO: 367,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega Nieto Senetiner', 'Malbec']
     },
     {
       PRODUCTOS: 'Benjamin Nieto Malbec',
@@ -902,7 +990,8 @@ var datab = [
       Detalle: 'Vino de color rojo violáceo, brillante y vivaz. De frescos aromas frutales a ciruela y cereza; en boca es equilibrado y de agradable final. Armonía: Carnes rojas, pastas con salsas intensas, cerdo y quesos maduros.',
       STOCK: 24,
       PRECIO: 255,
-      CATEGORIA: 'Vinos'
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Bodega Nieto Senetiner', 'Malbec']
     },
     {
         PRODUCTOS: 'Los Arboles Malbec',
@@ -911,7 +1000,8 @@ var datab = [
         Detalle: 'Aromas y sabores a frutos rojos y suaves notas especiadas. De intensidad media y taninos amables. Frutado, muy fresco y fácil de beber.',
         STOCK: 24,
         PRECIO: 223,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Navarro Correas', 'Malbec']
       },
       {
         PRODUCTOS: 'Santa Julia Malbec',
@@ -920,7 +1010,8 @@ var datab = [
         Detalle: 'Color: Rojo violáceo de buena intensidad. Aroma: Intenso aroma a frutas rojas maduras como moras, ciruelas, frutillas, pasas de uva y mermelada. Sabor: Suave, con buen balance, taninos suaves, con personalidad y carácter varietal bien definidos. Final persistente.',
         STOCK: 24,
         PRECIO: 259,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Santa Julia', 'Malbec']
       },
       {
         PRODUCTOS: 'Santa Julia Dulce Tinto',
@@ -929,7 +1020,8 @@ var datab = [
         Detalle: 'Color: Rojo cereza intenso. Aroma: Notas de frutas rojas frescas (frutillas, cerezas, frambuesas). Sabor: Perfecto equilibrio entre azucar y acidez. Frutado, sobresalen las notas a frutas frescas.',
         STOCK: 24,
         PRECIO: 335,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Santa Julia', 'Dulce']
       },
       {
         PRODUCTOS: 'Carcassone Clásico Tinto 700 ml',
@@ -938,7 +1030,8 @@ var datab = [
         Detalle: 'El clásico vino Carcassonne es como un club de fútbol que le pide a sus fanáticos que se pongan la camiseta. Este tinto bien frutado es una opción fija en la parrilla argentina. Se presenta suave, con buen cuerpo y en nuestra boca mantiene sus taninos bien activos. Es el Maradona de los tintos clásicos argentinos',
         STOCK: 24,
         PRECIO: 127,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Fincas Carcassone', 'Blend']
       },
       {
         PRODUCTOS: 'Carcassone Clasico Tinto 375 ml',
@@ -947,7 +1040,8 @@ var datab = [
         Detalle: 'El clásico vino Carcassonne es como un club de fútbol que le pide a sus fanáticos que se pongan la camiseta. Este tinto bien frutado es una opción fija en la parrilla argentina. Se presenta suave, con buen cuerpo y en nuestra boca mantiene sus taninos bien activos. Es el Maradona de los tintos clásicos argentinos',
         STOCK: 24,
         PRECIO: 77,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Fincas Carcassone', 'Blend', '375ml']
       },
       {
         PRODUCTOS: 'Chateau Vieux Tinto 750 ml',
@@ -956,7 +1050,8 @@ var datab = [
         Detalle: 'Vino de color rubí intenso brillante con delicados matices caoba. Redondo, armónico y equilibrado. ... Por sus características es un vino ideal para acompañar carnes rojas o de caza, pastas y quesos. Se aconseja consumir a una temperatura de 18 a 20ºC.',
         STOCK: 24,
         PRECIO: 447,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Lopez', 'Malbec']
       },
       {
         PRODUCTOS: 'Chateau Vieux Malbec 750 ml',
@@ -965,7 +1060,8 @@ var datab = [
         Detalle: 'Vino de color rubí intenso brillante con delicados matices caoba. Redondo, armónico y equilibrado. ... Por sus características es un vino ideal para acompañar carnes rojas o de caza, pastas y quesos. Se aconseja consumir a una temperatura de 18 a 20ºC',
         STOCK: 24,
         PRECIO: 647,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Lopez', 'Malbec']
       },
       {
         PRODUCTOS: 'Chateau Vieux Blanco 750 ml',
@@ -974,7 +1070,8 @@ var datab = [
         Detalle: 'Presenta un color amarillo pálido con reflejos verdes, aromas delicados de frutas blancas, en boca es armónico y equilibrado. Por sus características es un vino ideal para acompañar pescados, mariscos, carnes blancas (aves de corral y de caza), pastas con salsas suaves, verduras y quesos suaves.',
         STOCK: 24,
         PRECIO: 233,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Lopez', 'Blanco', 'Sauvignon Blanc']
       },
       {
         PRODUCTOS: 'Vasco Viejo 700 ml Tinto',
@@ -983,7 +1080,8 @@ var datab = [
         Detalle: 'Vino de color rojo brillante que presenta reflejos violáceos y aromas a frutos rojos. En boca se revela armónico y delicado. Por sus características es un vino ideal para acompañar carnes rojas y comidas con salsas suaves. Se aconseja consumir a una temperatura de 18 a 20ºC.',
         STOCK: 24,
         PRECIO: 103,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Lopez', 'Malbec']
       },
       {
         PRODUCTOS: 'Vasco Viejo 375 ml Tinto',
@@ -992,7 +1090,8 @@ var datab = [
         Detalle: 'Vino de color rojo brillante que presenta reflejos violáceos y aromas a frutos rojos. En boca se revela armónico y delicado. Por sus características es un vino ideal para acompañar carnes rojas y comidas con salsas suaves. Se aconseja consumir a una temperatura de 18 a 20ºC.',
         STOCK: 24,
         PRECIO: 67,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Lopez', 'Malbec', '375ml']
       },
       {
         PRODUCTOS: 'Lopez 750 ml Malbec',
@@ -1001,7 +1100,8 @@ var datab = [
         Detalle: 'Vino de color rojo granate y aromas frutados. ... De acuerdo a la preferencia del consumidor, el añejamiento de este vino en su botella puede prolongarse por un período de 10 años o más. Por sus características es un vino ideal para acompañar carnes rojas y comidas con salsas suaves.',
         STOCK: 24,
         PRECIO: 189.9,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Lopez', 'Malbec']
       },
       {
         PRODUCTOS: 'Lopez 750 ml Blanco',
@@ -1010,7 +1110,9 @@ var datab = [
         Detalle: 'Presenta un color amarillo pálido, con reflejos dorados. Posee una boca almibarada, con gran balance entre dulzor y acidez, untuoso y un largo final. ... Por sus características es un vino ideal como complemento de postres, para acompañar quesos fuertes (queso azul), platos dulces y como aperitivo.',
         STOCK: 24,
         PRECIO: 149,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Lopez', 'Blanco']
+
       },
       {
         PRODUCTOS: 'Lopez 375 ml Malbec',
@@ -1019,7 +1121,9 @@ var datab = [
         Detalle: 'Vino de color rojo granate y aromas frutados. ... De acuerdo a la preferencia del consumidor, el añejamiento de este vino en su botella puede prolongarse por un período de 10 años o más. Por sus características es un vino ideal para acompañar carnes rojas y comidas con salsas suaves.',
         STOCK: 24,
         PRECIO: 115,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Lopez', 'Malbec']
+
       },
       {
         PRODUCTOS: 'DV Catena Malbec',
@@ -1028,7 +1132,9 @@ var datab = [
         Detalle: 'DV Catena Malbec es un blend proveniente de uvas Malbec de dos diferentes viñedos. El viñedo Angelica aporta aromas de mermeladas de ciruelas maduras y moras negras, suavidad y volumen al paladar. La Pirámide entrega aromas de frutos negros de carozo y notas de especias como pimienta negra y clavo de olor.',
         STOCK: 24,
         PRECIO: 1567,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Catena Zapata', 'Malbec', 'Blend']
+
       },
       {
         PRODUCTOS: 'DV Catena Cabernet Malbec',
@@ -1037,7 +1143,9 @@ var datab = [
         Detalle: ' A la nariz, intenso y concentrado, presenta notas de especias aportadas por el Cabernet Sauvignon del viñedo La Pirámide, y notas de moras maduras y ciruelas, características del Malbec del viñedo Angélica, acompañadas por vainilla, tabaco y licor aportadas por la crianza en roble.',
         STOCK: 24,
         PRECIO: 923,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Catena Zapata', 'Malbec']
+
       },
       {
         PRODUCTOS: 'Nicasia Malbec',
@@ -1046,7 +1154,9 @@ var datab = [
         Detalle: 'Se perciben en este vino intensos y dulces sabores a ciruelas y moras maduras aportados por el Malbec, junto a sutiles notas especiadas conferidos por el Cabernet Sauvignon y el Petit Verdot.',
         STOCK: 24,
         PRECIO: 653,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Catena Zapata', 'Malbec', 'Blend']
+
       },
       {
         PRODUCTOS: 'Angelica Zapata Malbec 750 ml',
@@ -1055,7 +1165,9 @@ var datab = [
         Detalle: 'Angélica Zapata Malbec Alta es un blend proveniente de uvas Malbec de diferentes viñedos. ... El viñedo Angélica aporta aromas de ciruelas maduras, mermelada de frutos rojos, suavidad y volumen al paladar. La Pirámide entrega aromas de frutos negros de carozo y notas especiadas de pimienta negra y clavo de olor.',
         STOCK: 24,
         PRECIO: 2697,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Catena Zapata', 'Malbec', 'Blend']
+
       },
       {
         PRODUCTOS: 'Alto Uxmal Malbec 750 ml',
@@ -1064,7 +1176,9 @@ var datab = [
         Detalle: 'Proviene de la región de Tupungato, en la provincia de Mendoza, con aromas a frutos rojos maduros como guinda y ciruela. Frutos negros como casis y moras. Se aprecian también aromas a especias y notas a vainilla, chocolate y café.',
         STOCK: 24,
         PRECIO: 405,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Esmeralda', 'Malbec']
+
       },
       {
         PRODUCTOS: 'Estiba 1 Malbec',
@@ -1073,7 +1187,9 @@ var datab = [
         Detalle: 'Color muy intenso. Nariz: Frutos rojos y negros como moras, guindas y cerezas. Notas de vainilla. Boca: Buena entrada en boca, aromas a frutos rojo',
         STOCK: 24,
         PRECIO: 193,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Esmeralda', 'Malbec']
+
       },
       {
         PRODUCTOS: 'Uxmal Malbec',
@@ -1082,7 +1198,8 @@ var datab = [
         Detalle: 'Rojo profundo con reflejos violetas oscuros. Color muy intenso. Aroma a frutos rojos y negros como moras, guindas y cerezas provenientes de los viñedos de la zona de Lujan de Cuyo.',
         STOCK: 24,
         PRECIO: 223,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Esmeralda', 'Malbec']
       },
       {
         PRODUCTOS: 'Esmeralda Malbec',
@@ -1091,7 +1208,8 @@ var datab = [
         Detalle: 'Esmeralda es un vino de color Rojo profundo, con reflejos violetas intensos. Nariz potente y compleja, donde se destacan los aromas a moras, guindas y cerezas. Con notas a vainilla, tabaco y café por su crianza en roble.',
         STOCK: 24,
         PRECIO: 290,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Esmeralda', 'Malbec']
       },
       {
         PRODUCTOS: 'Etchart Privado Torrontes',
@@ -1100,7 +1218,8 @@ var datab = [
         Detalle: 'Etchart Privado Torrontes Argentina en cata tiene las características de ser de color un bonito amarillo pálido con ligeras tonalidades verdes. En nariz, un ramo especial y único: frutas como el melocotón blanco, flores como la rosa y el jazmín.',
         STOCK: 24,
         PRECIO: 157,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Etchart', 'Torrontes', 'Blanco']
       },
       {
         PRODUCTOS: 'Fond de Cave Malbec',
@@ -1109,7 +1228,8 @@ var datab = [
         Detalle: 'De color rojo púrpura con reflejos violáceos, este vino entrega aromas de mermelada de cassis y ciruela con un sutil fondo de vainilla. Su entrada es voluminosa con taninos dulces, con persistentes notas de vainilla.',
         STOCK: 24,
         PRECIO: 407,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Trapiche', 'Malbec']
       },
       {
         PRODUCTOS: 'Alaris Malbec',
@@ -1118,7 +1238,8 @@ var datab = [
         Detalle: 'De color rojo con tintes violáceos, este vino se caracteriza por sus aromas frutales a ciruelas y cerezas. En boca presenta un sabor muy redondo con un toque de trufas y vainilla.',
         STOCK: 24,
         PRECIO: 205,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Malbec','Bodega Trapiche']
       },
       {
         PRODUCTOS: 'Alma Mora Select Reserve Malbec',
@@ -1127,7 +1248,8 @@ var datab = [
         Detalle: ' De color rojo granate. Su nariz es frutada con notas a violetas y cerezas. El paso por roble, otorga notas a vainilla y chocolate. De cuerpo medio, taninos redondos y sabor persistente.',
         STOCK: 24,
         PRECIO: 365,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Finca Las Moras', 'Malbec','Reserve']
       },
       {
         PRODUCTOS: 'Alma Mora Cabernet',
@@ -1136,7 +1258,8 @@ var datab = [
         Detalle: 'Alma Mora – Cabernet Sauvignon es un vino tinto elaborado por Finca Las Moras con 100 % de la variedad de uvas Cabernet Sauvignon. De color rubí, se perciben aromas florares (violeta, rosa), frutas maduras como el cassis, frambuesas, moras, con notas de pimienta.',
         STOCK: 24,
         PRECIO: 269,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Finca Las Moras', 'Cabernet']
       },
       {
         PRODUCTOS: 'Dadá Nº1 750 ml Blend Bonarda, malbec con aroma a vainilla',
@@ -1145,7 +1268,8 @@ var datab = [
         Detalle: 'Delicado blend elaborado con uvas tintas de color rojo intenso. Su pasaje por roble americano de tostado medio le entrega aromas a vainilla que se integran en boca con dulzura y suaves taninos.',
         STOCK: 24,
         PRECIO: 255,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Finca Las Moras', 'Bonarda', 'Malbec','Blend']
       },
       {
         PRODUCTOS: 'Finca Las Moras Malbec',
@@ -1154,7 +1278,8 @@ var datab = [
         Detalle: 'Potente y elegante. De color Intenso. Posee buen cuerpo y aromas especiados. De taninos dulces y final en boca muy agradable.',
         STOCK: 24,
         PRECIO: 215,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Malbec', 'Bodega Finca Las Moras']
       },
       {
         PRODUCTOS: 'Norton Cosecha Tardia Blanco',
@@ -1163,7 +1288,8 @@ var datab = [
         Detalle: 'Es elaborado a partir de una selección especial de uvas blancas cosechadas sobremaduras, para lograr su característica dulzura. Se recomienda tomar bien frío.',
         STOCK: 24,
         PRECIO: 225,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Norton', 'Blanco', 'Dulce','Norton']
       },
       {
         PRODUCTOS: 'Santa Julia blanco dulce 750 ml',
@@ -1172,7 +1298,8 @@ var datab = [
         Detalle: 'Es un vino suave y delicado, de color amarillo verdoso y aromas que recuerdan a durazno blanco, damasco, hierbas frescas y algunas notas cítricas como limón y pomelo. En el sabor se distingue su entrada dulce, con un buen equilibrio de acidez y azúcar natural que le aporta untuosidad y balance en boca.',
         STOCK: 24,
         PRECIO: 405,
-        CATEGORIA: 'Vinos'
+        CATEGORIA: 'Vinos',
+        SUBCATEGORIAS: ['Bodega Norton', 'Blanco', 'Dulce']
       },
       {
         PRODUCTOS: 'Montchenot Extra Brut 750 ml',
@@ -1181,7 +1308,8 @@ var datab = [
         Detalle: 'De color amarillo cristalino con destellos dorados, agradable espuma y burbuja muy fina y persistente. Indicado para degustar acompañando platos de suave condimentación. El Chardonnay aporta elegancia e intensidad aromática, el Semillón confiere untuosidad y el Pinot Noir otorga estructura y complejidad.',
         STOCK: 24,
         PRECIO: 339,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       },
       {
         PRODUCTOS: 'Montchenot Rose 750 ml',
@@ -1190,7 +1318,8 @@ var datab = [
         Detalle: 'Con destellos rosados, agradable espuma y burbuja persistente, muy fina. En boca, se destaca por su mediana estructura. Indicado para degustar acompañando platos de suave condimentación. Se recomienda consumirlo dentro del año de envasado y a temperatura entre 6 y 8ºC.',
         STOCK: 24,
         PRECIO: 339,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Rose']
       },
       {
         PRODUCTOS: 'Espumante Cinzano Pro-Spritz Demi Sec',
@@ -1199,7 +1328,8 @@ var datab = [
         Detalle: 'Su aroma es más bien frutal, floral, con toques de manzana, pera, algo herbáceo y con algunas notas minerales. El sabor cuenta con una acidez equilibrada, dulce, pero suave al paladar.',
         STOCK: 24,
         PRECIO: 449,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Demi Sec']
       },
       {
         PRODUCTOS: 'Norton Cosecha Especial Extra Brut 750 ml',
@@ -1208,7 +1338,8 @@ var datab = [
         Detalle: 'La línea de Espumantes Premium de Bodega Norton. Su reconocida botella de forma acampanada, hace honor a la tradición de los enólogos para anunciar la llegada de la uva. Espumantes frescos y elegantes, donde la espléndida armonía y complejidad se disfruta a través de un sabor suave y refinado, que deja a su paso un recuerdo a frutas maduras con notas de manteca pan tostado.',
         STOCK: 24,
         PRECIO: 429,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       },
       {
         PRODUCTOS: 'San Felipe Extra Dulce Rose de Malbec',
@@ -1217,7 +1348,8 @@ var datab = [
         Detalle: 'Son vinos jóvenes, frescos, fáciles de beber e invariablemente expresivos del perfil frutal que los define. ... Paradigma de vino argentino y favorito del consumo familiar y social, su imagen permanece actualizada y sólida debido al cuidado puesto en la producción y a la inalterable confianza de sus numerosos compradores.',
         STOCK: 24,
         PRECIO: 423,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Dulce', 'Rose']
       },
       {
         PRODUCTOS: 'San Felipe Extra Dulce Torrontes',
@@ -1226,7 +1358,8 @@ var datab = [
         Detalle: 'Amarillo seco, con reflejos brillantes. Presenta burbujas finas y persistentes. Los aromas que desprende recuerdan la fragancia de las frutas blancas maduras, en armonía con tenues notas tostadas. Con buena cremosidad, en el paladar deja un recuerdo de frescura de perfil sucroso.',
         STOCK: 24,
         PRECIO: 423,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Dulce', 'Torrontes']
       },
       {
         PRODUCTOS: 'Rutini Brut Nature 750 ml',
@@ -1235,7 +1368,8 @@ var datab = [
         Detalle: 'Dorado, con reflejos amarillo verdosos. Burbuja pequeña, perezosa y muy persistente. Nariz compleja, donde se integran armoniosamente el aroma de pan sin hornear, con frutas (ananás, durazno blanco).',
         STOCK: 24,
         PRECIO: 2147,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Brut Nature']
       },
       {
         PRODUCTOS: 'Mercier Extra brut 750 ml',
@@ -1244,7 +1378,8 @@ var datab = [
         Detalle: 'Mercier, de joven expresión, se destaca por sus aromas frutados, predominando los frutos cítricos. Su sabor es fresco, suave y equilibrado. Es ideal como aperitivo y para acompañar sus comidas.',
         STOCK: 24,
         PRECIO: 359,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       },
       {
         PRODUCTOS: 'Chandon Extra Brut 750 ml',
@@ -1253,7 +1388,8 @@ var datab = [
         Detalle: 'Chandon Extra Brut es el gran clásico de Chandon. Las mejores uvas de Chardonnay y Pinot Noir nos permiten crear un espumoso fresco, frutado, elegante, cremoso y equilibrado. Se destaca por su fineza y precisión.',
         STOCK: 24,
         PRECIO: 625,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       },
       {
         PRODUCTOS: 'Chandon Aperitif 750 ml',
@@ -1262,7 +1398,8 @@ var datab = [
         Detalle: 'Champagne Chandon Aperitif Espumante Botella 750ml. Es un espumoso bitter, infusionado con naranjas amargas y otros ingredientes secretos, que se bebe con hielo como un verdadero aperitivo. Fácil de tomar, versátil, fresco y con un característico sabor amargo aportado por las naranjas.',
         STOCK: 24,
         PRECIO: 633,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Aperitif']
       },
       {
         PRODUCTOS: 'Chandon Mini Rose 187 ml',
@@ -1271,7 +1408,8 @@ var datab = [
         Detalle: 'Se destaca la presencia de frutos rojos , notas florales y finos aromas a confitura de guindas y praliné aportado por el contacto con levaduras. De paladar amable y fresco. Este espumante sorprende por su equilibrio perfecto entre fruta, intensidad y cremosidad. De paladar amable y fresco.',
         STOCK: 24,
         PRECIO: 179,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Rose']
       },
       {
         PRODUCTOS: 'Baron B Extra Brut 750 ml',
@@ -1280,7 +1418,8 @@ var datab = [
         Detalle: 'Baron B. Extra Brut se destaca por su elegancia aportada por el Chardonnay y la intensidad de fruta otorgada por el Pinot Noir, conjugándose en un assemblage perfecto y armonioso. Valle de Uco. Provincia de Mendoza, Argentina.',
         STOCK: 24,
         PRECIO: 1165,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       },
       {
         PRODUCTOS: 'Nieto Senetiner Extra Brut 750 ml',
@@ -1289,7 +1428,8 @@ var datab = [
         Detalle: 'Presenta tonalidades asalmonadas, burbujas pequeñas y persistentes que hablan del cuidado de su elaboración. De nariz cautivante por su perfecta combinación entre los aromas a levaduras, pan tostado, frutas confitadas y flores blancas. En boca se presenta intenso, fresco y con equilibrada acidez.',
         STOCK: 24,
         PRECIO: 523,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       },
       {
         PRODUCTOS: 'Nieto Senetiner Brut Nature 750 ml',
@@ -1298,7 +1438,8 @@ var datab = [
         Detalle: 'Ligero tono ámbar. Aroma complejo y frutado, recuerda notas de frambuesa junto con notas de praliné y pan tostado, fiel a la excelencia del Pinot Noir. En boca se presenta intenso, fresco y con equilibrada acidez, confirmando las notas frutadas y su elegante personalidad.',
         STOCK: 24,
         PRECIO: 557,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Brut Nature']
       },
       {
         PRODUCTOS: 'Sidra Saenz Briones 1888 750 ml',
@@ -1307,7 +1448,8 @@ var datab = [
         Detalle: '1888 Sáenz Briones se elabora en el Alto Valle de Río Negro, con manzanas cosechadas a mano en parcelas especiales. El blend resultante es equilibrado y único en cada cosecha. Posee una graduación alcohólica del 5%, un tanto más alta que la de sus competidores',
         STOCK: 24,
         PRECIO: 390,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Sidra']
       },
       {
         PRODUCTOS: 'Dom Perignon Vintage 1500ml',
@@ -1316,7 +1458,8 @@ var datab = [
         Detalle: 'Dom Pérignon Vintage se elabora exclusivamente a partir de las mejores uvas de un único año, reinventándose a sí mismo mediante la interpretación del singular carácter de las estaciones y atreviéndose a no elaborar un Vintage si la cosecha no cumple las elevadas expectativas.',
         STOCK: 24,
         PRECIO: 132000,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Brut Nature']
       },
       {
         PRODUCTOS: 'MUMM Extra Brut 750',
@@ -1325,7 +1468,8 @@ var datab = [
         Detalle: 'De brillante color amarillo con reflejos de oro. Es compleja y refinada con frescas notas de mandarina y damasco propia del Chardonnay. Posee notas típicas de la variedad Pinot Noir como frutillas y pimienta que se conjugan con notas tostadas, a frutos secos y mazapán.',
         STOCK: 24,
         PRECIO: 450,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       },
       {
         PRODUCTOS: 'MUMM Extra Brut 187',
@@ -1334,7 +1478,8 @@ var datab = [
         Detalle: 'De brillante color amarillo con reflejos de oro. Es compleja y refinada con frescas notas de mandarina y damasco propia del Chardonnay. Posee notas típicas de la variedad Pinot Noir como frutillas y pimienta que se conjugan con notas tostadas, a frutos secos y mazapán.',
         STOCK: 24,
         PRECIO: 140,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       },
       {
         PRODUCTOS: 'Chandon Delice 750ml',
@@ -1343,7 +1488,8 @@ var datab = [
         Detalle: 'Aroma: Elegante presencia de notas cítricas y a frutos rojos aportadas por el Chardonnay y el Pinot Noir se fusionan con expresivos aromas tropicales aportados por el Petit Manseng y Sémillon tardíos. Gusto: Vivacidad de sabores frutados se combina con una vibrante sensación dulce.',
         STOCK: 24,
         PRECIO: 920,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       },
       {
         PRODUCTOS: 'CALLIA Extra Brut 750',
@@ -1352,7 +1498,8 @@ var datab = [
         Detalle: 'Boca: En Boca podemos apreciar realmente la calidad de burbuja de este espumante, donde no se notan sensaciones punzantes, sino sensaciones de cremosidad que hablan a las claras de una gran calidad de espuma, se presenta también muy equilibrado con gran frescura, muy bien la relación azúcar acidez.',
         STOCK: 24,
         PRECIO: 305,
-        CATEGORIA: 'Espumantes'
+        CATEGORIA: 'Espumantes',
+        SUBCATEGORIAS: ['Extra Brut']
       }
 ];
 
@@ -1367,7 +1514,8 @@ async function base (){
           Description: el.Detalle,
           stock: el.STOCK,
           price: el.PRECIO,
-          type: el.CATEGORIA
+          type: el.CATEGORIA,
+          subcategories: el.SUBCATEGORIAS
         }
       });
     });    

@@ -6,6 +6,7 @@ import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
 import { Link } from 'react-router-dom';
 import Pages from "./paginado";
+import '../home/home.css';
 import NavCategories from "../navCategories/navCategories";
 
 
@@ -55,6 +56,7 @@ export default function Home({ location }) {
                       <div class="card">
                         <div class="card-body">
                           <div class="card-img-actions">
+                              <div className='cardImagen'>
                             <Link to={`/detail/${el.id}`}>
                               <img
                                 src={el.image}
@@ -63,6 +65,7 @@ export default function Home({ location }) {
                                 alt=""
                               />
                             </Link>
+                            </div>
                           </div>
                         </div>
                         <div class="card-body bg-light text-center">

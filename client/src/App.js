@@ -9,6 +9,10 @@ import UpdateProfile from './components/register/userRegister/updateProfile/upda
 import Login from './components/register/userRegister/login/login';
 import ForgotPassword from './components/register/userRegister/forgotPassword/forgotPassword';
 import Vinos from './components/categories/vinos/vinos';
+import Espumantes from './components/categories/espumantes/espumantes';
+import Cervezas from "./components/categories/cervezas/cervezas";
+import Whiskys from './components/categories/whiskys/whiskys';
+import Varios from "./components/categories/varios/varios";
 import { AuthProvider } from "../src/contexts/AuthContext";
 import PrivateRouteUser from './components/register/userRegister/privateRouteUser/privateRouteUser';
 import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteAdmin/privateRouteAdmin";
@@ -25,9 +29,13 @@ function App() {
         <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
         <Route component={LandingPage} exact path='/'/>
         <Route component={Home} exact path='/home'/>
+        <Route component={Whiskys} exact path='/whiskys'/>
+        <Route component={Varios} exact path='/varios'/>
+        <Route component={Espumantes} exact path='/espumantes'/>
+        <Route component={Cervezas} exact path='/cervezas'/>
         <Route component={Vinos} exact path='/vinos'/>
-        <Route component={SignUp} exact path='/signup'/>
-        <Route component={Login} exact path='/login'/>
+        {/* <Route component={SignUp} exact path='/signup'/>
+        <Route component={Login} exact path='/login'/> */}
         <Route component={ForgotPassword} exact path='/forgotPassword'/>
         <Route component={Detail} exact path='/detail/:id'/>
       </AuthProvider>

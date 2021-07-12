@@ -17,16 +17,16 @@ export default function navCategories() {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="navbar-brand" aria-current="page" href="#">Cervezas</a>
+                <a class="navbar-brand" aria-current="page" href="/cervezas">Cervezas</a>
               </li>
               <li class="nav-item">
-                <a class="navbar-brand" href="#">Espumantes</a>
+                <a class="navbar-brand" href="/espumantes">Espumantes</a>
               </li>
               <li class="nav-item">
-                <a class="navbar-brand" href="#">Varios</a>
+                <a class="navbar-brand" href="/varios">Varios</a>
               </li>
               <li class="nav-item">
-                <a class="navbar-brand" href="#" tabindex="-1" aria-disabled="true">Whiskys</a>
+                <a class="navbar-brand" href="/whiskys" tabindex="-1" aria-disabled="true">Whiskys</a>
               </li>
             </ul>
           </div>

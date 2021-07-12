@@ -5,7 +5,7 @@ import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
 
-function Vinos() {
+function Varios() {
     const dispatch = useDispatch();
     const product = useSelector((state) => state.products);
     console.log(product)
@@ -19,11 +19,10 @@ function Vinos() {
             onClick={(e) => {e.preventDefault(); allProducts.filter(d=>{d.name.includes(e)})}}>{d}</button>)}
         </div>
       </div>
-
-
     
     */
-    const categoriesWhines = ['Malbec', 'Tinto', 'Torrontes', 'Blanco', 'Cabernet']
+
+    // const categoriesEspumantes = ['Brut Nature', 'Extra Brut', 'Brut', 'Demisec', 'Moscato', 'Dulces']
 
 
     const [allProducts, setAllProducts] = useState([]);
@@ -33,7 +32,7 @@ function Vinos() {
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
-    const showProducts = allProducts.filter(el => el.type === 'Vinos').slice(conteoInicial, conteoFinal);
+    const showProducts = allProducts.filter(el => el.type === 'varios').slice(conteoInicial, conteoFinal);
 
 
     useEffect(() => {
@@ -52,19 +51,19 @@ function Vinos() {
 
 
     if (numberPage < 1) setnumberPage(1);
-    if (numberPage > 8) setnumberPage(8);
+    if (numberPage > 2) setnumberPage(2);
 
 
     return (
         <>
             <Nav />
-                <div className='Filtering'>
+                {/* <div className='Filtering'>
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>
-                        {categoriesWhines.map(d => <button key={d}
-                            onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.name.includes(d) ) )} }> {d} </button>)}
+                        {categoriesEspumantes.map(d => <button key={d}
+                            onClick={(e) => { e.preventDefault(); setAllProducts(allProducts.filter(el => el.name.includes(d) ) )} }> {d} </button>)}
                     </div>
-                </div>
+                </div> */}
             <StyledDiv>
                 <div>
                     <div className="div_container">
@@ -129,4 +128,4 @@ function Vinos() {
         </>
     );
 }
-export default Vinos;
+export default Varios;

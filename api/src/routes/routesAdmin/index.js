@@ -2,9 +2,11 @@ const { Router } = require('express');
 const { Product, Client , Order, Shipping, Invoice} = require('../../db');
 const Sequelize = require('sequelize');
 
+
 const Op = Sequelize.Op;
 
 //modelos acá:
+
 const router = Router();
 router.get('/productos/all', async (req, res) => {
     const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0
