@@ -82,10 +82,10 @@ function Whiskys () {
                                                     <div class="card-img-actions">
                                                         <Link to={`/detail/${el.id}`}>
                                                             <img
-                                                                src={el.image}
+                                                               src={el.image}
                                                                 class="card-img img-fluid"
                                                                 height="100"
-                                                                alt=""
+                                                                alt=''
                                                             />
                                                         </Link>
                                                     </div>
