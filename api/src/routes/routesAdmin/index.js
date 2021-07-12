@@ -1,18 +1,7 @@
 const { Router } = require('express');
-<<<<<<< HEAD
-
-const Sequelize = require('sequelize');
-const { Product, Client , Order, Shipping, Invoice,order_detail} = require('../../db');
-
-
-=======
 const { Product, Client , Order, Shipping, Invoice} = require('../../db');
 const Sequelize = require('sequelize');
-
-
 const Op = Sequelize.Op;
->>>>>>> 58c4f90a9e45caa53e268a861b8c97610886b860
-
 //modelos acá:
 
 const router = Router();

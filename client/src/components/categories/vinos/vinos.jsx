@@ -4,7 +4,6 @@ import { getProducts } from "../../../actions/index";
 import { Link } from 'react-router-dom';
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
-import { Link } from 'react-router-dom';
 import NavCategories from "../../navCategories/navCategories";
 
 

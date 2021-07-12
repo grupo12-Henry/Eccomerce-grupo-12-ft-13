@@ -4,236 +4,246 @@ const { v4: uuid } = require('uuid');
 // let id= uuid();
 
 var datab = [
-    {
-      PRODUCTOS: 'Coca-Cola 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca-500.jpg?alt=media&token=7593f731-eeec-4c89-bdf1-697530b632d0',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Light 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%201.5.jpg?alt=media&token=48f68d10-54df-45e6-a6b8-79a92309966e',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Light 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%20500.png?alt=media&token=8aebe303-2840-4513-8797-093dddd4400f',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Zero 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20zero%201.5.jpg?alt=media&token=5e110c8c-b821-4727-9ac4-007be52f52e5',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Coca-Cola Zero 0.6L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%20Zero%20600.jpg?alt=media&token=1ba73b3f-0844-4d8f-a469-4361f309cc2f',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Sprite 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/SPRITE%201.5.jpg?alt=media&token=1952ad32-59c2-4823-a606-201bb004303b',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Sprite 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20500.jpg?alt=media&token=4a6388d6-f3ba-405f-b1c4-b13585b0da04',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 70,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Sprite Zero 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20zero.jpg?alt=media&token=fdba1d4d-ae5c-49f4-9011-53359900084a',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Fanta 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/fanta%201.5.jpg?alt=media&token=273fff40-02b3-40bc-b53e-14b51ddbd4e2',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Bon Aqua 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bon%20aqua%201.5.jpg?alt=media&token=5c537402-a1f4-4b1f-b6b2-a73280f6efa7',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Bon Aqua 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bonAqua%200.5.jpg?alt=media&token=ecd728b3-c336-4a64-8c05-4d96650f77a5',
-      Fabricante: 'The Coca-Cola Company',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 60,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Pepsi-Cola 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%201.5.webp?alt=media&token=c54476f5-3b26-4695-8d24-1bf8459c25f8',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: '7-Up 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%201.5.png?alt=media&token=cca94133-1cbf-45cc-8e26-63ebf0bc215e',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Mirinda 1.5 L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/MIRINDA-1.5.jpg?alt=media&token=1d11682b-df2d-4e8c-9475-839a6a17539b',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Pepsi Black 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%20zero%201.5.jpg?alt=media&token=219da780-8be3-4e8b-802c-1c98d4ab66f8',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: '7-Up Free 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%20free%201.5.jpg?alt=media&token=b9bd2487-7755-4fb7-be85-260ce37f74da',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 100,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Gatorade naranja 1L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 125,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Gatorade manzana 1.25L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 160,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'AquaFina 0.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%20500.jpg?alt=media&token=2d2524d0-9cb5-44c4-855d-393c3380efdd',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 50,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'AquaFina 1.5L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%201500.jpg?alt=media&token=2e2e7953-158f-40a4-bc72-3cd052b17755',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 80,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Tropicana naranja 1L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20naranja.jpg?alt=media&token=eaae8877-a6d3-424a-b761-8903e19b2456',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 75,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
-    {
-      PRODUCTOS: 'Tropicana manzana 1L',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20manzana.jpg?alt=media&token=56101870-3f87-404e-b750-ca36bfbfa897',
-      Fabricante: 'PepsiCo',
-      Detalle: 'ACA LA INFO',
-      STOCK: 24,
-      PRECIO: 75,
-      CATEGORIA: 'Bebidas',
-      SUBCATEGORIAS: []
-    },
+  {
+    PRODUCTOS: 'Coca-Cola 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años.',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', '1.5L']
+  },
+  {
+    PRODUCTOS: 'Coca-Cola 0.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca-500.jpg?alt=media&token=7593f731-eeec-4c89-bdf1-697530b632d0',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años.',
+    STOCK: 24,
+    PRECIO: 70,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', '1.5L']
+  },
+  {
+    PRODUCTOS: 'Coca-Cola Light 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%201.5.jpg?alt=media&token=48f68d10-54df-45e6-a6b8-79a92309966e',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. Sabor liviano, 100% reducida en azúcares. ',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Light', '1.5L']
+  },
+  {
+    PRODUCTOS: 'Coca-Cola Light 0.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%20500.png?alt=media&token=8aebe303-2840-4513-8797-093dddd4400f',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. Sabor liviano, 100% reducida en azúcares. ',
+    STOCK: 24,
+    PRECIO: 70,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Light', '0.5L']
+
+  },
+  {
+    PRODUCTOS: 'Coca-Cola Zero 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20zero%201.5.jpg?alt=media&token=5e110c8c-b821-4727-9ac4-007be52f52e5',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. 0% reducida en azúcares.',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Zero', '1.5L']
+  },
+  {
+    PRODUCTOS: 'Coca-Cola Zero 0.6L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%20Zero%20600.jpg?alt=media&token=1ba73b3f-0844-4d8f-a469-4361f309cc2f',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. 0% reducida en azúcares.',
+    STOCK: 24,
+    PRECIO: 70,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Zero', '0.6L']
+  },
+  {
+    PRODUCTOS: 'Sprite 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/SPRITE%201.5.jpg?alt=media&token=1952ad32-59c2-4823-a606-201bb004303b',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Sprite es una bebida naturalmente refrescante por su ausencia de aromas artificiales, colorantes y conservantes -de ahí su color transparente tan característico- y su gran sabor a lima-limón.',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Lima-Limon', '1.5L']
+  },
+  {
+    PRODUCTOS: 'Sprite 0.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20500.jpg?alt=media&token=4a6388d6-f3ba-405f-b1c4-b13585b0da04',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Sprite es una bebida naturalmente refrescante por su ausencia de aromas artificiales, colorantes y conservantes -de ahí su color transparente tan característico- y su gran sabor a lima-limón.',
+    STOCK: 24,
+    PRECIO: 70,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Lima-Limon', '0.5L']
+  },
+  {
+    PRODUCTOS: 'Sprite Zero 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20zero.jpg?alt=media&token=fdba1d4d-ae5c-49f4-9011-53359900084a',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Sprite es una bebida naturalmente refrescante por su ausencia de aromas artificiales, colorantes y conservantes -de ahí su color transparente tan característico- y su gran sabor a lima-limón, sus burbujas y su bajo contenido en azúcar (un 70% menos que el resto de bebidas refrescantes de lima-limón azucaradas). ',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Lima-Limon', '1.5L', 'Zero']
+
+  },
+  {
+    PRODUCTOS: 'Fanta 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/fanta%201.5.jpg?alt=media&token=273fff40-02b3-40bc-b53e-14b51ddbd4e2',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Fanta intensifica la diversión con amigos a través de su sabor superior, frutal e intenso. Es la segunda marca con más antigüedad de todo el portafolio de Coca-Cola en el mundo, y con más de 50 años en México. Fanta intensifica la diversión con amigos a través de su sabor superior, frutal e intenso.',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Naranja', '1.5L']
+
+  },
+  {
+    PRODUCTOS: 'Bon Aqua 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bon%20aqua%201.5.jpg?alt=media&token=5c537402-a1f4-4b1f-b6b2-a73280f6efa7',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Bonaqua es un agua mineral natural que nace en un lugar único por naturaleza, en las sierras de Córdoba. Las lluvias en estas sierras se filtran naturalmente por más de treinta años, garantizando la máxima pureza del agua y adquiriendo sus propiedades minerales.',
+    STOCK: 24,
+    PRECIO: 100,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Aguas', '1.5L']
+
+  },
+  {
+    PRODUCTOS: 'Bon Aqua 0.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/bonAqua%200.5.jpg?alt=media&token=ecd728b3-c336-4a64-8c05-4d96650f77a5',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Bonaqua es un agua mineral natural que nace en un lugar único por naturaleza, en las sierras de Córdoba. Las lluvias en estas sierras se filtran naturalmente por más de treinta años, garantizando la máxima pureza del agua y adquiriendo sus propiedades minerales.',
+    STOCK: 24,
+    PRECIO: 60,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Aguas', '0.5L']
+
+  },
+  {
+    PRODUCTOS: 'Pepsi-Cola 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%201.5.webp?alt=media&token=c54476f5-3b26-4695-8d24-1bf8459c25f8',
+    Fabricante: 'PepsiCo',
+    Detalle: 'Proba el sabor de Pepsi, una de las gaseosas más reconocidas del mundo. Es una bebida carbonatada con sabor a cola.',
+    STOCK: 24,
+    PRECIO: 100,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', '1.5L']
+  },
+  {
+    PRODUCTOS: '7-Up 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%201.5.png?alt=media&token=cca94133-1cbf-45cc-8e26-63ebf0bc215e',
+    Fabricante: 'PepsiCo',
+    Detalle: 'Refrescate con 7UP®️ Original sin cafeína y con sabores 100% lima-limon naturales para un sabor burbujeante, puro y refrescante.',
+    STOCK: 24,
+    PRECIO: 100,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Lima-Limon', '1.5L']
+  },
+  {
+    PRODUCTOS: 'Mirinda 1.5 L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/MIRINDA-1.5.jpg?alt=media&token=1d11682b-df2d-4e8c-9475-839a6a17539b',
+    Fabricante: 'PepsiCo',
+    Detalle: 'Con gran sabor a futa, colores intensos y la efervescencia de las burbujas, Mirinda propone a sus consumidores una actitud espontánea, traviesa, y ruidosa para todo momento.',
+    STOCK: 24,
+    PRECIO: 100,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Naranja', '1.5L']
+  },
+  {
+    PRODUCTOS: 'Pepsi Black 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/pepsi%20zero%201.5.jpg?alt=media&token=219da780-8be3-4e8b-802c-1c98d4ab66f8',
+    Fabricante: 'PepsiCo',
+    Detalle: 'Pepsi Black sabor intenso, sin azúcar, cero calorías. Para que los consumidores puedan disfrutar al máximo sin sacrificar la experiencia de sabor. Pepsi lanzó esta bebida de intenso sabor para quienes quieren disfrutar sin consumir azúcar demás, derribando el mito de que lo rico y sin azúcar no existe. ',
+    STOCK: 24,
+    PRECIO: 100,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Zero', '1.5L']
+  },
+  {
+    PRODUCTOS: '7-Up Free 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/7up%20free%201.5.jpg?alt=media&token=b9bd2487-7755-4fb7-be85-260ce37f74da',
+    Fabricante: 'PepsiCo',
+    Detalle: 'Refrescate con 7UP®️ Free sin azúcares, cafeína y con sabores 100% lima-limon naturales para un sabor burbujeante, puro y refrescante.',
+    STOCK: 24,
+    PRECIO: 100,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Lima-Limon', 'Zero', '1.5L']
+  },
+  {
+    PRODUCTOS: 'Gatorade naranja 1L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
+    Fabricante: 'PepsiCo',
+    Detalle: 'Gatorade es una bebida isotónica usada para rehidratar y recuperar carbohidratos (bajo la forma de azúcares sacarosa y glucosa) y electrolitos (sales del sodio y potasio) agotados durante el ejercicio. Es comercializada por Quaker Oats Company, una división de PepsiCo.',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Aguas saborizadas', 'Isotónicas', 'Naranja', '1L']
+  },
+  {
+    PRODUCTOS: 'Gatorade manzana 1.25L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/gatorade%20naranja.png?alt=media&token=384f06cc-ad20-4c27-8090-975d6cbdadf4',
+    Fabricante: 'PepsiCo',
+    Detalle: 'Gatorade es una bebida isotónica usada para rehidratar y recuperar carbohidratos (bajo la forma de azúcares sacarosa y glucosa) y electrolitos (sales del sodio y potasio) agotados durante el ejercicio. Es comercializada por Quaker Oats Company, una división de PepsiCo.',
+    STOCK: 24,
+    PRECIO: 160,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Aguas saborizadas', 'Isotónicas', 'Manzana', '1.25L']
+
+  },
+  {
+    PRODUCTOS: 'AquaFina 0.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%20500.jpg?alt=media&token=2d2524d0-9cb5-44c4-855d-393c3380efdd',
+    Fabricante: 'PepsiCo',
+    Detalle: 'Aquafina nace de fuentes de agua públicas y luego se purifica a través de un riguroso proceso. ... Remueve partículas como cloruros, sales y otras sustancias que pueden afectar el sabor del agua. De esta manera sabes que siempre que abras una botella de Aquafina podrás disfrutar de un agua pura con un sabor perfecto.',
+    STOCK: 24,
+    PRECIO: 50,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Aguas', '0.5L']
+
+  },
+  {
+    PRODUCTOS: 'AquaFina 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/aquafina%201500.jpg?alt=media&token=2e2e7953-158f-40a4-bc72-3cd052b17755',
+    Fabricante: 'PepsiCo',
+    Detalle: 'Aquafina nace de fuentes de agua públicas y luego se purifica a través de un riguroso proceso. ... Remueve partículas como cloruros, sales y otras sustancias que pueden afectar el sabor del agua. De esta manera sabes que siempre que abras una botella de Aquafina podrás disfrutar de un agua pura con un sabor perfecto.',
+    STOCK: 24,
+    PRECIO: 80,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Aguas', '1.5L']
+
+  },
+  {
+    PRODUCTOS: 'Tropicana naranja 1L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20naranja.jpg?alt=media&token=eaae8877-a6d3-424a-b761-8903e19b2456',
+    Fabricante: 'PepsiCo',
+    Detalle: 'El jugo de naranja Tropicana está hecho de naranjas reales. Dado que es 100% jugo, proporciona un sabor fresco y crujiente que lo convierte en un refresco ideal. También es una buena fuente de potasio y ácido fólico. Tampoco contiene azúcar agregada, por lo que puede tomar uno de estos sin sentir ninguna culpa.',
+    STOCK: 24,
+    PRECIO: 75,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Jugos', 'Naranja', '1L']
+
+  },
+  {
+    PRODUCTOS: 'Tropicana manzana 1L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/tropicana%20manzana.jpg?alt=media&token=56101870-3f87-404e-b750-ca36bfbfa897',
+    Fabricante: 'PepsiCo',
+    Detalle: 'El jugo de manzana Tropicana está hecho de frutas reales. Dado que es 100% jugo, proporciona un sabor fresco y crujiente que lo convierte en un refresco ideal. También es una buena fuente de potasio y ácido fólico. Tampoco contiene azúcar agregada, por lo que puede tomar uno de estos sin sentir ninguna culpa.',
+    STOCK: 24,
+    PRECIO: 75,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Jugos', 'Manzana', '1L']
+
+  },
     {
       PRODUCTOS: 'The Glenlivet 12 años 700 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/glen-elgin-121-8b706dbbd7685346a216079712209554-480-0.jpg?alt=media&token=fcb52ae0-31ef-495d-8d66-a8695968a444',  
