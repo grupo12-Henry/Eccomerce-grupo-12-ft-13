@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../actions/index";
-import Nav from '../navbar/navbar';
-import StyledDiv from "../detail/styled";
+import { getProducts } from "../../../actions/index";
+import Nav from '../../navbar/navbar';
+import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
-import NavCategories from "../navCategories/navCategories";
+import NavCategories from "../../navCategories/navCategories";
 
-function Espumantes() {
+function Bebidas() {
     const dispatch = useDispatch();
     const product = useSelector((state) => state.products);
     console.log(product)
@@ -32,7 +32,7 @@ function Espumantes() {
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
-    let showProducts = allProducts.filter(el => el.type === 'Espumantes').slice(conteoInicial, conteoFinal);
+    let showProducts = allProducts.filter(el => el.type === 'Bebidas').slice(conteoInicial, conteoFinal);
 
 
     useEffect(() => {
@@ -57,8 +57,8 @@ function Espumantes() {
 
     return (
         <>
-            <Nav />
-            <NavCategories/>
+         <Nav />
+            <NavCategories />
             <StyledDiv>
                 <div>
                     <div className="div_container">
@@ -124,4 +124,4 @@ function Espumantes() {
         </>
     );
 }
-export default Espumantes;
+export default Bebidas;
