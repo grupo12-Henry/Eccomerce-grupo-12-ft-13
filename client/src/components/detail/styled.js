@@ -2,17 +2,20 @@ import styled from "styled-components";
 
 const StyledDiv = styled.div`
 #container{
-    margin-top: 5%;
+    margin-top: 2%;
     display: flex;
     flex-direction: row;
     margin-left: 10%;
-    margin-right: 10%;
+    margin-right: 2%;
     justify-content: space-around;
-
 }
 
 #image{
     height: 55vh;
+    margin-bottom: 5%;
+}
+.card{
+    height:100%;
 }
 
 #name {
@@ -34,16 +37,11 @@ const StyledDiv = styled.div`
     margin-top: 10%;
     margin-bottom: 10%;
     text-align: center
-
-
 }
+
 .card-img img-fluid{
-  
- 
     object-fit: scale-down;
     max-height: 8rem;
-
-
 }
 
 .img-fluid{
@@ -54,13 +52,8 @@ const StyledDiv = styled.div`
 #description {
     text-align: center
 }
-#botonazo{
-    margin: 0.3rem;
-
+.row{
+    justify-content:space-around;
 }
-
-
-
-
 `
 export default StyledDiv

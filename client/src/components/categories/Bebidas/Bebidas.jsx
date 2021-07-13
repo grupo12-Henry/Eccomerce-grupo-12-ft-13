@@ -63,7 +63,7 @@ function Bebidas() {
             <StyledDiv>
                 <div>
                     <div className="div_container">
-                        <div class="container d-flex justify-content-center mt-50 mb-50">
+                        <div class="container d-flex justify-content-center mt-50 mb-50 mw-100">
                             <div className=''>
                                 <button onClick={() => setnumberPage(numberPage - 1)}>BACK</button>
                             </div>
