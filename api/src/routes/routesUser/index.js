@@ -9,11 +9,35 @@ const Op = Sequelize.Op;
 
 //FUNCIONAN OK:
 
+//trae todos los productos-->LISTO
+router.get('/productos/all', async (req, res) => {
+  try {
+     const array_product = await Product.findAll()
+     res.send(array_product).status(200)}
+  catch(error){
+     res.send(error).status(404);
+  }
+})
+
+//trae el detalle de un producto -->LISTO
+router.get('/productos/:id', async (req, res) => {
+  const id = req.params.id
+  try {
+      const product = await Product.findByPk(id)
+      product?res.send(product).status(200):res.sendStatus(400)
+  } catch (error) {
+      res.send(error).status(404);
+  }
+})
+
+
+
+//agrega un nuevo cliente --> OK 
 router.post('/clientesPost', async (req, res) => {
-  const { id, name,lastname, phone , state, adress, mail, identityCard  } = req.body;
+  const { name,lastname, phone , state, adress, mail, identityCard, admin  } = req.body;
 try {
   const newClient = await Client.create({
-    id, name, lastname, phone, state, adress, mail, identityCard
+     name, lastname, phone, state, adress, mail, identityCard,admin
   })
   return res.send(newClient)
   } catch(error){
@@ -22,110 +46,70 @@ try {
 })
 
 
-// //crea un nuevo envio, pasandole el idPedido (es para el admin)
-// router.post('/enviosPost', async (req, res) => {
-//   const { state, orderId } = req.body;
-//   try {
-//       const order= await Order.findByPk(orderId)
-//       const newShipping = await Shipping.create({
-//       state: state
-//     })
-//     newShipping.setOrder(order);
-//     return res.send(newShipping)
-//     } catch(error){
-//      res.send(error).status(404);
-//   }
-// })
 
-router.post('/orderPost', async (req, res) => {
-   //ver como hacer para meter los productos 
-    const { idClient, ticket, date, bill, paymentMethod, adress, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost, subtotal} = req.body;
-    try {
-      const user = await Client.findByPk(idClient)
-      const newOrder = await Order.create({
-        ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost,
-         Products:[{ cantidad, subtotal }] }, {include: Products})   
+//CREA UN NUEVO PEDIDO, PASANDOLE TODOS LOS PARAMETROS NECESARIOS
+//products viene asi del front : "products":[{"id":2, "cantidad": 13, "subtotal": 150},{"id":9},{"id":5}]
 
-      newOrder.setClient(user)
-      // products.forEach(e=>{
-      //   newOrder.setProducts({productId: e.id, cantidad: e.cantidad}); 
-      //  })
-      return res.send(newOrder)
-      } catch(error){
-       res.send(error).status(404);
-    }
-  })
+  router.post('/orderPost', async (req, res) => {
+     const { idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad} = req.body;
+     try {
+       const user = await Client.findByPk(idClient)
+       const newOrder = await Order.create({
+         ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost , subtotal,cantidad})
+       newOrder.setClient(user)
+       products.forEach(e=>{
+         newOrder.setProducts(e.id, {through:{cantidad: e.cantidad, subTotal: e.subtotal}}); 
+         })
+       return res.send(newOrder)
+       } catch(error){
+        res.send(error).status(404);
+     }
+   })
 
-  [{id: 1, cantidad: 1}]
 
 
 //GET PEDIDOS'/pedidos/:id'  (donde id es el id de cliente)
 //te devuelvo los pedidos especificos para un cliente y el estado del envio de cada pedido
-//FALTA PONERLE QUE MUESTRE EL DETALLE DE LOS PEDIDOS 
+
 router.get('/pedidos/:id',async (req, res)=>{
   const {id} = req.params;
   try {
-    console.log('entro al try')
    const clientPedidos = await Client.findAll({
     include:{
      model: Order,
      attributes:['date','ticket'],
-     include:[{model: Product,atributes:['name','price','image']}],
+     include:[{model: Product, atributes:['name','price','image']}]
     },
    attributes: ['name', 'lastName'],
    where:{ id: id }
   })
-  console.log(clientPedidos[0].dataValues.orders[0])
-  // console.log(clientPedidos.options.orders)
-  // console.log(clientPedidos.orders.order)
-  clientPedidos?res.send(clientPedidos):res.sendStatus(400);
+   clientPedidos?res.send(clientPedidos):res.sendStatus(400);
   } catch (error) {
     res.send(error).status(404);
   }
 })
 
-router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las llamadas
-  const id = req.params.id
-  try {
-      const user = await Client.findByPk(id, {
-          include: {
-              model: Order,
-              include:[{model: Shipping,attributes:['state']},
-             {model: Product,atributes:['name','price','image']}],
-             attributes: {
-              exclude: ['createdAt', 'updatedAt']
-          }        
-          }
-      })
 
-      user ? res.send(user) : res.sendStatus(400)
+// router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las llamadas
+//   const id = req.params.id
+//   try {
+//       const user = await Client.findByPk(id, {
+//           include: {
+//               model: Order,
+//               include:[{model: Shipping,attributes:['state']},
+//              {model: Product,atributes:['name','price','image']}],
+//              attributes: {
+//               exclude: ['createdAt', 'updatedAt']
+//           }        
+//           }
+//       })
+//       user ? res.send(user) : res.sendStatus(400)
+//   } catch (error) {
+//       res.send(error).status(404)
+//   }
+// })
 
-  } catch (error) {
-      res.send(error).status(404)
-  }
-})
 
-
-router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las llamadas
-  const id = req.params.id
-  try {
-      const user = await Client.findByPk(id, {
-          include: {
-              model: Order,
-              include:{model: Shipping,attributes:['state']},
-              include:{model: Product},
-              attributes: {
-                  exclude: ['createdAt', 'updatedAt']
-              }
-          }
-      })
-
-      user ? res.send(user) : res.sendStatus(400)
-
-  } catch (error) {
-      res.send(error).status(404)
-  }
-})
 
 // -Al hacer un GET a '/users/:id' me deberá permitir ver mi información de usuario registrada.
 //trae el detalle de un producto -->LISTO
@@ -139,36 +123,13 @@ router.get('/users/:id', async (req, res) => {
   }
 })
 
-//trae todos los productos-->LISTO
-router.get('/productos/all', async (req, res) => {
-  try {
-     const array_product = await Product.findAll()
-     res.send(array_product).status(200)}
-  catch(error){
-     res.send(error).status(404);
-  }
-})
 
-
-
-//trae el detalle de un producto -->LISTO
-router.get('/productos/:id', async (req, res) => {
-  const id = req.params.id
-  try {
-      const product = await Product.findByPk(id)
-      product?res.send(product).status(200):res.sendStatus(400)
-  } catch (error) {
-      res.send(error).status(404);
-  }
-})
 
 //LISTO
 router.get('/productos/', async (req, res) => {
   const {name}= req.query;
-    console.log(name)
   try {
     const product = await Product.findAll({where: {name: {[Op.like]: `%${name}%`}}})
-    console.log(product)
     product?res.send(product).status(200):res.sendStatus(400)
 } catch (error) {
     res.send(error).status(404);
@@ -179,34 +140,42 @@ router.get('/productos/', async (req, res) => {
 
 router.get('/pedidos',async (req, res)=>{
   try {
-    console.log('entro al try')
    const clientPedidos = await Client.findAll({
-    include:[{
-    model: Order,
-    // as:'Pedidos',
+    include:{
+     model: Order,
      attributes:['date','ticket'],
-    }],
-  attributes: ['name', 'lastName']
+     include:{model: Product}
+    },
+   attributes: ['name', 'lastName'],
   })
-  console.log(clientPedidos)
-  clientPedidos?res.send(clientPedidos):res.sendStatus(400);
+   clientPedidos?res.send(clientPedidos):res.sendStatus(400);
   } catch (error) {
     res.send(error).status(404);
   }
 })
 
-
-
-
-//FALTA QUE RECIBA EL ARRAY DE PRODUCTOS Y QUE PASE ESTE PRODUCTO  ALA TABLA
-//DETALLE DE PRODUCTOS Y QUE CREE EL PEDIDO CON ESTA INFO
-// /Admin/XXXXX => las exclusivas de admin
-// put envio => solo admin
-// put/productos x ej /admin
+// , atributes:['name','price','image'] saque linea 149 entre ] y ,
 
 
 
 
+// router.get('/pedidos',async (req, res)=>{
+//   try {
+//     console.log('entro al try')
+//    const clientPedidos = await Client.findAll({
+//     include:[{
+//     model: Order,
+//     // as:'Pedidos',
+//      attributes:['date','ticket'],
+//     }],
+//   attributes: ['name', 'lastName']
+//   })
+//   console.log(clientPedidos)
+//   clientPedidos?res.send(clientPedidos):res.sendStatus(400);
+//   } catch (error) {
+//     res.send(error).status(404);
+//   }
+// })
 
 
 
@@ -241,7 +210,6 @@ router.put('/users/:id', async (req, res)=>{
 
 
 
-//ESCRIBO ESTO PARA VER SI FUNCIONA EL GIT STASH
-   
+  
 
 module.exports = router;

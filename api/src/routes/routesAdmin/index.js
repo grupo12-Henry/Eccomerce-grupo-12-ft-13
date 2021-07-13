@@ -81,7 +81,6 @@ router.put('/productos/:id', async (req, res) => {
     try {
         const product = await Product.findByPk(id)
         await product.update({
-
             name: name || product.dataValues.name,
             type: type || product.dataValues.type,
             Description: Description || product.dataValues.Description,
