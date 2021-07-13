@@ -17,7 +17,8 @@
 
 .Pagination {
     width: 100%;
-    margin-top: 200px;
+    margin-top: 10%;
+    margin-bottom: 1%;;
     background-color: rgba(82, 3, 3, 0.76);
     display: flex;
     justify-content: center;
@@ -37,7 +38,7 @@
   .Pagination button:hover, .Pagination button:focus{
     outline: none;
     border: none;
-    background-color: rgba(89, 5, 5, 0.712);
+    background-color: rgba(89, 5, 5, 0.336);
     cursor: pointer;
   }
   

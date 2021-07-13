@@ -5,6 +5,7 @@ import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
 import NavCategories from "../../navCategories/navCategories";
+import Footer from '../../footer/footer'
 
 function Bebidas() {
     const dispatch = useDispatch();
@@ -121,6 +122,7 @@ function Bebidas() {
                     </div>
                 </div>
             </StyledDiv>
+            <Footer />
         </>
     );
 }

@@ -2,7 +2,8 @@ import React from "react";
 import { StyledDiv } from './styled';
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
-import promo from '../../assets/images/promo.png'
+//import promo from '../../assets/images/promo.png'
+import ControlledCarousel from "./carrousel.jsx";
 
 export const LandingPage = () => {
     return (
@@ -11,9 +12,10 @@ export const LandingPage = () => {
         <div>
           <img src={logo} alt='img logo' width='360px'/>
         </div>
-        <div>
+        {/* <div>
           <img src={promo} alt='img logo' width='360px'/>
-        </div>
+        </div> */}
+        <ControlledCarousel /> 
         <div className="div_btn">
             <Link to="/home">
               <button className="btn">ENTRAR</button>
@@ -23,9 +25,5 @@ export const LandingPage = () => {
       </StyledDiv>
     );
   };
-
-
-  
-  
-  
+     
   export default LandingPage;
