@@ -7,7 +7,7 @@ const Op = Sequelize.Op;
 const router = Router();
 
 
-router.post('/clientesPost', async (req, res) => {
+router.post('/clientesPost', async (req, res) => {//crea un nuevo cliente
     const { id, name,lastname, phone , state, adress, mail, identityCard  } = req.body;
   try {
     const newClient = await Client.create({
@@ -19,7 +19,7 @@ router.post('/clientesPost', async (req, res) => {
   }
   })
 
-router.get('/productos/all', async (req, res) => {
+router.get('/productos/all', async (req, res) => {//devuelve todos los productos
     const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0
 
     try {
@@ -33,10 +33,11 @@ router.get('/productos/all', async (req, res) => {
     }
 })
 router.get('/productos/order', async (req, res) => {
-    const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0
-    const order = req.query.order ? req.query.order.toUpperCase() : 'ASC'
-    const tipo = req.query.type ? req.query.type : 'name'
-    const type = req.query.name ? req.query.name : 'Vinos'
+    //ordena (ascendente o descendente) los productos segun el campo que le envies 
+    const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0//default:0 , primeros 10
+    const order = req.query.order ? req.query.order.toUpperCase() : 'ASC'//default:asc
+    const tipo = req.query.type ? req.query.type : 'name'//default:names
+    const type = req.query.name ? req.query.name : 'Vinos'//default:Vinos
 
     try {
         const productos = await Product.findAndCountAll({
@@ -53,16 +54,16 @@ router.get('/productos/order', async (req, res) => {
     }
 
 })
-router.get('/productos/names', async (req, res) => {
+router.get('/productos/names', async (req, res) => {//envia todos los nombres de los productos
     try {
-        const productos = await Product.findAll({ attributes: { exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
+        const productos = await Product.findAll({ attributes: { exclude: ['id','createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
         res.send(productos)
     } catch (error) {
         res.send(error).status(404)
     }
 
 })
-router.get('/productos/id/:id', async (req, res) => {
+router.get('/productos/id/:id', async (req, res) => {//devuelve el producto con determinado id
     const id = req.params.id
     try {
         const product = await Product.findByPk(id)
@@ -75,9 +76,9 @@ router.get('/productos/id/:id', async (req, res) => {
 
 
 
-router.put('/productos/:id', async (req, res) => {
+router.put('/productos/:id', async (req, res) => {//modifica el producto seleccionado mediante id
     const id = req.params.id
-    const { stock, name, type, Description, price, image, maker } = req.body
+    const { stock, name, type, Description, price, image, maker, subcategories  } = req.body
     try {
         const product = await Product.findByPk(id)
         await product.update({
@@ -88,7 +89,8 @@ router.put('/productos/:id', async (req, res) => {
             price: price || product.dataValues.price,
             image: image || product.dataValues.image,
             stock: stock || product.dataValues.stock,
-            maker: maker || product.dataValues.maker
+            maker: maker || product.dataValues.maker,
+            subcategories: subcategories || product.dataValues.subcategories
         });
 
         if (product) {
@@ -102,13 +104,13 @@ router.put('/productos/:id', async (req, res) => {
 })
 
 
-router.post('/productos', async (req, res) => {
-    const { stock, name, type, Description, price, image, maker } = req.body
+router.post('/productos', async (req, res) => {//crea nuevo productos
+    const { stock, name, type, Description, price, image, maker ,subcategories } = req.body
     if (typeof price === 'number') {
         try {
             const { producto } = await Product.findOrCreate({
-                where: { name: name, type: type, Description: Description, price: price, image: image, stock: stock, maker: maker },
-                default: { name: name, type: type, Description: Description, price: price, image: image, stock: stock, maker: maker }
+                where: { name: name, type: type, Description: Description, price: price, image: image, stock: stock, maker: maker,subcategories:subcategories },
+                default: { name: name, type: type, Description: Description, price: price, image: image, stock: stock, maker: maker,subcategories:subcategories }
             })
             const newProduct = await Product.findOne({
                 where: { name: name }
@@ -121,7 +123,7 @@ router.post('/productos', async (req, res) => {
     }
 
 })
-router.get('/users/all', async (req, res) => {//cambiar los nombres de las llamadas
+router.get('/users/all', async (req, res) => {//trae todo los clientes
     try {
         const users = await Client.findAll()
         res.send(users)
@@ -129,15 +131,13 @@ router.get('/users/all', async (req, res) => {//cambiar los nombres de las llama
         res.send(error).status(404)
     }
 })
-router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las llamadas
+router.get('/users/id/:id', async (req, res) => {//trae usuario con todos sus pedidos, datos de envios, facturas
     const id = req.params.id
     try {
         const user = await Client.findByPk(id, {
             include: {
                 model: Order,
-                attributes: {
-                    exclude: ['createdAt', 'updatedAt']
-                }
+                include: {model: Product}
             }
         })
 
@@ -147,7 +147,7 @@ router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las ll
         res.send(error).status(404)
     }
 })
-router.get('/pedidos/all', async (req, res) => {//cambiar los nombres de las llamadas
+router.get('/pedidos/all', async (req, res) => {//envia todos los pedidos
     try {
         const pedidos = await Order.findAll()
         
@@ -157,21 +157,15 @@ router.get('/pedidos/all', async (req, res) => {//cambiar los nombres de las lla
         res.send(error).status(404)
     }
 })
-router.get('pedidos/filter', async (req, res) => {//cambiar los nombres de las llamadas
+router.get('pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
     const valor = req.query.valor;
 
     try {
-        if (parametro && valor) {
+        if (!!valor) {
             const product = await Order.findAll({
-                include: {
-                    model: Shipping,
-                    attributes:{
-                        exclude: ['createdAt', 'updatedAt']
-                    },
-                    where: {
-                        state: valor
-                    }
-                }
+               where: {
+                   state:valor
+               }
             })
             console.log(product)
             res.send(product).status(200)
@@ -185,9 +179,9 @@ router.get('pedidos/filter', async (req, res) => {//cambiar los nombres de las l
 })
 
 
-router.put('/pedidos/id/:id', async (req, res) => {//modificar nombre de rutas
+router.put('/pedidos/id/:id', async (req, res) => {//modifica un pedido segun los datos enviados(no hace falta enviar todos los campos)
     const id = req.params.id
-    const { bill, date, paymentMethod, adress, ticket, mail } = req.body
+    const { bill, date, paymentMethod, adress, ticket, mail ,cost, state, guideNumber, freight, ivaCost, ivaCondition, shippingDate } = req.body
     try {
         const order = await Order.findByPk(id)
         if (order) {
@@ -197,6 +191,13 @@ router.put('/pedidos/id/:id', async (req, res) => {//modificar nombre de rutas
                 date: date || order.dataValues.date,
                 paymentMethod: paymentMethod || order.dataValues.paymentMethod,
                 adress: adress || order.dataValues.adress,
+                guideNumber: guideNumber || order.dataValues.guideNumber,
+                cost: cost || order.dataValues.cost,
+                ivaCondition: ivaCondition || order.dataValues.ivaCondition,
+                ivaCost: ivaCost || order.dataValues.ivaCost,
+                freight: freight || order.dataValues.freight,
+                state: state || order.dataValues.state,
+                shippingDate: shippingDate || order.dataValues.shippingDate,
                 ticket: ticket || order.dataValues.ticket,
                 mail: mail || order.dataValues.mail,
             });
@@ -210,61 +211,11 @@ router.put('/pedidos/id/:id', async (req, res) => {//modificar nombre de rutas
     }
 
 })
-router.put('/envio/id/:id', async (req, res) => {
-
-    const id = req.params.id
-    const { shippingDate, state, freight, guideNumber, cost } = req.body
-    try {
-        const envio = await Shipping.findByPk(id)
-        if (envio) {
-
-            await envio.update({
-                shippingDate: shippingDate || envio.dataValues.shippingDate,
-                state: state || envio.dataValues.state,
-                freight: freight || envio.dataValues.freight,
-                guideNumber: guideNumber || envio.dataValues.guideNumber,
-                cost: cost || envio.dataValues.cost
-            });
-            res.send(envio).status(200)
-        }
-        else {
-            res.sendStatus(400)
-        }
-    } catch (error) {
-        res.send(error).status(404)
-    }
-
-})
-
-
-router.put('/factura/id/:id', async (req, res) => {
-
-    const id = req.params.id
-    const { ivaCondition, ivaCost } = req.body
-    try {
-        const factura = await Invoice.findByPk(id)
-        if (factura) {
-          
-            await factura.update({
-                ivaCondition: ivaCondition || factura.dataValues.ivaCondition,
-                ivaCost: ivaCost || factura.dataValues.ivaCost
-            });
-            res.send(factura).status(200)
-        }
-        else {
-            res.sendStatus(400)
-        }
-    } catch (error) {
-        res.send(error).status(404)
-    }
-
-})
-
 
 router.put('/users/:id', async (req, res)=>{
     const id = req.params.id
     let phone = parseInt(req.body.phone,10)
-    const {name, lastName, state, adress, mail, identityCard }=req.body
+    const {name, lastName, state, adress, mail, identityCard, admin }=req.body
     try {
         const user = await Client.findByPk(id)
         
@@ -275,7 +226,8 @@ router.put('/users/:id', async (req, res)=>{
             state: state||user.dataValues.state,
             adress: adress||user.dataValues.adress,
             mail: mail||user.dataValues.mail,
-            identityCard: identityCard||user.dataValues.identityCard
+            identityCard: identityCard||user.dataValues.identityCard,
+            admin: admin||user.dataValues.admin,
        })
           if(user){        
               res.send(user).status(200)
@@ -286,70 +238,9 @@ router.put('/users/:id', async (req, res)=>{
 }) 
 
  
-router.post('/orderPost', async (req, res) => {
-  const {date, paymentMethod, ticket, clientId, productos, cantidad, subTotal}=req.body
-  let RTA = [];
-  const order1 = await Order.create({ //crea el pedido (la compra)
-    date, 
-    paymentMethod,
-    ticket,
-    shipping: {
-      state:'pending',
-    },
-    invoice: { // asi vacío solo le agrega el OrderId a la tabla Invoices
-      // ivaCondition:'Exento',
-      // ivaCost: 21
-    },
-    // products: {
-    //   id: productId
-    // }
-    // order_details: {
-    //   cantidad: cantidad,
-    //   subTotal: subTotal
-    // }
-  }, {
-    include: ["shipping", "invoice"]
-  }) 
 
-  .then (async order => {
-    let clienteEnCuestion = await Client.findByPk(clientId); //busca al cliente con ese Id
-    clienteEnCuestion.addOrders(order); //addOrder le agrega el Id del cliente a la tabla Orders
-    //ACA ABAJO ESTA LO QUE ESCRIBIO NICO
-    const array_ModelosProductos = await Promise.all( productos.map(async(producto)=>{
-      return await Product.findOne({where:{id:producto}}) //recorre 'productos', que es un array de id de productos, y por cada id se trae el modelo de ese producto.
-     }))
-    array_ModelosProductos.forEach(async modelo=>await order.addProducts(modelo))
-  }) 
-  //LO UNICO QUE FALTA ES QUE AGREGUE cantidad y subTotal a la tabla intermedia
-  
-  .then(response => {
-    res.json('El pedido se creo correctamente')
-  }) 
-  
-  .catch (err => {
-    res.json(err)
-  })
-})
 
-  router.get('/pedidos/:id',async (req, res)=>{
-    const {id} = req.params;
-    try {
-      console.log('entro al try')
-     const clientPedidos = await Client.findAll({
-      include:[{
-       model: Order,
-       attributes:['date','ticket'],
-       include:{model: Shipping,attributes:['state']}
-      }],
-     attributes: ['name', 'lastName'],
-     where:{ id: id }
-    })
-    console.log(clientPedidos)
-    clientPedidos?res.send(clientPedidos):res.sendStatus(400);
-    } catch (error) {
-      res.send(error).status(404);
-    }
-  })
+ 
 
 
 
