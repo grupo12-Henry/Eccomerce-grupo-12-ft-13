@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
+import Footer from '../../footer/footer'
 
 
 function Vinos() {
@@ -132,6 +133,7 @@ function Vinos() {
                     </div>
                 </div>
             </StyledDiv>
+            <Footer />
         </>
     );
 }

@@ -5,6 +5,7 @@ import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
 import NavCategories from "../../navCategories/navCategories";
+import Footer from '../../footer/footer'
 
 function Varios() {
     const dispatch = useDispatch();
@@ -127,6 +128,7 @@ function Varios() {
                     </div>
                 </div>
             </StyledDiv>
+            <Footer />
         </>
     );
 }
