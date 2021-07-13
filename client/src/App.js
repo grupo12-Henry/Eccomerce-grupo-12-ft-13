@@ -18,6 +18,9 @@ import PrivateRouteUser from './components/register/userRegister/privateRouteUse
 import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteAdmin/privateRouteAdmin";
 import AdminComponent from './components/register/adminRegister/component/AdminComponent';
 import Delivery from './components/register/userRegister/component/confirmDelivery';
+import GestionPedidos from "./components/register/adminRegister/component/gestionPedidos";
+import GestionProductos from "./components/register/adminRegister/component/gestionProductos";
+import GestionUsuarios from "./components/register/adminRegister/component/gestionUsuarios";
 
 function App() {
   return (
@@ -26,7 +29,11 @@ function App() {
         <PrivateRouteUser component={Dashboard} exact path='/dashboard'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
         <PrivateRouteUser component={Delivery} path='/delivery'/>
-        <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
+        {/* <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/> */}
+        <Route component={AdminComponent} path='/dashboard-admin'/>
+        {/* <Route component={GestionPedidos} exact path='/dashboard-admin/pedidos'/>
+        <Route component={GestionProductos} exact path='/dashboard-admin/productos'/>
+        <Route component={GestionUsuarios} exact path='/dashboard-admin/usuarios'/> */}
         <Route component={LandingPage} exact path='/'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>

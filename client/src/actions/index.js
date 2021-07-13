@@ -1,8 +1,12 @@
 import axios from 'axios';
 export const GETCARDS = 'GETCARDS';
-export const GETDETAILS = 'GETDETAILS'
-export const GETNAMES = 'GETNAMES'
-export const ORDERPRODUCT = 'ORDERPRODUCT'
+export const GETDETAILS = 'GETDETAILS';
+export const GETNAMES = 'GETNAMES';
+export const ORDERPRODUCT = 'ORDERPRODUCT';
+export const GETALLPEDIDOS = 'GETALLPEDIDOS';
+export const GETPEDIDOSBYSTATE = 'GETPEDIDOSBYSTATE';
+export const PUTPEDIDO = 'PUTPEDIDO';
+
 
 // export const GETNAMESQ = 'GETNAMESQ'
 
@@ -66,9 +70,54 @@ export function getNames(){
         })
     }
 }
+//ACTIONS DEL ADMIN
 
-
-
-
-
+//USUARIOS
+export function postUsuarios(usuario ) {
+    console.log('llegue hasta action marcos')
+    return (dispatch) => {
+        axios.post('http://localhost:3001/admin/clientesPost', usuario)
+    }
+}
+//PRODUCTOS
+export function addProduct(product) {
+    console.log('llegue hasta action')
+    return (dispatch) => {
+        axios.post('http://localhost:3001/admin/productos', product)
+    }
+}
+//PEDIDOS
+export function getAllPedidos() {
+    return (dispatch) => {
+        axios.get('http://localhost:3001/admin/pedidos/all')
+        .then(response => {
+            dispatch({ type: GETALLPEDIDOS, payload: response.data})
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+    }
+}
+export function getPedidosByState(state) {
+    return (dispatch) => {
+        axios.get(`http://localhost:3001/admin/pedidos/filter/?valor=${state}`)
+        .then(response => {
+            dispatch({ type: GETPEDIDOSBYSTATE, payload: response.data})
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+    }
+}
+export function putPedido(id, payload) {
+    return (dispatch) => {
+        axios.put(`http://localhost:3001/admin/pedidos/id/${id}`, payload)
+        .then(response => {
+            dispatch({ type: PUTPEDIDO, payload: response.data})
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+    }
+}
 // axios.defaults.baseURL ="http://localhost:3001";
