@@ -5,6 +5,7 @@ import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
 import NavCategories from "../../navCategories/navCategories";
+import Footer from '../../footer/footer'
 
 function Whiskys () {
     const dispatch = useDispatch();
@@ -126,6 +127,7 @@ function Whiskys () {
                     </div>
                 </div>
             </StyledDiv>
+            <Footer />
         </>
     );
 }

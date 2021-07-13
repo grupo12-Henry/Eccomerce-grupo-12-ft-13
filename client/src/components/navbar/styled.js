@@ -8,6 +8,7 @@ export const StyledDiv = styled.div`
     justify-content:space-around;
     width: 100%;
 	height: 20%;
+    margin-bottom: 2%;
 	overflow: hidden;
 	background-color: #ffff;
 	top: 0px;

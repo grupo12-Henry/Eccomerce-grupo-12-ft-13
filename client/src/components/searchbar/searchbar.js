@@ -52,7 +52,7 @@ const Auto = () => {
             <div className="searchInputs">
               <input
                 type="text"
-                placeholder='busca un producto'
+                placeholder='Busca un producto...'
                 value={wordEntered}
                 onChange={handleFilter}
               />
