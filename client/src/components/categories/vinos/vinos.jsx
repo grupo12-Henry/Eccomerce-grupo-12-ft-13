@@ -7,13 +7,9 @@ import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
 import Footer from '../../footer/footer'
 
-
 function Vinos() {
     const dispatch = useDispatch();
     const product = useSelector((state) => state.products);
-    // console.log(product)
-
-
 
     const [allProducts, setAllProducts] = useState([]);
 
@@ -38,7 +34,6 @@ function Vinos() {
     console.log(countsSorted)
     // console.log(subCategories)
 
-
     useEffect(() => {
         const dbProducts = () => {
             dispatch(getProducts());
@@ -55,7 +50,7 @@ function Vinos() {
 
 
     if (numberPage < 1) setnumberPage(1);
-    if (numberPage > 8) setnumberPage(8);
+    if (numberPage > 7) setnumberPage(7);
 
     const handleCategories = () =>{
         setAllProducts(product)
@@ -65,19 +60,20 @@ function Vinos() {
             <Nav />
             <NavCategories />
             <StyledDiv>
-                <div className='Filtering'>
-                    <button id='botonazo'className='btn btn-success' onClick={handleCategories}>CATEGORIAS</button>
-                    <div className='Filters'>
-                        {subCategories.map(d => <button id='botonazo'className='btn btn-dark' key={d}
+                <div class="d-flex justify-content-center-md-center mt-5 " >
+                <div class="btn-group-vertical col-sm-2 mt-5 justify-content-start md-start ">
+                    {/* <button id='botonazo'className='btn btn-success' onClick={handleCategories}>CATEGORIAS</button> */}
+                    <div class="row col-sm-14  ml-1 ">
+                        {subCategories.map(d => <button id='botonazo'className='btn btn-dark mt-1' key={d}
                             onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d))) }}>{d} ({counts[d]})</button>)
                         }
                     </div>
                 </div>
                 <div>
-                    <div className="div_container">
+                    <div class="d-flex justify-content-center mt-5 ">
                         <div class="container d-flex justify-content-center mt-50 mb-50">
                             <div className=''>
-                                <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
+                                <button id='botonazo'className='btn btn-dark mr-2 mt-1' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
                             </div>
                             <div class="row">
                                 {showProducts &&
@@ -126,9 +122,10 @@ function Vinos() {
                                         </div>
                                     ))}
                             </div>
-                            <div className=''>
-                                <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
+                            <div class="justify-content-center">
+                                <button id='botonazo'className='btn btn-dark ml-2 mt-1' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
