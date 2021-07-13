@@ -24,6 +24,11 @@ export function AuthProvider({ children }) {
     auth.signInWithPopup(provider)
   }
 
+  function googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider()
+    auth.signInWithPopup(provider)
+  }
+
   function logout() {
     return auth.signOut()
   }
@@ -39,6 +44,8 @@ export function AuthProvider({ children }) {
   function updatePassword(password) {
     return currentUser.updatePassword(password)
   }
+
+
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {

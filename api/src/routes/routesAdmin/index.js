@@ -1,10 +1,7 @@
 const { Router } = require('express');
 const { Product, Client , Order, Shipping, Invoice} = require('../../db');
 const Sequelize = require('sequelize');
-
-
 const Op = Sequelize.Op;
-
 //modelos acá:
 
 const router = Router();
@@ -59,7 +56,6 @@ router.get('/productos/order', async (req, res) => {
 router.get('/productos/names', async (req, res) => {
     try {
         const productos = await Product.findAll({ attributes: { exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
-
         res.send(productos)
     } catch (error) {
         res.send(error).status(404)
@@ -154,7 +150,6 @@ router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las ll
 router.get('/pedidos/all', async (req, res) => {//cambiar los nombres de las llamadas
     try {
         const pedidos = await Order.findAll()
-        
 
         res.send(pedidos)
     } catch (error) {

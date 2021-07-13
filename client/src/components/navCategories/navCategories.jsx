@@ -8,8 +8,8 @@ export default function navCategories() {
 
 
     return (
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light position-absolute pl-md-3 bg-transparent ">
+        <div class="container-fluid" >
           <a class="navbar-brand" href="/home">Home</a>
           <a class="navbar-brand" href="/vinos">Vinos</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,9 +28,6 @@ export default function navCategories() {
               </li>
               <li class="nav-item">
                 <a class="navbar-brand" href="/whiskys" tabindex="-1" aria-disabled="true">Whiskys</a>
-              </li>
-              <li class="nav-item">
-                <a class="navbar-brand" href="/bebidas" tabindex="-1" aria-disabled="true">Bebidas</a>
               </li>
             </ul>
           </div>

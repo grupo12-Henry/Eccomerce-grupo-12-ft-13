@@ -5,6 +5,7 @@ import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
 import NavCategories from "../../navCategories/navCategories";
+import Footer from '../../footer/footer'
 
 
 function Cervezas () {
@@ -61,7 +62,7 @@ function Cervezas () {
     return (
         <>
             <Nav />
-            <NavCategories/>
+            <NavCategories />
                 {/* <div className='Filtering'>
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>
@@ -124,12 +125,13 @@ function Cervezas () {
                                     ))}
                             </div>
                             <div className=''>
-                                <button onClick={() => setnumberPage(numberPage + 1)}>FORWARD</button>
+                            <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </StyledDiv>
+            <Footer />
         </>
     );
 }

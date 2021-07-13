@@ -5,6 +5,7 @@ import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import { Link } from 'react-router-dom';
 import NavCategories from "../../navCategories/navCategories";
+import Footer from '../../footer/footer'
 
 function Espumantes() {
     const dispatch = useDispatch();
@@ -58,7 +59,7 @@ function Espumantes() {
     return (
         <>
             <Nav />
-            <NavCategories/>
+            <NavCategories />
                 <div className='Filtering'>
                     <button className='DropdownButton'>Filter</button>
                     <div className='Filters'>
@@ -121,12 +122,13 @@ function Espumantes() {
                                     ))}
                             </div>
                             <div className=''>
-                                <button onClick={() => setnumberPage(numberPage + 1)}>FORWARD</button>
+                            <button id='botonazo'className='btn btn-dark' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </StyledDiv>
+            <Footer />
         </>
     );
 }

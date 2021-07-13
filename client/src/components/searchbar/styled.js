@@ -39,8 +39,8 @@ const Styled = styled.div`
   }
   
   .dataResult {
-    font-size: 14px;
-    position:fixed;
+    font-size: 80%;
+    position:absolute !important;
     margin-top: 2px;
     width: auto;
     height: auto;
@@ -48,6 +48,9 @@ const Styled = styled.div`
     box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
     overflow: hidden;
     overflow-y: auto;
+  }
+  .dataItem {
+    height: 18% !important;
   }
   
   .dataResult::-webkit-scrollbar {
@@ -58,6 +61,7 @@ const Styled = styled.div`
     width: 100%;
     height: 50px;
     display: flex;
+    margin: 0;
     align-items: center;
     color: black;
   }

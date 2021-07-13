@@ -52,7 +52,7 @@ const Auto = () => {
             <div className="searchInputs">
               <input
                 type="text"
-                placeholder='busca un producto'
+                placeholder='Busca un producto...'
                 value={wordEntered}
                 onChange={handleFilter}
               />
@@ -68,7 +68,7 @@ const Auto = () => {
               <div className="dataResult">
                 {filteredData.slice(0, 5).map((value, key) => {
                   return (
-                    <a className="dataItem" href = {`/detail/${value.id}`}>
+                    <a className="dataItem" href={`/detail/${value.id}`}>
                        
                       <p>{value.name} </p>
                     </a>
