@@ -150,7 +150,6 @@ router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las ll
 router.get('/pedidos/all', async (req, res) => {//cambiar los nombres de las llamadas
     try {
         const pedidos = await Order.findAll()
-        
 
         res.send(pedidos)
     } catch (error) {
