@@ -73,7 +73,7 @@ function Whiskys() {
                 </div>
                 <div>
                     <div class="d-flex justify-content-center mt-5 ">
-                        <div class="container d-flex justify-content-center mt-50 mb-50">
+                        <div class="container d-flex justify-content-center mt-50 mb-50 mw-100">
                             <div className=''>
                                 <button id='botonazo'className='btn btn-dark mr-2 mt-1' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
                             </div>
