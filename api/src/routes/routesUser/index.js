@@ -22,20 +22,41 @@ try {
 })
 
 
-//crea un nuevo envio, pasandole el idPedido (es para el admin)
-router.post('/enviosPost', async (req, res) => {
-  const { state, orderId } = req.body;
-  try {
-      const order= await Order.findByPk(orderId)
-      const newShipping = await Shipping.create({
-      state: state
-    })
-    newShipping.setOrder(order);
-    return res.send(newShipping)
-    } catch(error){
-     res.send(error).status(404);
-  }
-})
+// //crea un nuevo envio, pasandole el idPedido (es para el admin)
+// router.post('/enviosPost', async (req, res) => {
+//   const { state, orderId } = req.body;
+//   try {
+//       const order= await Order.findByPk(orderId)
+//       const newShipping = await Shipping.create({
+//       state: state
+//     })
+//     newShipping.setOrder(order);
+//     return res.send(newShipping)
+//     } catch(error){
+//      res.send(error).status(404);
+//   }
+// })
+
+router.post('/orderPost', async (req, res) => {
+   //ver como hacer para meter los productos 
+    const { idClient, ticket, date, bill, paymentMethod, adress, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost, subtotal} = req.body;
+    try {
+      const user = await Client.findByPk(idClient)
+      const newOrder = await Order.create({
+        ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost,
+         Products:[{ cantidad, subtotal }] }, {include: Products})   
+
+      newOrder.setClient(user)
+      // products.forEach(e=>{
+      //   newOrder.setProducts({productId: e.id, cantidad: e.cantidad}); 
+      //  })
+      return res.send(newOrder)
+      } catch(error){
+       res.send(error).status(404);
+    }
+  })
+
+  [{id: 1, cantidad: 1}]
 
 
 //GET PEDIDOS'/pedidos/:id'  (donde id es el id de cliente)
@@ -49,11 +70,7 @@ router.get('/pedidos/:id',async (req, res)=>{
     include:{
      model: Order,
      attributes:['date','ticket'],
-     include:[{model: Shipping,attributes:['state']},
-             {model: Product,atributes:['name','price','image']}],
-    //  include:{Product} ,
-    // //  include:{model: Shipping,attributes:['state']},
-    //  include:{model: Shipping,attributes:['state']}
+     include:[{model: Product,atributes:['name','price','image']}],
     },
    attributes: ['name', 'lastName'],
    where:{ id: id }
@@ -187,22 +204,7 @@ router.get('/pedidos',async (req, res)=>{
 // put envio => solo admin
 // put/productos x ej /admin
 
-// router.post('/orderPost', async (req, res) => {
-//    //ver como hacer para meter los productos 
-//     const { id, ticket} = req.body;
-//     try {
-//       const user = await Client.findByPk(id)
-//       console.log(user)
-//       const newOrder = await Order.create({
-//        ticket: ticket
-//      })   
-//       newOrder.setClient(user)
-//       console.log('Pedido creado y asociado al cliente')
-//       return res.send(newOrder)
-//       } catch(error){
-//        res.send(error).status(404);
-//     }
-//   })
+
 
 
 
@@ -233,12 +235,13 @@ router.put('/users/:id', async (req, res)=>{
           }else{ res.sendStatus(400)}
     }catch (error) {
         res.send(error).status(404)
+        console.log('hasta las manos')
     }  
 })
 
 
 
-
+//ESCRIBO ESTO PARA VER SI FUNCIONA EL GIT STASH
    
 
 module.exports = router;

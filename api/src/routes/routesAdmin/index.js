@@ -296,8 +296,17 @@ router.post('/orderPost', async (req, res) => {
     shipping: {
       state:'pending',
     },
-    invoice: {  },
-    
+    invoice: { // asi vacío solo le agrega el OrderId a la tabla Invoices
+      // ivaCondition:'Exento',
+      // ivaCost: 21
+    },
+    // products: {
+    //   id: productId
+    // }
+    // order_details: {
+    //   cantidad: cantidad,
+    //   subTotal: subTotal
+    // }
   }, {
     include: ["shipping", "invoice"]
   }) 
