@@ -106,7 +106,8 @@ router.put('/productos/:id', async (req, res) => {//modifica el producto selecci
 
 router.post('/productos', async (req, res) => {//crea nuevo productos
     const { stock, name, type, Description, price, image, maker ,subcategories } = req.body
-    if (typeof price === 'number') {
+    console.log(req.body)
+    if (typeof price == 'number') {
         try {
             const { producto } = await Product.findOrCreate({
                 where: { name: name, type: type, Description: Description, price: price, image: image, stock: stock, maker: maker,subcategories:subcategories },
