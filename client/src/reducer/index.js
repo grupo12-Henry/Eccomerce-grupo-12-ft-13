@@ -38,17 +38,18 @@ const rootReducer = (state = initialState, action) => {
                 productDetail: action.payload
             };
         case GETALLPEDIDOS:
-            return {};
+            return {
+                ...state,
+                pedidos:action.payload
+            };
         case GETPEDIDOSBYSTATE:
-            return {};
-        case PUTPEDIDO:
-            return {};
+            return {
+                ...state,
+                pedidos:action.payload
+            };
         default:
             return state;
-        };
-                
-
-    }
-
+    };
+}
 export default rootReducer;
 
