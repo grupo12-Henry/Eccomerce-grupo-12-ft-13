@@ -72,20 +72,29 @@ export function getNames(){
 }
 //ACTIONS DEL ADMIN
 
-//USUARIOS
+//USUARIOS POST Y PUT 
 export function postUsuarios(usuario ) {
     console.log('llegue hasta action marcos')
     return (dispatch) => {
         axios.post('http://localhost:3001/admin/clientesPost', usuario)
     }
 }
-//PRODUCTOS
+
+export function putUsuarios(usuario ) {
+    axios.put(`http://localhost:3001/admin/users/${usuario.id}`, usuario)
+}
+
+//PRODUCTOS POST Y PUT
 export function addProduct(product) {
     console.log('llegue hasta action')
     return (dispatch) => {
         axios.post('http://localhost:3001/admin/productos', product)
     }
 }
+export async function editProduct(id, payload) {
+    await axios.put('http://localhost:3001/admin/productos/' + id, payload)     
+}
+
 //PEDIDOS
 export function getAllPedidos() {
     return (dispatch) => {
