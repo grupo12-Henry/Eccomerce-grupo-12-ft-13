@@ -20,6 +20,7 @@ export const StyledDiv = styled.div`
 }
 .row {
     align-items:center;
+    justify-content:space-around !important;
     margin-right: 1%;
     margin-top: 2%;
     list-style: none;
