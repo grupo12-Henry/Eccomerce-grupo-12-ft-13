@@ -14,6 +14,9 @@ const StyledDiv = styled.div`
     height: 55vh;
     margin-bottom: 5%;
 }
+.card{
+    height:100%;
+}
 
 #name {
     text-align: center
@@ -49,6 +52,8 @@ const StyledDiv = styled.div`
 #description {
     text-align: center
 }
-
+.row{
+    justify-content:space-around;
+}
 `
 export default StyledDiv
