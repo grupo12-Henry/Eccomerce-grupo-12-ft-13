@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
 import { StyledDiv } from "./styled";
+import { useAuth } from "../../contexts/AuthContext";
 import delivery from "../../assets/images/delivery-truck.png";
 import instagram from "../../assets/images/instagram.jpeg";
 import twitter from "../../assets/images/gorjeo(1).jpeg";
@@ -10,6 +12,10 @@ import cart from "../../assets/images/cart.png";
 import user from "../../assets/images/user.png";
 import Auto from "../searchbar/searchbar";
 import NavModal from "../navModal/navModal";
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +25,17 @@ const Nav = () => {
     setIsOpen(true);
   };
 
+  const { currentUser, logout } = useAuth();
+
+  const handleLogOut = async () => {
+    await logout()
+    setIsOpen(false)
+  }
+
   const style = {
     marginTop: "1%",
   };
+
   return (
     <StyledDiv>
       <div className="header-container">
@@ -66,9 +80,23 @@ const Nav = () => {
             <a href="compras" className="carrito">
               <img className="cart" alt="cart img" src={cart} width="20px" />
             </a>
+            {currentUser ? (
+                  <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/dashboard">Edit Profile</Dropdown.Item>
+                    <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+            ) :
+            (
             <a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
             </a>
+            )
+            }
           </ul>
         </div>
         {/* <button onClick={() => setIsOpen(true)}>Open Portal</button> */}

@@ -49,6 +49,10 @@ export const StyledDiv = styled.div`
     margin: 1px 1px 1px 1px;
     list-style: none;
 }
-	 
+
+.dropdown {
+    position: absolute;
+    right: 5%;
+}
 
 `;
