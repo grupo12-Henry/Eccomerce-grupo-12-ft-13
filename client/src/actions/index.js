@@ -18,7 +18,11 @@ export const CLEAR_CART = 'CLEAR_CART'
 // no hay drama
 
 export function removeProductCart (id){
-  console.log('hla')
+    return {
+        type: REMOVE_ALL_FROM_CART,
+        payload: id,
+        };
+  
 }
 //ESTADO QUE SE LLAME productCart :[{},{},{}] =[]
 export function addProductCart(payload) {

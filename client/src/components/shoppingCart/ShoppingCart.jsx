@@ -29,6 +29,7 @@ const addToCart = (id) => {
   console.log()
 }
 
+
 const delFromCart = () => {}
 
 const clearCart = () => {}

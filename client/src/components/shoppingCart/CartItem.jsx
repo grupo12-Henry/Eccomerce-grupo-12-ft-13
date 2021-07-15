@@ -1,18 +1,38 @@
 import React from 'react';
 import StyledDiv from './Styled';
+import { useSelector, useDispatch  } from 'react-redux'
 import {useState} from 'react'
+import { removeProductCart } from '../../actions';
 
 
-function CartItem({data, delFromCart}) {
+function CartItem({data}) {
 
   const [state, setState]= useState(1)
   const[precioTotal, setPrecioTotal]= useState(data.price*state)
+  const ProductsCart = useSelector( (state) => state.productCart)
+  const dispatch = useDispatch()
+
+  if(data.estado){
+    setState(state+1)
+  }
   
+  const delFromCart = () => {
+    dispatch(removeProductCart(data.id))
+    console.log(data.id)
+  }
+
+
   const handleCountChange = (e) => {
     setState(e.target.value);
     setPrecioTotal(e.target.value*data.price)
-    console.log(state)
+    //console.log(state)
   }
+
+
+  // function onRemove(id) {
+
+  //   setCities(oldCities => oldCities.filter(c => c.id != id));
+  // }
 
     return (
       <div >
@@ -20,12 +40,13 @@ function CartItem({data, delFromCart}) {
         <div class='container' className='container-carrito'> 
          <img src={data.image} className='Img'/>
           <h6 class='ml-4 mr-5'>{data.name}</h6>
-          <h6 class='ml-5 mr-5'>{data.price}</h6>
-          <input type='number'class="ml-5 mr-5" min={1} max={12} onChange={handleCountChange} name='count' autoComplete='off'/>
-          <h6 class='ml-5' >{precioTotal}</h6>
+          <h6 class='ml-5 mr-5'>✏${data.price}.00</h6>
+          <input type='number'class="ml-5 mr-5" min={1} max={12} onChange={handleCountChange} className='counter' name='count' autoComplete='off'/>
+          <h6 class='ml-5' >$ {precioTotal}.00</h6>
+          <button type="button" class="ml-5 mr-5 btn bg-cart" className='button' onClick={() => delFromCart()} >❌</button>
+
        </div>
         </StyledDiv>
-       <button type="button" class="btn bg-cart" onClick={() => delFromCart()} >x</button>
        </div>
     )
   }

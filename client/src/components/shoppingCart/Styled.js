@@ -13,5 +13,17 @@ const StyledDiv = styled.div`
   max-height: 4rem;
 }
 
+.button{
+  height: 2rem;
+  color: red;
+  margin-left:1rem;
+  font-size: 12px;
+}
+
+.counter{
+  height: 2rem;
+  width:2.5rem;
+}
+
 `
 export default StyledDiv;
