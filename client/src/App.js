@@ -22,6 +22,9 @@ import GestionPedidos from "./components/register/adminRegister/component/gestio
 import GestionProductos from "./components/register/adminRegister/component/gestionProductos";
 import GestionUsuarios from "./components/register/adminRegister/component/gestionUsuarios";
 
+import ShoppingCart from "./components/shoppingCart/ShoppingCart";
+
+
 function App() {
   return (
     <React.Fragment>
@@ -35,6 +38,7 @@ function App() {
         <Route component={GestionProductos} exact path='/dashboard-admin/productos'/>
         <Route component={GestionUsuarios} exact path='/dashboard-admin/usuarios'/> */}
         <Route component={LandingPage} exact path='/'/>
+        <Route component={ShoppingCart} exact path='/compras'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>
         <Route component={Varios} exact path='/varios'/>

@@ -1,14 +1,42 @@
 import axios from 'axios';
 export const GETCARDS = 'GETCARDS';
-export const GETDETAILS = 'GETDETAILS';
-export const GETNAMES = 'GETNAMES';
-export const ORDERPRODUCT = 'ORDERPRODUCT';
-export const GETALLPEDIDOS = 'GETALLPEDIDOS';
-export const GETPEDIDOSBYSTATE = 'GETPEDIDOSBYSTATE';
-export const PUTPEDIDO = 'PUTPEDIDO';
+export const GETDETAILS = 'GETDETAILS'
+export const GETNAMES = 'GETNAMES'
+export const ORDERPRODUCT = 'ORDERPRODUCT'
+//ACTIONS DE SHOPPING-CART
+export const ADD_TO_CART = 'ADD_TO_CART'
+// export const ADD_ONE_FROM_CART = 'ADD_ONE_FROM_CART'
+// export const REMOVE_ONE_FROM_CART = 'REMOVE_ONE_FROM_CART'
+export const REMOVE_ALL_FROM_CART = 'REMOVE_ALL_FROM_CART'
+export const CLEAR_CART = 'CLEAR_CART'
+
 
 
 // export const GETNAMESQ = 'GETNAMESQ'
+
+
+export function removeProductCart (id){
+  return {
+      type: REMOVE_ALL_FROM_CART,
+      id 
+  }
+}
+
+//ESTADO QUE SE LLAME productCart :[{},{},{}] =[]
+export function addProductCart(payload) { 
+    return {
+         type: ADD_TO_CART, 
+         payload 
+        }; 
+         //
+  }
+
+  export function ClearCart() { //ver que le pasamos al reducer
+    return {
+         type: CLEAR_CART, 
+        //  payload 
+        };
+  }
 
 
 
@@ -35,6 +63,7 @@ export function getDetail (id) {
         })
     }
 };
+
 export function orderProduct ({offset, type, order, name}) {
     return (dispatch) => {
         const datos = `offset=${offset}&${type}=type&${order}=order&${name}=name`
