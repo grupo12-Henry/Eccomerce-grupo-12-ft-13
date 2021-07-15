@@ -19,6 +19,7 @@ import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteA
 import AdminComponent from './components/register/adminRegister/component/AdminComponent';
 import Delivery from './components/register/userRegister/component/confirmDelivery';
 
+
 function App() {
   return (
     <React.Fragment>
@@ -26,6 +27,8 @@ function App() {
         <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
         <PrivateRouteUser component={Dashboard} exact path='/dashboard'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
+        <PrivateRouteUser component={Delivery} path='/delivery'/>
+        <Route component={AdminComponent} path='/dashboard-admin'/>
         <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
         <PrivateRouteUser component={Delivery} exact path='/delivery'/>
         <Route component={LandingPage} exact path='/'/>
