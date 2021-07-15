@@ -28,7 +28,6 @@ function App() {
         <PrivateRouteUser component={Dashboard} exact path='/dashboard'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
         <PrivateRouteUser component={Delivery} path='/delivery'/>
-        <Route component={AdminComponent} path='/dashboard-admin'/>
         <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
         <PrivateRouteUser component={Delivery} exact path='/delivery'/>
         <Route component={LandingPage} exact path='/'/>
