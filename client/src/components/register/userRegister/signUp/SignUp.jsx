@@ -6,7 +6,7 @@ import { StyledDiv } from "./styled";
 import '../signUp/signup.css'
 
 
-export default function Signup() {
+export default function Signup({ onClose }) {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -26,7 +26,8 @@ export default function Signup() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      // onClose()
+      history.push("/home");
     } catch {
       setError("Failed to create an account");
     }

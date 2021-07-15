@@ -72,7 +72,7 @@ export function getNames(){
 }
 //ACTIONS DEL ADMIN
 
-//USUARIOS POST Y PUT 
+//USUARIOS POST Y PUT y DELETE
 export function postUsuarios(usuario ) {
     console.log('llegue hasta action marcos')
     return (dispatch) => {
@@ -84,7 +84,11 @@ export function putUsuarios(usuario ) {
     axios.put(`http://localhost:3001/admin/users/${usuario.id}`, usuario)
 }
 
-//PRODUCTOS POST Y PUT
+export function deleteUsuarios(id ) {
+    axios.delete(`http://localhost:3001/admin/client/${id}`)
+}
+
+//PRODUCTOS POST Y PUT Y DELETE
 export function addProduct(product) {
     console.log('llegue hasta action')
     return (dispatch) => {
@@ -93,6 +97,9 @@ export function addProduct(product) {
 }
 export async function editProduct(id, payload) {
     await axios.put('http://localhost:3001/admin/productos/' + id, payload)     
+}
+export async function deleteProduct(id) {
+    await axios.delete(`http://localhost:3001/admin/producto/${id}`)
 }
 
 //PEDIDOS

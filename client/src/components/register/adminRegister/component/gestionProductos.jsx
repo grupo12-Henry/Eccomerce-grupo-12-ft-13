@@ -1,6 +1,6 @@
 import React from 'react'
 import {  useState } from "react";
-import { addProduct, editProduct } from '../../../../actions';
+import { addProduct, editProduct, deleteProduct} from '../../../../actions';
 
 
 function GestionProductos() {
@@ -30,19 +30,22 @@ function GestionProductos() {
         });
     }
 
-    
+
   function editSubmit(e) {
     e.preventDefault();
     // console.log(newProduct.id, newProduct)
     editProduct(newProduct.id, newProduct);
     alert('product change');
-    setNewProduct(newProduct)
   }
   function handleSubmit(e) {
     e.preventDefault();
     addProduct(newProduct);
     alert('product Created');
-    setNewProduct(newProduct)
+  }
+  function deleteSubmit(e) {
+    e.preventDefault();
+    deleteProduct(newProduct.id);
+    alert('product deleted');
   }
 
     return (
@@ -78,6 +81,11 @@ function GestionProductos() {
     <button className='NewProductSubmitButton' name='submit' type='submit' >Submit</button>
 </form>}
 </div>
+<h3>Eliminar un producto</h3>
+{<form  onSubmit={e=>deleteSubmit(e)} >
+    <input type='number' class="form-control" name='id' autoComplete='off' placeholder='id del producto a modificar' onChange={handleInputChange}/>
+      <button>Delete</button>
+    </form>}
      </div>
    )
 }

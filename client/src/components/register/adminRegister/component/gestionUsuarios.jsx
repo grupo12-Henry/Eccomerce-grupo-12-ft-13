@@ -1,15 +1,15 @@
 import React, { useState} from 'react'
 import { useDispatch } from 'react-redux';
-import { postUsuarios, putUsuarios } from '../../../../actions';
+import { postUsuarios, putUsuarios, deleteUsuarios } from '../../../../actions';
 
 function GestionUsuarios() {
     // const users = useSelector(state => state.users)
     const dispatch = useDispatch()
 
-    const [user, setUser] = useState({
+    const [user, setUser] = useState({ 
         id:'',
         name: '',
-        lastName: '',
+        lastname: '',
         phone: '',
         state: '',
         adress: '',
@@ -39,6 +39,13 @@ function GestionUsuarios() {
         alert('User updated')
     }
 
+    const deleteSubmit = (e) => {
+        e.preventDefault()
+        console.log(user.id)
+        deleteUsuarios(user.id)
+        alert('User updated')
+    }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -56,9 +63,9 @@ function GestionUsuarios() {
                     <input class="form-control mt-2 ml-5"
                         required autoComplete='off' 
                         placeholder='Apellido del usuario...' 
-                        name='lastName' 
+                        name='lastname' 
                         onChange={handleUser} 
-                        value={user.lastName}>
+                        value={user.lastname}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                         required autoComplete='off' 
@@ -130,9 +137,9 @@ function GestionUsuarios() {
                     <input class="form-control mt-2 ml-5"
                         
                         placeholder='Apellido del usuario...' 
-                        name='lastName' 
+                        name='lastname' 
                         onChange={handleUser} 
-                        value={user.lastName}>
+                        value={user.lastname}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                         
@@ -179,8 +186,22 @@ function GestionUsuarios() {
                 <div >
                     <input class="btn btn-primary btn-m mt-5 ml-5" type='submit' onSubmit={handleSubmit}/>
                 </div> 
-                </div>{console.log(user)}
+                </div>
             </form>
+            <form onSubmit={deleteSubmit}>
+            <h2>Eliminar usuario</h2>
+                <br/>
+                <div >
+                    <input class="form-control mt-5 ml-5"
+                        required autoComplete='off' 
+                        placeholder='Id del usuario...' 
+                        name='id' 
+                        onChange={handleUser} 
+                        value={user.id}>
+                    </input>
+                    <input class="btn btn-primary btn-m mt-5 ml-5" type='submit'/>
+                </div>
+            </form >
         </div>
     )
 };
