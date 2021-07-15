@@ -196,7 +196,7 @@ router.get('/pedidos/all', async (req, res) => {//envia todos los pedidos
         res.send(error).status(404)
     }
 })
-router.get('pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
+router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
     const valor = req.query.valor;
 
     try {
