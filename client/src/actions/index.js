@@ -13,20 +13,20 @@ export const CLEAR_CART = 'CLEAR_CART'
 
 // export const GETNAMESQ = 'GETNAMESQ'
 
+// Perdon EMI NO ME DI CUENTA JAJA
+// LISTO tranqui
+// no hay drama
 
 export function removeProductCart (id){
-  return {
-      type: REMOVE_ALL_FROM_CART,
-      id 
-  }
+  console.log('hla')
 }
-
 //ESTADO QUE SE LLAME productCart :[{},{},{}] =[]
-export function addProductCart(payload) { 
+export function addProductCart(payload) {
     return {
-         type: ADD_TO_CART, 
-         payload 
-        }; 
+        type: ADD_TO_CART,
+        payload,
+
+        };
          //
   }
 

@@ -34,9 +34,13 @@ const rootReducer = (state = initialState, action) => {
                 productDetail: action.payload
             }
         case ADD_TO_CART:
+            let nuevoItem = state.products.find(prod => prod.id ===action.payload)
+            if(state.productCart.includes(nuevoItem)){
+                return state
+            }
             return {
                 ...state,
-                productCart: state.productCart.concat(action.payload)
+                productCart: state.productCart.concat(nuevoItem)
             }
         case REMOVE_ALL_FROM_CART:
             return {

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch  } from 'react-redux'
-import { addProductCart, removeProductCart, ClearCart, getProducts } from '../../actions';
+import { addProductCart, removeProductCart, ClearCart, getProducts ,ADD_TO_CART} from '../../actions';
 // import ProductCart from './ProductCart';
 import { Link } from 'react-router-dom';
+import CartItem from './CartItem'
+import CartShp from './CartShp'
 
 
 
@@ -23,7 +25,8 @@ useEffect(() => {
 
 
 const addToCart = (id) => {
-  console.log(id)
+  dispatch(addProductCart(id))
+  console.log()
 }
 
 const delFromCart = () => {}
@@ -35,6 +38,14 @@ const clearCart = () => {}
          <div  class="container-fluid">
          <div class="row">
         <h2>SIMULADOR DE HOME</h2>
+         <h3>Carrito</h3>
+       <article>
+         {CartShp}
+         <button onClick={() => clearCart()}>Limpiar Carrito</button>
+         {cart.map( (item, index) => 
+         <CartItem key={index} data={item} delFromCart={delFromCart}/>
+         )}
+       </article>
          <h3>Productos</h3>
          <article class='box'>
          {allProducts &&
@@ -74,11 +85,6 @@ const clearCart = () => {}
                     </div>
                   )) : null}
          </article>
-         <h3>Carrito</h3>
-       <article>
-         <button onClick={() => clearCart()}>Limpiar Carrito</button>
-         {/* {cart.map()} */}
-       </article>
         </div>
          </div>
      </div>
