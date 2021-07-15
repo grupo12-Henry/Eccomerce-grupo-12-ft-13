@@ -5,7 +5,7 @@ export const GETNAMES = 'GETNAMES';
 export const ORDERPRODUCT = 'ORDERPRODUCT';
 export const GETALLPEDIDOS = 'GETALLPEDIDOS';
 export const GETPEDIDOSBYSTATE = 'GETPEDIDOSBYSTATE';
-export const PUTPEDIDO = 'PUTPEDIDO';
+export const GETPEDIDODETAIL = 'GETPEDIDODETAIL';
 
 
 // export const GETNAMESQ = 'GETNAMESQ'
@@ -97,12 +97,25 @@ export function getAllPedidos() {
             console.log(err)
         })
     }
-}
+};
 export function getPedidosByState(state) {
+    return async (dispatch) => {
+        try{
+           const response = await axios.get("http://localhost:3001/admin/pedidos/filter?valor="+state)
+           .then (response => {
+               dispatch({ type: GETPEDIDOSBYSTATE, payload: response.data})
+           }) 
+
+        } catch (err){
+            console.log(err)
+        }
+    }
+};
+export function getPedidoDetail(id) {
     return (dispatch) => {
-        axios.get(`http://localhost:3001/admin/pedidos/filter/?valor=${state}`)
+        axios.get('http://localhost:3001/admin/pedidos/'+id)
         .then(response => {
-            dispatch({ type: GETPEDIDOSBYSTATE, payload: response.data})
+            dispatch({ type: GETPEDIDODETAIL, payload: response.data})
         })
         .catch((err) =>{
             console.log(err)
@@ -119,5 +132,5 @@ export function putPedido(id, payload) {
             console.log(err)
         })
     }
-}
+};
 // axios.defaults.baseURL ="http://localhost:3001";
