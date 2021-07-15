@@ -19,16 +19,22 @@ export default function Dashboard() {
     }
 
     return (
-        <div>
-            <div><Link to='/home'>BACK</Link></div>
-            <h2>Profile</h2>
-            <p>{error}</p>
-            <strong>Email:</strong>{currentUser.email}
-            <Link to='/update-profile'>Update Profile</Link>
+        <>
+        { currentUser ?
             <div>
+                <Link to='/home'>BACK</Link>
+                <h2>Profile</h2>
+                <p>{error}</p>
+                <strong>Email:</strong>{currentUser.email}
+                <Link to='/update-profile'>Update Profile</Link>
                 Need an account? Log In <Link to='/signup'>Sign Up</Link>
                 <button variant='link' onClick={handleLogout}>Log Out</button>
             </div>
-        </div>
+        :
+            (
+                <div>TENES QUE LOGUEARTE</div>
+            )
+        }
+        </>
     )
 }

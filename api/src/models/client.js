@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
         },
         phone: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
         },
         state: {
             type: DataTypes.STRING,
@@ -33,8 +33,8 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
         },
         admin:{
-            type: DataTypes.BOOLEAN,
-            default: false
+            type: DataTypes.TEXT,
+            default: ""
         }
     },{timestamps: false,});
 
