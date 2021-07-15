@@ -30,7 +30,6 @@ router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con
 router.get('/detallePedido/:id', async (req,res)=>{//envia detalle de un pedido
 const id = req.params.id
 try {
-    
     const pedido = await Order.findByPk(id,{
     include:[{
         model: Client, model: Product
@@ -40,6 +39,7 @@ pedido?res.send(pedido): res.send('pedido no encontrado')
 } catch (error) {
     res.send(error).status(404)
 }})
+
 router.delete('/producto/:id', async(req, res)=>{
     const id = req.params.id
     try {
@@ -49,6 +49,7 @@ router.delete('/producto/:id', async(req, res)=>{
         res.send(error).status(404)
     }
 })
+
 router.delete('/client/:id', async(req, res)=>{
     const id = req.params.id
     try {
@@ -59,19 +60,17 @@ router.delete('/client/:id', async(req, res)=>{
         res.send(error).status(404)
     }
 })
+
 router.post('/clientesPost', async (req, res) => {//crea un nuevo cliente
-    const { id, name,lastname, phone , state, adress, mail, identityCard  } = req.body;
-    const cliente ={name:name,mail:mail}
-   
-     
-      try {
-      
-     const token = jwt.sign({cliente},secret)
-  
+    const { name,lastname, phone , state, adress, mail, identityCard  } = req.body;
+    // const cliente ={name:name, mail:mail}
+    // console.log(1,req.body)
+    try {
+        const token= 'false'
+    //  const token = jwt.sign({cliente},secret)
       const newClient = await Client.create({
         name, lastname, phone:phone+'', state, adress, mail, identityCard,admin:token
       })
-      
       res.send(newClient)
     }
     catch(error){
@@ -142,7 +141,6 @@ router.put('/productos/:id', async (req, res) => {//modifica el producto selecci
        
         const product = await Product.findByPk(id)
         await product.update({
-
             name: name || product.dataValues.name,
             type: type || product.dataValues.type,
             Description: Description || product.dataValues.Description,
@@ -217,8 +215,10 @@ router.get('/pedidos/all', async (req, res) => {//envia todos los pedidos
         res.send(error).status(404)
     }
 })
+
 router.post('/orderPost', async (req, res) => {
     const { idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad} = req.body;
+
     try {
       const user = await Client.findByPk(idClient)
       const newOrder = await Order.create({

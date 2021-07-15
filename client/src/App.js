@@ -3,8 +3,8 @@ import { Route } from 'react-router-dom';
 import LandingPage from './components/landing/landing';
 import Home from './components/home/home';
 import Detail from './components/detail/detail';
-// import SignUp from "./components/register/userRegister/signUp/SignUp";
-// import Login from './components/register/userRegister/login/login';
+import SignUp from "./components/register/userRegister/signUp/SignUp";
+import Login from './components/register/userRegister/login/login';
 import Dashboard from './components/register/userRegister/dashboard/dashboard';
 import UpdateProfile from './components/register/userRegister/updateProfile/updateProfile';
 import ForgotPassword from './components/register/userRegister/forgotPassword/forgotPassword';
@@ -19,14 +19,17 @@ import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteA
 import AdminComponent from './components/register/adminRegister/component/AdminComponent';
 import Delivery from './components/register/userRegister/component/confirmDelivery';
 
+
 function App() {
   return (
     <React.Fragment>
       <AuthProvider>
+        <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
         <PrivateRouteUser component={Dashboard} exact path='/dashboard'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
         <PrivateRouteUser component={Delivery} path='/delivery'/>
-        <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
+        <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
+        <PrivateRouteUser component={Delivery} exact path='/delivery'/>
         <Route component={LandingPage} exact path='/'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>
@@ -34,9 +37,8 @@ function App() {
         <Route component={Espumantes} exact path='/espumantes'/>
         <Route component={Cervezas} exact path='/cervezas'/>
         <Route component={Vinos} exact path='/vinos'/>
-        {/* <Route component={SignUp} exact path='/signup'/>
-        <Route component={Login} exact path='/login'/> */}
-        <Route component={ForgotPassword} exact path='/forgotPassword'/>
+        <Route component={SignUp} exact path='/signup'/>
+        <Route component={Login} exact path='/login'/>
         <Route component={Detail} exact path='/detail/:id'/>
       </AuthProvider>
     </React.Fragment>

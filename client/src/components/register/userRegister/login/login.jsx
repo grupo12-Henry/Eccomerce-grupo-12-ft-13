@@ -21,14 +21,13 @@ export function validate(input) {
     return errors;
 };
 
-export default function Login() {
+export default function Login({ onClose }) {
     const emailRef = useRef()
     const passwordRef = useRef()
     const { login } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
-
 
     const [input, setInput] = useState({
         email: '',
@@ -50,15 +49,19 @@ export default function Login() {
         // setErrors termina guardando el objeto que retorna la function validate
     }
 
-
     async function HandleSubmit(e) {
         e.preventDefault()
-
         try {
             setError('')
             setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/dashboard")
+                if(process.env.REACT_APP_ADMIN_EMAIL === emailRef.current.value &&
+                    passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD) {
+                    await login(emailRef.current.value, passwordRef.current.value)
+                    history.push('/dashboard-admin')
+                } else {
+                  await login(emailRef.current.value, passwordRef.current.value)
+                  onClose()
+                }
         }
         catch {
             setError('Failed to Log In')
@@ -95,7 +98,7 @@ export default function Login() {
                 </div>
                 <button disabled={loading} className='btn btn-success LogIn' type='submit'>Ingresar</button>
             </form>
-            <div className='signup_link'>No estas registrado?<Link className='signup_link2' to='/signup'>Registrate!</Link></div>
+            {/* <div className='signup_link'>No estas registrado?<Link className='signup_link2' to='/signup'>Registrate!</Link></div> */}
         </div>
         </StyledDiv>
     )
