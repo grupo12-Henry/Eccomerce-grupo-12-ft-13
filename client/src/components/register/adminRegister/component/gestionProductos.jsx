@@ -68,23 +68,25 @@ function GestionProductos() {
           <div className='EditarProducto' class='form-row m-5'>
 <h3>editar producto</h3>
 {<form  onSubmit={e=>editSubmit(e)} >
-    <input type='number' class="form-control" name='id' autoComplete='off' placeholder='id del producto a modificar' onChange={handleInputChange}/>
-    <input type='text' name='name' placeholder ='nombre del producto' onChange={handleInputChange}/>
-    <input type='text' name='Description' placeholder='descripcion' onChange={handleInputChange}/>
-    <input name='type' placeholder='tipo' onChange={handleInputChange}/>
-    <input type='text' name='image' placeholder='url de imagen' onChange={handleInputChange}/>
-    <input type='text' name='maker' placeholder='fabricante' onChange={handleInputChange}/>
-    <input type='number' name='price' placeholder='precio' onChange={handleInputChange}/>
-    <input type='text' name='subcategories' placeholder='sub-categoria' onChange={handleArrayChange}/>
+    <input type='number'class="form-control mt-2 ml-5" name='id' autoComplete='off' placeholder='id del producto a modificar' onChange={handleInputChange}/>
+    <input type='text' class="form-control mt-2 ml-5" name='name' placeholder ='nombre del producto' onChange={handleInputChange}/>
+    <input type='text' class="form-control mt-2 ml-5" name='Description' placeholder='descripcion' onChange={handleInputChange}/>
+    <input name='type' class="form-control mt-2 ml-5" placeholder='tipo' onChange={handleInputChange}/>
+    <input type='text' class="form-control mt-2 ml-5" name='image' placeholder='url de imagen' onChange={handleInputChange}/>
+    <input type='text' class="form-control mt-2 ml-5" name='maker' placeholder='fabricante' onChange={handleInputChange}/>
+    <input type='number' class="form-control mt-2 ml-5" name='price' placeholder='precio' onChange={handleInputChange}/>
+    <input type='text' class="form-control mt-2 ml-5" name='subcategories' placeholder='sub-categoria' onChange={handleArrayChange}/>
     <p>separa las sub-categorias con un (-) guion medio</p>
-    <input type='number' name='stock' placeholder='stock' onChange={handleInputChange}/>
-    <button className='NewProductSubmitButton' name='submit' type='submit' >Submit</button>
+    <input type='number' class="form-control mt-2 ml-5" name='stock' placeholder='stock' onChange={handleInputChange}/>
+    <button className='NewProductSubmitButton' class="form-control mt-2 ml-5" name='submit' type='submit' >Submit</button>
 </form>}
 </div>
-<h3>Eliminar un producto</h3>
+<h3 class="mt-5 ml-2">Eliminar un producto</h3>
 {<form  onSubmit={e=>deleteSubmit(e)} >
-    <input type='number' class="form-control" name='id' autoComplete='off' placeholder='id del producto a modificar' onChange={handleInputChange}/>
+  <div class="form-row mt-2 ml-5">
+    <input type='number' class="form-control mt-2 ml-5" name='id' autoComplete='off' placeholder='id del producto a modificar' onChange={handleInputChange}/>
       <button>Delete</button>
+      </div>
     </form>}
      </div>
    )
