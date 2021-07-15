@@ -6,6 +6,7 @@ export const ORDERPRODUCT = 'ORDERPRODUCT';
 export const GETALLPEDIDOS = 'GETALLPEDIDOS';
 export const GETPEDIDOSBYSTATE = 'GETPEDIDOSBYSTATE';
 export const GETPEDIDODETAIL = 'GETPEDIDODETAIL';
+export const PUTPEDIDO = 'PUTPEDIDO';
 
 
 // export const GETNAMESQ = 'GETNAMESQ'
@@ -129,7 +130,7 @@ export function getPedidosByState(state) {
 };
 export function getPedidoDetail(id) {
     return (dispatch) => {
-        axios.get('http://localhost:3001/admin/pedidos/'+id)
+        axios.get('http://localhost:3001/admin/detallePedido/'+id)
         .then(response => {
             dispatch({ type: GETPEDIDODETAIL, payload: response.data})
         })
