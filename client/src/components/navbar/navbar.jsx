@@ -15,7 +15,7 @@ import NavModal from "../navModal/navModal";
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +77,7 @@ const Nav = () => {
             <Auto />
           </div>
           <ul className="d-flex">
-            <a href="compras" className="carrito">
+            <Link to='/compras'> <li><a className="carrito">
               <img className="cart" alt="cart img" src={cart} width="20px" />
             </a>
             {currentUser ? (
@@ -97,6 +97,14 @@ const Nav = () => {
             </a>
             )
             }
+            </li> </Link>
+            
+            <li><a href="/user" onClick={handleLogin}>
+              <img alt="user img" src={user} width="20px" />
+            </a></li>
+            
+            
+>>>>>>> 59fb442f32e06d491f51608962d0f9c40ccdcca8
           </ul>
         </div>
         {/* <button onClick={() => setIsOpen(true)}>Open Portal</button> */}
