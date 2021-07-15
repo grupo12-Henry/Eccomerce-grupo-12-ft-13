@@ -18,6 +18,7 @@ import PrivateRouteUser from './components/register/userRegister/privateRouteUse
 import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteAdmin/privateRouteAdmin";
 import AdminComponent from './components/register/adminRegister/component/AdminComponent';
 import Delivery from './components/register/userRegister/component/confirmDelivery';
+import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <PrivateRouteUser component={Delivery} path='/delivery'/>
         <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
         <Route component={LandingPage} exact path='/'/>
+        <Route component={ShoppingCart} exact path='/compras'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>
         <Route component={Varios} exact path='/varios'/>
