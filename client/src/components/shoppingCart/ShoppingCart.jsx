@@ -1,0 +1,90 @@
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch  } from 'react-redux'
+import { addProductCart, removeProductCart, ClearCart, getProducts } from '../../actions';
+// import ProductCart from './ProductCart';
+import { Link } from 'react-router-dom';
+
+
+
+function ShoppingCart(props) {
+  const dispatch = useDispatch()
+  const cart = useSelector( (state) => state.productCart)
+  const product = useSelector((state) => state.products);
+
+  const [allProducts, setAllProducts] = useState([]);
+
+
+useEffect(() => {
+  const dbProducts = () => {
+    setAllProducts(product);
+  };
+  dbProducts();
+}, [product]);
+
+
+const addToCart = (id) => {
+  console.log(id)
+}
+
+const delFromCart = () => {}
+
+const clearCart = () => {}
+
+    return (
+      <div class="cart_section">
+         <div  class="container-fluid">
+         <div class="row">
+        <h2>SIMULADOR DE HOME</h2>
+         <h3>Productos</h3>
+         <article class='box'>
+         {allProducts &&
+                  allProducts.length > 0 ? allProducts.map((el) => (
+                    <div class="col-md-4 mt-2">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-img-actions">
+                            <Link to={`/detail/${el.id}`}>
+                              <img
+                                src={el.image}
+                                class="card-img img-fluid"
+                                height="45px"
+                                alt=""
+                              />
+                            </Link>
+                          </div>
+                        </div>
+                        <div class="card-body bg-light text-center">
+                          <div class="mb-2">
+                            <h6 class="font-weight-semibold mb-2">
+                              <a
+                                href="/detail/id"
+                                class="text-default mb-2"
+                                data-abc="true"
+                              >
+                                {el.name}
+                              </a>
+                            </h6>
+                          </div>
+                          <h3 class="mb-0 font-weight-semibold">${el.price}.00</h3>
+                          <button onClick={()=>addToCart(el.id)} type="button" class="btn bg-cart">
+                            <i class="fa fa-cart-plus mr-2"></i> Agregar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )) : null}
+         </article>
+         <h3>Carrito</h3>
+       <article>
+         <button onClick={() => clearCart()}>Limpiar Carrito</button>
+         {/* {cart.map()} */}
+       </article>
+        </div>
+         </div>
+     </div>
+      
+    )
+  }
+
+
+  export default ShoppingCart;
