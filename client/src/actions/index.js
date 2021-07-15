@@ -7,9 +7,39 @@ export const GETALLPEDIDOS = 'GETALLPEDIDOS';
 export const GETPEDIDOSBYSTATE = 'GETPEDIDOSBYSTATE';
 export const GETPEDIDODETAIL = 'GETPEDIDODETAIL';
 export const PUTPEDIDO = 'PUTPEDIDO';
+//ACTIONS DE SHOPPING-CART
+export const ADD_TO_CART = 'ADD_TO_CART'
+// export const ADD_ONE_FROM_CART = 'ADD_ONE_FROM_CART'
+// export const REMOVE_ONE_FROM_CART = 'REMOVE_ONE_FROM_CART'
+export const REMOVE_ALL_FROM_CART = 'REMOVE_ALL_FROM_CART'
+export const CLEAR_CART = 'CLEAR_CART'
 
 
 // export const GETNAMESQ = 'GETNAMESQ'
+
+// Perdon EMI NO ME DI CUENTA JAJA
+// LISTO tranqui
+// no hay drama
+
+export function removeProductCart (id){
+  console.log('hla')
+}
+//ESTADO QUE SE LLAME productCart :[{},{},{}] =[]
+export function addProductCart(payload) {
+    return {
+        type: ADD_TO_CART,
+        payload,
+
+        };
+         //
+  }
+
+  export function ClearCart() { //ver que le pasamos al reducer
+    return {
+         type: CLEAR_CART, 
+        //  payload 
+        };
+  }
 
 
 
@@ -36,6 +66,7 @@ export function getDetail (id) {
         })
     }
 };
+
 export function orderProduct ({offset, type, order, name}) {
     return (dispatch) => {
         const datos = `offset=${offset}&${type}=type&${order}=order&${name}=name`
