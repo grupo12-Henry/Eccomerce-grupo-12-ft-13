@@ -55,7 +55,7 @@ export default function Login({ onClose }) {
             setError('')
             setLoading(true)
                 if(process.env.REACT_APP_ADMIN_EMAIL === emailRef.current.value &&
-                  passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD) {
+                    passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD) {
                     await login(emailRef.current.value, passwordRef.current.value)
                     history.push('/dashboard-admin')
                 } else {
