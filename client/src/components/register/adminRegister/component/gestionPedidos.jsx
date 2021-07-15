@@ -175,71 +175,71 @@ function GestionPedidos() {
 
         <h3>Modificar un pedido</h3>
         <div class='container'>
-            <form>
+            <form onSubmit={(e) => handlePedidosSubmit(e)}>
                 <ol>
                 <li>
                     <label>Pedido Numero: </label>
-                    <input type='number' value={modifyId} onChange={handleModifyIdChange}/>
+                    <input name='id' type='number' value={modifyId} onChange={handleModifyIdChange}/>
                 </li>
                 <li>
                     <label>Cliente Numero </label>
-                    <input type='number' value={modifyPedido.clientId} onChange={handleInputModifyChange}/>
+                    <input name='clientId' type='number' value={modifyPedido.clientId} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Fecha de compra</label>
-                    <input type='text' value={modifyPedido.date} onChange={handleInputModifyChange}/>
+                    <input name='date' type='text' value={modifyPedido.date} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Monto </label>
-                    <input type='number' value={modifyPedido.bill} onChange={handleInputModifyChange}/>
+                    <input name='bill' type='number' value={modifyPedido.bill} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Forma de Pago </label>
-                    <input type='text' value={modifyPedido.paymentMethod} onChange={handleInputModifyChange}/>
+                    <input name='paymentMethod' type='text' value={modifyPedido.paymentMethod} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Ticket </label>
-                    <input type='text' value={modifyPedido.ticket} onChange={handleInputModifyChange}/>
+                    <input name='ticket' type='text' value={modifyPedido.ticket} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Dirección de envio </label>
-                    <input type='text' value={modifyPedido.adress} onChange={handleInputModifyChange}/>
+                    <input name='adress' type='text' value={modifyPedido.adress} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Cód. Postal </label>
-                    <input type='text' value={modifyPedido.mail} onChange={handleInputModifyChange}/>
+                    <input name='mail' type='text' value={modifyPedido.mail} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Fecha de envio</label>
-                    <input type='text' value={modifyPedido.shippingDate} onChange={handleInputModifyChange}/>
+                    <input name='shippingDate' type='text' value={modifyPedido.shippingDate} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Estado del envio </label>
-                    <input type='text' value={modifyPedido.state} onChange={handleInputModifyChange}/>
+                    <input name='state' type='text' value={modifyPedido.state} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Costo de envio </label>
-                    <input type='number' value={modifyPedido.cost} onChange={handleInputModifyChange}/>
+                    <input name='cost' type='number' value={modifyPedido.cost} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>N° de guia </label>
-                    <input type='text' value={modifyPedido.guideNumber} onChange={handleInputModifyChange}/>
+                    <input name='guideNumber' type='text' value={modifyPedido.guideNumber} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Transportista </label>
-                    <input type='text' value={modifyPedido.freight} onChange={handleInputModifyChange}/>
+                    <input name='freight' type='text' value={modifyPedido.freight} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>IVA </label>
-                    <input type='number' value={modifyPedido.ivaCost} onChange={handleInputModifyChange}/>
+                    <input name='ivaCost' type='number' value={modifyPedido.ivaCost} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Situación impositiva </label>
-                    <input type='text' value={modifyPedido.ivaCondition} onChange={handleInputModifyChange}/>
+                    <input name='ivaCondition' type='text' value={modifyPedido.ivaCondition} onChange={handleInputModifyChange}/>
                 </li>
                 </ol>
 
-                <button onClick={(e) => handlePedidosSubmit(e)}>Confirmar modificación</button>
+                <button onClick={(e) => {handlePedidosSubmit(e)}}>Confirmar modificación</button>
             </form>
         </div>
     </div>
