@@ -1,11 +1,18 @@
-import React, { useState} from 'react'
-import { useDispatch } from 'react-redux';
-import { postUsuarios, putUsuarios, deleteUsuarios } from '../../../../actions';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllUsers, getUserDetails, postUsuarios, putUsuarios, deleteUsuarios } from '../../../../actions';
 
 function GestionUsuarios() {
-    // const users = useSelector(state => state.users)
-    const dispatch = useDispatch()
 
+    const AllClients = useSelector(state => state.AllClients);
+    const ClientDetails = useSelector(state => state.ClientDetails);
+    const dispatch = useDispatch();
+
+    useEffect(() => { 
+        dispatch(getAllUsers());
+    }, []);
+
+    //A partir de aca es lo que estaba codeado.
     const [user, setUser] = useState({ 
         id:'',
         name: '',
@@ -47,10 +54,51 @@ function GestionUsuarios() {
     }
 
     return (
-        <div>
+        <div class='container'>
+
+            <div class='containter mt-05 ml-3 mr-03 mb-3'>
+            <h3 class='mt-03 ml-3 mr-03 mb-3'>Ver Usuarios</h3>
+            <div class="table-responsive">
+                <table 
+                    class="table table-sm table-bordered mt-05 ml-3 mr-03 mb-3 "
+                    data-toggle="table"
+                    data-pagination="true"
+                    data-search="true"
+                    data-url="data.json">
+                    <thead>
+                        <tr>
+                        <th scope="col" data-field="id" data-sortable="true" >ID</th>
+                        <th scope="col" data-field="name" data-sortable="true" >Nombre</th>
+                        <th scope="col" data-field="lastname" data-sortable="true" >Apellido</th>
+                        <th scope="col" data-field="phone" data-sortable="true" >Telefono</th>
+                        <th scope="col" data-field="mail" data-sortable="true" >Mail</th>
+                        <th scope="col" data-field="adress" data-sortable="true" >Dirección</th>
+                        <th scope="col" data-field="state" data-sortable="true" >Provincia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            AllClients.map(client => (
+                                <tr>
+                                <th scope="row">{client.id}</th>
+                                <td>{client.name}</td>
+                                <td>{client.lastname}</td>
+                                <td>{client.phone}</td>
+                                <td>{client.mail}</td>
+                                <td>{client.adress}</td>
+                                <td>{client.state}</td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
+            {/* A partir de aca es lo que estaba codeado  */}
             <form onSubmit={handleSubmit}>
             <div class="form-row mt-5 ml-2">
-                <h2 class='rounded-bottom'>Crear nuevo usuario</h2>
+                <h2 class='rounded-bottom'>Crear un usuario</h2>
                 <br></br><hr/>
                 <div>
                     <input class="form-control mt-5 ml-5"
@@ -76,17 +124,17 @@ function GestionUsuarios() {
                     </input>
                     <input class="form-control mt-2 ml-5"
                         required autoComplete='off' 
-                        placeholder='Provincia del usuario...' 
-                        name='state' 
+                        placeholder='Dirección...' 
+                        name='adress' 
                         onChange={handleUser} 
-                        value={user.state}>
+                        value={user.adress}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                         required autoComplete='off' 
                         placeholder='Provincia del usuario...' 
-                        name='adress' 
+                        name='state' 
                         onChange={handleUser} 
-                        value={user.adress}>
+                        value={user.state}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                         required autoComplete='off' 
@@ -97,7 +145,7 @@ function GestionUsuarios() {
                     </input>
                     <input class="form-control mt-2 ml-5"
                         autoComplete='off' 
-                        placeholder='Tarjeta C/D...' 
+                        placeholder='DNI...' 
                         name='identityCard' 
                         onChange={handleUser} 
                         value={user.identityCard}>
@@ -113,11 +161,12 @@ function GestionUsuarios() {
                 <div >
                     <input class="btn btn-primary btn-md mt-5 ml-5" type='submit' onSubmit={handleSubmit}/>
                 </div> 
-                </div>
+            </div>
             </form>
+
             <form class='mt-5 ml-2' onSubmit={putSubmit} >
             <div class="form-row">
-                <h2>Modificar usuario</h2>
+                <h2>Modificar un usuario</h2>
                 <br/>
                 <div >
                     <input class="form-control mt-5 ml-5"
@@ -188,8 +237,9 @@ function GestionUsuarios() {
                 </div> 
                 </div>
             </form>
+
             <form onSubmit={deleteSubmit}>
-            <h2>Eliminar usuario</h2>
+            <h2>Eliminar un usuario</h2>
                 <br/>
                 <div >
                     <input class="form-control mt-5 ml-5"
@@ -202,6 +252,7 @@ function GestionUsuarios() {
                     <input class="btn btn-primary btn-m mt-5 ml-5" type='submit'/>
                 </div>
             </form >
+
         </div>
     )
 };

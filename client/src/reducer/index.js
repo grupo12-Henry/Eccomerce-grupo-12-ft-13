@@ -3,6 +3,8 @@ import {
   GETDETAILS,
   GETNAMES,
   ORDERPRODUCT,
+  GET_ALL_USERS,
+  GET_USER_DETAILS,
   GETALLPEDIDOS,
   GETPEDIDOSBYSTATE,
   GETPEDIDODETAIL,
@@ -13,19 +15,25 @@ import {
 } from "../actions";
 
 const initialState = {
+  //PRODUCTOS
   products: [],
   productDetail: {},
   names: [],
   orderProd: [],
+  //ADMIN DASH
   pedidos: [],
   pedidoDetail: {},
-  // namesq: []
+  AllClients: [],
+  ClientDetails: {},
+  //CARRITO
   productCart: [],
+  //LOCAL STORAGE
   arrayStorages: [],
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    //ESTADOS DE LA PAG EN GRAL.
     case GETCARDS:
       return {
         ...state,
@@ -41,17 +49,21 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         orderProd: action.payload,
       };
-
-    // case GETNAMESQ:
-    //     return {
-    //         ...state,
-    //         namesq: action.payload
-    //     };
-
     case GETDETAILS:
       return {
         ...state,
         productDetail: action.payload,
+      };
+      //ADMIN DASHBOARD
+    case GET_ALL_USERS:
+        return {
+          ...state,
+          AllClients: action.payload,
+        };
+    case GET_USER_DETAILS:
+      return {
+        ...state,
+        ClientDetails: action.payload,
       };
     case GETALLPEDIDOS:
       return {
