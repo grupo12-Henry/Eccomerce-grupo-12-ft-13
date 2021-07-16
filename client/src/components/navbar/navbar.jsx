@@ -102,13 +102,12 @@ const Nav = () => {
             )
             }
 
-            </a> </li> </Link>
-            
+              </li></Link>
             <li><a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
             </a></li>
-            
-            
+
+
           </ul>
         </div>
         {/* <button onClick={() => setIsOpen(true)}>Open Portal</button> */}

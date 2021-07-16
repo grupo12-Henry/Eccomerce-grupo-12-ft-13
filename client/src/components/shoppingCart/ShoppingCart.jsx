@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch  } from 'react-redux'
-import { addProductCart, removeProductCart, ClearCart, getProducts ,ADD_TO_CART} from '../../actions';
+import { addProductCart, removeProductCart, ClearCart, getProducts ,ADD_TO_CART, addLocalStorage, getLocalStorage, deleteLocalStorage } from '../../actions';
 // import ProductCart from './ProductCart';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
 import CartShp from './CartShp'
 
-
-
 function ShoppingCart(props) {
   const dispatch = useDispatch()
-  const cart = useSelector( (state) => state.productCart)
+  const cart = useSelector( (state) => state.productCart);
   const product = useSelector((state) => state.products);
+  const localStorage = useSelector((state) => state.arrayStorages);
 
   const [allProducts, setAllProducts] = useState([]);
 
+  //consologuea el localStorage
+  useEffect(() => {
+    console.log(localStorage)
+  }, [localStorage]);
 
 useEffect(() => {
   const dbProducts = () => {
@@ -24,8 +27,9 @@ useEffect(() => {
 }, [product]);
 
 
-const addToCart = (id) => {
-  dispatch(addProductCart(id))
+const addToCart = (el) => {
+  dispatch(addLocalStorage(el))
+  dispatch(addProductCart(el.id))
   console.log()
 }
 
@@ -42,7 +46,7 @@ const clearCart = () => {}
        <article>
          {CartShp}
          <button onClick={() => clearCart()}>Limpiar Carrito</button>
-         {cart.map( (item, index) => 
+         {cart.map( (item, index) =>
          <CartItem key={index} data={item} delFromCart={delFromCart}/>
          )}
        </article>
@@ -77,18 +81,18 @@ const clearCart = () => {}
                             </h6>
                           </div>
                           <h3 class="mb-0 font-weight-semibold">${el.price}.00</h3>
-                          <button onClick={()=>addToCart(el.id)} type="button" class="btn bg-cart">
+                          <button onClick={(el)=>addToCart(el)} type="button" class="btn bg-cart">
                             <i class="fa fa-cart-plus mr-2"></i> Agregar
                           </button>
                         </div>
                       </div>
                     </div>
                   )) : null}
-         </article>
+        </article>
         </div>
-         </div>
-     </div>
-      
+        </div>
+    </div>
+
     )
   }
 

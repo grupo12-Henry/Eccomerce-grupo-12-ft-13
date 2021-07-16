@@ -10,7 +10,6 @@ function Cart({data, addToCart}) {
         <h3>Carrito</h3>
         <article> </article>
       </div>
-      
     )
   }
 
