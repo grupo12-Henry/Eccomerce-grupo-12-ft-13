@@ -5,8 +5,8 @@ import { addProductCart, removeProductCart, ClearCart, getProducts ,ADD_TO_CART}
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
 import CartShp from './CartShp'
-
-
+import StyledDiv from './Styled';
+import './shoppingCart.css';
 
 function ShoppingCart(props) {
   const dispatch = useDispatch()
@@ -34,10 +34,10 @@ const delFromCart = () => {}
 const clearCart = () => {}
 
     return (
-      <div class="cart_section">
+     
+      <div className='container-productos' >
          <div  class="container-fluid">
          <div class="row">
-        <h2>SIMULADOR DE HOME</h2>
          <h3>Carrito</h3>
        <article>
          {CartShp}
@@ -46,51 +46,31 @@ const clearCart = () => {}
          <CartItem key={index} data={item} delFromCart={delFromCart}/>
          ):null}
        </article>
-         <h3>Productos</h3>
          <article class='box'>
-         {allProducts &&
-                  allProducts.length > 0 ? allProducts.map((el) => (
-                    <div class="col-md-4 mt-2">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-img-actions">
-                            <Link to={`/detail/${el.id}`}>
-                              <img
-                                src={el.image}
-                                class="card-img img-fluid"
-                                height="45px"
-                                alt=""
-                              />
-                            </Link>
-                          </div>
-                        </div>
-                        <div class="card-body bg-light text-center">
-                          <div class="mb-2">
-                            <h6 class="font-weight-semibold mb-2">
-                              <a
-                                href="/detail/id"
-                                class="text-default mb-2"
-                                data-abc="true"
-                              >
-                                {el.name}
-                              </a>
-                            </h6>
-                          </div>
-                          <h3 class="mb-0 font-weight-semibold">${el.price}.00</h3>
-                          <button onClick={()=>addToCart(el.id)} type="button" class="btn bg-cart">
-                            <i class="fa fa-cart-plus mr-2"></i> Agregar
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )) : null}
+        
          </article>
         </div>
          </div>
      </div>
+
+      
+      
       
     )
   }
 
 
   export default ShoppingCart;
+
+  // {allProducts &&
+  //   allProducts.length > 0 ? allProducts.map((el) => (
+  //     <div class="col-md-4 mt-2">
+  //       <div class="card">
+  //         <div class="card-body bg-light text-center">
+  //           <button onClick={()=>addToCart(el.id)} type="button" class="btn bg-cart">
+  //             <i class="fa fa-cart-plus mr-2"></i> Agregar
+  //           </button>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   )) : null}

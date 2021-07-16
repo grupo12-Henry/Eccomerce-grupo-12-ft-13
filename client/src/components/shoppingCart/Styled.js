@@ -2,11 +2,25 @@ import styled from 'styled-components';
 
 
 const StyledDiv = styled.div`
+.container-productos{
+  border
+  position: relative;
+  display: block;
+  width: 45.5rem;
+  height: 27rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin: 2rem;
+  border: 0.1rem solid rgba(94, 3, 3, 0.726);
+  color: rgba(114, 224, 160, 0.699);;
+  background: white;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3),0px 3px 7px rgba(0, 0, 0, 0.3),0px 1px white inset, 0px -3px 2px rgba(0, 0, 0, 0.3) inset ;
+}
+
 .container-carrito{
   display:flex;
   flex-direction:row;
-  
-  
+    
 }
 .Img{
   justify-content:space-around;

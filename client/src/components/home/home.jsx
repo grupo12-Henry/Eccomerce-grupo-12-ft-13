@@ -7,7 +7,8 @@ import Footer from "../footer/footer";
 import { Link } from 'react-router-dom';
 import Pages from "./paginado";
 import NavCategories from "../navCategories/navCategories";
-
+import { addProductCart } from "../../actions/index";
+// import ShoppingCart from "../shoppingCart/ShoppingCart";
 
 
 export default function Home({ location }) {
@@ -39,13 +40,20 @@ export default function Home({ location }) {
     dbProducts();
   }, [product]);
 
+  const addToCart = (id) => {
+    dispatch(addProductCart(id))
+  }
+  // const [carritoOn, setCarritoOn] = useState(false) 
+
+
 
   return (
     <>
       <Nav />
-      <NavCategories />
+        <NavCategories />
       <StyledDiv>
         <div>
+          {/* <div class='mt-5 mb-3' >{carritoOn===true?<ShoppingCart/>:null}</div>  */}
           <div className="div_container">
             <div class="container d-flex justify-content-center mt-50 mb-50">
               <div class="row">
@@ -87,7 +95,7 @@ export default function Home({ location }) {
                             <i class="fa fa-star star"></i>
                           </div>
                           <div class="text-muted mb-3">34 reviews</div>
-                          <button type="button" class="btn bg-cart">
+                          <button type="button" onClick={()=>addToCart(el.id)} class="btn bg-cart">
                             <i class="fa fa-cart-plus mr-2"></i> Agregar
                           </button>
                         </div>

@@ -9,6 +9,7 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 // export const REMOVE_ONE_FROM_CART = 'REMOVE_ONE_FROM_CART'
 export const REMOVE_ALL_FROM_CART = 'REMOVE_ALL_FROM_CART'
 export const CLEAR_CART = 'CLEAR_CART'
+export const CARRITO = 'CARRITO'
 
 
 // export const GETNAMESQ = 'GETNAMESQ'
@@ -17,6 +18,12 @@ export const CLEAR_CART = 'CLEAR_CART'
 // LISTO tranqui
 // no hay drama
 
+export function carritoEstado (){
+    return {
+        type: CARRITO,
+        };
+  
+}
 export function removeProductCart (id){
     return {
         type: REMOVE_ALL_FROM_CART,

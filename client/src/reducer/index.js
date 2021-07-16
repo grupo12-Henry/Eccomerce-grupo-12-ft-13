@@ -1,4 +1,4 @@
-import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, ADD_TO_CART,REMOVE_ALL_FROM_CART,CLEAR_CART } from '../actions'
+import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, ADD_TO_CART,REMOVE_ALL_FROM_CART,CLEAR_CART, CARRITO } from '../actions'
 import CartItem from '../components/shoppingCart/CartItem';
 
 
@@ -8,12 +8,19 @@ const initialState = {
     names: [],
     orderProd: [],
     productCart: [],
-    arrayStorages: []
+    arrayStorages: [],
+    carritoState: false
 
 }
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+        case CARRITO:
+            return{
+                ...state,
+                carritoState: !state.carritoState
+            };
+
         case GETCARDS:
             return {
                 ...state,
