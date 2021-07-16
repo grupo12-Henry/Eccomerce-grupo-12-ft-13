@@ -12,13 +12,23 @@ import cart from "../../assets/images/cart.png";
 import user from "../../assets/images/user.png";
 import Auto from "../searchbar/searchbar";
 import NavModal from "../navModal/navModal";
-import {Link} from 'react-react-router-dom'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch  } from 'react-redux'
+import ShoppingCart from "../shoppingCart/ShoppingCart";
+// import { carritoEstado } from "../../actions";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [carritoOn, setCarritoOn] = useState(false) 
+  const carritoState = useSelector((state) => state.carritoState)
+
+  let carritoHandler = () => {
+    // carritoEstado();
+    setCarritoOn(current=>!current)
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -77,10 +87,9 @@ const Nav = () => {
             <Auto />
           </div>
           <ul className="d-flex">
-            <Link to='/compras'> <li><a className="carrito">
+             <li><a className="carrito"><button onClick={carritoHandler}>
               <img className="cart" alt="cart img" src={cart} width="20px" />
-
-            </a>
+            </button></a>
             {currentUser ? (
                   <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -98,8 +107,7 @@ const Nav = () => {
             </a>
             )
             }
-            </li> </Link>
-            
+            </li>            
             <li><a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
             </a></li>
@@ -112,6 +120,7 @@ const Nav = () => {
         <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
         </NavModal>
       </div>
+      <div class='mt-5 mb-3' >{carritoOn===true?<ShoppingCart/>:null}</div> 
     </StyledDiv>
   );
 };
