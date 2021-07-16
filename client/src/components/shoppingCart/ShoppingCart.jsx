@@ -26,7 +26,6 @@ useEffect(() => {
 
 const addToCart = (id) => {
   dispatch(addProductCart(id))
-  console.log()
 }
 
 

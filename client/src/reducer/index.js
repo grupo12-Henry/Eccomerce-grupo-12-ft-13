@@ -8,7 +8,8 @@ const initialState = {
     names: [],
     orderProd: [],
     productCart: [],
-    productCartCantidad:[]
+    arrayStorages: []
+
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -36,36 +37,26 @@ const rootReducer = (state = initialState, action) => {
                 productDetail: action.payload
             }
         case ADD_TO_CART:
-            if(state.productCart.includes(action.payload)){
-                    return {...state,
-                        productCartCantidad: state.productCartCantidad.cantidad++
-                        }
-                    }else{
-                        return {
-                            ...state,
-                        productCart: state.productCart.push(action.payload),
-                        productCartCantidad : state.productCartCantidad.push({id: action.payload.id, cantidad: 1})  
-                        }  
-                    }  
-                   
-                //     return ({...state, productCartCantidad:l }) //state.productCart.filter(e=>e!==action.payload).concat(a)})// despues necesito unos cerebritos por aca
-                // }
-                  
+            // let nuevoItem = state.products.find(prod => prod.id === action.payload)
+            // let nuevoItemIncluir = state.productCart.find(nuevoItem)
+            // !nuevoItemIncluir ? nuevoItem.cantidad =1  : nuevoItem.cantidad ++;
+            // return{
+            //     ...state,    
+            //     productCart: state.productCart.concat(nuevoItem)
+            // }
 
-            // si id inlcude poductCartCantidad.includes(action.id)
-            //  productCart.cantidad ++
-             
-            // let action.payload = state.products.find(prod => prod.id ===action.payload)
-            // if(state.productCart.includes(action.payload)){
-            // //    let a = state.productCart.filter(e=> e==action.payload).push({estado: 1})
-            //     return ({...state, productCartCantidad:l }) //state.productCart.filter(e=>e!==action.payload).concat(a)})// despues necesito unos cerebritos por aca
-            // }
-            // return {
-            //     ...state,
-            //     productCart: state.productCart.concat(action.payload), productCartCantidad: state.productCartCantidad.push(action.payload.push({cantidad:1}))
-            // }
+
+            let nuevoItem = state.products.find(prod => prod.id ===action.payload)
+            if(state.productCart.includes(nuevoItem)){
+               let a = state.productCart.filter(e=> e==nuevoItem).push({estado: 1})
+                return ({...state, productCart: state.productCart.filter(e=>e!==nuevoItem).concat(a)})// despues necesito unos cerebritos por aca
+            }
+            return {
+                ...state,
+                productCart: state.productCart.concat(nuevoItem)
+            }
         case REMOVE_ALL_FROM_CART:
-              return {
+             return {
                 ...state,
                  productCart: state.productCart.filter(e  => e.id !== action.payload)
             }
@@ -76,6 +67,31 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 productCart: []
             }
+            // case GET_LOCAL_STORAGE: {
+            //     const array = JSON.parse(window.localStorage.getItem("array"));
+                
+            //     return {
+            //       ...state,
+            //       arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
+            //     }
+            //   }
+            //   case DELETE_LOCAL_STORAGE:{
+            //     const array= JSON.parse(window.localStorage.getItem('array'));
+            //     const arrayfiltrado= array&&array.filter(element=>element.id!==action.payload);
+            //       window.localStorage.removeItem('array');
+            //       window.localStorage.setItem('array',JSON.stringify(arrayfiltrado));
+            //       return {...state}
+            //   }
+          
+            //   case ADD_LOCAL_STORAGE:{
+            //     const array = JSON.parse(window.localStorage.getItem("array"));
+          
+            //    window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
+            //     return {
+            //       ...state,
+            //       arrayStorages: state.arrayStorages.slice().concat([action.payload])
+            //     }
+            //   }
 
         default:
             return state;
