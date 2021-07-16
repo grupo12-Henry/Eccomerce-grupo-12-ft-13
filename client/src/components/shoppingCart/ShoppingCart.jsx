@@ -31,7 +31,9 @@ const addToCart = (id) => {
 
 const delFromCart = () => {}
 
-const clearCart = () => {}
+const clearCart = () => {
+  dispatch(ClearCart())
+}
 
     return (
      
