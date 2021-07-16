@@ -73,12 +73,13 @@ export default function Login({ onClose }) {
 
     return (
         <StyledDiv>
-        <div className='center' >
+        <div className='container' >
             <form method='post' onSubmit={HandleSubmit}>
-                <h2>Logueate</h2>
+                <div>
+                <h2>Logueate</h2></div>
                 <p>{error}</p>
                 <div className='email'>
-                    <label>Correo Electronico: </label>
+                    <label className='mr-4'>Correo Electronico: </label>
                     <input type='text' name='email' ref={emailRef} value={input.email} onChange={handleInputChange} required />
                     <span></span>
                     {errors.email && (
@@ -86,7 +87,7 @@ export default function Login({ onClose }) {
                     )}
                 </div>
                 <div className='password'>
-                    <label>Contraseña: </label>
+                    <label className='mr-4'>Contraseña: </label>
                     <input type='password' name='password' ref={passwordRef} value={input.password} onChange={handleInputChange} required />
                     <span></span>
                     {errors.password && (
@@ -94,9 +95,9 @@ export default function Login({ onClose }) {
                     )}
                 </div>
                 <div className='pass'>
-                    <Link className='pass' to='/forgot-password'>Olvidaste tu contraseña?</Link>
+                    <Link className='pass' style={{color: '#ebc28e'}} to='/forgot-password'>Olvidaste tu contraseña?</Link>
                 </div>
-                <button disabled={loading} className='btn btn-success LogIn' type='submit'>Ingresar</button>
+                <button disabled={loading} className='btn btn-light LogIn' type='submit'>Ingresar</button>
             </form>
             {/* <div className='signup_link'>No estas registrado?<Link className='signup_link2' to='/signup'>Registrate!</Link></div> */}
         </div>

@@ -7,6 +7,7 @@ export const GETALLPEDIDOS = 'GETALLPEDIDOS';
 export const GETPEDIDOSBYSTATE = 'GETPEDIDOSBYSTATE';
 export const GETPEDIDODETAIL = 'GETPEDIDODETAIL';
 export const PUTPEDIDO = 'PUTPEDIDO';
+export const PEDIDOSUSER = 'PEDIDOSUSER';
 
 
 // export const GETNAMESQ = 'GETNAMESQ'
@@ -28,8 +29,10 @@ export function getProducts () {
 export function getDetail (id) {
     return (dispatch) => {
         axios.get('http://localhost:3001/admin/productos/id/' + id)
-        .then(response => {
+        .then(response => 
+            {
             dispatch({ type: GETDETAILS, payload: response.data})
+            console.log('ESTA DATA',response.data)
         })
         .catch((err) =>{
             console.log(err)
@@ -48,6 +51,20 @@ export function orderProduct ({offset, type, order, name}) {
         })
     }
 };
+
+export function getpedidosUser (id) {
+    return (dispatch) => {
+        axios.get(`http://localhost:3001/pedidos/${id}`)
+        .then(response => {
+            dispatch({ type: PEDIDOSUSER, payload: response.data})
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+    }
+};
+
+
 
 // export function getNamesQuery(name){
 //     return (dispatch) => {
