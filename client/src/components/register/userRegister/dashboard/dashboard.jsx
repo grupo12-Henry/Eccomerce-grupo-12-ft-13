@@ -49,11 +49,11 @@ export default function Dashboard() {
                         <tbody>
                           <tr>
                             <td>Nombre:</td>
-                            <td>{currentUser.displayName.split(" ")[0]}</td>
+                            <td>Matias</td>
                           </tr>
                           <tr>
                             <td>Apellido:</td>
-                            <td>{currentUser.displayName.split(" ")[1]}</td>
+                            <td>Romero</td>
                           </tr>
                           <tr>
                             <td>Fecha de nacimiento</td>
