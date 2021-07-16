@@ -12,9 +12,12 @@ import cart from "../../assets/images/cart.png";
 import user from "../../assets/images/user.png";
 import Auto from "../searchbar/searchbar";
 import NavModal from "../navModal/navModal";
+
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+
+import { Link } from 'react-router-dom';
 
 
 const Nav = () => {
@@ -77,8 +80,9 @@ const Nav = () => {
             <Auto />
           </div>
           <ul className="d-flex">
-            <a href="compras" className="carrito">
+            <Link to='/compras'> <li><a className="carrito">
               <img className="cart" alt="cart img" src={cart} width="20px" />
+
             </a>
             {currentUser ? (
                   <Dropdown>
@@ -97,6 +101,13 @@ const Nav = () => {
             </a>
             )
             }
+
+              </li></Link>
+            <li><a href="/user" onClick={handleLogin}>
+              <img alt="user img" src={user} width="20px" />
+            </a></li>
+
+
           </ul>
         </div>
         {/* <button onClick={() => setIsOpen(true)}>Open Portal</button> */}
