@@ -1,11 +1,32 @@
 import React from 'react';
+import StyledDiv from './Styled';
+import {useState} from 'react'
 
 
-function CartItem() {
+function CartItem({data, delFromCart}) {
+
+  const [state, setState]= useState(1)
+  const[precioTotal, setPrecioTotal]= useState(data.price*state)
+  
+  const handleCountChange = (e) => {
+    setState(e.target.value);
+    setPrecioTotal(e.target.value*data.price)
+    console.log(state)
+  }
+
     return (
-      <div>
-        <h3>Elementos del Carrito</h3>
-      </div>
+      <div >
+        <StyledDiv>
+        <div class='container' className='container-carrito'> 
+         <img src={data.image} className='Img'/>
+          <h6 class='ml-4 mr-5'>{data.name}</h6>
+          <h6 class='ml-5 mr-5'>{data.price}</h6>
+          <input type='number'class="ml-5 mr-5" min={1} max={12} onChange={handleCountChange} name='count' autoComplete='off'/>
+          <h6 class='ml-5' >{precioTotal}</h6>
+       </div>
+        </StyledDiv>
+       <button type="button" class="btn bg-cart" onClick={() => delFromCart()} >x</button>
+       </div>
     )
   }
 

@@ -88,7 +88,7 @@ export default function Home({ location }) {
                           </div>
                           <div class="text-muted mb-3">34 reviews</div>
                           <button type="button" class="btn bg-cart">
-                            <i class="fa fa-cart-plus mr-2"></i> Agregar
+                            <i class="fa fa-cart-plus mr-2"></i> Camilo
                           </button>
                         </div>
                       </div>

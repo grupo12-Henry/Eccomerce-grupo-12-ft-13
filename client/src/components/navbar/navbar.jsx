@@ -96,15 +96,12 @@ const Nav = () => {
               <img alt="user img" src={user} width="20px" />
             </a>
             )
-            }
-            </li> </Link>
-            
+            }          
+              </li></Link>
             <li><a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
             </a></li>
-            
-            
->>>>>>> 59fb442f32e06d491f51608962d0f9c40ccdcca8
+
           </ul>
         </div>
         {/* <button onClick={() => setIsOpen(true)}>Open Portal</button> */}
