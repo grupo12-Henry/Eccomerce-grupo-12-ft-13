@@ -37,24 +37,26 @@ const rootReducer = (state = initialState, action) => {
                 productDetail: action.payload
             }
         case ADD_TO_CART:
-            // let nuevoItem = state.products.find(prod => prod.id === action.payload)
-            // let nuevoItemIncluir = state.productCart.find(nuevoItem)
-            // !nuevoItemIncluir ? nuevoItem.cantidad =1  : nuevoItem.cantidad ++;
-            // return{
-            //     ...state,    
-            //     productCart: state.productCart.concat(nuevoItem)
-            // }
-
-
             let nuevoItem = state.products.find(prod => prod.id ===action.payload)
-            if(state.productCart.includes(nuevoItem)){
-               let a = state.productCart.filter(e=> e==nuevoItem).push({estado: 1})
-                return ({...state, productCart: state.productCart.filter(e=>e!==nuevoItem).concat(a)})// despues necesito unos cerebritos por aca
+            let     a = state.productCart.length?state.productCart.filter(e=>e.id===(nuevoItem.id)):''
+            if(a.length){
+                console.log('existe', a[0].cantidad, a[0])
+                console.log(typeof(a[0].cantidad))
+
+                nuevoItem = {...nuevoItem , cantidad:(parseInt(a[0].cantidad)+1)}
+                 console.log('nuevoItem',nuevoItem)
+                state= {...state, productCart: state.productCart.filter(e=>e.id!==nuevoItem.id)}
             }
+            if (!a.length){
+                console.log('no existe')
+                nuevoItem = {...nuevoItem, cantidad:1}
+            } 
+            console.log('cart', state.productCart)
             return {
                 ...state,
                 productCart: state.productCart.concat(nuevoItem)
             }
+            
         case REMOVE_ALL_FROM_CART:
              return {
                 ...state,

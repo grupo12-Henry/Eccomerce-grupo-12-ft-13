@@ -42,9 +42,9 @@ const clearCart = () => {}
        <article>
          {CartShp}
          <button onClick={() => clearCart()}>Limpiar Carrito</button>
-         {cart.map( (item, index) => 
+         {cart.length?cart.map( (item, index) => 
          <CartItem key={index} data={item} delFromCart={delFromCart}/>
-         )}
+         ):null}
        </article>
          <h3>Productos</h3>
          <article class='box'>
