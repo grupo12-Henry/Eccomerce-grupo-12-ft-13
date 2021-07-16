@@ -51,16 +51,16 @@ const Nav = () => {
           ></img>
           <i className="text-envio">Envíos sin cargo a CABA y GBA</i>
           <ul className="row">
-            <a href="https://wa.link/sxenpo" className="col-2">
+            <a href="https://wa.link/" className="col-2" target='_blank' rel='noreferrer'>
               <img alt="whatsapp img" src={whatsapp} width="22px" />
             </a>
-            <a href="https://www.facebook.com/" className="col-2">
+            <a href="https://www.facebook.com/" className="col-2" target='_blank' rel='noreferrer'>
               <img alt="facebook img" src={facebook} width="20px" />
             </a>
-            <a href="https://www.instagram.com/" className="col-2">
+            <a href="https://www.instagram.com/" className="col-2" target='_blank' rel='noreferrer'>
               <img alt="instagram img" src={instagram} width="20px" />
             </a>
-            <a href="https://twitter.com/" className="col-2">
+            <a href="https://twitter.com/" className="col-2" target='_blank' rel='noreferrer'>
               <img alt="twitter img" src={twitter} width="20px" />
             </a>
           </ul>
@@ -82,7 +82,6 @@ const Nav = () => {
           <ul className="d-flex">
             <Link to='/compras'> <li><a className="carrito">
               <img className="cart" alt="cart img" src={cart} width="20px" />
-
             </a>
             {currentUser ? (
                   <Dropdown>
