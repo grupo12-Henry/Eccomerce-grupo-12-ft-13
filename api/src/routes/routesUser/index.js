@@ -50,21 +50,21 @@ try {
 //CREA UN NUEVO PEDIDO, PASANDOLE TODOS LOS PARAMETROS NECESARIOS
 //products viene asi del front : "products":[{"id":2, "cantidad": 13, "subtotal": 150},{"id":9},{"id":5}]
 
-  router.post('/orderPost', async (req, res) => {
-     const { idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad} = req.body;
-     try {
-       const user = await Client.findByPk(idClient)
-       const newOrder = await Order.create({
-         ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost , subtotal,cantidad})
-       newOrder.setClient(user)
-       products.forEach(e=>{
-         newOrder.setProducts(e.id, {through:{cantidad: e.cantidad, subTotal: e.subtotal}}); 
-         })
-       return res.send(newOrder)
-       } catch(error){
-        res.send(error).status(404);
-     }
-   })
+router.post('/orderPost', async (req, res) => {
+  const { idClient, ticket, date, bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad} = req.body;
+  try {
+    const user = await Client.findByPk(idClient)
+    const newOrder = await Order.create({
+      ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost , subtotal,cantidad})
+    newOrder.setClient(user)
+    products.forEach(e=>{
+      newOrder.setProducts(e.id, {through:{cantidad: e.cantidad, subTotal: e.subtotal}}); 
+      })
+    return res.send(newOrder)
+    } catch(error){
+     res.send(error).status(404);
+  }
+})
 
 
 
