@@ -23,7 +23,7 @@ const Footer = () => {
                     <div>
                         <br/>
                     <img src={tel} alt='img tel' width='22px' />
-                    <i> +54 9 381 503 9017</i>
+                    <i> +54 9 123 456 7891</i>
                     </div>
                     <br/>
                     <div>
