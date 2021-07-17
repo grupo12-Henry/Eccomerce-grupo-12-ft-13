@@ -24,7 +24,8 @@ import Delivery from './components/register/userRegister/component/confirmDelive
 import About from './components/about/about'
 import misPedidos from './components/register/userRegister/misPedidos/misPedidos';
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
-
+import Nav from "./components/navbar/navbar";
+import Footer from "./components/footer/footer";
 
 function App() {
 
@@ -42,7 +43,10 @@ function App() {
         <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
         <PrivateRouteUser component={Delivery} exact path='/delivery'/>
         <Route component={LandingPage} exact path='/'/>
+        <Route component={Nav} exact path='/compras'/>
         <Route component={ShoppingCart} exact path='/compras'/>
+
+        <Route component={Footer} exact path='/compras'/> 
         <Route component={About} exact path='/about'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>
@@ -60,3 +64,6 @@ function App() {
 };
 
 export default App;
+
+
+

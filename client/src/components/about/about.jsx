@@ -1,5 +1,5 @@
 import React, { Fragment, useState} from 'react';
-import { useLocalStorage } from '../shoppingCart/useLocalStorage';
+// import { useLocalStorage } from '../shoppingCart/useLocalStorage';
 import { StyledDiv } from './styled';
 
 

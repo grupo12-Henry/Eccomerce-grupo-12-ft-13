@@ -132,10 +132,7 @@ const rootReducer = (state = initialState, action) => {
       let nuevoItem = state.products.find(prod => prod.id === action.payload)
       let a = state.productCart.length ? state.productCart.filter(e => e.id === (nuevoItem.id)) : ''
       if (a.length) {
-        console.log('existe', a[0].cantidad, a[0])
-        console.log(typeof (a[0].cantidad))
-
-        nuevoItem = {
+         nuevoItem = {
           ...nuevoItem,
           cantidad: (parseInt(a[0].cantidad) + 1)
         }
@@ -149,14 +146,12 @@ const rootReducer = (state = initialState, action) => {
       
       }
       if (!a.length) {
-        console.log('no existe')
         nuevoItem = {
           ...nuevoItem,
           cantidad: 1
         }
       }
       let array = JSON.parse(window.localStorage.getItem("array"));
-      console.log(array)
       window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
       console.log(JSON.parse(window.localStorage.getItem("array")))
       return {

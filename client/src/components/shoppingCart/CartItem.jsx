@@ -1,9 +1,9 @@
 import React from 'react';
-import StyledDiv from './Styled';
+// import StyledDiv from './Styled';
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { removeProductCart } from '../../actions';
-
+import './CartItem.css';
 
 function CartItem({ data }) {
   // const [state, setState]= useState(1)
@@ -35,18 +35,30 @@ function CartItem({ data }) {
 
   return (
     <div >
-      <StyledDiv>
-        <div class='container' className='container-carrito'>
-          <img src={data.image} className='Img' alt='imagen' />
-          <h6 >{data.name}</h6>
-          <h6 >${data.price}.00</h6>
-          <input type='number' min={1} max={12} onChange={handleCountChange} value={data.cantidad} className='counter' name='count' autoComplete='off' />
-          <h6 >$ {precioTotal}.00</h6>
-          <button type="button" className='button' onClick={() => delFromCart()} >❌</button>
+        <div className='container-item row'>
+          <img src={data.image} className='Img col-2' alt='imagen' />
+          <h6 className='col-3' >{data.name}</h6>
+          <h6 className='col-2'>${data.price}.00</h6>
+          <input type='number' min={1} max={12} onChange={handleCountChange} value={data.cantidad} className='counter col-1' name='count' autoComplete='off' />
+          <h6 className='col-2'>$ {precioTotal}.00</h6>
+          <button type="button" className='button col-1' onClick={() => delFromCart()} >❌</button>
 
         </div>
-      </StyledDiv>
     </div>
+
+  //    <div >
+  //    <StyledDiv>
+  //      <div class='container' className='container-carrito'>
+  //        <img src={data.image} className='Img' alt='imagen' />
+  //        <h6 >{data.name}</h6>
+  //        <h6 >${data.price}.00</h6>
+  //        <input type='number' min={1} max={12} onChange={handleCountChange} value={data.cantidad} className='counter' name='count' autoComplete='off' />
+  //        <h6 >$ {precioTotal}.00</h6>
+  //        <button type="button" className='button' onClick={() => delFromCart()} >❌</button>
+
+  //      </div>
+  //    </StyledDiv>
+  //  </div>
   )
 }
 

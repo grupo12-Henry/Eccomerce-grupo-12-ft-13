@@ -1,17 +1,33 @@
 .container-productos{
   position: relative;
   display: block;
-  width: auto;
-  height: auto;
+  width: 60rem;
+    height: auto;
+  min-height: 360px;
   text-align: center;
   border-radius: 1rem;
   margin: 2rem;
   border: 0.1rem solid rgba(94, 3, 3, 0.726);
-  color: rgba(114, 224, 160, 0.699);;
   background: white;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3),0px 3px 7px rgba(0, 0, 0, 0.3),0px 1px white inset, 0px -3px 2px rgba(0, 0, 0, 0.3) inset ;
   justify-content: space-around;
   align-items: center;
-  margin-left:80%;
+ 
   font-size: 1rem;
+  color: #616263;
+}
+
+
+
+.container-articulos{
+  display: flex;
+}
+
+.botones{
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.boton{
+  margin: 0.5rem;
 }

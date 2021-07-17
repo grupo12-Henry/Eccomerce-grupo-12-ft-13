@@ -138,7 +138,7 @@ const Nav = () => {
         <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
         </NavModal>
       </div>
-      <div class='mt-5 mb-3' >{productCart.length?<ShoppingCart/>:null}</div> 
+      {/* <div class='mt-5 mb-3' >{productCart.length?<ShoppingCart/>:null}</div>  */}
     </StyledDiv>
   );
 };
