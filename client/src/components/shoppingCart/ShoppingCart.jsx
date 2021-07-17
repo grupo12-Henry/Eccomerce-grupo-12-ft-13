@@ -16,9 +16,10 @@ import CartItem from "./CartItem";
 import CartShp from "./CartShp";
 import Loading from "../loading/Loading";
 
-function ShoppingCart(props) {
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.productCart);
+function ShoppingCart({ name, price, image, id, } ) {
+
+  const dispatch = useDispatch()
+  const cart = useSelector( (state) => state.productCart);
   const product = useSelector((state) => state.products);
   const localStorage = useSelector((state) => state.arrayStorages);
 
@@ -55,24 +56,45 @@ function ShoppingCart(props) {
   if (!loading) {
     return <Loading />;
   } else {
+
+const addToCart = (id) => {
+  dispatch(addProductCart(id))}
+// const addToCart = (el) => {
+//   dispatch(addLocalStorage(el))
+//   dispatch(addProductCart(el.id))
+//   console.log()
+
+// }
     return (
+      <div>
+        <div>
+        {/* <button type="button" class="btn btn-outline-secondary">
+          🛒<a href="/order" target="_blank" rel="nofollow" class="badge badge-light">
+          <span id="cart_menu_num" data-action="cart-can" class=" rounded-circle">{1}</span></a>
+        </button> */}
+        </div>
       <div class="cart_section">
-        <div class="container-fluid">
-          <div class="row">
-            <h2>SIMULADOR DE HOME</h2>
-            <h3>Carrito</h3>
-            <article>
-              {CartShp}
-              <button onClick={() => clearCart()}>Limpiar Carrito</button>
-              {cart.map((item, index) => (
-                <CartItem key={index} data={item} delFromCart={delFromCart} />
-              ))}
-            </article>
-            <h3>Productos</h3>
-            <article class="box">
-              {allProducts && allProducts.length > 0
-                ? allProducts.map((el) => (
-                    <div class="col-md-4 mt-2">
+         <div class="container-fluid">
+         <div class="row">
+        <h2> •••»   SIMULADOR DE HOME   «•••☻</h2>
+        <div class="shadow-none p-3 mt-2 mb-4 bg-light rounded">
+        <h3 class="d-flex justify-content-center">Carrito de Compras</h3>
+        <div class="d-flex justify-content-end">
+        </div>
+       <article>          
+         {cart.map( (item, index) => 
+         <CartItem key={index} data={item} />
+         )}
+       </article>
+       <div class="d-flex justify-content-end">
+         <button type="button" class="btn btn-danger" onClick={() => clearCart()}>Limpiar Carrito</button>
+       </div>
+       </div>
+       <hr/>
+         <h3>PRODUCTOS</h3>
+         <article class=" d-flex row col-md-12 mt-5">
+         {allProducts ? allProducts.map((el) => (
+                    <div class="col-md-2" >
                       <div class="card">
                         <div class="card-body">
                           <div class="card-img-actions">
@@ -89,13 +111,7 @@ function ShoppingCart(props) {
                         <div class="card-body bg-light text-center">
                           <div class="mb-2">
                             <h6 class="font-weight-semibold mb-2">
-                              <a
-                                href="/detail/id"
-                                class="text-default mb-2"
-                                data-abc="true"
-                              >
-                                {el.name}
-                              </a>
+                               <h3 class="mb-0 font-weight-semibold">{el.name}</h3> 
                             </h6>
                           </div>
                           <h3 class="mb-0 font-weight-semibold">
@@ -111,13 +127,13 @@ function ShoppingCart(props) {
                         </div>
                       </div>
                     </div>
-                  ))
-                : null}
-            </article>
-          </div>
+                  )) : <div>...loading</div>}
+         </article>
         </div>
-      </div>
-    );
+         </div>
+     </div>
+     </div>
+    )
   }
 }
 

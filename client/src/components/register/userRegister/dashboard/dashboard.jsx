@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector }from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
 import Nav from "../../../navbar/navbar";
@@ -6,9 +7,10 @@ import Footer from "../../../footer/footer";
 import Loading from "../../../loading/Loading";
 
 export default function Dashboard() {
+  const user = useSelector(state=>state.user)
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  console.log(currentUser);
+  
   const history = useHistory();
 
   async function handleLogout() {
@@ -93,6 +95,7 @@ export default function Dashboard() {
                         <div class="mb-5">
                           <a href="/mispedidos" class="btn btn-dark">
                             Mis pedidos anteriores
+
                           </a>
                           <a href="#" class="btn btn-dark ml-5">
                             Mis favoritos
