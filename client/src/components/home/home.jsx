@@ -49,6 +49,7 @@ export default function Home({ location }) {
 		setTimeout(() => setLoading(true), 1000)
 	}, [])
 
+
   if(!loading) {
     return (
       <Loading />

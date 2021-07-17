@@ -16,13 +16,18 @@ function CartItem({ data }) {
   }, [data.cantidad])
 
   const delFromCart = () => {
+    let array = JSON.parse(window.localStorage.getItem("array"));
+    window.localStorage.setItem("array", JSON.stringify(array.filter(e=>e.id!==data.id)))
     dispatch(removeProductCart(data.id))
+    
     console.log(data.id)
   }
 
 
   const handleCountChange = (e) => {
     data.cantidad = (e.target.value);
+    let array = JSON.parse(window.localStorage.getItem("array"));
+    window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([data]) : array=[data]))
     setPrecioTotal(e.target.value * data.price)
     //console.log(state)
   }

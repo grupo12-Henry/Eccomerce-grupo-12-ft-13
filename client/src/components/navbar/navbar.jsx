@@ -23,12 +23,7 @@ import ShoppingCart from "../shoppingCart/ShoppingCart";
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [carritoOn, setCarritoOn] = useState(false) 
-  const carritoState = useSelector((state) => state.carritoState)
-
-  let carritoHandler = () => {
-    // carritoEstado();
-    setCarritoOn(current=>!current)
-  }
+  const productCart = useSelector((state) => state.productCart)
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -42,6 +37,27 @@ const Nav = () => {
     setIsOpen(false)
   }
 
+  // const setLocalStorage = value => {
+  //   try {
+  //     setText(value)
+  //     window.localStorage.setItem("text", value)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+  let estado = JSON.parse(window.localStorage.getItem("array"))
+  if(estado!== null){estado=estado.reverse()}
+  // window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat(nuevoItem) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
+  if(!productCart.length&&estado){
+    for(let i=0; i<estado.length;i++){
+      for(let j=0;j<productCart.length;j++){
+        if(productCart.length&&estado[i]!==undefined&&estado[i].id===productCart[j].id){i=i+1}
+      }
+      if(estado[i]!==undefined)productCart.push(estado[i])
+    }
+    // estado.forEach(e=>{if(productCart.length&&!productCart.forEach(d=> e.id!==d.id)){productCart.push(e)}})
+  }//productCart.push
+  console.log(1, productCart)
   const style = {
     marginTop: "1%",
   };
@@ -122,7 +138,7 @@ const Nav = () => {
         <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
         </NavModal>
       </div>
-      <div class='mt-5 mb-3' >{carritoOn===true?<ShoppingCart/>:null}</div> 
+      <div class='mt-5 mb-3' >{productCart.length?<ShoppingCart/>:null}</div> 
     </StyledDiv>
   );
 };

@@ -46,17 +46,12 @@ export function getpedidosUser(id) {
   }
 };
 
-export function removeProductCart(id) {
+export function removeProductCart (id){
   return {
-    type: REMOVE_ALL_FROM_CART,
+      type: REMOVE_ALL_FROM_CART,
+      payload: id 
   }
 }
-// export function removeProductCart (id){
-//   return {
-//       type: REMOVE_ALL_FROM_CART,
-//       payload: id 
-//   }
-// }
 
 //ESTADO QUE SE LLAME productCart :[{},{},{}] =[]
 export function addProductCart(payload) {

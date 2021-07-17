@@ -33,6 +33,7 @@ const addToCart = (id) => {
   dispatch(addProductCart(id))
 }
 const clearCart = () => {
+  window.localStorage.clear('array')
   dispatch(ClearCart())
 }
 
@@ -53,9 +54,9 @@ const delFromCart = () => {}
        <article>
          {CartShp}
          <button onClick={() => clearCart()}>Limpiar Carrito</button>
-         {cart.length?cart.map( (item, index) => 
+         {cart.length?cart.map( (item, index) => item!==undefined&&item!=="undefined"?
          <CartItem className='Article' key={index} data={item} delFromCart={delFromCart}/>
-         ):null}
+         :null):null}
        </article>
          <article class='box'>
         
