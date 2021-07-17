@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch  } from 'react-redux'
-import { addProductCart, ClearCart } from '../../actions';
-import Nav from '../navbar/navbar';
-import CartItem from './CartItem';
+import { addProductCart, removeProductCart, ClearCart, getProducts ,ADD_TO_CART, addLocalStorage, getLocalStorage, deleteLocalStorage } from '../../actions';
+// import ProductCart from './ProductCart';
 import { Link } from 'react-router-dom';
-
+import CartItem from './CartItem'
+import CartShp from './CartShp'
 
 function ShoppingCart({ name, price, image, id, } ) {
-  // const { name, price, images, id, } = props.producto;
 
   const dispatch = useDispatch()
-  const cart = useSelector( (state) => state.productCart)
+  const cart = useSelector( (state) => state.productCart);
   const product = useSelector((state) => state.products);
+  const localStorage = useSelector((state) => state.arrayStorages);
 
   const [allProducts, setAllProducts] = useState([]);
 
+  //consologuea el localStorage
+  useEffect(() => {
+    console.log(localStorage)
+  }, [localStorage]);
 
 useEffect(() => {
   const dbProducts = () => {
@@ -24,13 +28,18 @@ useEffect(() => {
 }, [product]);
 
 
-const addToCart = (id) => {
-  dispatch(addProductCart(id))
-}
+// const addToCart = (id) => {
+//   dispatch(addProductCart(id))
+
+// const addToCart = (el) => {
+//   dispatch(addLocalStorage(el))
+//   dispatch(addProductCart(el.id))
+//   console.log()
+
+// }
 
 const clearCart = () => {
 }
-
     return (
       <div>
         <div>
@@ -42,6 +51,7 @@ const clearCart = () => {
       <div class="cart_section">
          <div class="container-fluid">
          <div class="row">
+
         <h2> •••»   SIMULADOR DE HOME   «•••☻</h2>
         <div class="shadow-none p-3 mt-2 mb-4 bg-light rounded">
         <h3 class="d-flex justify-content-center">Carrito de Compras</h3>
@@ -61,6 +71,7 @@ const clearCart = () => {
          <article class=" d-flex row col-md-12 mt-5">
          {allProducts ? allProducts.map((el) => (
                     <div class="col-md-2" >
+
                       <div class="card">
                         <div class="card-body">
                           <div class="card-img-actions">
@@ -80,11 +91,13 @@ const clearCart = () => {
                                <h3 class="mb-0 font-weight-semibold">{el.name}</h3> 
                             </h6>
                           </div>
+
                           <h3 class="mb-0 font-weight-semibold">${el.price}.00</h3>                          
                           {/* <button onClick={() => {
                           dispatch(addProductCart({id,name,price,image}))
                           }} class="btn btn-outline-secondary">Agregar al carrito</button> */}
                           <button class="btn btn-outline-secondary" onClick={()=>addToCart(el.id)} type="button">Agregar al carrito
+
                           </button>
                         </div>
                       </div>
@@ -95,6 +108,7 @@ const clearCart = () => {
          </div>
      </div>
      </div>      
+
     )
   }
 

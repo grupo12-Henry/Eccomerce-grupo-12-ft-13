@@ -97,6 +97,9 @@ a {
     width: 200px;
 }
 
+.loadingCSS {
+    margin: 250px;
+}
 
 `
 export default StyledDiv

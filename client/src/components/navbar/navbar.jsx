@@ -1,15 +1,20 @@
 import React, { useState } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
 import { StyledDiv } from "./styled";
+import { useAuth } from "../../contexts/AuthContext";
 import delivery from "../../assets/images/delivery-truck.png";
-import instagram from "../../assets/images/instagram.jpeg";
-import twitter from "../../assets/images/gorjeo(1).jpeg";
-import whatsapp from "../../assets/images/Loco wsap.jpeg";
-import facebook from "../../assets/images/logo-de-facebook.jpeg";
+import instagram from "../../assets/images/instagram.png";
+import twitter from "../../assets/images/twitter.png";
+import whatsapp from "../../assets/images/whatsapp.png";
+import facebook from "../../assets/images/facebook.png";
 import logo from "../../assets/images/logo.png";
 import cart from "../../assets/images/cart.png";
 import user from "../../assets/images/user.png";
 import Auto from "../searchbar/searchbar";
 import NavModal from "../navModal/navModal";
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
@@ -20,9 +25,17 @@ const Nav = () => {
     setIsOpen(true);
   };
 
+  const { currentUser, logout } = useAuth();
+
+  const handleLogOut = async () => {
+    await logout()
+    setIsOpen(false)
+  }
+
   const style = {
     marginTop: "1%",
   };
+
   return (
     <StyledDiv>
       <div className="header-container">
@@ -35,16 +48,16 @@ const Nav = () => {
           ></img>
           <i className="text-envio">Envíos sin cargo a CABA y GBA</i>
           <ul className="row">
-            <a href="https://wa.link/sxenpo" className="col-2">
+            <a href="https://wa.link/" className="col-2" target='_blank' rel='noreferrer'>
               <img alt="whatsapp img" src={whatsapp} width="22px" />
             </a>
-            <a href="https://www.facebook.com/" className="col-2">
+            <a href="https://www.facebook.com/" className="col-2" target='_blank' rel='noreferrer'>
               <img alt="facebook img" src={facebook} width="20px" />
             </a>
-            <a href="https://www.instagram.com/" className="col-2">
+            <a href="https://www.instagram.com/" className="col-2" target='_blank' rel='noreferrer'>
               <img alt="instagram img" src={instagram} width="20px" />
             </a>
-            <a href="https://twitter.com/" className="col-2">
+            <a href="https://twitter.com/" className="col-2" target='_blank' rel='noreferrer'>
               <img alt="twitter img" src={twitter} width="20px" />
             </a>
           </ul>
@@ -64,14 +77,34 @@ const Nav = () => {
             <Auto />
           </div>
           <ul className="d-flex">
-            <Link to='/compras'> <li>
+            <Link to='/compras'> <li><a>
               <img className="cart" alt="cart img" src={cart} width="20px" />
-            </li> </Link>
+            </a>
+            </li></Link>
+            <li>
+            {currentUser ? (
+                  <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/dashboard">Edit Profile</Dropdown.Item>
+                    <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+            ) :
+            (
+            <a href="/user" onClick={handleLogin}>
+              <img alt="user img" src={user} width="20px" />
+            </a>
+            )
+            }
+
+            </li>
             <li><a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
             </a></li>
-            
-            
+
           </ul>
         </div>
         {/* <button onClick={() => setIsOpen(true)}>Open Portal</button> */}

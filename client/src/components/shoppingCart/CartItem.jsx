@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
+import React from 'react';
+import StyledDiv from './Styled';
+import {useState} from 'react'
 import { addProductCart, removeProductCart, incrementCartQuantity, decrementCartQuantity } from '../../actions/index';
 
 
-function CartItem({data, quantity }) {
+function CartItem({data, delFromCart}) {
 
-  const dispatch =useDispatch()
   const [state, setState]= useState(1)
-  const [itemQuantity, setItemQuantity] = useState(quantity);
-  const[precioTotal, setPrecioTotal]= useState(data.price)
+  const[precioTotal, setPrecioTotal]= useState(data.price*state)
   
-  const delFromCart = () => {
-    dispatch(removeProductCart(data.id))
+  const handleCountChange = (e) => {
+    setState(e.target.value);
+    setPrecioTotal(e.target.value*data.price)
+    console.log(state)
+  }
+
+    return (
+      <div >
+        <StyledDiv>
+        <div class='container' className='container-carrito'> 
+         <img src={data.image} className='Img'/>
+          <h6 class='ml-4 mr-5'>{data.name}</h6>
+          <h6 class='ml-5 mr-5'>{data.price}</h6>
+          <input type='number'class="ml-5 mr-5" min={1} max={12} onChange={handleCountChange} name='count' autoComplete='off'/>
+          <h6 class='ml-5' >{precioTotal}</h6>
+       </div>
+        </StyledDiv>
+       <button type="button" class="btn bg-cart" onClick={() => delFromCart()} >x</button>
+       </div>
+    )
+
   }
 
   const handleCountChange = (e) => {

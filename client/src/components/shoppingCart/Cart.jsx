@@ -28,7 +28,6 @@ function Cart({data, addToCart}) {
        <button type="button" class="btn btn-danger" onClick={() => clearCart()}>Limpiar Carrito</button>
      </div>
      </div>
-      
     )
   }
 
