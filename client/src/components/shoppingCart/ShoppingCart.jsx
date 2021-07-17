@@ -7,7 +7,7 @@ import CartItem from './CartItem'
 import CartShp from './CartShp'
 import StyledDiv from './Styled';
 import './shoppingCart.css';
-
+//HAGO ESTO PARA VER SI SE GUARDO LO MIO!
 function ShoppingCart(props) {
   const dispatch = useDispatch()
   const cart = useSelector( (state) => state.productCart)
