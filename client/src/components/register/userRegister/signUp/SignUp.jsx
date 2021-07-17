@@ -11,7 +11,7 @@ import '../signUp/signup.css'
 export default function Signup({ onClose }) {
   const [user, setUser] = useState({ 
     
-    name: '',
+   name: '',
    lastName:'',
    phone:'',
    adress:'',
@@ -88,7 +88,7 @@ const dispatch =useDispatch();
                   </div>
                   <div className='email'>
                   <label>Fecha de Nacimiento:</label>
-                  <input className='input_email' type="date"value={user.mail} name="nacimiento" ref={nacimientoRef}></input>
+                  <input className='input_email' type="date" name="nacimiento" ref={nacimientoRef}></input>
                   </div>
                   <div className='email'>
                   <label>Telefono:</label>

@@ -4,27 +4,27 @@ import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
 import { getpedidosUser } from "../../../../actions/index";
 
-export default function MisPedidos() {
+export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
   const pedidos = useSelector((state) => state.pedidosUser);
-
-  const [detallePedidos, setdetallePedidos] = useState([]);
-  console.log("DALE", detallePedidos);
-  useEffect(() => {
-    dispatch(getpedidosUser());
-  }, [getpedidosUser]);
+  console.log("PEDIDOSYA",pedidos);
 
   useEffect(() => {
-    setdetallePedidos(pedidos);
-  }, [pedidos]);
+    const orders = () => {
+      dispatch(getpedidosUser(match.params.id));
+    };
+    orders();
+  }, [getpedidosUser, dispatch, match.params.id]);
 
   return (
     <>
       <Nav />
-      <p>NOMBRE Y APELLIDO</p>
-      <p>FECHA</p>
-      <p>ESTADO</p>
-      <p>TOTAL DE COMPRA</p>
+
+      {pedidos &&
+        pedidos[0].orders.map((el) => {
+          return <h5>{el.ticket}</h5>;
+        })}
+
       <Footer />
     </>
   );

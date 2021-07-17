@@ -52,7 +52,7 @@ function App() {
         <Route component={Vinos} exact path='/vinos'/>
         <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/>
-        <Route component={misPedidos} exact path='/misPedidos'/>
+        <Route component={misPedidos} exact path='/misPedidos/:id'/>
         <Route component={Detail} exact path='/detail/:id'/>
       </AuthProvider>
     </React.Fragment>

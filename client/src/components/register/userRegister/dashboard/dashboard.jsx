@@ -51,7 +51,7 @@ export default function Dashboard() {
                         <tbody>
                           <tr>
                             <td>Nombre:</td>
-                            <td>{user.name}</td>
+                            <td>{console.log(user)}</td>
                           </tr>
                           <tr>
                             <td>Apellido:</td>
@@ -63,23 +63,23 @@ export default function Dashboard() {
                           </tr>
                           <tr>
                             <td>Dirección</td>
-                            <td>{user.adress}</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <td>Email:</td>
                             <td>
                               <a href="mailto:info@support.com">
-                                <strong>{user.mail}</strong>
+                                <strong></strong>
                               </a>
                             </td>
                           </tr>
                           <tr>
                             <td>Teléfono</td>
-                            <td>{user.phone}</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <td>Provincia</td>
-                            <td>{user.state}</td>
+                            <td></td>
                           </tr>
                           <a href="edit.html" style={{ textAlign: "center" }}>
                             Modificar datos
@@ -87,7 +87,7 @@ export default function Dashboard() {
                         </tbody>
                       </table>
                       <div class="mb-5">
-                        <a href="/mispedidos" class="btn btn-dark">
+                        <a href="/mispedidos"  class="btn btn-dark">
                           Mis pedidos anteriores
                         </a>
                         <a href="#" class="btn btn-dark ml-5">
