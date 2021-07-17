@@ -131,7 +131,7 @@ router.get('/productos/id/:id', async (req, res) => {//devuelve el producto con 
 
 
 
-router.put('/productos/:id',authAdmin, async (req, res) => {//modifica el producto seleccionado mediante id
+router.put('/productos/:id', async (req, res) => {//modifica el producto seleccionado mediante id
     const id = req.params.id
     const { stock, name, type, Description, price, image, maker, subcategories  } = req.body
     try {
@@ -186,7 +186,7 @@ router.get('/users/all', async (req, res) => {//trae todo los clientes
         res.send(error).status(404)
     }
 })
-router.get('/users/id/:id',auth, async (req, res) => {//trae usuario con todos sus pedidos, datos de envios, facturas
+router.get('/users/id/:id', async (req, res) => {//trae usuario con todos sus pedidos, datos de envios, facturas
     const id = req.params.id
     try {
         const user = await Client.findByPk(id, {
