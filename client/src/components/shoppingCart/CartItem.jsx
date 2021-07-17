@@ -33,11 +33,11 @@ function CartItem({data}) {
         <StyledDiv>
         <div class='container' className='container-carrito'> 
          <img src={data.image} className='Img'/>
-          <h6 class='ml-4 mr-5'>{data.name}</h6>
-          <h6 class='ml-5 mr-5'>${data.price}.00</h6>
-          <input type='number'class="ml-5 mr-5" min={1} max={12} onChange={handleCountChange} value={data.cantidad} className='counter' name='count' autoComplete='off'/>
-          <h6 class='ml-5' >$ {precioTotal}.00</h6>
-          <button type="button" class="ml-5 mr-5 btn bg-cart" className='button' onClick={() => delFromCart()} >❌</button>
+          <h6 >{data.name}</h6>
+          <h6 >${data.price}.00</h6>
+          <input type='number' min={1} max={12} onChange={handleCountChange} value={data.cantidad} className='counter' name='count' autoComplete='off'/>
+          <h6 >$ {precioTotal}.00</h6>
+          <button type="button" className='button' onClick={() => delFromCart()} >❌</button>
 
        </div>
         </StyledDiv>

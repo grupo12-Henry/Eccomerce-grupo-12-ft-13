@@ -45,7 +45,7 @@ const clearCart = () => {
          {CartShp}
          <button onClick={() => clearCart()}>Limpiar Carrito</button>
          {cart.length?cart.map( (item, index) => 
-         <CartItem key={index} data={item} delFromCart={delFromCart}/>
+         <CartItem className='Article' key={index} data={item} delFromCart={delFromCart}/>
          ):null}
        </article>
          <article class='box'>
@@ -63,16 +63,3 @@ const clearCart = () => {
 
 
   export default ShoppingCart;
-
-  // {allProducts &&
-  //   allProducts.length > 0 ? allProducts.map((el) => (
-  //     <div class="col-md-4 mt-2">
-  //       <div class="card">
-  //         <div class="card-body bg-light text-center">
-  //           <button onClick={()=>addToCart(el.id)} type="button" class="btn bg-cart">
-  //             <i class="fa fa-cart-plus mr-2"></i> Agregar
-  //           </button>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   )) : null}

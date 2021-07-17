@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, GETALLPEDIDOS, GETPEDIDOSBYSTATE, GETPEDIDODETAIL, ADD_TO_CART,REMOVE_ALL_FROM_CART,CLEAR_CART } from '../actions'
-
-=======
-import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, ADD_TO_CART,REMOVE_ALL_FROM_CART,CLEAR_CART, CARRITO } from '../actions'
+import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, GETALLPEDIDOS, GETPEDIDOSBYSTATE, GETPEDIDODETAIL, ADD_TO_CART,REMOVE_ALL_FROM_CART,CLEAR_CART, CARRITO } from '../actions'
 import CartItem from '../components/shoppingCart/CartItem';
->>>>>>> db0f27a201dfc5e3656959be068dafa7cf4ac519
 
 
 const initialState = {
@@ -12,16 +7,11 @@ const initialState = {
     productDetail: {},
     names: [],
     orderProd: [],
-<<<<<<< HEAD
     pedidos:[],
     pedidoDetail:{},
-    productCart: []
-=======
     productCart: [],
     arrayStorages: [],
     carritoState: false
-
->>>>>>> db0f27a201dfc5e3656959be068dafa7cf4ac519
 }
 
 const rootReducer = (state = initialState, action) => {
