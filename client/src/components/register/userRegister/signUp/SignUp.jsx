@@ -9,16 +9,20 @@ import '../signUp/signup.css'
 
 
 export default function Signup({ onClose }) {
+
+  const [ token, setToken ] = useState('')
+
   const [user, setUser] = useState({ 
-    
-    name: '',
-   lastName:'',
-   phone:'',
-   adress:'',
-   state:'',
-   mail: '',
-   
+  name: '',
+  lastName:'',
+  phone:'',
+  adress:'',
+  state:'',
+  mail: '',
+  adminToken: token
 })
+
+
 const handleUser = (e) => {
   setUser({
       ...user,
@@ -53,13 +57,17 @@ const dispatch =useDispatch();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
     }
-
+    
     try {
       setError("");
       setLoading(true);
+      if(process.env.REACT_APP_ADMIN_EMAIL === emailRef.current.value &&
+        passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD){
+      setToken(process.env.ADMIN_TOKEN)
       await signup(emailRef.current.value, passwordRef.current.value);
-      // onClose()
       history.push("/home");
+      }
+
     } catch {
       setError("Failed to create an account");
     }
@@ -88,7 +96,7 @@ const dispatch =useDispatch();
                   </div>
                   <div className='email'>
                   <label>Fecha de Nacimiento:</label>
-                  <input className='input_email' type="date"value={user.mail} name="nacimiento" ref={nacimientoRef}></input>
+                  <input className='input_email' type="date" name="nacimiento" ref={nacimientoRef}></input>
                   </div>
                   <div className='email'>
                   <label>Telefono:</label>
