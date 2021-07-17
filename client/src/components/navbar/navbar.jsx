@@ -12,13 +12,10 @@ import cart from "../../assets/images/cart.png";
 import user from "../../assets/images/user.png";
 import Auto from "../searchbar/searchbar";
 import NavModal from "../navModal/navModal";
-
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-
 import { Link } from 'react-router-dom';
-
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -103,11 +100,10 @@ const Nav = () => {
             )
             }
 
-              </li>
+            </li>
             <li><a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
             </a></li>
-
 
           </ul>
         </div>

@@ -1,12 +1,17 @@
 import axios from "axios";
+//ACTIONS DE LA PAGINA EN GRAL.
 export const GETCARDS = "GETCARDS";
 export const GETDETAILS = "GETDETAILS";
 export const GETNAMES = "GETNAMES";
 export const ORDERPRODUCT = "ORDERPRODUCT";
+//ACTIONS DEL ADMIN
+export const GET_ALL_USERS = "GET_ALL_USERS";
+export const GET_USER_DETAILS = "GET_USER_DETAILS";
 export const GETALLPEDIDOS = "GETALLPEDIDOS";
 export const GETPEDIDOSBYSTATE = "GETPEDIDOSBYSTATE";
 export const GETPEDIDODETAIL = "GETPEDIDODETAIL";
 export const PUTPEDIDO = "PUTPEDIDO";
+//ACTIONS DEL LOCAL STORAGE
 export const GET_LOCAL_STORAGE= 'GET_LOCAL_STORAGE';
 export const DELETE_LOCAL_STORAGE= 'DELETE_LOCAL_STORAGE'
 export const ADD_LOCAL_STORAGE= 'ADD_LOCAL_STORAGE'
@@ -154,7 +159,31 @@ export function getNames() {
 }
 //ACTIONS DEL ADMIN
 
-//USUARIOS POST Y PUT y DELETE
+//USUARIOS GET, POST Y PUT y DELETE
+export function getAllUsers() {
+  return (dispatch) => {
+    axios.get("http://localhost:3001/admin/users/all")
+    .then((response) => {
+      dispatch({ type: GET_ALL_USERS, payload: response.data });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+}
+
+export function getUserDetails(usuario) {
+  return (dispatch) => {
+    axios.get("http://localhost:3001/admin/users/id/:id")
+    .then((response) => {
+      dispatch({ type: GET_USER_DETAILS, payload: response.data });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+}
+
 export function postUsuarios(usuario) {
   console.log("llegue hasta action marcos");
   return (dispatch) => {
