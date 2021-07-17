@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector }from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
 
 export default function Dashboard() {
+  const user = useSelector(state=>state.user)
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  console.log(currentUser);
+  
   const history = useHistory();
 
   async function handleLogout() {
@@ -49,11 +51,11 @@ export default function Dashboard() {
                         <tbody>
                           <tr>
                             <td>Nombre:</td>
-                            <td>Matias</td>
+                            <td>{user.name}</td>
                           </tr>
                           <tr>
                             <td>Apellido:</td>
-                            <td>Romero</td>
+                            <td>{user.lastName}</td>
                           </tr>
                           <tr>
                             <td>Fecha de nacimiento</td>
@@ -61,19 +63,23 @@ export default function Dashboard() {
                           </tr>
                           <tr>
                             <td>Dirección</td>
-                            <td>Kathmandu,Nepal</td>
+                            <td>{user.adress}</td>
                           </tr>
                           <tr>
                             <td>Email:</td>
                             <td>
                               <a href="mailto:info@support.com">
-                                <strong>{currentUser.email}</strong>
+                                <strong>{user.mail}</strong>
                               </a>
                             </td>
                           </tr>
                           <tr>
                             <td>Teléfono</td>
-                            <td>123-4567-890(Landline)</td>
+                            <td>{user.phone}</td>
+                          </tr>
+                          <tr>
+                            <td>Provincia</td>
+                            <td>{user.state}</td>
                           </tr>
                           <a href="edit.html" style={{ textAlign: "center" }}>
                             Modificar datos

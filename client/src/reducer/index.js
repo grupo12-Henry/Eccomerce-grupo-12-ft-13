@@ -1,5 +1,7 @@
-import { GETCARDS, GETDETAILS, GETNAMES, GETALLPEDIDOS,ADD_LOCAL_STORAGE,DELETE_LOCAL_STORAGE, GET_USER_DETAILS, GETPEDIDODETAIL, GET_ALL_USERS, GET_LOCAL_STORAGE,GETPEDIDOSBYSTATE,PUTPEDIDO, ORDERPRODUCT, ADD_TO_CART, REMOVE_ALL_FROM_CART, CLEAR_CART, INCREMENT_CART_ITEM_QUANTITY, DECREMENT_CART_ITEM_QUANTITY, PEDIDOSUSER,  } from '../actions'
+import { GETCARDS, GETDETAILS, GETNAMES, GETALLPEDIDOS,ADD_LOCAL_STORAGE,DELETE_LOCAL_STORAGE, GET_USER_DETAILS, GETPEDIDODETAIL, GET_ALL_USERS, GET_LOCAL_STORAGE,GETPEDIDOSBYSTATE,PUTPEDIDO,POST_USER, ORDERPRODUCT, ADD_TO_CART, REMOVE_ALL_FROM_CART, CLEAR_CART, INCREMENT_CART_ITEM_QUANTITY, DECREMENT_CART_ITEM_QUANTITY, PEDIDOSUSER,  } from '../actions'
 const initialState = {
+  //USER DATOS
+  user:{},
   //PRODUCTOS
   products: [],
   productDetail: {},
@@ -23,6 +25,11 @@ const rootReducer = (state = initialState, action) => {
     let updatedItemIndex;
 
     switch (action.type) {
+        case POST_USER:
+         return {
+           ...state,
+           user: action.payload
+         } 
         case GETCARDS:
             return {
                 ...state,
@@ -144,9 +151,11 @@ const rootReducer = (state = initialState, action) => {
                 productCart: []
             };
             case GET_LOCAL_STORAGE: {
+              const user = JSON.parse(window.localStorage.getItem("user")); 
               const array = JSON.parse(window.localStorage.getItem("array"));   
               return {
                 ...state,
+                user:user,
                 productCart: array ? state.productCart.slice().concat([array]) : state.productCart
             }
           }
