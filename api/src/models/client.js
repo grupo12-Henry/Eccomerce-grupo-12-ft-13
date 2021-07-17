@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
         identityCard: {
             type: DataTypes.STRING,
         },
-        admin:{
+        token:{
             type: DataTypes.TEXT,
             default: ""
         }
