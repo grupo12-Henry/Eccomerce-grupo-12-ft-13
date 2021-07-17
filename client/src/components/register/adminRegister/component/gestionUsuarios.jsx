@@ -43,14 +43,17 @@ function GestionUsuarios() {
         e.preventDefault()
         //setSubmit(true)
         putUsuarios(user)
-        alert('User updated')
+        alert('Usuario modificado')
+    }
+
+    const insertClientInfo = (e) => {
+        e.preventDefault();
+        dispatch(getUserDetails(e.target.value))
     }
 
     const deleteSubmit = (e) => {
-        e.preventDefault()
-        console.log(user.id)
-        deleteUsuarios(user.id)
-        alert('User updated')
+        deleteUsuarios(e.target.value)
+        alert('Usuario borrado')
     }
 
     return (
@@ -70,10 +73,14 @@ function GestionUsuarios() {
                         <th scope="col" data-field="id" data-sortable="true" >ID</th>
                         <th scope="col" data-field="name" data-sortable="true" >Nombre</th>
                         <th scope="col" data-field="lastname" data-sortable="true" >Apellido</th>
+                        <th scope="col" data-field="identityCard" data-sortable="true" >DNI</th>
                         <th scope="col" data-field="phone" data-sortable="true" >Telefono</th>
                         <th scope="col" data-field="mail" data-sortable="true" >Mail</th>
                         <th scope="col" data-field="adress" data-sortable="true" >Dirección</th>
                         <th scope="col" data-field="state" data-sortable="true" >Provincia</th>
+                        <th scope="col" data-field="state" data-sortable="true" >Permisos</th>
+                        <th scope="col" data-field="state" data-sortable="true" >Modificar</th>
+                        <th scope="col" data-field="state" data-sortable="true" >Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,10 +90,22 @@ function GestionUsuarios() {
                                 <th scope="row">{client.id}</th>
                                 <td>{client.name}</td>
                                 <td>{client.lastname}</td>
+                                <td>{client.identityCard}</td>
                                 <td>{client.phone}</td>
                                 <td>{client.mail}</td>
                                 <td>{client.adress}</td>
                                 <td>{client.state}</td>
+                                <td >{client.admin && client.admin}</td>
+                                <td >
+                                <button class="btn btn-sm btn-info" value={client.id} onClick={(e) => { insertClientInfo(e)}} >
+                                    Modificar
+                                </button>
+                            </td>
+                            <td >
+                                <button class="btn btn-sm btn-danger" value={client.id} onClick={(e) => deleteSubmit(e)} >
+                                    Eliminar
+                                </button>
+                            </td>
                                 </tr>
                             ))
                         }
@@ -150,13 +169,22 @@ function GestionUsuarios() {
                         onChange={handleUser} 
                         value={user.identityCard}>
                     </input>
-                    <input class="form-control mt-2 ml-5"
+                    {/* <input class="form-control mt-2 ml-5"
                         autoComplete='off' 
                         placeholder='Hecer admin (true o false)..' 
                         name='admin' 
                         onChange={handleUser} 
                         value={user.admin}>
-                    </input>
+                    </input> */}
+
+                    <label>Permisos: </label>
+                    <select class="form-control mt-2 ml-5" name="admin" value={user.admin} onChange={handleUser}>
+                        <option key='false' value='false'>Usuario</option>
+                        <option key='true' value='true'>Admin</option>
+                    </select>
+
+
+
                 </div>
                 <div >
                     <input class="btn btn-primary btn-md mt-5 ml-5" type='submit' onSubmit={handleSubmit}/>
@@ -165,72 +193,77 @@ function GestionUsuarios() {
             </form>
 
             <form class='mt-5 ml-2' onSubmit={putSubmit} >
-            <div class="form-row">
+            <div class="form-row mb-9" >
                 <h2>Modificar un usuario</h2>
                 <br/>
                 <div >
                     <input class="form-control mt-5 ml-5"
                         required autoComplete='off' 
-                        placeholder='Id del usuario...' 
+                        placeholder={ClientDetails.id} 
                         name='id' 
                         onChange={handleUser} 
                         value={user.id}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                         
-                        placeholder='Nombre del usuario...' 
+                        placeholder={ClientDetails.name} 
                         name='name' 
                         onChange={handleUser} 
                         value={user.name}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                         
-                        placeholder='Apellido del usuario...' 
+                        placeholder={ClientDetails.lastname} 
                         name='lastname' 
                         onChange={handleUser} 
                         value={user.lastname}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                         
-                        placeholder='Telefono del usuario...' 
+                        placeholder={ClientDetails.phone}
                         name='phone' 
                         onChange={handleUser} 
                         value={user.phone}>
                     </input>
                     <input class="form-control mt-2 ml-5"
-                        placeholder='Provincia del usuario...' 
+                        placeholder={ClientDetails.state} 
                         name='state' 
                         onChange={handleUser} 
                         value={user.state}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                       
-                        placeholder='Provincia del usuario...' 
+                        placeholder={ClientDetails.adress} 
                         name='adress' 
                         onChange={handleUser} 
                         value={user.adress}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                       
-                        placeholder='Correo electronico...' 
+                        placeholder={ClientDetails.mail} 
                         name='mail' 
                         onChange={handleUser} 
                         value={user.mail}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                       
-                        placeholder='Tarjeta C/D...' 
+                        placeholder={ClientDetails.identityCard} 
                         name='identityCard' 
                         onChange={handleUser} 
                         value={user.identityCard}>
                     </input>
-                    <input class="form-control mt-2 ml-5"
-                       
-                        placeholder='Hecer admin (true o false)..' 
+                    {/* <input class="form-control mt-2 ml-5"                       
+                        placeholder={ClientDetails.admin} 
                         name='admin' 
                         onChange={handleUser} 
                         value={user.admin}>
-                    </input>
+                    </input> */}
+                    <label>Permisos: </label>
+                    <select class="form-control mt-2 ml-5" name="admin" value={user.admin} onChange={handleUser}>
+                        <option key='false' value='false'>Usuario</option>
+                        <option key='true' value='true'>Admin</option>
+                    </select>
+
                 </div>
                 <div >
                     <input class="btn btn-primary btn-m mt-5 ml-5" type='submit' onSubmit={handleSubmit}/>
@@ -238,7 +271,7 @@ function GestionUsuarios() {
                 </div>
             </form>
 
-            <form onSubmit={deleteSubmit}>
+            {/* <form onSubmit={deleteSubmit}>
             <h2>Eliminar un usuario</h2>
                 <br/>
                 <div >
@@ -251,7 +284,7 @@ function GestionUsuarios() {
                     </input>
                     <input class="btn btn-primary btn-m mt-5 ml-5" type='submit'/>
                 </div>
-            </form >
+            </form > */}
 
         </div>
     )
