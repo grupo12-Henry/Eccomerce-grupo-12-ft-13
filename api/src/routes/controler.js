@@ -9,13 +9,14 @@ const authAdmin=function(req, res,next){
     verification? next():res.sendStatus(401)
 }
  
-const auth = function(req,res,next){
- const user= req.headers.authorization&&req.headers.authorization.split(' ')[1]
-   const verification=user===admin
+const auth = async function (req,res,next){
+ const tokenHeader= req.headers.authorization&&req.headers.authorization.split(' ')[1]
+   const verification=tokenHeader===admin
   try{
-        const cliente =jwt.verify(user, secret)
-        const token = Client.findOne({where:{name:cliente.cliente.name,mail:cliente.cliente.mail}}) 
-        token|| verification ?next():res.sendStatus(401)
+        
+        const user = await Client.findOne({where:{token:tokenHeader}})
+        
+        user.dataValues.token===tokenHeader|| verification ?next():res.sendStatus(401)
     }catch(error){
        console.log(error);res.sendStatus(401)
    }
