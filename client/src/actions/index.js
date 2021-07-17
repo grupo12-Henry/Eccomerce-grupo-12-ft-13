@@ -8,6 +8,7 @@ export const POST_USER = "POST_USER";
 //ACTIONS DEL ADMIN
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER_DETAILS = "GET_USER_DETAILS";
+export const PUT_USER = "PUT_USER";
 export const GETALLPEDIDOS = "GETALLPEDIDOS";
 export const GETPEDIDOSBYSTATE = "GETPEDIDOSBYSTATE";
 export const GETPEDIDODETAIL = "GETPEDIDODETAIL";
@@ -199,9 +200,9 @@ export function getAllUsers() {
   };
 }
 
-export function getUserDetails(usuario) {
+export function getUserDetails(id) {
   return (dispatch) => {
-    axios.get("http://localhost:3001/admin/users/id/:id")
+    axios.get("http://localhost:3001/admin/users/id/"+ id)
     .then((response) => {
       dispatch({ type: GET_USER_DETAILS, payload: response.data });
     })
@@ -212,14 +213,22 @@ export function getUserDetails(usuario) {
 }
 
 export function postUsuarios(usuario) {
-  console.log("llegue hasta action marcos");
   return (dispatch) => {
     axios.post("http://localhost:3001/admin/clientesPost", usuario);
   };
 }
 
-export function putUsuarios(usuario) {
-  axios.put(`http://localhost:3001/admin/users/${usuario.id}`, usuario);
+export function putUsuarios(id, usuario) {
+  return (dispatch) => {
+    console.log(id, usuario)
+    axios.put("http://localhost:3001/admin/users/"+id, usuario)
+    .then((response) => {
+      dispatch({ type: PUT_USER, payload: response.data });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 }
 
 export function deleteUsuarios(id) {

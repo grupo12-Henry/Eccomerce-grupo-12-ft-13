@@ -14,15 +14,12 @@ export default function AdminComponent() {
   const [pedidos, setPedidos] = useState(false)
   const productosHandler = () => {
     setProductos(current => !current)
-    console.log('cambio') // is false
   }
   const usuariosHandler = () => {
     setUsuarios(current => !current)
-    console.log('cambio') // is false
   }
   const pedidosHandler = () => {
     setPedidos(current => !current)
-    console.log('cambio') // is false
   }
 
   return (

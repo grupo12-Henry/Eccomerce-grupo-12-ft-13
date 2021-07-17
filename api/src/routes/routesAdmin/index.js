@@ -62,14 +62,14 @@ router.delete('/client/:id', async(req, res)=>{
 })
 
 router.post('/clientesPost', async (req, res) => {//crea un nuevo cliente
-    const { name,lastname, phone , state, adress, mail, identityCard  } = req.body;
+    const { name, lastName, phone , state, adress, mail, identityCard  } = req.body;
     // const cliente ={name:name, mail:mail}
     // console.log(1,req.body)
     try {
         const token= 'false'
     //  const token = jwt.sign({cliente},secret)
       const newClient = await Client.create({
-        name, lastname, phone:phone+'', state, adress, mail, identityCard,admin:token
+        name, lastName, phone:phone+'', state, adress, mail, identityCard,admin:token
       })
       res.send(newClient)
     }
