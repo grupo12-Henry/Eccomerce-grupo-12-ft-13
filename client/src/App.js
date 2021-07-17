@@ -19,6 +19,7 @@ import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteA
 import AdminComponent from './components/register/adminRegister/component/AdminComponent';
 import Delivery from './components/register/userRegister/component/confirmDelivery';
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
+import misPedidos from './components/register/userRegister/misPedidos/misPedidos';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route component={Vinos} exact path='/vinos'/>
         <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/>
+        <Route component={misPedidos} exact path='/misPedidos'/>
         <Route component={Detail} exact path='/detail/:id'/>
       </AuthProvider>
     </React.Fragment>

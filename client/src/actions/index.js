@@ -22,6 +22,7 @@ export const DELETE_FROM_CART = "DELETE_FROM_CART";
 // export const REMOVE_ONE_FROM_CART = 'REMOVE_ONE_FROM_CART'
 export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const CLEAR_CART = "CLEAR_CART";
+export const PEDIDOSUSER = 'PEDIDOSUSER';
 
 // export const GETNAMESQ = 'GETNAMESQ'
 export function removeProductCart (id){
@@ -50,6 +51,20 @@ export function deleteLocalStorage(payload) {
     type:DELETE_LOCAL_STORAGE,
     payload
   };
+}
+
+export function getDetail (id) {
+    return (dispatch) => {
+        axios.get('http://localhost:3001/admin/productos/id/' + id)
+        .then(response =>
+            {
+            dispatch({ type: GETDETAILS, payload: response.data})
+            console.log('ESTA DATA',response.data)
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+    }
 };
 
 export function getLocalStorage (payload){
@@ -90,18 +105,6 @@ export function getProducts() {
   };
 }
 
-export function getDetail(id) {
-  return (dispatch) => {
-    axios
-      .get("http://localhost:3001/admin/productos/id/" + id)
-      .then((response) => {
-        dispatch({ type: GETDETAILS, payload: response.data });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-}
 
 export function orderProduct({ offset, type, order, name }) {
   return (dispatch) => {
@@ -117,6 +120,19 @@ export function orderProduct({ offset, type, order, name }) {
   };
 }
 
+export function getpedidosUser (id) {
+    return (dispatch) => {
+        axios.get(`http://localhost:3001/pedidos/${id}`)
+        .then(response => {
+            dispatch({ type: PEDIDOSUSER, payload: response.data})
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+    }
+};
+
+
 // export function getNamesQuery(name){
 //     return (dispatch) => {
 //         axios.get('http://localhost:3001/productos/?name='+ name)
@@ -128,6 +144,7 @@ export function orderProduct({ offset, type, order, name }) {
 //         })
 //     }
 // }
+
 export function getNames() {
   return (dispatch) => {
     axios

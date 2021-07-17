@@ -7,7 +7,26 @@ const {secret}={secret:process.env.SECRET}
 //modelos acá:
 
 const router = Router();
+router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
+    const valor = req.query.valor;
 
+    try {
+        if (!!valor) {
+            const product = await Order.findAll({
+               where: {
+                   state:valor
+               }
+            })
+            
+            res.send(product).status(200)
+        } else {
+            res.send('ingresar clave-valor').status(400)
+        }
+    } catch (error) {
+        res.send(error).status(404)
+    }
+
+})
 router.get('/detallePedido/:id', async (req,res)=>{//envia detalle de un pedido
 const id = req.params.id
 try {
@@ -35,7 +54,7 @@ router.delete('/client/:id', async(req, res)=>{
     const id = req.params.id
     try {
         const cliente =  await Client.destroy({where: {id: id}})
-        console.log(cliente)
+  
         cliente===1?res.send('usuario eliminado satisfactoriamente'):res.send('usuario inexistente')
     } catch (error) {
         res.send(error).status(404)
@@ -95,7 +114,7 @@ router.get('/productos/order', async (req, res) => {
 })
 router.get('/productos/names', async (req, res) => {//envia todos los nombres de los productos
     try {
-        const productos = await Product.findAll({ attributes: { exclude: ['id','createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
+        const productos = await Product.findAll({ attributes: { exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
         res.send(productos)
     } catch (error) {
         res.send(error).status(404)
@@ -119,7 +138,7 @@ router.put('/productos/:id', async (req, res) => {//modifica el producto selecci
     const id = req.params.id
     const { stock, name, type, Description, price, image, maker, subcategories  } = req.body
     try {
-        console.log(stock)
+       
         const product = await Product.findByPk(id)
         await product.update({
             name: name || product.dataValues.name,
@@ -196,26 +215,24 @@ router.get('/pedidos/all', async (req, res) => {//envia todos los pedidos
         res.send(error).status(404)
     }
 })
-router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
-    const valor = req.query.valor;
+
+router.post('/orderPost', async (req, res) => {
+    const { idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad} = req.body;
 
     try {
-        if (!!valor) {
-            const product = await Order.findAll({
-               where: {
-                   state:valor
-               }
-            })
-            console.log(product)
-            res.send(product).status(200)
-        } else {
-            res.send('ingresar clave-valor').status(400)
-        }
-    } catch (error) {
-        res.send(error).status(404)
+      const user = await Client.findByPk(idClient)
+      const newOrder = await Order.create({
+        ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost , subtotal,cantidad})
+      newOrder.setClient(user)
+      products.forEach(e=>{
+        newOrder.setProducts(e.id, {through:{cantidad: e.cantidad, subTotal: e.subtotal}}); 
+        })
+      return res.send(newOrder);
+      } catch(error){
+       res.send(error).status(404)
     }
+  })
 
-})
 
 
 router.put('/pedidos/id/:id', async (req, res) => {//modifica un pedido segun los datos enviados(no hace falta enviar todos los campos)
