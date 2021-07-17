@@ -77,7 +77,7 @@ const Nav = () => {
             <Auto />
           </div>
           <ul className="d-flex">
-            <Link to='/compras'> <li><a className="carrito">
+            <Link to='/compras'> <li><a>
               <img className="cart" alt="cart img" src={cart} width="20px" />
             </a>
             </li></Link>

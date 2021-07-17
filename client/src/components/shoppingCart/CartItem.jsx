@@ -1,63 +1,48 @@
 import React from 'react';
 import StyledDiv from './Styled';
-import {useState} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {useState, useEffect} from 'react'
+import { removeProductCart } from '../../actions';
 
 
-function CartItem({data, delFromCart}) {
+function CartItem({data}) {
+  // const [state, setState]= useState(1)
+  const[precioTotal, setPrecioTotal]= useState(data.price*data.cantidad)
+  const ProductsCart = useSelector( (state) => state.productCart)
+  const dispatch = useDispatch()
 
-  const [state, setState]= useState(1)
-  const[precioTotal, setPrecioTotal]= useState(data.price*state)
+  useEffect(() => {
+    setPrecioTotal(data.cantidad*data.price)
+  }, [data.cantidad])
   
-  const handleCountChange = (e) => {
-    setState(e.target.value);
-    setPrecioTotal(e.target.value*data.price)
-    console.log(state)
+  const delFromCart = () => {
+    dispatch(removeProductCart(data.id))
+    console.log(data.id)
   }
+
+
+  const handleCountChange = (e) => {
+    data.cantidad=(e.target.value);
+    setPrecioTotal(e.target.value*data.price)
+    //console.log(state)
+  }
+
 
     return (
       <div >
         <StyledDiv>
         <div class='container' className='container-carrito'> 
-         <img src={data.image} className='Img'/>
-          <h6 class='ml-4 mr-5'>{data.name}</h6>
-          <h6 class='ml-5 mr-5'>{data.price}</h6>
-          <input type='number'class="ml-5 mr-5" min={1} max={12} onChange={handleCountChange} name='count' autoComplete='off'/>
-          <h6 class='ml-5' >{precioTotal}</h6>
+         <img src={data.image} className='Img' alt='imagen'/>
+          <h6 >{data.name}</h6>
+          <h6 >${data.price}.00</h6>
+          <input type='number' min={1} max={12} onChange={handleCountChange} value={data.cantidad} className='counter' name='count' autoComplete='off'/>
+          <h6 >$ {precioTotal}.00</h6>
+          <button type="button" className='button' onClick={() => delFromCart()} >❌</button>
+
        </div>
         </StyledDiv>
-       <button type="button" class="btn bg-cart" onClick={() => delFromCart()} >x</button>
        </div>
     )
   }
 
   export default CartItem;
-
-
-  /*
-  import React from 'react'
-import styles from '../styles/Card.css';
-
-export default function Card({ name, max, min, img, onClose }) {
-  // acá va tu código
-  return (
-    <div className={styles.Contenedor} >
-      <button onClick={onClose} className={styles.boton} >  X</button>
-      <h5>{name}</h5>
-      <div className={styles.temp} >
-        <div>
-          <h6>Max</h6>
-          <h6>{max}</h6>
-        </div>
-        <div>
-          <h6>Min</h6>
-          <h6>{min}</h6>
-        </div>
-        <img src={`http://openweathermap.org/img/wn/${img}@2x.png`} alt="No se encontro la imagen" />
-      </div>
-    </div>
-  );
-};
-  
-  
-  
-  */

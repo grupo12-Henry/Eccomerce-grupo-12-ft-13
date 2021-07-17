@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
 import CartShp from './CartShp'
 
-function ShoppingCart(props) {
+function ShoppingCart({ name, price, image, id, } ) {
+
   const dispatch = useDispatch()
   const cart = useSelector( (state) => state.productCart);
   const product = useSelector((state) => state.products);
@@ -27,34 +28,50 @@ useEffect(() => {
 }, [product]);
 
 
-const addToCart = (el) => {
-  dispatch(addLocalStorage(el))
-  dispatch(addProductCart(el.id))
-  console.log()
+const addToCart = (id) => {
+  dispatch(addProductCart(id))}
+
+// const addToCart = (el) => {
+//   dispatch(addLocalStorage(el))
+//   dispatch(addProductCart(el.id))
+//   console.log()
+
+// }
+
+const clearCart = () => {
 }
-
-const delFromCart = () => {}
-
-const clearCart = () => {}
-
     return (
+      <div>
+        <div>
+        {/* <button type="button" class="btn btn-outline-secondary">
+          🛒<a href="/order" target="_blank" rel="nofollow" class="badge badge-light">
+          <span id="cart_menu_num" data-action="cart-can" class=" rounded-circle">{1}</span></a>
+        </button> */}
+        </div>
       <div class="cart_section">
-         <div  class="container-fluid">
+         <div class="container-fluid">
          <div class="row">
-        <h2>SIMULADOR DE HOME</h2>
-         <h3>Carrito</h3>
-       <article>
-         {CartShp}
-         <button onClick={() => clearCart()}>Limpiar Carrito</button>
-         {cart.map( (item, index) =>
-         <CartItem key={index} data={item} delFromCart={delFromCart}/>
+
+        <h2> •••»   SIMULADOR DE HOME   «•••☻</h2>
+        <div class="shadow-none p-3 mt-2 mb-4 bg-light rounded">
+        <h3 class="d-flex justify-content-center">Carrito de Compras</h3>
+        <div class="d-flex justify-content-end">
+        </div>
+       <article>          
+         {cart.map( (item, index) => 
+         <CartItem key={index} data={item} />
          )}
        </article>
-         <h3>Productos</h3>
-         <article class='box'>
-         {allProducts &&
-                  allProducts.length > 0 ? allProducts.map((el) => (
-                    <div class="col-md-4 mt-2">
+       <div class="d-flex justify-content-end">
+         <button type="button" class="btn btn-danger" onClick={() => clearCart()}>Limpiar Carrito</button>
+       </div>
+       </div>
+       <hr/>
+         <h3>PRODUCTOS</h3>
+         <article class=" d-flex row col-md-12 mt-5">
+         {allProducts ? allProducts.map((el) => (
+                    <div class="col-md-2" >
+
                       <div class="card">
                         <div class="card-body">
                           <div class="card-img-actions">
@@ -71,27 +88,26 @@ const clearCart = () => {}
                         <div class="card-body bg-light text-center">
                           <div class="mb-2">
                             <h6 class="font-weight-semibold mb-2">
-                              <a
-                                href="/detail/id"
-                                class="text-default mb-2"
-                                data-abc="true"
-                              >
-                                {el.name}
-                              </a>
+                               <h3 class="mb-0 font-weight-semibold">{el.name}</h3> 
                             </h6>
                           </div>
-                          <h3 class="mb-0 font-weight-semibold">${el.price}.00</h3>
-                          <button onClick={(el)=>addToCart(el)} type="button" class="btn bg-cart">
-                            <i class="fa fa-cart-plus mr-2"></i> Agregar
+
+                          <h3 class="mb-0 font-weight-semibold">${el.price}.00</h3>                          
+                          {/* <button onClick={() => {
+                          dispatch(addProductCart({id,name,price,image}))
+                          }} class="btn btn-outline-secondary">Agregar al carrito</button> */}
+                          <button class="btn btn-outline-secondary" onClick={()=>addToCart(el.id)} type="button">Agregar al carrito
+
                           </button>
                         </div>
                       </div>
                     </div>
-                  )) : null}
-        </article>
+                  )) : <div>...loading</div>}
+         </article>
         </div>
-        </div>
-    </div>
+         </div>
+     </div>
+     </div>      
 
     )
   }
