@@ -13,7 +13,6 @@ import NavCategories from "../navCategories/navCategories";
 function Dashboard() {
     return (
         <div>
-            
         </div>
     )
 }

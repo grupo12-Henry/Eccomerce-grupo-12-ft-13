@@ -29,8 +29,8 @@ function GestionPedidos() {
       };
 
     //Me trae el detalle del pedido.
-    const handlePedidoDetail = async(id) => {
-        dispatch(getPedidoDetail(id));
+    const handlePedidoDetail = async(e) => {
+        dispatch(getPedidoDetail(e.target.value));
     };  
 
     //Maneja el input de la tabla que busca el detalle de un pedido
@@ -41,7 +41,7 @@ function GestionPedidos() {
 
     //MODIFICA el pedido.
     const handlePedidosSubmit = () => {
-        dispatch(putPedido(modifyId, modifyPedido));
+        dispatch(putPedido(pedidoDetail.id, modifyPedido));
     };   
 
     //Maneja el input de los campos que MODIFICAN un pedido. 
@@ -74,26 +74,14 @@ function GestionPedidos() {
         });
     }
 
+    const insertPedidoInfo = (e) => {
+        dispatch(getPedidoDetail(e.target.value));
+    }
+
 
     return (
     <div class='container'>
-        <h2>Pedidos</h2>
         <h3>Ver pedidos</h3>
-
-        {/* <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" d="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Estado
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <span class="dropdown-item" href="#">Todos</span>
-                <span class="dropdown-item" href="#">Pendiente</span>
-                <span class="dropdown-item" href="#">Enviado</span>
-                <a class="dropdown-item" href="#">Retiro en local</a>
-                <a class="dropdown-item" href="#">Cancelado</a>
-                <a class="dropdown-item" href="#">Cerrado</a>
-            </div>
-        </div> */}
-
         {/* Boton que filtra por estado */}
         <label>Ver estados: </label>
         <select name="Orders" id='Orders' class='ml-3' onChange={(e) => handlePedidosChange(e)}>
@@ -123,6 +111,8 @@ function GestionPedidos() {
                     <th scope="col" data-field="ticket" data-sortable="false" >Ticket</th>
                     <th scope="col" data-field="state" data-sortable="true" >Estado del envio</th>
                     <th scope="col" data-field="shippingDate" data-sortable="true" >Fecha de envio</th>
+                    <th scope="col" data-field="details" data-sortable="true" >Detalle</th>
+                    <th scope="col" data-field="modify" data-sortable="true" >Modificar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -137,6 +127,16 @@ function GestionPedidos() {
                             <td>{pedido.ticket}</td>                            
                             <td>{pedido.state}</td>
                             <td>{pedido.shippingDate}</td>
+                            <td >
+                                <button class="btn btn-sm btn-info" value={pedido.id} onClick={(e) => { e.preventDefault(); handlePedidoDetail(e)}} >
+                                    Ver detalle
+                                </button>
+                            </td>
+                            <td >
+                                <button class="btn btn-sm btn-info" value={pedido.id} onClick={(e) => { e.preventDefault(); insertPedidoInfo(e)}} >
+                                    Modificar
+                                </button>
+                            </td>
                             </tr>
                         ))
                     }
@@ -179,67 +179,78 @@ function GestionPedidos() {
                 <ol>
                 <li>
                     <label>Pedido Numero: </label>
-                    <input name='id' type='number' value={modifyId} onChange={handleModifyIdChange}/>
+                    <input name='id' type='text' value={pedidoDetail.id} onChange={handleModifyIdChange}/>
                 </li>
                 <li>
                     <label>Cliente Numero </label>
-                    <input name='clientId' type='number' value={modifyPedido.clientId} onChange={handleInputModifyChange}/>
+                    <input name='clientId' type='number' placeholder={pedidoDetail.clientId} value={ modifyPedido.clientId} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Fecha de compra</label>
-                    <input name='date' type='text' value={modifyPedido.date} onChange={handleInputModifyChange}/>
+                    <input name='date' type='text' placeholder={pedidoDetail.date} value={modifyPedido.date} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Monto </label>
-                    <input name='bill' type='number' value={modifyPedido.bill} onChange={handleInputModifyChange}/>
+                    <input name='bill' type='number' placeholder={pedidoDetail.bill} value={modifyPedido.bill} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Forma de Pago </label>
-                    <input name='paymentMethod' type='text' value={modifyPedido.paymentMethod} onChange={handleInputModifyChange}/>
+                    {/* <input name='paymentMethod' type='text' placeholder={pedidoDetail.paymentMethod} value={modifyPedido.paymentMethod} onChange={handleInputModifyChange}/> */}
+                    <select name="paymentMethod" value={modifyPedido.paymentMethod} onChange={handleInputModifyChange}>
+                        <option key='tarjeta' value='tarjeta'>Tarjeta</option>
+                        <option key='efectivo' value='efectivo'>Efectivo</option>
+                    </select>
                 </li>
                 <li>
                     <label>Ticket </label>
-                    <input name='ticket' type='text' value={modifyPedido.ticket} onChange={handleInputModifyChange}/>
+                    <input name='ticket' type='text' placeholder={pedidoDetail.ticket } value={modifyPedido.ticket} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Dirección de envio </label>
-                    <input name='adress' type='text' value={modifyPedido.adress} onChange={handleInputModifyChange}/>
+                    <input name='adress' type='text' placeholder={pedidoDetail.adress} value={modifyPedido.adress} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Cód. Postal </label>
-                    <input name='mail' type='text' value={modifyPedido.mail} onChange={handleInputModifyChange}/>
+                    <input name='mail' type='text' placeholder={pedidoDetail.mail} value={modifyPedido.mail} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Fecha de envio</label>
-                    <input name='shippingDate' type='text' value={modifyPedido.shippingDate} onChange={handleInputModifyChange}/>
+                    <input name='shippingDate' type='text' placeholder={pedidoDetail.shippingDate} value={modifyPedido.shippingDate} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
-                    <label>Estado del envio </label>
-                    <input name='state' type='text' value={modifyPedido.state} onChange={handleInputModifyChange}/>
+                    <label>Estado del envio </label>            
+                    <select name="state" value={modifyPedido.state} onChange={handleInputModifyChange}>
+                        <option key='pendiente' value='pendiente'>Pendiente</option>
+                        <option key='enviado' value='enviado'>Enviado</option>
+                        <option key='retiro' value='retiro'>Retiro en local</option>
+                        <option key='cancelado' value='cancelado'>Cancelado</option>
+                        <option key='cerrado' value='cerrado'>Cerrado</option>
+                    </select>
+
                 </li>
                 <li>
                     <label>Costo de envio </label>
-                    <input name='cost' type='number' value={modifyPedido.cost} onChange={handleInputModifyChange}/>
+                    <input name='cost' type='number' placeholder={pedidoDetail.cost} value={modifyPedido.cost} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>N° de guia </label>
-                    <input name='guideNumber' type='text' value={modifyPedido.guideNumber} onChange={handleInputModifyChange}/>
+                    <input name='guideNumber' type='text' placeholder={pedidoDetail.guideNumber} value={modifyPedido.guideNumber} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Transportista </label>
-                    <input name='freight' type='text' value={modifyPedido.freight} onChange={handleInputModifyChange}/>
+                    <input name='freight' type='text' placeholder={pedidoDetail.freight} value={modifyPedido.freight} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>IVA </label>
-                    <input name='ivaCost' type='number' value={modifyPedido.ivaCost} onChange={handleInputModifyChange}/>
+                    <input name='ivaCost' type='number' placeholder={pedidoDetail.ivaCost} value={modifyPedido.ivaCost} onChange={handleInputModifyChange}/>
                 </li>
                 <li>
                     <label>Situación impositiva </label>
-                    <input name='ivaCondition' type='text' value={modifyPedido.ivaCondition} onChange={handleInputModifyChange}/>
+                    <input name='ivaCondition' type='text' placeholder={pedidoDetail.ivaCondition} value={modifyPedido.ivaCondition} onChange={handleInputModifyChange}/>
                 </li>
                 </ol>
 
-                <button onClick={(e) => {handlePedidosSubmit(e)}}>Confirmar modificación</button>
+                <button class="btn btn-danger mb-9" onClick={(e) => { handlePedidosSubmit(e)}}>Confirmar modificación</button>
             </form>
         </div>
     </div>
