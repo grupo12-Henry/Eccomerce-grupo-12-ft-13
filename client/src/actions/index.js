@@ -4,6 +4,7 @@ export const GETCARDS = "GETCARDS";
 export const GETDETAILS = "GETDETAILS";
 export const GETNAMES = "GETNAMES";
 export const ORDERPRODUCT = "ORDERPRODUCT";
+export const POST_USER = "POST_USER";
 //ACTIONS DEL ADMIN
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER_DETAILS = "GET_USER_DETAILS";
@@ -288,5 +289,19 @@ export function putPedido(id, payload) {
         console.log(err);
       });
   };
+}
+export function createUser(obj){
+  return (dispatch)=>{
+    try{
+      axios.post('http://localhost:3001/admin/clientesPost',obj)
+    .then((response)=>{
+    console.log(response.data);
+    window.localStorage.setItem("user",JSON.stringify(response.data));  
+      return dispatch({ type:POST_USER,Payload:response.data})})
+    }catch(err){
+      console.log(err);
+    }
+    
+  }
 }
 // axios.defaults.baseURL ="http://localhost:3001";
