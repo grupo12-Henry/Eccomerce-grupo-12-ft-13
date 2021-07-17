@@ -45,7 +45,7 @@ export default function ForgotPassword() {
                                 <Link to='/login'>Login</Link>
                             </div>
                         </div>
-                        <div>Need an account? Log In <Link to='/signup'>Sign Up</Link></div>
+                        <div>Need an account? Log In <Link to='/signup'>Registrate</Link></div>
                     </li>
                 </ul>
             </nav>

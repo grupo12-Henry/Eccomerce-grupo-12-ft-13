@@ -12,9 +12,13 @@ const MODAL_STYLES = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  backgroundColor: "#FFF",
+  backgroundColor: "#333333",
   padding: "50px",
+  border: '4px solid #ebc28e',
+  borderRadius: '2px',
   zIndex: 1000,
+  color: '#fff',
+  textAlign: 'center'
 };
 
 const OVERLAY_STYLES = {
@@ -31,6 +35,7 @@ export default function NavModal({ open, children, onClose }) {
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
   const { currentUser, logout } = useAuth();
+  
   const { googleLogin } = useAuth();
 
   if (!open) return null;
@@ -78,7 +83,7 @@ export default function NavModal({ open, children, onClose }) {
         <div style={OVERLAY_STYLES}>
           <div style={MODAL_STYLES}>
             <button
-              class="btn btn-danger"
+              class="btn btn-light"
               margin-right="1rem"
               width="3rem"
               onClick={handleClose}
@@ -87,7 +92,7 @@ export default function NavModal({ open, children, onClose }) {
             </button>
             <div>YA ESTAS LOGUEADO</div>
             <button
-              class="btn btn-danger"
+              class="btn btn-light"
               margin-right="1rem"
               width="3rem"
               onClick={handleLogout}
@@ -104,16 +109,7 @@ export default function NavModal({ open, children, onClose }) {
               {signup === true ? <SignUp onClose={() => onClose()} /> : null}
               {login === true ? <Login onClose={() => onClose()} /> : null}
             </div>
-            <div className="div_button">
-              <button
-                class="btn btn-danger"
-                margin-right="1rem"
-                width="3rem"
-                onClick={handleClose}
-              >
-                <CloseIcon />
-              </button>
-            </div>
+            
             {signup === true || login === true ? (
               <button className="btn btn-dark" onClick={handleBackClose}>
                 Volver
@@ -124,13 +120,23 @@ export default function NavModal({ open, children, onClose }) {
                 role="group"
                 aria-label="Basic outlined example"
               >
-                <button class="btn btn-primary" onClick={handleSignup}>
+                <div className="div_button">
+              <button
+                class="btn btn-light"
+                margin-right="1rem"
+                width="3rem"
+                onClick={handleClose}
+              >
+                <CloseIcon />
+              </button>
+            </div>
+                <button class="btn btn-light" onClick={handleSignup}>
                   Registrate
                 </button>
-                <button class="btn btn-primary" onClick={handleLogin1}>
+                <button class="btn btn-light" onClick={handleLogin1}>
                   Logueate con tu mail
                 </button>
-                <button class="btn btn-primary" onClick={handleGoogle}>
+                <button class="btn btn-light" onClick={handleGoogle}>
                   Logueate con <img className="logo-google" src={logo} />
                 </button>
               </div>

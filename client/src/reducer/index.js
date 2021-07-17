@@ -1,4 +1,5 @@
 import {
+  PEDIDOSUSER,
   GETCARDS,
   GETDETAILS,
   GETNAMES,
@@ -9,80 +10,69 @@ import {
   CLEAR_CART,
   ADD_LOCAL_STORAGE,
   GET_LOCAL_STORAGE,
-  DELETE_LOCAL_STORAGE,
-} from "../actions";
+  DELETE_LOCAL_STORAGE
+} from '../actions/index';
 
-const initialState = {
+export const initialState = {
   products: [],
   productDetail: {},
   names: [],
   orderProd: [],
   pedidos: [],
   pedidoDetail: {},
-  // namesq: []
+  pedidosUser: [],
   productCart: [],
   arrayStorages: [],
 };
 
 const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case GETCARDS:
-      return {
-        ...state,
-        products: action.payload,
-      };
-    case GETNAMES:
-      return {
-        ...state,
-        names: action.payload,
-      };
-    case ORDERPRODUCT:
-      return {
-        ...state,
-        orderProd: action.payload,
-      };
-
-    // case GETNAMESQ:
-    //     return {
-    //         ...state,
-    //         namesq: action.payload
-    //     };
-
-    case GETDETAILS:
-      return {
-        ...state,
-        productDetail: action.payload,
-      };
-    case GETALLPEDIDOS:
-      return {
-        ...state,
-        pedidos: action.payload,
-      };
-    case GETPEDIDOSBYSTATE:
-      return {
-        ...state,
-        pedidos: action.payload,
-      };
-    case GETPEDIDODETAIL:
-      return {
-        ...state,
-        pedidoDetail: action.payload,
-      };
-    // case ADD_TO_CART:
-    //   let nuevoItem = state.products.find((prod) => prod.id === action.payload);
-    //   if (state.productCart.includes(nuevoItem)) {
-    //     return state;
-    //   }
-    //   return {
-    //     ...state,
-    //     productCart: state.productCart.concat(nuevoItem),
-    // //   };
-    // case REMOVE_ALL_FROM_CART:
-    //   return {
-    //     ...state,
-    //     productCart: state.productCart.filter((p) => p.id !== action.id),
-    //   };
-    case CLEAR_CART:
+    switch (action.type) {
+        case GETCARDS:
+            return {
+                ...state,
+                products: action.payload
+            };
+        case GETNAMES:
+            return {
+                ...state,
+                names: action.payload
+            };
+        case ORDERPRODUCT:
+            return {
+                ...state,
+                orderProd: action.payload
+            };
+        // case GETNAMESQ:
+        //     return {
+        //         ...state,
+        //         namesq: action.payload
+        //     };
+        case GETDETAILS:
+            return {
+                ...state,
+                productDetail: action.payload
+            };
+        case GETALLPEDIDOS:
+            return {
+                ...state,
+                pedidos:action.payload
+            };
+        case GETPEDIDOSBYSTATE:
+            return {
+                ...state,
+                pedidos:action.payload
+            };
+        case GETPEDIDODETAIL:
+            return {
+                ...state,
+                pedidoDetail:action.payload
+            };
+            case PEDIDOSUSER:
+                return {
+                    ...state,
+                    pedidosUser:action.payload
+                };
+                case CLEAR_CART:
       return {
         ...state,
         productCart: [],
@@ -118,14 +108,9 @@ const rootReducer = (state = initialState, action) => {
             : state.arrayStorages.concat([action.payload])
         )
       );
-      return {
-        ...state,
-        arrayStorages: state.arrayStorages.slice().concat([action.payload])
-      }
-    }
-
+    };
     default:
-      return state;
-  }
+        return state;
+    };
 }
 export default rootReducer;
