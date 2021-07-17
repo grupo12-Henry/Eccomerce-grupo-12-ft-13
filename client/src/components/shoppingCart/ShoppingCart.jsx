@@ -28,8 +28,8 @@ useEffect(() => {
 }, [product]);
 
 
-// const addToCart = (id) => {
-//   dispatch(addProductCart(id))
+const addToCart = (id) => {
+  dispatch(addProductCart(id))}
 
 // const addToCart = (el) => {
 //   dispatch(addLocalStorage(el))
