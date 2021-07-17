@@ -1,20 +1,79 @@
 const { Router } = require('express');
-const { Product, Client , Order, Shipping, Invoice} = require('../../db');
+const { Product, Client , Order} = require('../../db');
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
+const {auth,authAdmin}= require('../controler')
+const jwt = require('jsonwebtoken');
+const {secret}={secret:process.env.SECRET}
 //modelos acá:
 
 const router = Router();
+router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
+    const valor = req.query.valor;
 
+    try {
+        if (!!valor) {
+            const product = await Order.findAll({
+               where: {
+                   state:valor
+               }
+            })
+            
+            res.send(product).status(200)
+        } else {
+            res.send('ingresar clave-valor').status(400)
+        }
+    } catch (error) {
+        res.send(error).status(404)
+    }
+
+})
+router.get('/detallePedido/:id', async (req,res)=>{//envia detalle de un pedido
+const id = req.params.id
+try {
+    const pedido = await Order.findByPk(id,{
+    include:[{
+        model: Client, model: Product
+    }]
+})
+pedido?res.send(pedido): res.send('pedido no encontrado')
+} catch (error) {
+    res.send(error).status(404)
+}})
+
+router.delete('/producto/:id', async(req, res)=>{
+    const id = req.params.id
+    try {
+        const producto = Product.destroy({where: {id: id}})
+        cliente===1?res.send('producto eliminado satisfactoriamente'):res.send('producto inexistente')
+    } catch (error) {
+        res.send(error).status(404)
+    }
+})
+
+router.delete('/client/:id', async(req, res)=>{
+    const id = req.params.id
+    try {
+        const cliente =  await Client.destroy({where: {id: id}})
+  
+        cliente===1?res.send('usuario eliminado satisfactoriamente'):res.send('usuario inexistente')
+    } catch (error) {
+        res.send(error).status(404)
+    }
+})
 
 router.post('/clientesPost', async (req, res) => {//crea un nuevo cliente
-    const { id, name,lastname, phone , state, adress, mail, identityCard  } = req.body;
-  try {
-    const newClient = await Client.create({
-      name, lastname, phone, state, adress, mail, identityCard
-    })
-    return res.send(newClient)
-    } catch(error){
+    const { name,lastname, phone , state, adress, mail, identityCard  } = req.body;
+    // const cliente ={name:name, mail:mail}
+    // console.log(1,req.body)
+    try {
+        const token= 'false'
+    //  const token = jwt.sign({cliente},secret)
+      const newClient = await Client.create({
+        name, lastname, phone:phone+'', state, adress, mail, identityCard,admin:token
+      })
+      res.send(newClient)
+    }
+    catch(error){
      res.send(error).status(404);
   }
   })
@@ -47,7 +106,6 @@ router.get('/productos/order', async (req, res) => {
             limit: 10,
 
         })
-
         res.send(productos).status(200)
     } catch (error) {
         res.send(error).status(404)
@@ -56,7 +114,7 @@ router.get('/productos/order', async (req, res) => {
 })
 router.get('/productos/names', async (req, res) => {//envia todos los nombres de los productos
     try {
-        const productos = await Product.findAll({ attributes: { exclude: ['id','createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
+        const productos = await Product.findAll({ attributes: { exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
         res.send(productos)
     } catch (error) {
         res.send(error).status(404)
@@ -80,6 +138,7 @@ router.put('/productos/:id', async (req, res) => {//modifica el producto selecci
     const id = req.params.id
     const { stock, name, type, Description, price, image, maker, subcategories  } = req.body
     try {
+       
         const product = await Product.findByPk(id)
         await product.update({
             name: name || product.dataValues.name,
@@ -146,6 +205,7 @@ router.get('/users/id/:id', async (req, res) => {//trae usuario con todos sus pe
         res.send(error).status(404)
     }
 })
+
 router.get('/pedidos/all', async (req, res) => {//envia todos los pedidos
     try {
         const pedidos = await Order.findAll()
@@ -155,26 +215,24 @@ router.get('/pedidos/all', async (req, res) => {//envia todos los pedidos
         res.send(error).status(404)
     }
 })
-router.get('pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
-    const valor = req.query.valor;
+
+router.post('/orderPost', async (req, res) => {
+    const { idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad} = req.body;
 
     try {
-        if (!!valor) {
-            const product = await Order.findAll({
-               where: {
-                   state:valor
-               }
-            })
-            console.log(product)
-            res.send(product).status(200)
-        } else {
-            res.send('ingresar clave-valor').status(400)
-        }
-    } catch (error) {
-        res.send(error).status(404)
+      const user = await Client.findByPk(idClient)
+      const newOrder = await Order.create({
+        ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost , subtotal,cantidad})
+      newOrder.setClient(user)
+      products.forEach(e=>{
+        newOrder.setProducts(e.id, {through:{cantidad: e.cantidad, subTotal: e.subtotal}}); 
+        })
+      return res.send(newOrder);
+      } catch(error){
+       res.send(error).status(404)
     }
+  })
 
-})
 
 
 router.put('/pedidos/id/:id', async (req, res) => {//modifica un pedido segun los datos enviados(no hace falta enviar todos los campos)
@@ -212,8 +270,8 @@ router.put('/pedidos/id/:id', async (req, res) => {//modifica un pedido segun lo
 
 router.put('/users/:id', async (req, res)=>{
     const id = req.params.id
-    let phone = parseInt(req.body.phone,10)
-    const {name, lastName, state, adress, mail, identityCard, admin }=req.body
+    
+    const {name,phone, lastName, state, adress, mail, identityCard, admin }=req.body
     try {
         const user = await Client.findByPk(id)
         

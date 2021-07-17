@@ -12,32 +12,39 @@ const StyledDiv = styled.div`
   border-radius: 1rem;
   margin: 2rem;
   border: 0.1rem solid rgba(94, 3, 3, 0.726);
-  color: rgba(114, 224, 160, 0.699);;
+  color: rgba(94, 3, 3, 0.726);
   background: white;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3),0px 3px 7px rgba(0, 0, 0, 0.3),0px 1px white inset, 0px -3px 2px rgba(0, 0, 0, 0.3) inset ;
+  margin-left:80%;
 }
 
 .container-carrito{
   display:flex;
   flex-direction:row;
-    
+  font-size:0.01rem
+    width:100rem
+}
+
+h6, .h6 {
+    font-size: 0.6rem;
+    margin-left:0.2rem;
+     color: rgba(94, 3, 3, 0.726);
 }
 .Img{
   justify-content:space-around;
   object-fit: scale-down;
-  max-height: 4rem;
+  max-height: 2rem;
 }
 
 .button{
-  height: 2rem;
+  height: 1rem;
   color: red;
-  margin-left:1rem;
-  font-size: 12px;
+  font-size: 0.5rem;
 }
 
 .counter{
-  height: 2rem;
-  width:2.5rem;
+  height: 1rem;
+  width:0.7rem;
 }
 
 `

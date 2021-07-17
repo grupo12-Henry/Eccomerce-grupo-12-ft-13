@@ -6,7 +6,7 @@ import { StyledDiv } from "./styled";
 import '../signUp/signup.css'
 
 
-export default function Signup() {
+export default function Signup({ onClose }) {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -26,7 +26,8 @@ export default function Signup() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      // onClose()
+      history.push("/home");
     } catch {
       setError("Failed to create an account");
     }
@@ -42,7 +43,7 @@ export default function Signup() {
           <ul className="list">
             <li className="list-item">
               <div>
-                <h2>Registrate</h2>
+                
                 <p>{error}</p>
                 <form onSubmit={handleSubmit}>
                   <div className='email'>
@@ -65,13 +66,13 @@ export default function Signup() {
                   ></input>
                   </div>
                   <br/>
-                  <button disabled={loading} className="btn btn-success" type="submit">
-                    Sign Up
+                  <button disabled={loading} className="btn btn-light" type="submit">
+                    Registrate
                   </button>
                 </form>
               </div>
               <div className='registred'>
-              Ya estás registrado? <Link to="/login">Logueate!</Link>
+              Ya estás registrado? <Link to="/login" style={{color: '#ebc28e'}}>Logueate!</Link>
               </div>
             </li>
           </ul>

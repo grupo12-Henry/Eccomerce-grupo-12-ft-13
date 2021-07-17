@@ -1,113 +1,284 @@
-import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, ADD_TO_CART,REMOVE_ALL_FROM_CART,CLEAR_CART, CARRITO } from '../actions'
-import CartItem from '../components/shoppingCart/CartItem';
+import {
+  GETCARDS,
+  GETDETAILS,
+  GETNAMES,
+  ORDERPRODUCT,
+  GET_USER_DETAILS,
+  GETALLPEDIDOS,
+  GETPEDIDODETAIL,
+  DELETE_LOCAL_STORAGE,
+  ADD_TO_CART,
+  REMOVE_ALL_FROM_CART,
+  CLEAR_CART,
+  GETPEDIDOSBYSTATE,
+  PUTPEDIDO,
+  ADD_LOCAL_STORAGE,
+  CARRITO,
+  GET_LOCAL_STORAGE,
+  GET_ALL_USERS,
+  PEDIDOSUSER
+} from '../actions'
+// import CartItem from '../components/shoppingCart/CartItem';
+import {
+  useState
+} from 'react'
 
 
 const initialState = {
-    products: [],
-    productDetail: {},
-    names: [],
-    orderProd: [],
-    productCart: [],
-    arrayStorages: [],
-    carritoState: false
-
+  products: [],
+  productDetail: {},
+  names: [],
+  orderProd: [],
+  pedidos: [],
+  pedidoDetail: {},
+  AllClients: [],
+  ClientDetails: {},
+  pedidosUser: [],
+  productCart: [],
+  arrayStorages: [],
 }
 
+
 const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case CARRITO:
-            return{
-                ...state,
-                carritoState: !state.carritoState
-            };
+  // let updatedCart;
+  // let updatedItemIndex;
+  // const array = JSON.parse(window.localStorage.getItem("array"));
+  // window.localStorage.setItem( "array", JSON.stringify( array.length? array=state.productCart :  console.log('falla en local storage') ) );//state.productCart.concat([nuevoItem])
+  // console.log(JSON.parse(window.localStorage.getItem("array")))
+  switch (action.type) {
+    case CARRITO:
+      return {
+        ...state,
+        carritoState: !state.carritoState
+      };
 
-        case GETCARDS:
-            return {
-                ...state,
-                products: action.payload
-            };
-            
-        case GETNAMES:
-            return {
-                ...state,
-                names: action.payload
-            };
-        case ORDERPRODUCT:
-            return {
-                ...state,
-                orderProd: action.payload
-            };
-                   
-        case GETDETAILS:
-            return {
-                ...state,
-                productDetail: action.payload
-            }
-        case ADD_TO_CART:
-            let nuevoItem = state.products.find(prod => prod.id ===action.payload)
-            let     a = state.productCart.length?state.productCart.filter(e=>e.id===(nuevoItem.id)):''
-            if(a.length){
-                console.log('existe', a[0].cantidad, a[0])
-                console.log(typeof(a[0].cantidad))
+    case GETCARDS:
+      return {
+        ...state,
+        products: action.payload
+      };
 
-                nuevoItem = {...nuevoItem , cantidad:(parseInt(a[0].cantidad)+1)}
-                 console.log('nuevoItem',nuevoItem)
-                state= {...state, productCart: state.productCart.filter(e=>e.id!==nuevoItem.id)}
-            }
-            if (!a.length){
-                console.log('no existe')
-                nuevoItem = {...nuevoItem, cantidad:1}
-            } 
-            console.log('cart', state.productCart)
-            return {
-                ...state,
-                productCart: state.productCart.concat(nuevoItem)
-            }
-            
-        case REMOVE_ALL_FROM_CART:
-             return {
-                ...state,
-                 productCart: state.productCart.filter(e  => e.id !== action.payload)
-            }
-               
-            /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
-        case CLEAR_CART:
-            return {
-                ...state,
-                productCart: []
-            }
-            // case GET_LOCAL_STORAGE: {
-            //     const array = JSON.parse(window.localStorage.getItem("array"));
-                
-            //     return {
-            //       ...state,
-            //       arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
-            //     }
-            //   }
-            //   case DELETE_LOCAL_STORAGE:{
-            //     const array= JSON.parse(window.localStorage.getItem('array'));
-            //     const arrayfiltrado= array&&array.filter(element=>element.id!==action.payload);
-            //       window.localStorage.removeItem('array');
-            //       window.localStorage.setItem('array',JSON.stringify(arrayfiltrado));
-            //       return {...state}
-            //   }
-          
-            //   case ADD_LOCAL_STORAGE:{
-            //     const array = JSON.parse(window.localStorage.getItem("array"));
-          
-            //    window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
-            //     return {
-            //       ...state,
-            //       arrayStorages: state.arrayStorages.slice().concat([action.payload])
-            //     }
-            //   }
+    case GETNAMES:
+      return {
+        ...state,
+        names: action.payload
+      };
 
-        default:
-            return state;
+    case ORDERPRODUCT:
+      return {
+        ...state,
+        orderProd: action.payload
+      };
+
+    case GETDETAILS:
+      return {
+        ...state,
+        productDetail: action.payload
+      };
+
+    case PUTPEDIDO:
+      return {};
+      //ADMIN DASHBOARD
+
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        AllClients: action.payload,
+      };
+
+    case GET_USER_DETAILS:
+      return {
+        ...state,
+        ClientDetails: action.payload,
+      };
+
+    case GETALLPEDIDOS:
+      return {
+        ...state,
+        pedidos: action.payload,
+      };
+
+    case GETPEDIDOSBYSTATE:
+      return {
+        ...state,
+        pedidos: action.payload,
+      };
+
+    case GETPEDIDODETAIL:
+      return {
+        ...state,
+        pedidoDetail: action.payload,
+      };
+
+    case PEDIDOSUSER:
+      return {
+        ...state,
+        pedidosUser: action.payload
+      };
+
+    case GETPEDIDOSBYSTATE:
+      return {
+        ...state,
+        pedidos: action.payload
+      };
+    case GETPEDIDODETAIL:
+      return {
+        ...state,
+        pedidoDetail: action.payload
+      };
+
+    case ADD_TO_CART:
+
+      let nuevoItem = state.products.find(prod => prod.id === action.payload)
+      let a = state.productCart.length ? state.productCart.filter(e => e.id === (nuevoItem.id)) : ''
+      if (a.length) {
+        console.log('existe', a[0].cantidad, a[0])
+        console.log(typeof (a[0].cantidad))
+
+        nuevoItem = {
+          ...nuevoItem,
+          cantidad: (parseInt(a[0].cantidad) + 1)
+        }
+        
+        state = {
+          ...state,
+          productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
+        }
+        let array = JSON.parse(window.localStorage.getItem("array"));
+        // window.localStorage.setItem('array', array.filter(e=> (Array.isArray(e)?(e.filter(d=>d.id!== nuevoItem.id)): e.id!==undefined)))
+      
+      }
+      if (!a.length) {
+        console.log('no existe')
+        nuevoItem = {
+          ...nuevoItem,
+          cantidad: 1
+        }
+      }
+      let array = JSON.parse(window.localStorage.getItem("array"));
+      console.log(array)
+      window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
+      console.log(JSON.parse(window.localStorage.getItem("array")))
+      return {
+        ...state,
+        productCart: state.productCart.concat(nuevoItem)
+      };
+      /* case ADD_LOCAL_STORAGE:{
+      return {
+        ...state,
+        arrayStorages: state.arrayStorages.concat([action.payload])
+      }
+    } */
+      // case ADD_TO_CART:
+      //     updatedCart = [...state.productCart];
+      //     updatedItemIndex = updatedCart.findIndex(item => item.id === action.payload.id);
+      //     if(updatedItemIndex < 0) {
+      //         updatedCart.push({...action.payload, quantity: 1});
+      //     } else {
+      //         const updatedItem = {
+      //             ...updatedCart[updatedItemIndex]
+      //         };
+      //         updatedItem.quantity++;
+      //         updatedCart[updatedItemIndex] = updatedItem;
+      //     }
+      //     return {...state, productCart: updatedCart};
+
+
+      // ESTO DE ABAJO DEJARLO POR LAS DUDAS PARA EMI Y SANTI
+      // case INCREMENT_CART_ITEM_QUANTITY:
+      //     updatedCart = [...state.productCart];
+      //     updatedItemIndex = updatedCart.findIndex(
+      //         item => item.id === action.payload
+      //     );
+      //     const incrementedItem = {
+      //         ...updatedCart[updatedItemIndex]
+      //     };
+      //     incrementedItem.quantity++;
+      //     updatedCart[updatedItemIndex] = incrementedItem;
+      //     return {...state, productCart: updatedCart};
+
+      // case DECREMENT_CART_ITEM_QUANTITY:{
+      //     updatedCart = [...state.productCart];
+      //     updatedItemIndex = updatedCart.findIndex(
+      //         item => item.id === action.payload
+      //     );
+      //     const decrementedItem = {
+      //         ...updatedCart[updatedItemIndex]
+      //     }
+      //     decrementedItem.quantity--;
+      //     updatedCart[updatedItemIndex] = decrementedItem;
+      //     return {...state, productCart: updatedCart}};
+
+    case REMOVE_ALL_FROM_CART:
+      return {
+        ...state,
+        productCart: state.productCart.filter(e => e.id !== action.payload)
+      }
+
+      /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
+      case CLEAR_CART:
+        return {
+          ...state,
+          productCart: []
         };
-                
-
+      case GET_LOCAL_STORAGE: {
+        const array = JSON.parse(window.localStorage.getItem("santi"));
+        return {
+          ...state,
+          productCart: array ? state.productCart.slice().concat([array]) : state.productCart
+        }
+      }
+      case ADD_LOCAL_STORAGE: {
+        const array = JSON.parse(window.localStorage.getItem("array"));
+        window.localStorage.setItem(
+          "array",
+          JSON.stringify(
+            array ?
+            array.concat([action.payload]) :
+            state.arrayStorages.concat([action.payload])
+          )
+        );
+        return ('no se esta usando')
+      };
+    case DELETE_LOCAL_STORAGE: {
+      const array = JSON.parse(window.localStorage.getItem('array'));
+      const arrayfiltrado = array && array.filter(element => element.id !== action.payload);
+      window.localStorage.removeItem('array');
+      window.localStorage.setItem('array', JSON.stringify(arrayfiltrado));
+      return {
+        ...state
+      }
     }
 
-export default rootReducer;
+    // case GET_LOCAL_STORAGE: {
+    //     const array = JSON.parse(window.localStorage.getItem("array"));
 
+    //     return {
+    //       ...state,
+    //       arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
+    //     }
+    //   }
+    //   case DELETE_LOCAL_STORAGE:{
+    //     const array= JSON.parse(window.localStorage.getItem('array'));
+    //     const arrayfiltrado= array&&array.filter(element=>element.id!==action.payload);
+    //       window.localStorage.removeItem('array');
+    //       window.localStorage.setItem('array',JSON.stringify(arrayfiltrado));
+    //       return {...state}
+    //   }
+
+    //   case ADD_LOCAL_STORAGE:{
+    //     const array = JSON.parse(window.localStorage.getItem("array"));
+
+    //    window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
+    //     return {
+    //       ...state,
+    //       arrayStorages: state.arrayStorages.slice().concat([action.payload])
+    //     }
+    //   }
+
+    default:
+      return state;
+  };
+}
+
+export default rootReducer

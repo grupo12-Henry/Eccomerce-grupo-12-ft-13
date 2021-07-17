@@ -9,7 +9,7 @@ import Pages from "./paginado";
 import NavCategories from "../navCategories/navCategories";
 import { addProductCart } from "../../actions/index";
 // import ShoppingCart from "../shoppingCart/ShoppingCart";
-
+import Loading from "../loading/Loading";
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -43,10 +43,18 @@ export default function Home({ location }) {
   const addToCart = (id) => {
     dispatch(addProductCart(id))
   }
-  // const [carritoOn, setCarritoOn] = useState(false) 
+  const [loading, setLoading] = useState(false)
+
+	useEffect(() => {
+		setTimeout(() => setLoading(true), 1000)
+	}, [])
 
 
-
+  if(!loading) {
+    return (
+      <Loading />
+    )
+  } else {
   return (
     <>
       <Nav />
@@ -77,19 +85,17 @@ export default function Home({ location }) {
                           <div class="mb-2">
                             <h6 class="font-weight-semibold mb-2">
                               {" "}
-                              <a
-                                href=""
+                              <a href={`/detail/${el.id}`}
                                 class="text-default mb-2"
                                 data-abc="true"
                               >
                                 {el.name}
-                              </a>{" "}
-                            </h6>{" "}
+                              </a>
+                            </h6>
                           </div>
-                          <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
+                          <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
                           <div>
-                            {" "}
-                            <i class="fa fa-star star"></i>{" "}
+                            <i class="fa fa-star star">💛</i>
                             <i class="fa fa-star star"></i>
                             <i class="fa fa-star star"></i>
                             <i class="fa fa-star star"></i>
@@ -110,5 +116,7 @@ export default function Home({ location }) {
       <Pages product={product} page={page} />
       <Footer />
     </>
-  );
+
+    )
+  }
 }
