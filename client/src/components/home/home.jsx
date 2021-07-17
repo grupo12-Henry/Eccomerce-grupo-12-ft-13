@@ -7,8 +7,7 @@ import Footer from "../footer/footer";
 import { Link } from 'react-router-dom';
 import Pages from "./paginado";
 import NavCategories from "../navCategories/navCategories";
-
-
+import Loading from "../loading/Loading";
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -39,7 +38,17 @@ export default function Home({ location }) {
     dbProducts();
   }, [product]);
 
+  const [loading, setLoading] = useState(false)
 
+	useEffect(() => {
+		setTimeout(() => setLoading(true), 1000)
+	}, [])
+
+  if(!loading) {
+    return (
+      <Loading />
+    )
+  } else {
   return (
     <>
       <Nav />
@@ -69,26 +78,24 @@ export default function Home({ location }) {
                           <div class="mb-2">
                             <h6 class="font-weight-semibold mb-2">
                               {" "}
-                              <a
-                                href=""
+                              <a href={`/detail/${el.id}`}
                                 class="text-default mb-2"
                                 data-abc="true"
                               >
                                 {el.name}
-                              </a>{" "}
-                            </h6>{" "}
+                              </a>
+                            </h6>
                           </div>
-                          <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
+                          <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
                           <div>
-                            {" "}
-                            <i class="fa fa-star star"></i>{" "}
+                            <i class="fa fa-star star">💛</i>
                             <i class="fa fa-star star"></i>
                             <i class="fa fa-star star"></i>
                             <i class="fa fa-star star"></i>
                           </div>
                           <div class="text-muted mb-3">34 reviews</div>
                           <button type="button" class="btn bg-cart">
-                            <i class="fa fa-cart-plus mr-2"></i> Camilo
+                            <i class="fa fa-cart-plus mr-2"></i> Agregar al carrito
                           </button>
                         </div>
                       </div>
@@ -102,5 +109,7 @@ export default function Home({ location }) {
       <Pages product={product} page={page} />
       <Footer />
     </>
-  );
+
+    )
+  }
 }

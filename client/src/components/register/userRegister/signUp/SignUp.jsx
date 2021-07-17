@@ -43,7 +43,7 @@ export default function Signup({ onClose }) {
           <ul className="list">
             <li className="list-item">
               <div>
-                <h2>Registrate</h2>
+                
                 <p>{error}</p>
                 <form onSubmit={handleSubmit}>
                   <div className='email'>
@@ -66,13 +66,13 @@ export default function Signup({ onClose }) {
                   ></input>
                   </div>
                   <br/>
-                  <button disabled={loading} className="btn btn-success" type="submit">
-                    Sign Up
+                  <button disabled={loading} className="btn btn-light" type="submit">
+                    Registrate
                   </button>
                 </form>
               </div>
               <div className='registred'>
-              Ya estás registrado? <Link to="/login">Logueate!</Link>
+              Ya estás registrado? <Link to="/login" style={{color: '#ebc28e'}}>Logueate!</Link>
               </div>
             </li>
           </ul>
