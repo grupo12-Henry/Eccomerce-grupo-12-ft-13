@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from 'react-redux' 
 import Dropdown from 'react-bootstrap/Dropdown';
 import { StyledDiv } from "./styled";
 import { useAuth } from "../../contexts/AuthContext";
@@ -20,10 +21,13 @@ import 'bootstrap/dist/js/bootstrap.js';
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const admin = useSelector((state) => state.isAdmin);
+
   const handleLogin = (e) => {
     e.preventDefault();
     setIsOpen(true);
   };
+  console.log('ACA NAVBAR', admin)
 
   const { currentUser, logout } = useAuth();
 
@@ -80,7 +84,7 @@ const Nav = () => {
             <a href="compras" className="carrito">
               <img className="cart" alt="cart img" src={cart} width="20px" />
             </a>
-            {currentUser ? (
+            {currentUser && admin === false ? (
                   <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                   </Dropdown.Toggle>
@@ -91,6 +95,17 @@ const Nav = () => {
                   </Dropdown.Menu>
                 </Dropdown>
             ) :
+            currentUser && admin === true ? (
+              <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="/dashboard-admin">Edit Profile A</Dropdown.Item>
+                <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
+                <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+        ) :
             (
             <a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />

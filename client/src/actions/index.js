@@ -7,6 +7,7 @@ export const GETALLPEDIDOS = 'GETALLPEDIDOS';
 export const GETPEDIDOSBYSTATE = 'GETPEDIDOSBYSTATE';
 export const GETPEDIDODETAIL = 'GETPEDIDODETAIL';
 export const PUTPEDIDO = 'PUTPEDIDO';
+export const ISADMIN = 'ISADMIN';
 
 
 // export const GETNAMESQ = 'GETNAMESQ'
@@ -74,7 +75,7 @@ export function getNames(){
 //ACTIONS DEL ADMIN
 
 //USUARIOS POST Y PUT y DELETE
-export function postUsuarios(usuario ) {
+export function postUsuarios(usuario) {
     console.log('llegue hasta action marcos')
     return (dispatch) => {
         axios.post('http://localhost:3001/admin/clientesPost', usuario)
@@ -150,4 +151,12 @@ export function putPedido(id, payload) {
         })
     }
 };
+
+export function isAdmin(payload) {
+    return {
+        type: ISADMIN,
+        payload
+    }
+}
+
 // axios.defaults.baseURL ="http://localhost:3001";

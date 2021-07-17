@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useAuth } from '../../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom'
 import { StyledDiv } from "./styled";
+
 
 
 export function validate(input) {
@@ -22,6 +23,8 @@ export function validate(input) {
 };
 
 export default function Login({ onClose }) {
+
+
     const emailRef = useRef()
     const passwordRef = useRef()
     const { login } = useAuth()
@@ -56,8 +59,8 @@ export default function Login({ onClose }) {
             setLoading(true)
                 if(process.env.REACT_APP_ADMIN_EMAIL === emailRef.current.value &&
                     passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD) {
-                    await login(emailRef.current.value, passwordRef.current.value)
-                    history.push('/dashboard-admin')
+                        await login(emailRef.current.value, passwordRef.current.value)
+                        history.push('/dashboard-admin')
                 } else {
                   await login(emailRef.current.value, passwordRef.current.value)
                   onClose()
@@ -70,6 +73,7 @@ export default function Login({ onClose }) {
     }
 
     //<div className='back'><Link to='/'>BACK TO ANIME DATABASE</Link></div>
+
 
     return (
         <StyledDiv>

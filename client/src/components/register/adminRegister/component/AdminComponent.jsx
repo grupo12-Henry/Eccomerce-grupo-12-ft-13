@@ -4,8 +4,10 @@ import GestionUsuarios from './gestionUsuarios'
 import GestionPedidos from './gestionPedidos'
 // import SideBar from './SideBar';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function AdminComponent() {
+
 
   // const [error, setError] = useState('')
   const [productos, setProductos] = useState(false)
@@ -26,6 +28,7 @@ export default function AdminComponent() {
 
   return (
     <div>
+       <Link to='/home'><button class="btn btn-primary ml-4 mt-3 btn-sm">HOME</button></Link>
         <button class="btn btn-primary ml-4 mt-3 btn-sm" onClick={productosHandler}>Productos</button>
         <button class="btn btn-primary ml-2 mt-3 btn-sm" onClick={usuariosHandler}>Usuarios</button>
         <button class="btn btn-primary ml-2 mt-3 btn-sm" onClick={pedidosHandler}>Pedidos</button>

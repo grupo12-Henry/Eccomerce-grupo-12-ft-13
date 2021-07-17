@@ -1,4 +1,4 @@
-import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, GETALLPEDIDOS, GETPEDIDOSBYSTATE, GETPEDIDODETAIL } from '../actions'
+import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, GETALLPEDIDOS, GETPEDIDOSBYSTATE, GETPEDIDODETAIL,ISADMIN  } from '../actions'
 
 
 const initialState = {
@@ -7,7 +7,8 @@ const initialState = {
     names: [],
     orderProd: [],
     pedidos:[],
-    pedidoDetail:{}
+    pedidoDetail:{},
+    isAdmin: false
     // namesq: []
 }
 
@@ -52,6 +53,10 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 pedidoDetail:action.payload
+            };
+        case ISADMIN:
+            return {
+                isAdmin: action.payload
             };
         default:
             return state;

@@ -23,7 +23,7 @@ const { base } = require('./src/arrayDB.js')
 
 // Syncing all the models at once.
 conn.sync({ force: false}).then(() => {
-  server.listen(3001, () => {
+  server.listen(process.env.PORT || 3001, () => {
 
     base();
 

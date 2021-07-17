@@ -28,6 +28,9 @@ const OVERLAY_STYLES = {
 };
 
 export default function NavModal({ open, children, onClose }) {
+
+  
+
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
   const { currentUser, logout } = useAuth();

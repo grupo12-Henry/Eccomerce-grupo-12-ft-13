@@ -1,6 +1,8 @@
 import React, { useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { postUsuarios, putUsuarios, deleteUsuarios } from '../../../../actions';
+import { Link, useHistory } from 'react-router-dom'
+
 
 function GestionUsuarios() {
     // const users = useSelector(state => state.users)
@@ -27,6 +29,7 @@ function GestionUsuarios() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
         //setSubmit(true)
         dispatch(postUsuarios(user))
         alert('User Created')
@@ -83,7 +86,7 @@ function GestionUsuarios() {
                     </input>
                     <input class="form-control mt-2 ml-5"
                         required autoComplete='off' 
-                        placeholder='Provincia del usuario...' 
+                        placeholder='Direccion   del usuario...' 
                         name='adress' 
                         onChange={handleUser} 
                         value={user.adress}>

@@ -61,7 +61,7 @@ export default function UpdateProfile() {
                 <button disabled={loading} className='SignUp' type='submit'>Update</button>
               </form>
             </div>
-            <div><Link to='/dashboard'>Cancel</Link></div>
+            <div><Link to='/home'>Home</Link></div>
           </li>
         </ul>
       </nav>

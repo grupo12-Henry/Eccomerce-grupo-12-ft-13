@@ -53,7 +53,7 @@ router.delete('/producto/:id', async(req, res)=>{
 router.delete('/client/:id', async(req, res)=>{
     const id = req.params.id
     try {
-        const cliente =  await Client.destroy({where: {id: id}})
+        const cliente =  await Client.destroy({ where: {id: id}})
   
         cliente===1?res.send('usuario eliminado satisfactoriamente'):res.send('usuario inexistente')
     } catch (error) {
@@ -62,14 +62,14 @@ router.delete('/client/:id', async(req, res)=>{
 })
 
 router.post('/clientesPost', async (req, res) => {//crea un nuevo cliente
-    const { name,lastname, phone , state, adress, mail, identityCard  } = req.body;
+    const { name, lastname, phone , state, adress, mail, identityCard  } = req.body;
     // const cliente ={name:name, mail:mail}
     // console.log(1,req.body)
     try {
         const token= 'false'
     //  const token = jwt.sign({cliente},secret)
       const newClient = await Client.create({
-        name, lastname, phone:phone+'', state, adress, mail, identityCard,admin:token
+        name, lastname, phone: phone+'', state, adress, mail, identityCard, admin:token
       })
       res.send(newClient)
     }
@@ -114,7 +114,7 @@ router.get('/productos/order', async (req, res) => {
 })
 router.get('/productos/names', async (req, res) => {//envia todos los nombres de los productos
     try {
-        const productos = await Product.findAll({ attributes: { exclude: ['id','createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
+        const productos = await Product.findAll({ attributes: { exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock'] } })
         res.send(productos)
     } catch (error) {
         res.send(error).status(404)
@@ -184,6 +184,7 @@ router.post('/productos', async (req, res) => {//crea nuevo productos
 router.get('/users/all', async (req, res) => {//trae todo los clientes
     try {
         const users = await Client.findAll()
+        console.log(users)
         res.send(users)
     } catch (error) {
         res.send(error).status(404)
