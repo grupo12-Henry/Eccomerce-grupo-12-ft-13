@@ -1,4 +1,5 @@
 import React from 'react';
+// import StyledDiv from './Styled';
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { removeProductCart } from '../../actions';
@@ -10,9 +11,9 @@ function CartItem({ data }) {
   const ProductsCart = useSelector((state) => state.productCart)
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   setPrecioTotal(data.cantidad * data.price)
-  // }, [data.cantidad])
+  useEffect(() => {
+    setPrecioTotal(data.cantidad * data.price)
+  }, [data.cantidad])
 
   const delFromCart = () => {
     let array = JSON.parse(window.localStorage.getItem("array"));

@@ -4,7 +4,8 @@ import { addProductCart, removeProductCart, ClearCart } from '../../actions';
 // import ProductCart from './ProductCart';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
-import './ShoppingCart.css';
+
+import './shoppingCart.css';
 import Button from 'react-bootstrap/Button';
 
 //HAGO ESTO PARA VER SI SE GUARDO LO MIO!
@@ -13,6 +14,8 @@ function ShoppingCart(props) {
   const cart = useSelector( (state) => state.productCart);
   const product = useSelector((state) => state.products);
   const localStorage = useSelector((state) => state.arrayStorages);
+  const [montoTotal, setMontoTotal] = useState(0);
+
   const [allProducts, setAllProducts] = useState([]);
   const [montoTotal, setMontoTotal] = useState(0);
 
@@ -31,29 +34,16 @@ useEffect(() => {
 const addToCart = (id) => {
   dispatch(addProductCart(id))
 }
+
+const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
+
+
 const clearCart = () => {
   window.localStorage.clear('array')
   dispatch(ClearCart())
 }
 
 const delFromCart = () => {}
-
-// const addToCart = (el) => {
-//   dispatch(addLocalStorage(el))
-//   dispatch(addProductCart(el.id))
-//   console.log()
-
-// }
-// 
-// var montoTotal = 0
-// let total = ()=>{
-//   cart.length?cart.map(i=> total= total+i.price*i.cantidad):total=0;
-//   return montoTotal
-// }
-// let Calculo = ()=> {
-//   setMontoTotal(montoTotal+(item.price*item))
-// }
-
   return (
       <div className='container-productos' >
         <div>
@@ -63,9 +53,9 @@ const delFromCart = () => {}
            </hr>
             <article class='box'>
                 {/* {CartShp} */}
-                {cart.length?cart.map( (item, index) => item!==undefined&&item!=="undefined"?
-                <CartItem className='Article' key={index} data={item} delFromCart={delFromCart} />
-                :null):null}              
+                {cart.length?cart.map( (item, index) => item!==undefined&&item!=="undefined"? ({Calculo},
+                <CartItem className='Article' key={index} data={item} delFromCart={delFromCart}  />)
+                              :null):null}              
             </article>
             <hr>
            </hr>

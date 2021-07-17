@@ -54,10 +54,13 @@ const Nav = () => {
         if(productCart.length&&estado[i]!==undefined&&estado[i].id===productCart[j].id){i=i+1}
       }
       if(estado[i]!==undefined)productCart.push(estado[i])
-    }// estado.forEach(e=>{if(productCart.length&&!productCart.forEach(d=> e.id!==d.id)){productCart.push(e)}})
-  }
- 
-  const style = {marginTop: "1%",};
+    }
+    // estado.forEach(e=>{if(productCart.length&&!productCart.forEach(d=> e.id!==d.id)){productCart.push(e)}})
+  }//productCart.push
+  console.log(1, productCart)
+  const style = {
+    marginTop: "1%",
+  };
 
   return (
     <StyledDiv>

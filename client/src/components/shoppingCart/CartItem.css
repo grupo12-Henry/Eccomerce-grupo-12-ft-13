@@ -28,6 +28,31 @@ h6, .h6 {
     padding: 4px;
 }
 
+.container-item{
+  display: flex;
+  align-items: center;
+  
+}
+
+h6, .h6 {
+  font-size: 1.1rem;
+    /* margin-left: 2.5rem; */
+    color: #616263;
+}
+.Img{
+  justify-content: space-around;
+  object-fit: scale-down;
+  max-height: 3rem;
+  max-width: 5rem;
+}
+
+.button{
+  color: red;
+    font-size: 10px;
+    width: 0rem;
+    padding: 4px;
+}
+
 .counter{
   /* height: 1rem;
   width:0.7rem; */
