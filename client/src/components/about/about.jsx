@@ -1,10 +1,21 @@
 import React, { Fragment, useState} from 'react';
-import { useLocalStorage } from '../shoppingCart/useLocalStorage';
+
 import { StyledDiv } from './styled';
 
 
 export const About = () => {
-  //const [times, setTimes] =useLocalStorage('times', 0)
+  window.localStorage.getItem("times")
+  const setLocal = value => {
+    try {
+      setTimes(value)
+      window.localStorage.setItem("times", times)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  
+  const [times, setTimes] =useState(0)
+  
   const [text, setText] = useState(
     window.localStorage.getItem("text")
    )
@@ -26,8 +37,8 @@ return(
           onChange = {e => setLocalStorage(e.target.value)}
           value = {text}
           />
-          {/* <button onClick = {() => setTimes(times + 1)}>Me Gusta</button>
-          <span>{times}</span> */}
+          <button onClick = {() => setLocal((times +1))}>Me Gusta</button>
+          <span>{times}</span>
         </Fragment>
         
     )

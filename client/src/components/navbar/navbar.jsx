@@ -16,9 +16,14 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch  } from 'react-redux'
+import ShoppingCart from "../shoppingCart/ShoppingCart";
+// import { carritoEstado } from "../../actions";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [carritoOn, setCarritoOn] = useState(false) 
+  const productCart = useSelector((state) => state.productCart)
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -32,9 +37,27 @@ const Nav = () => {
     setIsOpen(false)
   }
 
-  const style = {
-    marginTop: "1%",
-  };
+  // const setLocalStorage = value => {
+  //   try {
+  //     setText(value)
+  //     window.localStorage.setItem("text", value)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+  let estado = JSON.parse(window.localStorage.getItem("array"))
+  if(estado!== null){estado=estado.reverse()}
+  // window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat(nuevoItem) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
+  if(!productCart.length&&estado){
+    for(let i=0; i<estado.length;i++){
+      for(let j=0;j<productCart.length;j++){
+        if(productCart.length&&estado[i]!==undefined&&estado[i].id===productCart[j].id){i=i+1}
+      }
+      if(estado[i]!==undefined)productCart.push(estado[i])
+    }// estado.forEach(e=>{if(productCart.length&&!productCart.forEach(d=> e.id!==d.id)){productCart.push(e)}})
+  }
+ 
+  const style = {marginTop: "1%",};
 
   return (
     <StyledDiv>
@@ -77,6 +100,9 @@ const Nav = () => {
             <Auto />
           </div>
           <ul className="d-flex">
+            {/*  <li><a className="carrito"><button onClick={carritoHandler}>
+              <img className="cart" alt="cart img" src={cart} width="20px" />
+             </button></a> */}
             <Link to='/compras'> <li><a>
               <img className="cart" alt="cart img" src={cart} width="20px" />
             </a>
@@ -99,18 +125,17 @@ const Nav = () => {
             </a>
             )
             }
-
             </li>
             <li><a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
             </a></li>
-
           </ul>
         </div>
         {/* <button onClick={() => setIsOpen(true)}>Open Portal</button> */}
         <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
         </NavModal>
       </div>
+      {/* <div class='mt-5 mb-3' >{productCart.length?<ShoppingCart/>:null}</div>  */}
     </StyledDiv>
   );
 };
