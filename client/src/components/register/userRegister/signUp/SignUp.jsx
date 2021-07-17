@@ -7,8 +7,17 @@ import '../signUp/signup.css'
 
 
 export default function Signup({ onClose }) {
+  const nombreRef = useRef();
+  const apellidoRef = useRef();
+  const nacimientoRef = useRef();
+  const direccionRef = useRef();
+  const provinciaRef = useRef();
+  const localidadRef = useRef();
+  const codigoPostalRef = useRef();
+  const telefonoRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
+
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
   const [error, setError] = useState("");
@@ -46,6 +55,38 @@ export default function Signup({ onClose }) {
                 
                 <p>{error}</p>
                 <form onSubmit={handleSubmit}>
+                <div className='email'>
+                  <label>Nombre:</label>
+                  <input className='input_email' type="text" name="nombre" ref={nombreRef}></input>
+                  </div>
+                  <div className='email'>
+                  <label>Apellido:</label>
+                  <input className='input_email' type="text" name="apellido" ref={apellidoRef}></input>
+                  </div>
+                  <div className='email'>
+                  <label>Fecha de Nacimiento:</label>
+                  <input className='input_email' type="date" name="nacimiento" ref={nacimientoRef}></input>
+                  </div>
+                  <div className='email'>
+                  <label>Telefono:</label>
+                  <input className='input_email' type="number" name="telefono" ref={telefonoRef}></input>
+                  </div>
+                  <div className='email'>
+                  <label>Direccion:</label>
+                  <input className='input_email' type="text" name="direccion" ref={direccionRef}></input>
+                  </div>
+                  <div className='email'>
+                  <label>Provincia:</label>
+                  <input className='input_email' type="text" name="provincia" ref={provinciaRef}></input>
+                  </div>
+                  <div className='email'>
+                  <label>Localidad:</label>
+                  <input className='input_email' type="text" name="localidad" ref={localidadRef}></input>
+                  </div>
+                  <div className='email'>
+                  <label>Codigo Postal:</label>
+                  <input className='input_email' type="number" name="codigoPostal" ref={codigoPostalRef}></input>
+                  </div>                  
                   <div className='email'>
                   <label>Correo Electronico:</label>
                   <input className='input_email' type="text" name="email" ref={emailRef}></input>

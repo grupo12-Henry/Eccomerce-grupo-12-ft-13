@@ -1,29 +1,30 @@
-import React, { useState, useDispatch, useSelector } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
 import { getpedidosUser } from "../../../../actions/index";
 
-
-export default function misPedidos() {
-/*   const dispatch = useDispatch();
+export default function MisPedidos() {
+  const dispatch = useDispatch();
   const pedidos = useSelector((state) => state.pedidosUser);
 
   const [detallePedidos, setdetallePedidos] = useState([]);
+  console.log("DALE", detallePedidos);
+  useEffect(() => {
+    dispatch(getpedidosUser());
+  }, [getpedidosUser]);
 
   useEffect(() => {
-      dispatch(getpedidosUser(match.params.id))
-      }, [getpedidosUser, match.params.id]);
-
-  
-  useEffect(() => {
-      setdetallePedidos(pedidos)
-      }, [pedidos]);
- */
+    setdetallePedidos(pedidos);
+  }, [pedidos]);
 
   return (
     <>
       <Nav />
-      ACA TUS PEDIDOS REY
+      <p>NOMBRE Y APELLIDO</p>
+      <p>FECHA</p>
+      <p>ESTADO</p>
+      <p>TOTAL DE COMPRA</p>
       <Footer />
     </>
   );

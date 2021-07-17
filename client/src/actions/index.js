@@ -57,6 +57,7 @@ export function getpedidosUser (id) {
         axios.get(`http://localhost:3001/pedidos/${id}`)
         .then(response => {
             dispatch({ type: PEDIDOSUSER, payload: response.data})
+            console.log('RESPONSE',response)
         })
         .catch((err) =>{
             console.log(err)
