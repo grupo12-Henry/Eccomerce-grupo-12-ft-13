@@ -1,4 +1,7 @@
-import React from "react";
+
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_LOCAL_STORAGE } from "./actions/index";
 import { Route } from 'react-router-dom';
 import LandingPage from './components/landing/landing';
 import Home from './components/home/home';
@@ -18,14 +21,18 @@ import PrivateRouteUser from './components/register/userRegister/privateRouteUse
 import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteAdmin/privateRouteAdmin";
 import AdminComponent from './components/register/adminRegister/component/AdminComponent';
 import Delivery from './components/register/userRegister/component/confirmDelivery';
-import GestionPedidos from "./components/register/adminRegister/component/gestionPedidos";
-import GestionProductos from "./components/register/adminRegister/component/gestionProductos";
-import GestionUsuarios from "./components/register/adminRegister/component/gestionUsuarios";
+import Cart from "./components/shoppingCart/Cart"
+import About from './components/about/about'
 
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 
 
 function App() {
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+  dispatch({type:GET_LOCAL_STORAGE})
+  },[])
   return (
     <React.Fragment>
       <AuthProvider>
@@ -39,6 +46,8 @@ function App() {
         <Route component={GestionUsuarios} exact path='/dashboard-admin/usuarios'/> */}
         <Route component={LandingPage} exact path='/'/>
         <Route component={ShoppingCart} exact path='/compras'/>
+        <Route component={Cart} exact path='/order'/>
+        <Route component={About} exact path='/about'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>
         <Route component={Varios} exact path='/varios'/>

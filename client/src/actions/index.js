@@ -3,22 +3,26 @@ export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS'
 export const GETNAMES = 'GETNAMES'
 export const ORDERPRODUCT = 'ORDERPRODUCT'
+export const GETALLPEDIDOS = 'GETALLPEDIDOS'
+export const GETPEDIDOSBYSTATE = 'GETPEDIDOSBYSTATE'
+export const PUTPEDIDO = 'PUTPEDIDO'
+export const GET_LOCAL_STORAGE= 'GET_LOCAL_STORAGE';
 //ACTIONS DE SHOPPING-CART
 export const ADD_TO_CART = 'ADD_TO_CART'
 // export const ADD_ONE_FROM_CART = 'ADD_ONE_FROM_CART'
 // export const REMOVE_ONE_FROM_CART = 'REMOVE_ONE_FROM_CART'
 export const REMOVE_ALL_FROM_CART = 'REMOVE_ALL_FROM_CART'
 export const CLEAR_CART = 'CLEAR_CART'
-
+export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
+export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
 
 
 // export const GETNAMESQ = 'GETNAMESQ'
 
-
 export function removeProductCart (id){
   return {
       type: REMOVE_ALL_FROM_CART,
-      id 
+      payload: id 
   }
 }
 
@@ -26,10 +30,30 @@ export function removeProductCart (id){
 export function addProductCart(payload) { 
     return {
          type: ADD_TO_CART, 
-         payload 
-        }; 
-         //
+         payload
+        };
   }
+//   export const addProductCart = producto => {
+//     return {
+//         type: ADD_TO_CART,
+//         payload: producto
+//     }
+// };
+
+export const incrementCartQuantity = id => {
+    return{
+        type: INCREMENT_CART_ITEM_QUANTITY,
+        payload: id
+    }
+};
+export const decrementCartQuantity = id => {
+    return {
+        type: DECREMENT_CART_ITEM_QUANTITY,
+        payload: id
+    }
+  };
+  
+
 
   export function ClearCart() { //ver que le pasamos al reducer
     return {
@@ -37,7 +61,6 @@ export function addProductCart(payload) {
         //  payload 
         };
   }
-
 
 
 export function getProducts () {

@@ -9,7 +9,6 @@ import Pages from "./paginado";
 import NavCategories from "../navCategories/navCategories";
 
 
-
 export default function Home({ location }) {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
@@ -69,19 +68,17 @@ export default function Home({ location }) {
                           <div class="mb-2">
                             <h6 class="font-weight-semibold mb-2">
                               {" "}
-                              <a
-                                href=""
+                              <a href={`/detail/${el.id}`}
                                 class="text-default mb-2"
                                 data-abc="true"
                               >
                                 {el.name}
-                              </a>{" "}
-                            </h6>{" "}
+                              </a>
+                            </h6>
                           </div>
-                          <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
+                          <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
                           <div>
-                            {" "}
-                            <i class="fa fa-star star"></i>{" "}
+                            <i class="fa fa-star star">💛</i>
                             <i class="fa fa-star star"></i>
                             <i class="fa fa-star star"></i>
                             <i class="fa fa-star star"></i>

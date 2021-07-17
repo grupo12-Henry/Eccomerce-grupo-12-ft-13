@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, GETALLPEDIDOS, GETPEDIDOSBYSTATE, PUTPEDIDO } from '../actions'
-=======
-import { GETCARDS, GETDETAILS, GETNAMES, ORDERPRODUCT, ADD_TO_CART,REMOVE_ALL_FROM_CART,CLEAR_CART } from '../actions'
->>>>>>> 59fb442f32e06d491f51608962d0f9c40ccdcca8
-
+import { GETCARDS, GETDETAILS, GETNAMES, GETALLPEDIDOS,GET_LOCAL_STORAGE,GETPEDIDOSBYSTATE,PUTPEDIDO, ORDERPRODUCT, ADD_TO_CART, REMOVE_ALL_FROM_CART, CLEAR_CART, INCREMENT_CART_ITEM_QUANTITY, DECREMENT_CART_ITEM_QUANTITY  } from '../actions'
 
 const initialState = {
     products: [],
@@ -16,6 +11,9 @@ const initialState = {
 }
 
 const rootReducer = (state = initialState, action) => {
+    let updatedCart;
+    let updatedItemIndex;
+
     switch (action.type) {
         case GETCARDS:
             return {
@@ -32,20 +30,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 orderProd: action.payload
             };
-<<<<<<< HEAD
-        // case GETNAMESQ:
-        //     return {
-        //         ...state,
-        //         namesq: action.payload
-        //     };
-=======
                    
->>>>>>> 59fb442f32e06d491f51608962d0f9c40ccdcca8
         case GETDETAILS:
             return {
                 ...state,
                 productDetail: action.payload
-<<<<<<< HEAD
             };
         case GETALLPEDIDOS:
             return {};
@@ -53,25 +42,82 @@ const rootReducer = (state = initialState, action) => {
             return {};
         case PUTPEDIDO:
             return {};
-=======
-            }
+            //REDUCER CARRITO DE COMPRAS
         case ADD_TO_CART:
+               let nuevoItem = state.products.find(prod => prod.id ===action.payload)
+               const array = JSON.parse(window.localStorage.getItem("array"));
+               window.localStorage.setItem( "array", JSON.stringify( array? array.concat([nuevoItem]) : state.productCart.concat([nuevoItem]) ) );
+               console.log(JSON.parse(window.localStorage.getItem("array")))
             return {
                 ...state,
-                productCart: state.productCart.concat(action.payload)
-            }
+                productCart: state.productCart.concat(nuevoItem)
+            };
+        case GET_LOCAL_STORAGE: {
+                const array = JSON.parse(window.localStorage.getItem("array"));
+                
+                return {
+                  ...state,
+                  productCart: array ? state.productCart.slice().concat([array]) : state.productCart
+                }
+              }
+
+            /* case ADD_LOCAL_STORAGE:{
+     
+
+     
+      return {
+        ...state,
+        arrayStorages: state.arrayStorages.concat([action.payload])
+      }
+    } */
+        // case ADD_TO_CART:
+        //     updatedCart = [...state.productCart];
+        //     updatedItemIndex = updatedCart.findIndex(item => item.id === action.payload.id);
+        //     if(updatedItemIndex < 0) {
+        //         updatedCart.push({...action.payload, quantity: 1});
+        //     } else {
+        //         const updatedItem = {
+        //             ...updatedCart[updatedItemIndex]
+        //         };
+        //         updatedItem.quantity++;
+        //         updatedCart[updatedItemIndex] = updatedItem;
+        //     }
+        //     return {...state, productCart: updatedCart};
+
+        case INCREMENT_CART_ITEM_QUANTITY:
+            updatedCart = [...state.productCart];
+            updatedItemIndex = updatedCart.findIndex(
+                item => item.id === action.payload
+            );
+            const incrementedItem = {
+                ...updatedCart[updatedItemIndex]
+            };
+            incrementedItem.quantity++;
+            updatedCart[updatedItemIndex] = incrementedItem;
+            return {...state, productCart: updatedCart};
+
+        case DECREMENT_CART_ITEM_QUANTITY:
+            updatedCart = [...state.productCart];
+            updatedItemIndex = updatedCart.findIndex(
+                item => item.id === action.payload
+            );
+            const decrementedItem = {
+                ...updatedCart[updatedItemIndex]
+            };
+            decrementedItem.quantity--;
+            updatedCart[updatedItemIndex] = decrementedItem;
+            return {...state, productCart: updatedCart};
+
         case REMOVE_ALL_FROM_CART:
             return {
                 ...state,
-                productCart: state.productCart.filter(p => p.id !== action.id)
+                productCart: state.productCart.filter(p => p.id !== action.payload)
             }
         case CLEAR_CART:
             return {
                 ...state,
                 productCart: []
-            }
-
->>>>>>> 59fb442f32e06d491f51608962d0f9c40ccdcca8
+            };
         default:
             return state;
         };
