@@ -83,6 +83,8 @@ const Nav = () => {
             <Link to='/compras'> <li><a className="carrito">
               <img className="cart" alt="cart img" src={cart} width="20px" />
             </a>
+            </li></Link>
+            <li>
             {currentUser ? (
                   <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -101,7 +103,7 @@ const Nav = () => {
             )
             }
 
-              </li></Link>
+              </li>
             <li><a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
             </a></li>
