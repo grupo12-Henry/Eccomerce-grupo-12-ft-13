@@ -21,7 +21,6 @@ import Delivery from './components/register/userRegister/component/confirmDelive
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import misPedidos from './components/register/userRegister/misPedidos/misPedidos';
 
-
 function App() {
   return (
     <React.Fragment>
