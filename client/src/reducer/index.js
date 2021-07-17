@@ -111,9 +111,10 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ADD_TO_CART:
-
-      let nuevoItem = state.products.find(prod => prod.id === action.payload)
-      let a = state.productCart.length ? state.productCart.filter(e => e.id === (nuevoItem.id)) : ''
+console.log("act pay", action.payload)
+      let nuevoItem = state.products.find(prod => ((prod.id === action.payload)||prod.id===action.payload.id||console.log('marquitos', prod.id)))
+      console.log('nuevo item', nuevoItem)
+      let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
       if (a.length) {
          nuevoItem = {
           ...nuevoItem,
@@ -136,7 +137,7 @@ const rootReducer = (state = initialState, action) => {
       }
       let array = JSON.parse(window.localStorage.getItem("array"));
       window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
-      console.log(JSON.parse(window.localStorage.getItem("array")))
+      // console.log(JSON.parse(window.localStorage.getItem("array")))
       return {
         ...state,
         productCart: state.productCart.concat(nuevoItem)

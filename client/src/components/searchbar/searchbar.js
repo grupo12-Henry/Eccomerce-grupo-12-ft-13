@@ -24,7 +24,7 @@ const Auto = () => {
         setFilteredData([]);
       } else {
         setFilteredData(newFilter);
-        console.log(newFilter)
+        //console.log(newFilter)
       }
     };
   

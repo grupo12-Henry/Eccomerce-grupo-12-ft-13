@@ -75,7 +75,6 @@ export function getDetail(id) {
     axios.get('http://localhost:3001/admin/productos/id/' + id)
       .then(response => {
         dispatch({ type: GETDETAILS, payload: response.data })
-        console.log('ESTA DATA', response.data)
       })
       .catch((err) => {
         console.log(err)
@@ -98,12 +97,8 @@ export function getProducts() {
   }
 };
 
-export function orderProduct({
-  offset,
-  type,
-  order,
-  name
-}) {
+export function orderProduct(
+  { offset, type, order, name}) {
   return (dispatch) => {
     const datos = `offset=${offset}&${type}=type&${order}=order&${name}=name`
     axios.get('http://localhost:3001/admin/productos/order?' + datos)

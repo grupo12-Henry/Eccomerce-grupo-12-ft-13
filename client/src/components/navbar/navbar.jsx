@@ -57,7 +57,7 @@ const Nav = () => {
     }
     // estado.forEach(e=>{if(productCart.length&&!productCart.forEach(d=> e.id!==d.id)){productCart.push(e)}})
   }//productCart.push
-  console.log(1, productCart)
+  
   const style = {
     marginTop: "1%",
   };

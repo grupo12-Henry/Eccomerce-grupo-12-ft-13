@@ -17,7 +17,6 @@ function ShoppingCart(props) {
   const [montoTotal, setMontoTotal] = useState(0);
 
   const [allProducts, setAllProducts] = useState([]);
-  const [montoTotal, setMontoTotal] = useState(0);
 
   
   useEffect(() => {
@@ -42,7 +41,7 @@ const clearCart = () => {
   window.localStorage.clear('array')
   dispatch(ClearCart())
 }
-
+console.log('santi',cart)
 const delFromCart = () => {}
   return (
       <div className='container-productos' >
@@ -53,9 +52,9 @@ const delFromCart = () => {}
            </hr>
             <article class='box'>
                 {/* {CartShp} */}
-                {cart.length?cart.map( (item, index) => item!==undefined&&item!=="undefined"? ({Calculo},
-                <CartItem className='Article' key={index} data={item} delFromCart={delFromCart}  />)
-                              :null):null}              
+                {cart.length?cart.map( (item, index) => item!==undefined&&item!=="undefined"?
+                <CartItem className='Article' key={index} data={item} delFromCart={delFromCart}  />
+                              :console.log(item)):null}              
             </article>
             <hr>
            </hr>
