@@ -12,9 +12,12 @@ import cart from "../../assets/images/cart.png";
 import user from "../../assets/images/user.png";
 import Auto from "../searchbar/searchbar";
 import NavModal from "../navModal/navModal";
+
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+
+import { Link } from 'react-router-dom';
 
 
 const Nav = () => {
@@ -48,17 +51,17 @@ const Nav = () => {
           ></img>
           <i className="text-envio">Envíos sin cargo a CABA y GBA</i>
           <ul className="row">
-            <a href="https://wa.link/sxenpo" className="col-2">
-              <img alt="whatsapp img" src={whatsapp} width="26px" />
+            <a href="https://wa.link/" className="col-2" target='_blank' rel='noreferrer'>
+              <img alt="whatsapp img" src={whatsapp} width="22px" />
             </a>
-            <a href="https://www.facebook.com/" className="col-2">
-              <img alt="facebook img" src={facebook} width="18px" />
+            <a href="https://www.facebook.com/" className="col-2" target='_blank' rel='noreferrer'>
+              <img alt="facebook img" src={facebook} width="20px" />
             </a>
-            <a href="https://www.instagram.com/" className="col-2">
-              <img alt="instagram img" src={instagram} width="26px" />
+            <a href="https://www.instagram.com/" className="col-2" target='_blank' rel='noreferrer'>
+              <img alt="instagram img" src={instagram} width="20px" />
             </a>
-            <a href="https://twitter.com/" className="col-2">
-              <img alt="twitter img" src={twitter} width="28px" />
+            <a href="https://twitter.com/" className="col-2" target='_blank' rel='noreferrer'>
+              <img alt="twitter img" src={twitter} width="20px" />
             </a>
           </ul>
         </div>
@@ -77,9 +80,11 @@ const Nav = () => {
             <Auto />
           </div>
           <ul className="d-flex">
-            <a href="compras" className="carrito">
+            <Link to='/compras'> <li><a className="carrito">
               <img className="cart" alt="cart img" src={cart} width="20px" />
             </a>
+            </li></Link>
+            <li>
             {currentUser ? (
                   <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -97,6 +102,13 @@ const Nav = () => {
             </a>
             )
             }
+
+              </li>
+            <li><a href="/user" onClick={handleLogin}>
+              <img alt="user img" src={user} width="20px" />
+            </a></li>
+
+
           </ul>
         </div>
         {/* <button onClick={() => setIsOpen(true)}>Open Portal</button> */}

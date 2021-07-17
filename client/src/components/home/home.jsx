@@ -7,7 +7,7 @@ import Footer from "../footer/footer";
 import { Link } from 'react-router-dom';
 import Pages from "./paginado";
 import NavCategories from "../navCategories/navCategories";
-
+import Loading from "../loading/Loading";
 
 
 export default function Home({ location }) {
@@ -39,7 +39,17 @@ export default function Home({ location }) {
     dbProducts();
   }, [product]);
 
+  const [loading, setLoading] = useState(false)
 
+	useEffect(() => {
+		setTimeout(() => setLoading(true), 1000)
+	}, [])
+
+  if(!loading) {
+    return (
+      <Loading />
+    )
+  } else {
   return (
     <>
       <Nav />
@@ -88,7 +98,7 @@ export default function Home({ location }) {
                           </div>
                           <div class="text-muted mb-3">34 reviews</div>
                           <button type="button" class="btn bg-cart">
-                            <i class="fa fa-cart-plus mr-2"></i> Agregar
+                            <i class="fa fa-cart-plus mr-2"></i> Agregar al carrito
                           </button>
                         </div>
                       </div>
@@ -102,5 +112,7 @@ export default function Home({ location }) {
       <Pages product={product} page={page} />
       <Footer />
     </>
-  );
+
+    )
+  }
 }
