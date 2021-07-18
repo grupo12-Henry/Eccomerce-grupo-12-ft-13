@@ -87,7 +87,7 @@ const Nav = () => {
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item href="/dashboard">Edit Profile</Dropdown.Item>
+                    <Dropdown.Item href="/micuenta">Edit Profile</Dropdown.Item>
                     <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
                     <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
                   </Dropdown.Menu>

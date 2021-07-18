@@ -87,7 +87,7 @@ export default function Dashboard() {
                         </tbody>
                       </table>
                       <div class="mb-5">
-                        <a href="/mispedidos"  class="btn btn-dark">
+                        <a href='/mispedidos'  class="btn btn-dark">
                           Mis pedidos anteriores
                         </a>
                         <a href="#" class="btn btn-dark ml-5">

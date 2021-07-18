@@ -36,7 +36,8 @@ function App() {
     <React.Fragment>
       <AuthProvider>
         <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
-        <PrivateRouteUser component={Dashboard} exact path='/dashboard'/>
+        <PrivateRouteUser component={Dashboard} exact path='/micuenta'/>
+        <PrivateRouteUser component={misPedidos} exact path='/micuenta/mispedidos/:id'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
         <PrivateRouteUser component={Delivery} path='/delivery'/>
         <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
