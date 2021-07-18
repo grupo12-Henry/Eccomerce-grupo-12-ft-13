@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail,addProductCart } from "../../actions/index";
+import { getDetail,addProductCart, getProducts } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
@@ -23,6 +23,12 @@ useEffect(() => {
   setDetail(product)
 }, [product]);
 
+useEffect(() => {
+  const dbProducts = () => {
+    dispatch(getProducts());
+  };
+  dbProducts();
+}, [dispatch]);
 
 const [loading, setLoading] = useState(false);
 

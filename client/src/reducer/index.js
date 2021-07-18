@@ -113,8 +113,8 @@ const rootReducer = (state = initialState, action) => {
     case ADD_TO_CART:
 console.log("act pay", action.payload)
       let nuevoItem = state.products.find(prod => ((prod.id === action.payload)||prod.id===action.payload.id||console.log('marquitos', prod.id)))
-      console.log('nuevo item', nuevoItem)
       let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
+      console.log('nuevo item', nuevoItem, a)
       if (a.length) {
          nuevoItem = {
           ...nuevoItem,

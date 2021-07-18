@@ -5,7 +5,7 @@ import { addProductCart, removeProductCart, ClearCart } from '../../actions';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
 
-import './shoppingCart.css';
+import './ShoppingCart.css';
 import Button from 'react-bootstrap/Button';
 
 //HAGO ESTO PARA VER SI SE GUARDO LO MIO!
