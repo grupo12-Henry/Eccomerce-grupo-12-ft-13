@@ -119,11 +119,11 @@ const Nav = () => {
 											id="dropdown-basic"
 										></Dropdown.Toggle>
 										<Dropdown.Menu>
-											<Dropdown.Item href="/dashboard">
-												Edit Profile
+											<Dropdown.Item href="/micuenta">
+												Mi cuenta
 											</Dropdown.Item>
 											<Dropdown.Item href="/update-profile">
-												Change Password
+												Cambiar contraseña
 											</Dropdown.Item>
 											{currentUser.email === process.env.REACT_APP_ADMIN_EMAIL ? (
 												<Dropdown.Item href="/dashboard-admin">
@@ -131,7 +131,7 @@ const Nav = () => {
 												</Dropdown.Item>
 											) : null}
 											<Dropdown.Item onClick={handleLogOut}>
-												Log Out
+												Cerrar sesion
 											</Dropdown.Item>
 										</Dropdown.Menu>
 									</Dropdown>

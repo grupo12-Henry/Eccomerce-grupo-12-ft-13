@@ -192,7 +192,7 @@ router.get('/users/all', async (req, res) => {//trae todo los clientes
         res.send(error).status(404)
     }
 })
-router.get('/users/id/:id',auth, async (req, res) => {//trae usuario con todos sus pedidos, datos de envios, facturas
+router.get('/users/id/:id', async (req, res) => {//trae usuario con todos sus pedidos, datos de envios, facturas
     const id = req.params.id
     try {
         const user = await Client.findByPk(id, {

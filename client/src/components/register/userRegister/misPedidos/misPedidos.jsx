@@ -8,17 +8,7 @@ export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
   const pedidos = useSelector((state) => state.pedidosUser);
   const detallePedido = useSelector((state) => state.pedidoDetail);
-  //PEDIDOS ES CLIENTDETAILS DE JULI
   const [ordenes, setOrdenes] = useState();
-
-  console.log("DETALLE PEDIDO", detallePedido);
-
-  const [detailPedido, setdetailPedido] = useState({
-    Imagen: "",
-    Producto: "",
-    Cantidad: "",
-    Subtotal: "",
-  });
 
   useEffect(() => {
     const orders = () => {
@@ -28,22 +18,15 @@ export default function MisPedidos({ match }) {
   }, [getpedidosUser, dispatch, match.params.id]);
 
   useEffect(() => {
-    const pirulo = () => {
+    const ordersSet = () => {
       setOrdenes(pedidos);
     };
-    pirulo();
+    ordersSet();
   }, [pedidos]);
-
-  console.log(
-    "LAS ORDENES",
-    ordenes?.orders?.map((el) => el.products.map((el) => el))
-    // el.image, el.name;
-  );
 
   const insertDetail = (e) => {
     dispatch(getPedidoDetail(e.target.value));
     dispatch(getpedidosUser(e.target.value));
-    console.log(e.target.value);
   };
 
   return (
@@ -66,6 +49,7 @@ export default function MisPedidos({ match }) {
                   <th scope="col">N° de Pedido</th>
                   <th scope="col">Total</th>
                   <th scope="col">Ver detalle</th>
+                  <th scope="col">Repetir compra</th>
                 </tr>
               </thead>
               <tbody>
@@ -85,6 +69,17 @@ export default function MisPedidos({ match }) {
                           }}
                         >
                           Ver detalle
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          class="btn btn-sm btn-info"
+                          value={""}
+                          onClick={(e) => {
+                            e.preventDefault();
+                          }}
+                        >
+                          CONFIRMAR
                         </button>
                       </td>
                     </tr>
@@ -107,76 +102,38 @@ export default function MisPedidos({ match }) {
                   <th scope="col">CANTIDAD</th>
                   <th scope="col">SUBTOTAL</th>
                   <th scope="col">AGREGAR</th>
-                  <th scope="col">REPETIR COMPRA</th>
                 </tr>
               </thead>
               <tbody>
-                {detallePedido?.products?.map((el) =>
-                   {
-                    return (
-                      <tr>
-                        <th scope="row"><img style={{width:'15%'}}src={el.image}/></th>
-                        <td>{el.name}</td>
-                        {/* { detallePedido?.products?.map((el) => el.order_detail.map() */}
-                        <td>500</td>
-                        <td>300</td>
-                        {/* } */}
-                        <td>
-                          <label for="vehicle1">
-                            AGREGAR
-                            <input
-                              onChange={"FUNCTION PARA AGREGAR AL CARRITO"}
-                              type="checkbox"
-                              id="vehicle1"
-                              name="vehicle1"
-                              value="Bike"
-                            ></input>
-                          </label>
-                        </td>
-                        <td>
-                          <button
-                            class="btn btn-sm btn-info"
-                            value={""}
-                            onClick={(e) => {
-                              e.preventDefault();
-                            }}
-                          >
-                            REPETIR COMPRA
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })
-                }
+                {detallePedido?.products?.map((el) => {
+                  return (
+                    <tr>
+                      <th scope="row">
+                        <img style={{ width: "15%" }} src={el.image} />
+                      </th>
+                      <td>{el.name}</td>
+                      <td>{el.order_detail.cantidad}</td>
+                      <td>{el.order_detail.subTotal}</td>
+                      <td>
+                        <label for="vehicle1">
+                          AGREGAR
+                          <input
+                            onChange={"FUNCTION PARA AGREGAR AL CARRITO"}
+                            type="checkbox"
+                            id="vehicle1"
+                            name="vehicle1"
+                            value="Bike"
+                          ></input>
+                        </label>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
         </div>
       </div>
-
-      {/*       {
-  "id": 38,
-  "date": "HOY",
-  "bill": 500,
-  "paymentMethod": "PATACONES",
-  "clientId": 1,
-  "products": [
-    {
-      "id": 30,
-      "stock": 24,
-      "name": "Chivas Regal EXTRA 13 Años 750 ml",
-      "type": "Whiskys",
-      "price": 3315,
-      "image": "https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Chivas%20Regal%20EXTRA%2013%20A%C3%B1os%20750%20ml.jpg?alt=media&token=b47c186d-62a5-49c5-91d6-f9590f810435",
-      "order_detail": {
-        "cantidad": 20,
-        "subTotal": 10,
-        "orderId": 38,
-        "productId": 30
-      }
-    }
-  ]
-} */}
 
       <Footer />
     </>
