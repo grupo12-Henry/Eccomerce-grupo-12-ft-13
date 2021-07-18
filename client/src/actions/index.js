@@ -50,10 +50,10 @@ export function getpedidosUser(id) {
   }
 };
 
-export function removeProductCart (id){
+export function removeProductCart(id) {
   return {
-      type: REMOVE_ALL_FROM_CART,
-      payload: id 
+    type: REMOVE_ALL_FROM_CART,
+    payload: id
   }
 }
 
@@ -66,23 +66,26 @@ export function addProductCart(payload) {
   //
 }
 
-export function getDetail (id) {
-    return (dispatch) => {      
-        axios.get('http://localhost:3001/admin/productos/id/' + id)
-        .then(response => {
-            dispatch({ type: GETDETAILS, payload: response.data})
+export function getDetail(id) {
+  return (dispatch) => {
+    axios.get('http://localhost:3001/admin/productos/id/' + id)
+      .then(response => {
+        dispatch({
+          type: GETDETAILS,
+          payload: response.data
         })
-        .catch((err) =>{
-            console.log(err)
-        })
-    }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 };
 
-export function getLocalStorage (payload){
-    return {
-      type:GET_LOCAL_STORAGE,
-      payload
-    };
+export function getLocalStorage(payload) {
+  return {
+    type: GET_LOCAL_STORAGE,
+    payload
+  };
 };
 
 export function deleteProductCart(payload) {
@@ -99,17 +102,6 @@ export function ClearCart() { //ver que le pasamos al reducer
   };
 }
 
-export function getDetail(id) {
-  return (dispatch) => {
-    axios.get('http://localhost:3001/admin/productos/id/' + id)
-      .then(response => {
-        dispatch({ type: GETDETAILS, payload: response.data })
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-};
 
 export function getProducts() {
   return (dispatch) => {
@@ -126,8 +118,12 @@ export function getProducts() {
   }
 };
 
-export function orderProduct(
-  { offset, type, order, name}) {
+export function orderProduct({
+  offset,
+  type,
+  order,
+  name
+}) {
   return (dispatch) => {
     const datos = `offset=${offset}&${type}=type&${order}=order&${name}=name`
     axios.get('http://localhost:3001/admin/productos/order?' + datos)
@@ -142,20 +138,6 @@ export function orderProduct(
       });
   };
 }
-
-export function getpedidosUser (id) {
-    return (dispatch) => {
-        axios.get(`http://localhost:3001/admin/users/id/${id}`)
-        .then(response => {
-            console.log('RESPONSE',response.data)
-            dispatch({ type: PEDIDOSUSER, payload: response.data})
-            
-        })
-        .catch((err) =>{
-            console.log(err)
-        })
-    }
-};
 
 export function getNames() {
   return (dispatch) => {
@@ -177,24 +159,30 @@ export function getNames() {
 export function getAllUsers() {
   return (dispatch) => {
     axios.get("http://localhost:3001/admin/users/all")
-    .then((response) => {
-      dispatch({ type: GET_ALL_USERS, payload: response.data });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((response) => {
+        dispatch({
+          type: GET_ALL_USERS,
+          payload: response.data
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 }
 
 export function getUserDetails(id) {
   return (dispatch) => {
-    axios.get("http://localhost:3001/admin/users/id/"+ id)
-    .then((response) => {
-      dispatch({ type: GET_USER_DETAILS, payload: response.data });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    axios.get("http://localhost:3001/admin/users/id/" + id)
+      .then((response) => {
+        dispatch({
+          type: GET_USER_DETAILS,
+          payload: response.data
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 }
 
@@ -209,13 +197,16 @@ export function postUsuarios(usuario) {
 export function putUsuarios(id, usuario) {
   return (dispatch) => {
     console.log(id, usuario)
-    axios.put("http://localhost:3001/admin/users/"+id, usuario)
-    .then((response) => {
-      dispatch({ type: PUT_USER, payload: response.data });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    axios.put("http://localhost:3001/admin/users/" + id, usuario)
+      .then((response) => {
+        dispatch({
+          type: PUT_USER,
+          payload: response.data
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 
@@ -225,43 +216,46 @@ export function deleteUsuarios(id) {
 
 //PRODUCTOS POST, PUT, DELETE Y GET DETAILS
 export function addProduct(product) {
-//   return (dispatch) => {
-//     axios.post('http://localhost:3001/admin/productos', product)
-//   }
-// }
-// }
-return (dispatch) => {
-  axios.post("http://localhost:3001/admin/productos", product)
-  .then((response) => {
-      if(response) alert('El producto se creó correctamente');
-      dispatch({ type: ADDNEWPRODUCT, payload: response.data });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  //   return (dispatch) => {
+  //     axios.post('http://localhost:3001/admin/productos', product)
+  //   }
+  // }
+  // }
+  return (dispatch) => {
+    axios.post("http://localhost:3001/admin/productos", product)
+      .then((response) => {
+        if (response) alert('El producto se creó correctamente');
+        dispatch({
+          type: ADDNEWPRODUCT,
+          payload: response.data
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 }
 // export async function editProduct(id, payload) {
-  //   await axios.put('http://localhost:3001/admin/productos/' + id, payload)
-  export async function editProduct(id, payload) {
-    await axios.put("http://localhost:3001/admin/productos/" + id, payload)
+//   await axios.put('http://localhost:3001/admin/productos/' + id, payload)
+export async function editProduct(id, payload) {
+  await axios.put("http://localhost:3001/admin/productos/" + id, payload)
     .then((response) => {
-      if(response) alert('El producto se modificó correctamente');
+      if (response) alert('El producto se modificó correctamente');
     })
     .catch((err) => {
       console.log(err);
     });
-  }
-  // export async function deleteProduct(id) {
-    //   await axios.delete(`http://localhost:3001/admin/producto/${id}`)
+}
+// export async function deleteProduct(id) {
+//   await axios.delete(`http://localhost:3001/admin/producto/${id}`)
 export async function deleteProduct(id) {
   await axios.delete(`http://localhost:3001/admin/producto/${id}`)
-  .then((response) => {
-    if(response) alert('El producto se eliminó correctamente');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    .then((response) => {
+      if (response) alert('El producto se eliminó correctamente');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 //PEDIDOS
@@ -310,13 +304,6 @@ export function deleteLocalStorage(payload) {
   };
 }
 
-export function deleteProductCart(payload) {
-  return {
-    type: DELETE_FROM_CART,
-    payload,
-  };
-}
-
 export function getPedidoDetail(id) {
   return (dispatch) => {
     axios.get('http://localhost:3001/admin/detallePedido/' + id)
@@ -331,12 +318,6 @@ export function getPedidoDetail(id) {
       })
   }
 }
-export function getLocalStorage(payload) {
-  return {
-    type: GET_LOCAL_STORAGE,
-    payload
-  };
-};
 
 export function putPedido(id, payload) {
   return (dispatch) => {
@@ -350,39 +331,23 @@ export function putPedido(id, payload) {
       .catch((err) => {
         console.log(err)
       })
+    }
+  };
+  
+  export function createUser(obj){
+    return (dispatch)=>{
+      try{
+        axios.post('http://localhost:3001/admin/clientesPost',obj)
+      .then((response)=>{
+      console.log(response.data);
+      window.localStorage.setItem("user",JSON.stringify(response.data));  
+        return dispatch({ type:POST_USER,Payload:response.data})})
+      }catch(err){
+        console.log(err);
+      }
+      
+    }
   }
-};
-
-export function getAllUsers() {
-  return (dispatch) => {
-    axios.get("http://localhost:3001/admin/users/all")
-      .then((response) => {
-        dispatch({
-          type: GET_ALL_USERS,
-          payload: response.data
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-}
-
-export function getUserDetails(usuario) {
-  return (dispatch) => {
-    axios.get("http://localhost:3001/admin/users/id/:id")
-      .then((response) => {
-        dispatch({
-          type: GET_USER_DETAILS,
-          payload: response.data
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-}
-
 
 
 //PEDIDOS
@@ -423,20 +388,6 @@ export function getUserDetails(usuario) {
 //ACTIONS DEL ADMIN
 
 //USUARIOS GET, POST Y PUT y DELETE
-export function createUser(obj){
-  return (dispatch)=>{
-    try{
-      axios.post('http://localhost:3001/admin/clientesPost',obj)
-    .then((response)=>{
-    console.log(response.data);
-    window.localStorage.setItem("user",JSON.stringify(response.data));  
-      return dispatch({ type:POST_USER,Payload:response.data})})
-    }catch(err){
-      console.log(err);
-    }
-    
-  }
-}
 // axios.defaults.baseURL ="http://localhost:3001";
 
 */

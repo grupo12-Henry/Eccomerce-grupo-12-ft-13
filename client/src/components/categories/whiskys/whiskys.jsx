@@ -21,21 +21,21 @@ function Whiskys() {
   const showProducts = allProducts
     .filter((el) => el.type === "Whiskys")
     .slice(conteoInicial, conteoFinal);
-    product.filter(el => el.type === 'Whiskys').map(e => e.subcategories.forEach((el) => {
-  // let subCategories = [];
-  // let counts = {};
-  // product
-  //   .filter((el) => el.type === "Whiskys")
-  //   .map((e) =>
-  //     e.subcategories.forEach((c) =>
-  //       subCategories.indexOf(c) === -1 ? subCategories.push(c) : null
-  //     )
-  //   );
+    // product.filter(el => el.type === 'Whiskys').map(e => e.subcategories.forEach((el) => {
+  let subCategories = [];
+  let counts = {};
+  product
+    .filter((el) => el.type === "Whiskys")
+    .map((e) =>
+      e.subcategories.forEach((c) =>
+        subCategories.indexOf(c) === -1 ? subCategories.push(c) : null
+      )
+    );
 
-  // product
-  //   .filter((el) => el.type === "Whiskys")
-  //   .map((e) =>
-  //     e.subcategories.forEach((el) => {
+  product
+    .filter((el) => el.type === "Whiskys")
+    .map((e) =>
+      e.subcategories.forEach((el) => {
         counts[el] = counts[el] ? (counts[el] += 1) : 1;
       })
     );

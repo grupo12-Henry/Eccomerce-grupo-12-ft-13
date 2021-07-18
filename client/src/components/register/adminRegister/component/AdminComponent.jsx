@@ -3,10 +3,7 @@ import GestionProductos from './gestionProductos'
 import GestionUsuarios from './gestionUsuarios'
 import GestionPedidos from './gestionPedidos'
 import {Link} from 'react-router-dom'
-<<<<<<< HEAD
-=======
 // import SideBar from './SideBar';
->>>>>>> main
 import Loading from '../../../loading/Loading';
 
 export default function AdminComponent() {
@@ -48,9 +45,4 @@ export default function AdminComponent() {
       </div>
     )
   }
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main

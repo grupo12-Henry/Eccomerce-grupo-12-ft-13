@@ -4,6 +4,7 @@ import { addProductCart, removeProductCart, ClearCart } from '../../actions';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
 import './shoppingCart.css';
+import Loading from '../loading/Loading';
 
 function ShoppingCart(props) {
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ function ShoppingCart(props) {
   }, [product]);
 
   const addToCart = (el) => {
-    dispatch(addLocalStorage(el));
+    // dispatch(addLocalStorage(el));
     dispatch(addProductCart(el.id));
     console.log();
   };
