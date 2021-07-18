@@ -71,7 +71,7 @@ function Bebidas() {
                                 {console.log(1)}
                                 {showProducts &&
                                     showProducts.map(el =>
-                                    (
+                                        {return el.stock>0?<>
                                         <div class="col-md-4 mt-2">
                                             <div class="card">
                                                 <div class="card-body">
@@ -113,7 +113,7 @@ function Bebidas() {
                                                 </div>
                                             </div>
                                         </div>
-                                    ))}
+                                        </>: null})}
                             </div>
                             <div className=''>
                                 <button onClick={() => setnumberPage(numberPage + 1)}>FORWARD</button>
