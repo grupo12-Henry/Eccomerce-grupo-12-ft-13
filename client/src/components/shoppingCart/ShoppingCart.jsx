@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch  } from 'react-redux'
 import { addProductCart, removeProductCart, ClearCart } from '../../actions';
-// import ProductCart from './ProductCart';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
-
 import './shoppingCart.css';
-import Button from 'react-bootstrap/Button';
 
-//HAGO ESTO PARA VER SI SE GUARDO LO MIO!
 function ShoppingCart(props) {
   const dispatch = useDispatch()
   const cart = useSelector( (state) => state.productCart);
@@ -29,50 +25,44 @@ useEffect(() => {
   dbProducts();
 }, [product]);
 
-
-const addToCart = (id) => {
-  dispatch(addProductCart(id))
-}
-
-const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
+useEffect(() => {
+  let aux = 0;
+  cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
+  setMontoTotal(aux)
+}, [cart])
 
 
 const clearCart = () => {
   window.localStorage.clear('array')
   dispatch(ClearCart())
 }
-console.log('santi',cart)
+
 const delFromCart = () => {}
   return (
-      <div className='container-productos' >
+      <div className='container-productos'>
         <div>
-         <h3>Carrito</h3>
+         <h3>Bienvenido a tu Carrito de compras!!</h3>
+         <div class="mb-2">Agregaste {cart.length} productos al carrito ✔{" "}</div>
          <div className='container-articulos col-xl-11 row '>
-           <hr>
-           </hr>
+           <hr/>
             <article class='box'>
-                {/* {CartShp} */}
-                {cart.length?cart.map( (item, index) => item!==undefined&&item!=="undefined"?
+                {cart.length?cart.map( (item, index) => item!==undefined&&item!=="undefined"?   
                 <CartItem className='Article' key={index} data={item} delFromCart={delFromCart}  />
-                              :console.log(item)):null}              
+               : console.log(item)  ):null}              
             </article>
-            <hr>
-           </hr>
+            <hr/>
          </div>
          <h4>Monto Total:</h4>
          <h4>${montoTotal}</h4>
          {/* VER CON LOS CHICOS COMO SUMAMOS EL TOTAL */}
         <div className='botones'>
-            <button className='boton' onClick={() => clearCart()}>Limpiar Carrito</button>
-            <button className='boton' >Confirmar Pedido</button>
-            <Link to='/home'><button className='boton' variant='success'>Agregar Productos</button></Link>
+            <button className='btn btn-secondary m-14' >Confirmar Pedido</button>
+            <Link to='/home'><button className='btn btn-secondary m-1' variant='success'>Agregar Productos</button></Link>
         </div>
-           {/* <button variant='success'>Success</button>
-          <button variant="danger">Danger</buton> */}
+            <button className='btn btn-danger mb-2' onClick={() => clearCart()}>Limpiar Carrito</button>
         </div>        
      </div>
     )
   }
-
 
   export default ShoppingCart;

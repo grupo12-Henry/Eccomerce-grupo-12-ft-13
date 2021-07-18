@@ -37,14 +37,6 @@ const Nav = () => {
     setIsOpen(false)
   }
 
-  // const setLocalStorage = value => {
-  //   try {
-  //     setText(value)
-  //     window.localStorage.setItem("text", value)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
   let estado = JSON.parse(window.localStorage.getItem("array"))
   if(estado!== null){estado=estado.reverse()}
   // window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat(nuevoItem) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
@@ -54,18 +46,14 @@ const Nav = () => {
         if(productCart.length&&estado[i]!==undefined&&estado[i].id===productCart[j].id){i=i+1}
       }
       if(estado[i]!==undefined)productCart.push(estado[i])
-    }
-    // estado.forEach(e=>{if(productCart.length&&!productCart.forEach(d=> e.id!==d.id)){productCart.push(e)}})
-  }//productCart.push
+    } // estado.forEach(e=>{if(productCart.length&&!productCart.forEach(d=> e.id!==d.id)){productCart.push(e)}})
+  }
   
-  const style = {
-    marginTop: "1%",
-  };
-
+  
   return (
     <StyledDiv>
       <div className="header-container">
-        <div className="help-menu-izq col-sm-3 col-md-3 col-lg-3" style={style}>
+        <div className="help-menu-izq col-sm-3 col-md-3 col-lg-3" >
           <img
             className="delivery"
             src={delivery}
@@ -88,7 +76,7 @@ const Nav = () => {
             </a>
           </ul>
         </div>
-        <div className="logo col-sm-6 col-md-4 col-lg-4">
+        <div className="logo col-sm-6 col-md-4 col-lg-4 ">
           <a className="link-logo" href="/home">
             <img
               className="img-responsive"
@@ -103,13 +91,6 @@ const Nav = () => {
             <Auto />
           </div>
           <ul className="d-flex">
-            {/*  <li><a className="carrito"><button onClick={carritoHandler}>
-              <img className="cart" alt="cart img" src={cart} width="20px" />
-             </button></a> */}
-            <Link to='/compras'> <li><a>
-              <img className="cart" alt="cart img" src={cart} width="20px" />
-            </a>
-            </li></Link>
             <li>
             {currentUser ? (
                   <Dropdown>
@@ -118,20 +99,37 @@ const Nav = () => {
                   <Dropdown.Menu>
                     <Dropdown.Item href="/dashboard">Edit Profile</Dropdown.Item>
                     <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
+                    {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL ? (
+												<Dropdown.Item href="/dashboard-admin">
+													Only Admin
+												</Dropdown.Item>
+											) : null}
                     <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
             ) :
             (
-            <a href="/user" onClick={handleLogin}>
+              <li class="mt-3">
+            <a class=" m-4" href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
             </a>
+            </li>
             )
             }
             </li>
-            <li><a href="/user" onClick={handleLogin}>
+            {/* <li><a href="/user" onClick={handleLogin}>
               <img alt="user img" src={user} width="20px" />
-            </a></li>
+            </a></li> */}
+            <li class='d-flex mt-2'>
+              <li class="sidebar-social ">
+                <a href="/compras" class="cart" title="Carrito" rel="nofollow">
+                  <i class="fas fa-shopping-cart ">
+                    < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart.length}</span>
+                    <img className=" d-flex mt-0 p-0" alt="cart img" src={cart} width="20px"/>
+                  </i>
+                </a>
+              </li>
+            </li>
           </ul>
         </div>
         {/* <button onClick={() => setIsOpen(true)}>Open Portal</button> */}
@@ -142,5 +140,6 @@ const Nav = () => {
     </StyledDiv>
   );
 };
+
 
 export default Nav;

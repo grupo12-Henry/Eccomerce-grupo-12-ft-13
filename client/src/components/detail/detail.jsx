@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail,addProductCart } from "../../actions/index";
+import { getProducts, getDetail, addProductCart } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
@@ -16,13 +16,20 @@ export default function Detail({ match }) {
     dispatch(getDetail(match.params.id))
   }, [getDetail, match.params.id]);
 
-const addToCart = (data) => {
-  dispatch(addProductCart(data))
-}
-useEffect(() => {
-  setDetail(product)
-}, [product]);
+  useEffect(() => {
+    setDetail(product)
+  }, [product]);
+  
+  useEffect(() => {
+    const dbProducts = () => {
+      dispatch(getProducts());
+    };
+    dbProducts();
+  }, [dispatch]);
 
+  const addToCart = (data) => {
+    dispatch(addProductCart(data))
+  }
 
 const [loading, setLoading] = useState(false);
 
@@ -46,11 +53,13 @@ if (!loading) {
             <p id='description'>{detail.Description}</p>
             <hr></hr>
             <h2 id='price'>$ {detail.price}</h2>
-          </div>
-          <button type="button" onClick={() => addToCart(detail.id, console.log('5',detail.id)) } class="btn bg-cart"> 
-          {/* addToCart(detail) */}
-            <i class="fa fa-cart-plus mr-2">Agregar</i> 
+            <div class="d-flex justify-content-center align-items center mt-5">
+          <button type="button" onClick={() => addToCart(detail.id) } class="btn btn-outline-secondary">
+            <i class="fa fa-cart-plus mr-2">Agregar al carrito</i> 
           </button>
+          </div>
+          </div>
+          {console.log('hola',detail)}
         </section>
       </StyledDiv>
       <Footer />

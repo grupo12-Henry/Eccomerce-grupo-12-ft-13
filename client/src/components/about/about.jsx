@@ -1,21 +1,19 @@
 import React, { Fragment, useState} from 'react';
-// import { useLocalStorage } from '../shoppingCart/useLocalStorage';
-import { StyledDiv } from './styled';
+//import { StyledDiv } from './styled';
 
 
 export const About = () => {
+  const [times, setTimes] =useState(0)
   window.localStorage.getItem("times")
   const setLocal = value => {
     try {
       setTimes(value)
-      window.localStorage.setItem("times", times)
+      window.localStorage.setItem("times", value)
     } catch (error) {
       console.error(error)
     }
   }
-  
-  const [times, setTimes] =useState(0)
-  
+    
   const [text, setText] = useState(
     window.localStorage.getItem("text")
    )
@@ -29,9 +27,7 @@ export const About = () => {
   }
 }
 
-
 return(
-    
         <Fragment>
           <textarea
           onChange = {e => setLocalStorage(e.target.value)}

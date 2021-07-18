@@ -100,7 +100,7 @@ function Whiskys() {
                                                     <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
                                                     <div>
                                                         {" "}
-                                                        <i class="fa fa-star star"></i>{" "}
+                                                        <i class="fa fa-star star">🥃</i>{" "}
                                                         <i class="fa fa-star star"></i>
                                                         <i class="fa fa-star star"></i>
                                                         <i class="fa fa-star star"></i>
