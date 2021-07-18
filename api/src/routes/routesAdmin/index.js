@@ -133,10 +133,10 @@ router.put('/actualizarStock/:id',async (req, res) => {
     const id = req.params.id
     const stock = parseInt(req.body.stock,10)
     try {
-        console.log(stock)
+       
       const product = await Product.findByPk(id)
         product.update({stock: stock||product.stock})
-        console.log(product)
+       
         res.send('stock actualizado')
     } catch (error) {
         res.send(error).status(404)
