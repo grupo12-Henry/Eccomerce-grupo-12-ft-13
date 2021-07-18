@@ -35,7 +35,8 @@ function App() {
     <React.Fragment>
       <AuthProvider>
         <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
-        <PrivateRouteUser component={Dashboard} exact path='/dashboard'/>
+        <PrivateRouteUser component={Dashboard} exact path='/micuenta'/>
+        <PrivateRouteUser component={misPedidos} exact path='/micuenta/mispedidos/:id'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
         <PrivateRouteUser component={Delivery} path='/delivery'/>
         <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
@@ -51,7 +52,7 @@ function App() {
         <Route component={Vinos} exact path='/vinos'/>
         <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/>
-        <Route component={misPedidos} exact path='/misPedidos'/>
+        <Route component={misPedidos} exact path='/misPedidos/:id'/>
         <Route component={Detail} exact path='/detail/:id'/>
       </AuthProvider>
     </React.Fragment>

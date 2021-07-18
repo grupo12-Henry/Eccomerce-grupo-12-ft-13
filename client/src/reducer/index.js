@@ -13,7 +13,7 @@ const initialState = {
   AllClients: [],
   ClientDetails: {},
   //CARRITO
-  pedidosUser: [],
+  pedidosUser: {},
   productCart: [],
   //LOCAL STORAGE
   arrayStorages: [],
@@ -154,11 +154,13 @@ const rootReducer = (state = initialState, action) => {
             };
             case GET_LOCAL_STORAGE: {
               const user = JSON.parse(window.localStorage.getItem("user")); 
-              const array = JSON.parse(window.localStorage.getItem("array"));   
+              const array = JSON.parse(window.localStorage.getItem("array")); 
+               
               return {
                 ...state,
                 user:user,
-                productCart: array ? state.productCart.slice().concat([array]) : state.productCart
+                productCart: array ? state.productCart.slice().concat([array]) : state.productCart,
+               
             }
           }
             case ADD_LOCAL_STORAGE: {

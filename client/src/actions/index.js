@@ -150,9 +150,11 @@ export function orderProduct({ offset, type, order, name }) {
 
 export function getpedidosUser (id) {
     return (dispatch) => {
-        axios.get(`http://localhost:3001/pedidos/${id}`)
+        axios.get(`http://localhost:3001/admin/users/id/${id}`)
         .then(response => {
+            console.log('RESPONSE',response.data)
             dispatch({ type: PEDIDOSUSER, payload: response.data})
+            
         })
         .catch((err) =>{
             console.log(err)
