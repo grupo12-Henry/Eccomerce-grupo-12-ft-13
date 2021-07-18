@@ -50,8 +50,10 @@ function GestionUsuarios() {
     }
 
     const deleteSubmit = (e) => {
-        deleteUsuarios(e.target.value)
-        alert('Usuario borrado')
+        if(window.confirm('¿Esta seguro de que desea borrar este usuario? Esta operación no se puede deshacer.')) {
+            deleteUsuarios(e.target.value)
+            alert('Usuario borrado')
+        } 
     }
 
     return (

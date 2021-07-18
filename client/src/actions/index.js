@@ -249,10 +249,22 @@ export function addProduct(product) {
   };
 }
 export async function editProduct(id, payload) {
-  await axios.put("http://localhost:3001/admin/productos/" + id, payload);
+  await axios.put("http://localhost:3001/admin/productos/" + id, payload)
+  .then((response) => {
+    if(response) alert('El producto se modificó correctamente');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 }
 export async function deleteProduct(id) {
-  await axios.delete(`http://localhost:3001/admin/producto/${id}`);
+  await axios.delete(`http://localhost:3001/admin/producto/${id}`)
+  .then((response) => {
+    if(response) alert('El producto se eliminó correctamente');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 }
 
 //PEDIDOS

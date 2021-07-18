@@ -48,16 +48,16 @@ function GestionProductos() {
   function editSubmit(e) {
     e.preventDefault();
     editProduct(productDetail.id, newProduct);
-    alert('Producto modificado');
   }
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(addProduct(newProduct));
-    // alert('Producto creado');
   }
   function deleteSubmit(e) {
-    deleteProduct(e.target.value);
-    alert('Producto borrado');
+    e.preventDefault();
+    if(window.confirm('¿Esta seguro de que desea borrar este producto? Esta operación no se puede deshacer.')) {
+      deleteProduct(e.target.value);
+     } 
   }
 
     return (
