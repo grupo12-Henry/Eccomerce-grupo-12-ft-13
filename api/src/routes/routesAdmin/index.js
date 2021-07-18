@@ -2,8 +2,7 @@ const { Router } = require('express');
 const { Product, Client , Order} = require('../../db');
 const Sequelize = require('sequelize');
 const {auth,authAdmin}= require('../controler')
-const jwt = require('jsonwebtoken');
-const {secret}={secret:process.env.SECRET}
+
 //modelos acá:
 
 const router = Router();
@@ -62,14 +61,14 @@ router.delete('/client/:id', async(req, res)=>{
 })
 
 router.post('/clientesPost', async (req, res) => {//crea un nuevo cliente
-    const { name, lastName, phone , state, adress, mail, identityCard  } = req.body;
-    // const cliente ={name:name, mail:mail}
-    // console.log(1,req.body)
+
+    const { name,lastName, phone , state, adress, mail, identityCard } = req.body;
+    const token= req.headers.authorization&&req.headers.authorization.split(' ')[1]
     try {
-        const token= 'false'
-    //  const token = jwt.sign({cliente},secret)
+    
       const newClient = await Client.create({
-        name, lastName, phone:phone+'', state, adress, mail, identityCard,admin:token
+
+        name, lastName, phone:phone+'', state, adress, mail, identityCard,token
       })
       res.send(newClient)
     }
@@ -134,7 +133,7 @@ router.get('/productos/id/:id', async (req, res) => {//devuelve el producto con 
 
 
 
-router.put('/productos/:id', async (req, res) => {//modifica el producto seleccionado mediante id
+router.put('/productos/:id',authAdmin, async (req, res) => {//modifica el producto seleccionado mediante id
     const id = req.params.id
     const { stock, name, type, Description, price, image, maker, subcategories  } = req.body
     try {
@@ -193,7 +192,7 @@ router.get('/users/all', async (req, res) => {//trae todo los clientes
         res.send(error).status(404)
     }
 })
-router.get('/users/id/:id', async (req, res) => {//trae usuario con todos sus pedidos, datos de envios, facturas
+router.get('/users/id/:id',auth, async (req, res) => {//trae usuario con todos sus pedidos, datos de envios, facturas
     const id = req.params.id
     try {
         const user = await Client.findByPk(id, {
