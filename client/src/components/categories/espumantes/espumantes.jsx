@@ -136,7 +136,7 @@ function Espumantes() {
                               <div class="mb-2">
                                 <h6 class="font-weight-semibold mb-2">
                                   <a
-                                    href=""
+                                    href={`/detail/${el.id}`}
                                     class="text-default mb-2"
                                     data-abc="true"
                                   >
