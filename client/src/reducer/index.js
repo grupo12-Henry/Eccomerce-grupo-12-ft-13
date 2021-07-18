@@ -208,9 +208,10 @@ const rootReducer = (state = initialState, action) => {
           productCart: []
         };
       case GET_LOCAL_STORAGE: {
-        const array = JSON.parse(window.localStorage.getItem("santi"));
+        const array = JSON.parse(window.localStorage.getItem("array"));
         return {
           ...state,
+          user:JSON.parse(window.localStorage.getItem("user")),
           productCart: array ? state.productCart.slice().concat([array]) : state.productCart
         }
       }
