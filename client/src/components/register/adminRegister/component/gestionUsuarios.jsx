@@ -85,7 +85,7 @@ function GestionUsuarios() {
                     </thead>
                     <tbody>
                         {
-                            AllClients.map(client => (
+                           AllClients.length? AllClients.map(client => (
                                 <tr>
                                 <th scope="row">{client.id}</th>
                                 <td>{client.name}</td>
@@ -112,7 +112,7 @@ function GestionUsuarios() {
                                     </button>
                                 </td>
                                 </tr>
-                            ))
+                            )):null
                         }
                     </tbody>
                 </table>

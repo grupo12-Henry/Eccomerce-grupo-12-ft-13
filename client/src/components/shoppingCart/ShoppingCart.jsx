@@ -1,33 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  addProductCart,
-  removeProductCart,
-  ClearCart,
-  getProducts,
-  ADD_TO_CART,
-  addLocalStorage,
-  getLocalStorage,
-  deleteLocalStorage,
-} from "../../actions";
-// import ProductCart from './ProductCart';
-import { Link } from "react-router-dom";
-import CartItem from "./CartItem";
-import CartShp from "./CartShp";
-import Loading from "../loading/Loading";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch  } from 'react-redux'
+import { addProductCart, removeProductCart, ClearCart } from '../../actions';
+import { Link } from 'react-router-dom';
+import CartItem from './CartItem'
+import './shoppingCart.css';
+import Loading from '../loading/Loading';
 
-function ShoppingCart({ name, price, image, id, } ) {
-
+function ShoppingCart(props) {
   const dispatch = useDispatch()
   const cart = useSelector( (state) => state.productCart);
   const product = useSelector((state) => state.products);
   const localStorage = useSelector((state) => state.arrayStorages);
+  const [montoTotal, setMontoTotal] = useState(0);
 
   const [allProducts, setAllProducts] = useState([]);
 
-  //consologuea el localStorage
+  
   useEffect(() => {
-    console.log(localStorage);
   }, [localStorage]);
 
   useEffect(() => {
@@ -38,100 +27,57 @@ function ShoppingCart({ name, price, image, id, } ) {
   }, [product]);
 
   const addToCart = (el) => {
-    dispatch(addLocalStorage(el));
+    // dispatch(addLocalStorage(el));
     dispatch(addProductCart(el.id));
     console.log();
   };
 
-  const delFromCart = () => {};
+useEffect(() => {
+  let aux = 0;
+  cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
+  setMontoTotal(aux)
+}, [cart])
 
-  const clearCart = () => {};
 
-  const [loading, setLoading] = useState(false);
+const clearCart = () => {
+  window.localStorage.clear('array')
+  dispatch(ClearCart())
+}
 
-  useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
-  }, []);
+const delFromCart = () => {}
+const [loading, setLoading] = useState(false);
 
-  if (!loading) {
-    return <Loading />;
-  } else {
+useEffect(() => {
+  setTimeout(() => setLoading(true), 400);
+}, []);
 
-const addToCart = (id) => {
-  dispatch(addProductCart(id))}
-// const addToCart = (el) => {
-//   dispatch(addLocalStorage(el))
-//   dispatch(addProductCart(el.id))
-//   console.log()
+if (!loading) {
+  return <Loading />;
+} else {
 
-// }
-    return (
-      <div>
+  return (
+      <div className='container-productos'>
         <div>
-        {/* <button type="button" class="btn btn-outline-secondary">
-          🛒<a href="/order" target="_blank" rel="nofollow" class="badge badge-light">
-          <span id="cart_menu_num" data-action="cart-can" class=" rounded-circle">{1}</span></a>
-        </button> */}
-        </div>
-      <div class="cart_section">
-         <div class="container-fluid">
-         <div class="row">
-        <h2> •••»   SIMULADOR DE HOME   «•••☻</h2>
-        <div class="shadow-none p-3 mt-2 mb-4 bg-light rounded">
-        <h3 class="d-flex justify-content-center">Carrito de Compras</h3>
-        <div class="d-flex justify-content-end">
-        </div>
-       <article>          
-         {cart.map( (item, index) => 
-         <CartItem key={index} data={item} />
-         )}
-       </article>
-       <div class="d-flex justify-content-end">
-         <button type="button" class="btn btn-danger" onClick={() => clearCart()}>Limpiar Carrito</button>
-       </div>
-       </div>
-       <hr/>
-         <h3>PRODUCTOS</h3>
-         <article class=" d-flex row col-md-12 mt-5">
-         {allProducts ? allProducts.map((el) => (
-                    <div class="col-md-2" >
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-img-actions">
-                            <Link to={`/detail/${el.id}`}>
-                              <img
-                                src={el.image}
-                                class="card-img img-fluid"
-                                height="45px"
-                                alt=""
-                              />
-                            </Link>
-                          </div>
-                        </div>
-                        <div class="card-body bg-light text-center">
-                          <div class="mb-2">
-                            <h6 class="font-weight-semibold mb-2">
-                               <h3 class="mb-0 font-weight-semibold">{el.name}</h3> 
-                            </h6>
-                          </div>
-                          <h3 class="mb-0 font-weight-semibold">
-                            ${el.price}.00
-                          </h3>
-                          <button
-                            onClick={(el) => addToCart(el)}
-                            type="button"
-                            class="btn bg-cart"
-                          >
-                            <i class="fa fa-cart-plus mr-2"></i> Agregar
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )) : <div>...loading</div>}
-         </article>
-        </div>
+         <h3>Bienvenido a tu Carrito de compras!!</h3>
+         <div class="mb-2">Agregaste {cart.length} productos al carrito ✔{" "}</div>
+         <div className='container-articulos col-xl-11 row '>
+           <hr/>
+            <article class='box'>
+                {cart.length?cart.map( (item, index) => item!==undefined&&item!=="undefined"?   
+                <CartItem className='Article' key={index} data={item} delFromCart={delFromCart}  />
+               : console.log(item)  ):null}              
+            </article>
+            <hr/>
          </div>
-     </div>
+         <h4>Monto Total:</h4>
+         <h4>${montoTotal}</h4>
+         {/* VER CON LOS CHICOS COMO SUMAMOS EL TOTAL */}
+        <div className='botones'>
+            <button className='btn btn-secondary m-14' >Confirmar Pedido</button>
+            <Link to='/home'><button className='btn btn-secondary m-1' variant='success'>Agregar Productos</button></Link>
+        </div>
+            <button className='btn btn-danger mb-2' onClick={() => clearCart()}>Limpiar Carrito</button>
+        </div>        
      </div>
     )
   }

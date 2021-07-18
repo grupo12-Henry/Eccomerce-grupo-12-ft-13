@@ -32,6 +32,7 @@ export default function Dashboard() {
   if (!loading) {
     return <Loading />;
   }
+  console.log(user)
   return (
     <>
       <Nav />
@@ -126,4 +127,5 @@ export default function Dashboard() {
       <Footer />
     </>
   );
+      
 }

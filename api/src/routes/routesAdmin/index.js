@@ -129,11 +129,23 @@ router.get('/productos/id/:id', async (req, res) => {//devuelve el producto con 
         res.send(error).status(404)
     }
 })
+router.put('/actualizarStock/:id',async (req, res) => {
+    const id = req.params.id
+    const stock = parseInt(req.body.stock,10)
+    try {
+       
+      const product = await Product.findByPk(id)
+        product.update({stock: stock||product.stock})
+       
+        res.send('stock actualizado')
+    } catch (error) {
+        res.send(error).status(404)
+    }
+})
 
 
 
-
-router.put('/productos/:id',authAdmin, async (req, res) => {//modifica el producto seleccionado mediante id
+router.put('/productos/:id', async (req, res) => {//modifica el producto seleccionado mediante id
     const id = req.params.id
     const { stock, name, type, Description, price, image, maker, subcategories  } = req.body
     try {
