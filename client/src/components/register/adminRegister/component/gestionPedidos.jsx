@@ -79,7 +79,7 @@ function GestionPedidos() {
 
 
     return (
-    <div class='container'>
+    <div class='container' className='jah287'>
         <h3>Ver pedidos</h3>
         {/* Boton que filtra por estado */}
         <label>Ver estados: </label>
