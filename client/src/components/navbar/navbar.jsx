@@ -97,7 +97,7 @@ const Nav = () => {
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item href="/dashboard">Edit Profile</Dropdown.Item>
+                    <Dropdown.Item href="/micuenta">Edit Profile</Dropdown.Item>
                     <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
                     {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL ? (
 												<Dropdown.Item href="/dashboard-admin">

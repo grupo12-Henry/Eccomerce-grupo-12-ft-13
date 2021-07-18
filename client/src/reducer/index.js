@@ -34,6 +34,7 @@ const initialState = {
   pedidosUser: [],
   productCart: [],
   arrayStorages: [],
+  user:{},
 }
 
 
@@ -235,31 +236,32 @@ const rootReducer = (state = initialState, action) => {
       }
     }
 
-    // case GET_LOCAL_STORAGE: {
-    //     const array = JSON.parse(window.localStorage.getItem("array"));
+    case GET_LOCAL_STORAGE: {
+        const array = JSON.parse(window.localStorage.getItem("array"));
 
-    //     return {
-    //       ...state,
-    //       arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
-    //     }
-    //   }
-    //   case DELETE_LOCAL_STORAGE:{
-    //     const array= JSON.parse(window.localStorage.getItem('array'));
-    //     const arrayfiltrado= array&&array.filter(element=>element.id!==action.payload);
-    //       window.localStorage.removeItem('array');
-    //       window.localStorage.setItem('array',JSON.stringify(arrayfiltrado));
-    //       return {...state}
-    //   }
+        return {
+          ...state,
+          user: JSON.parse(window.localStorage.getItem('user')),
+          arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
+        }
+      }
+      case DELETE_LOCAL_STORAGE:{
+        const array= JSON.parse(window.localStorage.getItem('array'));
+        const arrayfiltrado= array&&array.filter(element=>element.id!==action.payload);
+          window.localStorage.removeItem('array');
+          window.localStorage.setItem('array',JSON.stringify(arrayfiltrado));
+          return {...state}
+      }
 
-    //   case ADD_LOCAL_STORAGE:{
-    //     const array = JSON.parse(window.localStorage.getItem("array"));
+      case ADD_LOCAL_STORAGE:{
+        const array = JSON.parse(window.localStorage.getItem("array"));
 
-    //    window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
-    //     return {
-    //       ...state,
-    //       arrayStorages: state.arrayStorages.slice().concat([action.payload])
-    //     }
-    //   }
+       window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
+        return {
+          ...state,
+          arrayStorages: state.arrayStorages.slice().concat([action.payload])
+        }
+      }
 
     default:
       return state;

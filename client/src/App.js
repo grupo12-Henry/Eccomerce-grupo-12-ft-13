@@ -46,7 +46,6 @@ function App() {
         <Route component={LandingPage} exact path='/'/>
         <Route component={Nav} exact path='/compras'/>
         <Route component={ShoppingCart} exact path='/compras'/>
-
         <Route component={Footer} exact path='/compras'/> 
         <Route component={About} exact path='/about'/>
         <Route component={Home} exact path='/home'/>
