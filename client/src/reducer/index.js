@@ -136,7 +136,6 @@ const rootReducer = (state = initialState, action) => {
           ...nuevoItem,
           cantidad: (parseInt(a[0].cantidad) + 1)
         }
-        
         state = {
           ...state,
           productCart: state.productCart.filter(e => e.id !== nuevoItem.id)

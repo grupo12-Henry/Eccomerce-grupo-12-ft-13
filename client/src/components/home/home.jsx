@@ -41,6 +41,7 @@ export default function Home({ location }) {
   }, [product]);
 
   const addToCart = (id) => {
+    // showalert('Producto Agregado al carrito')
     dispatch(addProductCart(id))
   }
   const [loading, setLoading] = useState(false)
@@ -64,7 +65,7 @@ export default function Home({ location }) {
           {/* <div class='mt-5 mb-3' >{carritoOn===true?<ShoppingCart/>:null}</div>  */}
           <div className="div_container">
             <div class="container d-flex justify-content-center mt-50 mb-50">
-              <div class="row">
+              <div class="row container-product">
                 {allProducts &&
                   allProducts.length > 0 ? allProducts.slice((page - 1) * 9, page * 9).map((el) => (
                     <div class="col-md-4 mt-2">

@@ -22,7 +22,7 @@ function ShoppingCart(props) {
 
   //consologuea el localStorage
   useEffect(() => {
-    console.log(localStorage)
+    // console.log(localStorage)
   }, [localStorage]);
 
 useEffect(() => {
@@ -32,12 +32,17 @@ useEffect(() => {
   dbProducts();
 }, [product]);
 
+useEffect(() => {
+  let aux = 0;
+  cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
+  setMontoTotal(aux)
+}, [cart])
 
 const addToCart = (id) => {
   dispatch(addProductCart(id))
 }
 
-const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
+// const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
 
 
 const clearCart = () => {
@@ -55,8 +60,9 @@ const delFromCart = () => {}
            </hr>
             <article class='box'>
                 {/* {CartShp} */}
-                {cart.length?cart.map( (item, index) => item!==undefined&&item!=="undefined"? ({Calculo},
-                <CartItem className='Article' key={index} data={item} delFromCart={delFromCart}  />)
+                {cart.length?cart.map((item, index) => item!==undefined&&item!=="undefined"? 
+                <CartItem className='Article' key={index} data={item} delFromCart={delFromCart}/>
+                
                               :null):null}              
             </article>
             <hr>
