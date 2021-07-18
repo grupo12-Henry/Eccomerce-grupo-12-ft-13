@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts, addProduct, editProduct, deleteProduct} from '../../../../actions';
+import { getProducts, addProduct, editProduct, deleteProduct, getDetail} from '../../../../actions';
 
 
 function GestionProductos() {
 
   const AllProducts = useSelector(state => state.products);
+  const productDetail = useSelector(state => state.productDetail);
   const dispatch = useDispatch();
 
   //Cuando renderiza el componente, me trae todos los productos.
@@ -41,10 +42,13 @@ function GestionProductos() {
         });
     }
 
-
+  const insertProductInfo = async (e) => {
+    e.preventDefault();
+    dispatch(getDetail(e.target.value));
+  }
   function editSubmit(e) {
     e.preventDefault();
-    editProduct(newProduct.id, newProduct);
+    editProduct(productDetail.id, newProduct);
     alert('Producto modificado');
   }
   function handleSubmit(e) {
@@ -94,15 +98,15 @@ function GestionProductos() {
                             <td>{prod.stock}</td>                            
                             <td>{prod.price}</td>
                             <td >
-                                <button class="btn btn-sm btn-info" value={prod.id}  >
-                                    Modificar
-                                </button>
-                                </td>
-                                <td >
-                                    <button class="btn btn-sm btn-danger" value={prod.id} onClick={(e) => deleteSubmit(e)} >
-                                        Eliminar
-                                    </button>
-                                </td>
+                              <button class="btn btn-sm btn-info" value={prod.id} onClick={(e) => insertProductInfo(e)} >
+                                  Modificar
+                              </button>
+                            </td>
+                            <td >
+                              <button class="btn btn-sm btn-danger" value={prod.id} onClick={(e) => deleteSubmit(e)} >
+                                  Eliminar
+                              </button>
+                            </td>
                             </tr>
                         ))
                     }
@@ -138,10 +142,10 @@ function GestionProductos() {
 
         <div className='EditarProducto' class='form-row m-5'>
           <h3>Modificar un producto</h3>
-          {<form  onSubmit={e=>editSubmit(e)} >
-              <input type='number'class="form-control mt-2 ml-5" name='id' autoComplete='off' placeholder='id del producto a modificar' onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" name='name' placeholder ='nombre del producto' onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" name='Description' placeholder='descripcion' onChange={handleInputChange}/>
+          {<form >
+              <input type='number'class="form-control mt-2 ml-5" name='id' autoComplete='off' value={productDetail.id}/>
+              <input type='text' class="form-control mt-2 ml-5" name='name' placeholder ={productDetail.name} onChange={handleInputChange}/>
+              <input type='text' class="form-control mt-2 ml-5" name='Description' placeholder={productDetail.Description} onChange={handleInputChange}/>
               {/* <input name='type' class="form-control mt-2 ml-5" placeholder='tipo' onChange={handleInputChange}/> */}
               <select class="form-control mt-2 ml-5" name="type" onChange={handleInputChange}>
                         <option key='vinos' value='Vinos'>Vinos</option>
@@ -152,12 +156,12 @@ function GestionProductos() {
                         <option key='varios' value='varios'>Varios</option>
               </select>
               <input type='text' class="form-control mt-2 ml-5" name='image' placeholder='url de imagen' onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" name='maker' placeholder='fabricante' onChange={handleInputChange}/>
-              <input type='number' class="form-control mt-2 ml-5" name='price' placeholder='precio' onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" name='subcategories' placeholder='sub-categoria' onChange={handleArrayChange}/>
+              <input type='text' class="form-control mt-2 ml-5" name='maker' placeholder={productDetail.maker} onChange={handleInputChange}/>
+              <input type='number' class="form-control mt-2 ml-5" name='price' placeholder={productDetail.price} onChange={handleInputChange}/>
+              <input type='text' class="form-control mt-2 ml-5" name='subcategories' placeholder={productDetail.subcategories} onChange={handleArrayChange}/>
               <p class='mt-2 ml-5'>Separa las sub-categorias con un guion medio " - " </p>
-              <input type='number' class="form-control mt-2 ml-5" name='stock' placeholder='stock' onChange={handleInputChange}/>
-              <button className='NewProductSubmitButton' class="btn btn-primary btn-lg btn-block mt-2 ml-5" name='submit' type='submit' >CONFIRMAR MODIFICACIÓN</button>
+              <input type='number' class="form-control mt-2 ml-5" name='stock' placeholder={productDetail.stock} onChange={handleInputChange}/>
+              <button className='NewProductSubmitButton' class="btn btn-primary btn-lg btn-block mt-2 ml-5" name='submit' type='submit' onClick={e=>editSubmit(e)} >CONFIRMAR MODIFICACIÓN</button>
           </form>}
         </div>
 

@@ -46,6 +46,7 @@ function GestionUsuarios() {
 
     const insertClientInfo = (e) => {
         dispatch(getUserDetails(e.target.value))
+        console.log('Pega Aca');
     }
 
     const deleteSubmit = (e) => {
@@ -279,11 +280,3 @@ function GestionUsuarios() {
 
 
 export default GestionUsuarios;
-// export default connect(null, useDispatch)(GestionUsuarios)
-
-// id: {
-//     type: DataTypes.INTEGER,
-//     primaryKey: true,
-//     allowNull: false,
-//     autoIncrement: true
-// }
