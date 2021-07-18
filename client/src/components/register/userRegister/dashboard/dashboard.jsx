@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector }from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
+import Loading from "../../../loading/Loading";
 
 export default function Dashboard() {
-  const user = useSelector(state=>state.user)
+  const user = useSelector((state) => state.user);
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  
+
   const history = useHistory();
 
   async function handleLogout() {
@@ -22,7 +23,16 @@ export default function Dashboard() {
       setError("Failed to Log Out");
     }
   }
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 400);
+  }, []);
+
+  if (!loading) {
+    return <Loading />;
+  }
+  console.log(user)
   return (
     <>
       <Nav />
@@ -63,23 +73,23 @@ export default function Dashboard() {
                           </tr>
                           <tr>
                             <td>Dirección</td>
-                            <td>{user.adress}</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <td>Email:</td>
                             <td>
                               <a href="mailto:info@support.com">
-                                <strong>{user.mail}</strong>
+                                <strong></strong>
                               </a>
                             </td>
                           </tr>
                           <tr>
                             <td>Teléfono</td>
-                            <td>{user.phone}</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <td>Provincia</td>
-                            <td>{user.state}</td>
+                            <td></td>
                           </tr>
                           <a href="edit.html" style={{ textAlign: "center" }}>
                             Modificar datos
@@ -87,24 +97,25 @@ export default function Dashboard() {
                         </tbody>
                       </table>
                       <div class="mb-5">
-                        <a href="/mispedidos" class="btn btn-dark">
+                        <Link to={`/micuenta/mispedidos/${user.id}`} class="btn btn-dark" ><a class="btn btn-dark">
                           Mis pedidos anteriores
                         </a>
+                        </Link>
                         <a href="#" class="btn btn-dark ml-5">
                           Mis favoritos
                         </a>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel-footer">
-                  <br />
-                  <Link to="/home" className="btn btn-dark mr-3">
-                    VOLVER
-                  </Link>
-                  <button className="btn btn-warning " onClick={handleLogout}>
-                    Cerrar Sesion
-                  </button>
+                  <div class="panel-footer">
+                    <br />
+                    <Link to="/home" className="btn btn-dark mr-3">
+                      VOLVER
+                    </Link>
+                    <button className="btn btn-warning " onClick={handleLogout}>
+                      Cerrar Sesion
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -113,7 +124,6 @@ export default function Dashboard() {
       ) : (
         <div className="container">Volvé a loguearte</div>
       )}
-
       <Footer />
     </>
   );

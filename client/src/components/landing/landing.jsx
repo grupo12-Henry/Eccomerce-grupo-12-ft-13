@@ -10,7 +10,7 @@ export const LandingPage = () => {
   const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		setTimeout(() => setLoading(true), 1000)
+		setTimeout(() => setLoading(true), 400)
 	}, [])
 
   if(!loading) {
@@ -24,9 +24,6 @@ export const LandingPage = () => {
             <div>
               <img src={logo} alt="img logo" width="360px" />
             </div>
-            {/* <div>
-            <img src={promo} alt='img logo' width='360px'/>
-          </div> */}
             <ControlledCarousel />
             <div className="div_btn">
               <Link to="/home">

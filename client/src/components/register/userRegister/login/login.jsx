@@ -59,8 +59,8 @@ export default function Login({ onClose }) {
                     await login(emailRef.current.value, passwordRef.current.value)
                     history.push('/dashboard-admin')
                 } else {
-                  await login(emailRef.current.value, passwordRef.current.value)
-                  onClose()
+                    await login(emailRef.current.value, passwordRef.current.value)
+                    onClose()
                 }
         }
         catch {
