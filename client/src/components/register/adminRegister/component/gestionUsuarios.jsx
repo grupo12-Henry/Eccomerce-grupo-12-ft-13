@@ -16,7 +16,7 @@ function GestionUsuarios() {
     const [user, setUser] = useState({ 
         id:'',
         name: '',
-        lastname: '',
+        lastName: '',
         phone: '',
         state: '',
         adress: '',
@@ -33,27 +33,27 @@ function GestionUsuarios() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         //setSubmit(true)
         dispatch(postUsuarios(user))
-        alert('User Created')
+        alert('Usuario Creado')
     }
 
-    const putSubmit = (e) => {
-        e.preventDefault()
-        //setSubmit(true)
-        putUsuarios(user)
+    const putSubmit = (ClientDetails, user) => {
+        dispatch(putUsuarios(ClientDetails.id, user))
         alert('Usuario modificado')
     }
 
     const insertClientInfo = (e) => {
-        e.preventDefault();
         dispatch(getUserDetails(e.target.value))
+        console.log('Pega Aca');
     }
 
     const deleteSubmit = (e) => {
-        deleteUsuarios(e.target.value)
-        alert('Usuario borrado')
+        if(window.confirm('¿Esta seguro de que desea borrar este usuario? Esta operación no se puede deshacer.')) {
+            deleteUsuarios(e.target.value)
+            alert('Usuario borrado')
+        } 
     }
 
     return (
@@ -72,7 +72,7 @@ function GestionUsuarios() {
                         <tr>
                         <th scope="col" data-field="id" data-sortable="true" >ID</th>
                         <th scope="col" data-field="name" data-sortable="true" >Nombre</th>
-                        <th scope="col" data-field="lastname" data-sortable="true" >Apellido</th>
+                        <th scope="col" data-field="lastName" data-sortable="true" >Apellido</th>
                         <th scope="col" data-field="identityCard" data-sortable="true" >DNI</th>
                         <th scope="col" data-field="phone" data-sortable="true" >Telefono</th>
                         <th scope="col" data-field="mail" data-sortable="true" >Mail</th>
@@ -89,23 +89,28 @@ function GestionUsuarios() {
                                 <tr>
                                 <th scope="row">{client.id}</th>
                                 <td>{client.name}</td>
-                                <td>{client.lastname}</td>
+                                <td>{client.lastName}</td>
                                 <td>{client.identityCard}</td>
                                 <td>{client.phone}</td>
                                 <td>{client.mail}</td>
                                 <td>{client.adress}</td>
                                 <td>{client.state}</td>
-                                <td >{client.admin && client.admin}</td>
+
                                 <td >
-                                <button class="btn btn-sm btn-info" value={client.id} onClick={(e) => { insertClientInfo(e)}} >
+                                    {client.admin==true? (<button class="btn btn-sm btn-success">
+                                        ADMIN
+                                    </button>) : null}
+                                </td>
+                                <td >
+                                <button class="btn btn-sm btn-info" value={client.id} onClick={(e) => {e.preventDefault(); insertClientInfo(e)}} >
                                     Modificar
                                 </button>
-                            </td>
-                            <td >
-                                <button class="btn btn-sm btn-danger" value={client.id} onClick={(e) => deleteSubmit(e)} >
-                                    Eliminar
-                                </button>
-                            </td>
+                                </td>
+                                <td >
+                                    <button class="btn btn-sm btn-danger" value={client.id} onClick={(e) => deleteSubmit(e)} >
+                                        Eliminar
+                                    </button>
+                                </td>
                                 </tr>
                             ))
                         }
@@ -130,9 +135,9 @@ function GestionUsuarios() {
                     <input class="form-control mt-2 ml-5"
                         required autoComplete='off' 
                         placeholder='Apellido del usuario...' 
-                        name='lastname' 
+                        name='lastName' 
                         onChange={handleUser} 
-                        value={user.lastname}>
+                        value={user.lastName}>
                     </input>
                     <input class="form-control mt-2 ml-5"
                         required autoComplete='off' 
@@ -177,17 +182,12 @@ function GestionUsuarios() {
                         value={user.admin}>
                     </input> */}
 
-                    <label>Permisos: </label>
+                    {/* <label>Permisos: </label> */}
                     <select class="form-control mt-2 ml-5" name="admin" value={user.admin} onChange={handleUser}>
                         <option key='false' value='false'>Usuario</option>
                         <option key='true' value='true'>Admin</option>
                     </select>
-
-
-
-                </div>
-                <div >
-                    <input class="btn btn-primary btn-md mt-5 ml-5" type='submit' onSubmit={handleSubmit}/>
+                    <button class="btn btn-primary btn-lg btn-block mt-2 ml-5" name='submit' type='submit' onClick={handleSubmit}> CREAR</button>
                 </div> 
             </div>
             </form>
@@ -199,27 +199,22 @@ function GestionUsuarios() {
                 <div >
                     <input class="form-control mt-5 ml-5"
                         required autoComplete='off' 
-                        placeholder={ClientDetails.id} 
                         name='id' 
-                        onChange={handleUser} 
-                        value={user.id}>
+                        value={ClientDetails.id}>
                     </input>
-                    <input class="form-control mt-2 ml-5"
-                        
+                    <input class="form-control mt-2 ml-5"                        
                         placeholder={ClientDetails.name} 
                         name='name' 
                         onChange={handleUser} 
                         value={user.name}>
                     </input>
-                    <input class="form-control mt-2 ml-5"
-                        
-                        placeholder={ClientDetails.lastname} 
-                        name='lastname' 
+                    <input class="form-control mt-2 ml-5"                        
+                        placeholder={ClientDetails.lastName} 
+                        name='lastName' 
                         onChange={handleUser} 
-                        value={user.lastname}>
+                        value={user.lastName}>
                     </input>
-                    <input class="form-control mt-2 ml-5"
-                        
+                    <input class="form-control mt-2 ml-5"                        
                         placeholder={ClientDetails.phone}
                         name='phone' 
                         onChange={handleUser} 
@@ -231,22 +226,19 @@ function GestionUsuarios() {
                         onChange={handleUser} 
                         value={user.state}>
                     </input>
-                    <input class="form-control mt-2 ml-5"
-                      
+                    <input class="form-control mt-2 ml-5"                      
                         placeholder={ClientDetails.adress} 
                         name='adress' 
                         onChange={handleUser} 
                         value={user.adress}>
                     </input>
-                    <input class="form-control mt-2 ml-5"
-                      
+                    <input class="form-control mt-2 ml-5"                      
                         placeholder={ClientDetails.mail} 
                         name='mail' 
                         onChange={handleUser} 
                         value={user.mail}>
                     </input>
-                    <input class="form-control mt-2 ml-5"
-                      
+                    <input class="form-control mt-2 ml-5"                      
                         placeholder={ClientDetails.identityCard} 
                         name='identityCard' 
                         onChange={handleUser} 
@@ -258,15 +250,12 @@ function GestionUsuarios() {
                         onChange={handleUser} 
                         value={user.admin}>
                     </input> */}
-                    <label>Permisos: </label>
+                    {/* <label>Permisos: </label> */}
                     <select class="form-control mt-2 ml-5" name="admin" value={user.admin} onChange={handleUser}>
                         <option key='false' value='false'>Usuario</option>
                         <option key='true' value='true'>Admin</option>
                     </select>
-
-                </div>
-                <div >
-                    <input class="btn btn-primary btn-m mt-5 ml-5" type='submit' onSubmit={handleSubmit}/>
+                    <button class="btn btn-primary btn-lg btn-block mt-2 ml-5" name='submit' type='submit' onClick={ () => {putSubmit(ClientDetails, user)}  }> CONFIRMAR MODIFICACIÓN</button>
                 </div> 
                 </div>
             </form>
@@ -293,11 +282,3 @@ function GestionUsuarios() {
 
 
 export default GestionUsuarios;
-// export default connect(null, useDispatch)(GestionUsuarios)
-
-// id: {
-//     type: DataTypes.INTEGER,
-//     primaryKey: true,
-//     allowNull: false,
-//     autoIncrement: true
-// }

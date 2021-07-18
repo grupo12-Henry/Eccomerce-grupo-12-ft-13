@@ -61,12 +61,14 @@ router.delete('/client/:id', async(req, res)=>{
 })
 
 router.post('/clientesPost', async (req, res) => {//crea un nuevo cliente
-    const { name,lastname, phone , state, adress, mail, identityCard } = req.body;
+
+    const { name,lastName, phone , state, adress, mail, identityCard } = req.body;
     const token= req.headers.authorization&&req.headers.authorization.split(' ')[1]
     try {
     
       const newClient = await Client.create({
-        name, lastname, phone:phone+'', state, adress, mail, identityCard,token
+
+        name, lastName, phone:phone+'', state, adress, mail, identityCard,token
       })
       res.send(newClient)
     }
@@ -161,21 +163,25 @@ router.put('/productos/:id',authAdmin, async (req, res) => {//modifica el produc
 
 router.post('/productos', async (req, res) => {//crea nuevo productos
     const { stock, name, type, Description, price, image, maker ,subcategories } = req.body
-    if (typeof price === 'number') {
+
+    // if (typeof price === 'number') {
         try {
-            const { producto } = await Product.findOrCreate({
+
+            const producto = await Product.findOrCreate({
                 where: { name: name, type: type, Description: Description, price: price, image: image, stock: stock, maker: maker,subcategories:subcategories },
                 default: { name: name, type: type, Description: Description, price: price, image: image, stock: stock, maker: maker,subcategories:subcategories }
             })
+
             const newProduct = await Product.findOne({
                 where: { name: name }
             })
+
 
             res.send(newProduct.dataValues).status(200)
         } catch (error) {
             res.send(error).status(404)
         }
-    }
+    // }
 
 })
 router.get('/users/all', async (req, res) => {//trae todo los clientes
