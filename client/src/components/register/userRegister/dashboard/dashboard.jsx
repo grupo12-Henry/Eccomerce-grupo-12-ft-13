@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector }from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
+import Loading from "../../../loading/Loading";
 
 export default function Dashboard() {
   const user = useSelector(state=>state.user)
@@ -22,7 +23,15 @@ export default function Dashboard() {
       setError("Failed to Log Out");
     }
   }
+const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 400);
+  }, []);
+
+  if (!loading) {
+    return <Loading />;
+  }
   return (
     <>
       <Nav />
@@ -96,25 +105,24 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel-footer">
-                  <br />
-                  <Link to="/home" className="btn btn-dark mr-3">
-                    VOLVER
-                  </Link>
-                  <button className="btn btn-warning " onClick={handleLogout}>
-                    Cerrar Sesion
-                  </button>
+                  <div class="panel-footer">
+                    <br />
+                    <Link to="/home" className="btn btn-dark mr-3">
+                      VOLVER
+                    </Link>
+                    <button className="btn btn-warning " onClick={handleLogout}>
+                      Cerrar Sesion
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <div className="container">Volvé a loguearte</div>
-      )}
-
-      <Footer />
-    </>
-  );
+        ) : (
+          <div className="container">Volvé a loguearte</div>
+        )}
+        <Footer />
+      </>
+    );
+  }
 }

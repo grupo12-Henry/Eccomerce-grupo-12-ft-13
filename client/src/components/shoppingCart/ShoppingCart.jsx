@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch  } from 'react-redux'
-import { addProductCart, removeProductCart, ClearCart, getProducts ,ADD_TO_CART, addLocalStorage, getLocalStorage, deleteLocalStorage } from '../../actions';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addProductCart,
+  removeProductCart,
+  ClearCart,
+  getProducts,
+  ADD_TO_CART,
+  addLocalStorage,
+  getLocalStorage,
+  deleteLocalStorage,
+} from "../../actions";
 // import ProductCart from './ProductCart';
-import { Link } from 'react-router-dom';
-import CartItem from './CartItem'
-import CartShp from './CartShp'
+import { Link } from "react-router-dom";
+import CartItem from "./CartItem";
+import CartShp from "./CartShp";
+import Loading from "../loading/Loading";
 
 function ShoppingCart({ name, price, image, id, } ) {
 
@@ -17,29 +27,44 @@ function ShoppingCart({ name, price, image, id, } ) {
 
   //consologuea el localStorage
   useEffect(() => {
-    console.log(localStorage)
+    console.log(localStorage);
   }, [localStorage]);
 
-useEffect(() => {
-  const dbProducts = () => {
-    setAllProducts(product);
-  };
-  dbProducts();
-}, [product]);
+  useEffect(() => {
+    const dbProducts = () => {
+      setAllProducts(product);
+    };
+    dbProducts();
+  }, [product]);
 
+  const addToCart = (el) => {
+    dispatch(addLocalStorage(el));
+    dispatch(addProductCart(el.id));
+    console.log();
+  };
+
+  const delFromCart = () => {};
+
+  const clearCart = () => {};
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 400);
+  }, []);
+
+  if (!loading) {
+    return <Loading />;
+  } else {
 
 const addToCart = (id) => {
   dispatch(addProductCart(id))}
-
 // const addToCart = (el) => {
 //   dispatch(addLocalStorage(el))
 //   dispatch(addProductCart(el.id))
 //   console.log()
 
 // }
-
-const clearCart = () => {
-}
     return (
       <div>
         <div>
@@ -51,7 +76,6 @@ const clearCart = () => {
       <div class="cart_section">
          <div class="container-fluid">
          <div class="row">
-
         <h2> •••»   SIMULADOR DE HOME   «•••☻</h2>
         <div class="shadow-none p-3 mt-2 mb-4 bg-light rounded">
         <h3 class="d-flex justify-content-center">Carrito de Compras</h3>
@@ -71,7 +95,6 @@ const clearCart = () => {
          <article class=" d-flex row col-md-12 mt-5">
          {allProducts ? allProducts.map((el) => (
                     <div class="col-md-2" >
-
                       <div class="card">
                         <div class="card-body">
                           <div class="card-img-actions">
@@ -91,13 +114,15 @@ const clearCart = () => {
                                <h3 class="mb-0 font-weight-semibold">{el.name}</h3> 
                             </h6>
                           </div>
-
-                          <h3 class="mb-0 font-weight-semibold">${el.price}.00</h3>                          
-                          {/* <button onClick={() => {
-                          dispatch(addProductCart({id,name,price,image}))
-                          }} class="btn btn-outline-secondary">Agregar al carrito</button> */}
-                          <button class="btn btn-outline-secondary" onClick={()=>addToCart(el.id)} type="button">Agregar al carrito
-
+                          <h3 class="mb-0 font-weight-semibold">
+                            ${el.price}.00
+                          </h3>
+                          <button
+                            onClick={(el) => addToCart(el)}
+                            type="button"
+                            class="btn bg-cart"
+                          >
+                            <i class="fa fa-cart-plus mr-2"></i> Agregar
                           </button>
                         </div>
                       </div>
@@ -107,10 +132,9 @@ const clearCart = () => {
         </div>
          </div>
      </div>
-     </div>      
-
+     </div>
     )
   }
+}
 
-
-  export default ShoppingCart;
+export default ShoppingCart;
