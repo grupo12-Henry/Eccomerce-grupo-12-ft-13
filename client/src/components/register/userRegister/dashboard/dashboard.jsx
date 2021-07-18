@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector }from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
 import Nav from "../../../navbar/navbar";
@@ -7,10 +7,10 @@ import Footer from "../../../footer/footer";
 import Loading from "../../../loading/Loading";
 
 export default function Dashboard() {
-  const user = useSelector(state=>state.user)
+  const user = useSelector((state) => state.user);
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  
+
   const history = useHistory();
 
   async function handleLogout() {
@@ -23,7 +23,7 @@ export default function Dashboard() {
       setError("Failed to Log Out");
     }
   }
-const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setLoading(true), 400);
@@ -32,6 +32,7 @@ const [loading, setLoading] = useState(false);
   if (!loading) {
     return <Loading />;
   }
+  console.log(user)
   return (
     <>
       <Nav />
@@ -60,7 +61,7 @@ const [loading, setLoading] = useState(false);
                         <tbody>
                           <tr>
                             <td>Nombre:</td>
-                            <td>{console.log(user)}</td>
+                            <td>{user.name}</td>
                           </tr>
                           <tr>
                             <td>Apellido:</td>
@@ -96,9 +97,10 @@ const [loading, setLoading] = useState(false);
                         </tbody>
                       </table>
                       <div class="mb-5">
-                        <a href='/mispedidos'  class="btn btn-dark">
+                        <Link to={`/micuenta/mispedidos/${user.id}`} class="btn btn-dark" ><a class="btn btn-dark">
                           Mis pedidos anteriores
                         </a>
+                        </Link>
                         <a href="#" class="btn btn-dark ml-5">
                           Mis favoritos
                         </a>
@@ -118,11 +120,11 @@ const [loading, setLoading] = useState(false);
               </div>
             </div>
           </div>
-        ) : (
-          <div className="container">Volvé a loguearte</div>
-        )}
-        <Footer />
-      </>
-    );
-  }
+        </div>
+      ) : (
+        <div className="container">Volvé a loguearte</div>
+      )}
+      <Footer />
+    </>
+  );
 }
