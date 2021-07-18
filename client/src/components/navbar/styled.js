@@ -54,9 +54,63 @@ export const StyledDiv = styled.div`
     position: absolute;
     right: 5%;
 }
-
-.buttonDashboardAdmin {
+.sidebar-social li {
     
-}
+    text-align: center;
+    width: 32%;
+    margin-bottom: 3px ;
+    display: inline-block;
+    font-size: 10px;
+    padding: 0;
+  }
 
+.sidebar-social i {
+    display: block;
+    margin: 0 auto 10px auto;
+    width: 32px;
+    height: 32px;
+    margin: 10px auto 0;
+    line-height: 32px;
+    text-align: center;
+    font-size: 20px;
+    color: #444444;
+    margin-top: 0;
+    padding-top: 5px;
+  }
+  .sidebar-social a {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  .sidebar-social a span {
+        color: black;
+        font-size: 15px;
+        padding: 5px 0 10px 0;
+        display: block;
+        text-transform: uppercase;
+        font-family: 'Montserrat';
+        letter-spacing: 1px;
+  }  
+
+  #cart_menu_num {
+    top: 0;
+    margin-left: 58%;
+    background: #D83A56;
+    width: 15px;
+    height: 15px;
+    border-radius: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 1px;
+  }
+  
 `;
+
+//   .cart {
+//     position: relative;
+//   }
