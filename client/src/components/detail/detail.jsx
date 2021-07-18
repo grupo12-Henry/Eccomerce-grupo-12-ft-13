@@ -6,15 +6,16 @@ import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
 import Loading from "../loading/Loading";
 
+export default function Detail({ match }) {
+  const dispatch = useDispatch();
+
 useEffect(() => {
   const dbProducts = () => {
     dispatch(getProducts());
   };
   dbProducts();
 }, [dispatch]);
-export default function Detail({ match }) {
 
-  const dispatch = useDispatch();
   const product = useSelector((state) => state.productDetail);
   const [detail, setDetail] = useState([]);
 
