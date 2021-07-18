@@ -59,7 +59,7 @@ export default function Pages({ product, page }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 1000);
+    setTimeout(() => setLoading(true), 400);
   }, []);
 
   if (!loading) {

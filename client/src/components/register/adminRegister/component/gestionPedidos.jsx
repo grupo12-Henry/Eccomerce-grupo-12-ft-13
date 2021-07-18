@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido } from '../../../../actions';
-import Dropdown from 'react-bootstrap/Dropdown';
 
 function GestionPedidos() {
 
@@ -258,6 +257,3 @@ function GestionPedidos() {
 }
 
 export default GestionPedidos
-
-// const id = req.params.id
-// const { bill, date, paymentMethod, adress, ticket, mail ,cost, state, guideNumber, freight, ivaCost, ivaCondition, shippingDate } = req.body

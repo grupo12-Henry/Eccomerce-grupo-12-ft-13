@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledDiv = styled.div`
 .header-container{
@@ -53,6 +53,10 @@ export const StyledDiv = styled.div`
 .dropdown {
     position: absolute;
     right: 5%;
+}
+
+.buttonDashboardAdmin {
+    
 }
 
 `;

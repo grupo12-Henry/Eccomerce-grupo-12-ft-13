@@ -25,7 +25,6 @@ import About from './components/about/about'
 import misPedidos from './components/register/userRegister/misPedidos/misPedidos';
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 
-
 function App() {
 
   const dispatch = useDispatch()
