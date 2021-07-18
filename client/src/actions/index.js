@@ -13,6 +13,7 @@ export const GETALLPEDIDOS = "GETALLPEDIDOS";
 export const GETPEDIDOSBYSTATE = "GETPEDIDOSBYSTATE";
 export const GETPEDIDODETAIL = "GETPEDIDODETAIL";
 export const PUTPEDIDO = "PUTPEDIDO";
+export const ADDNEWPRODUCT = "ADDNEWPRODUCT";
 export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS";
 //ACTIONS DEL LOCAL STORAGE
 export const GET_LOCAL_STORAGE= 'GET_LOCAL_STORAGE';
@@ -237,7 +238,14 @@ export function deleteUsuarios(id) {
 //PRODUCTOS POST, PUT, DELETE Y GET DETAILS
 export function addProduct(product) {
   return (dispatch) => {
-    axios.post("http://localhost:3001/admin/productos", product);
+    axios.post("http://localhost:3001/admin/productos", product)
+    .then((response) => {
+      if(response) alert('El producto se creó correctamente');
+      dispatch({ type: ADDNEWPRODUCT, payload: response.data });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   };
 }
 export async function editProduct(id, payload) {

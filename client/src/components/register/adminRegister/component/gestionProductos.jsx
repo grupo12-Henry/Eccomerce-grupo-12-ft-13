@@ -17,7 +17,6 @@ function GestionProductos() {
 
   //A PARTIR DE ACA ES LO QUE ESTABA CODEADO
     const [newProduct, setNewProduct] = useState({
-        id:0,
         name:'',
         Description:'',
         type:'',
@@ -53,8 +52,8 @@ function GestionProductos() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    addProduct(newProduct);
-    alert('Producto creado');
+    dispatch(addProduct(newProduct));
+    // alert('Producto creado');
   }
   function deleteSubmit(e) {
     deleteProduct(e.target.value);
@@ -118,7 +117,7 @@ function GestionProductos() {
         {/* A partir de aca es lo que estaba codeado */}
         <div className='CrearProducto'  class="form-row ml-5">
           <h3>Crear un producto</h3>
-          {<form  onSubmit={e=>handleSubmit(e)} >
+          {<form >
               <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='name' placeholder ='nombre del producto' onChange={handleInputChange}/>
               <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='Description' placeholder='descripcion' onChange={handleInputChange}/>
               {/* <input name='type' class="form-control m-2" autoComplete='off' placeholder='tipo' onChange={handleInputChange}/> */}
@@ -136,7 +135,7 @@ function GestionProductos() {
               <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='subcategories' placeholder='sub-categoria' onChange={handleArrayChange}/>
               <p class='mt-2 ml-5'>Separa las sub-categorias con un guion medio " - " </p>
               <input type='number' class="form-control mt-2 ml-5" autoComplete='off' name='stock' placeholder='stock' onChange={handleInputChange}/>
-              <button className='NewProductSubmitButton' name='submit' type='submit' class="btn btn-primary btn-lg btn-block mt-2 ml-5">CREAR</button>
+              <button className='NewProductSubmitButton' name='submit' type='submit' class="btn btn-primary btn-lg btn-block mt-2 ml-5" onClick={e=>handleSubmit(e)}>CREAR</button>
           </form>}
         </div>
 
