@@ -46,7 +46,6 @@ function GestionUsuarios() {
 
     const insertClientInfo = (e) => {
         dispatch(getUserDetails(e.target.value))
-        console.log('Pega Aca');
     }
 
     const deleteSubmit = (e) => {
@@ -86,7 +85,7 @@ function GestionUsuarios() {
                     <tbody>
                         {
                             AllClients.map(client => (
-                                <tr>
+                                <tr key={client.id}>
                                 <th scope="row">{client.id}</th>
                                 <td>{client.name}</td>
                                 <td>{client.lastName}</td>

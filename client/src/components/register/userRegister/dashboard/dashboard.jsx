@@ -118,11 +118,12 @@ const [loading, setLoading] = useState(false);
               </div>
             </div>
           </div>
+        </div>
         ) : (
           <div className="container">Volvé a loguearte</div>
         )}
-        <Footer />
-      </>
-    );
-  }
+      <Footer />
+    </>
+  )
 }
+
