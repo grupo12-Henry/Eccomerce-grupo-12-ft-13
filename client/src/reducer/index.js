@@ -111,7 +111,7 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ADD_TO_CART:
-console.log("act pay", action.payload)
+      console.log("act pay", action.payload)
       let nuevoItem = state.products.find(prod => ((prod.id === action.payload)||prod.id===action.payload.id||console.log('marquitos', prod.id)))
       let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
       console.log('nuevo item', nuevoItem, a)
@@ -146,30 +146,7 @@ console.log("act pay", action.payload)
       return {
         ...state,
         carritoState: !state.carritoState
-      };
-    case ADD_TO_CART:
-      let nuevoItem = state.products.find(prod => prod.id === action.payload)
-      let a = state.productCart.length ? state.productCart.filter(e => e.id === (nuevoItem.id)) : ''
-      if (a.length) {
-         nuevoItem = {
-          ...nuevoItem,
-          cantidad: (parseInt(a[0].cantidad) + 1)
-        }
-        
-        state = {
-          ...state,
-          productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
-        }
-        let array = JSON.parse(window.localStorage.getItem("array"));
-        // window.localStorage.setItem('array', array.filter(e=> (Array.isArray(e)?(e.filter(d=>d.id!== nuevoItem.id)): e.id!==undefined)))
-      }
-      if (!a.length) {
-        nuevoItem = {
-          ...nuevoItem,
-          cantidad: 1
-        }
-      }
-    } */
+      }; */
       // case ADD_TO_CART:
       //     updatedCart = [...state.productCart];
       //     updatedItemIndex = updatedCart.findIndex(item => item.id === action.payload.id);
