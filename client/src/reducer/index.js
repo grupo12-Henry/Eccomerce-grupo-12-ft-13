@@ -16,7 +16,8 @@ import {
   CARRITO,
   GET_LOCAL_STORAGE,
   GET_ALL_USERS,
-  PEDIDOSUSER
+  PEDIDOSUSER,
+  POST_USER
 } from '../actions'
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -80,6 +81,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         AllClients: action.payload,
       };
+      
+      case POST_USER:
+       return {
+         ...state,
+         user: action.payload
+       } 
 
     case GET_USER_DETAILS:
       return {

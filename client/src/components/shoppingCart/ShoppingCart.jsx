@@ -18,12 +18,18 @@ function ShoppingCart(props) {
   useEffect(() => {
   }, [localStorage]);
 
-useEffect(() => {
-  const dbProducts = () => {
-    setAllProducts(product);
+  useEffect(() => {
+    const dbProducts = () => {
+      setAllProducts(product);
+    };
+    dbProducts();
+  }, [product]);
+
+  const addToCart = (el) => {
+    dispatch(addLocalStorage(el));
+    dispatch(addProductCart(el.id));
+    console.log();
   };
-  dbProducts();
-}, [product]);
 
 useEffect(() => {
   let aux = 0;
@@ -38,6 +44,16 @@ const clearCart = () => {
 }
 
 const delFromCart = () => {}
+const [loading, setLoading] = useState(false);
+
+useEffect(() => {
+  setTimeout(() => setLoading(true), 400);
+}, []);
+
+if (!loading) {
+  return <Loading />;
+} else {
+
   return (
       <div className='container-productos'>
         <div>
@@ -64,5 +80,6 @@ const delFromCart = () => {}
      </div>
     )
   }
+}
 
-  export default ShoppingCart;
+export default ShoppingCart;

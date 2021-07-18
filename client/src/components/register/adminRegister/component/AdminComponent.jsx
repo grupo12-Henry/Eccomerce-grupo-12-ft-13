@@ -3,6 +3,10 @@ import GestionProductos from './gestionProductos'
 import GestionUsuarios from './gestionUsuarios'
 import GestionPedidos from './gestionPedidos'
 import {Link} from 'react-router-dom'
+<<<<<<< HEAD
+=======
+// import SideBar from './SideBar';
+>>>>>>> main
 import Loading from '../../../loading/Loading';
 
 export default function AdminComponent() {
@@ -13,15 +17,12 @@ export default function AdminComponent() {
   const [pedidos, setPedidos] = useState(false)
   const productosHandler = () => {
     setProductos(current => !current)
-    console.log('cambio') // is false
   }
   const usuariosHandler = () => {
     setUsuarios(current => !current)
-    console.log('cambio') // is false
   }
   const pedidosHandler = () => {
     setPedidos(current => !current)
-    console.log('cambio') // is false
   }
 
   const [loading, setLoading] = useState(false)
@@ -48,4 +49,8 @@ export default function AdminComponent() {
     )
   }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

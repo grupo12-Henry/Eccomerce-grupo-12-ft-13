@@ -5,56 +5,84 @@ import { Link } from 'react-router-dom';
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
-import Footer from '../../footer/footer'
+import Footer from "../../footer/footer";
+import Loading from "../../loading/Loading";
 
 function Vinos() {
-    const dispatch = useDispatch();
-    const product = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.products);
 
-    const [allProducts, setAllProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
 
-    const [numberPage, setnumberPage] = useState(1);
-    const initialProducts = 9;
-    const conteoFinal = numberPage * initialProducts;
-    const conteoInicial = conteoFinal - initialProducts;
+  const [numberPage, setnumberPage] = useState(1);
+  const initialProducts = 9;
+  const conteoFinal = numberPage * initialProducts;
+  const conteoInicial = conteoFinal - initialProducts;
 
-    const showProducts = allProducts.filter(el => el.type === 'Vinos').slice(conteoInicial, conteoFinal);
+  const showProducts = allProducts
+    .filter((el) => el.type === "Vinos")
+    .slice(conteoInicial, conteoFinal);
 
-    let subCategories = []
-    let counts = {}
-    product.filter(el => el.type === 'Vinos').map(e => e.subcategories.forEach(c => ((subCategories.indexOf(c) === -1) ? subCategories.push(c) : null)))
+  let subCategories = [];
+  let counts = {};
+  product
+    .filter((el) => el.type === "Vinos")
+    .map((e) =>
+      e.subcategories.forEach((c) =>
+        subCategories.indexOf(c) === -1 ? subCategories.push(c) : null
+      )
+    );
 
-
-    product.filter(el => el.type === 'Vinos').map(e => e.subcategories.forEach((el) => {
+  product
+    .filter((el) => el.type === "Vinos")
+    .map((e) =>
+      e.subcategories.forEach((el) => {
         counts[el] = counts[el] ? (counts[el] += 1) : 1;
-    }));
+      })
+    );
 
-    // const countsSorted = Object.entries(counts).sort(([, b], [_, a]) => a - b)
+  const countsSorted = Object.entries(counts).sort(([, b], [_, a]) => a - b);
 
-    useEffect(() => {
-        const dbProducts = () => {
-            dispatch(getProducts());
-        };
-        dbProducts();
-    }, [dispatch]);
+  console.log(countsSorted);
+  // console.log(subCategories)
 
-    useEffect(() => {
-        const dbProducts = () => {
-            setAllProducts(product);
-        };
-        dbProducts();
-    }, [product]);
+  useEffect(() => {
+    const dbProducts = () => {
+      dispatch(getProducts());
+    };
+    dbProducts();
+  }, [dispatch]);
 
+  useEffect(() => {
+    const dbProducts = () => {
+      setAllProducts(product);
+    };
+    dbProducts();
+  }, [product]);
 
-    if (numberPage < 1) setnumberPage(1);
-    if (numberPage > 7) setnumberPage(7);
-    
+  if (numberPage < 1) setnumberPage(1);
+  if (numberPage > 7) setnumberPage(7);
+
+  const handleCategories = () => {
+    setAllProducts(product);
+  };
+
+     
     const addToCart = (id) => {
         dispatch(addProductCart(id))
       }
     // const handleCategories = () => {
     //     setAllProducts(product)
     // }
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+      setTimeout(() => setLoading(true), 400);
+    }, []);
+  
+    if (!loading) {
+      return <Loading />;
+    } else {
     return (
         <>
             <Nav />
@@ -127,11 +155,13 @@ function Vinos() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </StyledDiv>
-            <Footer />
-        </>
+                      ))
+            </div>
+          </div>
+        </StyledDiv>
+        <Footer />
+      </>
     );
+  }
 }
 export default Vinos;

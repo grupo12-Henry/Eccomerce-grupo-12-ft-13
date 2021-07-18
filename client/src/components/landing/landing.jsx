@@ -10,7 +10,7 @@ export const LandingPage = () => {
   const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		setTimeout(() => setLoading(true), 1000)
+		setTimeout(() => setLoading(true), 400)
 	}, [])
 
   if(!loading) {

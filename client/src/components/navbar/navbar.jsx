@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Dropdown from 'react-bootstrap/Dropdown';
+import Dropdown from "react-bootstrap/Dropdown";
 import { StyledDiv } from "./styled";
 import { useAuth } from "../../contexts/AuthContext";
 import delivery from "../../assets/images/delivery-truck.png";
@@ -33,9 +33,9 @@ const Nav = () => {
   const { currentUser, logout } = useAuth();
 
   const handleLogOut = async () => {
-    await logout()
-    setIsOpen(false)
-  }
+    await logout();
+    setIsOpen(false);
+  };
 
   let estado = JSON.parse(window.localStorage.getItem("array"))
   if(estado!== null){estado=estado.reverse()}

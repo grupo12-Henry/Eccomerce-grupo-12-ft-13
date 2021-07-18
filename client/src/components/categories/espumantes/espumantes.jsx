@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
-import Footer from '../../footer/footer'
+import Footer from "../../footer/footer";
+import Loading from "../../loading/Loading";
 
 function Espumantes() {
     const dispatch = useDispatch();
@@ -17,37 +18,67 @@ function Espumantes() {
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
 
-    const showProducts = allProducts.filter(el => el.type === 'Espumantes').slice(conteoInicial, conteoFinal);
-
-    let subCategories = []
-    let counts = {}
-    product.filter(el => el.type === 'Espumantes').map(e => e.subcategories.forEach(c => ((subCategories.indexOf(c) === -1) ? subCategories.push(c) : null)))
+  const showProducts = allProducts
+    .filter((el) => el.type === "Espumantes")
+    .slice(conteoInicial, conteoFinal);
 
     product.filter(el => el.type === 'Espumantes').map(e => e.subcategories.forEach((el) => {
+  // let subCategories = [];
+  // let counts = {};
+  // product
+  //   .filter((el) => el.type === "Espumantes")
+  //   .map((e) =>
+  //     e.subcategories.forEach((c) =>
+  //       subCategories.indexOf(c) === -1 ? subCategories.push(c) : null
+  //     )
+  //   );
+
+  // product
+  //   .filter((el) => el.type === "Espumantes")
+  //   .map((e) =>
+  //     e.subcategories.forEach((el) => {
         counts[el] = counts[el] ? (counts[el] += 1) : 1;
-    }));
+      })
+    );
 
-    useEffect(() => {
-        const dbProducts = () => {
-            dispatch(getProducts());
-        };
-        dbProducts();
-    }, [dispatch]);
+  const countsSorted = Object.entries(counts).sort(([, b], [_, a]) => a - b);
 
-    useEffect(() => {
-        const dbProducts = () => {
-            setAllProducts(product);
-        };
-        dbProducts();
-    }, [product]);
+  console.log(countsSorted);
+  // console.log(subCategories)
 
+  useEffect(() => {
+    const dbProducts = () => {
+      dispatch(getProducts());
+    };
+    dbProducts();
+  }, [dispatch]);
 
-    if (numberPage < 1) setnumberPage(1);
-    if (numberPage > 3) setnumberPage(3);
+  useEffect(() => {
+    const dbProducts = () => {
+      setAllProducts(product);
+    };
+    dbProducts();
+  }, [product]);
+
+  if (numberPage < 1) setnumberPage(1);
+  if (numberPage > 3) setnumberPage(3);
+
+  const handleCategories = () => {
+    setAllProducts(product);
+  };
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 400);
+  }, []);
 
     const addToCart = (id) => {
         dispatch(addProductCart(id))
     }
+    if (!loading) {
+      return <Loading />;
+    } else {
   return (
       <>
           <Nav />
@@ -123,6 +154,7 @@ function Espumantes() {
           <Footer />
       </>
   );
+}
 }
 
 export default Espumantes;

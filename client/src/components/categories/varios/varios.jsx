@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
-import Footer from '../../footer/footer'
+import Footer from "../../footer/footer";
+import Loading from "../../loading/Loading";
 
 function Varios() {
   const dispatch = useDispatch();
@@ -44,6 +45,15 @@ function Varios() {
   const addToCart = (id) => {
       dispatch(addProductCart(id))
   }
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 400);
+  }, []);
+
+  if (!loading) {
+    return <Loading />;
+  } else {
 return (
   <>
     <Nav />
@@ -121,5 +131,6 @@ return (
         <Footer />
       </>
   );
+}
 }
 export default Varios;
