@@ -122,9 +122,5 @@ export default function Dashboard() {
       )}
       <Footer />
     </>
-<<<<<<< HEAD
-  )
-=======
   );
->>>>>>> 4f5f434c6d260afb50af97507b70364d75fc648b
 }
