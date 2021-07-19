@@ -87,7 +87,7 @@ function GestionProductos() {
                 </thead>
                 <tbody>
                     {
-                        AllProducts.map(prod => (
+                        AllProducts.length? AllProducts.map(prod => (
                             <tr>
                             <th scope="row">{prod.id}</th>
                             <td>{prod.name}</td>
@@ -107,7 +107,7 @@ function GestionProductos() {
                               </button>
                             </td>
                             </tr>
-                        ))
+                        )) : null
                     }
                 </tbody>
             </table>
