@@ -148,7 +148,7 @@ function Vinos() {
                                 </div>
                             </div>
                         </div>
-                      ))
+                      
             </div>
           </div>
         </StyledDiv>

@@ -17,8 +17,7 @@ import {
   GET_LOCAL_STORAGE,
   GET_ALL_USERS,
   PEDIDOSUSER,
-  POST_USER,
-  SET_LOADING_TO_TRUE
+  POST_USER
 } from '../actions'
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -32,7 +31,7 @@ const initialState = {
   pedidoDetail: {},
   AllClients: [],
   ClientDetails: {},
-  pedidosUser: {},
+  pedidosUser: [],
   productCart: [],
   arrayStorages: [],
   user:{},
@@ -51,6 +50,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         carritoState: !state.carritoState
       };
+
     case GETCARDS:
       return {
         ...state,
@@ -118,39 +118,38 @@ const rootReducer = (state = initialState, action) => {
         pedidosUser: action.payload
       };
 
-      case ADD_TO_CART:
-        console.log("act pay", action.payload)
-              let nuevoItem = state.products.find(prod => ((prod.id === action.payload)||prod.id===action.payload.id||console.log('marquitos', prod.id)))
-              let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
+    case ADD_TO_CART:
+      console.log("act pay", action.payload)
+      let nuevoItem = state.products.find(prod => ((prod.id === action.payload)||prod.id===action.payload.id||console.log('marquitos', prod.id)))
+      let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
+      console.log('nuevo item', nuevoItem, a)
+      if (a.length) {
+         nuevoItem = {
+          ...nuevoItem,
+          cantidad: (parseInt(a[0].cantidad) + 1)
+        }
+        
+        state = {
+          ...state,
+          productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
+        }
+        let array = JSON.parse(window.localStorage.getItem("array"));
+        // window.localStorage.setItem('array', array.filter(e=> (Array.isArray(e)?(e.filter(d=>d.id!== nuevoItem.id)): e.id!==undefined)))
       
-              if (a.length) {
-                 nuevoItem = {
-                  ...nuevoItem,
-                  cantidad: (parseInt(a[0].cantidad) + 1)
-                }
-                
-                state = {
-                  ...state,
-                  productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
-                }
-                let array = JSON.parse(window.localStorage.getItem("array"));
-                // window.localStorage.setItem('array', array.filter(e=> (Array.isArray(e)?(e.filter(d=>d.id!== nuevoItem.id)): e.id!==undefined)))
-              
-              }
-              if (!a.length) {
-                nuevoItem = {
-                  ...nuevoItem,
-                  cantidad: 1
-                }
-              }
-              let array = JSON.parse(window.localStorage.getItem("array"));
-
-              window.localStorage.setItem("array", JSON.stringify((!!array )? array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
-               console.log(JSON.parse(window.localStorage.getItem("array")))
-              return {
-                ...state,
-                productCart: state.productCart.concat(nuevoItem)
-              }
+      }
+      if (!a.length) {
+        nuevoItem = {
+          ...nuevoItem,
+          cantidad: 1
+        }
+      }
+      let array = JSON.parse(window.localStorage.getItem("array"));
+      window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
+      // console.log(JSON.parse(window.localStorage.getItem("array")))
+      return {
+        ...state,
+        productCart: state.productCart.concat(nuevoItem)
+      };
       /* case ADD_LOCAL_STORAGE:{
       return {
         ...state,
@@ -209,12 +208,10 @@ const rootReducer = (state = initialState, action) => {
           productCart: []
         };
       case GET_LOCAL_STORAGE: {
-        const array = JSON.parse(window.localStorage.getItem("array"));
-        const user = JSON.parse(window.localStorage.getItem("user"));
+        const array = JSON.parse(window.localStorage.getItem("santi"));
         return {
           ...state,
-          user: user,
-          productCart: array ? state.productCart.concat(array) : state.productCart
+          productCart: array ? state.productCart.slice().concat([array]) : state.productCart
         }
       }
       case ADD_LOCAL_STORAGE: {
@@ -239,7 +236,15 @@ const rootReducer = (state = initialState, action) => {
       }
     }
 
-    
+    case GET_LOCAL_STORAGE: {
+        const array = JSON.parse(window.localStorage.getItem("array"));
+
+        return {
+          ...state,
+          user: JSON.parse(window.localStorage.getItem('user')),
+          arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
+        }
+      }
       case DELETE_LOCAL_STORAGE:{
         const array= JSON.parse(window.localStorage.getItem('array'));
         const arrayfiltrado= array&&array.filter(element=>element.id!==action.payload);

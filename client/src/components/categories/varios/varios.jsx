@@ -107,7 +107,7 @@ return (
                                                   <div class="text-muted mb-3">34 reviews</div>
                                                   <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                                         <i class="fa fa-cart-plus mr-2">Agregar</i> 
-                                                   </button>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
