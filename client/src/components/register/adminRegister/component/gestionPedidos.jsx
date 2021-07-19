@@ -157,7 +157,7 @@ function GestionPedidos() {
             handlePedidoDetail(detalleId)}
             }>Buscar</button> */}
 
-        <div class='container' className='jah288'>
+        <div class='container' >
             <form>
             <ol>
                 <li class='form-inline'><span>Pedido Numero: </span>{pedidoDetail.id&&
@@ -270,7 +270,7 @@ function GestionPedidos() {
         </div>
 
         <h3>Modificar un pedido</h3>
-        <div class='container' className='jah288'>
+        <div class='container' >
             <form onSubmit={(e) => handlePedidosSubmit(e)}>
                 <ol>
                 <li>
@@ -371,7 +371,7 @@ function GestionPedidos() {
                 </li>
                 </ol>
 
-                <button class="btn btn-danger mb-9" onClick={(e) => { handlePedidosSubmit(e)}}>Confirmar modificación</button>
+                <button class="btn btn-primary btn-lg btn-block mt-2 mb-9" onClick={(e) => { handlePedidosSubmit(e)}}>Confirmar modificación</button>
             </form>
         </div>
         </div>

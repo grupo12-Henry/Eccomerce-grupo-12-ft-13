@@ -196,7 +196,19 @@ export function getProducts() {
 
 export function postUsuarios(usuario) {
   return (dispatch) => {
+    console.log('esto llega a la action:', usuario)
     axios.post('http://localhost:3001/admin/clientesPost', usuario)
+    .then((response) => {
+      if (response) alert('El usuario se creó correctamente');
+      console.log(response);
+      dispatch({
+        type: 'USER_CREATED',
+        payload: response.data
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 }
 
@@ -207,6 +219,7 @@ export function postUsuarios(usuario) {
       console.log(id, usuario)
       axios.put("http://localhost:3001/admin/users/" + id, usuario)
       .then((response) => {
+        if(response) alert('El usuario se modificó correctamente')
         dispatch({
           type: PUT_USER,
           payload: response.data
@@ -220,6 +233,12 @@ export function postUsuarios(usuario) {
   
   export function deleteUsuarios(id) {
     axios.delete(`http://localhost:3001/admin/client/${id}`)
+    .then((response) => {
+      if(response) alert('El usuario se borró correctamente')
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
   
   //PRODUCTOS POST, PUT, DELETE Y GET DETAILS
