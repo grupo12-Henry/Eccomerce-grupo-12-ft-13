@@ -15,24 +15,34 @@ const {
 //modelos acá:
 
 const router = Router();
-router.get('/pedidos/filter', async (req, res) => { //envia todos los pedidos con el estado especificado
-	const valor = req.query.valor;
 
-	try {
-		if (!!valor) {
-			const product = await Order.findAll({
-				where: {
-					state: valor
-				}
-			})
 
-			res.send(product).status(200)
-		} else {
-			res.send('ingresar clave-valor').status(400)
-		}
-	} catch (error) {
-		res.send(error).status(404)
-	}
+router.get('/userMail', async (req, res)=>{
+    const mail = req.query.mail;
+    const user = await Client.findOne({where: {mail}})
+    user&&res.send(user)||res.sendStatus(400)
+})
+
+
+router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
+    const valor = req.query.valor;
+
+    try {
+        if (!!valor) {
+            const product = await Order.findAll({
+               where: {
+                   state:valor
+               }
+            })
+            
+            res.send(product).status(200)
+        } else {
+            res.send('ingresar clave-valor').status(400)
+        }
+    } catch (error) {
+        res.send(error).status(404)
+    }
+
 
 })
 router.get('/detallePedido/:id', async (req, res) => { //envia detalle de un pedido

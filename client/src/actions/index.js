@@ -241,7 +241,97 @@ export function postUsuarios(usuario) {
       .catch((err) => {
         console.log(err);
       });
-    };
+
+  };
+}
+// export async function editProduct(id, payload) {
+//   await axios.put('http://localhost:3001/admin/productos/' + id, payload)
+export async function editProduct(id, payload) {
+  await axios.put("http://localhost:3001/admin/productos/" + id, payload)
+    .then((response) => {
+      if (response) alert('El producto se modificó correctamente');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+// export async function deleteProduct(id) {
+//   await axios.delete(`http://localhost:3001/admin/producto/${id}`)
+export async function deleteProduct(id) {
+  await axios.delete(`http://localhost:3001/admin/producto/${id}`)
+    .then((response) => {
+      if (response) alert('El producto se eliminó correctamente');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+//PEDIDOS
+export function getAllPedidos() {
+  return (dispatch) => {
+    axios.get('http://localhost:3001/admin/pedidos/all')
+      .then(response => {
+        dispatch({
+          type: GETALLPEDIDOS,
+          payload: response.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+};
+export function getUser(mail){
+  return (dispatch) => {
+    axios.get('http://localhost:3001/admin/userMail?mail='+mail)
+    .then(response => dispatch({type:POST_USER, payload:response.data}) )
+  }
+}
+export function getPedidosByState(state) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost:3001/admin/pedidos/filter?valor=" + state)
+        .then(response => {
+          dispatch({
+            type: GETPEDIDOSBYSTATE,
+            payload: response.data
+          })
+        })
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
+};
+
+export function addLocalStorage(payload) {
+  return {
+    type: ADD_LOCAL_STORAGE,
+    payload
+  };
+};
+
+export function deleteLocalStorage(payload) {
+  return {
+    type: DELETE_LOCAL_STORAGE,
+    payload
+  };
+}
+
+export function getPedidoDetail(id) {
+  return (dispatch) => {
+    axios.get('http://localhost:3001/admin/detallePedido/' + id)
+      .then(response => {
+        dispatch({
+          type: GETPEDIDODETAIL,
+          payload: response.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
   }
   // export async function editProduct(id, payload) {
     //   await axios.put('http://localhost:3001/admin/productos/' + id, payload)
