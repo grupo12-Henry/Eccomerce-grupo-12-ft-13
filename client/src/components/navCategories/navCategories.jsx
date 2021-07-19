@@ -1,4 +1,5 @@
 import React from 'react'
+import './navCategories.css';
 
 export default function navCategories() {
     return (
