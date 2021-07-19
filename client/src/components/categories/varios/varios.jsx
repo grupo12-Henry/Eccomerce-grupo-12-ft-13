@@ -77,7 +77,7 @@ return (
                         <div class="row">
                             {showProducts &&
                                 showProducts.map(el =>
-                                (
+                                    {return el.stock>0?<>
                                     <div class="col-md-4 mt-2">
                                         <div class="card">
                                                 <div class="card-body">
@@ -111,7 +111,7 @@ return (
                                             </div>
                                         </div>
                                     </div>
-                                ))}
+                               </>: null})}
                         </div>
                         <div class="justify-content-center">
                             <button id='botonazo'className='btn btn-dark ml-2 mt-1' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>

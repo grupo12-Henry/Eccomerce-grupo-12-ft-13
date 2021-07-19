@@ -339,7 +339,6 @@ export function putPedido(id, payload) {
       try{
         axios.post('http://localhost:3001/admin/clientesPost',obj)
       .then((response)=>{
-      console.log(response.data);
       window.localStorage.setItem("user",JSON.stringify(response.data));  
         return dispatch({ type:POST_USER,Payload:response.data})})
       }catch(err){

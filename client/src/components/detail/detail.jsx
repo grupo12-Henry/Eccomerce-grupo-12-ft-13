@@ -24,7 +24,7 @@ useEffect(() => {
   }, [getDetail, match.params.id]);
 
   const addToCart = (data) => {
-    dispatch(addProductCart(data))
+   detail.stock>0&& dispatch(addProductCart(data))
   }
   useEffect(() => {
     setDetail(product)
@@ -52,6 +52,9 @@ useEffect(() => {
               <hr></hr>
               <p id='description'>{detail.Description}</p>
               <hr></hr>
+              {detail.stock===0?<div><span>No hay Stock Suficiente</span>
+               <hr></hr></div>:null}
+             
               <h2 id='price'>$ {detail.price}</h2>
               <div className='f d-center'>
             <button type="button" onClick={() => addToCart(detail.id, console.log('5', detail.id))} class="btn bg-cart">
