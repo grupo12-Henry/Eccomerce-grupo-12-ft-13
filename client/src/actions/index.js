@@ -273,6 +273,12 @@ export function getAllPedidos() {
       })
   }
 };
+export function getUser(mail){
+  return (dispatch) => {
+    axios.get('http://localhost:3001/admin/userMail?mail='+mail)
+    .then(response => dispatch({type:POST_USER, payload:response.data}) )
+  }
+}
 export function getPedidosByState(state) {
   return async (dispatch) => {
     try {
