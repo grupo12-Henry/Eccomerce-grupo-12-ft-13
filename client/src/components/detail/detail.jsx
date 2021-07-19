@@ -53,11 +53,14 @@ useEffect(() => {
               <p id='description'>{detail.Description}</p>
               <hr></hr>
               <h2 id='price'>$ {detail.price}</h2>
-            </div>
+              <div className='f d-center'>
             <button type="button" onClick={() => addToCart(detail.id, console.log('5', detail.id))} class="btn bg-cart">
               {/* addToCart(detail) */}
               <i class="fa fa-cart-plus mr-2">Agregar</i>
             </button>
+            </div>
+            
+            </div>
           </section>
         </StyledDiv>
         <Footer />

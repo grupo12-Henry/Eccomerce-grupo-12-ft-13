@@ -24,6 +24,7 @@ export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS";
 export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const PEDIDOSUSER = 'PEDIDOSUSER';
 export const CARRITO = 'CARRITO'
+export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 
 // export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
 // export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
@@ -32,12 +33,11 @@ export function carritoEstado() {
   return {
     type: CARRITO,
   };
-
 }
 
 export function getpedidosUser(id) {
   return (dispatch) => {
-    axios.get(`http://localhost:3001/pedidos/${id}`)
+    axios.get(`http://localhost:3001/admin/users/id/${id}`)
       .then(response => {
         dispatch({
           type: PEDIDOSUSER,

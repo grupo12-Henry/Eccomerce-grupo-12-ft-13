@@ -8,7 +8,10 @@ export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
   const pedidos = useSelector((state) => state.pedidosUser);
   const detallePedido = useSelector((state) => state.pedidoDetail);
+  //PEDIDOS ES CLIENTDETAILS DE JULI
   const [ordenes, setOrdenes] = useState();
+
+  console.log("DETALLE PEDIDO", detallePedido);
 
   useEffect(() => {
     const orders = () => {
@@ -18,24 +21,31 @@ export default function MisPedidos({ match }) {
   }, [getpedidosUser, dispatch, match.params.id]);
 
   useEffect(() => {
-    const ordersSet = () => {
+    const orderSetting = () => {
       setOrdenes(pedidos);
     };
-    ordersSet();
+    orderSetting();
   }, [pedidos]);
+
+  console.log(
+    "LAS ORDENES",
+    ordenes?.orders?.map((el) => el.products.map((el) => el))
+    // el.image, el.name;
+  );
 
   const insertDetail = (e) => {
     dispatch(getPedidoDetail(e.target.value));
     dispatch(getpedidosUser(e.target.value));
+    console.log(e.target.value);
   };
 
   return (
     <>
       <Nav />
       <div class="container">
-        <div class="containter mt-05 ml-3 mr-03 mb-3">
+        <div class="containter mt-05 ml-3 mr-03 mb-3" style={{width: 'inherit'}}>
           <h3 class="mt-03 ml-3 mr-03 mb-3">Ver mis pedidos</h3>
-          <div class="table-responsive">
+          <div class="table-responsive" style={{overflow: 'hidden', textAlign:'center'}}>
             <table
               class="table table-sm table-bordered mt-05 ml-3 mr-03 mb-3 "
               data-toggle="table"
@@ -45,11 +55,11 @@ export default function MisPedidos({ match }) {
             >
               <thead>
                 <tr>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">N° de Pedido</th>
-                  <th scope="col">Total</th>
-                  <th scope="col">Ver detalle</th>
-                  <th scope="col">Repetir compra</th>
+                  <th scope="col">FECHA</th>
+                  <th scope="col">N° PEDIDO</th>
+                  <th scope="col">TOTAL</th>
+                  <th scope="col">VER DETALLE</th>
+                  <th scope="col">REPETIR COMPRA</th>
                 </tr>
               </thead>
               <tbody>
@@ -72,16 +82,16 @@ export default function MisPedidos({ match }) {
                         </button>
                       </td>
                       <td>
-                        <button
-                          class="btn btn-sm btn-info"
-                          value={""}
-                          onClick={(e) => {
-                            e.preventDefault();
-                          }}
-                        >
-                          CONFIRMAR
-                        </button>
-                      </td>
+                          <button
+                            class="btn btn-sm btn-info"
+                            value={""}
+                            onClick={(e) => {
+                              e.preventDefault();
+                            }}
+                          >
+                            CONFIRMAR
+                          </button>
+                        </td>
                     </tr>
                   );
                 })}
@@ -97,43 +107,48 @@ export default function MisPedidos({ match }) {
             >
               <thead>
                 <tr>
-                  <th scope="col">IMAGEN</th>
+                  <th scope="col-md 3">IMAGEN</th>
                   <th scope="col">NOMBRE</th>
                   <th scope="col">CANTIDAD</th>
                   <th scope="col">SUBTOTAL</th>
                   <th scope="col">AGREGAR</th>
+                  
                 </tr>
               </thead>
               <tbody>
-                {detallePedido?.products?.map((el) => {
-                  return (
-                    <tr>
-                      <th scope="row">
-                        <img style={{ width: "15%" }} src={el.image} />
-                      </th>
-                      <td>{el.name}</td>
+                {detallePedido?.products?.map((el) =>
+                   {
+                    return (
+                      <tr>
+                        <th scope="row" style={{width: '20%'}}><img style={{width:'25%'}}src={el.image}/></th>
+                        <td>{el.name}</td>
                       <td>{el.order_detail.cantidad}</td>
                       <td>{el.order_detail.subTotal}</td>
                       <td>
-                        <label for="vehicle1">
-                          AGREGAR
-                          <input
-                            onChange={"FUNCTION PARA AGREGAR AL CARRITO"}
-                            type="checkbox"
-                            id="vehicle1"
-                            name="vehicle1"
-                            value="Bike"
-                          ></input>
-                        </label>
-                      </td>
-                    </tr>
-                  );
-                })}
+                          <label for="vehicle1">
+                            AGREGAR
+                            <input
+                              style={{marginLeft:'10%'}}
+                              onChange={"FUNCTION PARA AGREGAR AL CARRITO"}
+                              type="checkbox"
+                              id="vehicle1"
+                              name="vehicle1"
+                              value="Bike"
+                            ></input>
+                          </label>
+                        </td>
+                        
+                      </tr>
+                    );
+                  })
+                }
               </tbody>
             </table>
           </div>
         </div>
       </div>
+
+    
 
       <Footer />
     </>
