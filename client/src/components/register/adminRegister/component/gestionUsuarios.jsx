@@ -9,15 +9,12 @@ function GestionUsuarios() {
     const dispatch = useDispatch();
 
     useEffect(() => { 
-        console.log(AllClients)
-    }, [AllClients]);
-
-    useEffect(() => { 
         dispatch(getAllUsers());
     }, []);
 
     //A partir de aca es lo que estaba codeado.
     const [user, setUser] = useState({ 
+        id:'',
         name: '',
         lastName: '',
         phone: '',
@@ -36,26 +33,26 @@ function GestionUsuarios() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         //setSubmit(true)
-        console.log(user)
         dispatch(postUsuarios(user))
-        // alert('Usuario Creado')
+        alert('Usuario Creado')
     }
 
     const putSubmit = (ClientDetails, user) => {
-        console.log(ClientDetails.id, 'user:', user)
-
         dispatch(putUsuarios(ClientDetails.id, user))
+        alert('Usuario modificado')
     }
 
     const insertClientInfo = (e) => {
         dispatch(getUserDetails(e.target.value))
+        console.log('Pega Aca');
     }
 
     const deleteSubmit = (e) => {
         if(window.confirm('¿Esta seguro de que desea borrar este usuario? Esta operación no se puede deshacer.')) {
-           deleteUsuarios(e.target.value)
+            deleteUsuarios(e.target.value)
+            alert('Usuario borrado')
         } 
     }
 
@@ -186,7 +183,7 @@ function GestionUsuarios() {
                     </input> */}
 
                     {/* <label>Permisos: </label> */}
-                    <select class="form-control mt-2 ml-5" name="admin" onChange={handleUser}>
+                    <select class="form-control mt-2 ml-5" name="admin" value={user.admin} onChange={handleUser}>
                         <option key='false' value='false'>Usuario</option>
                         <option key='true' value='true'>Admin</option>
                     </select>
@@ -254,7 +251,7 @@ function GestionUsuarios() {
                         value={user.admin}>
                     </input> */}
                     {/* <label>Permisos: </label> */}
-                    <select class="form-control mt-2 ml-5" name="admin" onChange={handleUser}>
+                    <select class="form-control mt-2 ml-5" name="admin" value={user.admin} onChange={handleUser}>
                         <option key='false' value='false'>Usuario</option>
                         <option key='true' value='true'>Admin</option>
                     </select>
