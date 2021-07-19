@@ -17,7 +17,8 @@ import {
   GET_LOCAL_STORAGE,
   GET_ALL_USERS,
   PEDIDOSUSER,
-  POST_USER
+  POST_USER,
+  SET_LOADING_TO_TRUE
 } from '../actions'
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -31,7 +32,7 @@ const initialState = {
   pedidoDetail: {},
   AllClients: [],
   ClientDetails: {},
-  pedidosUser: [],
+  pedidosUser: {},
   productCart: [],
   arrayStorages: [],
   user:{},
@@ -50,7 +51,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         carritoState: !state.carritoState
       };
-
     case GETCARDS:
       return {
         ...state,
@@ -209,9 +209,10 @@ const rootReducer = (state = initialState, action) => {
         };
       case GET_LOCAL_STORAGE: {
         const array = JSON.parse(window.localStorage.getItem("array"));
+        const user = JSON.parse(window.localStorage.getItem("user"));
         return {
           ...state,
-          user:JSON.parse(window.localStorage.getItem("user")),
+          user: user,
           productCart: array ? state.productCart.slice().concat([array]) : state.productCart
         }
       }

@@ -10,13 +10,13 @@ import '../signUp/signup.css'
 
 export default function Signup({ onClose }) {
   const [user, setUser] = useState({ 
-    
    name: '',
    lastName:'',
    phone:'',
    adress:'',
    state:'',
    mail: '',
+   city:'',
    
 })
 const handleUser = (e) => {
@@ -104,7 +104,7 @@ const dispatch =useDispatch();
                   </div>
                   <div className='email'>
                   <label>Localidad:</label>
-                  <input  className='input_email' type="text" name="localidad" ref={localidadRef}></input>
+                  <input  className='input_email' type="text" name="localidad" value={user.city}ref={localidadRef}></input>
                   </div>
                   <div className='email'>
                   <label>Codigo Postal:</label>

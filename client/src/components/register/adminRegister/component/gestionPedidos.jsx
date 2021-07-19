@@ -152,7 +152,7 @@ function GestionPedidos() {
             handlePedidoDetail(detalleId)}
             }>Buscar</button>
 
-        <div class='container'>
+        <div class='container' className='jah287'>
             <ol>
                 <li><span>Pedido Numero: {pedidoDetail.id}</span></li>
                 <li><span>Cliente Numero: {pedidoDetail.clientId}</span></li>

@@ -62,10 +62,10 @@ const Nav = () => {
           <i className="text-envio">Envíos sin cargo a CABA y GBA</i>
           <ul className="row">
             <a href="https://wa.link/" className="col-2" target='_blank' rel='noreferrer'>
-              <img alt="whatsapp img" src={whatsapp} width="22px" />
+              <img alt="whatsapp img" src={whatsapp} width="20px" height="20px" />
             </a>
             <a href="https://www.facebook.com/" className="col-2" target='_blank' rel='noreferrer'>
-              <img alt="facebook img" src={facebook} width="20px" />
+              <img alt="facebook img" src={facebook} style={{width: 'inherit'}} />
             </a>
             <a href="https://www.instagram.com/" className="col-2" target='_blank' rel='noreferrer'>
               <img alt="instagram img" src={instagram} width="20px" />

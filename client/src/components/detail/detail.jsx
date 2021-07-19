@@ -56,12 +56,14 @@ useEffect(() => {
                <hr></hr></div>:null}
              
               <h2 id='price'>$ {detail.price}</h2>
-              
-            </div>
-            <button disabled={detail.stock>0} type="button" onClick={() => addToCart(detail.id, console.log('5', detail.id))} class="btn bg-cart">
-              {detail.stock>0}
-              <i disabled={detail.stock>0} class="fa fa-cart-plus mr-2">Agregar</i>
+              <div className='f d-center'>
+            <button type="button" onClick={() => addToCart(detail.id, console.log('5', detail.id))} class="btn bg-cart">
+              {/* addToCart(detail) */}
+              <i class="fa fa-cart-plus mr-2">Agregar</i>
             </button>
+            </div>
+            
+            </div>
           </section>
         </StyledDiv>
         <Footer />
