@@ -84,6 +84,7 @@ const rootReducer = (state = initialState, action) => {
       };
       
       case POST_USER:
+        window.localStorage.setItem('user',JSON.stringify(action.payload))
        return {
          ...state,
          user: action.payload
@@ -219,18 +220,7 @@ const rootReducer = (state = initialState, action) => {
           productCart: array ? state.productCart.slice().concat([array]) : state.productCart
         }
       }
-      case ADD_LOCAL_STORAGE: {
-        const array = JSON.parse(window.localStorage.getItem("array"));
-        window.localStorage.setItem(
-          "array",
-          JSON.stringify(
-            array ?
-            array.concat([action.payload]) :
-            state.arrayStorages.concat([action.payload])
-          )
-        );
-        return ('no se esta usando')
-      };
+      
     case DELETE_LOCAL_STORAGE: {
       const array = JSON.parse(window.localStorage.getItem('array'));
       const arrayfiltrado = array && array.filter(element => element.id !== action.payload);
