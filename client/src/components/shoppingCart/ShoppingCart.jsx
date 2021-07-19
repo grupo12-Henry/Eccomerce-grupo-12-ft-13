@@ -84,7 +84,7 @@ function ShoppingCart(props) {
             <hr />
             <article class='box'>
               {cart.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 
-                <CartItem className='Article' key={index} data={item} delFromCart={delFromCart} />
+                <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart} />
                 : console.log(item)) : null}
             </article>
             <hr />
