@@ -106,7 +106,11 @@ function Vinos() {
                                 <div class="row">
                                     {showProducts &&
                                         showProducts.map(el =>
+<<<<<<< HEAD
                                         (showProducts.length>1?
+=======
+                                          {return el.stock>0?<>
+>>>>>>> main
                                             <div class="col-md-4 mt-2">
                                                 <div class="card">
                                                     <div class="card-body">
@@ -125,7 +129,7 @@ function Vinos() {
                                                         <div class="mb-2">
                                                             <h6 class="font-weight-semibold mb-2">
                                                                 <a
-                                                                    href=""
+                                                                    href={`/detail/${el.id}`}
                                                                     class="text-default mb-2"
                                                                     data-abc="true"
                                                                 >
@@ -134,6 +138,7 @@ function Vinos() {
                                                             </h6>{" "}
                                                         </div>
                                                         <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
+<<<<<<< HEAD
                                                         <div class="text-muted mb-3">34 reviews</div>
                                                         <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                                             <i class="fa fa-cart-plus mr-2"></i> Agregar
@@ -167,6 +172,8 @@ function Vinos() {
                                                             </h6>{" "}
                                                         </div>
                                                         <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
+=======
+>>>>>>> main
                                                         <div class="text-muted mb-3">34 reviews</div>
                                                         <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                                             <i class="fa fa-cart-plus mr-2"></i> Agregar
@@ -174,7 +181,7 @@ function Vinos() {
                                                     </div>
                                                 </div>
                                             </div>
-                                        ))}
+                                        </>: null})}
                                 </div>
                                 <div class="justify-content-center">
                                     <button className='btn btn-dark ml-2 mt-1' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>

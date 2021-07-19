@@ -77,7 +77,7 @@ return (
                         <div class="row">
                             {showProducts &&
                                 showProducts.map(el =>
-                                (
+                                    {return el.stock>0?<>
                                     <div class="col-md-4 mt-2">
                                         <div class="card">
                                                 <div class="card-body">
@@ -95,7 +95,7 @@ return (
                                                 <div class="card-body bg-light text-center">
                                                     <div class="mb-2">
                                                         <h6 class="font-weight-semibold mb-2">
-                                                            <a href=""
+                                                            <a href={`/detail/${el.id}`}
                                                                 class="text-default mb-2"
                                                                 data-abc="true"
                                                             >
@@ -104,14 +104,19 @@ return (
                                                         </h6>{" "}
                                                     </div>
                                                     <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
+<<<<<<< HEAD
                                                 <div class="text-muted mb-3">34 reviews</div>
                                                 <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
+=======
+                                                  <div class="text-muted mb-3">34 reviews</div>
+                                                  <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
+>>>>>>> main
                                                         <i class="fa fa-cart-plus mr-2">Agregar</i> 
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
-                                ))}
+                               </>: null})}
                         </div>
                         <div class="justify-content-center">
                             <button id='botonazo'className='btn btn-dark ml-2 mt-1' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>

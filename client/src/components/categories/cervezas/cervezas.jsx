@@ -103,7 +103,7 @@ function Cervezas() {
                   <div class="row">
                     {showProducts &&
                       showProducts.map(el =>
-                      (
+                        {return el.stock>0?<>
                         <div class="col-md-4 mt-2">
                           <div class="card">
                             <div class="card-body">
@@ -122,7 +122,7 @@ function Cervezas() {
                               <div class="mb-2">
                                 <h6 class="font-weight-semibold mb-2">
                                   <a
-                                    href=""
+                                    href={`/detail/${el.id}`}
                                     class="text-default mb-2"
                                     data-abc="true"
                                   >
@@ -138,7 +138,7 @@ function Cervezas() {
                             </div>
                           </div>
                         </div>
-                      ))}
+                      </>: null})}
                   </div>
                   <div class="justify-content-center">
                     <button

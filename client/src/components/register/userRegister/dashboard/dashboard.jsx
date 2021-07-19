@@ -32,7 +32,7 @@ export default function Dashboard() {
   if (!loading) {
     return <Loading />;
   }
-  console.log(user)
+  console.log('usuario',user)
   return (
     <>
       <Nav />
@@ -68,32 +68,28 @@ export default function Dashboard() {
                             <td>{user.lastName}</td>
                           </tr>
                           <tr>
-                            <td>Fecha de nacimiento</td>
-                            <td>01/24/1988</td>
+                            <td>Correo Electronico</td>
+                            <td>{user.mail}</td>
                           </tr>
                           <tr>
                             <td>Dirección</td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td>Email:</td>
-                            <td>
-                              <a href="mailto:info@support.com">
-                                <strong></strong>
-                              </a>
-                            </td>
+                            <td>{user.adress}</td>
                           </tr>
                           <tr>
                             <td>Teléfono</td>
-                            <td></td>
+                            <td>{user.phone}</td>
                           </tr>
                           <tr>
                             <td>Provincia</td>
-                            <td></td>
+                            <td>{user.state}</td>
                           </tr>
+                          <tr>
+                            <td>Ciudad</td>
+                            <td>{user.city}</td>
+                          </tr>{/* 
                           <a href="edit.html" style={{ textAlign: "center" }}>
                             Modificar datos
-                          </a>
+                          </a> */}
                         </tbody>
                       </table>
                       <div class="mb-5">

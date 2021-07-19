@@ -50,7 +50,6 @@ export default function Home({ location }) {
 		setTimeout(() => setLoading(true), 400)
 	}, [])
 
-
   if(!loading) {
     return (
       <Loading />
@@ -67,7 +66,8 @@ export default function Home({ location }) {
             <div class="container d-flex justify-content-center mt-50 mb-50">
               <div class="row">
                 {allProducts &&
-                  allProducts.length > 0 ? allProducts.slice((page - 1) * 9, page * 9).map((el) => (
+                  allProducts.length > 0 ? allProducts.slice((page - 1) * 9, page * 9).map((el) => {
+                   return el.stock>0?<>
                     <div class="col-md-4 mt-2">
                       <div class="card">
                         <div class="card-body">
@@ -102,7 +102,7 @@ export default function Home({ location }) {
                         </div>
                       </div>
                     </div>
-                  )) : null}
+                  </>: null}) : null}
               </div>
             </div>
           </div>
@@ -111,7 +111,6 @@ export default function Home({ location }) {
       <Pages product={product} page={page} />
       <Footer />
     </>
-
     )
   }
 }

@@ -102,7 +102,7 @@ function Espumantes() {
                               <div class="row">
                                   {showProducts &&
                                       showProducts.map(el =>
-                                      (
+                                        {return el.stock>0?<>
                                           <div class="col-md-4 mt-2">
                                               <div class="card">
                                                   <div class="card-body">
@@ -120,7 +120,7 @@ function Espumantes() {
                                                   <div class="card-body bg-light text-center">
                                                       <div class="mb-2">
                                                           <h6 class="font-weight-semibold mb-2">
-                                                              <a href="" class="text-default mb-2"
+                                                              <a href={`/detail/${el.id}`} class="text-default mb-2"
                                                                   data-abc="true">
                                                                   {el.name}
                                                               </a>
@@ -134,7 +134,7 @@ function Espumantes() {
                                                   </div>
                                               </div>
                                           </div>
-                                      ))}
+                                          </>: null})}
                               </div>
                               <div class="justify-content-center">
                                   <button id='botonazo' className='btn btn-dark ml-2 mt-1' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>

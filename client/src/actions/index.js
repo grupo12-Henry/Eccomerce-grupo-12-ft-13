@@ -24,6 +24,7 @@ export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS";
 export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const PEDIDOSUSER = 'PEDIDOSUSER';
 export const CARRITO = 'CARRITO'
+export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 
 // export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
 // export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
@@ -250,9 +251,22 @@ export function postUsuarios(usuario) {
         if (response) alert('El producto se modificó correctamente');
       })
       .catch((err) => {
-        console.log(err);
-      });
+        console.log(err)
+      })
     }
+  
+  export function createUser(obj){
+    return (dispatch)=>{
+      try{
+        axios.post('http://localhost:3001/admin/clientesPost',obj)
+      .then((response)=>{
+      window.localStorage.setItem("user",JSON.stringify(response.data));  
+        return dispatch({ type:POST_USER,Payload:response.data})})
+      }catch(err){
+        console.log(err);
+      };
+    }
+  }
     // export async function deleteProduct(id) {
       //   await axios.delete(`http://localhost:3001/admin/producto/${id}`)
       export async function deleteProduct(id) {
