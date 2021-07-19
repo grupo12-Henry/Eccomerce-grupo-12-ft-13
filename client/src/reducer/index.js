@@ -84,6 +84,7 @@ const rootReducer = (state = initialState, action) => {
       };
       
       case POST_USER:
+        window.localStorage.setItem('user',JSON.stringify(action.payload))
        return {
          ...state,
          user: action.payload
@@ -119,24 +120,22 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ADD_TO_CART:
-      console.log("act pay", action.payload)
       let nuevoItem = state.products.find(prod => ((prod.id === action.payload)||prod.id===action.payload.id||console.log('marquitos', prod.id)))
       let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
-      console.log('nuevo item', nuevoItem, a)
       if (a.length) {
          nuevoItem = {
           ...nuevoItem,
           cantidad: (parseInt(a[0].cantidad) + 1)
         }
-        
         state = {
           ...state,
           productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
         }
-        let array = JSON.parse(window.localStorage.getItem("array"));
+        // let array = JSON.parse(window.localStorage.getItem("array"));
+        // console.log(array, 'array')
         // window.localStorage.setItem('array', array.filter(e=> (Array.isArray(e)?(e.filter(d=>d.id!== nuevoItem.id)): e.id!==undefined)))
-      
-      }
+       }
+
       if (!a.length) {
         nuevoItem = {
           ...nuevoItem,
@@ -144,12 +143,19 @@ const rootReducer = (state = initialState, action) => {
         }
       }
       let array = JSON.parse(window.localStorage.getItem("array"));
-      window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
+      window.localStorage.setItem("array", JSON.stringify(array = state.productCart.concat(nuevoItem)))
+      // window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
+      // window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.filter(e => e.id !== nuevoItem.id)&& array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
+
       // console.log(JSON.parse(window.localStorage.getItem("array")))
+      console.log('carrito',state.productCart.concat(nuevoItem))
+      console.log('array localstorage:', array)
       return {
         ...state,
         productCart: state.productCart.concat(nuevoItem)
       };
+      // window.localStorage.setItem("array", JSON.stringify(array = state.productCart))
+
       /* case ADD_LOCAL_STORAGE:{
       return {
         ...state,
@@ -214,18 +220,7 @@ const rootReducer = (state = initialState, action) => {
           productCart: array ? state.productCart.slice().concat([array]) : state.productCart
         }
       }
-      case ADD_LOCAL_STORAGE: {
-        const array = JSON.parse(window.localStorage.getItem("array"));
-        window.localStorage.setItem(
-          "array",
-          JSON.stringify(
-            array ?
-            array.concat([action.payload]) :
-            state.arrayStorages.concat([action.payload])
-          )
-        );
-        return ('no se esta usando')
-      };
+      
     case DELETE_LOCAL_STORAGE: {
       const array = JSON.parse(window.localStorage.getItem('array'));
       const arrayfiltrado = array && array.filter(element => element.id !== action.payload);

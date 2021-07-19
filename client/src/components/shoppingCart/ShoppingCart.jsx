@@ -27,11 +27,16 @@ function ShoppingCart(props) {
   // }, [localStorage]);
 
   useEffect(() => {
-    const dbProducts = () => {
-      setAllProducts(product);
-    };
-    dbProducts();
-  }, [product]);
+    // console.log(localStorage)
+  }, [localStorage]);
+
+
+  // const dbProducts = () => {
+  //     setAllProducts(product);
+  //   };
+  //   dbProducts();
+  // }, [product]}
+
   // console.log('usuarioooooo', currentUser.metadata.a)
 
   const addToCart = (el) => {
@@ -40,11 +45,11 @@ function ShoppingCart(props) {
     console.log();
   };
 
-  useEffect(() => {
-    let aux = 0;
-    cart.forEach(e => aux = aux + (e.price * e.cantidad))
-    setMontoTotal(aux)
-  }, [cart])
+useEffect(() => {
+  let aux = 0;
+  cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
+  setMontoTotal(aux)
+}, [cart])
 
   
   const clearCart = () => {
@@ -52,6 +57,7 @@ function ShoppingCart(props) {
     dispatch(ClearCart())
   }
 
+// const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
   //idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad
 //  console.log('santiuser', user)
   
