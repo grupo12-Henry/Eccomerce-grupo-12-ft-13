@@ -122,7 +122,7 @@ function Cervezas() {
                               <div class="mb-2">
                                 <h6 class="font-weight-semibold mb-2">
                                   <a
-                                    href=""
+                                    href={`/detail/${el.id}`}
                                     class="text-default mb-2"
                                     data-abc="true"
                                   >
@@ -131,13 +131,6 @@ function Cervezas() {
                                 </h6>{" "}
                               </div>
                               <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
-                              <div>
-                                {" "}
-                                <i class="fa fa-star star">🍺</i>{" "}
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                              </div>
                               <div class="text-muted mb-3">34 reviews</div>
                               <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                 <i class="fa fa-cart-plus mr-2">Agregar</i>
