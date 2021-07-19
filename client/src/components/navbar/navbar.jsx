@@ -12,7 +12,6 @@ import cart from "../../assets/images/cart.png";
 import user from "../../assets/images/user.png";
 import Auto from "../searchbar/searchbar";
 import NavModal from "../navModal/navModal";
-import getUser from "../../actions/index"
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
@@ -22,13 +21,11 @@ import ShoppingCart from "../shoppingCart/ShoppingCart";
 // import { carritoEstado } from "../../actions";
 
 const Nav = () => {
-  const dispatch = useDispatch()
   const [isOpen, setIsOpen] = useState(false);
   const [carritoOn, setCarritoOn] = useState(false) 
   const productCart = useSelector((state) => state.productCart)
 
   const handleLogin = (e) => {
-
     e.preventDefault();
     setIsOpen(true);
   };
@@ -36,7 +33,6 @@ const Nav = () => {
   const { currentUser, logout } = useAuth();
 
   const handleLogOut = async () => {
-    window.localStorage.removeItem('user')
     await logout();
     setIsOpen(false);
   };

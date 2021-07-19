@@ -1,13 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { useSelector, useDispatch  } from 'react-redux'
-import {getUser} from "../../../../actions/index"
 import { useAuth } from '../../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom'
 import { StyledDiv } from "./styled";
 
 
 export function validate(input) {
-    
     let errors = {}
 
     if (!input.email) {
@@ -25,7 +22,6 @@ export function validate(input) {
 };
 
 export default function Login({ onClose }) {
-    const dispatch = useDispatch()
     const emailRef = useRef()
     const passwordRef = useRef()
     const { login } = useAuth()
@@ -54,7 +50,6 @@ export default function Login({ onClose }) {
     }
 
     async function HandleSubmit(e) {
-        dispatch(getUser(emailRef.current.value))
         e.preventDefault()
         try {
             setError('')
