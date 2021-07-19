@@ -37,7 +37,8 @@ function App() {
     <React.Fragment>
       <AuthProvider>
         <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
-        <PrivateRouteUser component={Dashboard} exact path='/dashboard'/>
+        <PrivateRouteUser component={Dashboard} exact path='/micuenta/'/>
+        <PrivateRouteUser component={misPedidos} exact path='/micuenta/mispedidos/:id'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
         <PrivateRouteUser component={Delivery} path='/delivery'/>
         <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
@@ -45,8 +46,7 @@ function App() {
         <Route component={LandingPage} exact path='/'/>
         <Route component={Nav} exact path='/compras'/>
         <Route component={ShoppingCart} exact path='/compras'/>
-
-        {/* <Route component={Footer} exact path='/compras'/>  */}
+        <Route component={Footer} exact path='/compras'/> 
         <Route component={About} exact path='/about'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>
@@ -56,7 +56,6 @@ function App() {
         <Route component={Vinos} exact path='/vinos'/>
         <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/>
-        <Route component={misPedidos} exact path='/misPedidos'/>
         <Route component={Detail} exact path='/detail/:id'/>
       </AuthProvider>
     </React.Fragment>
@@ -64,6 +63,3 @@ function App() {
 };
 
 export default App;
-
-
-

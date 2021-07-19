@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
+import Loading from "../../../loading/Loading";
 
 export default function Dashboard() {
+  const user = useSelector((state) => state.user);
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  console.log(currentUser);
+
   const history = useHistory();
 
   async function handleLogout() {
@@ -20,7 +23,16 @@ export default function Dashboard() {
       setError("Failed to Log Out");
     }
   }
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 400);
+  }, []);
+
+  if (!loading) {
+    return <Loading />;
+  }
+  console.log('usuario',user)
   return (
     <>
       <Nav />
@@ -49,56 +61,57 @@ export default function Dashboard() {
                         <tbody>
                           <tr>
                             <td>Nombre:</td>
-                            <td>Matias</td>
+                            <td>{user.name}</td>
                           </tr>
                           <tr>
                             <td>Apellido:</td>
-                            <td>Romero</td>
+                            <td>{user.lastName}</td>
                           </tr>
                           <tr>
-                            <td>Fecha de nacimiento</td>
-                            <td>01/24/1988</td>
+                            <td>Correo Electronico</td>
+                            <td>{user.mail}</td>
                           </tr>
                           <tr>
                             <td>Dirección</td>
-                            <td>Kathmandu,Nepal</td>
-                          </tr>
-                          <tr>
-                            <td>Email:</td>
-                            <td>
-                              <a href="mailto:info@support.com">
-                                <strong>{currentUser.email}</strong>
-                              </a>
-                            </td>
+                            <td>{user.adress}</td>
                           </tr>
                           <tr>
                             <td>Teléfono</td>
-                            <td>123-4567-890(Landline)</td>
+                            <td>{user.phone}</td>
                           </tr>
+                          <tr>
+                            <td>Provincia</td>
+                            <td>{user.state}</td>
+                          </tr>
+                          <tr>
+                            <td>Ciudad</td>
+                            <td>{user.city}</td>
+                          </tr>{/* 
                           <a href="edit.html" style={{ textAlign: "center" }}>
                             Modificar datos
-                          </a>
+                          </a> */}
                         </tbody>
                       </table>
                       <div class="mb-5">
-                        <a href="/mispedidos" class="btn btn-dark">
+                        <Link to={`/micuenta/mispedidos/${user.id}`} class="btn btn-dark" ><a class="btn btn-dark">
                           Mis pedidos anteriores
                         </a>
+                        </Link>
                         <a href="#" class="btn btn-dark ml-5">
                           Mis favoritos
                         </a>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="panel-footer">
-                  <br />
-                  <Link to="/home" className="btn btn-dark mr-3">
-                    VOLVER
-                  </Link>
-                  <button className="btn btn-warning " onClick={handleLogout}>
-                    Cerrar Sesion
-                  </button>
+                  <div class="panel-footer">
+                    <br />
+                    <Link to="/home" className="btn btn-dark mr-3">
+                      VOLVER
+                    </Link>
+                    <button className="btn btn-warning " onClick={handleLogout}>
+                      Cerrar Sesion
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,7 +120,6 @@ export default function Dashboard() {
       ) : (
         <div className="container">Volvé a loguearte</div>
       )}
-
       <Footer />
     </>
   );

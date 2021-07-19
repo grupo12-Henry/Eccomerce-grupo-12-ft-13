@@ -44,12 +44,12 @@ export default function Home({ location }) {
     // showalert('Producto Agregado al carrito')
     dispatch(addProductCart(id))
   }
+ 
   const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		setTimeout(() => setLoading(true), 1000)
+		setTimeout(() => setLoading(true), 400)
 	}, [])
-
 
   if(!loading) {
     return (
@@ -67,7 +67,8 @@ export default function Home({ location }) {
             <div class="container d-flex justify-content-center mt-50 mb-50">
               <div class="row container-product">
                 {allProducts &&
-                  allProducts.length > 0 ? allProducts.slice((page - 1) * 9, page * 9).map((el) => (
+                  allProducts.length > 0 ? allProducts.slice((page - 1) * 9, page * 9).map((el) => {
+                   return el.stock>0?<>
                     <div class="col-md-4 mt-2">
                       <div class="card">
                         <div class="card-body">
@@ -95,12 +96,6 @@ export default function Home({ location }) {
                             </h6>
                           </div>
                           <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
-                          <div>
-                            <i class="fa fa-star star">💛</i>
-                            <i class="fa fa-star star"></i>
-                            <i class="fa fa-star star"></i>
-                            <i class="fa fa-star star"></i>
-                          </div>
                           <div class="text-muted mb-3">34 reviews</div>
                           <button type="button" onClick={()=>addToCart(el.id)} class="btn bg-cart">
                             <i class="fa fa-cart-plus mr-2"></i> Agregar
@@ -108,7 +103,7 @@ export default function Home({ location }) {
                         </div>
                       </div>
                     </div>
-                  )) : null}
+                  </>: null}) : null}
               </div>
             </div>
           </div>
@@ -117,7 +112,6 @@ export default function Home({ location }) {
       <Pages product={product} page={page} />
       <Footer />
     </>
-
     )
   }
 }

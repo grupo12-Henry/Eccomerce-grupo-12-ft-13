@@ -16,12 +16,10 @@ import {
   CARRITO,
   GET_LOCAL_STORAGE,
   GET_ALL_USERS,
-  PEDIDOSUSER
+  PEDIDOSUSER,
+  POST_USER
 } from '../actions'
 // import CartItem from '../components/shoppingCart/CartItem';
-import {
-  useState
-} from 'react'
 
 
 const initialState = {
@@ -36,6 +34,7 @@ const initialState = {
   pedidosUser: [],
   productCart: [],
   arrayStorages: [],
+  user:{},
 }
 
 
@@ -57,13 +56,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         products: action.payload
       };
-
     case GETNAMES:
       return {
         ...state,
         names: action.payload
       };
-
     case ORDERPRODUCT:
       return {
         ...state,
@@ -85,6 +82,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         AllClients: action.payload,
       };
+      
+      case POST_USER:
+       return {
+         ...state,
+         user: action.payload
+       } 
 
     case GET_USER_DETAILS:
       return {
@@ -109,28 +112,17 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pedidoDetail: action.payload,
       };
-
     case PEDIDOSUSER:
       return {
         ...state,
         pedidosUser: action.payload
       };
 
-    case GETPEDIDOSBYSTATE:
-      return {
-        ...state,
-        pedidos: action.payload
-      };
-    case GETPEDIDODETAIL:
-      return {
-        ...state,
-        pedidoDetail: action.payload
-      };
-
     case ADD_TO_CART:
-
-      let nuevoItem = state.products.find(prod => prod.id === action.payload)
-      let a = state.productCart.length ? state.productCart.filter(e => e.id === (nuevoItem.id)) : ''
+      console.log("act pay", action.payload)
+      let nuevoItem = state.products.find(prod => ((prod.id === action.payload)||prod.id===action.payload.id||console.log('marquitos', prod.id)))
+      let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
+      console.log('nuevo item', nuevoItem, a)
       if (a.length) {
          nuevoItem = {
           ...nuevoItem,
@@ -152,7 +144,7 @@ const rootReducer = (state = initialState, action) => {
       }
       let array = JSON.parse(window.localStorage.getItem("array"));
       window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
-      console.log(JSON.parse(window.localStorage.getItem("array")))
+      // console.log(JSON.parse(window.localStorage.getItem("array")))
       return {
         ...state,
         productCart: state.productCart.concat(nuevoItem)
@@ -160,9 +152,8 @@ const rootReducer = (state = initialState, action) => {
       /* case ADD_LOCAL_STORAGE:{
       return {
         ...state,
-        arrayStorages: state.arrayStorages.concat([action.payload])
-      }
-    } */
+        carritoState: !state.carritoState
+      }; */
       // case ADD_TO_CART:
       //     updatedCart = [...state.productCart];
       //     updatedItemIndex = updatedCart.findIndex(item => item.id === action.payload.id);
@@ -244,31 +235,32 @@ const rootReducer = (state = initialState, action) => {
       }
     }
 
-    // case GET_LOCAL_STORAGE: {
-    //     const array = JSON.parse(window.localStorage.getItem("array"));
+    case GET_LOCAL_STORAGE: {
+        const array = JSON.parse(window.localStorage.getItem("array"));
 
-    //     return {
-    //       ...state,
-    //       arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
-    //     }
-    //   }
-    //   case DELETE_LOCAL_STORAGE:{
-    //     const array= JSON.parse(window.localStorage.getItem('array'));
-    //     const arrayfiltrado= array&&array.filter(element=>element.id!==action.payload);
-    //       window.localStorage.removeItem('array');
-    //       window.localStorage.setItem('array',JSON.stringify(arrayfiltrado));
-    //       return {...state}
-    //   }
+        return {
+          ...state,
+          user: JSON.parse(window.localStorage.getItem('user')),
+          arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
+        }
+      }
+      case DELETE_LOCAL_STORAGE:{
+        const array= JSON.parse(window.localStorage.getItem('array'));
+        const arrayfiltrado= array&&array.filter(element=>element.id!==action.payload);
+          window.localStorage.removeItem('array');
+          window.localStorage.setItem('array',JSON.stringify(arrayfiltrado));
+          return {...state}
+      }
 
-    //   case ADD_LOCAL_STORAGE:{
-    //     const array = JSON.parse(window.localStorage.getItem("array"));
+      case ADD_LOCAL_STORAGE:{
+        const array = JSON.parse(window.localStorage.getItem("array"));
 
-    //    window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
-    //     return {
-    //       ...state,
-    //       arrayStorages: state.arrayStorages.slice().concat([action.payload])
-    //     }
-    //   }
+       window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
+        return {
+          ...state,
+          arrayStorages: state.arrayStorages.slice().concat([action.payload])
+        }
+      }
 
     default:
       return state;

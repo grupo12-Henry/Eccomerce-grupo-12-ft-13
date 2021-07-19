@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const StyledDiv = styled.div`
 #container{
-    margin-top: 2%;
     display: flex;
+    margin-top: 2%;
     flex-direction: row;
     margin-left: 10%;
     margin-right: 2%;

@@ -71,7 +71,7 @@ function Bebidas() {
                                 {console.log(1)}
                                 {showProducts &&
                                     showProducts.map(el =>
-                                    (
+                                        {return el.stock>0?<>
                                         <div class="col-md-4 mt-2">
                                             <div class="card">
                                                 <div class="card-body">
@@ -90,7 +90,7 @@ function Bebidas() {
                                                     <div class="mb-2">
                                                         <h6 class="font-weight-semibold mb-2">
                                                             <a
-                                                                href=""
+                                                                href={`/detail/${el.id}`}
                                                                 class="text-default mb-2"
                                                                 data-abc="true"
                                                             >
@@ -99,13 +99,6 @@ function Bebidas() {
                                                         </h6>{" "}
                                                     </div>
                                                     <h3 class="mb-0 font-weight-semibold">{el.price}</h3>
-                                                    <div>
-                                                        {" "}
-                                                        <i class="fa fa-star star"></i>{" "}
-                                                        <i class="fa fa-star star"></i>
-                                                        <i class="fa fa-star star"></i>
-                                                        <i class="fa fa-star star"></i>
-                                                    </div>
                                                     <div class="text-muted mb-3">34 reviews</div>
                                                     <button type="button" class="btn bg-cart">
                                                         <i class="fa fa-cart-plus mr-2"></i> Agregar
@@ -113,7 +106,7 @@ function Bebidas() {
                                                 </div>
                                             </div>
                                         </div>
-                                    ))}
+                                        </>: null})}
                             </div>
                             <div className=''>
                                 <button onClick={() => setnumberPage(numberPage + 1)}>FORWARD</button>
