@@ -106,11 +106,7 @@ function Vinos() {
                                 <div class="row">
                                     {showProducts &&
                                         showProducts.map(el =>
-<<<<<<< HEAD
-                                        (showProducts.length>1?
-=======
                                           {return el.stock>0?<>
->>>>>>> main
                                             <div class="col-md-4 mt-2">
                                                 <div class="card">
                                                     <div class="card-body">
@@ -138,42 +134,6 @@ function Vinos() {
                                                             </h6>{" "}
                                                         </div>
                                                         <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
-<<<<<<< HEAD
-                                                        <div class="text-muted mb-3">34 reviews</div>
-                                                        <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
-                                                            <i class="fa fa-cart-plus mr-2"></i> Agregar
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>:<div class="mt-2 col-md-8">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="card-img-actions">
-                                                            <Link to={`/detail/${el.id}`}>
-                                                                <img
-                                                                    src={el.image}
-                                                                    class="card-img img-fluid"
-                                                                    height="100"
-                                                                    alt=""
-                                                                />
-                                                            </Link>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-body bg-light text-center">
-                                                        <div class="mb-2">
-                                                            <h6 class="font-weight-semibold mb-2">
-                                                                <a
-                                                                    href=""
-                                                                    class="text-default mb-2"
-                                                                    data-abc="true"
-                                                                >
-                                                                    {el.name}
-                                                                </a>
-                                                            </h6>{" "}
-                                                        </div>
-                                                        <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
-=======
->>>>>>> main
                                                         <div class="text-muted mb-3">34 reviews</div>
                                                         <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                                             <i class="fa fa-cart-plus mr-2"></i> Agregar

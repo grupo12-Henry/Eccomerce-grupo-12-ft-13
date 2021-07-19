@@ -13,13 +13,18 @@ function ShoppingCart(props) {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.productCart);
   const product = useSelector((state) => state.products);
+  const user = useSelector((state) => state.user);
   const localStorage = useSelector((state) => state.arrayStorages);
   const [montoTotal, setMontoTotal] = useState(0);
 
   const [allProducts, setAllProducts] = useState([]);
-  const user= JSON.parse(window.localStorage.getItem('user'));
-  useEffect(() => {
-  }, [localStorage]);
+  // const user= JSON.parse(window.localStorage.getItem('user'));
+  // const {currentUser}= useAuth()
+  // console.log(currentUser)
+  // let ids=''
+  // if (currentUser){ ids = currentUser.v.b;}
+  // useEffect(() => {
+  // }, [localStorage]);
 
   useEffect(() => {
     const dbProducts = () => {
@@ -27,7 +32,7 @@ function ShoppingCart(props) {
     };
     dbProducts();
   }, [product]);
-  console.log('usuarioooooo', user)
+  // console.log('usuarioooooo', currentUser.metadata.a)
 
   const addToCart = (el) => {
     // dispatch(addLocalStorage(el));
@@ -48,15 +53,16 @@ function ShoppingCart(props) {
   }
 
   //idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad
- 
+//  console.log('santiuser', user)
   
   const order=()=>{
-    let completo = {idClient:user.id, adress:user.adress, products:cart, paymentMethod:'efectivo', mail:user.mail, Total:montoTotal}
+    let completo = user? {idClient:user.id, adress:user.adress, products:cart, paymentMethod:'efectivo', mail:user.mail, Total:montoTotal}:null
     dispatch(orderPost(completo));
     console.log(cart);
     clearCart();
     alert('pedido confirmado')
   }
+  console.log('carrito', cart)
 
   const delFromCart = () => { }
   const [loading, setLoading] = useState(false);
@@ -77,7 +83,7 @@ function ShoppingCart(props) {
           <div className='container-articulos col-xl-11 row '>
             <hr />
             <article class='box'>
-              {cart.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ?
+              {cart.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 
                 <CartItem className='Article' key={index} data={item} delFromCart={delFromCart} />
                 : console.log(item)) : null}
             </article>

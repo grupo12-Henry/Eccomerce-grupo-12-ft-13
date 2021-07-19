@@ -34,10 +34,10 @@ router.get('/productos/:id', async (req, res) => {
 
 //agrega un nuevo cliente --> OK 
 router.post('/clientesPost', async (req, res) => {
-  const { name,lastname, phone , state, adress, mail, identityCard, admin  } = req.body;
+  const {id, name,lastname, phone , state, adress, mail, identityCard, admin  } = req.body;
 try {
   const newClient = await Client.create({
-     name, lastname, phone, state, adress, mail, identityCard,admin
+     id, name, lastname, phone, state, adress, mail, identityCard,admin
   })
   return res.send(newClient)
   } catch(error){
@@ -53,7 +53,10 @@ try {
   router.post('/orderPost', async (req, res) => {
      const { idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad} = req.body;
      try {
-       const user = await Client.findByPk(idClient)
+      const user = await Client.findOrCreate({where:{id:idClient}
+      })
+      console.log('user', user)
+      //  const user = await Client.findByPk(idClient)
        const newOrder = await Order.create({
          ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber, cost, ivaCondition, ivaCost , subtotal,cantidad})
        newOrder.setClient(user)
