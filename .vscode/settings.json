@@ -3,5 +3,5 @@
     "GETPEDIDODETAIL",
     "GETPEDIDOSBYSTATE"
   ],
-  "discord.enabled": false
+  "discord.enabled": true
 }
