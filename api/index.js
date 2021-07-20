@@ -28,6 +28,6 @@ conn.sync({ force: false }).then(() => {
     base();
 
 
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log('%s listening at 3001'); 
   });
 });

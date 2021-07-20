@@ -9,6 +9,10 @@ function GestionUsuarios() {
     const dispatch = useDispatch();
 
     useEffect(() => { 
+        console.log(AllClients)
+    }, [AllClients]);
+
+    useEffect(() => { 
         dispatch(getAllUsers());
     }, [AllClients]);
     useEffect(() => { 
@@ -63,7 +67,7 @@ function GestionUsuarios() {
             <div class='containter mt-05 ml-3 mr-03 mb-3'>
             <h3 class='mt-03 ml-3 mr-03 mb-3'>Ver Usuarios</h3>
             <div class="table-responsive">
-                <table 
+                <table
                     class="table table-sm table-bordered mt-05 ml-3 mr-03 mb-3 "
                     data-toggle="table"
                     data-pagination="true"
@@ -236,13 +240,6 @@ function GestionUsuarios() {
                         onChange={handleUser} 
                         value={user.identityCard}>
                     </input>
-                    {/* <input class="form-control mt-2 ml-5"                       
-                        placeholder={ClientDetails.admin} 
-                        name='admin' 
-                        onChange={handleUser} 
-                        value={user.admin}>
-                    </input> */}
-                    {/* <label>Permisos: </label> */}
                     <select class="form-control mt-2 ml-5" name="admin" onChange={handleUser}>
                         <option key='false' value='false'>Usuario</option>
                         <option key='true' value='true'>Admin</option>
@@ -251,21 +248,6 @@ function GestionUsuarios() {
                 </div> 
                 </div>
             </form>
-
-            {/* <form onSubmit={deleteSubmit}>
-            <h2>Eliminar un usuario</h2>
-                <br/>
-                <div >
-                    <input class="form-control mt-5 ml-5"
-                        required autoComplete='off' 
-                        placeholder='Id del usuario...' 
-                        name='id' 
-                        onChange={handleUser} 
-                        value={user.id}>
-                    </input>
-                    <input class="btn btn-primary btn-m mt-5 ml-5" type='submit'/>
-                </div>
-            </form > */}
 
         </div>
     )

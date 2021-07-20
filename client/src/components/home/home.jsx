@@ -10,6 +10,7 @@ import NavCategories from "../navCategories/navCategories";
 import { addProductCart } from "../../actions/index";
 // import ShoppingCart from "../shoppingCart/ShoppingCart";
 import Loading from "../loading/Loading";
+// import { useAuth } from "../../contexts/AuthContext";
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ export default function Home({ location }) {
     }
   }, [location.search])
 
+  // let { currentUser } = useAuth();
+  // let usuario = currentUser
+  // console.log(usuario)
 
   useEffect(() => {
     const dbProducts = () => {
