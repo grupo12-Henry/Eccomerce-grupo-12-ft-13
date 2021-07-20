@@ -54,7 +54,7 @@ useEffect(() => {
   setMontoTotal(aux)
 }, [cart])
 
-  
+  console.log('carrito con emi', cart)
   const clearCart = () => {
     window.localStorage.clear('array')
     dispatch(ClearCart())
