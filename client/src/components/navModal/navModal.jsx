@@ -40,13 +40,11 @@ export default function NavModal({ open, children, onClose }) {
   const { googleLogin } = useAuth();
   const dispatch = useDispatch()
   if (!open) return null;
-  console.log('aiuuuddaaaa',currentUser)
+
   async function vamo (){
     if(currentUser){try{
-       const crear = await dispatch( crearUsuario(currentUser.email));
-      dispatch(getUser(currentUser.email));
-      console.log('deberia estar funcionando')}
-    catch(err){console.log(err)}}
+      dispatch( crearUsuario({mail:currentUser.email, name: `${currentUser.displayName}`, token:currentUser.refreshToken}))
+    }catch(err){console.log(err)}}
   }
   vamo()
 
@@ -74,13 +72,7 @@ export default function NavModal({ open, children, onClose }) {
   const handleGoogle = (e) => {
     e.preventDefault();
     googleLogin();
-    // mail()
   };
-  // const handleDB= ()=>{
-  //   let { currentUser } = useAuth();
-  //   let usuario = currentUser
-  //   console.log(usuario)
-  // }
 
   async function handleLogout() {
     try {

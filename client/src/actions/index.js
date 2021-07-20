@@ -208,9 +208,10 @@ export function postUsuarios(usuario) {
     axios.post('http://localhost:3001/admin/clientesPost', usuario)
   }
 }
-export function crearUsuario(mail) {
-  return (dispatch) => {
-    axios.post('http://localhost:3001/clientesPost', {mail:mail})
+export function crearUsuario(payload) {
+  return async (dispatch) => {
+    const response = await axios.post('http://localhost:3001/clientesPost', payload);
+    dispatch({type:POST_USER, payload: response.data})
   }
 }
 

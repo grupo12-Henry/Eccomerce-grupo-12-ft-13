@@ -5,12 +5,19 @@ import { useAuth } from "../../../../contexts/AuthContext";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
 import Loading from "../../../loading/Loading";
+import { getUser } from "../../../../actions";
 
 export default function Dashboard() {
   const user = useSelector((state) => state.user);
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-
+  const dispatch = useDispatch()
+  // function vamo2 (){if (currentUser){
+  //   dispatch(getUser(currentUser.email));
+  // }}
+  // vamo2()
+  console.log(currentUser)
+  
   const history = useHistory();
 
   async function handleLogout() {
