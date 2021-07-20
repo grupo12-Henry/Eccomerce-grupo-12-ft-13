@@ -61,6 +61,12 @@ useEffect(() => {
               {/* addToCart(detail) */}
               <i class="fa fa-cart-plus mr-2">Agregar</i>
             </button>
+{/* 
+            <div class="d-flex justify-content-center align-items center mt-5">
+          <button type="button" onClick={() => addToCart(detail.id) } class="btn btn-outline-secondary">
+            <i class="fa fa-cart-plus mr-2">Agregar al carrito</i> 
+          </button> */}
+
             </div>
             
             </div>

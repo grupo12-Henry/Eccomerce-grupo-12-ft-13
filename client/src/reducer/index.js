@@ -130,9 +130,7 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
         }
-        // let array = JSON.parse(window.localStorage.getItem("array"));
-        // console.log(array, 'array')
-        // window.localStorage.setItem('array', array.filter(e=> (Array.isArray(e)?(e.filter(d=>d.id!== nuevoItem.id)): e.id!==undefined)))
+     
        }
 
       if (!a.length) {

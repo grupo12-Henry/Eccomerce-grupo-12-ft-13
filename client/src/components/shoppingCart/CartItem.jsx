@@ -8,11 +8,17 @@ function CartItem({ data }) {
   // const [state, setState]= useState(1)
   const [precioTotal, setPrecioTotal] = useState(data.price * data.cantidad)
   const ProductsCart = useSelector((state) => state.productCart)
+
+
+  
   const dispatch = useDispatch()
 
   useEffect(() => {
     setPrecioTotal(data.cantidad * data.price)
   }, [data.cantidad])
+
+
+  
 
   const delFromCart = () => {
     let array = JSON.parse(window.localStorage.getItem("array"));
@@ -25,6 +31,7 @@ function CartItem({ data }) {
     let array = JSON.parse(window.localStorage.getItem("array"));
     window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([data]) : array=[data]))
     setPrecioTotal(e.target.value * data.price)
+    //VER ESTE PROCEDIMIENTO, AQUI DEBE SETEARSE LA CANTIDAD DEL CARRITO EN PRODUCTCART
   }
 
   return (

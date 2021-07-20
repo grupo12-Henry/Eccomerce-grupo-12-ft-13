@@ -18,6 +18,9 @@ function ShoppingCart(props) {
   const [montoTotal, setMontoTotal] = useState(0);
 
   const [allProducts, setAllProducts] = useState([]);
+  const montoTotalPedido = useSelector((state) => state.montoTotalPedido);
+
+
   // const user= JSON.parse(window.localStorage.getItem('user'));
   // const {currentUser}= useAuth()
   // console.log(currentUser)
@@ -90,13 +93,14 @@ useEffect(() => {
             <hr />
             <article class='box'>
               {cart.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 
-                <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart} />
+                <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart}  onChange={() => console.log('funciona')}/>
                 : console.log(item)) : null}
             </article>
             <hr />
           </div>
           <h4>Monto Total:</h4>
           <h4>${montoTotal}</h4>
+          <h4></h4>
           {/* VER CON LOS CHICOS COMO SUMAMOS EL TOTAL */}
           <div className='botones'>
             <button className='btn btn-secondary m-14' onClick={order} >Confirmar Pedido</button>
