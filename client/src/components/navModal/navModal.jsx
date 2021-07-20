@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import ReactDom from "react-dom";
 import SignUp from "../register/userRegister/signUp/SignUp";
 import Login from "../register/userRegister/login/login";
@@ -6,6 +7,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import StyledDiv from "./styled";
 import CloseIcon from "@material-ui/icons/Close";
 import logo from "../../assets/images/logo-google.png";
+import { crearUsuario, getUser } from "../../actions";
 
 const MODAL_STYLES = {
   position: "fixed",
@@ -34,11 +36,19 @@ const OVERLAY_STYLES = {
 export default function NavModal({ open, children, onClose }) {
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
-  const { currentUser, logout } = useAuth();
-  
+  let { currentUser, logout } = useAuth();
   const { googleLogin } = useAuth();
-
+  const dispatch = useDispatch()
   if (!open) return null;
+  console.log('aiuuuddaaaa',currentUser)
+  async function vamo (){
+    if(currentUser){try{
+       const crear = await dispatch( crearUsuario(currentUser.email));
+      dispatch(getUser(currentUser.email));
+      console.log('deberia estar funcionando')}
+    catch(err){console.log(err)}}
+  }
+  vamo()
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -64,7 +74,13 @@ export default function NavModal({ open, children, onClose }) {
   const handleGoogle = (e) => {
     e.preventDefault();
     googleLogin();
+    // mail()
   };
+  // const handleDB= ()=>{
+  //   let { currentUser } = useAuth();
+  //   let usuario = currentUser
+  //   console.log(usuario)
+  // }
 
   async function handleLogout() {
     try {

@@ -208,6 +208,11 @@ export function postUsuarios(usuario) {
     axios.post('http://localhost:3001/admin/clientesPost', usuario)
   }
 }
+export function crearUsuario(mail) {
+  return (dispatch) => {
+    axios.post('http://localhost:3001/clientesPost', {mail:mail})
+  }
+}
 
 // export function putUsuarios(usuario) {
 //   axios.put(`http://localhost:3001/admin/users/${usuario.id}`, usuario)
