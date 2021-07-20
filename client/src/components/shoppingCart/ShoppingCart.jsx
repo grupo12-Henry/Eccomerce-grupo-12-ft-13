@@ -18,32 +18,22 @@ function ShoppingCart(props) {
   const [montoTotal, setMontoTotal] = useState(0);
 
   const [allProducts, setAllProducts] = useState([]);
-  const montoTotalPedido = useSelector((state) => state.montoTotalPedido);
 
 
-  // const user= JSON.parse(window.localStorage.getItem('user'));
-  // const {currentUser}= useAuth()
-  // console.log(currentUser)
-  // let ids=''
-  // if (currentUser){ ids = currentUser.v.b;}
   // useEffect(() => {
-  // }, [localStorage]);
-
+  //   const timer = setTimeout(() =>
+  //   { let aux = 0;
+  //     cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
+  //   setMontoTotal(aux)}, 500);
+  //   return () => clearTimeout(timer);
+  // }, [cart]);
+ 
   useEffect(() => {
-    // console.log(localStorage)
   }, [localStorage]);
 
 
-  // const dbProducts = () => {
-  //     setAllProducts(product);
-  //   };
-  //   dbProducts();
-  // }, [product]}
-
-  // console.log('usuarioooooo', currentUser.metadata.a)
 
   const addToCart = (el) => {
-    // dispatch(addLocalStorage(el));
     dispatch(addProductCart(el.id));
     console.log();
   };
@@ -52,9 +42,8 @@ useEffect(() => {
   let aux = 0;
   cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
   setMontoTotal(aux)
-}, [cart])
+}, [cart,montoTotal , product])
 
-  console.log('carrito con emi', cart)
   const clearCart = () => {
     window.localStorage.clear('array')
     dispatch(ClearCart())
@@ -71,7 +60,6 @@ useEffect(() => {
     clearCart();
     alert('pedido confirmado')
   }
-  console.log('carrito', cart)
 
   const delFromCart = () => { }
   const [loading, setLoading] = useState(false);

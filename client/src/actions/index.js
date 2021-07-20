@@ -25,6 +25,7 @@ export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const PEDIDOSUSER = 'PEDIDOSUSER';
 export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
+export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -107,6 +108,14 @@ export function getLocalStorage(payload) {
 export function deleteProductCart(payload) {
   return {
     type: DELETE_FROM_CART,
+    payload,
+  };
+}
+
+//FUNCION QUE ACTUALIZA LA CANTIDAD EN EL CARRITO ASOCIADO AL COUNTER ON CHANGE
+export function updateProductCart(payload) {
+  return {
+    type: UPDATE_FROM_CART,
     payload,
   };
 }
