@@ -13,9 +13,9 @@ function GestionProductos() {
   //Cuando renderiza el componente, me trae todos los productos.
   useEffect(() => { 
       dispatch(getProducts());
-  }, []);
+  }, [AllProducts]);
 
-  //A PARTIR DE ACA ES LO QUE ESTABA CODEADO
+  //Estado local que maneja los valores de CREACION Y de MODIFICACIÓN de PRODUCTOS. NO lleva el campo ID (este se asigna automaticamente en la creación, y ya existe en la modificación)
     const [newProduct, setNewProduct] = useState({
         name:'',
         Description:'',
