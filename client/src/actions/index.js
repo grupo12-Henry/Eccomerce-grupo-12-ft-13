@@ -63,7 +63,9 @@ export function getpedidosUser(id) {
 
 export function orderPost(order) {
   return (dispatch) => {
-    axios.post('http://localhost:3001/orderPost', order)
+    // axios.post('http://localhost:3001/orderPost', order)
+    axios.post('http://localhost:3001/admin/orderPost', order)
+
   }
 }
 
@@ -211,16 +213,16 @@ export function getUserDetails(id) {
   };
 }
 
-
-export function postUsuarios(usuario) {
-  return (dispatch) => {
-    axios.post('http://localhost:3001/admin/clientesPost', usuario)
-  }
-}
 export function crearUsuario(payload) {
   return async (dispatch) => {
     const response = await axios.post('http://localhost:3001/clientesPost', payload);
     dispatch({type:POST_USER, payload: response.data})
+  }
+}
+
+export function postUsuarios(usuario) {
+  return (dispatch) => {
+    axios.post('http://localhost:3001/admin/clientesPost', usuario)
   }
 }
 
