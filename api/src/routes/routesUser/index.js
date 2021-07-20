@@ -34,10 +34,10 @@ router.get('/productos/:id', async (req, res) => {
 
 //agrega un nuevo cliente --> OK 
 router.post('/clientesPost', async (req, res) => {
-  const {id, name,lastname, phone , state, adress, mail, identityCard, admin  } = req.body;
+  const { name,lastname, phone , state, adress, mail, identityCard, admin  } = req.body;
 try {
-  const newClient = await Client.create({
-     id, name, lastname, phone, state, adress, mail, identityCard,admin
+  const newClient = await Client.findOrCreate({ where:{mail: mail},
+    deault:{ name, lastname, phone, state, adress, mail, identityCard,admin}
   })
   return res.send(newClient)
   } catch(error){
