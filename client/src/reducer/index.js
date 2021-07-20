@@ -173,13 +173,13 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           productCart: []
         };
-      case GET_LOCAL_STORAGE: {
-        const array = JSON.parse(window.localStorage.getItem("santi"));
-        return {
-          ...state,
-          productCart: array ? state.productCart.slice().concat([array]) : state.productCart
-        }
-      }
+      // case GET_LOCAL_STORAGE: {
+      //   const array = JSON.parse(window.localStorage.getItem("santi"));
+      //   return {
+      //     ...state,
+      //     productCart: array ? state.productCart.slice().concat([array]) : state.productCart
+      //   }
+      // }
       
     case DELETE_LOCAL_STORAGE: {
       const array = JSON.parse(window.localStorage.getItem('array'));
@@ -191,22 +191,18 @@ const rootReducer = (state = initialState, action) => {
       }
     }
 
-    // case GET_LOCAL_STORAGE: {
-    //     const array = JSON.parse(window.localStorage.getItem("array"));
 
-    //     return {
-    //       ...state,
-    //       user: JSON.parse(window.localStorage.getItem('user')),
-    //       arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
-    //     }
-    //   }
-    //   case DELETE_LOCAL_STORAGE:{
-    //     const array= JSON.parse(window.localStorage.getItem('array'));
-    //     const arrayfiltrado= array&&array.filter(element=>element.id!==action.payload);
-    //       window.localStorage.removeItem('array');
-    //       window.localStorage.setItem('array',JSON.stringify(arrayfiltrado));
-    //       return {...state}
-    //   }
+    case GET_LOCAL_STORAGE: {
+        const array = JSON.parse(window.localStorage.getItem("array"));
+
+        return {
+          ...state,
+          user: JSON.parse(window.localStorage.getItem('user')),
+          arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
+        }
+      }
+
+   
 
       case ADD_LOCAL_STORAGE:{
         const array = JSON.parse(window.localStorage.getItem("array"));

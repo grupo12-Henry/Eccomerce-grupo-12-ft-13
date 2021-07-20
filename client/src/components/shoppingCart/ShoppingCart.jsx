@@ -45,7 +45,7 @@ useEffect(() => {
 }, [cart,montoTotal , product])
 
   const clearCart = () => {
-    window.localStorage.clear('array')
+    window.localStorage.removeItem('array')
     dispatch(ClearCart())
   }
 
@@ -54,9 +54,12 @@ useEffect(() => {
 //  console.log('santiuser', user)
   
   const order=()=>{
+    let user =  window.localStorage.getItem("user");
+    console.log(user ,'localstorage')
     let completo = user? {idClient:user.id, adress:user.adress, products:cart, paymentMethod:'efectivo', mail:user.mail, Total:montoTotal}:null
+    console.log('la novia del ternario', user.id)
+    console.log(user)
     dispatch(orderPost(completo));
-    console.log(cart);
     clearCart();
     alert('pedido confirmado')
   }
