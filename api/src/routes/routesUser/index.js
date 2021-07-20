@@ -34,10 +34,19 @@ router.get('/productos/:id', async (req, res) => {
 
 //agrega un nuevo cliente --> OK 
 router.post('/clientesPost', async (req, res) => {
-  const { name,lastname, phone , state, adress, mail, identityCard, admin  } = req.body;
-try {
-  const newClient = await Client.findOrCreate({ where:{mail: mail},
-    deault:{ name, lastname, phone, state, adress, mail, identityCard,admin}
+  let {
+		name,
+		lastName,
+		phone,
+		state,
+		adress,
+		mail,
+		identityCard,
+    token
+	} = req.body;
+ try {
+  const newClient = await Client.findOrCreate({ where:{mail, token, name},
+    deault:{ name, lastName, phone, state, adress, mail, identityCard,token}
   })
   return res.send(newClient)
   } catch(error){
@@ -68,7 +77,6 @@ try {
         res.send(error).status(404);
      }
    })
-
 
 
 //GET PEDIDOS'/pedidos/:id'  (donde id es el id de cliente)
