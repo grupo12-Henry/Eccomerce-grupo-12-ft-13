@@ -87,7 +87,7 @@ function GestionProductos() {
                 </thead>
                 <tbody>
                     {
-                        AllProducts.map(prod => (
+                        AllProducts && AllProducts.map(prod => (
                             <tr>
                             <th scope="row">{prod.id}</th>
                             <td>{prod.name}</td>

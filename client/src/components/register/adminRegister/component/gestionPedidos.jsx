@@ -1,7 +1,7 @@
+
 import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido } from '../../../../actions';
-
 
 function GestionPedidos() {
 
@@ -66,6 +66,7 @@ function GestionPedidos() {
         freight:"",
         ivaCost:"",
         ivaCondition:"",
+        
     });
     const handleInputModifyChange = (e) => {
         setModifyPedido({
@@ -94,7 +95,7 @@ function GestionPedidos() {
         </select>
 
         {/* Tabla de pedidos */}
-        <div class="table-responsive">
+        <div class="table-responsive container">
             <table 
                 class="table table-sm table-bordered mt-2 "
                 data-toggle="table"
@@ -117,7 +118,7 @@ function GestionPedidos() {
                 </thead>
                 <tbody>
                     {
-                        pedidos.map(pedido => (
+                        pedidos&& pedidos.map(pedido => (
                             <tr>
                             <th scope="row">{pedido.id}</th>
                             <td>{pedido.date}</td>
@@ -138,120 +139,318 @@ function GestionPedidos() {
                                 </button>
                             </td>
                             </tr>
-                        ))
+                        )) 
                     }
                 </tbody>
             </table>
         </div>
 
         {/* Tabla que muestra el Detalle de un Pedido */}
+
+        <div>
         <h3>Ver detalle de un pedido</h3>
-        <label>Id: </label>
+        {/* <label>Id: </label>
         <input type='string' placeholder ='Id' value={detalleId} onChange={handleInputChange}/>
         <button onClick={(e) => { 
             e.preventDefault();
             handlePedidoDetail(detalleId)}
-            }>Buscar</button>
+            }>Buscar</button> */}
 
-        <div class='container' className='jah287'>
+        <div class='container' >
+            <form>
             <ol>
-                <li><span>Pedido Numero: {pedidoDetail.id}</span></li>
-                <li><span>Cliente Numero: {pedidoDetail.clientId}</span></li>
-                <li><span>Fecha de compra: {pedidoDetail.date}</span></li>
-                <li><span>Monto: {pedidoDetail.bill}</span></li>
-                <li><span>Forma de Pago: {pedidoDetail.paymentMethod}</span></li>
-                <li><span>Ticket: {pedidoDetail.ticket}</span></li>
-                <li><span>Dirección de envio: {pedidoDetail.adress}</span></li>
-                <li><span>Cod.Postal: {pedidoDetail.mail}</span></li>
-                <li><span>Fecha de envio: {pedidoDetail.shippingDate}</span></li>
-                <li><span>Estado del envio: {pedidoDetail.state}</span></li>
-                <li><span>Costo de envio: {pedidoDetail.cost}</span></li>
-                <li><span>N° de guia: {pedidoDetail.guideNumber}</span></li>
-                <li><span>Transportista: {pedidoDetail.freight}</span></li>
-                <li><span>IVA: {pedidoDetail.ivaCost}</span></li>
-                <li><span>Situación impositiva: {pedidoDetail.ivaCondition}</span></li>
+                <li class='form-inline'><span>Pedido Numero: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.id}></input>}</li>
+
+                <li class='form-inline'><span>Cliente Numero: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.clientId}></input>}</li>
+
+
+                <li class='form-inline'><span>Fecha de compra: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.date}></input>}</li>
+
+
+                <li class='form-inline'><span>Total: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.bill}></input>}</li>
+
+
+                <li class='form-inline'><span>Forma de Pago: </span>{pedidoDetail&&(
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.paymentMethod}></input>)}</li>
+
+
+                <li class='form-inline'><span>Ticket: </span>{pedidoDetail&&
+                (<input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.ticket}></input>)}</li>
+
+                { pedidoDetail&&pedidoDetail?.products?.map (el => (     
+                    <li class='form-inline'>
+                        <span> Producto: </span>
+                        <input class="form-control mt-2 ml-3 form-row"                        
+                            name='name' 
+                            value={el.name}>
+                        </input> 
+                        <span class="mt-2 ml-3"> Cantidad: </span>
+                        <input class="form-control mt-2 ml-3 form-row"                        
+                            name='name' 
+                            value={el.order_detail.cantidad}>
+                        </input>
+                        <span class="mt-2 ml-3"> SubTotal: </span>
+                        <input class="form-control mt-2 ml-3 form-row"                        
+                            name='name' 
+                            value={el.order_detail.subTotal}>
+                        </input>
+                    </li>    
+                ))}
+
+
+                <li class='form-inline'><span>Dirección de envio: </span>{pedidoDetail&&
+                (<input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.adress}></input>)}</li>
+
+
+                <li class='form-inline'><span>Cod.Postal: </span>{pedidoDetail&&
+                (<input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.mail}></input>)}</li>
+
+
+                <li class='form-inline'><span>Fecha de envio: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.shippingDate}></input>}</li>
+
+
+                <li class='form-inline'><span>Estado del envio: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.state}></input>}</li>
+
+
+                <li class='form-inline'><span>Costo de envio: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.cost}></input>}</li>
+
+
+                <li class='form-inline'><span>N° de guia: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.guideNumber}></input>}</li>
+
+
+                <li class='form-inline'><span>Transportista: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.freight}></input>}</li>
+
+
+                <li class='form-inline'><span>IVA: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.ivaCost}></input>}</li>
+
+
+                <li class='form-inline'><span>Situación impositiva: </span>{pedidoDetail&&
+                <input class="form-control mt-2 ml-5 form-inline"                        
+                        name='name' 
+                        value={pedidoDetail.ivaCondition}></input>}</li>
             </ol>
+            </form>
         </div>
 
         <h3>Modificar un pedido</h3>
-        <div class='container'>
+        <div class='container' >
             <form onSubmit={(e) => handlePedidosSubmit(e)}>
                 <ol>
-                <li>
-                    <label>Pedido Numero: </label>
-                    <input name='id' type='text' value={pedidoDetail.id} onChange={handleModifyIdChange}/>
+
+                <li class='form-inline'>
+                    <span>Pedido Numero: </span>
+                    <input class="form-control mt-2 ml-5 form-row"
+                        name='id' 
+                        type='text' 
+                        value={pedidoDetail?.id} 
+                        onChange={handleModifyIdChange}/>
                 </li>
-                <li>
-                    <label>Cliente Numero </label>
-                    <input name='clientId' type='number' placeholder={pedidoDetail.clientId} value={ modifyPedido.clientId} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>Cliente Numero: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='clientId' 
+                        type='number' 
+                        placeholder={pedidoDetail.clientId} 
+                        value={ modifyPedido.clientId} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>Fecha de compra</label>
-                    <input name='date' type='text' placeholder={pedidoDetail.date} value={modifyPedido.date} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>Fecha de compra: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='date' 
+                        type='text' 
+                        placeholder={pedidoDetail.date} 
+                        value={modifyPedido.date} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>Monto </label>
-                    <input name='bill' type='number' placeholder={pedidoDetail.bill} value={modifyPedido.bill} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>Total: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='bill' 
+                        type='number' 
+                        placeholder={pedidoDetail.bill} 
+                        value={modifyPedido.bill} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>Forma de Pago </label>
-                    {/* <input name='paymentMethod' type='text' placeholder={pedidoDetail.paymentMethod} value={modifyPedido.paymentMethod} onChange={handleInputModifyChange}/> */}
-                    <select name="paymentMethod" value={modifyPedido.paymentMethod} onChange={handleInputModifyChange}>
+                <li class='form-inline'>
+                    <span>Forma de Pago: </span>
+                    <select class="form-control mt-2 ml-5 form-row" 
+                        name="paymentMethod" 
+                        value={modifyPedido.paymentMethod} 
+                        onChange={handleInputModifyChange}>
+
                         <option key='tarjeta' value='tarjeta'>Tarjeta</option>
                         <option key='efectivo' value='efectivo'>Efectivo</option>
+
                     </select>
                 </li>
-                <li>
-                    <label>Ticket </label>
-                    <input name='ticket' type='text' placeholder={pedidoDetail.ticket } value={modifyPedido.ticket} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>Ticket: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='ticket' 
+                        type='text' 
+                        placeholder={pedidoDetail.ticket } 
+                        value={modifyPedido.ticket} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>Dirección de envio </label>
-                    <input name='adress' type='text' placeholder={pedidoDetail.adress} value={modifyPedido.adress} onChange={handleInputModifyChange}/>
+
+
+                {/* { pedidoDetail.products.map (el => (     
+                <li class='form-inline'>
+                    <label>Producto: </label>
+                    <input                       
+                        name='name' 
+                        value={el.name}>
+                        placeholder={pedidoDetail.ticket }
+                    </input> 
+                        <label class="mt-2 ml-5">Cantidad: </label>
+                        <input class="form-control mt-2 ml-5 form-row"  
+                        type='number'                      
+                        name='name' 
+                        value={el.order_detail.cantidad}></input>
+                        <label class="mt-2 ml-5">SubTotal: </label>
+                        <input class="form-control mt-2 ml-5 form-row"                        
+                        type='number'    
+                        name='name' 
+                        value={el.order_detail.subTotal}></input>
                 </li>
-                <li>
-                    <label>Cód. Postal </label>
-                    <input name='mail' type='text' placeholder={pedidoDetail.mail} value={modifyPedido.mail} onChange={handleInputModifyChange}/>
+                      
+                       
+                ))} */}
+
+                <li class='form-inline'>
+                    <span>Dirección de envio: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='adress' 
+                        type='text' 
+                        placeholder={pedidoDetail.adress} 
+                        value={modifyPedido.adress} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>Fecha de envio</label>
-                    <input name='shippingDate' type='text' placeholder={pedidoDetail.shippingDate} value={modifyPedido.shippingDate} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>Cód. Postal: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='mail' 
+                        type='text' 
+                        placeholder={pedidoDetail.mail} 
+                        value={modifyPedido.mail} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>Estado del envio </label>            
-                    <select name="state" value={modifyPedido.state} onChange={handleInputModifyChange}>
+                <li class='form-inline'>
+                    <span>Fecha de envio: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='shippingDate' 
+                        type='text' 
+                        placeholder={pedidoDetail.shippingDate} 
+                        value={modifyPedido.shippingDate} 
+                        onChange={handleInputModifyChange}/>
+                </li>
+                <li class='form-inline'>
+                    <span>Estado del envio: </span>            
+                    <select class="form-control mt-2 ml-5 form-row" 
+                        name="state" 
+                        value={modifyPedido.state} 
+                        onChange={handleInputModifyChange}>
+
                         <option key='pendiente' value='pendiente'>Pendiente</option>
                         <option key='enviado' value='enviado'>Enviado</option>
                         <option key='retiro' value='retiro'>Retiro en local</option>
                         <option key='cancelado' value='cancelado'>Cancelado</option>
                         <option key='cerrado' value='cerrado'>Cerrado</option>
-                    </select>
 
+                    </select>
                 </li>
-                <li>
-                    <label>Costo de envio </label>
-                    <input name='cost' type='number' placeholder={pedidoDetail.cost} value={modifyPedido.cost} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>Costo de envio: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='cost' 
+                        type='number' 
+                        placeholder={pedidoDetail.cost} 
+                        value={modifyPedido.cost} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>N° de guia </label>
-                    <input name='guideNumber' type='text' placeholder={pedidoDetail.guideNumber} value={modifyPedido.guideNumber} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>N° de guia: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='guideNumber' 
+                        type='text' 
+                        placeholder={pedidoDetail.guideNumber} 
+                        value={modifyPedido.guideNumber} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>Transportista </label>
-                    <input name='freight' type='text' placeholder={pedidoDetail.freight} value={modifyPedido.freight} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>Transportista: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='freight' 
+                        type='text' 
+                        placeholder={pedidoDetail.freight} 
+                        value={modifyPedido.freight} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>IVA </label>
-                    <input name='ivaCost' type='number' placeholder={pedidoDetail.ivaCost} value={modifyPedido.ivaCost} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>IVA: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='ivaCost' 
+                        type='number' 
+                        placeholder={pedidoDetail.ivaCost} 
+                        value={modifyPedido.ivaCost} 
+                        onChange={handleInputModifyChange}/>
                 </li>
-                <li>
-                    <label>Situación impositiva </label>
-                    <input name='ivaCondition' type='text' placeholder={pedidoDetail.ivaCondition} value={modifyPedido.ivaCondition} onChange={handleInputModifyChange}/>
+                <li class='form-inline'>
+                    <span>Situación impositiva: </span>
+                    <input class="form-control mt-2 ml-5 form-row" 
+                        name='ivaCondition' 
+                        type='text' 
+                        placeholder={pedidoDetail.ivaCondition} 
+                        value={modifyPedido.ivaCondition} 
+                        onChange={handleInputModifyChange}/>
                 </li>
                 </ol>
 
-                <button class="btn btn-danger mb-9" onClick={(e) => { handlePedidosSubmit(e)}}>Confirmar modificación</button>
+                <button class="btn btn-primary btn-lg btn-block mt-2 mb-9" 
+                    onClick={(e) => { handlePedidosSubmit(e)}}>
+                        Confirmar modificación
+                </button>
             </form>
+        </div>
         </div>
     </div>
     )

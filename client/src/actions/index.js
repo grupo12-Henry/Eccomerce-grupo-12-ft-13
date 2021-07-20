@@ -206,6 +206,13 @@ export function getUserDetails(id) {
 export function postUsuarios(usuario) {
   return (dispatch) => {
     axios.post('http://localhost:3001/admin/clientesPost', usuario)
+      .then((response) => {
+        console.log(response);
+        alert('El usuario se creó correctamente')
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 
