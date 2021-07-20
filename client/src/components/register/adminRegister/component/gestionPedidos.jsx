@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido } from '../../../../actions';
 
+
 function GestionPedidos() {
 
     //Estado de Redux. 
@@ -79,7 +80,7 @@ function GestionPedidos() {
 
 
     return (
-    <div class='container'>
+    <div class='container' className='jah287'>
         <h3>Ver pedidos</h3>
         {/* Boton que filtra por estado */}
         <label>Ver estados: </label>
