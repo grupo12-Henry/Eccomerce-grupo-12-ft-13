@@ -25,6 +25,7 @@ export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const PEDIDOSUSER = 'PEDIDOSUSER';
 export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
+export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -62,7 +63,9 @@ export function getpedidosUser(id) {
 
 export function orderPost(order) {
   return (dispatch) => {
-    axios.post('http://localhost:3001/orderPost', order)
+    // axios.post('http://localhost:3001/orderPost', order)
+    axios.post('http://localhost:3001/admin/orderPost', order)
+
   }
 }
 
@@ -107,6 +110,14 @@ export function getLocalStorage(payload) {
 export function deleteProductCart(payload) {
   return {
     type: DELETE_FROM_CART,
+    payload,
+  };
+}
+
+//FUNCION QUE ACTUALIZA LA CANTIDAD EN EL CARRITO ASOCIADO AL COUNTER ON CHANGE
+export function updateProductCart(payload) {
+  return {
+    type: UPDATE_FROM_CART,
     payload,
   };
 }
@@ -202,16 +213,16 @@ export function getUserDetails(id) {
   };
 }
 
-
-export function postUsuarios(usuario) {
-  return (dispatch) => {
-    axios.post('http://localhost:3001/admin/clientesPost', usuario)
-  }
-}
 export function crearUsuario(payload) {
   return async (dispatch) => {
     const response = await axios.post('http://localhost:3001/clientesPost', payload);
     dispatch({type:POST_USER, payload: response.data})
+  }
+}
+
+export function postUsuarios(usuario) {
+  return (dispatch) => {
+    axios.post('http://localhost:3001/admin/clientesPost', usuario)
   }
 }
 

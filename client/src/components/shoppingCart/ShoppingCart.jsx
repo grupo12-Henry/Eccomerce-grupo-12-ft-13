@@ -18,29 +18,22 @@ function ShoppingCart(props) {
   const [montoTotal, setMontoTotal] = useState(0);
 
   const [allProducts, setAllProducts] = useState([]);
-  // const user= JSON.parse(window.localStorage.getItem('user'));
-  // const {currentUser}= useAuth()
-  // console.log(currentUser)
-  // let ids=''
-  // if (currentUser){ ids = currentUser.v.b;}
-  // useEffect(() => {
-  // }, [localStorage]);
 
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() =>
+  //   { let aux = 0;
+  //     cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
+  //   setMontoTotal(aux)}, 500);
+  //   return () => clearTimeout(timer);
+  // }, [cart]);
+ 
   useEffect(() => {
-    // console.log(localStorage)
   }, [localStorage]);
 
 
-  // const dbProducts = () => {
-  //     setAllProducts(product);
-  //   };
-  //   dbProducts();
-  // }, [product]}
-
-  // console.log('usuarioooooo', currentUser.metadata.a)
 
   const addToCart = (el) => {
-    // dispatch(addLocalStorage(el));
     dispatch(addProductCart(el.id));
     console.log();
   };
@@ -49,11 +42,10 @@ useEffect(() => {
   let aux = 0;
   cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
   setMontoTotal(aux)
-}, [cart])
+}, [cart,montoTotal , product])
 
-  console.log('carrito con emi', cart)
   const clearCart = () => {
-    window.localStorage.clear('array')
+    window.localStorage.removeItem('array')
     dispatch(ClearCart())
   }
 
@@ -62,13 +54,15 @@ useEffect(() => {
 //  console.log('santiuser', user)
   
   const order=()=>{
+    let user =  window.localStorage.getItem("user");
+    console.log(user ,'localstorage')
     let completo = user? {idClient:user.id, adress:user.adress, products:cart, paymentMethod:'efectivo', mail:user.mail, Total:montoTotal}:null
+    console.log('la novia del ternario', user.id)
+    console.log(user)
     dispatch(orderPost(completo));
-    console.log(cart);
     clearCart();
     alert('pedido confirmado')
   }
-  console.log('carrito', cart)
 
   const delFromCart = () => { }
   const [loading, setLoading] = useState(false);
@@ -90,13 +84,14 @@ useEffect(() => {
             <hr />
             <article class='box'>
               {cart.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 
-                <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart} />
+                <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart}  onChange={() => console.log('funciona')}/>
                 : console.log(item)) : null}
             </article>
             <hr />
           </div>
           <h4>Monto Total:</h4>
           <h4>${montoTotal}</h4>
+          <h4></h4>
           {/* VER CON LOS CHICOS COMO SUMAMOS EL TOTAL */}
           <div className='botones'>
             <button className='btn btn-secondary m-14' onClick={order} >Confirmar Pedido</button>

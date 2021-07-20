@@ -289,6 +289,7 @@ router.post('/productos', async (req, res) => { //crea nuevo productos
 router.get('/users/all', async (req, res) => { //trae todo los clientes
 	try {
 		const users = await Client.findAll()
+
 		res.send(users)
 	} catch (error) {
 		res.send(error).status(404)

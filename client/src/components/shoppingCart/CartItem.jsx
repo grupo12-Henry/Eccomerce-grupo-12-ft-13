@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { removeProductCart } from '../../actions';
+import { removeProductCart, addProductCart, updateProductCart } from '../../actions';
 import './CartItem.css';
 
 function CartItem({ data }) {
@@ -10,9 +10,18 @@ function CartItem({ data }) {
   const ProductsCart = useSelector((state) => state.productCart)
   const dispatch = useDispatch()
 
+  // cada vez q cambie el cant, se impacte en el productCart
+  //crear una action que cambie el valor de la cantidad,
+  //traerme aqui el useDispatch y ejecutar esa action en el onChange de el cant ese, y le paso la cantidad
+  //para que cambie el product card, y actualice el localstorage
+
+ 
+
   useEffect(() => {
     setPrecioTotal(data.cantidad * data.price)
-  }, [data.cantidad])
+  }, [precioTotal])
+
+ 
 
   const delFromCart = () => {
     let array = JSON.parse(window.localStorage.getItem("array"));
@@ -24,7 +33,9 @@ function CartItem({ data }) {
     data.cantidad = (e.target.value);
     let array = JSON.parse(window.localStorage.getItem("array"));
     window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([data]) : array=[data]))
-    setPrecioTotal(e.target.value * data.price)
+    dispatch(updateProductCart(data))
+    setPrecioTotal(data.cantidad * data.price)
+    //VER ESTE PROCEDIMIENTO, AQUI DEBE SETEARSE LA CANTIDAD DEL CARRITO EN PRODUCTCART
   }
 
   return (
