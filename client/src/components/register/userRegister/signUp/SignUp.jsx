@@ -15,9 +15,8 @@ export default function Signup({ onClose }) {
    phone:'',
    adress:'',
    state:'',
-   mail: '',
-   city:'',
-   
+   mail: '',  
+   identityCard:'' 
 })
 const handleUser = (e) => {
   setUser({
@@ -25,22 +24,17 @@ const handleUser = (e) => {
       [e.target.name]: e.target.value
   })
 }
-const dispatch =useDispatch();
-  const postUser = function(){
-    
-  dispatch(crearUsuario(user))
-  }
+const dispatch = useDispatch();
+
   const nombreRef = useRef();
   const apellidoRef = useRef();
   const nacimientoRef = useRef();
   const direccionRef = useRef();
   const provinciaRef = useRef();
-  const localidadRef = useRef();
   const codigoPostalRef = useRef();
   const telefonoRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
   const [error, setError] = useState("");
@@ -55,9 +49,13 @@ const dispatch =useDispatch();
     }
 
     try {
+      console.log("Mail:", emailRef.current.value);
+      console.log("Pass:", passwordRef.current.value);
+      console.log("PassConf:", passwordConfirmRef.current.value);
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      dispatch(crearUsuario(user));
+      signup(emailRef.current.value, passwordRef.current.value);
       // onClose()
       history.push("/home");
     } catch {
@@ -91,6 +89,10 @@ const dispatch =useDispatch();
                   <input className='input_email' type="date" name="nacimiento" ref={nacimientoRef}></input>
                   </div>
                   <div className='email'>
+                  <label>DNI:</label>
+                  <input onChange={handleUser} className='input_email' type="number" name="identityCard" value={user.identityCard}></input>
+                  </div>
+                  <div className='email'>
                   <label>Telefono:</label>
                   <input onChange={handleUser} className='input_email' type="number" name="phone" value={user.phone} ref={telefonoRef}></input>
                   </div>
@@ -101,10 +103,6 @@ const dispatch =useDispatch();
                   <div className='email'>
                   <label>Provincia:</label>
                   <input  onChange={handleUser} className='input_email' type="text" name="state" value={user.state} ref={provinciaRef}></input>
-                  </div>
-                  <div className='email'>
-                  <label>Localidad:</label>
-                  <input  className='input_email' type="text" name="localidad" value={user.city}ref={localidadRef}></input>
                   </div>
                   <div className='email'>
                   <label>Codigo Postal:</label>
@@ -130,7 +128,7 @@ const dispatch =useDispatch();
                   ></input>
                   </div>
                   <br/>
-                  <button onClick={()=>postUser(nombreRef,emailRef)} disabled={loading} className="btn btn-light" type="submit">
+                  <button onClick={(e)=>handleSubmit(e)} disabled={loading} className="btn btn-light" type="submit">
                     Registrate
                   </button>
                 </form>
