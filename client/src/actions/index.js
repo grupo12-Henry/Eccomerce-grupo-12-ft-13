@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken'
 export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS';
 export const GETNAMES = 'GETNAMES';
@@ -222,7 +223,7 @@ export function crearUsuario(payload) {
 
 export function postUsuarios(usuario) {
   return (dispatch) => {
-    console.log('entra en la action:', usuario)
+    
     axios.post('http://localhost:3001/admin/clientesPost', usuario)
       .then((response) => {
         console.log(response);
@@ -244,7 +245,7 @@ export function putUsuarios(id, usuario) {
           type: PUT_USER,
           payload: response.data
         });
-        alert ('El usuario se modificó correctamente')
+        
       })
       .catch((err) => {
         console.log(err);
@@ -366,22 +367,7 @@ export function getPedidoDetail(id) {
 // export async function editProduct(id, payload) {
 //   await axios.put('http://localhost:3001/admin/productos/' + id, payload)
 
-export function createUser(obj) {
-  return (dispatch) => {
-    try {
-      axios.post('http://localhost:3001/admin/clientesPost', obj)
-        .then((response) => {
-          window.localStorage.setItem("user", JSON.stringify(response.data));
-          return dispatch({
-            type: POST_USER,
-            Payload: response.data
-          })
-        })
-    } catch (err) {
-      console.log(err);
-    };
-  }
-}
+
 // export async function deleteProduct(id) {
 //   await axios.delete(`http://localhost:3001/admin/producto/${id}`)
 
@@ -405,20 +391,7 @@ export function putPedido(id, payload) {
   }
 };
 
-// export function createUser(obj){
-//   return (dispatch)=>{
-//     try{
-//       axios.post('http://localhost:3001/admin/clientesPost',obj)
-//       .then((response)=>{
-//         console.log(response.data);
-//         window.localStorage.setItem("user",JSON.stringify(response.data));  
-//         return dispatch({ type:POST_USER,Payload:response.data})})
-//       }catch(err){
-//         console.log(err);
-//       }
 
-//     }
-//   }
 
 //PEDIDOS
 
