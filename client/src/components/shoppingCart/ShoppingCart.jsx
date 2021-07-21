@@ -55,10 +55,7 @@ useEffect(() => {
   
   const order=()=>{
     let user =  window.localStorage.getItem("user");
-    console.log(user ,'localstorage')
     let completo = user? {idClient:user.split(',')[0].split(':')[1], adress:user.split(',')[5].split(':')[1], products:cart, paymentMethod:'efectivo', mail:user.split(',')[6].split(':')[1], Total:montoTotal}:console.log('user is null')
-    console.log('la novia del ternario', user.split(',')[5])
-    // console.log(user)
     dispatch(orderPost(completo));
     clearCart();
     alert('pedido confirmado')
