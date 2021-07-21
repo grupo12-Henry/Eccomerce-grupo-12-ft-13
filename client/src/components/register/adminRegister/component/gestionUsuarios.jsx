@@ -123,9 +123,8 @@ function GestionUsuarios() {
                 <div class='d-flex'> 
                     {/* Formulario para crear un usuario  */}
                     <form onSubmit={handleSubmit}>
-                    <div class="form-row mt-5 ml-2">
+                    <div class="form ml-5">
                         <h2 class='rounded-bottom ml-5'>Crear un usuario</h2>
-                        <br></br><hr/>
                         <div>
                             <input class="form-control mt-2 ml-3"
                                 required autoComplete='off' 
@@ -187,14 +186,14 @@ function GestionUsuarios() {
 
                     {/* Formulario para modificar un usuario */}
 
-                    <form class="form-row mb-9" onSubmit={putSubmit}>
-                    <div class=' container mt-5 ml-5'  >
-                    <h2>Modificar un usuario</h2>
+                    <form class="form mb-9 ml-5" onSubmit={putSubmit}>
+                    <div class='ml-5'  >
+                    <h2 class='rounded-bottom ml-3'>Modificar un usuario</h2>
                         <div >
                             <ol>
                                 <li class='form-inline'>
                                     <span> Usuario Numero: </span>
-                                    <input class="form-control mt-1 ml-3"
+                                    <input class="form-control mt-2 ml-3"
                                         required autoComplete='off' 
                                         name='id' 
                                         value={ClientDetails.id}>
@@ -202,7 +201,7 @@ function GestionUsuarios() {
                                 </li>
                                 <li class='form-inline'>
                                     <span> Nombre: </span>
-                                    <input class="form-control mt-1 ml-3"                        
+                                    <input class="form-control mt-2 ml-3"                        
                                         placeholder={ClientDetails.name} 
                                         name='name' 
                                         onChange={handleUser} 
@@ -211,7 +210,7 @@ function GestionUsuarios() {
                                 </li>
                                 <li class='form-inline'>
                                     <span> Apellido: </span>
-                                    <input class="form-control mt-1 ml-3"                        
+                                    <input class="form-control mt-2 ml-3"                        
                                         placeholder={ClientDetails.lastName} 
                                         name='lastName' 
                                         onChange={handleUser} 
@@ -220,7 +219,7 @@ function GestionUsuarios() {
                                 </li>
                                 <li class='form-inline'>
                                     <span> Telefono: </span>
-                                    <input class="form-control mt-1 ml-3"                        
+                                    <input class="form-control mt-2 ml-3"                        
                                         placeholder={ClientDetails.phone}
                                         name='phone' 
                                         onChange={handleUser} 
@@ -229,7 +228,7 @@ function GestionUsuarios() {
                                 </li>
                                 <li class='form-inline'>
                                     <span> Provincia: </span>
-                                    <input class="form-control mt-1 ml-3"
+                                    <input class="form-control mt-2 ml-3"
                                         placeholder={ClientDetails.state} 
                                         name='state' 
                                         onChange={handleUser} 
@@ -238,7 +237,7 @@ function GestionUsuarios() {
                                 </li>
                                 <li class='form-inline'>
                                     <span> Dirección: </span>
-                                    <input class="form-control mt-1 ml-3"                      
+                                    <input class="form-control mt-2 ml-3"                      
                                         placeholder={ClientDetails.adress} 
                                         name='adress' 
                                         onChange={handleUser} 
@@ -247,7 +246,7 @@ function GestionUsuarios() {
                                 </li>
                                 <li class='form-inline'>
                                     <span> Cod. Postal: </span>
-                                    <input class="form-control mt-1 ml-3"                      
+                                    <input class="form-control mt-2 ml-2"                      
                                         placeholder={ClientDetails.mail} 
                                         name='mail' 
                                         onChange={handleUser} 
@@ -256,7 +255,7 @@ function GestionUsuarios() {
                                 </li>
                                 <li class='form-inline'>
                                     <span> DNI: </span>
-                                    <input class="form-control mt-1 ml-3"                      
+                                    <input class="form-control mt-2 ml-5"                      
                                         placeholder={ClientDetails.identityCard} 
                                         name='identityCard' 
                                         onChange={handleUser} 
@@ -265,14 +264,14 @@ function GestionUsuarios() {
                                 </li>
                                 <li class='form-inline'>
                                     <span> Permisos: </span>
-                                    <select class="form-control w-75 mt-1 ml-3" name="admin" onChange={handleUser}>
+                                    <select class="form-control w-75 mt-2 ml-3" name="admin" onChange={handleUser}>
                                         <option key='false' value='false'>Usuario</option>
                                         <option key='true' value='true'>Admin</option>
                                     </select>
                                 </li>
                             </ol>
 
-                            <button class="btn btn-primary btn-lg btn-block mt-2 ml-5" name='submit' type='submit' onClick={ (e) => { e.preventDefault() ; putSubmit(ClientDetails, user)}  }> CONFIRMAR MODIFICACIÓN</button>
+                            <button class="btn btn-primary btn-lg btn-block mt-2 ml-3" name='submit' type='submit' onClick={ (e) => { e.preventDefault() ; putSubmit(ClientDetails, user)}  }> CONFIRMAR MODIFICACIÓN</button>
                         </div> 
                     </div>
                     </form>

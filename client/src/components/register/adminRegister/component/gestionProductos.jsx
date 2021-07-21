@@ -114,51 +114,53 @@ function GestionProductos() {
           </div>
         </div>
 
-        <div className='CrearProducto'  class="form-row ml-5">
-          <h3>Crear un producto</h3>
-          {<form >
-              <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='name' placeholder ='nombre del producto' onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='Description' placeholder='descripcion' onChange={handleInputChange}/>
-              <select class="form-control mt-2 ml-5" name="type" onChange={handleInputChange}>
-                        <option key='vinos' value='Vinos'>Vinos</option>
-                        <option key='cervezas' value='cervezas'>Cervezas</option>
-                        <option key='espumantes' value='Espumantes'>Espumantes</option>
-                        <option key='whiskys' value='Whiskys'>Whiskys</option>
-                        <option key='bebidas' value='Bebidas'>Bebidas</option>
-                        <option key='varios' value='varios'>Varios</option>
-                </select>
-              <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='image' placeholder='url de imagen' onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='maker' placeholder='fabricante' onChange={handleInputChange}/>
-              <input type='number' class="form-control mt-2 ml-5" autoComplete='off' name='price' placeholder='precio' onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='subcategories' placeholder='sub-categoria' onChange={handleArrayChange}/>
-              <p class='mt-2 ml-5'>Separa las sub-categorias con un guion medio " - " </p>
-              <input type='number' class="form-control mt-2 ml-5" autoComplete='off' name='stock' placeholder='stock' onChange={handleInputChange}/>
-              <button className='NewProductSubmitButton' name='submit' type='submit' class="btn btn-primary btn-lg btn-block mt-2 ml-5" onClick={e=>handleSubmit(e)}>CREAR</button>
-          </form>}
-        </div>
+        <div class='d-flex'>
+          <div className='CrearProducto'  class="form ml-5">
+            <h3>Crear un producto</h3>
+            {<form >
+                <input type='text' class="form-control mt-2 ml-2" autoComplete='off' name='name' placeholder ='nombre del producto' onChange={handleInputChange}/>
+                <input type='text' class="form-control mt-2 ml-2" autoComplete='off' name='Description' placeholder='descripcion' onChange={handleInputChange}/>
+                <select class="form-control mt-2 ml-2" name="type" onChange={handleInputChange}>
+                          <option key='vinos' value='Vinos'>Vinos</option>
+                          <option key='cervezas' value='cervezas'>Cervezas</option>
+                          <option key='espumantes' value='Espumantes'>Espumantes</option>
+                          <option key='whiskys' value='Whiskys'>Whiskys</option>
+                          <option key='bebidas' value='Bebidas'>Bebidas</option>
+                          <option key='varios' value='varios'>Varios</option>
+                  </select>
+                <input type='text' class="form-control mt-2 ml-2" autoComplete='off' name='image' placeholder='url de imagen' onChange={handleInputChange}/>
+                <input type='text' class="form-control mt-2 ml-2" autoComplete='off' name='maker' placeholder='fabricante' onChange={handleInputChange}/>
+                <input type='number' class="form-control mt-2 ml-2" autoComplete='off' name='price' placeholder='precio' onChange={handleInputChange}/>
+                <input type='text' class="form-control mt-2 ml-2" autoComplete='off' name='subcategories' placeholder='sub-categoria' onChange={handleArrayChange}/>
+                <p class='mt-2 ml-3'>Separa las sub-categorias con un guion medio " - " </p>
+                <input type='number' class="form-control mt-2 ml-2" autoComplete='off' name='stock' placeholder='stock' onChange={handleInputChange}/>
+                <button className='NewProductSubmitButton' name='submit' type='submit' class="btn btn-primary btn-lg btn-block mt-2 ml-2" onClick={e=>handleSubmit(e)}>CREAR</button>
+            </form>}
+          </div>
 
-        <div className='EditarProducto' class='form-row m-5'>
-          <h3>Modificar un producto</h3>
-          {<form >
-              <input type='number'class="form-control mt-2 ml-5" name='id' autoComplete='off' value={productDetail.id}/>
-              <input type='text' class="form-control mt-2 ml-5" name='name' placeholder ={productDetail.name} onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" name='Description' placeholder={productDetail.Description} onChange={handleInputChange}/>
-              <select class="form-control mt-2 ml-5" name="type" onChange={handleInputChange}>
-                        <option key='vinos' value='Vinos'>Vinos</option>
-                        <option key='cervezas' value='cervezas'>Cervezas</option>
-                        <option key='espumantes' value='Espumantes'>Espumantes</option>
-                        <option key='whiskys' value='Whiskys'>Whiskys</option>
-                        <option key='bebidas' value='Bebidas'>Bebidas</option>
-                        <option key='varios' value='varios'>Varios</option>
-              </select>
-              <input type='text' class="form-control mt-2 ml-5" name='image' placeholder='url de imagen' onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" name='maker' placeholder={productDetail.maker} onChange={handleInputChange}/>
-              <input type='number' class="form-control mt-2 ml-5" name='price' placeholder={productDetail.price} onChange={handleInputChange}/>
-              <input type='text' class="form-control mt-2 ml-5" name='subcategories' placeholder={productDetail.subcategories} onChange={handleArrayChange}/>
-              <p class='mt-2 ml-5'>Separa las sub-categorias con un guion medio " - " </p>
-              <input type='number' class="form-control mt-2 ml-5" name='stock' placeholder={productDetail.stock} onChange={handleInputChange}/>
-              <button className='NewProductSubmitButton' class="btn btn-primary btn-lg btn-block mt-2 ml-5" name='submit' type='submit' onClick={e=>editSubmit(e)} >CONFIRMAR MODIFICACIÓN</button>
-          </form>}
+          <div className='EditarProducto' class='form ml-5'>
+            <h3>Modificar un producto</h3>
+            {<form >
+                <input type='number'class="form-control mt-2 ml-2" name='id' autoComplete='off' value={productDetail.id}/>
+                <input type='text' class="form-control mt-2 ml-2" name='name' placeholder ={productDetail.name} onChange={handleInputChange}/>
+                <input type='text' class="form-control mt-2 ml-2" name='Description' placeholder={productDetail.Description} onChange={handleInputChange}/>
+                <select class="form-control mt-2 ml-2" name="type" onChange={handleInputChange}>
+                          <option key='vinos' value='Vinos'>Vinos</option>
+                          <option key='cervezas' value='cervezas'>Cervezas</option>
+                          <option key='espumantes' value='Espumantes'>Espumantes</option>
+                          <option key='whiskys' value='Whiskys'>Whiskys</option>
+                          <option key='bebidas' value='Bebidas'>Bebidas</option>
+                          <option key='varios' value='varios'>Varios</option>
+                </select>
+                <input type='text' class="form-control mt-2 ml-2" name='image' placeholder='url de imagen' onChange={handleInputChange}/>
+                <input type='text' class="form-control mt-2 ml-2" name='maker' placeholder={productDetail.maker} onChange={handleInputChange}/>
+                <input type='number' class="form-control mt-2 ml-2" name='price' placeholder={productDetail.price} onChange={handleInputChange}/>
+                <input type='text' class="form-control mt-2 ml-2" name='subcategories' placeholder={productDetail.subcategories} onChange={handleArrayChange}/>
+                <p class='mt-2 ml-3'>Separa las sub-categorias con un guion medio " - " </p>
+                <input type='number' class="form-control mt-2 ml-2" name='stock' placeholder={productDetail.stock} onChange={handleInputChange}/>
+                <button className='NewProductSubmitButton' class="btn btn-primary btn-lg btn-block mt-2 ml-2 mb-5" name='submit' type='submit' onClick={e=>editSubmit(e)} >CONFIRMAR MODIFICACIÓN</button>
+            </form>}
+          </div>
         </div>
       </div>
    )
