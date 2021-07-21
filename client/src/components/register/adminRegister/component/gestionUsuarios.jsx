@@ -7,17 +7,12 @@ function GestionUsuarios() {
     const AllClients = useSelector(state => state.AllClients);
     const ClientDetails = useSelector(state => state.ClientDetails);
     const dispatch = useDispatch();
-
+    
     useEffect(() => { 
         console.log(AllClients)
-    }, [AllClients]);
-
-    useEffect(() => { 
         dispatch(getAllUsers());
-    }, [AllClients]);
-    useEffect(() => { 
-        console.log(AllClients);
-    }, [AllClients]);
+    }, []);
+
 
     //Estado local que maneja los valores de CREACION Y de MODIFICACIÓN del usuario. NO lleva el campo ID (este se asigna solo en la creación, y ya existe en la modificación)
     const [user, setUser] = useState({ 
