@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
-import { getpedidosUser, getPedidoDetail, addProductCart, getProducts } from "../../../../actions/index";
+import { getpedidosUser, getPedidoDetail, addProductCart, getProducts, repeatOrder } from "../../../../actions/index";
 
 export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
@@ -38,15 +38,9 @@ export default function MisPedidos({ match }) {
     orderSetting();
   }, [pedidos]);
 
-  // console.log(
-  //   "LAS ORDENES",
-  //   ordenes?.orders?.map((el) => el.products.map((el) => el))
-  //   // el.image, el.name;
-  // );
-
-  // dispatch(getPedidoDetail(e.target.value));
-  // dispatch(getpedidosUser(e.target.value));
-  // console.log(e.target.value);
+  const repeatCart=(payload)=>{
+    dispatch(repeatOrder(payload))
+  }
   const insertDetail = (id) => {
     dispatch(getPedidoDetail(id))  
     console.log(pedidoDetail)  
@@ -104,9 +98,7 @@ export default function MisPedidos({ match }) {
                           <button
                             class="btn btn-sm btn-info"
                             value={el.id}
-                            onClick={(e) => {
-                              e.preventDefault();
-                            }}
+                            onClick={() =>  repeatCart(el.products) } 
                           >
                             CONFIRMAR
                           </button>
@@ -136,7 +128,6 @@ export default function MisPedidos({ match }) {
                 </tr>
               </thead>
               <tbody>
-                {console.log('vamojuli',pedidoDetail)}
                 {pedidoDetail?.products?.map((el) =>
                    {
                     return (
@@ -149,14 +140,6 @@ export default function MisPedidos({ match }) {
                       <td>
                           <label for="vehicle1">
                             <button onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
-                            {/* <input
-                              style={{marginLeft:'10%'}}
-                              onChange={"FUNCTION PARA AGREGAR AL CARRITO"}
-                              type="checkbox"
-                              id="vehicle1"
-                              name={el.order_detail.id}
-                              value={el.order_detail.id}
-                            ></input> */}
                           </label>
                         </td>
                         

@@ -28,6 +28,7 @@ export const PEDIDOUSER = 'PEDIDOUSER';
 export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
+export const REPEAT_ORDER = 'REPEAT_ORDER'
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -235,13 +236,16 @@ export function getUserDetails(id) {
 export function crearUsuario(payload) {
   return async (dispatch) => {
     const response = await axios.post('http://localhost:3001/clientesPost', payload);
-    dispatch({type:POST_USER, payload: response.data})
+    dispatch({
+      type: POST_USER,
+      payload: response.data
+    })
   }
 }
 
 export function postUsuarios(usuario) {
   return (dispatch) => {
-    
+
     axios.post('http://localhost:3001/admin/clientesPost', usuario)
       .then((response) => {
         console.log(response);
@@ -263,7 +267,7 @@ export function putUsuarios(id, usuario) {
           type: PUT_USER,
           payload: response.data
         });
-        
+
       })
       .catch((err) => {
         console.log(err);
@@ -408,6 +412,15 @@ export function putPedido(id, payload) {
       })
   }
 };
+
+export function repeatOrder(payload) {
+  console.log(payload)
+  return {
+    type: REPEAT_ORDER,
+    payload
+  };
+}
+
 
 
 

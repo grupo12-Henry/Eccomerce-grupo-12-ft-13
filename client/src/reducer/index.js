@@ -18,7 +18,8 @@ import {
   GET_ALL_USERS,
   PEDIDOSUSER,
   POST_USER,
-  UPDATE_FROM_CART
+  UPDATE_FROM_CART,
+  REPEAT_ORDER
 } from '../actions'
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -166,6 +167,16 @@ case ADD_TO_CART:
       return {
         ...state,
         productCart: state.productCart.filter(e => e.id !== action.payload)
+      }
+    case REPEAT_ORDER:
+      action.payload.forEach(e=>{
+        let newItem = {id:e.id, image: e.image, name:e.name, cantidad: e.order_detail.cantidad, price: e.price};
+       state = {...state, productCart: state.productCart.concat(newItem) }
+        
+      })
+      //  let productosOrder = action.payload.forEach(e=>state.products.find(el=> el.id===e.id)) //e.id e.order_detail.cantidad)
+      return {
+        state
       }
 
       /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
