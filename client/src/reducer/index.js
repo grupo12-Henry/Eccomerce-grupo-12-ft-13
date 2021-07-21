@@ -122,12 +122,15 @@ const rootReducer = (state = initialState, action) => {
 //ACTION PARA AGREGAR PRODUCTOS AL CARRITO, CUANDO DAMOS CLICK EN AGREGAR SOBRE EL PRODUCTO
 //logica agregar funciona perfect!
     case ADD_TO_CART:
-      let nuevoItem = state.products.find(prod => ((prod.id === action.payload)||prod.id===action.payload.id||console.log('marquitos', prod.id)))
+      console.log(state.products.length)
+      let nuevoItem = state.products.find(prod => ((action.payload.productId)?prod.id=== action.payload.productId||console.log(prod.id): (prod.id === action.payload)))
+      console.log(nuevoItem)
       let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
       if (a.length) {
             nuevoItem = {
               ...nuevoItem,
-              cantidad: (parseInt(a[0].cantidad) + 1)
+              // cantidad: (parseInt(a[0].cantidad) + 1) 
+              cantidad: !action.payload.cantidad ?(parseInt(a[0].cantidad) + 1):(parseInt(a[0].cantidad)+action.payload.cantidad) // 
             }
             state = {
               ...state,
@@ -136,9 +139,12 @@ const rootReducer = (state = initialState, action) => {
       }
 
       if (!a.length) {
+        !action.payload.cantidad?
         nuevoItem = {
           ...nuevoItem,
           cantidad: 1
+        }: nuevoItem = {
+          ... nuevoItem, cantidad:action.payload.cantidad
         }
       }
       let array = JSON.parse(window.localStorage.getItem("array"));
@@ -152,7 +158,7 @@ const rootReducer = (state = initialState, action) => {
 
       //ACTUALIZAR CANTIDAD DEL CARRITO EN UN PROD EN PARTICULAR 
       case UPDATE_FROM_CART:
-        console.log(action.payload)
+        // console.log(action.payload)
         state = {
           ...state,
           productCart: state.productCart
