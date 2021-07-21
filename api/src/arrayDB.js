@@ -246,7 +246,7 @@ var datab = [
   },
     {
       PRODUCTOS: 'The Glenlivet 12 años 700 ml',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/glen-elgin-121-8b706dbbd7685346a216079712209554-480-0.jpg?alt=media&token=fcb52ae0-31ef-495d-8d66-a8695968a444',  
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/the-glenlivet-12.jpg?alt=media&token=5c997e83-c1cc-4b9a-996e-31872726129a',  
       Fabricante: 'The Glenlivet',
       Detalle: 'The Glenlivet 12 Años Single Malt es un referente mundial de la categoría Scotch Single Malt, considerado también como el whisky Single Malt "Patrón" de la región Speyside. De color dorado claro. Elegante y balanceada nariz, con notas frutadas, delicada fragancia floral, miel y leve ahumado. Suave, balanceado, frutado y floral. De final liso, cálido y elegante.',
       STOCK: 24,
@@ -318,7 +318,7 @@ var datab = [
       PRODUCTOS: 'Johnnie Walker Red Label 1000 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Johnnie%20Walker%20Red%20Label.jpg?alt=media&token=ec975974-e08d-40fd-9c3c-3be3354934d8',
       Fabricante: 'Johnnie Walker',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'La mezcla es en parte arte y en parte ciencia. Es una habilidad de la Familia Walker desarrollada a lo largo de muchas generaciones. Etiqueta roja, con su combinación de whiskies claros de la oscura costa este de Escocia y whiskies de la punta de la costa oeste, creó una mezcla con una extraordinaria profundidad de sabor. El sabor viaja en toda su paladar para ofrecer una experiencia que ni siquiera otros whiskies no ordinarios pueden igualar',
       STOCK: 24,
       PRECIO: 2027,
       CATEGORIA: 'Whiskys',
@@ -338,7 +338,7 @@ var datab = [
       PRODUCTOS: 'Johnnie Walker Black Label 1000 ml',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Johnnie%20Walker%20Black%20Label%201000%20ml.png?alt=media&token=51dc5aa1-6db2-4924-915d-4473138b936d',
       Fabricante: 'Johnnie Walker',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'JOHNNIE WALKER se da el lujo de tener acceso a los mejores whiskies de Escocia, que van desde las maltas de la costa oeste y por todo el camino hasta los más sutiles sabores de la costa este. ETIQUETA NEGRA se basa en todos estos aromas para crear una mezcla única con un carácter suave, profundo y complejo.',
       STOCK: 24,
       PRECIO: 3490,
       CATEGORIA: 'Whiskys',
@@ -436,7 +436,7 @@ var datab = [
     },
     {
       PRODUCTOS: 'Jameson Caskmates Ipa 750 ml',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Jameson%20Caskmates%20Ipa%20750%20ml.jpg?alt=media&token=36315795-8d63-4472-a31e-23471eb2ab71',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/jamesonCaskmates750.jpeg?alt=media&token=282d65af-0034-4dfe-8038-170abe8a6852',
       Fabricante: 'Jameson',
       Detalle: 'OLFATO: Floral, lúpulo de hierbas y pomelo. Complementario con madera y un poco de nuez. GUSTO: Lúpulo y cítricos livianos con dulces notas hierbas y tonos ligeramente picantes. La persistencia de la fruta fresca y el lúpulo dan paso a la cebada crujiente y suave.',
       STOCK: 24,
@@ -496,7 +496,7 @@ var datab = [
     },
     {
       PRODUCTOS: 'Gin Apostoles 750',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/apostoles.jpg?alt=media&token=b5811c8c-17d0-4f95-8821-5ad1ad997f8e',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/apostoles750.jpg?alt=media&token=546f26ed-0591-4748-8633-2f9b4215f3f7 ',
       Fabricante: 'Apostoles',
       Detalle: 'APÓSTOLES es el primer gin premium de latinoamérica. Sus botánicos principales son las hojas frescas de yerba mate, pieles de pomelo rosado, eucalipto y menta peperina. En el pueblo de Apóstoles en Misiones fué la primera plantación y es hoy la capital de la yerba mate en la Argentina',
       STOCK: 24,
@@ -616,7 +616,7 @@ var datab = [
     },
     {
       PRODUCTOS: 'QUILMES CERVEZA SIN ALCOHOL LATA 473 ML',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/quilmesLata.jpeg?alt=media&token=55da38f0-e8ea-41ec-adb1-1feefc445f64',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Quilmes-Cero-473ml.jpg?alt=media&token=d060371f-f513-4926-904b-6f3577fe1dca',
       Fabricante: 'Quilmes',
       Detalle: 'Es una cerveza equilibrada, de gran refrescancia y cuerpo balanceado, que marida con platos más bien grasosos o pesados.',
       STOCK: 24,
@@ -668,7 +668,7 @@ var datab = [
       PRODUCTOS: 'GROLSCH CERVEZA LATA 473 ML',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/groslch.jpeg?alt=media&token=01304999-438a-4967-bf7c-08540ea2bfd9',
       Fabricante: 'Grolsh',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Grolsch es una cerveza de origen holandes tipo Pilsener con 400 años de historia y vendida en más de 50 países. Sus ingredientes son reales y 100% naturales: doble lúpulo y 100% malta, sin aditivos, ni conservantes.',
       STOCK: 24,
       PRECIO: 140,
       CATEGORIA: 'cervezas',
@@ -692,7 +692,7 @@ var datab = [
       STOCK: 24,
       PRECIO: 170,
       CATEGORIA: 'cervezas',
-      SUBCATEGORIAS: ['roja', 'ipa']
+      SUBCATEGORIAS: ['roja']
     },
     {
       PRODUCTOS: 'ANTARES INDIA PALE ALE CERVEZA 500 ML',
@@ -726,7 +726,7 @@ var datab = [
     },
     {
       PRODUCTOS: 'Cordoba 473ml',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/cordoba.jpg?alt=media&token=bf74255d-71fd-4ac0-9c27-03e5e63f87e2',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/cervezacordob-lata.jpg?alt=media&token=4b3eb7ac-06eb-4a4d-ac3b-b14553446f3c',
       Fabricante: 'Cordoba',
       Detalle: 'De color rubio y de amargor y cuerpo medios, con el aporte de los aromas y delicados sabores provistos por la miel. Este último ingrediente aporta azúcares fermentables adicionales que la hacen una cerveza más alcohólica.',
       STOCK: 24,
@@ -746,7 +746,7 @@ var datab = [
     },
     {
       PRODUCTOS: 'Circus Roble Malbec Estuche 750 ml',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Circus%20Roble%20Malbec%20Estuche%20750%20ml.jpg?alt=media&token=937e2525-9060-4a4c-86a6-b0ba41b4ec97',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/circusRobleEstuche.png?alt=media&token=92ea0b0f-4ab2-4d75-9fed-47ecc5e6722e',
       Fabricante: 'ESTUCHE',
       Detalle: 'Familia Gascón es una línea de vinos jóvenes, con los primitivos aromas de cada variedad y la intensidad de la fruta fresca en boca. En nariz destaca su característico varietal de frutos negros y rojos.',
       STOCK: 24,
@@ -756,7 +756,7 @@ var datab = [
     },
     {
       PRODUCTOS: 'Trumpeter Malbec Estuche 750 ml',
-      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Trumpeter%20Malbec%20Estuche%20750%20ml.jfif?alt=media&token=81644bee-d77c-48c9-a364-7080afc8e526',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Trumpeter%20MalbecEstuche750.jpg?alt=media&token=bad4440e-7fe4-45a6-b324-cdb63690dc13',
       Fabricante: 'ESTUCHE',
       Detalle: 'Rojo violáceo brillante, seduce con sus aromas frutales (ciruela) y especiados (canela, cardamomo, pimienta negra). Posee gran cuerpo y su vivaz estructura acentúa los taninos intensos que se vuelven aterciopelados en el retrogusto.',
       STOCK: 24,
@@ -788,7 +788,7 @@ var datab = [
       PRODUCTOS: 'Trumpeter Reserva Malbec Estuche',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Trumpeter%20Reserva%20Malbec%20Estuche.jpg?alt=media&token=ff2dd8a8-0e21-4699-a4be-8dab7071754f',
       Fabricante: 'ESTUCHE',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Trumpeter Reserva Malbec. Variedad: 100% Malbec. Es un vino de color rojo intenso con profundos matices violáceos. En nariz presenta una amplia gama aromática de frutos rojos como cerezas, ciruelas acompañados con notas de menta y de vainilla que le da el tiempo en contacto con el roble. En la boca posee amables y armoniosos taninos los cuales otorgan una textura sedosa y un largo final.',
       STOCK: 24,
       PRECIO: 769,
       CATEGORIA: 'Vinos',
@@ -889,7 +889,7 @@ var datab = [
       PRODUCTOS: 'Trumpeter Cabernet Franc',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Trumpeter%20Cabernet%20Franc.jpg?alt=media&token=6347b9c9-11bd-4ed8-a2a8-10ccf2a45ceb',
       Fabricante: 'BODEGA LA RURAL',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'De color rojo rubí brillante, con reflejos púrpuras. En nariz, expresa aromas a frutas rojas maduras y suaves notas mentoladas, finamente mezclados con otros aportados por el roble (cacao, tabaco, vainilla). Su manifiesta tipicidad deja percibir sabores que evocan ciruelas y especias como pimienta rosa, aguaribay. Aportando un final de boca sostenido, equilibrado por su acidez fresca',
       STOCK: 24,
       PRECIO: 513,
       CATEGORIA: 'Vinos',
@@ -899,7 +899,7 @@ var datab = [
       PRODUCTOS: 'Trumpeter Reserve Blend',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Trumpeter%20Reserve%20Blend.jpg?alt=media&token=947cae00-b8ec-4fe2-8521-fe58298ccdca',
       Fabricante: 'BODEGA LA RURAL',
-      Detalle: 'ACA LA INFO',
+      Detalle: 'Rojo rubi´ brillante. Cada variedad aporta al blend sus cualidades: el Tempranillo provee aromas y sabores de frutos rojos como la frambuesa y buena estructura ta´nica. El Malbec entrega las notas vivaces de fruta fresca (cereza, cassis) asi´ co´mo los taninos sucrosos y redondos mientras que el Cabernet Sauvignon ofrece un toque intenso de pimienta negra y dejos tostados. El resultado es un tinto de suave y asombrosa untuosidad y final de grata persistencia',
       STOCK: 24,
       PRECIO: 669,
       CATEGORIA: 'Vinos',
@@ -1295,7 +1295,7 @@ var datab = [
       },
       {
         PRODUCTOS: 'Dadá Nº1 750 ml Blend Bonarda, malbec con aroma a vainilla',
-        URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Dad%C3%A1%20N%C2%BA1%20750%20ml%20Blend%20Bonarda%2C%20malbec%20con%20aroma%20a%20vainilla.jpg?alt=media&token=4873a0fa-e969-44f5-b7e9-74929e067038',
+        URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Dada1BlendBonarda.jpeg?alt=media&token=2bb4590c-fd22-43a5-ba3a-2e8b1a81697d',
         Fabricante: 'BODEGA FINCA LAS MORAS',
         Detalle: 'Delicado blend elaborado con uvas tintas de color rojo intenso. Su pasaje por roble americano de tostado medio le entrega aromas a vainilla que se integran en boca con dulzura y suaves taninos.',
         STOCK: 24,
@@ -1385,7 +1385,7 @@ var datab = [
       },
       {
         PRODUCTOS: 'San Felipe Extra Dulce Torrontes',
-        URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/San%20Felipe%20Extra%20Dulce%20Torrontes.jpg?alt=media&token=7d28b20f-5e65-41b4-9c8a-696b19931695',
+        URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/SanFelipeExtDul.jpg?alt=media&token=56614d7b-0cf6-42e6-9ecc-123f6d067691',
         Fabricante: 'BODEGA LA RURAL',
         Detalle: 'Amarillo seco, con reflejos brillantes. Presenta burbujas finas y persistentes. Los aromas que desprende recuerdan la fragancia de las frutas blancas maduras, en armonía con tenues notas tostadas. Con buena cremosidad, en el paladar deja un recuerdo de frescura de perfil sucroso.',
         STOCK: 24,
