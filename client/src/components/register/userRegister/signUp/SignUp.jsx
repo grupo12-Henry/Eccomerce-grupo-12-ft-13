@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector }from "react-redux";
-import {crearUsuario} from '../../../../actions/index.js';
+import {createUser} from '../../../../actions/index.js';
 
 import { useAuth } from "../../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
@@ -28,7 +28,7 @@ const handleUser = (e) => {
 const dispatch =useDispatch();
   const postUser = function(){
     
-  dispatch(crearUsuario(user))
+  dispatch(createUser(user))
   }
   const nombreRef = useRef();
   const apellidoRef = useRef();

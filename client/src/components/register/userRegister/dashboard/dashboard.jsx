@@ -52,6 +52,7 @@ export default function Dashboard() {
   if (!loading) {
     return <Loading />;
   }
+  console.log('usuario', user)
   return (
     <>
       <Nav />
