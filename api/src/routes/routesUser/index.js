@@ -45,9 +45,8 @@ router.post('/clientesPost', async (req, res) => {
     token
 	} = req.body;
  try {
-  // const newClient = await Client.findOrCreate({ where:{mail, token, name},
-    const [newClient, status] = await Client.findOrCreate({ where:{mail, name},
-    deault:{ name, lastName, phone, state, adress, mail, identityCard,token}
+    const [newClient, status] = await Client.findOrCreate({ where:{mail},
+    default:{ name, lastName, phone, state, adress, mail, identityCard,token}
   })
   return res.send(newClient)
   } catch(error){
