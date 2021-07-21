@@ -24,6 +24,7 @@ export const ADDNEWPRODUCT = "ADDNEWPRODUCT";
 export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS";
 export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const PEDIDOSUSER = 'PEDIDOSUSER';
+export const PEDIDOUSER = 'PEDIDOUSER';
 export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
@@ -50,8 +51,24 @@ export function getpedidosUser(id) {
   return (dispatch) => {
     axios.get(`http://localhost:3001/pedidos/${id}`)
       .then(response => {
+        console.log(response.data)
         dispatch({
           type: PEDIDOSUSER,
+          payload: response.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+};
+export function getPedidoUser(id) {
+  return (dispatch) => {
+    axios.get(`http://localhost:3001/pedido/${id}`)
+      .then(response => {
+        console.log(response.data)
+        dispatch({
+          type: PEDIDOUSER,
           payload: response.data
         })
       })
@@ -87,8 +104,9 @@ export function addProductCart(payload) {
 }
 
 export function getDetail(id) {
+  console.log(id)
   return (dispatch) => {
-    axios.get('http://localhost:3001/admin/productos/id/' + id)
+    axios.get('http://localhost:3001/productos/' + id)
       .then(response => {
         dispatch({
           type: GETDETAILS,
