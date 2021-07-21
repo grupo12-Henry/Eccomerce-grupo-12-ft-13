@@ -90,7 +90,7 @@ router.get('/pedidos/:id',async (req, res)=>{
    const clientPedidos = await Client.findAll({
     include:{
      model: Order,
-     attributes:['date','ticket'],
+     attributes:['date','ticket', 'id'],
      include:[{model: Product, atributes:['name','price','image']}]
     },
    attributes: ['name', 'lastName'],
