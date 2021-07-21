@@ -42,7 +42,8 @@ useEffect(() => {
   let aux = 0;
   cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
   setMontoTotal(aux)
-}, [cart,montoTotal , product])
+}, [cart, montoTotal , product])
+
 
   const clearCart = () => {
     window.localStorage.removeItem('array')
@@ -55,7 +56,8 @@ useEffect(() => {
   
   const order=()=>{
     let user =  window.localStorage.getItem("user");
-    let completo = user? {idClient:user.split(',')[0].split(':')[1], adress:user.split(',')[5].split(':')[1], products:cart, paymentMethod:'efectivo', mail:user.split(',')[6].split(':')[1], Total:montoTotal}:console.log('user is null')
+    let completo = user? {idClient:user.split(',')[0].split(':')[1], adress:user.split(',')[5].split(':')[1], products:cart, paymentMethod:'efectivo', mail:user.split(',')[6].split(':')[1], bill:montoTotal}:console.log('user is null')
+    //aqui esta faltando q le mandemos el subtotal para que lo cargue en la tabla order_detail 
     dispatch(orderPost(completo));
     clearCart();
     alert('pedido confirmado')
