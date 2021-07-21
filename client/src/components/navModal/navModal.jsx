@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import ReactDom from "react-dom";
 import SignUp from "../register/userRegister/signUp/SignUp";
 import Login from "../register/userRegister/login/login";
@@ -6,6 +7,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import StyledDiv from "./styled";
 import CloseIcon from "@material-ui/icons/Close";
 import logo from "../../assets/images/logo-google.png";
+import { crearUsuario, getUser } from "../../actions";
 
 const MODAL_STYLES = {
   position: "fixed",
@@ -34,11 +36,17 @@ const OVERLAY_STYLES = {
 export default function NavModal({ open, children, onClose }) {
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
-  const { currentUser, logout } = useAuth();
-  
+  let { currentUser, logout } = useAuth();
   const { googleLogin } = useAuth();
-
+  const dispatch = useDispatch()
   if (!open) return null;
+
+  async function vamo (){
+    if(currentUser){try{
+      dispatch( crearUsuario({mail:currentUser.email, name: `${currentUser.displayName}`, token:currentUser.refreshToken}))
+    }catch(err){console.log(err)}}
+  }
+  vamo()
 
   const handleSignup = (e) => {
     e.preventDefault();

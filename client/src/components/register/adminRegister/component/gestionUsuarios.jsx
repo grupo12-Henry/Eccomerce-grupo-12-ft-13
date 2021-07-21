@@ -7,14 +7,15 @@ function GestionUsuarios() {
     const AllClients = useSelector(state => state.AllClients);
     const ClientDetails = useSelector(state => state.ClientDetails);
     const dispatch = useDispatch();
-
+    
     useEffect(() => { 
+        console.log(AllClients)
         dispatch(getAllUsers());
     }, []);
 
-    //A partir de aca es lo que estaba codeado.
+
+    //Estado local que maneja los valores de CREACION Y de MODIFICACIÓN del usuario. NO lleva el campo ID (este se asigna solo en la creación, y ya existe en la modificación)
     const [user, setUser] = useState({ 
-        id:'',
         name: '',
         lastName: '',
         phone: '',
@@ -32,27 +33,26 @@ function GestionUsuarios() {
         })
     }
 
+    //Crea un Usuario
     const handleSubmit = (e) => {
-        // e.preventDefault()
-        //setSubmit(true)
+        e.preventDefault()
+        console.log(user)
         dispatch(postUsuarios(user))
-        alert('Usuario Creado')
     }
-
+    //Modifica un usuario
     const putSubmit = (ClientDetails, user) => {
+        // e.preventDefault()
+        console.log(ClientDetails.id, 'user:', user)
         dispatch(putUsuarios(ClientDetails.id, user))
-        alert('Usuario modificado')
     }
-
+    //Trae el detalle de un Usuario al estado de Redux ClientDetails
     const insertClientInfo = (e) => {
         dispatch(getUserDetails(e.target.value))
-        console.log('Pega Aca');
     }
-
+    //Borra un Usuario
     const deleteSubmit = (e) => {
         if(window.confirm('¿Esta seguro de que desea borrar este usuario? Esta operación no se puede deshacer.')) {
-            deleteUsuarios(e.target.value)
-            alert('Usuario borrado')
+           deleteUsuarios(e.target.value)
         } 
     }
 
@@ -62,7 +62,7 @@ function GestionUsuarios() {
             <div class='containter mt-05 ml-3 mr-03 mb-3'>
             <h3 class='mt-03 ml-3 mr-03 mb-3'>Ver Usuarios</h3>
             <div class="table-responsive">
-                <table 
+                <table
                     class="table table-sm table-bordered mt-05 ml-3 mr-03 mb-3 "
                     data-toggle="table"
                     data-pagination="true"
@@ -85,41 +85,41 @@ function GestionUsuarios() {
                     </thead>
                     <tbody>
                         {
-                           AllClients.length? AllClients.map(client => (
+                           AllClients && AllClients?.map(client => (
                                 <tr>
-                                <th scope="row">{client.id}</th>
-                                <td>{client.name}</td>
-                                <td>{client.lastName}</td>
-                                <td>{client.identityCard}</td>
-                                <td>{client.phone}</td>
-                                <td>{client.mail}</td>
-                                <td>{client.adress}</td>
-                                <td>{client.state}</td>
+                                <th scope="row">{client?.id}</th>
+                                <td>{client?.name}</td>
+                                <td>{client?.lastName}</td>
+                                <td>{client?.identityCard}</td>
+                                <td>{client?.phone}</td>
+                                <td>{client?.mail}</td>
+                                <td>{client?.adress}</td>
+                                <td>{client?.state}</td>
 
                                 <td >
-                                    {client.admin==true? (<button class="btn btn-sm btn-success">
+                                    {client?.admin==true? (<button class="btn btn-sm btn-success">
                                         ADMIN
                                     </button>) : null}
                                 </td>
                                 <td >
-                                <button class="btn btn-sm btn-info" value={client.id} onClick={(e) => {e.preventDefault(); insertClientInfo(e)}} >
+                                <button class="btn btn-sm btn-info" value={client?.id} onClick={(e) => {e.preventDefault(); insertClientInfo(e)}} >
                                     Modificar
                                 </button>
                                 </td>
                                 <td >
-                                    <button class="btn btn-sm btn-danger" value={client.id} onClick={(e) => deleteSubmit(e)} >
+                                    <button class="btn btn-sm btn-danger" value={client?.id} onClick={(e) => deleteSubmit(e)} >
                                         Eliminar
                                     </button>
                                 </td>
                                 </tr>
-                            )):null
+                            ))
                         }
                     </tbody>
                 </table>
             </div>
             </div>
 
-            {/* A partir de aca es lo que estaba codeado  */}
+            {/* Formulario para crear un usuario  */}
             <form onSubmit={handleSubmit}>
             <div class="form-row mt-5 ml-2">
                 <h2 class='rounded-bottom'>Crear un usuario</h2>
@@ -174,16 +174,7 @@ function GestionUsuarios() {
                         onChange={handleUser} 
                         value={user.identityCard}>
                     </input>
-                    {/* <input class="form-control mt-2 ml-5"
-                        autoComplete='off' 
-                        placeholder='Hecer admin (true o false)..' 
-                        name='admin' 
-                        onChange={handleUser} 
-                        value={user.admin}>
-                    </input> */}
-
-                    {/* <label>Permisos: </label> */}
-                    <select class="form-control mt-2 ml-5" name="admin" value={user.admin} onChange={handleUser}>
+                    <select class="form-control mt-2 ml-5" name="admin" onChange={handleUser}>
                         <option key='false' value='false'>Usuario</option>
                         <option key='true' value='true'>Admin</option>
                     </select>
@@ -244,36 +235,14 @@ function GestionUsuarios() {
                         onChange={handleUser} 
                         value={user.identityCard}>
                     </input>
-                    {/* <input class="form-control mt-2 ml-5"                       
-                        placeholder={ClientDetails.admin} 
-                        name='admin' 
-                        onChange={handleUser} 
-                        value={user.admin}>
-                    </input> */}
-                    {/* <label>Permisos: </label> */}
-                    <select class="form-control mt-2 ml-5" name="admin" value={user.admin} onChange={handleUser}>
+                    <select class="form-control mt-2 ml-5" name="admin" onChange={handleUser}>
                         <option key='false' value='false'>Usuario</option>
                         <option key='true' value='true'>Admin</option>
                     </select>
-                    <button class="btn btn-primary btn-lg btn-block mt-2 ml-5" name='submit' type='submit' onClick={ () => {putSubmit(ClientDetails, user)}  }> CONFIRMAR MODIFICACIÓN</button>
+                    <button class="btn btn-primary btn-lg btn-block mt-2 ml-5" name='submit' type='submit' onClick={ (e) => { e.preventDefault() ; putSubmit(ClientDetails, user)}  }> CONFIRMAR MODIFICACIÓN</button>
                 </div> 
                 </div>
             </form>
-
-            {/* <form onSubmit={deleteSubmit}>
-            <h2>Eliminar un usuario</h2>
-                <br/>
-                <div >
-                    <input class="form-control mt-5 ml-5"
-                        required autoComplete='off' 
-                        placeholder='Id del usuario...' 
-                        name='id' 
-                        onChange={handleUser} 
-                        value={user.id}>
-                    </input>
-                    <input class="btn btn-primary btn-m mt-5 ml-5" type='submit'/>
-                </div>
-            </form > */}
 
         </div>
     )

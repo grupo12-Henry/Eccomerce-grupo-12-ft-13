@@ -15,7 +15,7 @@ function GestionProductos() {
       dispatch(getProducts());
   }, []);
 
-  //A PARTIR DE ACA ES LO QUE ESTABA CODEADO
+  //Estado local que maneja los valores de CREACION Y de MODIFICACIÓN de PRODUCTOS. NO lleva el campo ID (este se asigna automaticamente en la creación, y ya existe en la modificación)
     const [newProduct, setNewProduct] = useState({
         name:'',
         Description:'',
@@ -87,7 +87,7 @@ function GestionProductos() {
                 </thead>
                 <tbody>
                     {
-                        AllProducts.map(prod => (
+                        AllProducts && AllProducts.map(prod => (
                             <tr>
                             <th scope="row">{prod.id}</th>
                             <td>{prod.name}</td>
@@ -114,13 +114,11 @@ function GestionProductos() {
           </div>
         </div>
 
-        {/* A partir de aca es lo que estaba codeado */}
         <div className='CrearProducto'  class="form-row ml-5">
           <h3>Crear un producto</h3>
           {<form >
               <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='name' placeholder ='nombre del producto' onChange={handleInputChange}/>
               <input type='text' class="form-control mt-2 ml-5" autoComplete='off' name='Description' placeholder='descripcion' onChange={handleInputChange}/>
-              {/* <input name='type' class="form-control m-2" autoComplete='off' placeholder='tipo' onChange={handleInputChange}/> */}
               <select class="form-control mt-2 ml-5" name="type" onChange={handleInputChange}>
                         <option key='vinos' value='Vinos'>Vinos</option>
                         <option key='cervezas' value='cervezas'>Cervezas</option>
@@ -145,7 +143,6 @@ function GestionProductos() {
               <input type='number'class="form-control mt-2 ml-5" name='id' autoComplete='off' value={productDetail.id}/>
               <input type='text' class="form-control mt-2 ml-5" name='name' placeholder ={productDetail.name} onChange={handleInputChange}/>
               <input type='text' class="form-control mt-2 ml-5" name='Description' placeholder={productDetail.Description} onChange={handleInputChange}/>
-              {/* <input name='type' class="form-control mt-2 ml-5" placeholder='tipo' onChange={handleInputChange}/> */}
               <select class="form-control mt-2 ml-5" name="type" onChange={handleInputChange}>
                         <option key='vinos' value='Vinos'>Vinos</option>
                         <option key='cervezas' value='cervezas'>Cervezas</option>
@@ -163,16 +160,6 @@ function GestionProductos() {
               <button className='NewProductSubmitButton' class="btn btn-primary btn-lg btn-block mt-2 ml-5" name='submit' type='submit' onClick={e=>editSubmit(e)} >CONFIRMAR MODIFICACIÓN</button>
           </form>}
         </div>
-
-        {/* <div>
-          <h3 class="mt-5 ml-2">Eliminar un producto</h3>
-          {<form  onSubmit={e=>deleteSubmit(e)} >
-            <div class="form-row mt-2 ml-5">
-              <input type='number' class="form-control mt-2 ml-5" name='id' autoComplete='off' placeholder='id del producto a modificar' onChange={handleInputChange}/>
-                <button>Delete</button>
-                </div>
-            </form>}
-        </div> */}
       </div>
    )
 }

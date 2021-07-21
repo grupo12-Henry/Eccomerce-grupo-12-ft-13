@@ -98,7 +98,8 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 		state,
 		adress,
 		mail,
-		identityCard
+		identityCard,
+		admin
 	} = req.body;
 	const token = req.headers.authorization && req.headers.authorization.split(' ')[1]
 	try {
@@ -112,6 +113,7 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 			adress,
 			mail,
 			identityCard,
+			admin,
 			token
 		})
 		res.send(newClient)
@@ -219,7 +221,7 @@ router.put('/productos/:id', async (req, res) => { //modifica el producto selecc
 			image: image || product.dataValues.image,
 			stock: stock || product.dataValues.stock,
 			maker: maker || product.dataValues.maker,
-			subcategories: subcategories || product.dataValues.subcategories
+			subcategories: subcategories.length>0? subcategories : product.dataValues.subcategories
 		});
 
 		if (product) {
@@ -289,6 +291,7 @@ router.post('/productos', async (req, res) => { //crea nuevo productos
 router.get('/users/all', async (req, res) => { //trae todo los clientes
 	try {
 		const users = await Client.findAll()
+
 		res.send(users)
 	} catch (error) {
 		res.send(error).status(404)
