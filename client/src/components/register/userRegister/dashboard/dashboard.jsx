@@ -11,6 +11,7 @@ export default function Dashboard() {
   const user = useSelector((state) => state.user);
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
+  console.log('EL CURREN', currentUser)
   const dispatch = useDispatch()
   const [User, setUser] = useState(user)
 
