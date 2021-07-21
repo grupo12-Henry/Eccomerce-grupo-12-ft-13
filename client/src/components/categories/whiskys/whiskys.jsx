@@ -83,7 +83,7 @@ function Whiskys() {
             <NavCategories />
             <StyledDiv>
                 <div class="d-flex justify-content-center-md-center mt-5 " >
-                <div class="btn-group-vertical col-sm-2 mt-5 justify-content-start md-start">
+                <div class="btn-group-vertical col-sm-2 mt-5 mb-1 justify-content-start md-start">
                     {/* <button id='botonazo'className='btn btn-success' onClick={handleCategories}>CATEGORIAS</button> */}
                     <div class="row col-sm-14  ml-1 ">
                         {subCategories.map(d => <button id='botonazo'className='btn btn-dark mt-1' key={d}
@@ -92,7 +92,7 @@ function Whiskys() {
                     </div>
                 </div>
                 <div>
-                    <div class="d-flex justify-content-center mt-5 ">
+                    <div class="d-flex justify-content-center mt-5 mb-1 ">
                         <div class="container d-flex justify-content-center mt-50 mb-50 mw-100">
                             <div className=''>
                                 <button id='botonazo'className='btn btn-dark mr-2 mt-1' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
@@ -127,7 +127,7 @@ function Whiskys() {
                                                             </a>
                                                         </h6>{" "}
                                                     </div>
-                                                    <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
+                                                    <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
                                                     <div class="text-muted mb-3">34 reviews</div>
                                                     <button type="button" onClick={() => addToCart(el.id)} class="btn bg-cart">
                                                           <i class="fa fa-cart-plus mr-2">Agregar</i> 

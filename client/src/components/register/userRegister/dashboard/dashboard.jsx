@@ -5,19 +5,32 @@ import { useAuth } from "../../../../contexts/AuthContext";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
 import Loading from "../../../loading/Loading";
-import { getUser } from "../../../../actions";
+import { getUser, putUsuarios } from "../../../../actions";
 
 export default function Dashboard() {
   const user = useSelector((state) => state.user);
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const dispatch = useDispatch()
-  // function vamo2 (){if (currentUser){
-  //   dispatch(getUser(currentUser.email));
-  // }}
-  // vamo2()
-  console.log(currentUser)
-  
+  const [User, setUser] = useState(user)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    //dispatch(postUsuarios(user))
+  }
+  const handleUser = (e) => {
+    setUser({
+      ...User,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const putSubmit = () => {
+    //e.preventDefault()
+    window.localStorage.setItem('user', JSON.stringify(User))
+    dispatch(putUsuarios(user.id, User))
+  }
+
   const history = useHistory();
 
   async function handleLogout() {
@@ -39,7 +52,7 @@ export default function Dashboard() {
   if (!loading) {
     return <Loading />;
   }
-  console.log('usuario',user)
+  console.log('usuario', user)
   return (
     <>
       <Nav />
@@ -63,51 +76,77 @@ export default function Dashboard() {
                         class="img-circle img-responsive"
                       />
                     </div>
-                    <div class=" col-md-9 col-lg-9 ">
-                      <table class="table table-user-information">
-                        <tbody>
-                          <tr>
-                            <td>Nombre:</td>
-                            <td>{user.name}</td>
-                          </tr>
-                          <tr>
-                            <td>Apellido:</td>
-                            <td>{user.lastName}</td>
-                          </tr>
-                          <tr>
-                            <td>Correo Electronico</td>
-                            <td>{user.mail}</td>
-                          </tr>
-                          <tr>
-                            <td>Dirección</td>
-                            <td>{user.adress}</td>
-                          </tr>
-                          <tr>
-                            <td>Teléfono</td>
-                            <td>{user.phone}</td>
-                          </tr>
-                          <tr>
-                            <td>Provincia</td>
-                            <td>{user.state}</td>
-                          </tr>
-                          <tr>
-                            <td>Ciudad</td>
-                            <td>{user.city}</td>
-                          </tr>{/* 
-                          <a href="edit.html" style={{ textAlign: "center" }}>
-                            Modificar datos
-                          </a> */}
-                        </tbody>
-                      </table>
-                      <div class="mb-5">
-                        <Link to={`/micuenta/mispedidos/${user.id}`} class="btn btn-dark" ><a class="btn btn-dark">
-                          Mis pedidos anteriores
-                        </a>
-                        </Link>
-                        <a href="#" class="btn btn-dark ml-5">
-                          Mis favoritos
-                        </a>
+                    <form class='mt-5 ml-2' onSubmit={(e) => putSubmit(e)} >
+                      <div class="form-row mb-5" >
+                        <h2>Modificar un usuario</h2>
+                        <br />
+                        <div >
+                          {/*   <input class="form-control mt-5 ml-5"
+                        required autoComplete='off' 
+                        name='id' 
+                        value={User.id}>
+                    </input> */}
+                          <input class="form-control mt-2 ml-5"
+                            placeholder={User.name || 'Name'}
+                            name='name'
+                            onChange={handleUser}
+                            value={User.name}>
+                          </input>
+                          <input class="form-control mt-2 ml-5"
+                            placeholder={user.lastName || 'Last name'}
+                            name='lastName'
+                            onChange={handleUser}
+                            value={User.lastName}>
+                          </input>
+                          <input class="form-control mt-2 ml-5"
+                            placeholder={User.phone || 'Phone'}
+                            name='phone'
+                            onChange={handleUser}
+                            value={User.phone}>
+                          </input>
+                          <input class="form-control mt-2 ml-5"
+                            placeholder={User.state || 'State'}
+                            name='state'
+                            onChange={handleUser}
+                            value={User.state}>
+                          </input>
+                          <input class="form-control mt-2 ml-5"
+                            placeholder={User.adress || 'Adress'}
+                            name='adress'
+                            onChange={handleUser}
+                            value={User.adress}>
+                          </input>
+                          {/* <input class="form-control mt-2 ml-5"                      
+                        placeholder={User.mail||'Email'} 
+                        name='mail' 
+                        onChange={handleUser} 
+                        value={User.mail}>
+                    </input> */}
+                          <input class="form-control mt-2 ml-5"
+                            placeholder={User.identityCard || 'DNI'}
+                            name='identityCard'
+                            onChange={handleUser}
+                            value={User.identityCard}>
+                          </input>
+                          
+
+                          <button class="btn btn-dark btn-lg btn-block mt-2 ml-5" name='submit' type='submit' onClick={() => { putSubmit(user, user) }}> CONFIRMAR MODIFICACIÓN</button>
+                        </div>
                       </div>
+                    </form>
+                    <div class=" col-md-9 col-lg-9 ">
+                      <div class="mb-2">
+                      
+                            <Link to={`/micuenta/mispedidos/${user.id}`} ><a class="btn btn-dark">
+                              Mis pedidos anteriores
+                            </a>
+                            </Link>
+                          
+                         <a href="#" class="btn btn-dark ml-5 ">
+                            Mis favoritos
+                          </a>
+                          
+                        </div>
                     </div>
                   </div>
                   <div class="panel-footer">

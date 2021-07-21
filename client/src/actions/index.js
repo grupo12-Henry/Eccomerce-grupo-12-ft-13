@@ -222,7 +222,15 @@ export function crearUsuario(payload) {
 
 export function postUsuarios(usuario) {
   return (dispatch) => {
+    console.log('entra en la action:', usuario)
     axios.post('http://localhost:3001/admin/clientesPost', usuario)
+      .then((response) => {
+        console.log(response);
+        alert('El usuario se creó correctamente')
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 
@@ -230,13 +238,13 @@ export function postUsuarios(usuario) {
 //   axios.put(`http://localhost:3001/admin/users/${usuario.id}`, usuario)
 export function putUsuarios(id, usuario) {
   return (dispatch) => {
-    console.log(id, usuario)
     axios.put("http://localhost:3001/admin/users/" + id, usuario)
       .then((response) => {
         dispatch({
           type: PUT_USER,
           payload: response.data
         });
+        alert ('El usuario se modificó correctamente')
       })
       .catch((err) => {
         console.log(err);

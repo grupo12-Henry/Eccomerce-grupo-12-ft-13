@@ -32,6 +32,10 @@ module.exports = (sequelize) => {
         identityCard: {
             type: DataTypes.STRING,
         },
+        admin:{
+            type: DataTypes.BOOLEAN,
+            default: false
+        },
         token:{
             type: DataTypes.TEXT,
             default: ""
