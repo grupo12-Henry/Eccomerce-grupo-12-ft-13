@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@material-ui/core": "^4.12.1",
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.6",
@@ -19,6 +20,7 @@
     "react-bootstrap": "^1.6.1",
     "react-bootstrap-input-spinner": "^1.0.2",
     "react-dom": "^17.0.1",
+    "react-rating-stars-component": "^2.2.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",

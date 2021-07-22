@@ -17,12 +17,9 @@ export default function MisPedidos({ match }) {
   }, [dispatch]);
 
   useEffect(() => { 
-    console.log(pedidoDetail);
 }, [pedidoDetail]);
   //PEDIDOS ES CLIENTDETAILS DE JULI
   const [ordenes, setOrdenes] = useState();
-  console.log('vamooo emiiii',ordenes)
-  // console.log("DETALLE PEDIDO", detallePedido);
 
   useEffect(() => {
     const orders = () => {
@@ -38,25 +35,13 @@ export default function MisPedidos({ match }) {
     orderSetting();
   }, [pedidos]);
 
-  // console.log(
-  //   "LAS ORDENES",
-  //   ordenes?.orders?.map((el) => el.products.map((el) => el))
-  //   // el.image, el.name;
-  // );
 
-  // dispatch(getPedidoDetail(e.target.value));
-  // dispatch(getpedidosUser(e.target.value));
-  // console.log(e.target.value);
   const insertDetail = (id) => {
     dispatch(getPedidoDetail(id))  
-    console.log(pedidoDetail)  
   };
   const repeatProduct = (payload) => {
-    console.log('emi',payload)
     dispatch(addProductCart(payload))  
-    // console.log(pedidoDetail)  
   };
-  console.log(pedidoDetail)  
 
   return (
     <>
@@ -136,7 +121,6 @@ export default function MisPedidos({ match }) {
                 </tr>
               </thead>
               <tbody>
-                {console.log('vamojuli',pedidoDetail)}
                 {pedidoDetail?.products?.map((el) =>
                    {
                     return (

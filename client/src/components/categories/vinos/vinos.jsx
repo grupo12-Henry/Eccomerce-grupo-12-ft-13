@@ -9,7 +9,7 @@ import Footer from "../../footer/footer";
 import Loading from "../../loading/Loading";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
- 
+import Reviews from '../../reviews/reviews';
 
 function Vinos() {
   const dispatch = useDispatch();
@@ -136,7 +136,7 @@ function Vinos() {
                                                         </div>
                                                         <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
                                                         <FontAwesomeIcon icon={faHeart} type='button'  />
-                                                        <div class="text-muted mb-3">34 reviews</div>
+                                                        <Reviews/>
                                                         <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                                             <i class="fa fa-cart-plus mr-2"></i> Agregar
                                                         </button>
