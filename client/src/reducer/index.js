@@ -123,7 +123,7 @@ const rootReducer = (state = initialState, action) => {
 //ACTION PARA AGREGAR PRODUCTOS AL CARRITO, CUANDO DAMOS CLICK EN AGREGAR SOBRE EL PRODUCTO
 //logica agregar funciona perfect!
 case ADD_TO_CART:
-  let nuevoItem = state.products.find(prod => ((action.payload.productId)?prod.id=== action.payload.productId||console.log(prod.id): (prod.id === action.payload)))
+  let nuevoItem = state.products.find(prod => ((action.payload.productId)?prod.id=== action.payload.productId: (prod.id === action.payload)))
   let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
   if (a.length) {
         nuevoItem = {
@@ -169,16 +169,22 @@ case ADD_TO_CART:
         productCart: state.productCart.filter(e => e.id !== action.payload)
       }
     case REPEAT_ORDER:
-      action.payload.forEach(e=>{
-        let newItem = {id:e.id, image: e.image, name:e.name, cantidad: e.order_detail.cantidad, price: e.price};
-       state = {...state, productCart: state.productCart.concat(newItem) }
+      state.productCart = []
+    action.payload.forEach(e=>{
+        // let newItem = {id:e.id, image: e.image, name:e.name, cantidad: e.order_detail.cantidad, price: e.price};
+       let a = state.products.find(el=> el.id === e.id );
+        a= {...a, cantidad: e.order_detail.cantidad}
+        state.productCart= state.productCart.concat(a)
         
       })
+      // let arrayLocal = JSON.parse(window.localStorage.getItem("array"));
+      window.localStorage.setItem('array',JSON.stringify(state.productCart))
+      console.log('productCart',state.productCart)
       //  let productosOrder = action.payload.forEach(e=>state.products.find(el=> el.id===e.id)) //e.id e.order_detail.cantidad)
       return {
-        state
+         state
       }
-
+      
       /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
       case CLEAR_CART:
         return {
@@ -210,7 +216,7 @@ case ADD_TO_CART:
         return {
           ...state,
           user: JSON.parse(window.localStorage.getItem('user')),
-          arrayStorages: array ? state.arrayStorages.slice().concat([array]) : state.arrayStorages
+          arrayStorages: array ? state.arrayStorages?.slice().concat([array]) : state.arrayStorages
         }
       }
 

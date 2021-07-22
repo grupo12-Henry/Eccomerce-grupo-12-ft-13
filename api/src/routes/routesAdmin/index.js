@@ -262,7 +262,7 @@ router.post('/productos', async (req, res) => { //crea nuevo productos
 				maker: maker,
 				subcategories: subcategories
 			},
-			default: {
+			defaults: {
 				name: name,
 				type: type,
 				Description: Description,
@@ -433,7 +433,6 @@ router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun l
 
 router.put('/users/:id', async (req, res) => {
 	const id = req.params.id
-
 	const {
 		name,
 		phone,
