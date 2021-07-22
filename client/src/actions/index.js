@@ -414,7 +414,7 @@ export function putPedido(id, payload) {
 };
 
 export function repeatOrder(payload) {
-  console.log(payload)
+  console.log("payload",payload)
   return {
     type: REPEAT_ORDER,
     payload
