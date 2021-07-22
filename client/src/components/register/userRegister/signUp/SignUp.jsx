@@ -58,7 +58,6 @@ const dispatch =useDispatch();
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      // onClose()
       history.push("/home");
     } catch {
       setError("Failed to create an account");
@@ -101,10 +100,6 @@ const dispatch =useDispatch();
                   <div className='email'>
                   <label>Provincia:</label>
                   <input  onChange={handleUser} className='input_email' type="text" name="state" value={user.state} ref={provinciaRef}></input>
-                  </div>
-                  <div className='email'>
-                  <label>Localidad:</label>
-                  <input  className='input_email' type="text" name="localidad" value={user.city}ref={localidadRef}></input>
                   </div>
                   <div className='email'>
                   <label>Codigo Postal:</label>
