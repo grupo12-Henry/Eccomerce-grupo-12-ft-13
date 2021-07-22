@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
-import { getpedidosUser, getPedidoDetail, addProductCart, getProducts } from "../../../../actions/index";
+import { getpedidosUser, getPedidoDetail, addProductCart, getProducts, repeatOrder } from "../../../../actions/index";
+import { useHistory } from "react-router-dom";
 
 export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
   const pedidos = useSelector((state) => state.pedidosUser);
   const pedidoDetail = useSelector((state) => state.pedidoDetail);
   // const product = useSelector((state) => state.products);
+  const history = useHistory()
   useEffect(() => {
     const dbProducts = () => {
       dispatch(getProducts());
@@ -17,8 +19,8 @@ export default function MisPedidos({ match }) {
   }, [dispatch]);
 
   useEffect(() => { 
-    console.log(pedidoDetail);
-}, [pedidoDetail]);
+    // dispatch(getpedidosUser(id))
+}, []);
   //PEDIDOS ES CLIENTDETAILS DE JULI
   const [ordenes, setOrdenes] = useState();
   console.log('vamooo emiiii',ordenes)
@@ -29,7 +31,8 @@ export default function MisPedidos({ match }) {
       dispatch(getpedidosUser(match.params.id));
     };
     orders();
-  }, [getpedidosUser, dispatch, match.params.id]);
+  }, [getpedidosUser, dispatch, match.params.id ]);
+  // }, [getpedidosUser, dispatch, match.params.id]);
 
   useEffect(() => {
     const orderSetting = () => {
@@ -37,16 +40,19 @@ export default function MisPedidos({ match }) {
     };
     orderSetting();
   }, [pedidos]);
+  // useEffect(() => {
+  //   const insertDetail = () => {
+  //       dispatch(getPedidoDetail(id))  
+  //   };
+    
+  // }, [pedidos]);
 
-  // console.log(
-  //   "LAS ORDENES",
-  //   ordenes?.orders?.map((el) => el.products.map((el) => el))
-  //   // el.image, el.name;
-  // );
-
-  // dispatch(getPedidoDetail(e.target.value));
-  // dispatch(getpedidosUser(e.target.value));
-  // console.log(e.target.value);
+  const repeatCart=(payload)=>{
+    console.log('pedidoDetail repeat', pedidos)
+    dispatch(repeatOrder(payload));
+    dispatch(getpedidosUser(match.params.id));
+    history.push('/compras')
+  }
   const insertDetail = (id) => {
     dispatch(getPedidoDetail(id))  
     console.log(pedidoDetail)  
@@ -56,7 +62,7 @@ export default function MisPedidos({ match }) {
     dispatch(addProductCart(payload))  
     // console.log(pedidoDetail)  
   };
-  console.log(pedidoDetail)  
+  console.log('pedidos',pedidos)  
 
   return (
     <>
@@ -82,7 +88,7 @@ export default function MisPedidos({ match }) {
                 </tr>
               </thead>
               <tbody>
-                {pedidos[0]?pedidos[0].orders.map((el) => {
+                {pedidos?pedidos[0]?.orders.map((el) => {
                   return (
                     <tr>
                       <th scope="row">{el.date}</th>
@@ -104,9 +110,7 @@ export default function MisPedidos({ match }) {
                           <button
                             class="btn btn-sm btn-info"
                             value={el.id}
-                            onClick={(e) => {
-                              e.preventDefault();
-                            }}
+                            onClick={(e) => repeatCart(el.products) } 
                           >
                             CONFIRMAR
                           </button>
@@ -136,7 +140,6 @@ export default function MisPedidos({ match }) {
                 </tr>
               </thead>
               <tbody>
-                {console.log('vamojuli',pedidoDetail)}
                 {pedidoDetail?.products?.map((el) =>
                    {
                     return (
@@ -149,14 +152,6 @@ export default function MisPedidos({ match }) {
                       <td>
                           <label for="vehicle1">
                             <button onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
-                            {/* <input
-                              style={{marginLeft:'10%'}}
-                              onChange={"FUNCTION PARA AGREGAR AL CARRITO"}
-                              type="checkbox"
-                              id="vehicle1"
-                              name={el.order_detail.id}
-                              value={el.order_detail.id}
-                            ></input> */}
                           </label>
                         </td>
                         
