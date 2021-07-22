@@ -102,10 +102,7 @@ const dispatch =useDispatch();
                   <label>Provincia:</label>
                   <input  onChange={handleUser} className='input_email' type="text" name="state" value={user.state} ref={provinciaRef}></input>
                   </div>
-                  <div className='email'>
-                  <label>Localidad:</label>
-                  <input  className='input_email' type="text" name="localidad" value={user.city}ref={localidadRef}></input>
-                  </div>
+                  
                   <div className='email'>
                   <label>Codigo Postal:</label>
                   <input className='input_email' type="number" name="codigoPostal" ref={codigoPostalRef}></input>
