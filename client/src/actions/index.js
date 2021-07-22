@@ -28,7 +28,6 @@ export const PEDIDOSUSER = 'PEDIDOSUSER';
 export const PEDIDOUSER = 'PEDIDOUSER';
 export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
-export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
 
@@ -43,8 +42,6 @@ export function getUser(mail) {
 }
 // export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
 // export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
-
-
 
 export function carritoEstado() {
   return {
@@ -431,15 +428,6 @@ export function repeatOrder(payload) {
 }
 
 
-
-//ADD TO WISHLIST
-
-export function addToWishList(payload) {
-  return {
-      type: 'ADD_TO_WISHLIST',
-      payload
-  }
-}
 
 
 //PEDIDOS

@@ -26,7 +26,6 @@ import misPedidos from './components/register/userRegister/misPedidos/misPedidos
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Nav from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
-import WishList from "./components/wishList/wishList";
 import FormCompras from "./components/shoppingCart/FormCompras";
 
 function App() {
@@ -41,7 +40,6 @@ function App() {
         <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
         <PrivateRouteUser component={Dashboard} exact path='/micuenta/'/>
         <PrivateRouteUser component={misPedidos} exact path='/micuenta/mispedidos/:id'/>
-        <PrivateRouteUser component={WishList} exact path='/micuenta/favoritos/:id'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
         <PrivateRouteUser component={Delivery} path='/delivery'/>
         <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>

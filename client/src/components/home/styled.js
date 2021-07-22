@@ -4,12 +4,6 @@ import styled from 'styled-components';
 const StyledDiv = styled.div`
 display: flex;
 
-.highlight {
-    :hover{
-        color: red
-    }
-}
-
 .mt-50 {
     margin-top: 50px;
     margin-bottom: 50px;
