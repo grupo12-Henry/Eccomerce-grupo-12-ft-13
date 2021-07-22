@@ -18,7 +18,8 @@ import {
   GET_ALL_USERS,
   PEDIDOSUSER,
   POST_USER,
-  UPDATE_FROM_CART
+  UPDATE_FROM_CART,
+  REPEAT_ORDER
 } from '../actions'
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -121,34 +122,35 @@ const rootReducer = (state = initialState, action) => {
       };
 //ACTION PARA AGREGAR PRODUCTOS AL CARRITO, CUANDO DAMOS CLICK EN AGREGAR SOBRE EL PRODUCTO
 //logica agregar funciona perfect!
-    case ADD_TO_CART:
-      let nuevoItem = state.products.find(prod => ((prod.id === action.payload)||prod.id===action.payload.id||console.log('marquitos', prod.id)))
-      let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
-      if (a.length) {
-            nuevoItem = {
-              ...nuevoItem,
-              cantidad: (parseInt(a[0].cantidad) + 1)
-            }
-            state = {
-              ...state,
-              productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
-            }
-      }
-
-      if (!a.length) {
+case ADD_TO_CART:
+  let nuevoItem = state.products.find(prod => ((action.payload.productId)?prod.id=== action.payload.productId||console.log(prod.id): (prod.id === action.payload)))
+  let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
+  if (a.length) {
         nuevoItem = {
           ...nuevoItem,
-          cantidad: 1
+          cantidad: !action.payload.cantidad ?(parseInt(a[0].cantidad) + 1):(parseInt(a[0].cantidad)+action.payload.cantidad) // 
         }
-      }
-      let array = JSON.parse(window.localStorage.getItem("array"));
-      window.localStorage.setItem("array", JSON.stringify(array = state.productCart.concat(nuevoItem)))
-      // window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
-      // window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.filter(e => e.id !== nuevoItem.id)&& array.concat([nuevoItem]) : array=[nuevoItem])); //state.productCart.concat([nuevoItem])
-      return {
-        ...state,
-        productCart: state.productCart.concat(nuevoItem)
-      };
+        state = {
+          ...state,
+          productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
+        }
+  }
+
+  if (!a.length) {
+    !action.payload.cantidad?
+    nuevoItem = {
+      ...nuevoItem,
+      cantidad: 1
+    }: nuevoItem = {
+      ... nuevoItem, cantidad:action.payload.cantidad
+    }
+  }
+  let array = JSON.parse(window.localStorage.getItem("array"));
+  window.localStorage.setItem("array", JSON.stringify(array = state.productCart.concat(nuevoItem)))
+  return {
+    ...state,
+    productCart: state.productCart.concat(nuevoItem)
+  };
 
       //ACTUALIZAR CANTIDAD DEL CARRITO EN UN PROD EN PARTICULAR 
       case UPDATE_FROM_CART:
@@ -165,6 +167,16 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         productCart: state.productCart.filter(e => e.id !== action.payload)
+      }
+    case REPEAT_ORDER:
+      action.payload.forEach(e=>{
+        let newItem = {id:e.id, image: e.image, name:e.name, cantidad: e.order_detail.cantidad, price: e.price};
+       state = {...state, productCart: state.productCart.concat(newItem) }
+        
+      })
+      //  let productosOrder = action.payload.forEach(e=>state.products.find(el=> el.id===e.id)) //e.id e.order_detail.cantidad)
+      return {
+        state
       }
 
       /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
