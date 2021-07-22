@@ -5,6 +5,9 @@ import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
 import Loading from "../loading/Loading";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Detail({ match }) {
   const dispatch = useDispatch();
@@ -53,7 +56,8 @@ useEffect(() => {
               <p id='description'>{detail.Description}</p>
               <hr></hr>
               {detail.stock===0?<div><span>No hay Stock Suficiente</span>
-               <hr></hr></div>:null}
+              <hr></hr></div>:null}
+              <FontAwesomeIcon icon={faHeart} type='button'  />
              
               <h2 id='price'>$ {detail.price}</h2>
               <div className='f d-center'>

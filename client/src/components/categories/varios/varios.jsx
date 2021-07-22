@@ -7,6 +7,9 @@ import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
 import Footer from "../../footer/footer";
 import Loading from "../../loading/Loading";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 
 function Varios() {
   const dispatch = useDispatch();
@@ -80,33 +83,34 @@ return (
                                     {return el.stock>0?<>
                                     <div class="col-md-4 mt-2">
                                         <div class="card">
-                                                <div class="card-body">
-                                                    <div class="card-img-actions">
-                                                        <Link to={`/detail/${el.id}`}>
-                                                            <img
-                                                                src={el.image}
-                                                                class="card-img img-fluid"
-                                                                height="100"
-                                                                alt=""
-                                                            />
-                                                        </Link>
-                                                    </div>
+                                            <div class="card-body">
+                                                <div class="card-img-actions">
+                                                    <Link to={`/detail/${el.id}`}>
+                                                        <img
+                                                            src={el.image}
+                                                            class="card-img img-fluid"
+                                                            height="100"
+                                                            alt=""
+                                                        />
+                                                    </Link>
                                                 </div>
-                                                <div class="card-body bg-light text-center">
-                                                    <div class="mb-2">
-                                                        <h6 class="font-weight-semibold mb-2">
-                                                            <a href={`/detail/${el.id}`}
-                                                                class="text-default mb-2"
-                                                                data-abc="true"
-                                                            >
-                                                                {el.name}
-                                                            </a>
-                                                        </h6>{" "}
-                                                    </div>
-                                                    <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
-                                                  <div class="text-muted mb-3">34 reviews</div>
-                                                  <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
-                                                        <i class="fa fa-cart-plus mr-2">Agregar</i> 
+                                            </div>
+                                            <div class="card-body bg-light text-center">
+                                                <div class="mb-2">
+                                                    <h6 class="font-weight-semibold mb-2">
+                                                        <a href={`/detail/${el.id}`}
+                                                            class="text-default mb-2"
+                                                            data-abc="true"
+                                                        >
+                                                            {el.name}
+                                                        </a>
+                                                    </h6>{" "}
+                                                </div>
+                                                <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
+                                                <FontAwesomeIcon icon={faHeart} type='button'  />
+                                                <div class="text-muted mb-3">34 reviews</div>
+                                                <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
+                                                    <i class="fa fa-cart-plus mr-2">Agregar</i> 
                                                 </button>
                                             </div>
                                         </div>

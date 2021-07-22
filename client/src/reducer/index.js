@@ -18,7 +18,8 @@ import {
   GET_ALL_USERS,
   PEDIDOSUSER,
   POST_USER,
-  UPDATE_FROM_CART
+  UPDATE_FROM_CART,
+  ADD_TO_WISHLIST
 } from '../actions'
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -36,6 +37,7 @@ const initialState = {
   productCart: [],
   arrayStorages: [],
   user:{},
+  wishList:[],
 }
 
 
@@ -214,6 +216,15 @@ case ADD_TO_CART:
           arrayStorages: state.arrayStorages.slice().concat([action.payload])
         }
       }
+
+       case ADD_TO_WISHLIST:{
+        return {
+          ...state,
+          wishList: state.wishList.concat(action.payload)
+        }
+      }
+    
+
 
     default:
       return state;

@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../actions/index";
+import { addToWishList ,addProductCart, getProducts } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
 import { Link } from 'react-router-dom';
 import Pages from "./paginado";
 import NavCategories from "../navCategories/navCategories";
-import { addProductCart } from "../../actions/index";
-// import ShoppingCart from "../shoppingCart/ShoppingCart";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import Loading from "../loading/Loading";
 // import { useAuth } from "../../contexts/AuthContext";
+// import ShoppingCart from "../shoppingCart/ShoppingCart";
+
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
+  const wishList = useSelector((state) => state.wishList);
+  console.log('AGREGANDO',wishList)
+  
 
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
@@ -49,6 +54,12 @@ export default function Home({ location }) {
     dispatch(addProductCart(id))
   }
  
+  const addingToWishList = (e) => {
+    // e.preventDefault()
+    dispatch(addToWishList(product[e.target.value]))
+  }
+
+
   const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
@@ -78,7 +89,7 @@ export default function Home({ location }) {
                         <div class="card-body">
                           <div class="card-img-actions">
                             <Link to={`/detail/${el.id}`}>
-                              <img
+                               <img
                                 src={el.image}
                                 class="card-img img-fluid"
                                 height="100"
@@ -100,6 +111,7 @@ export default function Home({ location }) {
                             </h6>
                           </div>
                           <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
+                          <button type='button' onClick={(e)=> addingToWishList(e)}>Fav</button>
                           <div class="text-muted mb-3">34 reviews</div>
                           <button type="button" onClick={()=>addToCart(el.id)} class="btn bg-cart">
                             <i class="fa fa-cart-plus mr-2"></i> Agregar

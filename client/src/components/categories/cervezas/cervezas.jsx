@@ -7,7 +7,8 @@ import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
 import Footer from "../../footer/footer";
 import Loading from "../../loading/Loading";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 function Cervezas() {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
@@ -131,6 +132,7 @@ function Cervezas() {
                                 </h6>{" "}
                               </div>
                               <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
+                               <FontAwesomeIcon icon={faHeart} type='button'  />
                               <div class="text-muted mb-3">34 reviews</div>
                               <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                 <i class="fa fa-cart-plus mr-2">Agregar</i>
