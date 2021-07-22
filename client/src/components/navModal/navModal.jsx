@@ -43,7 +43,7 @@ export default function NavModal({ open, children, onClose }) {
 
   async function vamo (){
     if(currentUser){try{
-      dispatch( crearUsuario({mail:currentUser.email, name: `${currentUser.displayName}`, token:currentUser.refreshToken}))
+      dispatch( !window.localStorage.getItem('user')&&crearUsuario({mail:currentUser.email, name: `${currentUser.displayName}`, token:currentUser.refreshToken}))
     }catch(err){console.log(err)}}
   }
   vamo()
