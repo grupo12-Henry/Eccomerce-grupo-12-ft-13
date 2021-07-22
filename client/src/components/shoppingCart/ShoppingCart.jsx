@@ -28,6 +28,8 @@ function ShoppingCart(props) {
   //   return () => clearTimeout(timer);
   // }, [cart]);
  
+
+
   useEffect(() => {
   }, [localStorage]);
 
@@ -52,13 +54,31 @@ useEffect(() => {
 // const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
   //idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad
 //  console.log('santiuser', user)
-  
+
+  let productsArray = cart?.map(el=> {
+    return {
+      subtotal: el.price * el.cantidad,
+      cantidad: el.cantidad,
+      id: el.id
+    }
+  })
+
+
+
   const order=()=>{
     let user =  window.localStorage.getItem("user");
-    let completo = user? {idClient:user.split(',')[0].split(':')[1], adress:user.split(',')[5].split(':')[1], products:cart, paymentMethod:'efectivo', mail:user.split(',')[6].split(':')[1], Total:montoTotal}:console.log('user is null')
+    let completo = user? {
+        idClient:user.split(',')[0].split(':')[1], 
+        adress:user.split(',')[5].split(':')[1], 
+        products: productsArray, 
+        paymentMethod: 'efectivo', 
+        mail: user.split(',')[6].split(':')[1], 
+        bill: montoTotal
+    } : console.log('user is null')
     dispatch(orderPost(completo));
     clearCart();
     alert('pedido confirmado')
+    console.log('EL MONTO', montoTotal)
   }
 
   const delFromCart = () => { }

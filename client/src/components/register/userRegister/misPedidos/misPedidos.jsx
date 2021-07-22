@@ -2,16 +2,27 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
-import { getpedidosUser, getPedidoDetail } from "../../../../actions/index";
+import { getpedidosUser, getPedidoDetail, addProductCart, getProducts } from "../../../../actions/index";
 
 export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
   const pedidos = useSelector((state) => state.pedidosUser);
-  const detallePedido = useSelector((state) => state.pedidoDetail);
+  const pedidoDetail = useSelector((state) => state.pedidoDetail);
+  // const product = useSelector((state) => state.products);
+  useEffect(() => {
+    const dbProducts = () => {
+      dispatch(getProducts());
+    };
+    dbProducts();
+  }, [dispatch]);
+
+  useEffect(() => { 
+    console.log(pedidoDetail);
+}, [pedidoDetail]);
   //PEDIDOS ES CLIENTDETAILS DE JULI
   const [ordenes, setOrdenes] = useState();
-
-  console.log("DETALLE PEDIDO", detallePedido);
+  console.log('vamooo emiiii',ordenes)
+  // console.log("DETALLE PEDIDO", detallePedido);
 
   useEffect(() => {
     const orders = () => {
@@ -27,17 +38,25 @@ export default function MisPedidos({ match }) {
     orderSetting();
   }, [pedidos]);
 
-  console.log(
-    "LAS ORDENES",
-    ordenes?.orders?.map((el) => el.products.map((el) => el))
-    // el.image, el.name;
-  );
+  // console.log(
+  //   "LAS ORDENES",
+  //   ordenes?.orders?.map((el) => el.products.map((el) => el))
+  //   // el.image, el.name;
+  // );
 
-  const insertDetail = (e) => {
-    dispatch(getPedidoDetail(e.target.value));
-    dispatch(getpedidosUser(e.target.value));
-    console.log(e.target.value);
+  // dispatch(getPedidoDetail(e.target.value));
+  // dispatch(getpedidosUser(e.target.value));
+  // console.log(e.target.value);
+  const insertDetail = (id) => {
+    dispatch(getPedidoDetail(id))  
+    console.log(pedidoDetail)  
   };
+  const repeatProduct = (payload) => {
+    console.log('emi',payload)
+    dispatch(addProductCart(payload))  
+    // console.log(pedidoDetail)  
+  };
+  console.log(pedidoDetail)  
 
   return (
     <>
@@ -63,7 +82,7 @@ export default function MisPedidos({ match }) {
                 </tr>
               </thead>
               <tbody>
-                {ordenes?.orders?.map((el) => {
+                {pedidos[0]?pedidos[0].orders.map((el) => {
                   return (
                     <tr>
                       <th scope="row">{el.date}</th>
@@ -75,7 +94,7 @@ export default function MisPedidos({ match }) {
                           value={el.id}
                           onClick={(e) => {
                             e.preventDefault();
-                            insertDetail(e);
+                            insertDetail(el.id)
                           }}
                         >
                           Ver detalle
@@ -84,7 +103,7 @@ export default function MisPedidos({ match }) {
                       <td>
                           <button
                             class="btn btn-sm btn-info"
-                            value={""}
+                            value={el.id}
                             onClick={(e) => {
                               e.preventDefault();
                             }}
@@ -94,7 +113,7 @@ export default function MisPedidos({ match }) {
                         </td>
                     </tr>
                   );
-                })}
+                }):null}
               </tbody>
             </table>
 
@@ -111,12 +130,14 @@ export default function MisPedidos({ match }) {
                   <th scope="col">NOMBRE</th>
                   <th scope="col">CANTIDAD</th>
                   <th scope="col">SUBTOTAL</th>
+                  <th scope="col">FECHA</th>
                   <th scope="col">AGREGAR</th>
                   
                 </tr>
               </thead>
               <tbody>
-                {detallePedido?.products?.map((el) =>
+                {console.log('vamojuli',pedidoDetail)}
+                {pedidoDetail?.products?.map((el) =>
                    {
                     return (
                       <tr>
@@ -124,17 +145,18 @@ export default function MisPedidos({ match }) {
                         <td>{el.name}</td>
                       <td>{el.order_detail.cantidad}</td>
                       <td>{el.order_detail.subTotal}</td>
+                      <td>{el.order_detail.updatedAt.split('T')[0]}</td>
                       <td>
                           <label for="vehicle1">
-                            AGREGAR
-                            <input
+                            <button onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
+                            {/* <input
                               style={{marginLeft:'10%'}}
                               onChange={"FUNCTION PARA AGREGAR AL CARRITO"}
                               type="checkbox"
                               id="vehicle1"
-                              name="vehicle1"
-                              value="Bike"
-                            ></input>
+                              name={el.order_detail.id}
+                              value={el.order_detail.id}
+                            ></input> */}
                           </label>
                         </td>
                         
