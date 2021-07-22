@@ -5,17 +5,19 @@ import { useAuth } from "../../../../contexts/AuthContext";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
 import Loading from "../../../loading/Loading";
-import { putUsuarios } from "../../../../actions";
+import { getUser, putUsuarios } from "../../../../actions";
 
 export default function Dashboard() {
   const user = useSelector((state) => state.user);
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
+  console.log('EL CURREN', currentUser)
   const dispatch = useDispatch()
   const [User, setUser] = useState(user)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    //dispatch(postUsuarios(user))
   }
   const handleUser = (e) => {
     setUser({
@@ -79,6 +81,11 @@ export default function Dashboard() {
                         <h2>Modificar un usuario</h2>
                         <br />
                         <div >
+                          {/*   <input class="form-control mt-5 ml-5"
+                        required autoComplete='off' 
+                        name='id' 
+                        value={User.id}>
+                    </input> */}
                           <input class="form-control mt-2 ml-5"
                             placeholder={User.name || 'Name'}
                             name='name'
@@ -109,6 +116,12 @@ export default function Dashboard() {
                             onChange={handleUser}
                             value={User.adress}>
                           </input>
+                          {/* <input class="form-control mt-2 ml-5"                      
+                        placeholder={User.mail||'Email'} 
+                        name='mail' 
+                        onChange={handleUser} 
+                        value={User.mail}>
+                    </input> */}
                           <input class="form-control mt-2 ml-5"
                             placeholder={User.identityCard || 'DNI'}
                             name='identityCard'
@@ -129,10 +142,10 @@ export default function Dashboard() {
                             </a>
                             </Link>
                           
-                            <Link to={`/micuenta/favoritos/${user.id}`} ><a class="btn btn-dark">
-                              Mis favoritos
-                            </a>
-                            </Link> 
+                         <a href="#" class="btn btn-dark ml-5 ">
+                            Mis favoritos
+                          </a>
+                          
                         </div>
                     </div>
                   </div>

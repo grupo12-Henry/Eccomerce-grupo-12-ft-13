@@ -19,10 +19,10 @@ import {
   PEDIDOSUSER,
   POST_USER,
   UPDATE_FROM_CART,
-  ADD_TO_WISHLIST,
-  REPEAT_ORDER,
-} from "../actions";
+  REPEAT_ORDER
+} from '../actions'
 // import CartItem from '../components/shoppingCart/CartItem';
+
 
 const initialState = {
   products: [],
@@ -36,9 +36,9 @@ const initialState = {
   pedidosUser: [],
   productCart: [],
   arrayStorages: [],
-  user: {},
-  wishList: [],
-};
+  user:{},
+}
+
 
 const rootReducer = (state = initialState, action) => {
   // let updatedCart;
@@ -50,47 +50,47 @@ const rootReducer = (state = initialState, action) => {
     case CARRITO:
       return {
         ...state,
-        carritoState: !state.carritoState,
+        carritoState: !state.carritoState
       };
 
     case GETCARDS:
       return {
         ...state,
-        products: action.payload,
+        products: action.payload
       };
     case GETNAMES:
       return {
         ...state,
-        names: action.payload,
+        names: action.payload
       };
     case ORDERPRODUCT:
       return {
         ...state,
-        orderProd: action.payload,
+        orderProd: action.payload
       };
 
     case GETDETAILS:
       return {
         ...state,
-        productDetail: action.payload,
+        productDetail: action.payload
       };
 
     case PUTPEDIDO:
       return {};
-    //ADMIN DASHBOARD
+      //ADMIN DASHBOARD
 
     case GET_ALL_USERS:
       return {
         ...state,
         AllClients: action.payload,
       };
-
-    case POST_USER:
-      window.localStorage.setItem("user", JSON.stringify(action.payload));
-      return {
-        ...state,
-        user: action.payload,
-      };
+      
+      case POST_USER:
+        window.localStorage.setItem('user',JSON.stringify(action.payload))
+       return {
+         ...state,
+         user: action.payload
+       } 
 
     case GET_USER_DETAILS:
       return {
@@ -118,157 +118,123 @@ const rootReducer = (state = initialState, action) => {
     case PEDIDOSUSER:
       return {
         ...state,
-        pedidosUser: action.payload,
+        pedidosUser: action.payload
       };
-    //ACTION PARA AGREGAR PRODUCTOS AL CARRITO, CUANDO DAMOS CLICK EN AGREGAR SOBRE EL PRODUCTO
-    //logica agregar funciona perfect!
-    case ADD_TO_CART:
-      let nuevoItem = state.products.find((prod) =>
-        action.payload.productId
-          ? prod.id === action.payload.productId
-          : prod.id === action.payload
-      );
-      let a = state.productCart.length
-        ? state.productCart.filter((e) =>
-            e !== undefined && nuevoItem !== undefined
-              ? e.id === nuevoItem.id
-              : null
-          )
-        : "";
-      if (a.length) {
+//ACTION PARA AGREGAR PRODUCTOS AL CARRITO, CUANDO DAMOS CLICK EN AGREGAR SOBRE EL PRODUCTO
+//logica agregar funciona perfect!
+case ADD_TO_CART:
+  let nuevoItem = state.products.find(prod => ((action.payload.productId)?prod.id=== action.payload.productId: (prod.id === action.payload)))
+  let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
+  if (a.length) {
         nuevoItem = {
           ...nuevoItem,
-          cantidad: !action.payload.cantidad
-            ? parseInt(a[0].cantidad) + 1
-            : parseInt(a[0].cantidad) + action.payload.cantidad, //
-        };
+          cantidad: !action.payload.cantidad ?(parseInt(a[0].cantidad) + 1):(parseInt(a[0].cantidad)+action.payload.cantidad) // 
+        }
         state = {
           ...state,
-          productCart: state.productCart.filter((e) => e.id !== nuevoItem.id),
-        };
-      }
+          productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
+        }
+  }
 
-      if (!a.length) {
-        !action.payload.cantidad
-          ? (nuevoItem = {
-              ...nuevoItem,
-              cantidad: 1,
-            })
-          : (nuevoItem = {
-              ...nuevoItem,
-              cantidad: action.payload.cantidad,
-            });
-      }
-      let array = JSON.parse(window.localStorage.getItem("array"));
-      window.localStorage.setItem(
-        "array",
-        JSON.stringify((array = state.productCart.concat(nuevoItem)))
-      );
-      return {
-        ...state,
-        productCart: state.productCart.concat(nuevoItem),
-      };
+  if (!a.length) {
+    !action.payload.cantidad?
+    nuevoItem = {
+      ...nuevoItem,
+      cantidad: 1
+    }: nuevoItem = {
+      ... nuevoItem, cantidad:action.payload.cantidad
+    }
+  }
+  let array = JSON.parse(window.localStorage.getItem("array"));
+  window.localStorage.setItem("array", JSON.stringify(array = state.productCart.concat(nuevoItem)))
+  return {
+    ...state,
+    productCart: state.productCart.concat(nuevoItem)
+  };
 
-    //ACTUALIZAR CANTIDAD DEL CARRITO EN UN PROD EN PARTICULAR
-    case UPDATE_FROM_CART:
-      console.log(action.payload);
-      state = {
-        ...state,
-        productCart: state.productCart,
-      };
-      return {
-        ...state,
-        productCart: state.productCart.map((e) =>
-          e.id === action.payload.id
-            ? (e = { ...e, cantidad: parseInt(action.payload.cantidad) })
-            : e
-        ),
-      };
+      //ACTUALIZAR CANTIDAD DEL CARRITO EN UN PROD EN PARTICULAR 
+      case UPDATE_FROM_CART:
+        console.log(action.payload)
+        state = {
+          ...state,
+          productCart: state.productCart
+        }
+        return{
+          ...state,
+          productCart: state.productCart.map(e => e.id === action.payload.id? e = {...e, cantidad :(parseInt(action.payload.cantidad))} :e)
+        } 
     case REMOVE_ALL_FROM_CART:
       return {
         ...state,
-        productCart: state.productCart.filter((e) => e.id !== action.payload),
-      };
+        productCart: state.productCart.filter(e => e.id !== action.payload)
+      }
     case REPEAT_ORDER:
-      state.productCart = [];
-      action.payload.forEach((e) => {
+      state.productCart = []
+    action.payload.forEach(e=>{
         // let newItem = {id:e.id, image: e.image, name:e.name, cantidad: e.order_detail.cantidad, price: e.price};
-        let a = state.products.find((el) => el.id === e.id);
-        a = { ...a, cantidad: e.order_detail.cantidad };
-        state.productCart = state.productCart.concat(a);
-      });
+       let a = state.products.find(el=> el.id === e.id );
+        a= {...a, cantidad: e.order_detail.cantidad}
+        state.productCart= state.productCart.concat(a)
+        
+      })
       // let arrayLocal = JSON.parse(window.localStorage.getItem("array"));
-      window.localStorage.setItem("array", JSON.stringify(state.productCart));
-      console.log("productCart", state.productCart);
+      window.localStorage.setItem('array',JSON.stringify(state.productCart))
+      console.log('productCart',state.productCart)
       //  let productosOrder = action.payload.forEach(e=>state.products.find(el=> el.id===e.id)) //e.id e.order_detail.cantidad)
       return {
-        state,
-      };
-
-    /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
-    case CLEAR_CART:
-      return {
-        ...state,
-        productCart: [],
-      };
-    // case GET_LOCAL_STORAGE: {
-    //   const array = JSON.parse(window.localStorage.getItem("santi"));
-    //   return {
-    //     ...state,
-    //     productCart: array ? state.productCart.slice().concat([array]) : state.productCart
-    //   }
-    // }
-
+         state
+      }
+      
+      /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
+      case CLEAR_CART:
+        return {
+          ...state,
+          productCart: []
+        };
+      // case GET_LOCAL_STORAGE: {
+      //   const array = JSON.parse(window.localStorage.getItem("santi"));
+      //   return {
+      //     ...state,
+      //     productCart: array ? state.productCart.slice().concat([array]) : state.productCart
+      //   }
+      // }
+      
     case DELETE_LOCAL_STORAGE: {
-      const array = JSON.parse(window.localStorage.getItem("array"));
-      const arrayfiltrado =
-        array && array.filter((element) => element.id !== action.payload);
-      window.localStorage.removeItem("array");
-      window.localStorage.setItem("array", JSON.stringify(arrayfiltrado));
+      const array = JSON.parse(window.localStorage.getItem('array'));
+      const arrayfiltrado = array && array.filter(element => element.id !== action.payload);
+      window.localStorage.removeItem('array');
+      window.localStorage.setItem('array', JSON.stringify(arrayfiltrado));
       return {
-        ...state,
-      };
+        ...state
+      }
     }
+
 
     case GET_LOCAL_STORAGE: {
-      const array = JSON.parse(window.localStorage.getItem("array"));
+        const array = JSON.parse(window.localStorage.getItem("array"));
 
-      return {
-        ...state,
-        user: JSON.parse(window.localStorage.getItem("user")),
-        arrayStorages: array
-          ? state.arrayStorages?.slice().concat([array])
-          : state.arrayStorages,
-      };
-    }
+        return {
+          ...state,
+          user: JSON.parse(window.localStorage.getItem('user')),
+          arrayStorages: array ? state.arrayStorages?.slice().concat([array]) : state.arrayStorages
+        }
+      }
 
-    case ADD_LOCAL_STORAGE: {
-      const array = JSON.parse(window.localStorage.getItem("array"));
+   
 
-      window.localStorage.setItem(
-        "array",
-        JSON.stringify(
-          array
-            ? array.concat([action.payload])
-            : state.arrayStorages.concat([action.payload])
-        )
-      );
-      return {
-        ...state,
-        arrayStorages: state.arrayStorages.slice().concat([action.payload]),
-      };
-    }
+      case ADD_LOCAL_STORAGE:{
+        const array = JSON.parse(window.localStorage.getItem("array"));
 
-    case ADD_TO_WISHLIST: {
-      return {
-        ...state,
-        wishList: state.wishList.concat(action.payload),
-      };
-    }
+       window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
+        return {
+          ...state,
+          arrayStorages: state.arrayStorages.slice().concat([action.payload])
+        }
+      }
 
     default:
       return state;
-  }
-};
+  };
+}
 
-export default rootReducer;
+export default rootReducer
