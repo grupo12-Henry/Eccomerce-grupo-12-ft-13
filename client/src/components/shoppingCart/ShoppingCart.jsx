@@ -7,6 +7,10 @@ import './shoppingCart.css';
 import Loading from '../loading/Loading';
 import { orderPost } from '../../actions';
 import { useAuth } from "../../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
+import Login from '../register/userRegister/login/login';
+import NavModal from '../navModal/navModal';
+
 
 
 function ShoppingCart(props) {
@@ -18,6 +22,7 @@ function ShoppingCart(props) {
   const [montoTotal, setMontoTotal] = useState(0);
 
   const [allProducts, setAllProducts] = useState([]);
+  const history = useHistory()
 
 
   // useEffect(() => {
@@ -42,7 +47,7 @@ function ShoppingCart(props) {
 
 useEffect(() => {
   let aux = 0;
-  cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
+  cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
   setMontoTotal(aux)
 }, [cart,montoTotal , product])
 
@@ -63,6 +68,7 @@ useEffect(() => {
     }
   })
 
+  const [isOpen, setIsOpen] = useState(false);
 
 
   const order=()=>{
@@ -74,10 +80,12 @@ useEffect(() => {
         paymentMethod: 'efectivo', 
         mail: user.split(',')[6].split(':')[1], 
         bill: montoTotal
-    } : console.log('user is null')
-    dispatch(orderPost(completo));
-    clearCart();
-    alert('pedido confirmado')
+    } : console.log('user is null');
+    if (user){
+      dispatch(orderPost(completo));
+       clearCart();
+    alert('pedido confirmado')}else{setIsOpen(true);}
+    
     console.log('EL MONTO', montoTotal)
   }
 
@@ -94,13 +102,14 @@ useEffect(() => {
 
     return (
       <div className='container-productos'>
+        {isOpen === true ?   <NavModal open={isOpen} onClose={() => setIsOpen(false)}/>:null}
         <div>
           <h3>Bienvenido a tu Carrito de compras!!</h3>
-          <div class="mb-2">Agregaste {cart.length} productos al carrito ✔{" "}</div>
+          <div class="mb-2">Agregaste {cart?.length} productos al carrito ✔{" "}</div>
           <div className='container-articulos col-xl-11 row '>
             <hr />
             <article class='box'>
-              {cart.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 
+              {cart?.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 
                 <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart}  onChange={() => console.log('funciona')}/>
                 : console.log(item)) : null}
             </article>

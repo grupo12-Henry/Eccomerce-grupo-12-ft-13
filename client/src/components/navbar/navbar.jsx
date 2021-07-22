@@ -43,13 +43,13 @@ const Nav = () => {
   };
 
   let estado = JSON.parse(window.localStorage.getItem("array"))
-  if(estado!== null){estado=estado.reverse()}
-  if(!productCart.length&&estado){
+  if(!!estado){estado=estado.reverse()}
+  if(!productCart?.length&&estado){
     for(let i=0; i<estado.length;i++){
-      for(let j=0;j<productCart.length;j++){
+      for(let j=0;j<productCart?.length;j++){
         if(productCart.length&&estado[i]!==undefined&&estado[i].id===productCart[j].id){i=i+1}
       }
-      if(estado[i]!==undefined)productCart.push(estado[i])
+      if(estado[i]!==undefined)productCart?.push(estado[i])
     }
   }
   
@@ -128,7 +128,7 @@ const Nav = () => {
               <li class="sidebar-social ">
                 <a href="/compras" class="cart" title="Carrito" rel="nofollow">
                   <i class="fas fa-shopping-cart ">
-                    < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart.length}</span>
+                    < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart?.length}</span>
                     <img className=" d-flex mt-0 p-0" alt="cart img" src={cart} width="20px"/>
                   </i>
                 </a>
