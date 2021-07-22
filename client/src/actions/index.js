@@ -34,7 +34,9 @@ export const REPEAT_ORDER = 'REPEAT_ORDER'
 export function getUser(mail) {
   return (dispatch) => {
     axios.get('http://localhost:3001/admin/userMail?mail=' + mail)
-      .then(response => dispatch({
+      .then(response => 
+      
+        dispatch({
         type: POST_USER,
         payload: response.data
       }))

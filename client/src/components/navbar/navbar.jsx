@@ -25,6 +25,7 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [carritoOn, setCarritoOn] = useState(false) 
   const productCart = useSelector((state) => state.productCart)
+  const user1 = useSelector((state) => state.user)
 
   const handleLogin = (e) => {
 
@@ -101,7 +102,7 @@ const Nav = () => {
                   <Dropdown.Menu>
                     <Dropdown.Item href="/micuenta">Edit Profile</Dropdown.Item>
                     <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
-                    {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL ? (
+                    {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL||user1&&user1.admin ? (
 												<Dropdown.Item href="/dashboard-admin">
 													Only Admin
 												</Dropdown.Item>
