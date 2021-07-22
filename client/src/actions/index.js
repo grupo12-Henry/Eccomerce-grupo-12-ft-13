@@ -28,8 +28,9 @@ export const PEDIDOSUSER = 'PEDIDOSUSER';
 export const PEDIDOUSER = 'PEDIDOUSER';
 export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
-export const UPDATE_FROM_CART = 'UPDATE_FROM_CART';
-export const ADD_TO_WISHLIST ='ADD_TO_WISHLIST';
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
+export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
+export const REPEAT_ORDER = 'REPEAT_ORDER'
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -275,7 +276,7 @@ export function putUsuarios(id, usuario) {
           type: PUT_USER,
           payload: response.data
         });
-        
+
       })
       .catch((err) => {
         console.log(err);
@@ -420,6 +421,15 @@ export function putPedido(id, payload) {
       })
   }
 };
+
+export function repeatOrder(payload) {
+  console.log("payload",payload)
+  return {
+    type: REPEAT_ORDER,
+    payload
+  };
+}
+
 
 
 //ADD TO WISHLIST

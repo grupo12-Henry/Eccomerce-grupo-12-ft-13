@@ -27,6 +27,7 @@ import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Nav from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import WishList from "./components/wishList/wishList";
+import FormCompras from "./components/shoppingCart/FormCompras";
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
         <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/>
         <Route component={Detail} exact path='/detail/:id'/>
+        <Route component={FormCompras} exact path='/FormCompras'/>
       </AuthProvider>
     </React.Fragment>
   )
