@@ -7,6 +7,10 @@ import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
 import Footer from "../../footer/footer";
 import Loading from "../../loading/Loading";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import Reviews from '../../reviews/reviews';
+
 
 function Whiskys() {
     const dispatch = useDispatch();
@@ -17,6 +21,7 @@ function Whiskys() {
     const initialProducts = 9;
     const conteoFinal = numberPage * initialProducts;
     const conteoInicial = conteoFinal - initialProducts;
+
 
   const showProducts = allProducts
     .filter((el) => el.type === "Whiskys")
@@ -128,7 +133,8 @@ function Whiskys() {
                                                         </h6>{" "}
                                                     </div>
                                                     <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
-                                                    <div class="text-muted mb-3">34 reviews</div>
+                                                    <FontAwesomeIcon icon={faHeart} type='button'  />
+                                                    <Reviews/>                                                    
                                                     <button type="button" onClick={() => addToCart(el.id)} class="btn bg-cart">
                                                           <i class="fa fa-cart-plus mr-2">Agregar</i> 
                                                     </button>
