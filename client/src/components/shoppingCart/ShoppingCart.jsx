@@ -78,7 +78,6 @@ useEffect(() => {
     dispatch(orderPost(completo));
     clearCart();
     alert('pedido confirmado')
-    console.log('EL MONTO', montoTotal)
   }
 
   const delFromCart = () => { }
