@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken'
+const {secret}= {secret:process.env.REACT_APP_SECRET_TOKEN};
 export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS';
 export const GETNAMES = 'GETNAMES';
@@ -188,6 +189,7 @@ export function orderProduct({
 
 export function getNames() {
   return (dispatch) => {
+    
     axios.get('http://localhost:3001/admin/productos/names')
       .then(response => {
         dispatch({
@@ -235,20 +237,21 @@ export function getUserDetails(id) {
 
 export function crearUsuario(payload) {
   return async (dispatch) => {
-    const response = await axios.post('http://localhost:3001/clientesPost', payload);
-    dispatch({
-      type: POST_USER,
-      payload: response.data
-    })
+    
+    const token =jwt.sign({ mail: payload.mail },secret);
+    const user={...payload,token}
+   
+    const response = await axios.post('http://localhost:3001/clientesPost', user);
+    dispatch({type:POST_USER, payload: response.data})
   }
 }
 
 export function postUsuarios(usuario) {
   return (dispatch) => {
-
-    axios.post('http://localhost:3001/admin/clientesPost', usuario)
+    const token =jwt.sign({ mail: usuario.mail },secret);
+    const user={...usuario,token}
+    axios.post('http://localhost:3001/admin/clientesPost', user)
       .then((response) => {
-        console.log(response);
         alert('El usuario se creó correctamente')
       })
       .catch((err) => {
@@ -261,7 +264,10 @@ export function postUsuarios(usuario) {
 //   axios.put(`http://localhost:3001/admin/users/${usuario.id}`, usuario)
 export function putUsuarios(id, usuario) {
   return (dispatch) => {
-    axios.put("http://localhost:3001/admin/users/" + id, usuario)
+    const user = window.localStorage.getItem('user')
+    axios.put("http://localhost:3001/admin/users/" + id, usuario/* ,{headers: {
+      authorization: 'Bearer ' + user.token 
+    }} */)
       .then((response) => {
         dispatch({
           type: PUT_USER,
