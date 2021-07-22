@@ -46,7 +46,7 @@ router.post('/clientesPost', async (req, res) => {
 	} = req.body;
  try {
     const [newClient, status] = await Client.findOrCreate({ where:{mail},
-    default:{ name, lastName, phone, state, adress, mail, identityCard,token}
+      defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })
   return res.send(newClient)
   } catch(error){
@@ -90,7 +90,7 @@ router.get('/pedidos/:id',async (req, res)=>{
    const clientPedidos = await Client.findAll({
     include:{
      model: Order,
-     attributes:['date','ticket'],
+     attributes:['date','ticket', 'id'],
      include:[{model: Product, atributes:['name','price','image']}]
     },
    attributes: ['name', 'lastName'],
