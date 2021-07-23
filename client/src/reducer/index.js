@@ -21,6 +21,7 @@ import {
   UPDATE_FROM_CART,
   ADD_TO_WISHLIST,
   REPEAT_ORDER,
+  REMOVE_FROM_WISHLIST,
 } from "../actions";
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -260,13 +261,20 @@ const rootReducer = (state = initialState, action) => {
     }
 
     case ADD_TO_WISHLIST: {
-      
-      window.localStorage.setItem("favs", JSON.stringify(state.wishList.concat([action.payload])))
+       window.localStorage.setItem("favs", JSON.stringify(state.wishList.concat([action.payload])))
       return {
         ...state,
         wishList: state.wishList.concat(action.payload),
       };
     }
+
+    case REMOVE_FROM_WISHLIST: {
+      window.localStorage.setItem("favs", JSON.stringify(state.wishList.filter(el => el.id !== action.payload)))
+      return {
+        ...state,
+        wishList: state.wishList.filter(el => el.id !== action.payload)
+      }
+  }
 
     default:
       return state;

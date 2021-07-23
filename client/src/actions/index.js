@@ -31,6 +31,7 @@ export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -441,11 +442,16 @@ export function addToWishList(payload) {
   }
 }
 
+//REMOVE FROM WISHLIST
+export function removeFromWishlist(id) {
+  return {
+      type: 'REMOVE_FROM_WISHLIST',
+      payload: id
+  }
+}
+
 
 //PEDIDOS
-
-
-
 
 // export function getNamesQuery(name){
 //     return (dispatch) => {
