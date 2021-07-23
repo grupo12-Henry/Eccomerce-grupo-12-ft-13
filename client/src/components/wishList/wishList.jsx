@@ -29,7 +29,6 @@ export default function WishList() {
               <div class="row container-product">
                 {wishlist &&
                   wishlist.map((el) => {
-                    console.log("EL DEL MAP", el.fav);
                     return (
                       <>
                         <div class="col-md-4 mt-2">
