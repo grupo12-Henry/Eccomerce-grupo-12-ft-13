@@ -260,6 +260,8 @@ const rootReducer = (state = initialState, action) => {
     }
 
     case ADD_TO_WISHLIST: {
+      
+      window.localStorage.setItem("favs", JSON.stringify(state.wishList.concat([action.payload])))
       return {
         ...state,
         wishList: state.wishList.concat(action.payload),

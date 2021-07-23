@@ -10,8 +10,9 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export default function WishList() {
   const dispatch = useDispatch();
-  const wishlist = useSelector((state) => state.wishList);
+  const wishlist = JSON.parse(window.localStorage.getItem('favs'));
   console.log("TUS FAVS REY", wishlist);
+
 
   return (
     <div>
