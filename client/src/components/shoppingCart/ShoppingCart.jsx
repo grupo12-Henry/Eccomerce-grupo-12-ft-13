@@ -110,8 +110,8 @@ useEffect(() => {
       <div className='container-productos'>
         {isOpen === true ?   <NavModal open={isOpen} onClose={() => setIsOpen(false)}/>:null}
         <div>
-          <h3>Bienvenido a tu Carrito de compras!!</h3>
-          <div class="mb-2">Agregaste {cart?.length} productos al carrito ✔{" "}</div>
+          <h3>Tu Carrito de compras</h3>
+          <div class="mb-2">Tenes {cart?.length} productos en tu carrito ✔{" "}</div>
           <div className='container-articulos col-xl-11 row '>
             <hr />
             <article class='box'>
@@ -121,7 +121,7 @@ useEffect(() => {
             </article>
             <hr />
           </div>
-          <h4>Monto Total:</h4>
+          <h4>Total productos:</h4>
           <h4>${montoTotal}</h4>
           <h4></h4>
           {/* VER CON LOS CHICOS COMO SUMAMOS EL TOTAL */}
@@ -129,7 +129,9 @@ useEffect(() => {
             <button className='btn btn-secondary m-14' onClick={order} >Confirmar Pedido</button>
             <Link to='/home'><button className='btn btn-secondary m-1' variant='success'>Agregar Productos</button></Link>
           </div>
-          <button className='btn btn-danger mb-2' onClick={() => clearCart()}>Limpiar Carrito</button>
+          <button className="btn btn-dark mb-2" onClick={() => clearCart()}>
+            Limpiar Carrito
+          </button>
         </div>
       </div>
     )
