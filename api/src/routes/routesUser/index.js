@@ -229,6 +229,45 @@ router.put('/users/:id', async (req, res) => {
 })
 
 
+
+//REVIEWS
+//postea reviews de un producto. Id es el id de producto. 
+router.post('/reviews/:id', async (req, res)=>{
+  const id = req.params.id;
+  const { value, description } = req.body;
+  try {
+    console.log('JULO')
+    const producto = await Product.findByPk(id)
+    const newReview = await Reviews.create({
+      value: value, description: description
+    })
+    newReview.setProduct(producto)
+    res.send(newReview).status(200)
+  }catch (error) {
+      res.send(error).status(404)
+  }  
+}) 
+//Devuelve las reviews de un prod. 
+// router.get('/reviews/all', async (req, res)=>{
+//   const id = req.params.id;
+//   const { value, description } = req.body;
+//   try {
+//     const average = await Reviews.findAll()
+
+//   }catch (error) {
+//       res.send(error).status(404)
+//   }  
+// })
+// //Devuelve el detalle de una review de un prod. 
+// router.get('/reviewsDetail/:id', async (req, res)=>{
+//   const id = req.params.id;
+//   const { value, description } = req.body;
+//   try {
+//     const average = await Client.findByPk(id)
+//   }catch (error) {
+//       res.send(error).status(404)
+//   }  
+// })
   
 
 module.exports = router;
