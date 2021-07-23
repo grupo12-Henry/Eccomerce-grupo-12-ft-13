@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
   border: 0.1rem solid rgba(94, 3, 3, 0.726);
   color: rgba(94, 3, 3, 0.726);
   background: white;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3),0px 3px 7px rgba(0, 0, 0, 0.3),0px 1px white inset, 0px -3px 2px rgba(0, 0, 0, 0.3) inset ;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3),3px 3px 7px rgba(0, 0, 0, 0.3),3px 1px white inset, 0px -2px 2px rgba(3, 3, 3, 0.3) inset;
   margin-left:80%;
 }
 
