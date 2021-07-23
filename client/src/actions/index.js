@@ -262,14 +262,29 @@ export function postUsuarios(usuario) {
   }
 }
 
+//EXCLUSIVA PARA ADMIN
+export function putUsuariosByadmin(id, usuario,token) {
+  return (dispatch) => {
+   const user={...usuario,token}
+    axios.put("http://localhost:3001/admin/users/" + id, user)
+      .then((response) => {
+        dispatch({
+          type: PUT_USER,
+          payload: response.data
+        });
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+}
 // export function putUsuarios(usuario) {
 //   axios.put(`http://localhost:3001/admin/users/${usuario.id}`, usuario)
 export function putUsuarios(id, usuario) {
   return (dispatch) => {
     const user = window.localStorage.getItem('user')
-    axios.put("http://localhost:3001/admin/users/" + id, usuario/* ,{headers: {
-      authorization: 'Bearer ' + user.token 
-    }} */)
+    axios.put("http://localhost:3001/users/" + id, usuario)
       .then((response) => {
         dispatch({
           type: PUT_USER,

@@ -107,7 +107,7 @@ const Nav = () => {
 													Only Admin
 												</Dropdown.Item>
 											) : null}
-                    <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogOut} href="/home">Log Out</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
             ) :
