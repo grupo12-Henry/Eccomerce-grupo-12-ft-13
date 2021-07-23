@@ -28,9 +28,11 @@ export const PEDIDOSUSER = 'PEDIDOSUSER';
 export const PEDIDOUSER = 'PEDIDOUSER';
 export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
-export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
+
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -43,8 +45,6 @@ export function getUser(mail) {
 }
 // export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
 // export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
-
-
 
 export function carritoEstado() {
   return {
@@ -241,10 +241,10 @@ export function getUserDetails(id) {
 export function crearUsuario(payload) {
   return async (dispatch) => {
     
-    const token =jwt.sign({ mail: payload.mail },secret);
-    const user={...payload,token}
+    //const token =jwt.sign({ mail: payload.mail },secret);
+    //const user={...payload,token}
    
-    const response = await axios.post('http://localhost:3001/clientesPost', user);
+    const response = await axios.post('http://localhost:3001/clientesPost', payload);
     dispatch({type:POST_USER, payload: response.data})
   }
 }
@@ -441,11 +441,16 @@ export function addToWishList(payload) {
   }
 }
 
+//REMOVE FROM WISHLIST
+export function removeFromWishlist(id) {
+  return {
+      type: 'REMOVE_FROM_WISHLIST',
+      payload: id
+  }
+}
+
 
 //PEDIDOS
-
-
-
 
 // export function getNamesQuery(name){
 //     return (dispatch) => {

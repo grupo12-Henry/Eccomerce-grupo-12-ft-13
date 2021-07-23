@@ -14,8 +14,9 @@ import NavCategories from "../navCategories/navCategories";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../loading/Loading";
-import ReactStars from "react-rating-stars-component";
 import Reviews from "../reviews/reviews";
+import ReactStars from "react-rating-stars-component";
+
 // import { useAuth } from "../../contexts/AuthContext";
 // import ShoppingCart from "../shoppingCart/ShoppingCart";
 
@@ -23,8 +24,23 @@ export default function Home({ location }) {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
   const wishList = useSelector((state) => state.wishList);
-  console.log("WISH DEL JOUM", wishList);
+  console.log("WISH DEL JOUM", product);
 
+  //// !--- PROBANDO ----! ////
+  // console.log("EL PRODUCTO", product);
+
+  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+  //value1 es un array con los valores de todas las reviews de ese prod.
+  // let value1 = product?.reviews?.map((el) => el.value);
+  // const value2 = value1 ? value1.reduce(reducer) / product.reviews.length : 0; //luego suma esos valores y los divide por la cantidad de reviews
+  // const firstExample = {
+  //   size: 30,
+  //   value: value2,
+  //   edit: false,
+  // };
+
+  //// !--- PROBANDO ----! ////
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -61,7 +77,6 @@ export default function Home({ location }) {
 
   const addingToWishList = (e) => {
     //const productFav = product.filter(el=> el.id === e.target.value)
-
     dispatch(addToWishList(e));
   };
 
@@ -86,6 +101,19 @@ export default function Home({ location }) {
                 <div class="row container-product">
                   {allProducts && allProducts.length > 0
                     ? allProducts.slice((page - 1) * 9, page * 9).map((el) => {
+                      //probando
+                      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+                      //value1 es un array con los valores de todas las reviews de ese prod.
+                      let value1 = el?.reviews?.map((el) => el.value);
+                      const value2 = value1 ? value1.reduce(reducer) / el.reviews.length : 0;
+                      const firstExample = {
+                        size: 30,
+                        value: value2,
+                        edit: false,
+                      };
+
+
+                      // probando
                         return el.stock > 0 ? (
                           <>
                             <div class="col-md-4 mt-2">
@@ -127,7 +155,16 @@ export default function Home({ location }) {
                                       addingToWishList({ fav: el })
                                     }
                                   />
-                                  <Reviews />
+                                  {/* <Fav props={el}/> */}
+                                  {/* <Reviews props={el}/>  */}
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "center",
+                                    }}
+                                  >
+                                    <ReactStars {...firstExample} />
+                                  </div>
 
                                   <button
                                     type="button"

@@ -60,7 +60,7 @@ export default function FormCompras() {
               placeholder="Last name"
               defaultValue={user.name}
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback>Looks good! SE RE INSPIRARON</Form.Control.Feedback>
           </Form.Group>
 
           {/* <Form.Group as={Col} md="4" controlId="validationCustomUsername">
@@ -89,17 +89,17 @@ export default function FormCompras() {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="3" controlId="validationCustom04">
-            <Form.Label>State</Form.Label>
-            <Form.Control type="text" placeholder="State" required />
+            <Form.Label>Provincia</Form.Label>
+            <Form.Control type="text" placeholder="Provincia" required />
             <Form.Control.Feedback type="invalid">
               Please provide a valid state.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="3" controlId="validationCustom05">
-            <Form.Label>Zip</Form.Label>
-            <Form.Control type="text" placeholder="Zip" required />
+            <Form.Label>Codigo Postal</Form.Label>
+            <Form.Control type="text" placeholder="Codigo Postal" required />
             <Form.Control.Feedback type="invalid">
-              Please provide a valid zip.
+              Codigo Postal Invalido.
             </Form.Control.Feedback>
           </Form.Group>
 
@@ -130,12 +130,12 @@ export default function FormCompras() {
         <Form.Group className="mb-3">
           <Form.Check
             required
-            label="Agree to terms and conditions"
-            feedback="You must agree before submitting."
+            label="Aceptar Terminos y condiciones"
+            feedback="Debes aceptar los terminos y condiciones"
           />
         </Form.Group>
         <Button type="submit">Confirmar Pago</Button>
-        <Button type="submit">Volver Carrito</Button>
+        <Button type="submit" class='btn btn-primary ml-4'>Volver Carrito</Button>
 
       </Form>
 

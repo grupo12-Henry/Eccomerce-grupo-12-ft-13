@@ -4,10 +4,13 @@ import styled from 'styled-components';
 const StyledDiv = styled.div`
 display: flex;
 
-.mt-50 {
-    margin-top: 50px;
-    margin-bottom: 50px;
+.highlight {
+    :hover{
+        color: red
+    }
 }
+
+
 
 .card {
     position: relative;
@@ -70,7 +73,7 @@ a {
     display: flex;
     margin: 6%;
     margin-bottom: 0;
-    margin-top: 8%;
+    margin-top: 1%;
     height: 100%;
     width: 100%;
     align-items: center;

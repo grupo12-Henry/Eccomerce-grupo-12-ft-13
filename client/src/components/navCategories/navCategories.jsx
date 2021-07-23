@@ -1,9 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './navCategories.css';
 
+
+
 export default function navCategories() {
+
+  const user = JSON.parse(window.localStorage.getItem('user'));
     return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light position-absolute ‎‎pl-sm-2 bg-transparent ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light position-absolute ‎‎pl-sm-2 bg-transparent">
         <div class="container-fluid" >
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav justify-content-center">
@@ -24,6 +29,12 @@ export default function navCategories() {
               </li>
               <li class="nav-item">
                 <a class="navbar-brand" href="/whiskys" tabindex="-1" aria-disabled="true">Whiskys</a>
+              </li>
+              <li class="nav-item">
+              <Link to={`/micuenta/favoritos/${user&&user.id}`} >
+                <a class="navbar-brand" tabindex="-1" aria-disabled="true">Favoritos</a>
+
+                            </Link>
               </li>
             </ul>
           </div>

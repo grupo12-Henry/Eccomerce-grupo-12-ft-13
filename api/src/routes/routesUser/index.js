@@ -1,7 +1,7 @@
 const { Router } = require('express');
 //modelos acá:
 const router = Router();
-const { Client, Order, Product, Shipping , order_detail} = require('../../db');
+const { Client, Order, Product, Shipping , order_detail,Review} = require('../../db');
 const { v4: uuidv4 } = require('uuid');
 const Sequelize = require('sequelize');
 const order = require('../../models/order');
@@ -12,7 +12,7 @@ const Op = Sequelize.Op;
 //trae todos los productos-->LISTO
 router.get('/productos/all', async (req, res) => {
   try {
-     const array_product = await Product.findAll()
+     const array_product = await Product.findAll({include:{model:Review}})
      res.send(array_product).status(200)}
   catch(error){
      res.send(error).status(404);
@@ -23,7 +23,7 @@ router.get('/productos/all', async (req, res) => {
 router.get('/productos/:id', async (req, res) => {
   const id = req.params.id
   try {
-      const product = await Product.findByPk(id)
+      const product = await Product.findByPk(id,{include:{model:Review}})
       product?res.send(product).status(200):res.sendStatus(400)
   } catch (error) {
       res.send(error).status(404);
@@ -223,6 +223,51 @@ router.put('/users/:id', async (req, res)=>{
 
 
 
+//REVIEWS
+//postea reviews de un producto. Id es el id de producto. 
+router.post('/reviews/:id', async (req, res)=>{
+  const id =parseInt( req.params.id,10);
+  const value= parseInt(req.body.value,10)
+  const { description } = req.body;
+  try {
+    const producto = await Product.findByPk(id)
+    const newReview = await Review.create({
+     description,
+     value,
+      productId:id 
+        
+  
+      
+    }, {
+      include: [ Product ]
+    })
+   //producto.addReviews(newReview)
+    res.send(newReview).status(200)
+  }catch (error) {
+      res.send(error).status(404)
+  }  
+}) 
+//Devuelve las reviews de un prod. 
+// router.get('/reviews/all', async (req, res)=>{
+//   const id = req.params.id;
+//   const { value, description } = req.body;
+//   try {
+//     const average = await Reviews.findAll()
+
+//   }catch (error) {
+//       res.send(error).status(404)
+//   }  
+// })
+// //Devuelve el detalle de una review de un prod. 
+// router.get('/reviewsDetail/:id', async (req, res)=>{
+//   const id = req.params.id;
+//   const { value, description } = req.body;
+//   try {
+//     const average = await Client.findByPk(id)
+//   }catch (error) {
+//       res.send(error).status(404)
+//   }  
+// })
   
 
 module.exports = router;
