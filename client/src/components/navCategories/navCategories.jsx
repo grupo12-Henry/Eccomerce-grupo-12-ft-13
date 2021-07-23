@@ -31,7 +31,7 @@ export default function navCategories() {
                 <a class="navbar-brand" href="/whiskys" tabindex="-1" aria-disabled="true">Whiskys</a>
               </li>
               <li class="nav-item">
-              <Link to={`/micuenta/favoritos/${user.id}`} >
+              <Link to={`/micuenta/favoritos/${user&&user.id}`} >
                 <a class="navbar-brand" tabindex="-1" aria-disabled="true">Favoritos</a>
 
                             </Link>

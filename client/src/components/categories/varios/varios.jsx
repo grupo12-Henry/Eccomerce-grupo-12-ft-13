@@ -7,6 +7,7 @@ import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
 import Footer from "../../footer/footer";
 import Loading from "../../loading/Loading";
+import Reviews from "../../reviews/reviews";
 
 function Varios() {
   const dispatch = useDispatch();
@@ -104,7 +105,7 @@ return (
                                                         </h6>{" "}
                                                     </div>
                                                     <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
-                                                  <div class="text-muted mb-3">34 reviews</div>
+                                                    <Reviews/>
                                                   <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                                         <i class="fa fa-cart-plus mr-2">Agregar</i> 
                                                 </button>

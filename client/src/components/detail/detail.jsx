@@ -5,6 +5,7 @@ import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
 import Loading from "../loading/Loading";
+import Reviews from "../reviews/reviews";
 
 export default function Detail({ match }) {
   const dispatch = useDispatch();
@@ -56,17 +57,15 @@ useEffect(() => {
                <hr></hr></div>:null}
              
               <h2 id='price'>$ {detail.price}</h2>
-              <div className='f d-center'>
-            <button type="button" onClick={() => addToCart(detail.id, console.log('5', detail.id))} class="btn bg-cart">
-              {/* addToCart(detail) */}
+              <div>
+            <button className='btn' type="button" onClick={() => addToCart(detail.id, console.log('5', detail.id))} class="btn bg-cart">
+          
               <i class="fa fa-cart-plus mr-2">Agregar</i>
             </button>
-{/* 
-            <div class="d-flex justify-content-center align-items center mt-5">
-          <button type="button" onClick={() => addToCart(detail.id) } class="btn btn-outline-secondary">
-            <i class="fa fa-cart-plus mr-2">Agregar al carrito</i> 
-          </button> */}
+            <div/>
+            <Reviews/>
 
+            
             </div>
             
             </div>
