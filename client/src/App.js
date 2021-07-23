@@ -26,6 +26,7 @@ import misPedidos from './components/register/userRegister/misPedidos/misPedidos
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Nav from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
+import Loading from "./components/loading/Loading";
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
         <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/>
         <Route component={Detail} exact path='/detail/:id'/>
+        <Route component={Loading} exact path='/loading'/>
       </AuthProvider>
     </React.Fragment>
   )

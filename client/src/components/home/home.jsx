@@ -52,7 +52,7 @@ export default function Home({ location }) {
   const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		setTimeout(() => setLoading(true), 400)
+		setTimeout(() => setLoading(true), 1000)
 	}, [])
 
   if(!loading) {
