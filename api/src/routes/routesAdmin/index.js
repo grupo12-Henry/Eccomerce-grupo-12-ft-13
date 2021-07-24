@@ -380,8 +380,8 @@ router.post('/orderPost', async (req, res) => {
 					subTotal: e.subtotal
 				}
 			});
-			// console.log(e.stock)
-			Product.decrement({stock: e.cantidad}, {where: {id: e.id}})
+			console.log(products, 'sprite zero')
+			// Product.decrement({stock: e.cantidad}, {where: {id: e.id}})
 			// console.log(e.stock)
 
 		})

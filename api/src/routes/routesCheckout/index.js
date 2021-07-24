@@ -32,7 +32,6 @@ router.post('/', (req, res)=>{
       mercadopago.preferences.create(preference)
       .then(function(response){
           res.send( response.body.sandbox_init_point)
-          console.log(response)
       }).catch(function(error){
         console.log('error',error);
       });
@@ -40,22 +39,21 @@ router.post('/', (req, res)=>{
 })
 
 
-router.get("/pagos/:id", (req, res)=>{
-  const mp = new mercadopago('APP_USR-392066547320183-072316-f819befeb9b16b2530ad2ab1fd244dd3-795901018')
-  const id = req.params.id
-  console.info("Buscando el id", id)
-  mp.get(`/v1/payments/search`, {'status': 'pending'}) //{"external_reference":id})
-  .then(resultado  => {
-    console.info('resultado', resultado)
-    res.json({"resultado": resultado})
-  })
-  .catch(err => {
-    console.error('No se consulto:', err)
-    res.json({
-      error: err
-    })
-  })
-})
+// router.get("/pagos/:id", (req, res)=>{
+//   const mp = new mercadopago('APP_USR-392066547320183-072316-f819befeb9b16b2530ad2ab1fd244dd3-795901018')
+//   const id = req.params.id
+//   // console.info("Buscando el id", id)
+//   mp.get(`/v1/payments/search`, {'status': 'pending'}) //{"external_reference":id})
+//   .then(resultado  => {
+//     res.json({"resultado": resultado})
+//   })
+//   .catch(err => {
+//     console.error('No se consulto:', err)
+//     res.json({
+//       error: err
+//     })
+//   })
+// })
 
 module.exports = router;
 
