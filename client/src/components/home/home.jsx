@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../actions/index";
+import { ClearCart, getProducts, orderPost } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
@@ -11,13 +11,59 @@ import { addProductCart } from "../../actions/index";
 // import ShoppingCart from "../shoppingCart/ShoppingCart";
 import Loading from "../loading/Loading";
 // import { useAuth } from "../../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
-
+  // const cart = useSelector((state) => state.productCart);
+  const history = useHistory()
+  // console.log(historial)
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
+  
+  const cart = JSON.parse(window.localStorage.getItem('array'))
+  console.log(cart)
+
+            useEffect(() => {
+              let historial = (history.location.search.includes('&status=')?history.location.search.split('&status=')[1].split('&')[0]:null)//[5].split('&')[0])
+              let pedidoIdMP= (history.location.search.includes('payment_id=')?history.location.search.split('payment_id=')[1].split('&')[0]:null)
+              if (historial && historial === 'approved') {
+                console.log(54)
+                let aux = 0;
+                cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
+                let productsArray = cart?.map(el=> 
+      el = {
+        subtotal: el.price * el.cantidad,
+        cantidad: el.cantidad,
+        id: el.id
+      
+    })
+    console.log(42, productsArray)
+    let user =  window.localStorage.getItem("user");
+    let completo = user? {
+        idClient:user.split(',')[0].split(':')[1], 
+        adress:user.split(',')[5].split(':')[1], 
+        products: productsArray, 
+        paymentMethod: 'tarjeta', 
+        mail: user.split(',')[6].split(':')[1], 
+        bill: aux,
+        idMP: pedidoIdMP
+    } : console.log('user is null');
+    if (completo){
+    dispatch(orderPost(completo))
+    console.log('hola')
+    window.localStorage.removeItem('array');
+    dispatch(ClearCart())
+  }
+  }
+}, [])
+
+
+
+
+
+
 
   useEffect(() => {
     if (location.search !== '') {
@@ -35,7 +81,6 @@ export default function Home({ location }) {
     };
     dbProducts();
   }, [dispatch]);
-
 
   useEffect(() => {
     const dbProducts = () => {
