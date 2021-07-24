@@ -13,35 +13,21 @@ const mercadopago = require ('mercadopago');
 mercadopago.configure({
   access_token: 'APP_USR-392066547320183-072316-f819befeb9b16b2530ad2ab1fd244dd3-795901018' // TETE
 });
-
+// 1239061139
 
 
 router.post('/', (req, res)=>{
     let preference = {
-        items: [
-        //   {
-        //     id: '',
-        //     category_id: '',
-        //     currency_id: 'ARS',
-        //     description: '',
-        //     title: 'Mi producto',
-        //     quantity: 1,
-        //     unit_price: 100
-        //   }
-        //     title: 'Mi producto',
-        //     unit_price: 100,
-        //     quantity: 1,
-        //   },
-        ],
+        items: [],
         back_urls: {
-            success: 'http://localhost:3000/',
-            failure: 'http://localhost:3000/',
-            pending: 'http://localhost:3000/',
+            success: 'http://localhost:3000/home?page=1',
+            failure: 'http://localhost:3000/home?page=1',
+            pending: 'http://localhost:3000/home?page=1',
           },
-        
+          auto_return: 'approved',
+         payer:{email:"test_user_80899844@testuser.com"}
     };
     req.body.forEach(x=> preference.items.push({id: x.id, currency_id:'ARS', quantity: x.cantidad, title: x.name||x.title, unit_price:x.price}))
-      
       mercadopago.preferences.create(preference)
       .then(function(response){
           console.log(response)
@@ -50,6 +36,24 @@ router.post('/', (req, res)=>{
         console.log('error',error);
       });
     // res.send('hola')
+})
+
+
+router.get("/pagos/:id", (req, res)=>{
+  const mp = new mercadopago('APP_USR-392066547320183-072316-f819befeb9b16b2530ad2ab1fd244dd3-795901018')
+  const id = req.params.id
+  console.info("Buscando el id", id)
+  mp.get(`/v1/payments/search`, {'status': 'pending'}) //{"external_reference":id})
+  .then(resultado  => {
+    console.info('resultado', resultado)
+    res.json({"resultado": resultado})
+  })
+  .catch(err => {
+    console.error('No se consulto:', err)
+    res.json({
+      error: err
+    })
+  })
 })
 
 module.exports = router;
