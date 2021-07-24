@@ -39,6 +39,7 @@ const initialState = {
   productCart: [],
   arrayStorages: [],
   user:{},
+  wishList:[]
 }
 
 

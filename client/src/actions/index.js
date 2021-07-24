@@ -30,7 +30,9 @@ export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
-export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
+
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -109,7 +111,6 @@ export function addProductCart(payload) {
 }
 
 export function getDetail(id) {
-  console.log(id)
   return (dispatch) => {
     axios.get('http://localhost:3001/productos/' + id)
       .then(response => {

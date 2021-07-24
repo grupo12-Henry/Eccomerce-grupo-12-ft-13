@@ -33,7 +33,9 @@ module.exports = (sequelize) => {
     },
     subcategories:{
       type: DataTypes.ARRAY(DataTypes.STRING),
-
-    }
+    },
+    // reviews:{
+    //   type: DataTypes.ARRAY(DataTypes.STRING),
+    // }
   });
 };
