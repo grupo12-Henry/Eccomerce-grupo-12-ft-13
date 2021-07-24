@@ -25,7 +25,7 @@ export default function Home({ location }) {
   const product = useSelector((state) => state.products);
   const productDetail = useSelector((state) => state.productDetail);
   const wishList = useSelector((state) => state.wishList);
-  console.log("WISH DEL JOUM", product);
+  
 
   //// !--- PROBANDO ----! ////
   // console.log("EL PRODUCTO", product);
@@ -135,19 +135,6 @@ export default function Home({ location }) {
                                   <h3 class="mb-0 font-weight-semibold">
                                     $ {el.price}
                                   </h3>
-                                  {console.log(el.reviews.length)
-                                  //  el.reviews.length? el.reviews.map(el => aux = aux+el.value):null
-                                   }
-                                   <span>{aux/el.reviews.length?parseInt(el.reviews.length):null}</span>
-                                  {/* {
-
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
-let value1 = product.reviews || [{description:'Este producto no tiene calificaciones', value:1}];
-value1 = value1.map( el => el.value);
-const value2 = value1.length?value1.reduce(reducer)/product?.reviews?.length:null;
-
-                  } */}
-
                                   <FontAwesomeIcon
                                     className="highlight"
                                     icon={faHeart}
@@ -157,7 +144,7 @@ const value2 = value1.length?value1.reduce(reducer)/product?.reviews?.length:nul
                                     //   addingToWishList({ fav: el.id })
                                     // }
                                   />
-                                  {/* <ProductRating value={el.reviews?[0]?.value:null} />  */}
+                                  {<ProductRating product={el} /> }
                                   <div
                                     style={{
                                       display: "flex",

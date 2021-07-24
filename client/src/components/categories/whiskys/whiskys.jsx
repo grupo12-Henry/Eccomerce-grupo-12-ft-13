@@ -7,7 +7,7 @@ import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
 import Footer from "../../footer/footer";
 import Loading from "../../loading/Loading";
-import Reviews from "../../reviews/reviews";
+import ProductRating from '../../productRating/productRating'
 
 function Whiskys() {
     const dispatch = useDispatch();
@@ -43,8 +43,8 @@ function Whiskys() {
 
   const countsSorted = Object.entries(counts).sort(([, b], [_, a]) => a - b);
 
-  console.log(countsSorted);
-  // console.log(subCategories)
+  
+ 
 
   useEffect(() => {
     const dbProducts = () => {
@@ -85,7 +85,6 @@ function Whiskys() {
             <StyledDiv>
                 <div class="d-flex justify-content-center-md-center mt-5 " >
                 <div class="btn-group-vertical col-sm-2 mt-5 mb-1 justify-content-start md-start">
-                    {/* <button id='botonazo'className='btn btn-success' onClick={handleCategories}>CATEGORIAS</button> */}
                     <div class="row col-sm-14  ml-1 ">
                         {subCategories.map(d => <button id='botonazo'className='btn btn-dark mt-1' key={d}
                             onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d))) }}>{d} ({counts[d]})</button>)
@@ -129,7 +128,7 @@ function Whiskys() {
                                                         </h6>{" "}
                                                     </div>
                                                     <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
-                                                    <Reviews/>
+                                                    <ProductRating product={el}/>
                                                     <button type="button" onClick={() => addToCart(el.id)} class="btn bg-cart">
                                                           <i class="fa fa-cart-plus mr-2">Agregar</i> 
                                                     </button>

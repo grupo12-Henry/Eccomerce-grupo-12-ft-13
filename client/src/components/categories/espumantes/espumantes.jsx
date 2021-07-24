@@ -7,7 +7,7 @@ import StyledDiv from "../../detail/styled";
 import NavCategories from "../../navCategories/navCategories";
 import Footer from "../../footer/footer";
 import Loading from "../../loading/Loading";
-import Reviews from "../../reviews/reviews";
+import ProductRating from "../../productRating/productRating";
 
 function Espumantes() {
     const dispatch = useDispatch();
@@ -128,7 +128,7 @@ function Espumantes() {
                                                           </h6>{" "}
                                                       </div>
                                                       <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
-                                                      <Reviews/>
+                                                      {<ProductRating product={el} /> }
                                                       <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                                           <i class="fa fa-cart-plus mr-2">Agregar</i> 
                                                       </button>
