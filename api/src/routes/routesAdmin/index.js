@@ -349,7 +349,6 @@ router.post('/orderPost', async (req, res) => {
 	} = req.body;
 	try {
 		const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
-		console.log('encontrar',encontrarPedido)
 		if (encontrarPedido) return res.send('ya existe un pedido con ese id');
 		const user = await Client.findByPk(idClient)
 		const newOrder = await Order.create({
@@ -363,7 +362,6 @@ router.post('/orderPost', async (req, res) => {
 			mail,
 			shippingDate,
 			state,
-			products,
 			freight,
 			guideNumber,
 			cost,
@@ -380,10 +378,9 @@ router.post('/orderPost', async (req, res) => {
 					subTotal: e.subtotal
 				}
 			});
+			Product.decrement({stock: e.cantidad}, {where: {id: e.id}})
 			console.log(products, 'sprite zero')
-			// Product.decrement({stock: e.cantidad}, {where: {id: e.id}})
-			// console.log(e.stock)
-
+		
 		})
 		return res.send(newOrder)
 	} catch (error) {

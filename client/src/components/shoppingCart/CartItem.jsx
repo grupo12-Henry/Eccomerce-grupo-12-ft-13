@@ -14,7 +14,6 @@ function CartItem({ data }) {
   //crear una action que cambie el valor de la cantidad,
   //traerme aqui el useDispatch y ejecutar esa action en el onChange de el cant ese, y le paso la cantidad
   //para que cambie el product card, y actualice el localstorage
-
  
 
   useEffect(() => {
@@ -30,9 +29,9 @@ function CartItem({ data }) {
   }
 
   const handleCountChange = (e) => {
-    data.cantidad = (e.target.value);
+    data.cantidad = parseInt((e.target.value));
     let array = JSON.parse(window.localStorage.getItem("array"));
-    window.localStorage.setItem("array", JSON.stringify((array!=='undefined' && array!==null )? array.concat([data]) : array=[data]))
+    window.localStorage.setItem("array", JSON.stringify((!!array)?array.filter(e => e.id !== data.id).concat([{...data, cantidad: parseInt(data.cantidad)}]):array=[{...data, cantidad: parseInt(data.cantidad)}]))
     dispatch(updateProductCart({...data, cantidad:data.cantidad>data.stock?data.stock:data.cantidad}))//typeof data.cantidad === Number ?:1
     setPrecioTotal((data.cantidad>data.stock)?data.stock * data.price:data.cantidad*data.price)
     //VER ESTE PROCEDIMIENTO, AQUI DEBE SETEARSE LA CANTIDAD DEL CARRITO EN PRODUCTCART
