@@ -31,6 +31,8 @@ export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
+export const CHECKOUT = 'CHECKOUT'
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -88,6 +90,7 @@ export function orderPost(order) {
   return (dispatch) => {
     // axios.post('http://localhost:3001/orderPost', order)
     axios.post('http://localhost:3001/admin/orderPost', order)
+    .then(response=> console.log(response))
 
   }
 }
@@ -321,6 +324,24 @@ export function addProduct(product) {
       })
       .catch((err) => {
         console.log(err);
+      });
+
+  };
+}
+export function Checkout(payload) {
+  return (dispatch) => {
+    axios.post("http://localhost:3001/checkout", payload)
+      .then((response) => {
+        console.log('action gatoo', response)
+        // if (response) alert('El producto se creó correctamente');
+        return window.location = response.data;
+        // dispatch({
+        //   type: CHECKOUT,
+        //   payload: response.data
+        // });
+      })
+      .catch((err) => {
+        console.log('llevame a mercado pago!!!', err);
       });
 
   };

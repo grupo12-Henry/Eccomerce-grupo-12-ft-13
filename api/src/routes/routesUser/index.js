@@ -10,6 +10,9 @@ const Op = Sequelize.Op;
 //FUNCIONAN OK:
 
 //trae todos los productos-->LISTO
+// router.get('/checkout', (req, res)=>{
+//   res.send('hola')
+// })
 router.get('/productos/all', async (req, res) => {
   try {
      const array_product = await Product.findAll()

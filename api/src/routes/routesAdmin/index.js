@@ -328,6 +328,7 @@ router.get('/pedidos/all', async (req, res) => { //envia todos los pedidos
 
 router.post('/orderPost', async (req, res) => {
 	const {
+		idMP,
 		idClient,
 		ticket,
 		date,
@@ -346,11 +347,13 @@ router.post('/orderPost', async (req, res) => {
 		subtotal,
 		cantidad
 	} = req.body;
-
 	try {
+		const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
+		if (encontrarPedido) return res.send('ya existe un pedido con ese id');
 		const user = await Client.findByPk(idClient)
 		const newOrder = await Order.create({
 			ticket,
+			idMP,
 			date,
 			bill,
 			paymentMethod,
@@ -359,7 +362,6 @@ router.post('/orderPost', async (req, res) => {
 			mail,
 			shippingDate,
 			state,
-			products,
 			freight,
 			guideNumber,
 			cost,
@@ -376,14 +378,15 @@ router.post('/orderPost', async (req, res) => {
 					subTotal: e.subtotal
 				}
 			});
+			Product.decrement({stock: e.cantidad}, {where: {id: e.id}})
+			console.log(products, 'sprite zero')
+		
 		})
-		return res.send(newOrder);
+		return res.send(newOrder)
 	} catch (error) {
 		res.send(error).status(404)
 	}
 })
-
-
 
 router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun los datos enviados(no hace falta enviar todos los campos)
 	const id = req.params.id
