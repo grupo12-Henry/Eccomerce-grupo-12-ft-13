@@ -20,7 +20,7 @@ const router = Router();
 
 router.get('/userMail', async (req, res)=>{
     const mail = req.query.mail;
-    const user = await Client.findOne({where: {mail}})
+    const user = await Client.findOne({where: {mail},include:{model:Product}})
     user&&res.send(user)||res.sendStatus(400)
 })
 

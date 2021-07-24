@@ -22,6 +22,7 @@ import ReactStars from "react-rating-stars-component";
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user)
   const product = useSelector((state) => state.products);
   const productDetail = useSelector((state) => state.productDetail);
   const wishList = useSelector((state) => state.wishList);
@@ -76,10 +77,11 @@ export default function Home({ location }) {
     dispatch(addProductCart(id));
   };
 
-  // const addingToWishList = (e) => {
-  //   //const productFav = product.filter(el=> el.id === e.target.value)
-  //   dispatch(addToWishList(e));
-  // };
+   const addingToWishList = (e) => {
+     
+    const productFav = product.filter(el=> el.id === e.target.value)
+    dispatch(addToWishList(user.id,productFav.id));
+   };
   let aux = 0;
   const [loading, setLoading] = useState(false);
 
@@ -140,11 +142,11 @@ export default function Home({ location }) {
                                     icon={faHeart}
                                     type="button"
                                     value={el.id}
-                                    // onClick={() =>
-                                    //   addingToWishList({ fav: el.id })
-                                    // }
+                                     onClick={(e) =>
+                                       addingToWishList(e)
+                                     }
                                   />
-                                  {<ProductRating product={el} /> }
+                                  {<ProductRating product={el} key={el.id} /> }
                                   <div
                                     style={{
                                       display: "flex",

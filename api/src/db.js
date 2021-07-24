@@ -67,6 +67,7 @@ Product.belongsToMany(Order, { through: order_detail,timestamps: false });
 Review.belongsTo(Product);
 Product.hasMany(Review);
 
+
 //Tabla INTERMEDIA de 'Favoritos'  1 cliente tiene muchos productos favs, 1 producto puede ser fav de muchos clientes.
 Product.belongsToMany(Client, { through: 'favorites',timestamps: false });
 Client.belongsToMany(Product, { through: 'favorites',timestamps: false });

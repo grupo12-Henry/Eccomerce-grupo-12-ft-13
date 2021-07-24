@@ -19,6 +19,40 @@ router.get('/productos/all', async (req, res) => {
   }
 })
 
+//relacionar productos favoritos a un cliente 
+router.post('/favoritos/:id',async(req,res) => {
+const id = req.params.id
+const pId=req.body.productId
+console.log(id , 'producto:',pId)
+  try {
+    const cliente = await Client.findByPk(id)
+    const product = await Product.findByPk(pId)
+    cliente.addProducts(product)
+    res.send(product)
+  } catch (error) {
+    res.send(error).status(404);
+  }
+
+})
+router.delete('/favoritos/:id',async(req,res) => {//elimina una relacion de producto-usuario
+  const id = req.params.id
+  const pId=req.body.productId
+    try {
+      const cliente = await Client.findByPk(id)
+      const product = await Product.findByPk(pId)
+      cliente.removeProducts(product)
+      res.send(product)
+    } catch (error) {
+      res.send(error).status(404);
+    }
+  
+  })
+
+
+
+
+
+
 //trae el detalle de un producto -->LISTO
 router.get('/productos/:id', async (req, res) => {
   const id = req.params.id
@@ -94,7 +128,7 @@ router.post('/clientesPost', async (req, res) => {
     token
 	} = req.body;
  try {
-    const [newClient, status] = await Client.findOrCreate({ where:{mail},
+    const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
       defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })
   return res.send(newClient)
@@ -178,7 +212,7 @@ router.get('/pedidos/:id',async (req, res)=>{
 router.get('/users/:id', async (req, res) => {
   const id = req.params.id
   try {
-      const user = await Client.findByPk(id)
+      const user = await Client.findByPk(id,{include:{model:Product}})
       user?res.send(user).status(200):res.sendStatus(400)
   } catch (error) {
       res.send(error).status(404);
@@ -198,7 +232,7 @@ router.get('/productos/', async (req, res) => {
 }
 })
 
-//GET PEDIDOS'/pedidos/' (de todos los clientes)
+
 
 router.get('/pedidos',async (req, res)=>{
   try {
@@ -216,7 +250,7 @@ router.get('/pedidos',async (req, res)=>{
   }
 })
 
-// , atributes:['name','price','image'] saque linea 149 entre ] y ,
+
 
 
 

@@ -450,19 +450,38 @@ export function repeatOrder(payload) {
 
 //ADD TO WISHLIST
 
-export function addToWishList(payload) {
-  return {
-      type: 'ADD_TO_WISHLIST',
-      payload
+export function addToWishList(id,pId) {
+  return (dispatch) => {
+    axios.post(`http://localhost:3001/favoritos/${id}`, {productId:pId})
+      .then(response => {
+       console.log(response.data)
+        dispatch({
+          type: ADD_TO_WISHLIST,
+          payload: response.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
-}
+};
+
 
 //REMOVE FROM WISHLIST
-export function removeFromWishlist(id) {
-  return {
-      type: 'REMOVE_FROM_WISHLIST',
-      payload: id
-  }
+export function removeFromWishlist(id,pId) {
+  return (dispatch) => {
+    axios.delete(`http://localhost:3001/favoritos/${id}`, pId)
+    .then(response => {
+     
+      dispatch({
+        type: REMOVE_FROM_WISHLIST,
+        payload: response.data.id
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 }
 
 
