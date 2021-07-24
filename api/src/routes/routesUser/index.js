@@ -18,7 +18,17 @@ router.get('/productos/all', async (req, res) => {
      res.send(error).status(404);
   }
 })
-
+router.get('/favorites/:id', async (req, res) => {
+  const id = req.params.id
+  try {
+     const array_product = await Product.findAll({
+       include:{model:Client,where:{id:id}}
+      })
+     res.send(array_product).status(200)}
+  catch(error){
+     res.send(error).status(404);
+  }
+})
 //relacionar productos favoritos a un cliente 
 router.post('/favoritos/:id',async(req,res) => {
 const id = req.params.id
@@ -37,6 +47,7 @@ console.log(id , 'producto:',pId)
 router.delete('/favoritos/:id',async(req,res) => {//elimina una relacion de producto-usuario
   const id = req.params.id
   const pId=req.body.productId
+  console.log(id, 'producto:' ,pId)
     try {
       const cliente = await Client.findByPk(id)
       const product = await Product.findByPk(pId)
@@ -63,57 +74,6 @@ router.get('/productos/:id', async (req, res) => {
       res.send(error).status(404);
   }
 })
-
-// product {
-//   dataValues: {
-//     id: 1,
-//     stock: 24,
-//     name: 'Coca-Cola 1.5L',
-//     type: 'Bebidas',
-//     Description: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura 
-// desde hace más de 130 años.',
-//     price: 125,
-//     image: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
-//     maker: 'The Coca-Cola Company',
-//     subcategories: [ 'Gaseosas', 'Cola', '1.5L' ],
-//     createdAt: 2021-07-23T21:18:12.591Z,
-//     updatedAt: 2021-07-23T21:18:12.591Z,
-//     reviews: [ [review], [review], [review] ]
-//   },
-
-//////////////////////////////////////////////////////////////////////////
-
-// router.get('/productos/:id', async (req, res) => {
-//   const id = req.params.id
-//   try {
-//       const product = await Product.findByPk(id,{include:{model:Review}})
-
-//       if(product.dataValues.reviews.length>0){
-//         console.log('te esta devolviendo un producto con review')
-//         res.send(product).status(200)
-//       } else {
-//         product.dataValues.reviews = 'Este producto aun no ha sido calificado.'
-//         product.dataValues.reviews = product.dataValues.reviews.split('');
-//         // product.dataValues.reviews = product.dataValues.reviews.join('');
-//         // console.log(product.dataValues.reviews)
-//         res.send(product.reviews).status(200)
-//       }
-      // console.log(product.dataValues.reviews);
-
-      // const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-      // let value1 = product.reviews?product.reviews.map( el => el.value):null
-      // const value2 = value1?value1.reduce(reducer)/product.reviews.length:0;
-
-      // product?res.send({...product,rating:value2}).status(200):res.sendStatus(400)
-//   } catch (error) {
-//       res.send(error).status(404);
-//   }
-// })
-
-//////////////////////////////////////////////////////////////////////////
-
-
 
 //agrega un nuevo cliente --> OK 
 router.post('/clientesPost', async (req, res) => {
@@ -186,27 +146,6 @@ router.get('/pedidos/:id',async (req, res)=>{
 })
 
 
-// router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las llamadas
-//   const id = req.params.id
-//   try {
-//       const user = await Client.findByPk(id, {
-//           include: {
-//               model: Order,
-//               include:[{model: Shipping,attributes:['state']},
-//              {model: Product,atributes:['name','price','image']}],
-//              attributes: {
-//               exclude: ['createdAt', 'updatedAt']
-//           }        
-//           }
-//       })
-//       user ? res.send(user) : res.sendStatus(400)
-//   } catch (error) {
-//       res.send(error).status(404)
-//   }
-// })
-
-
-
 // -Al hacer un GET a '/users/:id' me deberá permitir ver mi información de usuario registrada.
 //trae el detalle de un producto -->LISTO
 router.get('/users/:id', async (req, res) => {
@@ -255,23 +194,7 @@ router.get('/pedidos',async (req, res)=>{
 
 
 
-// router.get('/pedidos',async (req, res)=>{
-//   try {
-//     console.log('entro al try')
-//    const clientPedidos = await Client.findAll({
-//     include:[{
-//     model: Order,
-//     // as:'Pedidos',
-//      attributes:['date','ticket'],
-//     }],
-//   attributes: ['name', 'lastName']
-//   })
-//   console.log(clientPedidos)
-//   clientPedidos?res.send(clientPedidos):res.sendStatus(400);
-//   } catch (error) {
-//     res.send(error).status(404);
-//   }
-// })
+
 
 
 
@@ -310,12 +233,6 @@ router.put('/users/:id', async (req, res) => {
 		res.send(error).status(404)
 	}
 })
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 2992c2984c69eba45c956a110983d6748b7270bb
 //REVIEWS
 //postea reviews de un producto. Id es el id de producto. 
 router.post('/reviews/:id', async (req, res)=>{
@@ -327,10 +244,7 @@ router.post('/reviews/:id', async (req, res)=>{
     const newReview = await Review.create({
      description,
      value,
-      productId:id 
-        
-  
-      
+      productId:id      
     }, {
       include: [ Product ]
     })
@@ -350,19 +264,6 @@ router.get('/reviews/all', async (req, res)=>{
       res.send(error).status(404)
   }  
 })
-// //Devuelve el detalle de una review de un prod. 
-// router.get('/reviewsDetail/:id', async (req, res)=>{
-//   const id = req.params.id;
-//   const { value, description } = req.body;
-//   try {
-//     const average = await Client.findByPk(id)
-//   }catch (error) {
-//       res.send(error).status(404)
-//   }  
-// })
-<<<<<<< HEAD
-  
-=======
->>>>>>> 2992c2984c69eba45c956a110983d6748b7270bb
+
 
 module.exports = router;

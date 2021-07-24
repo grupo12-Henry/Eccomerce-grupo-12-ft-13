@@ -5,8 +5,10 @@ const StyledDiv = styled.div`
 display: flex;
 
 .highlight {
+   color: red
+    
     :hover{
-        color: red
+        color: black
     }
 }
 

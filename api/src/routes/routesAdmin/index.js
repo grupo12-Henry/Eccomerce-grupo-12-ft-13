@@ -5,7 +5,6 @@ const {
 	Product,
 	Client,
 	Order,
-	Review
 } = require('../../db');
 const Sequelize = require('sequelize');
 const {
@@ -20,7 +19,7 @@ const router = Router();
 
 router.get('/userMail', async (req, res)=>{
     const mail = req.query.mail;
-    const user = await Client.findOne({where: {mail},include:{model:Product}})
+    const user = await Client.findOne({where: {mail}})
     user&&res.send(user)||res.sendStatus(400)
 })
 

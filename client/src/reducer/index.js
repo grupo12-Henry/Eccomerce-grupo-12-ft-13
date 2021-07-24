@@ -22,6 +22,7 @@ import {
   ADD_TO_WISHLIST,
   REPEAT_ORDER,
   REMOVE_FROM_WISHLIST,
+  GETFAVORITES
 } from "../actions";
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -245,15 +246,21 @@ case ADD_TO_CART:
         wishList: state.wishList.concat(action.payload),
       };
     }
-   
+   case GETFAVORITES:{
+     return {
+       ...state,
+       wishList: action.payload
+     }
+   }
     case REMOVE_FROM_WISHLIST: {
-     let user= JSON.parse(window.localStorage.getItem('user'))
-    user.products= user.products.filter(product =>product.id !==action.payload)
+     //let user= JSON.parse(window.localStorage.getItem('user'))
+   /*  user.products= user.products.filter(product =>product.id ===action.payload)
      window.localStorage.removeItem('user')
-     window.localStorage.setItem('user',JSON.stringify(user))
+     window.localStorage.setItem('user',JSON.stringify(user)) */
+     
       return {
         ...state,
-        wishList: state.wishList.filter(el => el.id !== action.payload)
+        wishList: state.wishList.slice().filter(el => el.id !== action.payload.productId)
       }
   }
 

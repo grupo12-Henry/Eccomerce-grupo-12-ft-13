@@ -15,10 +15,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../loading/Loading";
 import ProductRating from "../productRating/productRating";
-import ReactStars from "react-rating-stars-component";
 
-// import { useAuth } from "../../contexts/AuthContext";
-// import ShoppingCart from "../shoppingCart/ShoppingCart";
+
+
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -27,22 +26,6 @@ export default function Home({ location }) {
   const productDetail = useSelector((state) => state.productDetail);
   const wishList = useSelector((state) => state.wishList);
   
-
-  //// !--- PROBANDO ----! ////
-  // console.log("EL PRODUCTO", product);
-
-  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-  //value1 es un array con los valores de todas las reviews de ese prod.
-  // let value1 = product?.reviews?.map((el) => el.value);
-  // const value2 = value1 ? value1.reduce(reducer) / product.reviews.length : 0; //luego suma esos valores y los divide por la cantidad de reviews
-  // const firstExample = {
-  //   size: 30,
-  //   value: value2,
-  //   edit: false,
-  // };
-
-  //// !--- PROBANDO ----! ////
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -77,12 +60,13 @@ export default function Home({ location }) {
     dispatch(addProductCart(id));
   };
 
-   const addingToWishList = (e) => {
-     
-    const productFav = product.filter(el=> el.id === e.target.value)
-    dispatch(addToWishList(user.id,productFav.id));
-   };
-  let aux = 0;
+  const addingToWishList = (Uid, productId) => {
+    // const productFav = wishList?.filter(el=> el)
+     // console.log('ELUSER', Uid, 'ELFAV', productId)
+     let body = {productId:productId};
+     dispatch(addToWishList(Uid, body));
+    };
+  
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -143,7 +127,7 @@ export default function Home({ location }) {
                                     type="button"
                                     value={el.id}
                                      onClick={(e) =>
-                                       addingToWishList(e)
+                                       addingToWishList(user.id,el.id)
                                      }
                                   />
                                   {<ProductRating product={el} key={el.id} /> }

@@ -5,7 +5,7 @@ export default function ProductRating({product}) {
     
       const reducer = (accumulator, currentValue) => accumulator + currentValue;
   
-  const value1= product.reviews.length!==0&&product.reviews.map( el => el.value);
+  const value1= product.reviews&&product.reviews.length!==0&&product.reviews.map( el => el.value);
    const value2 =  value1?value1.reduce(reducer)/product?.reviews?.length:null; 
    
    const firstExample = {
