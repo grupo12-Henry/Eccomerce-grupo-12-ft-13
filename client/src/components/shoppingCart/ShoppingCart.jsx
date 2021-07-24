@@ -85,6 +85,7 @@ useEffect(() => {
     } : console.log('user is null');
     if (user){
 
+      console.log(cart)
       history.push('/FormCompras')
       // history.push('/pago')
       // dispatch(orderPost(completo));
