@@ -109,7 +109,6 @@ export function addProductCart(payload) {
 }
 
 export function getDetail(id) {
-  console.log(id)
   return (dispatch) => {
     axios.get('http://localhost:3001/productos/' + id)
       .then(response => {

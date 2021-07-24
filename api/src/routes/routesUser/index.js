@@ -1,7 +1,7 @@
 const { Router } = require('express');
 //modelos acá:
 const router = Router();
-const { Client, Order, Product, Shipping , order_detail,Review} = require('../../db');
+const { Client, Order, Product, Shipping, order_detail, Review} = require('../../db');
 const { v4: uuidv4 } = require('uuid');
 const Sequelize = require('sequelize');
 const order = require('../../models/order');
@@ -29,6 +29,55 @@ router.get('/productos/:id', async (req, res) => {
       res.send(error).status(404);
   }
 })
+
+// product {
+//   dataValues: {
+//     id: 1,
+//     stock: 24,
+//     name: 'Coca-Cola 1.5L',
+//     type: 'Bebidas',
+//     Description: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura 
+// desde hace más de 130 años.',
+//     price: 125,
+//     image: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
+//     maker: 'The Coca-Cola Company',
+//     subcategories: [ 'Gaseosas', 'Cola', '1.5L' ],
+//     createdAt: 2021-07-23T21:18:12.591Z,
+//     updatedAt: 2021-07-23T21:18:12.591Z,
+//     reviews: [ [review], [review], [review] ]
+//   },
+
+//////////////////////////////////////////////////////////////////////////
+
+// router.get('/productos/:id', async (req, res) => {
+//   const id = req.params.id
+//   try {
+//       const product = await Product.findByPk(id,{include:{model:Review}})
+
+//       if(product.dataValues.reviews.length>0){
+//         console.log('te esta devolviendo un producto con review')
+//         res.send(product).status(200)
+//       } else {
+//         product.dataValues.reviews = 'Este producto aun no ha sido calificado.'
+//         product.dataValues.reviews = product.dataValues.reviews.split('');
+//         // product.dataValues.reviews = product.dataValues.reviews.join('');
+//         // console.log(product.dataValues.reviews)
+//         res.send(product.reviews).status(200)
+//       }
+      // console.log(product.dataValues.reviews);
+
+      // const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+      // let value1 = product.reviews?product.reviews.map( el => el.value):null
+      // const value2 = value1?value1.reduce(reducer)/product.reviews.length:0;
+
+      // product?res.send({...product,rating:value2}).status(200):res.sendStatus(400)
+//   } catch (error) {
+//       res.send(error).status(404);
+//   }
+// })
+
+//////////////////////////////////////////////////////////////////////////
 
 
 
@@ -247,17 +296,16 @@ router.post('/reviews/:id', async (req, res)=>{
       res.send(error).status(404)
   }  
 }) 
-//Devuelve las reviews de un prod. 
-// router.get('/reviews/all', async (req, res)=>{
-//   const id = req.params.id;
-//   const { value, description } = req.body;
-//   try {
-//     const average = await Reviews.findAll()
 
-//   }catch (error) {
-//       res.send(error).status(404)
-//   }  
-// })
+//Devuelve las reviews de un prod. 
+router.get('/reviews/all', async (req, res)=>{
+  try {
+    const allReviews = await Review.findAll({include:{model:Product}})
+    res.send(allReviews).status(200)
+  }catch (error) {
+      res.send(error).status(404)
+  }  
+})
 // //Devuelve el detalle de una review de un prod. 
 // router.get('/reviewsDetail/:id', async (req, res)=>{
 //   const id = req.params.id;

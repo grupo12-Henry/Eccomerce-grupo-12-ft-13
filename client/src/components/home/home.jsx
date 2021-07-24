@@ -14,7 +14,7 @@ import NavCategories from "../navCategories/navCategories";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../loading/Loading";
-import Reviews from "../reviews/reviews";
+import ProductRating from "../productRating/productRating";
 import ReactStars from "react-rating-stars-component";
 
 // import { useAuth } from "../../contexts/AuthContext";
@@ -23,6 +23,7 @@ import ReactStars from "react-rating-stars-component";
 export default function Home({ location }) {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
+  const productDetail = useSelector((state) => state.productDetail);
   const wishList = useSelector((state) => state.wishList);
   console.log("WISH DEL JOUM", product);
 
@@ -75,11 +76,11 @@ export default function Home({ location }) {
     dispatch(addProductCart(id));
   };
 
-  const addingToWishList = (e) => {
-    //const productFav = product.filter(el=> el.id === e.target.value)
-    dispatch(addToWishList(e));
-  };
-
+  // const addingToWishList = (e) => {
+  //   //const productFav = product.filter(el=> el.id === e.target.value)
+  //   dispatch(addToWishList(e));
+  // };
+  let aux = 0;
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -101,19 +102,7 @@ export default function Home({ location }) {
                 <div class="row container-product">
                   {allProducts && allProducts.length > 0
                     ? allProducts.slice((page - 1) * 9, page * 9).map((el) => {
-                      //probando
-                      const reducer = (accumulator, currentValue) => accumulator + currentValue;
-                      //value1 es un array con los valores de todas las reviews de ese prod.
-                      let value1 = el?.reviews?.map((el) => el.value);
-                      const value2 = value1 ? value1.reduce(reducer) / el.reviews.length : 0;
-                      const firstExample = {
-                        size: 30,
-                        value: value2,
-                        edit: false,
-                      };
-
-
-                      // probando
+                     
                         return el.stock > 0 ? (
                           <>
                             <div class="col-md-4 mt-2">
@@ -146,24 +135,35 @@ export default function Home({ location }) {
                                   <h3 class="mb-0 font-weight-semibold">
                                     $ {el.price}
                                   </h3>
+                                  {console.log(el.reviews.length)
+                                  //  el.reviews.length? el.reviews.map(el => aux = aux+el.value):null
+                                   }
+                                   <span>{aux/el.reviews.length?parseInt(el.reviews.length):null}</span>
+                                  {/* {
+
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+let value1 = product.reviews || [{description:'Este producto no tiene calificaciones', value:1}];
+value1 = value1.map( el => el.value);
+const value2 = value1.length?value1.reduce(reducer)/product?.reviews?.length:null;
+
+                  } */}
+
                                   <FontAwesomeIcon
                                     className="highlight"
                                     icon={faHeart}
                                     type="button"
                                     value={el.id}
-                                    onClick={() =>
-                                      addingToWishList({ fav: el })
-                                    }
+                                    // onClick={() =>
+                                    //   addingToWishList({ fav: el.id })
+                                    // }
                                   />
-                                  {/* <Fav props={el}/> */}
-                                  {/* <Reviews props={el}/>  */}
+                                  {/* <ProductRating value={el.reviews?[0]?.value:null} />  */}
                                   <div
                                     style={{
                                       display: "flex",
                                       justifyContent: "center",
                                     }}
                                   >
-                                    <ReactStars {...firstExample} />
                                   </div>
 
                                   <button
