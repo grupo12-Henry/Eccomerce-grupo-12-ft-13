@@ -18,34 +18,23 @@ mercadopago.configure({
 
 router.post('/', (req, res)=>{
     let preference = {
-        items: [
-        //   {
-        //     id: '',
-        //     category_id: '',
-        //     currency_id: 'ARS',
-        //     description: '',
-        //     title: 'Mi producto',
-        //     quantity: 1,
-        //     unit_price: 100
-        //   }
-        //     title: 'Mi producto',
-        //     unit_price: 100,
-        //     quantity: 1,
-        //   },
-        ],
+        items: [],
         back_urls: {
             success: 'http://localhost:3000/',
-            failure: 'http://localhost:3000/',
-            pending: 'http://localhost:3000/',
+            failure: 'http://localhost:3000/Compras',
+            pending: 'http://localhost:3000/Compras',
           },
+          payer:{email:'emi@yimeil.com'}
         
     };
+
     req.body.forEach(x=> preference.items.push({id: x.id, currency_id:'ARS', quantity: x.cantidad, title: x.name||x.title, unit_price:x.price}))
-      
+      //controlar antes de mandar la preferencia a control de Stock
+      console.log('preference con yimeil', preference)
       mercadopago.preferences.create(preference)
       .then(function(response){
-          console.log(response)
           res.send( response.body.sandbox_init_point)
+          console.log(response)
       }).catch(function(error){
         console.log('error',error);
       });

@@ -11,14 +11,12 @@ import NavModal from '../navModal/navModal';
 import FormCompras from './FormCompras';
 
 
-
 function ShoppingCart(props) {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.productCart);
   const product = useSelector((state) => state.products);
   const [loading, setLoading] = useState(false);
 
-  // const user = useSelector((state) => state.user);
   const localStorage = useSelector((state) => state.arrayStorages);
   const [montoTotal, setMontoTotal] = useState(0);
 
@@ -26,15 +24,6 @@ function ShoppingCart(props) {
   const [form, setForm] = useState(false);
   const history = useHistory()
 
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() =>
-  //   { let aux = 0;
-  //     cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
-  //   setMontoTotal(aux)}, 500);
-  //   return () => clearTimeout(timer);
-  // }, [cart]);
- 
 
 
   useEffect(() => {
