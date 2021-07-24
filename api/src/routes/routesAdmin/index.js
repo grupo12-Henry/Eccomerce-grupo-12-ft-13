@@ -434,7 +434,7 @@ router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun l
 
 })
 
-router.put('/users/:id', async (req, res) => {
+router.put('/users/:id',async (req, res) => {
 	const id = req.params.id
 	const {
 		name,
@@ -444,7 +444,8 @@ router.put('/users/:id', async (req, res) => {
 		adress,
 		mail,
 		identityCard,
-		admin
+		admin,
+		token
 	} = req.body
 	try {
 		const user = await Client.findByPk(id)
@@ -458,6 +459,7 @@ router.put('/users/:id', async (req, res) => {
 			mail: mail || user.dataValues.mail,
 			identityCard: identityCard || user.dataValues.identityCard,
 			admin: admin || user.dataValues.admin,
+			token: token || user.dataValues.token,
 		})
 		if (user) {
 			res.send(user).status(200)
