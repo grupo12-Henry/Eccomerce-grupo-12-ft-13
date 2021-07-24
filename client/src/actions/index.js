@@ -485,7 +485,7 @@ export function getFavorites(id) {
 export function removeFromWishlist(id,pId) {
   return (dispatch) => {
     console.log(pId,'action...........')
-    axios.delete(`http://localhost:3001/favoritos/${id}`, pId)
+    axios.delete(`http://localhost:3001/favoritos/${id}?product=${pId}`)
     .then(response => {
      
       dispatch({

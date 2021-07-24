@@ -221,7 +221,6 @@ case ADD_TO_CART:
         return {
           ...state,
           user: user,
-          wishList:user?user.products:[],
           arrayStorages: array ? state.arrayStorages?.slice().concat([array]) : state.arrayStorages
         }
       }
@@ -241,6 +240,7 @@ case ADD_TO_CART:
 
 
     case ADD_TO_WISHLIST: {
+
       return {
         ...state,
         wishList: state.wishList.concat(action.payload),
@@ -253,14 +253,14 @@ case ADD_TO_CART:
      }
    }
     case REMOVE_FROM_WISHLIST: {
-     //let user= JSON.parse(window.localStorage.getItem('user'))
-   /*  user.products= user.products.filter(product =>product.id ===action.payload)
+     /* let user= JSON.parse(window.localStorage.getItem('user'))
+     user.products= user.products.filter(product =>product.id ===action.payload)
      window.localStorage.removeItem('user')
-     window.localStorage.setItem('user',JSON.stringify(user)) */
+     window.localStorage.setItem('user',JSON.stringify(user)) */ 
      
       return {
         ...state,
-        wishList: state.wishList.slice().filter(el => el.id !== action.payload.productId)
+        wishList: state.wishList.filter(el => el.id !== action.payload.productId)
       }
   }
 

@@ -13,23 +13,23 @@ import Styled from "./styled";
 
 export default function WishList() {
   const dispatch = useDispatch();
- 
-const wishlist= useSelector((state=> state.wishList))
+  const wishList= useSelector((state=> state.wishList))
+  //const [wishList,setWishlist]=useState(wishlist);
+
 const user= useSelector((state=> state.user))
   const addToCart = (id) => {
     dispatch(addProductCart(id));
   };
-
+ 
  const deleteFromWishList = (Uid, productId) => {
    
-     let body = {productId:productId};
-     dispatch(removeFromWishlist(Uid,body))
-    };
+   dispatch(removeFromWishlist(Uid,productId))
+};
     
   useEffect(() => {
-    user&&dispatch(getFavorites(user.id))
+   user&&dispatch(getFavorites(user.id))
     
-  },[dispatch])
+  },[])
 
  
   return (
@@ -41,8 +41,8 @@ const user= useSelector((state=> state.user))
             <div class="container d-flex justify-content-center mt-50 mb-50">
               <div class="row container-product">
 
-                 {wishlist &&
-                  wishlist.map((el) => {
+                 {wishList &&
+                  wishList.map((el) => {
                     return (
                       <>
                         <div class="col-md-4 mt-2">

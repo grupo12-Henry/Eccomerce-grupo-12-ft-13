@@ -10,6 +10,20 @@ const Op = Sequelize.Op;
 //FUNCIONAN OK:
 
 //trae todos los productos-->LISTO
+router.delete('/favoritos/:id',async(req,res) => {//elimina una relacion de producto-usuario
+  const id = req.params.id
+  const pId=parseInt(req.query.product,10)
+  console.log(id, 'producto:' ,pId)
+    try {
+      const cliente = await Client.findByPk(id)
+      const product = await Product.findByPk(pId)
+      cliente.removeProducts(product)
+      res.send(product)
+    } catch (error) {
+      res.send(error).status(404);
+    }
+  
+  })
 router.get('/productos/all', async (req, res) => {
   try {
      const array_product = await Product.findAll({include:{model:Review}})
@@ -44,20 +58,7 @@ console.log(id , 'producto:',pId)
   }
 
 })
-router.delete('/favoritos/:id',async(req,res) => {//elimina una relacion de producto-usuario
-  const id = req.params.id
-  const pId=req.body.productId
-  console.log(id, 'producto:' ,pId)
-    try {
-      const cliente = await Client.findByPk(id)
-      const product = await Product.findByPk(pId)
-      cliente.removeProducts(product)
-      res.send(product)
-    } catch (error) {
-      res.send(error).status(404);
-    }
-  
-  })
+
 
 
 
