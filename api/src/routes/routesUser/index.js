@@ -197,34 +197,39 @@ router.get('/pedidos',async (req, res)=>{
 
 
 // falta solucionar cuando me pasan un phone
-router.put('/users/:id', async (req, res)=>{
-    const id = req.params.id
-    let phone = parseInt(req.body.phone,10)
-    const {name, lastName, state, adress, mail, identityCard }=req.body
-    try {
-        const user = await Client.findByPk(id)
-        // phone?phone=strtoint(phone):null;
-        console.log(typeof(phone))
-        // phone?phone = strtoint(phone):null;
-        await user.update({
-            name: name||user.dataValues.name, 
-            lastName: lastName||user.dataValues.lastName,
-            phone: phone|| user.dataValues.phone, 
-            state: state||user.dataValues.state,
-            adress: adress||user.dataValues.adress,
-            mail: mail||user.dataValues.mail,
-            identityCard: identityCard||user.dataValues.identityCard
-       })
-          if(user){        
-              res.send(user).status(200)
-          }else{ res.sendStatus(400)}
-    }catch (error) {
-        res.send(error).status(404)
-        console.log('hasta las manos')
-    }  
+router.put('/users/:id', async (req, res) => {
+	const id = req.params.id
+	const {
+		name,
+		phone,
+		lastName,
+		state,
+		adress,
+		mail,
+		identityCard,
+		admin
+	} = req.body
+	try {
+		const user = await Client.findByPk(id)
+
+		await user.update({
+			name: name || user.dataValues.name,
+			lastName: lastName || user.dataValues.lastName,
+			phone: phone || user.dataValues.phone,
+			state: state || user.dataValues.state,
+			adress: adress || user.dataValues.adress,
+			mail: mail || user.dataValues.mail,
+			identityCard: identityCard || user.dataValues.identityCard,
+		})
+		if (user) {
+			res.send(user).status(200)
+		} else {
+			res.sendStatus(400)
+		}
+	} catch (error) {
+		res.send(error).status(404)
+	}
 })
-
-
 
 //REVIEWS
 //postea reviews de un producto. Id es el id de producto. 
@@ -264,6 +269,5 @@ router.post('/reviews/:id', async (req, res)=>{
 //       res.send(error).status(404)
 //   }  
 // })
-  
 
 module.exports = router;
