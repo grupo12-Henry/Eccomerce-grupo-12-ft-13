@@ -3,5 +3,6 @@
     "GETPEDIDODETAIL",
     "GETPEDIDOSBYSTATE"
   ],
-  "discord.enabled": false
+  "discord.enabled": false,
+  "git.ignoreLimitWarning": true
 }
