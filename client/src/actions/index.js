@@ -30,6 +30,9 @@ export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
+export const CHECKOUT = 'CHECKOUT'
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -238,10 +241,10 @@ export function getUserDetails(id) {
 export function crearUsuario(payload) {
   return async (dispatch) => {
     
-    const token =jwt.sign({ mail: payload.mail },secret);
-    const user={...payload,token}
+    //const token =jwt.sign({ mail: payload.mail },secret);
+    //const user={...payload,token}
    
-    const response = await axios.post('http://localhost:3001/clientesPost', user);
+    const response = await axios.post('http://localhost:3001/clientesPost', payload);
     dispatch({type:POST_USER, payload: response.data})
   }
 }
@@ -303,6 +306,24 @@ export function addProduct(product) {
       })
       .catch((err) => {
         console.log(err);
+      });
+
+  };
+}
+export function Checkout(payload) {
+  return (dispatch) => {
+    axios.post("http://localhost:3001/checkout", payload)
+      .then((response) => {
+        console.log('action gatoo', response)
+        // if (response) alert('El producto se creó correctamente');
+        return window.location = response.data;
+        // dispatch({
+        //   type: CHECKOUT,
+        //   payload: response.data
+        // });
+      })
+      .catch((err) => {
+        console.log('llevame a mercado pago!!!', err);
       });
 
   };
@@ -429,11 +450,25 @@ export function repeatOrder(payload) {
 
 
 
+//ADD TO WISHLIST
+
+export function addToWishList(payload) {
+  return {
+      type: 'ADD_TO_WISHLIST',
+      payload
+  }
+}
+
+//REMOVE FROM WISHLIST
+export function removeFromWishlist(id) {
+  return {
+      type: 'REMOVE_FROM_WISHLIST',
+      payload: id
+  }
+}
+
 
 //PEDIDOS
-
-
-
 
 // export function getNamesQuery(name){
 //     return (dispatch) => {

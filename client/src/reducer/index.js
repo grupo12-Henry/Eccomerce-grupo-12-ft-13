@@ -19,8 +19,11 @@ import {
   PEDIDOSUSER,
   POST_USER,
   UPDATE_FROM_CART,
-  REPEAT_ORDER
-} from '../actions'
+  ADD_TO_WISHLIST,
+  REPEAT_ORDER,
+  REMOVE_FROM_WISHLIST,
+  CHECKOUT,
+} from "../actions";
 // import CartItem from '../components/shoppingCart/CartItem';
 
 
@@ -224,13 +227,34 @@ case ADD_TO_CART:
 
       case ADD_LOCAL_STORAGE:{
         const array = JSON.parse(window.localStorage.getItem("array"));
-
-       window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
+        window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
         return {
           ...state,
           arrayStorages: state.arrayStorages.slice().concat([action.payload])
         }
       }
+ 
+
+
+
+    case ADD_TO_WISHLIST: {
+       window.localStorage.setItem("favs", JSON.stringify(state.wishList.concat([action.payload])))
+      return {
+        ...state,
+        wishList: state.wishList.concat(action.payload),
+      };
+    }
+   
+    case REMOVE_FROM_WISHLIST: {
+      window.localStorage.setItem("favs", JSON.stringify(state.wishList.filter(el => el.id !== action.payload)))
+      return {
+        ...state,
+        wishList: state.wishList.filter(el => el.id !== action.payload)
+      }
+  }
+  case CHECKOUT:{
+    return(console.log('reducer', action.payload))
+  }
 
     default:
       return state;
