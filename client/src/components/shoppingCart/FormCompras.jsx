@@ -138,7 +138,7 @@ export default function FormCompras() {
           />
         </Form.Group>
         <Button type="submit">Confirmar Pago</Button>
-        <Button type="submit" class='btn btn-primary ml-4'>Volver Carrito</Button>
+        <Button onClick={()=>(history.push('/compras'))} class='btn btn-primary ml-4'>Volver Carrito</Button>
 
       </Form>
 

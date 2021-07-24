@@ -88,6 +88,7 @@ export function orderPost(order) {
   return (dispatch) => {
     // axios.post('http://localhost:3001/orderPost', order)
     axios.post('http://localhost:3001/admin/orderPost', order)
+    .then(response=> console.log(response))
 
   }
 }
