@@ -311,8 +311,11 @@ router.put('/users/:id', async (req, res) => {
 	}
 })
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2992c2984c69eba45c956a110983d6748b7270bb
 //REVIEWS
 //postea reviews de un producto. Id es el id de producto. 
 router.post('/reviews/:id', async (req, res)=>{
@@ -357,6 +360,9 @@ router.get('/reviews/all', async (req, res)=>{
 //       res.send(error).status(404)
 //   }  
 // })
+<<<<<<< HEAD
   
+=======
+>>>>>>> 2992c2984c69eba45c956a110983d6748b7270bb
 
 module.exports = router;
