@@ -16,7 +16,7 @@ import getUser from "../../actions/index"
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch  } from 'react-redux'
 import ShoppingCart from "../shoppingCart/ShoppingCart";
 
@@ -33,12 +33,14 @@ const Nav = () => {
     setIsOpen(true);
   };
 
+  const history = useHistory();
   const { currentUser, logout } = useAuth();
 
   const handleLogOut = async () => {
     window.localStorage.removeItem('user')
     await logout();
     setIsOpen(false);
+    history.push("/home");
   };
 
   let estado = JSON.parse(window.localStorage.getItem("array"))

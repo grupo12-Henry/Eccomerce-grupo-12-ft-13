@@ -30,8 +30,9 @@ export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
-export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
-export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
+export const GETFAVORITES = 'GETFAVORITES';
 export const CHECKOUT = 'CHECKOUT'
 
 export function getUser(mail) {
@@ -112,7 +113,6 @@ export function addProductCart(payload) {
 }
 
 export function getDetail(id) {
-  console.log(id)
   return (dispatch) => {
     axios.get('http://localhost:3001/productos/' + id)
       .then(response => {
@@ -470,19 +470,53 @@ export function repeatOrder(payload) {
 
 //ADD TO WISHLIST
 
-export function addToWishList(payload) {
-  return {
-      type: 'ADD_TO_WISHLIST',
-      payload
+export function addToWishList(id,pId) {
+  return (dispatch) => {
+    axios.post(`http://localhost:3001/favoritos/${id}`, pId)
+      .then(response => {
+       console.log(response.data)
+        dispatch({
+          type: ADD_TO_WISHLIST,
+          payload: response.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
-}
+};
+export function getFavorites(id) {
+  return (dispatch) => {
+    axios.get('http://localhost:3001/favorites/'+id)
+      .then(response => {
+        dispatch({
+          type: GETFAVORITES,
+          payload: response.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+};
+
 
 //REMOVE FROM WISHLIST
-export function removeFromWishlist(id) {
-  return {
-      type: 'REMOVE_FROM_WISHLIST',
-      payload: id
-  }
+export function removeFromWishlist(id,pId) {
+  return (dispatch) => {
+    console.log(pId,'action...........')
+    axios.delete(`http://localhost:3001/favoritos/${id}?product=${pId}`)
+    .then(response => {
+     
+      dispatch({
+        type: REMOVE_FROM_WISHLIST,
+        payload: pId
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 }
 
 

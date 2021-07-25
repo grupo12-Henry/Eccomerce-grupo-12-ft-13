@@ -4,7 +4,7 @@ const {
 const {
 	Product,
 	Client,
-	Order
+	Order,
 } = require('../../db');
 const Sequelize = require('sequelize');
 const {
@@ -128,7 +128,8 @@ router.get('/productos/all', async (req, res) => { //devuelve todos los producto
 	try {
 		const product = await Product.findAndCountAll({
 			limit: 8,
-			offset: offset
+			offset: offset,
+			// include:{model:Review}
 		})
 		res.send(product).status(200)
 	} catch (error) {
