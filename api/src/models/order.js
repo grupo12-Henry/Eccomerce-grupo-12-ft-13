@@ -9,6 +9,9 @@ module.exports = (sequelize) => {
             allowNull: false,
             autoIncrement: true
         },  
+        idMP:{
+            type:DataTypes.INTEGER,
+        },
         date: {
             type: DataTypes.STRING,
         },

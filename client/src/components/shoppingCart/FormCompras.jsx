@@ -4,17 +4,19 @@ import { Link } from 'react-router-dom';
 import { Button, Form, Col, Row, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from '../loading/Loading';
-import { orderPost } from '../../actions';
+import { orderPost, Checkout } from '../../actions';
 import { useHistory } from "react-router-dom";
 import './FormCompras.css';
 // export default function FormCompras (){
     
     
 export default function FormCompras() {
+  const dispatch = useDispatch()
      const history = useHistory()
+     const cart = useSelector((state) => state.productCart);
      const user = useSelector((state) => state.user);
     const [validated, setValidated] = useState(false);
-  
+  console.log('vamos emi', cart)
     const handleSubmit = (event) => {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
@@ -22,7 +24,8 @@ export default function FormCompras() {
         event.stopPropagation();
       }
   
-      setValidated(true);
+      dispatch(Checkout(cart));
+      // dispatch(orderPost())
     };
   console.log(user)
 
@@ -135,7 +138,7 @@ export default function FormCompras() {
           />
         </Form.Group>
         <Button type="submit">Confirmar Pago</Button>
-        <Button type="submit" class='btn btn-primary ml-4'>Volver Carrito</Button>
+        <Button onClick={()=>(history.push('/compras'))} class='btn btn-primary ml-4'>Volver Carrito</Button>
 
       </Form>
 

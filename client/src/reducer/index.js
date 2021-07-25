@@ -22,7 +22,8 @@ import {
   ADD_TO_WISHLIST,
   REPEAT_ORDER,
   REMOVE_FROM_WISHLIST,
-  GETFAVORITES
+  GETFAVORITES,
+  CHECKOUT,
 } from "../actions";
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -262,6 +263,9 @@ case ADD_TO_CART:
         ...state,
         wishList: state.wishList.filter(el => el.id !== action.payload.productId)
       }
+  }
+  case CHECKOUT:{
+    return(console.log('reducer', action.payload))
   }
 
     default:
