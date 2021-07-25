@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "mercadopago": "^1.5.8",
     "redux-devtools-extension": "^2.13.9"
   }
 }

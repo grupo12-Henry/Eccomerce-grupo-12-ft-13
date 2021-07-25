@@ -22,6 +22,8 @@ import {
   ADD_TO_WISHLIST,
   REPEAT_ORDER,
   REMOVE_FROM_WISHLIST,
+  GETFAVORITES,
+  CHECKOUT,
 } from "../actions";
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -92,6 +94,7 @@ const rootReducer = (state = initialState, action) => {
         window.localStorage.setItem('user',JSON.stringify(action.payload))
        return {
          ...state,
+         wishList:action.payload.products,
          user: action.payload
        } 
 
@@ -215,10 +218,10 @@ case ADD_TO_CART:
 
     case GET_LOCAL_STORAGE: {
         const array = JSON.parse(window.localStorage.getItem("array"));
-
+        const user=JSON.parse(window.localStorage.getItem('user'))
         return {
           ...state,
-          user: JSON.parse(window.localStorage.getItem('user')),
+          user: user,
           arrayStorages: array ? state.arrayStorages?.slice().concat([array]) : state.arrayStorages
         }
       }
@@ -238,19 +241,31 @@ case ADD_TO_CART:
 
 
     case ADD_TO_WISHLIST: {
-       window.localStorage.setItem("favs", JSON.stringify(state.wishList.concat([action.payload])))
+
       return {
         ...state,
         wishList: state.wishList.concat(action.payload),
       };
     }
-   
+   case GETFAVORITES:{
+     return {
+       ...state,
+       wishList: action.payload
+     }
+   }
     case REMOVE_FROM_WISHLIST: {
-      window.localStorage.setItem("favs", JSON.stringify(state.wishList.filter(el => el.id !== action.payload)))
+     /* let user= JSON.parse(window.localStorage.getItem('user'))
+     user.products= user.products.filter(product =>product.id ===action.payload)
+     window.localStorage.removeItem('user')
+     window.localStorage.setItem('user',JSON.stringify(user)) */ 
+     
       return {
         ...state,
-        wishList: state.wishList.filter(el => el.id !== action.payload)
+        wishList: state.wishList.filter(el => el.id !== action.payload.productId)
       }
+  }
+  case CHECKOUT:{
+    return(console.log('reducer', action.payload))
   }
 
     default:

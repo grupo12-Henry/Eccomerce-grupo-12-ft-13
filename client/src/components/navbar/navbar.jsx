@@ -16,7 +16,7 @@ import getUser from "../../actions/index"
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch  } from 'react-redux'
 import ShoppingCart from "../shoppingCart/ShoppingCart";
 
@@ -25,6 +25,7 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [carritoOn, setCarritoOn] = useState(false) 
   const productCart = useSelector((state) => state.productCart)
+  const user1 = useSelector((state) => state.user)
 
   const handleLogin = (e) => {
 
@@ -32,12 +33,14 @@ const Nav = () => {
     setIsOpen(true);
   };
 
+  const history = useHistory();
   const { currentUser, logout } = useAuth();
 
   const handleLogOut = async () => {
     window.localStorage.removeItem('user')
     await logout();
     setIsOpen(false);
+    history.push("/home");
   };
 
   let estado = JSON.parse(window.localStorage.getItem("array"))
@@ -101,12 +104,12 @@ const Nav = () => {
                   <Dropdown.Menu>
                     <Dropdown.Item href="/micuenta">Edit Profile</Dropdown.Item>
                     <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
-                    {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL ? (
+                    {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL||user1&&user1.admin ? (
 												<Dropdown.Item href="/dashboard-admin">
 													Only Admin
 												</Dropdown.Item>
 											) : null}
-                    <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogOut} href="/home">Log Out</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
             ) :

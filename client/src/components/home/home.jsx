@@ -5,6 +5,7 @@ import {
   addProductCart,
   getProducts,
 } from "../../actions/index";
+import { ClearCart, getProducts, orderPost } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
@@ -14,35 +15,68 @@ import NavCategories from "../navCategories/navCategories";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../loading/Loading";
-import Reviews from "../reviews/reviews";
-import ReactStars from "react-rating-stars-component";
+import ProductRating from "../productRating/productRating";
+
+
 
 // import { useAuth } from "../../contexts/AuthContext";
-// import ShoppingCart from "../shoppingCart/ShoppingCart";
+import { useHistory } from "react-router-dom";
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user)
   const product = useSelector((state) => state.products);
+  const productDetail = useSelector((state) => state.productDetail);
   const wishList = useSelector((state) => state.wishList);
-  console.log("WISH DEL JOUM", product);
-
-  //// !--- PROBANDO ----! ////
-  // console.log("EL PRODUCTO", product);
-
-  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-  //value1 es un array con los valores de todas las reviews de ese prod.
-  // let value1 = product?.reviews?.map((el) => el.value);
-  // const value2 = value1 ? value1.reduce(reducer) / product.reviews.length : 0; //luego suma esos valores y los divide por la cantidad de reviews
-  // const firstExample = {
-  //   size: 30,
-  //   value: value2,
-  //   edit: false,
-  // };
-
-  //// !--- PROBANDO ----! ////
+  
+  // const cart = useSelector((state) => state.productCart);
+  const history = useHistory()
+  // console.log(historial)
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
+  
+  const cart = JSON.parse(window.localStorage.getItem('array'))
+  console.log(cart)
+
+            useEffect(() => {
+              let historial = (history.location.search.includes('&status=')?history.location.search.split('&status=')[1].split('&')[0]:null)//[5].split('&')[0])
+              let pedidoIdMP= (history.location.search.includes('payment_id=')?history.location.search.split('payment_id=')[1].split('&')[0]:null)
+              if (historial && historial === 'approved') {
+                console.log(54)
+                let aux = 0;
+                cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
+                let productsArray = cart?.map(el=> 
+      el = {
+        subtotal: el.price * el.cantidad,
+        cantidad: el.cantidad,
+        id: el.id
+      
+    })
+    console.log(42, productsArray)
+    let user =  window.localStorage.getItem("user");
+    let completo = user? {
+        idClient:user.split(',')[0].split(':')[1], 
+        adress:user.split(',')[5].split(':')[1], 
+        products: productsArray, 
+        paymentMethod: 'tarjeta', 
+        mail: user.split(',')[6].split(':')[1], 
+        bill: aux,
+        idMP: pedidoIdMP
+    } : console.log('user is null');
+    if (completo){
+    dispatch(orderPost(completo))
+    console.log('hola')
+    window.localStorage.removeItem('array');
+    dispatch(ClearCart())
+  }
+  }
+}, [])
+
+
+
+
+
+
 
   useEffect(() => {
     if (location.search !== "") {
@@ -75,11 +109,13 @@ export default function Home({ location }) {
     dispatch(addProductCart(id));
   };
 
-  const addingToWishList = (e) => {
-    //const productFav = product.filter(el=> el.id === e.target.value)
-    dispatch(addToWishList(e));
-  };
-
+  const addingToWishList = (Uid, productId) => {
+    // const productFav = wishList?.filter(el=> el)
+     // console.log('ELUSER', Uid, 'ELFAV', productId)
+     let body = {productId:productId};
+     dispatch(addToWishList(Uid, body));
+    };
+  
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -101,19 +137,7 @@ export default function Home({ location }) {
                 <div class="row container-product">
                   {allProducts && allProducts.length > 0
                     ? allProducts.slice((page - 1) * 9, page * 9).map((el) => {
-                      //probando
-                      const reducer = (accumulator, currentValue) => accumulator + currentValue;
-                      //value1 es un array con los valores de todas las reviews de ese prod.
-                      let value1 = el?.reviews?.map((el) => el.value);
-                      const value2 = value1 ? value1.reduce(reducer) / el.reviews.length : 0;
-                      const firstExample = {
-                        size: 30,
-                        value: value2,
-                        edit: false,
-                      };
-
-
-                      // probando
+                     
                         return el.stock > 0 ? (
                           <>
                             <div class="col-md-4 mt-2">
@@ -151,19 +175,17 @@ export default function Home({ location }) {
                                     icon={faHeart}
                                     type="button"
                                     value={el.id}
-                                    onClick={() =>
-                                      addingToWishList({ fav: el })
-                                    }
+                                     onClick={(e) =>
+                                       addingToWishList(user.id,el.id)
+                                     }
                                   />
-                                  {/* <Fav props={el}/> */}
-                                  {/* <Reviews props={el}/>  */}
+                                  {<ProductRating product={el} key={el.id} /> }
                                   <div
                                     style={{
                                       display: "flex",
                                       justifyContent: "center",
                                     }}
                                   >
-                                    <ReactStars {...firstExample} />
                                   </div>
 
                                   <button

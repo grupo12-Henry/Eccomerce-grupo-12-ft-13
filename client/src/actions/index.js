@@ -32,12 +32,15 @@ export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
-
+export const GETFAVORITES = 'GETFAVORITES';
+export const CHECKOUT = 'CHECKOUT'
 
 export function getUser(mail) {
   return (dispatch) => {
     axios.get('http://localhost:3001/admin/userMail?mail=' + mail)
-      .then(response => dispatch({
+      .then(response => 
+      
+        dispatch({
         type: POST_USER,
         payload: response.data
       }))
@@ -88,6 +91,7 @@ export function orderPost(order) {
   return (dispatch) => {
     // axios.post('http://localhost:3001/orderPost', order)
     axios.post('http://localhost:3001/admin/orderPost', order)
+    .then(response=> console.log(response))
 
   }
 }
@@ -109,7 +113,6 @@ export function addProductCart(payload) {
 }
 
 export function getDetail(id) {
-  console.log(id)
   return (dispatch) => {
     axios.get('http://localhost:3001/productos/' + id)
       .then(response => {
@@ -263,14 +266,29 @@ export function postUsuarios(usuario) {
   }
 }
 
+//EXCLUSIVA PARA ADMIN
+export function putUsuariosByadmin(id, usuario,token) {
+  return (dispatch) => {
+   const user={...usuario,token}
+    axios.put("http://localhost:3001/admin/users/" + id, user)
+      .then((response) => {
+        dispatch({
+          type: PUT_USER,
+          payload: response.data
+        });
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+}
 // export function putUsuarios(usuario) {
 //   axios.put(`http://localhost:3001/admin/users/${usuario.id}`, usuario)
 export function putUsuarios(id, usuario) {
   return (dispatch) => {
     const user = window.localStorage.getItem('user')
-    axios.put("http://localhost:3001/admin/users/" + id, usuario/* ,{headers: {
-      authorization: 'Bearer ' + user.token 
-    }} */)
+    axios.put("http://localhost:3001/users/" + id, usuario)
       .then((response) => {
         dispatch({
           type: PUT_USER,
@@ -306,6 +324,24 @@ export function addProduct(product) {
       })
       .catch((err) => {
         console.log(err);
+      });
+
+  };
+}
+export function Checkout(payload) {
+  return (dispatch) => {
+    axios.post("http://localhost:3001/checkout", payload)
+      .then((response) => {
+        console.log('action gatoo', response)
+        // if (response) alert('El producto se creó correctamente');
+        return window.location = response.data;
+        // dispatch({
+        //   type: CHECKOUT,
+        //   payload: response.data
+        // });
+      })
+      .catch((err) => {
+        console.log('llevame a mercado pago!!!', err);
       });
 
   };
@@ -434,19 +470,53 @@ export function repeatOrder(payload) {
 
 //ADD TO WISHLIST
 
-export function addToWishList(payload) {
-  return {
-      type: 'ADD_TO_WISHLIST',
-      payload
+export function addToWishList(id,pId) {
+  return (dispatch) => {
+    axios.post(`http://localhost:3001/favoritos/${id}`, pId)
+      .then(response => {
+       console.log(response.data)
+        dispatch({
+          type: ADD_TO_WISHLIST,
+          payload: response.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
-}
+};
+export function getFavorites(id) {
+  return (dispatch) => {
+    axios.get('http://localhost:3001/favorites/'+id)
+      .then(response => {
+        dispatch({
+          type: GETFAVORITES,
+          payload: response.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+};
+
 
 //REMOVE FROM WISHLIST
-export function removeFromWishlist(id) {
-  return {
-      type: 'REMOVE_FROM_WISHLIST',
-      payload: id
-  }
+export function removeFromWishlist(id,pId) {
+  return (dispatch) => {
+    console.log(pId,'action...........')
+    axios.delete(`http://localhost:3001/favoritos/${id}?product=${pId}`)
+    .then(response => {
+     
+      dispatch({
+        type: REMOVE_FROM_WISHLIST,
+        payload: pId
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 }
 
 

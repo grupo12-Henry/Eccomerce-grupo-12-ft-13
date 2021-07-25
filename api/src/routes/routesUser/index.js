@@ -1,7 +1,7 @@
 const { Router } = require('express');
 //modelos acá:
 const router = Router();
-const { Client, Order, Product, Shipping , order_detail,Review} = require('../../db');
+const { Client, Order, Product, Shipping, order_detail, Review} = require('../../db');
 const { v4: uuidv4 } = require('uuid');
 const Sequelize = require('sequelize');
 const order = require('../../models/order');
@@ -10,6 +10,20 @@ const Op = Sequelize.Op;
 //FUNCIONAN OK:
 
 //trae todos los productos-->LISTO
+router.delete('/favoritos/:id',async(req,res) => {//elimina una relacion de producto-usuario
+  const id = req.params.id
+  const pId=parseInt(req.query.product,10)
+  console.log(id, 'producto:' ,pId)
+    try {
+      const cliente = await Client.findByPk(id)
+      const product = await Product.findByPk(pId)
+      cliente.removeProducts(product)
+      res.send(product)
+    } catch (error) {
+      res.send(error).status(404);
+    }
+  
+  })
 router.get('/productos/all', async (req, res) => {
   try {
      const array_product = await Product.findAll({include:{model:Review}})
@@ -18,6 +32,38 @@ router.get('/productos/all', async (req, res) => {
      res.send(error).status(404);
   }
 })
+router.get('/favorites/:id', async (req, res) => {
+  const id = req.params.id
+  try {
+     const array_product = await Product.findAll({
+       include:{model:Client,where:{id:id}}
+      })
+     res.send(array_product).status(200)}
+  catch(error){
+     res.send(error).status(404);
+  }
+})
+//relacionar productos favoritos a un cliente 
+router.post('/favoritos/:id',async(req,res) => {
+const id = req.params.id
+const pId=req.body.productId
+console.log(id , 'producto:',pId)
+  try {
+    const cliente = await Client.findByPk(id)
+    const product = await Product.findByPk(pId)
+    cliente.addProducts(product)
+    res.send(product)
+  } catch (error) {
+    res.send(error).status(404);
+  }
+
+})
+
+
+
+
+
+
 
 //trae el detalle de un producto -->LISTO
 router.get('/productos/:id', async (req, res) => {
@@ -29,8 +75,6 @@ router.get('/productos/:id', async (req, res) => {
       res.send(error).status(404);
   }
 })
-
-
 
 //agrega un nuevo cliente --> OK 
 router.post('/clientesPost', async (req, res) => {
@@ -45,7 +89,7 @@ router.post('/clientesPost', async (req, res) => {
     token
 	} = req.body;
  try {
-    const [newClient, status] = await Client.findOrCreate({ where:{mail},
+    const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
       defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })
   return res.send(newClient)
@@ -103,33 +147,12 @@ router.get('/pedidos/:id',async (req, res)=>{
 })
 
 
-// router.get('/users/id/:id', async (req, res) => {//cambiar los nombres de las llamadas
-//   const id = req.params.id
-//   try {
-//       const user = await Client.findByPk(id, {
-//           include: {
-//               model: Order,
-//               include:[{model: Shipping,attributes:['state']},
-//              {model: Product,atributes:['name','price','image']}],
-//              attributes: {
-//               exclude: ['createdAt', 'updatedAt']
-//           }        
-//           }
-//       })
-//       user ? res.send(user) : res.sendStatus(400)
-//   } catch (error) {
-//       res.send(error).status(404)
-//   }
-// })
-
-
-
 // -Al hacer un GET a '/users/:id' me deberá permitir ver mi información de usuario registrada.
 //trae el detalle de un producto -->LISTO
 router.get('/users/:id', async (req, res) => {
   const id = req.params.id
   try {
-      const user = await Client.findByPk(id)
+      const user = await Client.findByPk(id,{include:{model:Product}})
       user?res.send(user).status(200):res.sendStatus(400)
   } catch (error) {
       res.send(error).status(404);
@@ -149,7 +172,7 @@ router.get('/productos/', async (req, res) => {
 }
 })
 
-//GET PEDIDOS'/pedidos/' (de todos los clientes)
+
 
 router.get('/pedidos',async (req, res)=>{
   try {
@@ -167,62 +190,50 @@ router.get('/pedidos',async (req, res)=>{
   }
 })
 
-// , atributes:['name','price','image'] saque linea 149 entre ] y ,
 
 
 
 
-// router.get('/pedidos',async (req, res)=>{
-//   try {
-//     console.log('entro al try')
-//    const clientPedidos = await Client.findAll({
-//     include:[{
-//     model: Order,
-//     // as:'Pedidos',
-//      attributes:['date','ticket'],
-//     }],
-//   attributes: ['name', 'lastName']
-//   })
-//   console.log(clientPedidos)
-//   clientPedidos?res.send(clientPedidos):res.sendStatus(400);
-//   } catch (error) {
-//     res.send(error).status(404);
-//   }
-// })
+
+
 
 
 
 
 // falta solucionar cuando me pasan un phone
-router.put('/users/:id', async (req, res)=>{
-    const id = req.params.id
-    let phone = parseInt(req.body.phone,10)
-    const {name, lastName, state, adress, mail, identityCard }=req.body
-    try {
-        const user = await Client.findByPk(id)
-        // phone?phone=strtoint(phone):null;
-        console.log(typeof(phone))
-        // phone?phone = strtoint(phone):null;
-        await user.update({
-            name: name||user.dataValues.name, 
-            lastName: lastName||user.dataValues.lastName,
-            phone: phone|| user.dataValues.phone, 
-            state: state||user.dataValues.state,
-            adress: adress||user.dataValues.adress,
-            mail: mail||user.dataValues.mail,
-            identityCard: identityCard||user.dataValues.identityCard
-       })
-          if(user){        
-              res.send(user).status(200)
-          }else{ res.sendStatus(400)}
-    }catch (error) {
-        res.send(error).status(404)
-        console.log('hasta las manos')
-    }  
+router.put('/users/:id', async (req, res) => {
+	const id = req.params.id
+	const {
+		name,
+		phone,
+		lastName,
+		state,
+		adress,
+		mail,
+		identityCard,
+		admin
+	} = req.body
+	try {
+		const user = await Client.findByPk(id)
+
+		await user.update({
+			name: name || user.dataValues.name,
+			lastName: lastName || user.dataValues.lastName,
+			phone: phone || user.dataValues.phone,
+			state: state || user.dataValues.state,
+			adress: adress || user.dataValues.adress,
+			mail: mail || user.dataValues.mail,
+			identityCard: identityCard || user.dataValues.identityCard,
+		})
+		if (user) {
+			res.send(user).status(200)
+		} else {
+			res.sendStatus(400)
+		}
+	} catch (error) {
+		res.send(error).status(404)
+	}
 })
-
-
-
 //REVIEWS
 //postea reviews de un producto. Id es el id de producto. 
 router.post('/reviews/:id', async (req, res)=>{
@@ -234,10 +245,7 @@ router.post('/reviews/:id', async (req, res)=>{
     const newReview = await Review.create({
      description,
      value,
-      productId:id 
-        
-  
-      
+      productId:id      
     }, {
       include: [ Product ]
     })
@@ -247,27 +255,16 @@ router.post('/reviews/:id', async (req, res)=>{
       res.send(error).status(404)
   }  
 }) 
-//Devuelve las reviews de un prod. 
-// router.get('/reviews/all', async (req, res)=>{
-//   const id = req.params.id;
-//   const { value, description } = req.body;
-//   try {
-//     const average = await Reviews.findAll()
 
-//   }catch (error) {
-//       res.send(error).status(404)
-//   }  
-// })
-// //Devuelve el detalle de una review de un prod. 
-// router.get('/reviewsDetail/:id', async (req, res)=>{
-//   const id = req.params.id;
-//   const { value, description } = req.body;
-//   try {
-//     const average = await Client.findByPk(id)
-//   }catch (error) {
-//       res.send(error).status(404)
-//   }  
-// })
-  
+//Devuelve las reviews de un prod. 
+router.get('/reviews/all', async (req, res)=>{
+  try {
+    const allReviews = await Review.findAll({include:{model:Product}})
+    res.send(allReviews).status(200)
+  }catch (error) {
+      res.send(error).status(404)
+  }  
+})
+
 
 module.exports = router;

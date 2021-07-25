@@ -4,21 +4,34 @@ import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { removeFromWishlist, addProductCart } from "../../actions/index";
+import { removeFromWishlist, addProductCart, getFavorites } from "../../actions/index";
 import { Link } from "react-router-dom";
-import Reviews from "../reviews/reviews";
+import ProductRating from "../productRating/productRating";
 import Styled from "./styled";
 
 //import StyledDiv from "./styled";
 
 export default function WishList() {
   const dispatch = useDispatch();
-  const wishlist = JSON.parse(window.localStorage.getItem("favs"));
+  const wishList= useSelector((state=> state.wishList))
+  //const [wishList,setWishlist]=useState(wishlist);
 
+const user= useSelector((state=> state.user))
   const addToCart = (id) => {
-    // showalert('Producto Agregado al carrito')
     dispatch(addProductCart(id));
   };
+ 
+ const deleteFromWishList = (Uid, productId) => {
+   
+   dispatch(removeFromWishlist(Uid,productId))
+};
+    
+  useEffect(() => {
+   user&&dispatch(getFavorites(user.id))
+    
+  },[])
+
+ 
   return (
     <>
       <Nav />
@@ -27,18 +40,18 @@ export default function WishList() {
           <div className="div_container">
             <div class="container d-flex justify-content-center mt-50 mb-50">
               <div class="row container-product">
-                {wishlist &&
-                  wishlist.map((el) => {
-                    console.log("EL DEL MAP", el.fav);
+
+                 {wishList &&
+                  wishList.map((el) => {
                     return (
                       <>
                         <div class="col-md-4 mt-2">
                           <div class="card">
                             <div class="card-body">
                               <div class="card-img-actions">
-                                <Link to={`/detail/${el.fav.id}`}>
+                                <Link to={`/detail/${el.id}`}>
                                   <img
-                                    src={el.fav.image}
+                                    src={el.image}
                                     class="card-img img-fluid"
                                     height="100"
                                     alt=""
@@ -51,31 +64,31 @@ export default function WishList() {
                                 <h6 class="font-weight-semibold mb-2">
                                   {" "}
                                   <a
-                                    href={`/detail/${el.fav.id}`}
+                                    href={`/detail/${el.id}`}
                                     class="text-default mb-2"
                                     data-abc="true"
                                   >
-                                    {el.fav.name}
+                                    {el.name}
                                   </a>
                                 </h6>
                               </div>
                               <h3 class="mb-0 font-weight-semibold">
-                                $ {el.fav.price}
+                                $ {el.price}
                               </h3>
                               <FontAwesomeIcon
                                 className="highlight"
                                 icon={faHeart}
                                 type="button"
-                                value={el.fav.id}
-                                onClick={() =>
-                                  dispatch(removeFromWishlist(el.fav.id))
+                                value={el.id}
+                                onClick={(e) =>
+                                  deleteFromWishList(user.id,el.id)
                                 }
                               />
-                              <Reviews />
+                              {<ProductRating product={el} key={el.id} /> }
 
                               <button
                                 type="button"
-                                onClick={() => addToCart(el.fav.id)}
+                                onClick={() => addToCart(el.id)}
                                 class="btn bg-cart"
                               >
                                 <i class="fa fa-cart-plus mr-2"></i> Agregar
@@ -85,7 +98,7 @@ export default function WishList() {
                         </div>
                       </>
                     );
-                  })}
+                  })} 
               </div>
             </div>
           </div>
