@@ -4,84 +4,84 @@ const { v4: uuid } = require('uuid');
 // let id= uuid();
 
 var datab = [
-  // {
-  //   PRODUCTOS: 'Coca-Cola 1.5L',
-  //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
-  //   Fabricante: 'The Coca-Cola Company',
-  //   Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años.',
-  //   STOCK: 24,
-  //   PRECIO: 125,
-  //   CATEGORIA: 'Bebidas',
-  //   SUBCATEGORIAS: ['Gaseosas', 'Cola', '1.5L'],
-  //   REVIEWS: ['Este producto no fue calificado']
-  // },
-  // {
-  //   PRODUCTOS: 'Coca-Cola 0.5L',
-  //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca-500.jpg?alt=media&token=7593f731-eeec-4c89-bdf1-697530b632d0',
-  //   Fabricante: 'The Coca-Cola Company',
-  //   Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años.',
-  //   STOCK: 24,
-  //   PRECIO: 70,
-  //   CATEGORIA: 'Bebidas',
-  //   SUBCATEGORIAS: ['Gaseosas', 'Cola', '1.5L'],
-  //   REVIEWS: ['Este producto no fue calificado']
-  // },
-  // {
-  //   PRODUCTOS: 'Coca-Cola Light 1.5L',
-  //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%201.5.jpg?alt=media&token=48f68d10-54df-45e6-a6b8-79a92309966e',
-  //   Fabricante: 'The Coca-Cola Company',
-  //   Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. Sabor liviano, 100% reducida en azúcares. ',
-  //   STOCK: 24,
-  //   PRECIO: 125,
-  //   CATEGORIA: 'Bebidas',
-  //   SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Light', '1.5L'],
-  //   REVIEWS: ['Este producto no fue calificado']
-  // },
-  // {
-  //   PRODUCTOS: 'Coca-Cola Light 0.5L',
-  //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%20500.png?alt=media&token=8aebe303-2840-4513-8797-093dddd4400f',
-  //   Fabricante: 'The Coca-Cola Company',
-  //   Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. Sabor liviano, 100% reducida en azúcares. ',
-  //   STOCK: 24,
-  //   PRECIO: 70,
-  //   CATEGORIA: 'Bebidas',
-  //   SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Light', '0.5L'],
-  //   REVIEWS: ['Este producto no fue calificado']
+  {
+    PRODUCTOS: 'Coca-Cola 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%201.5L.jpg?alt=media&token=36b5d220-d62e-4666-a9ad-0b13eb2a570a',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años.',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', '1.5L'],
+    REVIEWS: ['Este producto no fue calificado']
+  },
+  {
+    PRODUCTOS: 'Coca-Cola 0.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca-500.jpg?alt=media&token=7593f731-eeec-4c89-bdf1-697530b632d0',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años.',
+    STOCK: 24,
+    PRECIO: 70,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', '1.5L'],
+    REVIEWS: ['Este producto no fue calificado']
+  },
+  {
+    PRODUCTOS: 'Coca-Cola Light 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%201.5.jpg?alt=media&token=48f68d10-54df-45e6-a6b8-79a92309966e',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. Sabor liviano, 100% reducida en azúcares. ',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Light', '1.5L'],
+    REVIEWS: ['Este producto no fue calificado']
+  },
+  {
+    PRODUCTOS: 'Coca-Cola Light 0.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20light%20500.png?alt=media&token=8aebe303-2840-4513-8797-093dddd4400f',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. Sabor liviano, 100% reducida en azúcares. ',
+    STOCK: 24,
+    PRECIO: 70,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Light', '0.5L'],
+    REVIEWS: ['Este producto no fue calificado']
 
-  // },
-  // {
-  //   PRODUCTOS: 'Coca-Cola Zero 1.5L',
-  //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20zero%201.5.jpg?alt=media&token=5e110c8c-b821-4727-9ac4-007be52f52e5',
-  //   Fabricante: 'The Coca-Cola Company',
-  //   Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. 0% reducida en azúcares.',
-  //   STOCK: 24,
-  //   PRECIO: 125,
-  //   CATEGORIA: 'Bebidas',
-  //   SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Zero', '1.5L'],
-  //   REVIEWS: ['Este producto no fue calificado']
-  // },
-  // {
-  //   PRODUCTOS: 'Coca-Cola Zero 0.6L',
-  //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%20Zero%20600.jpg?alt=media&token=1ba73b3f-0844-4d8f-a469-4361f309cc2f',
-  //   Fabricante: 'The Coca-Cola Company',
-  //   Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. 0% reducida en azúcares.',
-  //   STOCK: 24,
-  //   PRECIO: 70,
-  //   CATEGORIA: 'Bebidas',
-  //   SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Zero', '0.6L'],
-  //   REVIEWS: ['Este producto no fue calificado']
-  // },
-  // {
-  //   PRODUCTOS: 'Sprite 1.5L',
-  //   URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/SPRITE%201.5.jpg?alt=media&token=1952ad32-59c2-4823-a606-201bb004303b',
-  //   Fabricante: 'The Coca-Cola Company',
-  //   Detalle: 'Sprite es una bebida naturalmente refrescante por su ausencia de aromas artificiales, colorantes y conservantes -de ahí su color transparente tan característico- y su gran sabor a lima-limón.',
-  //   STOCK: 24,
-  //   PRECIO: 125,
-  //   CATEGORIA: 'Bebidas',
-  //   SUBCATEGORIAS: ['Gaseosas', 'Lima-Limon', '1.5L'],
-  //   REVIEWS:['ESTE PRODUCTO NO FUE CALIFICADO']
-  // },
+  },
+  {
+    PRODUCTOS: 'Coca-Cola Zero 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/coca%20zero%201.5.jpg?alt=media&token=5e110c8c-b821-4727-9ac4-007be52f52e5',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. 0% reducida en azúcares.',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Zero', '1.5L'],
+    REVIEWS: ['Este producto no fue calificado']
+  },
+  {
+    PRODUCTOS: 'Coca-Cola Zero 0.6L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Coca%20Zero%20600.jpg?alt=media&token=1ba73b3f-0844-4d8f-a469-4361f309cc2f',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Nada supera el sabor de una Coca-Cola. Diseñado para acompañar cada momento, el sabor de la Coca-Cola es un clásico que perdura desde hace más de 130 años. 0% reducida en azúcares.',
+    STOCK: 24,
+    PRECIO: 70,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Cola', 'Zero', '0.6L'],
+    REVIEWS: ['Este producto no fue calificado']
+  },
+  {
+    PRODUCTOS: 'Sprite 1.5L',
+    URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/SPRITE%201.5.jpg?alt=media&token=1952ad32-59c2-4823-a606-201bb004303b',
+    Fabricante: 'The Coca-Cola Company',
+    Detalle: 'Sprite es una bebida naturalmente refrescante por su ausencia de aromas artificiales, colorantes y conservantes -de ahí su color transparente tan característico- y su gran sabor a lima-limón.',
+    STOCK: 24,
+    PRECIO: 125,
+    CATEGORIA: 'Bebidas',
+    SUBCATEGORIAS: ['Gaseosas', 'Lima-Limon', '1.5L'],
+    REVIEWS:['ESTE PRODUCTO NO FUE CALIFICADO']
+  },
   {
     PRODUCTOS: 'Sprite 0.5L',
     URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/sprite%20500.jpg?alt=media&token=4a6388d6-f3ba-405f-b1c4-b13585b0da04',
@@ -790,6 +790,36 @@ var datab = [
       PRECIO: 2009,
       CATEGORIA: 'Vinos',
       SUBCATEGORIAS: ['Malbec', 'Bodega Rutini']
+    },
+    {
+      PRODUCTOS: 'Sombrero Cabernet Sauvignon 750 ml',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Rutini%20Malbec%20Estuche%20750%20ml.jpg?alt=media&token=d2b99982-cb87-4785-a443-90feb64328ea',
+      Fabricante: 'ESTUCHE',
+      Detalle: 'A la vista presenta un color rojo rubí profundo. En nariz se destacan entre sus armos la pimienta y crema de cassis. En boca se siente fresco y equilibrado.',
+      STOCK: 24,
+      PRECIO: 620,
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Cabernet Sauvignon', 'Bodega Huantala Wines']
+    },
+    {
+      PRODUCTOS: 'Casa Boher Cabernet Franc 750 ml',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Rutini%20Malbec%20Estuche%20750%20ml.jpg?alt=media&token=d2b99982-cb87-4785-a443-90feb64328ea',
+      Fabricante: 'ESTUCHE',
+      Detalle: 'Resulta amable y pleno en boca. Su presencia de taninos en equilibrio con su riqueza alcohólica y acidez hacen un vino armónico de suave final.',
+      STOCK: 24,
+      PRECIO: 829,
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Cabernet Franc', 'Bodega Casa Boher']
+    },
+    {
+      PRODUCTOS: 'Caballero de la Cepa Malbec 750 ml',
+      URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Rutini%20Malbec%20Estuche%20750%20ml.jpg?alt=media&token=d2b99982-cb87-4785-a443-90feb64328ea',
+      Fabricante: 'ESTUCHE',
+      Detalle: 'Presenta aromas frutados a ciruela delicadamente fundidos con roble, especias y chocolate. Su sabor tiene una concentración compleja de frutas y especias.',
+      STOCK: 24,
+      PRECIO: 829,
+      CATEGORIA: 'Vinos',
+      SUBCATEGORIAS: ['Malbec', 'Bodega Finca Flichman']
     },
     {
       PRODUCTOS: 'Trumpeter Reserva Malbec Estuche',

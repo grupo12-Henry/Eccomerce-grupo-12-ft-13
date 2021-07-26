@@ -92,8 +92,6 @@ useEffect(async () => {
         <StyledDiv>
         <div className='container' >
             <form method='post' onSubmit={HandleSubmit}>
-                <div>
-                <h2>Logueate</h2></div>
                 <p>{error}</p>
                 <div className='email'>
                     <label className='mr-4'>Correo Electronico: </label>
