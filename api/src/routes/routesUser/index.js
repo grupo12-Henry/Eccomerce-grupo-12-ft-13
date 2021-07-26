@@ -234,10 +234,6 @@ router.put('/users/:id', async (req, res) => {
 		res.send(error).status(404)
 	}
 })
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 //REVIEWS
 //postea reviews de un producto. Id es el id de producto. 
 router.post('/reviews/:id', async (req, res)=>{
@@ -269,19 +265,5 @@ router.get('/reviews/all', async (req, res)=>{
       res.send(error).status(404)
   }  
 })
-<<<<<<< HEAD
-// //Devuelve el detalle de una review de un prod. 
-// router.get('/reviewsDetail/:id', async (req, res)=>{
-//   const id = req.params.id;
-//   const { value, description } = req.body;
-//   try {
-//     const average = await Client.findByPk(id)
-//   }catch (error) {
-//       res.send(error).status(404)
-//   }  
-// })
-=======
-
->>>>>>> main
 
 module.exports = router;
