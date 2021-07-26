@@ -93,6 +93,12 @@ router.post('/clientesPost', async (req, res) => {
       defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })
   return res.send(newClient)
+  await transporter.sendMail({
+    from: '"vinotecap " <grupo12ecommerce@gmail.com>', // sender address
+    to: 'camilogriffa8@gmail.com',//camilogriffa@gmail.com, // list of receivers
+    subject: 'Your order has been updated ✔', // Asunto
+    html: `<p>Contact Name: <b>usuario satisfactorio</b></p></br> `, // html body
+  });
   } catch(error){
    res.send(error).status(404);
 }
@@ -104,25 +110,33 @@ router.post('/clientesPost', async (req, res) => {
 //products viene asi del front : "products":[{"id":2, "cantidad": 13, "subtotal": 150},{"id":9},{"id":5}]
 
   router.post('/orderPost', async (req, res) => {
-     const { idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,
+    const { idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,
       ivaCost,subtotal,cantidad} = req.body;
-     try {
+      try {
       const user = await Client.findOrCreate({where:{id:idClient}
       })
       console.log('user', user)
       //  const user = await Client.findByPk(idClient)
-       const newOrder = await Order.create({
-         ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber,
-         cost, ivaCondition, ivaCost , subtotal,cantidad})
-       newOrder.setClient(user)
-       products.forEach(e=>{
-         newOrder.setProducts(e.id, {through:{cantidad: e.cantidad, subtotal: e.subtotal}}); 
-         })
-       return res.send(newOrder)
-       } catch(error){
+        const newOrder = await Order.create({
+        ticket, date, bill, paymentMethod, adress, ticket, mail, shippingDate, state, products, freight, guideNumber,
+        cost, ivaCondition, ivaCost , subtotal,cantidad})
+        newOrder.setClient(user)
+        products.forEach(e=>{
+        newOrder.setProducts(e.id, {through:{cantidad: e.cantidad, subtotal: e.subtotal}});
+        })
+        //
+        await transporter.sendMail({
+          from: '"vinotecap " <grupo12ecommerce@gmail.com>', // sender address
+          to: 'camilogriffa8@gmail.com',//camilogriffa@gmail.com, // list of receivers
+          subject: 'Your order has been updated ✔', // Asunto
+          html: `<p>Contact Name: <b>hola pedido satisfactorio</b></p></br> `, // html body
+        });
+
+        return res.send(newOrder)
+      } catch(error){
         res.send(error).status(404);
-     }
-   })
+      }
+})
 
 
 //GET PEDIDOS'/pedidos/:id'  (donde id es el id de cliente)

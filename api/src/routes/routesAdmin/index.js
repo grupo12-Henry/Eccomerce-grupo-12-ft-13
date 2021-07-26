@@ -23,18 +23,16 @@ router.get('/userMail', async (req, res)=>{
     user&&res.send(user)||res.sendStatus(400)
 })
 
-
 router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
     const valor = req.query.valor;
 
     try {
         if (!!valor) {
             const product = await Order.findAll({
-               where: {
-                   state:valor
-               }
+              where: {
+                state:valor
+              }
             })
-            
             res.send(product).status(200)
         } else {
             res.send('ingresar clave-valor').status(400)
