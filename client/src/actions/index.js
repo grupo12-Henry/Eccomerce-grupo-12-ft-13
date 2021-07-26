@@ -32,7 +32,8 @@ export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
-
+export const GETFAVORITES = 'GETFAVORITES';
+export const CHECKOUT = 'CHECKOUT'
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -90,6 +91,7 @@ export function orderPost(order) {
   return (dispatch) => {
     // axios.post('http://localhost:3001/orderPost', order)
     axios.post('http://localhost:3001/admin/orderPost', order)
+    .then(response=> console.log(response))
 
   }
 }
@@ -326,6 +328,24 @@ export function addProduct(product) {
 
   };
 }
+export function Checkout(payload) {
+  return (dispatch) => {
+    axios.post("http://localhost:3001/checkout", payload)
+      .then((response) => {
+        console.log('action gatoo', response)
+        // if (response) alert('El producto se creó correctamente');
+        return window.location = response.data;
+        // dispatch({
+        //   type: CHECKOUT,
+        //   payload: response.data
+        // });
+      })
+      .catch((err) => {
+        console.log('llevame a mercado pago!!!', err);
+      });
+
+  };
+}
 // export async function editProduct(id, payload) {
 //   await axios.put('http://localhost:3001/admin/productos/' + id, payload)
 export async function editProduct(id, payload) {
@@ -452,11 +472,25 @@ export function repeatOrder(payload) {
 
 export function addToWishList(id,pId) {
   return (dispatch) => {
-    axios.post(`http://localhost:3001/favoritos/${id}`, {productId:pId})
+    axios.post(`http://localhost:3001/favoritos/${id}`, pId)
       .then(response => {
        console.log(response.data)
         dispatch({
           type: ADD_TO_WISHLIST,
+          payload: response.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+};
+export function getFavorites(id) {
+  return (dispatch) => {
+    axios.get('http://localhost:3001/favorites/'+id)
+      .then(response => {
+        dispatch({
+          type: GETFAVORITES,
           payload: response.data
         })
       })
@@ -470,12 +504,13 @@ export function addToWishList(id,pId) {
 //REMOVE FROM WISHLIST
 export function removeFromWishlist(id,pId) {
   return (dispatch) => {
-    axios.delete(`http://localhost:3001/favoritos/${id}`, pId)
+    console.log(pId,'action...........')
+    axios.delete(`http://localhost:3001/favoritos/${id}?product=${pId}`)
     .then(response => {
      
       dispatch({
         type: REMOVE_FROM_WISHLIST,
-        payload: response.data.id
+        payload: pId
       })
     })
     .catch((err) => {

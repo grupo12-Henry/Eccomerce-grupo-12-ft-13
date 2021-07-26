@@ -5,10 +5,12 @@ import logo from "../../assets/images/logo.png";
 //import promo from '../../assets/images/promo.png'
 import ControlledCarousel from "./carrousel.jsx";
 import Loading from "../loading/Loading";
-
+import { useHistory } from "react-router-dom";
 export const LandingPage = () => {
   const [loading, setLoading] = useState(false)
-
+  // const history = useHistory()
+  // let historial = (history.location?.search?.split('=')[4].split('&')[0])
+  // console.log(historial)
 	useEffect(() => {
 		setTimeout(() => setLoading(true), 400)
 	}, [])
