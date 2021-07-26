@@ -18,11 +18,11 @@ const Navegacion = (props) => {
       handler: props.actionProvider.pedidos,
       id: 3 
     },
-    { 
-      text: "Favoritos", //guardar favoritos
-      handler: props.actionProvider.favoritos,
-      id: 4 
-    },
+    // { 
+    //   text: "Favoritos", //guardar favoritos
+    //   handler: props.actionProvider.favoritos,
+    //   id: 4 
+    // },
   
   ]
   
