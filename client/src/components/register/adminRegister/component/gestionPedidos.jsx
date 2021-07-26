@@ -2,6 +2,7 @@
 import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido } from '../../../../actions';
+import MailSend from '../../../sendMail/sendMail';
 
 function GestionPedidos() {
 
@@ -71,6 +72,18 @@ function GestionPedidos() {
         dispatch(getPedidoDetail(e.target.value));
     }
 
+
+
+
+    const handleEmailSend = (e) => {
+        return
+    }
+
+
+
+
+
+
     return (
     <div class="container ml-5" className='jah287'>
         <h3 class="ml-05">Ver pedidos</h3>
@@ -116,7 +129,7 @@ function GestionPedidos() {
                             <td>{pedido.paymentMethod}</td>
                             <td>{pedido.bill}</td>
                             <td>{pedido.adress}</td>
-                            <td>{pedido.ticket}</td>                            
+                            <td>{pedido.ticket}</td>
                             <td>{pedido.state}</td>
                             <td>{pedido.shippingDate}</td>
                             <td >
@@ -145,20 +158,20 @@ function GestionPedidos() {
             <ol>
                 <li class='form-inline'><span>Pedido Numero: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                        name='name' 
+                        name='name'
                         value={pedidoDetail.id}></input>}
                 </li>
 
                 <li class='form-inline'><span>Cliente Numero: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                        name='name' 
+                        name='name'
                         value={pedidoDetail.clientId}></input>}
                 </li>
 
 
                 <li class='form-inline'><span>Fecha de compra: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                        name='name' 
+                        name='name'
                         value={pedidoDetail.date}></input>}
                 </li>
 
@@ -190,57 +203,57 @@ function GestionPedidos() {
 
                         <span> Producto: </span>
                         <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                            name='name' 
+                            name='name'
                             value={el.name}>
-                        </input> 
+                        </input>
 
                         <span class="mt-2 ml-3"> Cantidad: </span>
                         <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                            name='name' 
+                            name='name'
                             value={el.order_detail.cantidad}>
                         </input>
 
                         <span class="mt-2 ml-3"> SubTotal: </span>
                         <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                            name='name' 
+                            name='name'
                             value={el.order_detail.subTotal}>
                         </input>
-                        
-                    </li>    
+
+                    </li>
                 ))}
 
 
                 <li class='form-inline'><span>Dirección de envio: </span>{pedidoDetail&&
                 (<input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                        name='name' 
+                        name='name'
                         value={pedidoDetail.adress}></input>)}
                 </li>
 
 
                 <li class='form-inline'><span>Cod.Postal: </span>{pedidoDetail&&
                 (<input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                        name='name' 
+                        name='name'
                         value={pedidoDetail.mail}></input>)}
                 </li>
 
 
                 <li class='form-inline'><span>Fecha de envio: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                        name='name' 
+                        name='name'
                         value={pedidoDetail.shippingDate}></input>}
                 </li>
 
 
                 <li class='form-inline'><span>Estado del envio: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                        name='name' 
+                        name='name'
                         value={pedidoDetail.state}></input>}
                 </li>
 
 
                 <li class='form-inline'><span>Costo de envio: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                        name='name' 
+                        name='name'
                         value={pedidoDetail.cost}></input>}
                 </li>
 
@@ -449,13 +462,17 @@ function GestionPedidos() {
                 </li>
                 </ol>
 
-                <button class="btn btn-primary btn-block mt-2 mb-9" 
+                <button class="btn btn-primary btn-block mt-2 mb-9"
                     onClick={(e) => { handlePedidosSubmit(e)}}>
                         Confirmar modificación
+                </button>
+                <button onClick={(e) => { handleEmailSend(e)}}>
+                    Confirmar Mail
                 </button>
             </form>
         </div>
         </div>
+    <MailSend />
     </div>
     )
 }
