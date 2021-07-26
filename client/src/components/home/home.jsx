@@ -21,11 +21,11 @@ export default function Home({ location }) {
   // console.log(historial)
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
-  
+  const pago = JSON.parse(window.localStorage.getItem('pago'))
   const cart = JSON.parse(window.localStorage.getItem('array'))
-  console.log(cart)
+  console.log(pago)
 
-            useEffect(() => {
+   useEffect(() => {
               let historial = (history.location.search.includes('&status=')?history.location.search.split('&status=')[1].split('&')[0]:null)//[5].split('&')[0])
               let pedidoIdMP= (history.location.search.includes('payment_id=')?history.location.search.split('payment_id=')[1].split('&')[0]:null)
               if (historial && historial === 'approved') {
@@ -43,9 +43,9 @@ export default function Home({ location }) {
     let user =  window.localStorage.getItem("user");
     let completo = user? {
         idClient:user.split(',')[0].split(':')[1], 
-        adress:user.split(',')[5].split(':')[1], 
+        adress:pago.direccion,//user.split(',')[5].split(':')[1], 
+        paymentMethod: pago.pago, 
         products: productsArray, 
-        paymentMethod: 'tarjeta', 
         mail: user.split(',')[6].split(':')[1], 
         bill: aux,
         idMP: pedidoIdMP
@@ -58,11 +58,6 @@ export default function Home({ location }) {
   }
   }
 }, [])
-
-
-
-
-
 
 
   useEffect(() => {

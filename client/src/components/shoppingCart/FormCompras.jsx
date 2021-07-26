@@ -16,18 +16,53 @@ export default function FormCompras() {
      const cart = useSelector((state) => state.productCart);
      const user = useSelector((state) => state.user);
     const [validated, setValidated] = useState(false);
-  console.log('vamos emi', cart)
+    const [formCompra, setFormCompra] = useState({direccion:'Retiro en local', pago: 'tarjeta'})
+
     const handleSubmit = (event) => {
       const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-  
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        if(formCompra.direccion=== 'Retiro en local'){
+          let aux = 0;
+          cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
+          let productsArray = cart?.map(el=> 
+                          el = {
+                          subtotal: el.price * el.cantidad,
+                          cantidad: el.cantidad,
+                          id: el.id
+                          })
+          let user =  window.localStorage.getItem("user");
+          let completo = user? {
+          idClient:user.split(',')[0].split(':')[1], 
+          adress:formCompra.direccion,//user.split(',')[5].split(':')[1], 
+          paymentMethod: formCompra.pago, 
+          products: productsArray, 
+          mail: user.split(',')[6].split(':')[1], 
+          bill: aux,
+          idMP: pedidoIdMP
+          } : console.log('user is null');
+          if (completo){
+              dispatch(orderPost(completo))
+              window.localStorage.removeItem('array');
+              window.localStorage.removeItem('pago');
+              dispatch(ClearCart())
+              history.push('')// nvdjksdhbgkjwhesakuvhbsejgvbsjkeghdvkjbsgeuifvbwejkghaejkwgvbuiewbwgfvewjhbgvjkbweif
+          }
+
+        } else{
+      window.localStorage.setItem('pago',JSON.stringify(formCompra))
       dispatch(Checkout(cart));
       // dispatch(orderPost())
+        }
     };
-  console.log(user)
+
+
+
+        
+    
+
 
     return (
        <div className='containerFormCompras'>
@@ -38,90 +73,31 @@ export default function FormCompras() {
            <Form.Group as={Col} md="4" controlId="validationCustom01">
              <Form.Label>Direccion Envio</Form.Label>
              <Form.Control
+              onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value}); console.log('hola emi')}}
               required
               type="text"
               placeholder="First name"
               defaultValue={user.adress?user.adress:'Ingrese la direccion...'}
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
           </Form.Group>
 
           <Form.Group as={Col} md="3" controlId="validationCustom05">
             <span>Forma de Pago: </span>
-                    <select class="form-control form-control-sm mt-1 ml-2 form-row" 
+                    <select  onChange={(e)=>setFormCompra({...formCompra, pago:e.target.value})}
+                      class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name="paymentMethod" >
-                      
-                        <option>Tarjeta</option>
-                        <option>Efectivo</option>
+                        <option value='tarjeta'>Tarjeta</option>
+                        <option value='efectivo' >Efectivo</option>
 
                     </select>
           </Form.Group>
 
-          {/* <Form.Group as={Col} md="4" controlId="validationCustom02">
-            <Form.Label>Direccion Facturacion</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder={user.adress?user.adress:'Ingrese la direccion...'}
-              defaultValue={user.adress?user.adress:'Ingrese la direccion...'}
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group> */}
-
-          {/* <Form.Group as={Col} md="4" controlId="validationCustom02">
-            <Form.Label>Entregar a:</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Last name"
-              defaultValue={user.name}
-            />
-            <Form.Control.Feedback>Looks good! SE RE INSPIRARON</Form.Control.Feedback>
-          </Form.Group> */}
-
-          
-
         </Row>
-        <Row className="mb-3">
-
-          {/* <Form.Group as={Col} md="4" controlId="validationCustom03">
-            <Form.Label>Telefono de contacto</Form.Label>
-            <Form.Control type="text" placeholder="(   ) -" required />
-            <Form.Control.Feedback type="invalid">
-              Please provide a valid city.
-            </Form.Control.Feedback>
-          </Form.Group> */}
-
-          {/* <Form.Group as={Col} md="3" controlId="validationCustom04">
-            <Form.Label>Provincia</Form.Label>
-            <Form.Control type="text" placeholder="Provincia" required />
-            <Form.Control.Feedback type="invalid">
-              Please provide a valid state.
-            </Form.Control.Feedback>
-          </Form.Group> */}
-
-          {/* <Form.Group as={Col} md="3" controlId="validationCustom05">
-            <Form.Label>Codigo Postal</Form.Label>
-            <Form.Control type="text" placeholder="Codigo Postal" required />
-            <Form.Control.Feedback type="invalid">
-              Codigo Postal Invalido.
-            </Form.Control.Feedback>
-          </Form.Group> */}
-
-          
-          {/* <Form.Group as={Col} md="3" controlId="validationCustom05">
-            <span>Tipo de Factura: </span>
-                    <select class="form-control form-control-sm mt-1 ml-2 form-row" 
-                        name="paymentMethod" >
-                   
-                        <option>Factura A</option>
-                        <option>Factura B</option>
-                        <option>Consumidor Final</option>
-
-                    </select>
-          </Form.Group> */}
+        <Row className="mb-3">          
+        
         </Row>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb">
           <Form.Check
             required
             label="Aceptar Terminos y condiciones"
