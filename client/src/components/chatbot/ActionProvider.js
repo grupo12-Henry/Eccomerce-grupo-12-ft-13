@@ -55,20 +55,20 @@ class ActionProvider {
   pedidosAnteriores = () => {
     const message = this.createChatBotMessage(
       {
-        widget: "pedidos Anteriores",
+        widget: "pedidosAnteriores",
       }
     );   
     this.addMessageToState(message);
   };
 
-/*   favoritos = () => {
-    const message = this.createChatBotMessage(
-      {
-        widget: "favorites",
-      }
-    );   
-    this.addMessageToState(message);
-  }; */
+  // favoritos = () => {
+  //   const message = this.createChatBotMessage(
+  //     {
+  //       widget: "favoritos",
+  //     }
+  //   );   
+  //   this.addMessageToState(message);
+  // }; 
 
   
   busqueda = () => {
@@ -237,6 +237,12 @@ class ActionProvider {
         widget: "picadas",
       }
     );
+    this.addMessageToState(message);
+  };
+
+  //CUANDO NO RECONOCE LO QUE RECIBE, EJECUTA ESTO
+  otroIntento = () => {
+    const message = this.createChatBotMessage("Intenta ingresando una búsqueda distinta");
     this.addMessageToState(message);
   };
 

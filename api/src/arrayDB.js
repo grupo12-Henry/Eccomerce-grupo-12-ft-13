@@ -1023,14 +1023,14 @@ var datab = [
       SUBCATEGORIAS: ['Bodega Nieto Senetiner', 'Malbec']
     },
     {
-      PRODUCTOS: 'Benjamin Nieto Malbec',
+      PRODUCTOS: 'Benjamin Nieto Chardonnay',
       URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Benjamin%20Nieto%20(Malbec%2C%20Chardonnay).jpeg?alt=media&token=7ae0952e-0d31-4354-8a0c-f4ae497de34e',
       Fabricante: 'BODEGA NIETO SENETINER',
-      Detalle: 'Vino de color rojo violáceo, brillante y vivaz. De frescos aromas frutales a ciruela y cereza; en boca es equilibrado y de agradable final. Armonía: Carnes rojas, pastas con salsas intensas, cerdo y quesos maduros.',
+      Detalle: "Vino cristalino de aspecto joven y color amarillo verdosos, con exquisitos aromas frutales. La temperatura adecuada para disfrutar este vino es de 10º C. Para los fanáticos del pescado, frutos de mar, éste es un vino ideal que acompaña muy bien.",
       STOCK: 24,
       PRECIO: 255,
       CATEGORIA: 'Vinos',
-      SUBCATEGORIAS: ['Bodega Nieto Senetiner', 'Malbec']
+      SUBCATEGORIAS: ['Bodega Nieto Senetiner', 'Chardonnay']
     },
     {
         PRODUCTOS: 'Los Arboles Malbec',
