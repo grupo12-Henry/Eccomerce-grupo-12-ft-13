@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { addProductCart, removeProductCart , ClearCart } from '../../actions';
+import { addProductCart, ClearCart } from '../../actions';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
 import './shoppingCart.css';
@@ -9,18 +9,14 @@ import Loading from '../loading/Loading';
 import { useHistory } from "react-router-dom";
 import NavModal from '../navModal/navModal';
 import FormCompras from './FormCompras';
-import { orderPost } from "../../actions";
-
-
 
 
 function ShoppingCart(props) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const cart = useSelector((state) => state.productCart);
   const product = useSelector((state) => state.products);
   const [loading, setLoading] = useState(false);
 
-  // const user = useSelector((state) => state.user);
   const localStorage = useSelector((state) => state.arrayStorages);
   const [montoTotal, setMontoTotal] = useState(0);
 
@@ -28,15 +24,12 @@ function ShoppingCart(props) {
   const [form, setForm] = useState(false);
   const history = useHistory()
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() =>
-  //   { let aux = 0;
-  //     cart.forEach(e=>  aux = aux + (e.price * e.cantidad))
-  //   setMontoTotal(aux)}, 500);
-  //   return () => clearTimeout(timer);
-  // }, [cart]);
 
-  useEffect(() => {}, [localStorage]);
+
+  useEffect(() => {
+  }, [localStorage]);
+
+
 
   const addToCart = (el) => {
     dispatch(addProductCart(el.id));
@@ -50,15 +43,15 @@ useEffect(() => {
 }, [cart,montoTotal , product])
 
   const clearCart = () => {
-    window.localStorage.removeItem("array");
-    dispatch(ClearCart());
-  };
+    window.localStorage.removeItem('array')
+    dispatch(ClearCart())
+  }
 
-  // const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
+// const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
   //idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad
-  //  console.log('santiuser', user)
+//  console.log('santiuser', user)
 
-  let productsArray = cart?.map((el) => {
+  let productsArray = cart?.map(el=> {
     return {
       subtotal: el.price * el.cantidad,
       cantidad: el.cantidad,
@@ -81,6 +74,7 @@ useEffect(() => {
     } : console.log('user is null');
     if (user){
 
+      console.log(cart)
       history.push('/FormCompras')
       // history.push('/pago')
       // dispatch(orderPost(completo));
@@ -101,12 +95,13 @@ useEffect(() => {
   if (!loading) {
     return <Loading />;
   } else {
+
     return (
       <div className='container-productos'>
         {isOpen === true ?   <NavModal open={isOpen} onClose={() => setIsOpen(false)}/>:null}
         <div>
-          <h3>Bienvenido a tu Carrito de compras!!</h3>
-          <div class="mb-2">Agregaste {cart?.length} productos al carrito ✔{" "}</div>
+          <h3>Tu Carrito de compras</h3>
+          <div class="mb-2">Tenes {cart?.length} productos en tu carrito ✔{" "}</div>
           <div className='container-articulos col-xl-11 row '>
             <hr />
             <article class='box'>
@@ -116,26 +111,20 @@ useEffect(() => {
             </article>
             <hr />
           </div>
-          <h4>Monto Total:</h4>
+          <h4>Total productos:</h4>
           <h4>${montoTotal}</h4>
           <h4></h4>
           {/* VER CON LOS CHICOS COMO SUMAMOS EL TOTAL */}
-          <div className="botones">
-            <button className="btn btn-secondary m-14" onClick={order}>
-              Confirmar Pedido
-            </button>
-            <Link to="/home">
-              <button className="btn btn-secondary m-1" variant="success">
-                Agregar Productos
-              </button>
-            </Link>
+          <div className='botones'>
+            <button className='btn btn-secondary m-14' onClick={order} >Confirmar Pedido</button>
+            <Link to='/home'><button className='btn btn-secondary m-1' variant='success'>Agregar Productos</button></Link>
           </div>
-          <button className="btn btn-danger mb-2" onClick={() => clearCart()}>
+          <button className="btn btn-dark mb-2" onClick={() => clearCart()}>
             Limpiar Carrito
           </button>
         </div>
       </div>
-    );
+    )
   }
 }
 

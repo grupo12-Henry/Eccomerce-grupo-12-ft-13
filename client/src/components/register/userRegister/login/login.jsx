@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { useSelector, useDispatch  } from 'react-redux'
 import {getUser} from "../../../../actions/index"
 import { useAuth } from '../../../../contexts/AuthContext';
@@ -25,6 +25,8 @@ export function validate(input) {
 };
 
 export default function Login({ onClose }) {
+    const user1=useSelector((state) => state.user)
+    const user = window.localStorage.getItem('user')?user1:null
     const dispatch = useDispatch()
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -52,15 +54,25 @@ export default function Login({ onClose }) {
         }));
         // setErrors termina guardando el objeto que retorna la function validate
     }
-
+useEffect(async () => {
+        
+    if(process.env.REACT_APP_ADMIN_EMAIL === emailRef.current.value|| user&&user.email===emailRef.current.value &&
+            passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD||true&&
+            user&&user.admin===true) {
+            await login(emailRef.current.value, passwordRef.current.value)
+            history.push('/dashboard-admin')
+        }else return
+},[user])
     async function HandleSubmit(e) {
         dispatch(getUser(emailRef.current.value))
         e.preventDefault()
         try {
             setError('')
             setLoading(true)
-                if(process.env.REACT_APP_ADMIN_EMAIL === emailRef.current.value &&
-                    passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD) {
+
+                if(process.env.REACT_APP_ADMIN_EMAIL === emailRef.current.value||user.email===emailRef.current.value &&
+                    passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD||true&&
+                    user.admin===true) {
                     await login(emailRef.current.value, passwordRef.current.value)
                     history.push('/dashboard-admin')
                 } else {
@@ -80,8 +92,6 @@ export default function Login({ onClose }) {
         <StyledDiv>
         <div className='container' >
             <form method='post' onSubmit={HandleSubmit}>
-                <div>
-                <h2>Logueate</h2></div>
                 <p>{error}</p>
                 <div className='email'>
                     <label className='mr-4'>Correo Electronico: </label>

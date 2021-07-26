@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers, getUserDetails, postUsuarios, putUsuarios, deleteUsuarios } from '../../../../actions';
-
+import { getAllUsers, getUserDetails, postUsuarios, putUsuariosByadmin, deleteUsuarios } from '../../../../actions';
+const {token}= {token:process.env.REACT_APP_ADMIN_TOKEN};
 function GestionUsuarios() {
-
+    
     const AllClients = useSelector(state => state.AllClients);
     const ClientDetails = useSelector(state => state.ClientDetails);
     const dispatch = useDispatch();
@@ -41,9 +41,8 @@ function GestionUsuarios() {
     }
     //Modifica un usuario
     const putSubmit = (ClientDetails, user) => {
-        // e.preventDefault()
         console.log(ClientDetails.id, 'user:', user)
-        dispatch(putUsuarios(ClientDetails.id, user))
+        dispatch(putUsuariosByadmin(ClientDetails.id, user,token))
     }
     //Trae el detalle de un Usuario al estado de Redux ClientDetails
     const insertClientInfo = (e) => {
@@ -245,7 +244,7 @@ function GestionUsuarios() {
                                     </input>
                                 </li>
                                 <li class='form-inline'>
-                                    <span> Cod. Postal: </span>
+                                    <span> Email: </span>
                                     <input class="form-control mt-2 ml-2"                      
                                         placeholder={ClientDetails.mail} 
                                         name='mail' 

@@ -4,17 +4,19 @@ import { Link } from 'react-router-dom';
 import { Button, Form, Col, Row, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from '../loading/Loading';
-import { orderPost } from '../../actions';
+import { orderPost, Checkout } from '../../actions';
 import { useHistory } from "react-router-dom";
 import './FormCompras.css';
 // export default function FormCompras (){
     
     
 export default function FormCompras() {
+  const dispatch = useDispatch()
      const history = useHistory()
+     const cart = useSelector((state) => state.productCart);
      const user = useSelector((state) => state.user);
     const [validated, setValidated] = useState(false);
-  
+  console.log('vamos emi', cart)
     const handleSubmit = (event) => {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
@@ -22,7 +24,8 @@ export default function FormCompras() {
         event.stopPropagation();
       }
   
-      setValidated(true);
+      dispatch(Checkout(cart));
+      // dispatch(orderPost())
     };
   console.log(user)
 
@@ -60,7 +63,7 @@ export default function FormCompras() {
               placeholder="Last name"
               defaultValue={user.name}
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback>Looks good! SE RE INSPIRARON</Form.Control.Feedback>
           </Form.Group>
 
           {/* <Form.Group as={Col} md="4" controlId="validationCustomUsername">
@@ -89,17 +92,17 @@ export default function FormCompras() {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="3" controlId="validationCustom04">
-            <Form.Label>State</Form.Label>
-            <Form.Control type="text" placeholder="State" required />
+            <Form.Label>Provincia</Form.Label>
+            <Form.Control type="text" placeholder="Provincia" required />
             <Form.Control.Feedback type="invalid">
               Please provide a valid state.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="3" controlId="validationCustom05">
-            <Form.Label>Zip</Form.Label>
-            <Form.Control type="text" placeholder="Zip" required />
+            <Form.Label>Codigo Postal</Form.Label>
+            <Form.Control type="text" placeholder="Codigo Postal" required />
             <Form.Control.Feedback type="invalid">
-              Please provide a valid zip.
+              Codigo Postal Invalido.
             </Form.Control.Feedback>
           </Form.Group>
 
@@ -130,12 +133,12 @@ export default function FormCompras() {
         <Form.Group className="mb-3">
           <Form.Check
             required
-            label="Agree to terms and conditions"
-            feedback="You must agree before submitting."
+            label="Aceptar Terminos y condiciones"
+            feedback="Debes aceptar los terminos y condiciones"
           />
         </Form.Group>
         <Button type="submit">Confirmar Pago</Button>
-        <Button type="submit">Volver Carrito</Button>
+        <Button onClick={()=>(history.push('/compras'))} class='btn btn-primary ml-4'>Volver Carrito</Button>
 
       </Form>
 

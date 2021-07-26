@@ -4,7 +4,7 @@ const {
 const {
 	Product,
 	Client,
-	Order
+	Order,
 } = require('../../db');
 const Sequelize = require('sequelize');
 const {
@@ -147,7 +147,8 @@ router.get('/productos/all', async (req, res) => { //devuelve todos los producto
 	try {
 		const product = await Product.findAndCountAll({
 			limit: 8,
-			offset: offset
+			offset: offset,
+			// include:{model:Review}
 		})
 		res.send(product).status(200)
 	} catch (error) {
@@ -347,6 +348,7 @@ router.get('/pedidos/all', async (req, res) => { //envia todos los pedidos
 
 router.post('/orderPost', async (req, res) => {
 	const {
+		idMP,
 		idClient,
 		ticket,
 		date,
@@ -365,11 +367,13 @@ router.post('/orderPost', async (req, res) => {
 		subtotal,
 		cantidad
 	} = req.body;
-
 	try {
+		const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
+		if (encontrarPedido) return res.send('ya existe un pedido con ese id');
 		const user = await Client.findByPk(idClient)
 		const newOrder = await Order.create({
 			ticket,
+			idMP,
 			date,
 			bill,
 			paymentMethod,
@@ -378,7 +382,6 @@ router.post('/orderPost', async (req, res) => {
 			mail,
 			shippingDate,
 			state,
-			products,
 			freight,
 			guideNumber,
 			cost,
@@ -395,14 +398,15 @@ router.post('/orderPost', async (req, res) => {
 					subTotal: e.subtotal
 				}
 			});
+			Product.decrement({stock: e.cantidad}, {where: {id: e.id}})
+			console.log(products, 'sprite zero')
+		
 		})
-		return res.send(newOrder);
+		return res.send(newOrder)
 	} catch (error) {
 		res.send(error).status(404)
 	}
 })
-
-
 
 router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun los datos enviados(no hace falta enviar todos los campos)
 	const id = req.params.id
@@ -450,7 +454,7 @@ router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun l
 
 })
 
-router.put('/users/:id', async (req, res) => {
+router.put('/users/:id',async (req, res) => {
 	const id = req.params.id
 	const {
 		name,
@@ -460,7 +464,8 @@ router.put('/users/:id', async (req, res) => {
 		adress,
 		mail,
 		identityCard,
-		admin
+		admin,
+		token
 	} = req.body
 	try {
 		const user = await Client.findByPk(id)
@@ -474,6 +479,7 @@ router.put('/users/:id', async (req, res) => {
 			mail: mail || user.dataValues.mail,
 			identityCard: identityCard || user.dataValues.identityCard,
 			admin: admin || user.dataValues.admin,
+			token: token || user.dataValues.token,
 		})
 		if (user) {
 			res.send(user).status(200)
