@@ -239,10 +239,10 @@ export function getUserDetails(id) {
 
 export function crearUsuario(payload) {
   return async (dispatch) => {
-    
+
     //const token =jwt.sign({ mail: payload.mail },secret);
     //const user={...payload,token}
-   
+
     const response = await axios.post('http://localhost:3001/clientesPost', payload);
     dispatch({type:POST_USER, payload: response.data})
   }

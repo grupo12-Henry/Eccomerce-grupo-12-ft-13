@@ -26,11 +26,15 @@ import misPedidos from './components/register/userRegister/misPedidos/misPedidos
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Nav from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
+import LastStep from './components/sendMail/LastStep';
+import AdminDashboard from './components/sidebar/Sidebar';
 
 import Loading from "./components/loading/Loading";
 
 import FormCompras from "./components/shoppingCart/FormCompras";
-
+import Layout from "./components/register/adminRegister/component/AdminDashboard/Layout/Layout";
+import Mailer from "./components/register/adminRegister/component/Email/Mailer";
+import Form from "./components/register/adminRegister/component/Email/Form";
 
 function App() {
 
@@ -51,7 +55,7 @@ function App() {
         <Route component={LandingPage} exact path='/'/>
         <Route component={Nav} exact path='/compras'/>
         <Route component={ShoppingCart} exact path='/compras'/>
-        <Route component={Footer} exact path='/compras'/> 
+        <Route component={Footer} exact path='/compras'/>
         <Route component={About} exact path='/about'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>
@@ -67,6 +71,12 @@ function App() {
 
         <Route component={FormCompras} exact path='/FormCompras'/>
 
+        {/* Estas rutas son de prueba las hice yo CAMILO*/}
+        <Route component={Layout} exact path='/dashboardAdmin'/>
+        <Route component={LastStep} exact path='/dashboard-laststep'/>
+        <Route component={AdminDashboard} exact path='/dashboard-admin1'/>
+        <Route component={Mailer} exact path='/mailer'/>
+        <Route component={Form} exact path='/sendEmail'/>
       </AuthProvider>
     </React.Fragment>
   )
