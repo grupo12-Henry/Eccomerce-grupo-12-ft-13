@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
+import { 
+  orderPost,
   addToWishList,
   addProductCart,
   getProducts,
+  ClearCart,
+  
 } from "../../actions/index";
-import { ClearCart, getProducts, orderPost } from "../../actions/index";
+
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
