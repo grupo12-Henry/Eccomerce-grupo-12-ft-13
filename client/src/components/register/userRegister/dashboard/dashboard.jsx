@@ -136,7 +136,7 @@ export default function Dashboard() {
                     <div class=" col-md-9 col-lg-9 ">
                       <div class="mb-2">
                       
-                            <Link to={`/micuenta/mispedidos/${user.id}`} ><a class="btn btn-dark">
+                            <Link to={`/micuenta/mispedidos/${user.id}`} ><a class="btn btn-dark mr-2">
                               Mis pedidos anteriores
                             </a>
                             </Link>

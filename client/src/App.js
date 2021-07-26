@@ -30,7 +30,6 @@ import FormCompras from "./components/shoppingCart/FormCompras";
 import wishList from "./components/wishList/wishList";
 
 
-
 function App() {
 
   const dispatch = useDispatch()
@@ -63,6 +62,7 @@ function App() {
         <Route component={Login} exact path='/login'/>
         <Route component={Detail} exact path='/detail/:id'/>
         <Route component={FormCompras} exact path='/FormCompras'/>
+        
       </AuthProvider>
     </React.Fragment>
   )
