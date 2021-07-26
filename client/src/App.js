@@ -35,6 +35,8 @@ import FormCompras from "./components/shoppingCart/FormCompras";
 import Layout from "./components/register/adminRegister/component/AdminDashboard/Layout/Layout";
 import Mailer from "./components/register/adminRegister/component/Email/Mailer";
 import Form from "./components/register/adminRegister/component/Email/Form";
+import wishList from "./components/wishList/wishList";
+
 
 function App() {
 
@@ -50,6 +52,7 @@ function App() {
         <PrivateRouteUser component={misPedidos} exact path='/micuenta/mispedidos/:id'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
         <PrivateRouteUser component={Delivery} path='/delivery'/>
+        <PrivateRouteUser component={wishList} exact path='/micuenta/favoritos/:id'/>
         <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
         <PrivateRouteUser component={Delivery} exact path='/delivery'/>
         <Route component={LandingPage} exact path='/'/>
