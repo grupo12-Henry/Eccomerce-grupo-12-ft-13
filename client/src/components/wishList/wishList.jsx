@@ -14,6 +14,7 @@ import Styled from "./styled";
 export default function WishList() {
   const dispatch = useDispatch();
   const wishList= useSelector((state=> state.wishList))
+  console.log('wish',wishList)
   //const [wishList,setWishlist]=useState(wishlist);
 
 const user= useSelector((state=> state.user))
