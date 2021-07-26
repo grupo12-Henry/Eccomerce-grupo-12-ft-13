@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import { StyledDiv } from "./styled";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-//import promo from '../../assets/images/promo.png'
 import ControlledCarousel from "./carrousel.jsx";
 import Loading from "../loading/Loading";
-import { useHistory } from "react-router-dom";
 export const LandingPage = () => {
   const [loading, setLoading] = useState(false)
   // const history = useHistory()

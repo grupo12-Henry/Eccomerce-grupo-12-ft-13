@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import Sombrero from '../../assets/images/sombrerero.jpg';
+import CasaBoher from '../../assets/images/casaboher.png';
+import Caballero from '../../assets/images/caballero.png';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -15,7 +19,7 @@ function ControlledCarousel() {
         <Carousel.Item>
           <img
             className="d-block w-200"
-            src="https://www.barilochense.com/suplementos/las-barricas/fotos/61515.jpg"
+            src={Sombrero}
             alt="First slide"
             width='260px'
             height='240px'
@@ -28,7 +32,7 @@ function ControlledCarousel() {
         <Carousel.Item>
           <img
             className="d-block w-200"
-            src="https://d2r9epyceweg5n.cloudfront.net/stores/092/694/products/promo_lp1-9a9f3c1a02c7bd4df616223226602124-1024-1024.jpg"
+            src={CasaBoher}
             alt="Second slide"
             width='260px'
             height='240px'
@@ -42,7 +46,7 @@ function ControlledCarousel() {
         <Carousel.Item>
           <img
             className="d-block w-200"
-            src="https://cdn.shopify.com/s/files/1/1195/4796/products/638cfe97_900x.png?v=1612559793"
+            src={Caballero}
             alt="Third slide"
             width='260px'
             height='240px'

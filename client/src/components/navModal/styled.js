@@ -18,5 +18,11 @@ const StyledDiv = styled.div`
     margin-bottom: 0.2rem;
 }
 
+.icon{
+    &hover{
+        color: #ebc28e;
+    }
+}
+
 `
 export default StyledDiv
