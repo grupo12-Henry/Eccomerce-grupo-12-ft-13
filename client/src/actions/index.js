@@ -30,11 +30,10 @@ export const CARRITO = 'CARRITO'
 export const SET_LOADING_TO_TRUE = 'SET_LOADING_TO_TRUE'
 export const UPDATE_FROM_CART = 'UPDATE_FROM_CART'
 export const REPEAT_ORDER = 'REPEAT_ORDER'
-export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const GETFAVORITES = 'GETFAVORITES';
 export const CHECKOUT = 'CHECKOUT'
-
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -244,10 +243,10 @@ export function getUserDetails(id) {
 
 export function crearUsuario(payload) {
   return async (dispatch) => {
-
+    
     //const token =jwt.sign({ mail: payload.mail },secret);
     //const user={...payload,token}
-
+   
     const response = await axios.post('http://localhost:3001/clientesPost', payload);
     dispatch({type:POST_USER, payload: response.data})
   }
