@@ -5,3 +5,12 @@
   margin-left: 5% ;
   padding: 2%;
 }
+
+.Imagen{
+  object-fit: scale-down;
+  max-height: 3rem;
+}
+
+.container-item{
+  justify-content: center;
+}

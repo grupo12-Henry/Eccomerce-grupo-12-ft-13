@@ -31,6 +31,8 @@ export default function FormCompras() {
 
     return (
        <div className='containerFormCompras'>
+
+
        <Form noValidate validated={validated} onSubmit={handleSubmit}>
          <Row className="mb-3">
            <Form.Group as={Col} md="4" controlId="validationCustom01">
@@ -44,7 +46,18 @@ export default function FormCompras() {
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group as={Col} md="4" controlId="validationCustom02">
+          <Form.Group as={Col} md="3" controlId="validationCustom05">
+            <span>Forma de Pago: </span>
+                    <select class="form-control form-control-sm mt-1 ml-2 form-row" 
+                        name="paymentMethod" >
+                      
+                        <option>Tarjeta</option>
+                        <option>Efectivo</option>
+
+                    </select>
+          </Form.Group>
+
+          {/* <Form.Group as={Col} md="4" controlId="validationCustom02">
             <Form.Label>Direccion Facturacion</Form.Label>
             <Form.Control
               required
@@ -53,9 +66,9 @@ export default function FormCompras() {
               defaultValue={user.adress?user.adress:'Ingrese la direccion...'}
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
+          </Form.Group> */}
 
-          <Form.Group as={Col} md="4" controlId="validationCustom02">
+          {/* <Form.Group as={Col} md="4" controlId="validationCustom02">
             <Form.Label>Entregar a:</Form.Label>
             <Form.Control
               required
@@ -64,71 +77,49 @@ export default function FormCompras() {
               defaultValue={user.name}
             />
             <Form.Control.Feedback>Looks good! SE RE INSPIRARON</Form.Control.Feedback>
-          </Form.Group>
-
-          {/* <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-            <Form.Label>Username</Form.Label>
-            <InputGroup hasValidation>
-              <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-              <Form.Control
-                type="text"
-                placeholder="Username"
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-               Por favor elija su nombre de usuario.
-              </Form.Control.Feedback>
-            </InputGroup>
           </Form.Group> */}
+
+          
 
         </Row>
         <Row className="mb-3">
-          <Form.Group as={Col} md="4" controlId="validationCustom03">
+
+          {/* <Form.Group as={Col} md="4" controlId="validationCustom03">
             <Form.Label>Telefono de contacto</Form.Label>
             <Form.Control type="text" placeholder="(   ) -" required />
             <Form.Control.Feedback type="invalid">
               Please provide a valid city.
             </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom04">
+          </Form.Group> */}
+
+          {/* <Form.Group as={Col} md="3" controlId="validationCustom04">
             <Form.Label>Provincia</Form.Label>
             <Form.Control type="text" placeholder="Provincia" required />
             <Form.Control.Feedback type="invalid">
               Please provide a valid state.
             </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
+          </Form.Group> */}
+
+          {/* <Form.Group as={Col} md="3" controlId="validationCustom05">
             <Form.Label>Codigo Postal</Form.Label>
             <Form.Control type="text" placeholder="Codigo Postal" required />
             <Form.Control.Feedback type="invalid">
               Codigo Postal Invalido.
             </Form.Control.Feedback>
-          </Form.Group>
+          </Form.Group> */}
 
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
-            <span>Forma de Pago: </span>
-                    <select class="form-control form-control-sm mt-1 ml-2 form-row" 
-                        name="paymentMethod" >
-                        {/* // value={} 
-                        // onChange={handleInputChange}> */}
-                        <option>Tarjeta</option>
-                        <option>Efectivo</option>
-
-                    </select>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
+          
+          {/* <Form.Group as={Col} md="3" controlId="validationCustom05">
             <span>Tipo de Factura: </span>
                     <select class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name="paymentMethod" >
-                        {/* // value={} 
-                        // onChange={handleInputChange}> */}
+                   
                         <option>Factura A</option>
                         <option>Factura B</option>
                         <option>Consumidor Final</option>
 
                     </select>
-          </Form.Group>
+          </Form.Group> */}
         </Row>
         <Form.Group className="mb-3">
           <Form.Check
@@ -137,6 +128,36 @@ export default function FormCompras() {
             feedback="Debes aceptar los terminos y condiciones"
           />
         </Form.Group>
+        <table 
+
+class="table table-sm table-bordered mt-05 mr-03 mb-3 "
+data-toggle="table"
+data-pagination="true"
+data-search="true"
+data-url="data.json">
+<thead>
+    <tr>
+    <th scope="col" data-field="image" data-sortable="true">imagen</th>
+    <th scope="col" data-field="name" data-sortable="true" >producto</th>
+    <th scope="col" data-field="price" data-sortable="true" >Precio</th>
+    <th scope="col" data-field="cantidad" data-sortable="true" >cantidad</th>
+    <th scope="col" data-field="subtotal" data-sortable="true" >sub-total</th>
+    </tr>
+</thead>
+<tbody>
+    {
+        cart?.map(prod => (
+            <tr>
+            <td className='container-item'><img className='Imagen' src={prod.image} alt='imagen'/></td>
+            <td>{prod.name}</td>
+            <td>{prod.price}</td>                            
+            <td>{prod.cantidad}</td>
+            <td>{prod.cantidad*prod.price}</td>
+          </tr>
+        ))
+    }
+</tbody>
+</table>
         <Button type="submit">Confirmar Pago</Button>
         <Button onClick={()=>(history.push('/compras'))} class='btn btn-primary ml-4'>Volver Carrito</Button>
 
