@@ -23,6 +23,7 @@
     "react": "^17.0.1",
     "react-bootstrap": "^1.6.1",
     "react-bootstrap-input-spinner": "^1.0.2",
+    "react-chatbot-kit": "^1.1.20",
     "react-dom": "^17.0.1",
     "react-rating-stars-component": "^2.2.0",
     "react-redux": "^7.2.4",

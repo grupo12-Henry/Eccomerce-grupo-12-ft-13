@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addToWishList,
   addProductCart,
-  getProducts,
+  getProducts, 
+  ClearCart, 
+  orderPost
 } from "../../actions/index";
-import { ClearCart, getProducts, orderPost } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
@@ -16,6 +17,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../loading/Loading";
 import ProductRating from "../productRating/productRating";
+import Roboto from "../chatbot/Chatbot";
+
 
 
 
@@ -129,6 +132,7 @@ export default function Home({ location }) {
       <>
         <Nav />
         <NavCategories />
+        <Roboto/>
         <StyledDiv>
           <div>
             {/* <div class='mt-5 mb-3' >{carritoOn===true?<ShoppingCart/>:null}</div>  */}
@@ -208,6 +212,7 @@ export default function Home({ location }) {
           </div>
         </StyledDiv>
         <Pages product={product} page={page} />
+        
         <Footer />
       </>
     );
