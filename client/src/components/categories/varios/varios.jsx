@@ -65,6 +65,8 @@ function Varios() {
     setTimeout(() => setLoading(true), 400);
   }, []);
 
+  const style = {width: "16rem" }
+
   if (!loading) {
     return <Loading />;
   } else {
@@ -106,12 +108,12 @@ function Varios() {
                       ANTERIOR
                     </button>
                   </div>
-                  <div class="row">
+                  <div class="row col justify-content-evenly">
                     {showProducts &&
                       showProducts.map((el) => {
                         return el.stock > 0 ? (
                           <>
-                            <div class="col-md-4 mt-2">
+                            <div class="justify-content-around align-items-center mb-3" style={style}>
                               <div class="card">
                                 <div class="card-body">
                                   <div class="card-img-actions">

@@ -6,6 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 const Sequelize = require('sequelize');
 const order = require('../../models/order');
 const Op = Sequelize.Op;
+const { transporter } = require('../nodemailer');
 
 //FUNCIONAN OK:
 
@@ -48,6 +49,12 @@ router.post('/clientesPost', async (req, res) => {
     const [newClient, status] = await Client.findOrCreate({ where:{mail},
       defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })
+  await transporter.sendMail({
+    from: '"VinoTecApp " <grupo12ecommerce@gmail.com>', // sender address
+    to: newClient.mail, // list of receivers
+    subject: 'Cuenta creada con exito ✔', // Subject line
+    text: 'Felicidaes!!', // html body
+  });
   return res.send(newClient)
   } catch(error){
    res.send(error).status(404);

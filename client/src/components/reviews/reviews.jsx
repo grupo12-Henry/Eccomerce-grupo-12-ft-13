@@ -14,7 +14,7 @@ export default function Reviews() {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <ReactStars {...firstExample} />
+        {/* <ReactStars {...firstExample} /> */}
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div class="text-muted mb-3">34 reviews</div>

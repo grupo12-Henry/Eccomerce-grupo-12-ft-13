@@ -19,6 +19,7 @@ import Reviews from "../reviews/reviews";
 // import { useAuth } from "../../contexts/AuthContext";
 // import ShoppingCart from "../shoppingCart/ShoppingCart";
 
+
 export default function Home({ location }) {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
@@ -70,6 +71,8 @@ export default function Home({ location }) {
   useEffect(() => {
     setTimeout(() => setLoading(true), 400);
   }, []);
+
+//const mapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlruM3gHpV3wAcBUURkD8YldiGDJg_pQU"
 
   if (!loading) {
     return <Loading />;
@@ -148,6 +151,7 @@ export default function Home({ location }) {
             </div>
           </div>
         </StyledDiv>
+         
         <Pages product={product} page={page} />
         <Footer />
       </>

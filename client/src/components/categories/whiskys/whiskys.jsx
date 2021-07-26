@@ -79,6 +79,8 @@ function Whiskys() {
       setTimeout(() => setLoading(true), 400);
     }, []);
   
+    const style = {width: "16rem" }
+
     if (!loading) {
       return <Loading />;
     } else {
@@ -102,11 +104,11 @@ function Whiskys() {
                             <div className=''>
                                 <button id='botonazo'className='btn btn-dark mr-2 mt-1' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
                             </div>
-                            <div class="row">
+                            <div class="row col justify-content-evenly">
                                 {showProducts &&
                                     showProducts.map(el =>
                                     {return el.stock>0?<>
-                                        <div class="col-md-4 mt-2">
+                                        <div class="justify-content-around align-items-center mb-3" style={style}>
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="card-img-actions">
