@@ -65,6 +65,7 @@ useEffect(() => {
 
 
   const order=()=>{
+    if(!cart.length) return history.push('/home');
     let user =  window.localStorage.getItem("user");
     let completo = user? {
         idClient:user?.split(',')[0].split(':')[1], 
