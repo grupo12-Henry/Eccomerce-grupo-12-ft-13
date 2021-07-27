@@ -7,6 +7,7 @@ const StyledDiv = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor:pointer;
 }
 
 .div_button{
@@ -21,6 +22,7 @@ const StyledDiv = styled.div`
 .icon{
     &hover{
         color: #ebc28e;
+        cursor:pointer;
     }
 }
 

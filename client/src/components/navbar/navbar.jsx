@@ -28,7 +28,6 @@ const Nav = () => {
   const user1 = useSelector((state) => state.user)
 
   const handleLogin = (e) => {
-
     e.preventDefault();
     setIsOpen(true);
   };
@@ -122,9 +121,7 @@ const Nav = () => {
             )
             }
             </li>
-            {/* <li><a href="/user" onClick={handleLogin}>
-              <img alt="user img" src={user} width="20px" />
-            </a></li> */}
+          
             <li class='d-flex mt-2'>
               <li class="sidebar-social ">
                 <a href="/compras" class="cart" title="Carrito" rel="nofollow">

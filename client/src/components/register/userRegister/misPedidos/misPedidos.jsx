@@ -167,7 +167,7 @@ export default function MisPedidos({ match }) {
                       <td>{el.order_detail.updatedAt.split('T')[0]}</td>
                       <td>
                           <label for="vehicle1"> 
-                            <button className='btn btn-primary'onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
+                            <button className='btn btn-sm btn-info'onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
                           </label>
                         </td>
                         

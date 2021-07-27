@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import './FormCompras.css';
 import Nav from '../navbar/navbar';
 import NavCategories from '../navCategories/navCategories';
+import Footer from '../footer/footer'
 // export default function FormCompras (){
     
 export default function FormCompras() {
@@ -63,8 +64,8 @@ export default function FormCompras() {
 
     return (<>
       
-          <Nav />
-        <NavCategories />
+      <Nav />
+       <NavCategories />
        <div className='containerFormCompras'>
        <Form noValidate validated={validated} onSubmit={handleSubmit}>
          <Row className="mb-3">
@@ -138,7 +139,7 @@ data-url="data.json">
       </Form>
 
        </div>
-    
+       <Footer />
     );</>)
   }
   

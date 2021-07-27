@@ -9,12 +9,11 @@ import Loading from '../loading/Loading';
 import { useHistory } from "react-router-dom";
 import NavModal from '../navModal/navModal';
 import FormCompras from './FormCompras';
-// const history = useHistory()
 
 
 function ShoppingCart(props) {
   const dispatch = useDispatch()
-  let cart = useSelector((state) => state.productCart);
+  const cart = useSelector((state) => state.productCart);
   const product = useSelector((state) => state.products);
   const [loading, setLoading] = useState(false);
 
@@ -30,11 +29,8 @@ function ShoppingCart(props) {
   }, [localStorage]);
 
   // useEffect(() => {
-  //   if (cart) {return null}
-  //   if(window.localStorage.getItem('array')){
-  //   cart = JSON.parse(window.localStorage.getItem('array'));
-  //   console.log(cart)}
-  // }, []);
+  // }, [state.]);
+
 
   const addToCart = (el) => {
     dispatch(addProductCart(el.id));
@@ -43,7 +39,7 @@ function ShoppingCart(props) {
 
 useEffect(() => {
   let aux = 0;
-  cart?.forEach(e=> e.stock>0? aux = aux + (e.price * e.cantidad):null)
+  cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
   setMontoTotal(aux)
 }, [cart,montoTotal , product])
 
@@ -65,14 +61,13 @@ useEffect(() => {
 
 
   const order=()=>{
-    if(!cart.length) return history.push('/home');
     let user =  window.localStorage.getItem("user");
     let completo = user? {
-        idClient:user?.split(',')[0].split(':')[1], 
-        adress:user?.split(',')[5].split(':')[1], 
+        idClient:user.split(',')[0].split(':')[1], 
+        adress:user.split(',')[5].split(':')[1], 
         products: productsArray, 
         paymentMethod: 'efectivo', 
-        mail: user?.split(',')[6].split(':')[1], 
+        mail: user.split(',')[6].split(':')[1], 
         bill: montoTotal
     } : console.log('user is null');
     if (user){
@@ -86,7 +81,7 @@ useEffect(() => {
 
   const delFromCart = () => { }
 
-console.log('holaaa', cart)
+
   useEffect(() => {
     setTimeout(() => setLoading(true), 400);
   }, []);
@@ -104,7 +99,7 @@ console.log('holaaa', cart)
           <div className='container-articulos col-xl-11 row '>
             <hr />
             <article class='box'>
-              {cart?.length ? cart.map((item, index) => item !== undefined && item !== "undefined"&& item.stock>1 ? 
+              {cart?.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 
                 <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart}  onChange={() => console.log('funciona')}/>
                 : console.log(item)) : null}
             </article>
