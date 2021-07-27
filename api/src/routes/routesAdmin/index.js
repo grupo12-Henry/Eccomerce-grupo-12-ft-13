@@ -17,30 +17,11 @@ const {
 const router = Router();
 
 
-router.get('/userMail', async (req, res)=>{
-    const mail = req.query.mail;
-    const user = await Client.findOne({where: {mail}})
-    user&&res.send(user)||res.sendStatus(400)
-})
-const cors = require("cors")
-const twilio = require('twilio'); 
-
-//twilio requirements -- Texting API 
-const accountSid = 'AC19fddcd87f8b659fa6ba29df5a028152';
-const authToken = 'e741b20d0812398fe0c7e8b64065478f'; 
-const client = new twilio('AC19fddcd87f8b659fa6ba29df5a028152', 'e741b20d0812398fe0c7e8b64065478f');
-
-router.get('/send-text', cors(), (req, res) => {
-     //_GET Variables
-    const { recipient, textmessage } = req.query;
-		console.log(req.query)
-    //Send Text
-    client.messages.create({
-        to: recipient,  // Text this number
-        body: textmessage,
-        from: '+15418036054' // From a valid Twilio number//config.phone
-    }).then((message) => console.log(message.body));
-})
+// router.get('/userMail', async (req, res)=>{
+//     const mail = req.query.mail;
+//     const user = await Client.findOne({where: {mail}})
+//     user&&res.send(user)||res.sendStatus(400)
+// })
 
 
 router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado

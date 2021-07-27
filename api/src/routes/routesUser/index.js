@@ -6,9 +6,21 @@ const { v4: uuidv4 } = require('uuid');
 const Sequelize = require('sequelize');
 const order = require('../../models/order');
 const Op = Sequelize.Op;
-const { transporter } = require('../nodemailer');
+const { sendMessage } = require('../twilio')
+const { sendMail } = require('../nodemailer')
 
 //FUNCIONAN OK:
+router.post('/send-sms', async  (req, res) => {
+  const response = await sendMessage( req.body.phone, req.body.testMessage)
+  console.log(response.sid)
+	res.send('recibido')
+})
+
+router.post('/send-mail', async  (req, res) => {
+  const response = await sendMail( req.body.mail, req.body.subject, req.body.text)
+	res.send('recibido')
+})
+
 
 //trae todos los productos-->LISTO
 router.delete('/favoritos/:id',async(req,res) => {//elimina una relacion de producto-usuario
@@ -90,15 +102,11 @@ router.post('/clientesPost', async (req, res) => {
     token
 	} = req.body;
  try {
+   const response = await sendMail( mail, 'Bienvenido a Vinotecapp 🍷', 'Gracias por registrarte. Acompaña tus momentoscon los mejores sabaores.')
     const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
       defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })
-  await transporter.sendMail({
-    from: '"VinoTecApp " <grupo12ecommerce@gmail.com>', // sender address
-    to: newClient.mail, // list of receivers
-    subject: 'Cuenta creada con exito ✔', // Subject line
-    text: 'Felicidaes!!', // html body
-  });
+  
   return res.send(newClient)
   } catch(error){
    res.send(error).status(404);
@@ -125,6 +133,7 @@ router.post('/clientesPost', async (req, res) => {
        products.forEach(e=>{
          newOrder.setProducts(e.id, {through:{cantidad: e.cantidad, subtotal: e.subtotal}}); 
          })
+         
        return res.send(newOrder)
        } catch(error){
         res.send(error).status(404);

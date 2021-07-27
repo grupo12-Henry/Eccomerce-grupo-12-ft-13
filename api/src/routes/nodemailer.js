@@ -15,10 +15,9 @@
 // module.exports = {
 //   transporter,
 // };
-
+                                 
 const nodemailer = require('nodemailer');
 
-// Step 1
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -27,18 +26,23 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Step 2
-let mailOptions = {
-    from: 'grupo12ecommerce@gmail.com', // TODO: email sender
-    to: 'julian_her_287@hotmail.com', // TODO: email receiver
-    subject: 'Nodemailer - Test',
-    text: 'Hola Probando  !!'
-};
+async function sendMail(mail, subject, text) {
+    try {
+    const email = await transporter.sendMail({
+        from: 'grupo12ecommerce@gmail.com', // TODO: email sender
+        to: mail, // TODO: email receiver
+        subject: subject,
+        text: text
+    }, (err) => {
+        if (err) {
+            return consol.log('Error occurs');
+        }
+        return consol.log('Email sent!!!');
+    });
+    return email;
+} catch (error) {
+    console.log(error)
+}
+}
 
-// Step 3
-transporter.sendMail(mailOptions, (err, data) => {
-    if (err) {
-        return consol.log('Error occurs');
-    }
-    return consol.log('Email sent!!!');
-});
+module.exports = {  sendMail };
