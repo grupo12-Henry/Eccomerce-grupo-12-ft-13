@@ -1,6 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken'
 const {secret}= {secret:process.env.REACT_APP_SECRET_TOKEN};
+// export const DELETE_PROD_FROM_ORDER = 'DELETE_PROD_FROM_ORDER'
 export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS';
 export const GETNAMES = 'GETNAMES';
@@ -34,6 +35,20 @@ export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const GETFAVORITES = 'GETFAVORITES';
 export const CHECKOUT = 'CHECKOUT'
+
+
+
+
+// export function deleteProdFromOrder(idOrder, idProd) {
+//   return (dispatch) => {
+//     axios.delete(`http://localhost:3001/admin/${idOrder}` + idProd)
+//       .then(response => 
+//         dispatch({
+//           type: DELETE_PROD_FROM_ORDER,
+//           payload: idProd
+//         }))
+//   }
+// }
 
 export function getUser(mail) {
   return (dispatch) => {

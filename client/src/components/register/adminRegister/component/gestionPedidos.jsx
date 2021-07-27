@@ -1,13 +1,14 @@
 
 import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido } from '../../../../actions';
+import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido, getProducts,  } from '../../../../actions';//deleteProdFromOrder
 
 function GestionPedidos() {
 
     //Estado de Redux. 
     const pedidos = useSelector(state => state.pedidos);
     const pedidoDetail = useSelector(state => state.pedidoDetail);
+    const AllProducts = useSelector(state => state.products);
     const dispatch = useDispatch();
 
     useEffect(() => { 
@@ -17,6 +18,7 @@ function GestionPedidos() {
     //Cuando renderiza el componente, me trae todos los pedidos.
     useEffect(() => { 
         dispatch(getAllPedidos());
+        dispatch(getProducts());
     }, []);
 
     //Me trae los pedidos por estado. Le pega a una ruta del back o a otra.
@@ -41,9 +43,14 @@ function GestionPedidos() {
         } 
     };   
 
+    //Borra UN producto del pedido seleccionado.
+    // const handleDeleteProduct = (e) => {
+    //     e.preventDefault();
+    //     dispatch(deleteProdFromOrder( pedidoDetail.id, e.target.value))
+    // }
+
     //Estado local de los campos que MODIFICAN un pedido. 
-    const [modifyPedido, setModifyPedido] = useState({
-        clientId:"",
+    let [modifyPedido, setModifyPedido] = useState({
         date:"",
         bill:"",
         paymentMethod:"",
@@ -57,13 +64,31 @@ function GestionPedidos() {
         freight:"",
         ivaCost:"",
         ivaCondition:"",
-        
+       
     });
+    modifyPedido = {...modifyPedido,
+                    products:pedidoDetail&&pedidoDetail?.products?.map(el => {
+                        return {
+                            id:el.id,
+                            cantidad:el.order_detail.cantidad,
+                            subTotal:el.order_detail.subTotal
+                        }
+                    })
+    }
+
+
     //Es como un handlechange de modifyPedido. Maneja el estado local. 
     const handleInputChange = (e) => {
         setModifyPedido({
           ...modifyPedido,
-          [e.target.name]:e.target.value
+          [e.target.name]:e.target.value,
+        //   products:pedidoDetail&&pedidoDetail?.products?.map(el => {
+        //     return {
+        //         id:el.id,
+        //         cantidad:el.order_detail.cantidad,
+        //         subTotal:el.order_detail.subTotal
+        //     }
+        // })
         });
     }
     //Trae la información del detalle del pedido seleccionado al estado de Redux "pedidoDetail"
@@ -293,9 +318,7 @@ function GestionPedidos() {
                     <input class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name='clientId' 
                         type='number' 
-                        placeholder={pedidoDetail?.clientId} 
-                        value={ modifyPedido.clientId} 
-                        onChange={handleInputChange}/>
+                        value={pedidoDetail?.clientId} />
                 </li>
                 <li class='form-inline'>
                     <span>Fecha de compra: </span>
@@ -319,7 +342,6 @@ function GestionPedidos() {
                     <span>Forma de Pago: </span>
                     <select class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name="paymentMethod" 
-                        // value={modifyPedido.paymentMethod} 
                         onChange={handleInputChange}>
 
                         <option key='tarjeta' value='tarjeta'>Tarjeta</option>
@@ -335,6 +357,49 @@ function GestionPedidos() {
                         placeholder={pedidoDetail?.ticket } 
                         value={modifyPedido.ticket} 
                         onChange={handleInputChange}/>
+                </li>
+
+                { pedidoDetail&&pedidoDetail?.products?.map (el => (     
+                    <li class='form-inline' value={el.id}>
+
+                        <span> Producto: </span>
+                        <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
+                            name='name' 
+                            value={el.name}>
+                        </input> 
+
+                        <span class="mt-2 ml-3"> Cantidad: </span>
+                        <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
+                            name='name' 
+                            placeholder={el.order_detail.cantidad}>
+                        </input>
+
+                        <span class="mt-2 ml-3"> SubTotal: </span>
+                        <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
+                            name='name' 
+                            placeholder={el.order_detail.subTotal}>
+                        </input>
+
+                        <button class="form-control form-control-sm mt-1 ml-3 form-row">                        
+                            {/*  onClick={handleDeleteProduct} > */}
+                                Quitar
+                        </button>
+                        
+                    </li>    
+                ))}
+
+                <li class='form-inline'>
+                    <span>Agregar un Producto: </span>            
+                    <select class="form-control form-control-sm mt-1 ml-2 form-row" 
+                        name="state" 
+                        onChange={handleInputChange}>
+
+                        {AllProducts && AllProducts?.map( el => (
+                            <option key={el.id} value={el.id} > {el.name} </option>                            
+                        ))
+                        }
+
+                    </select>
                 </li>
 
 
@@ -396,7 +461,7 @@ function GestionPedidos() {
 
                         <option key='pendiente' value='pendiente'>Pendiente</option>
                         <option key='enviado' value='enviado'>Enviado</option>
-                        <option key='retiro' value='retiro en local'>Retiro en local</option>
+                        <option key='retiro' value='retiro'>Retiro en local</option>
                         <option key='cancelado' value='cancelado'>Cancelado</option>
                         <option key='cerrado' value='cerrado'>Cerrado</option>
 
