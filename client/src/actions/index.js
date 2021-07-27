@@ -33,7 +33,7 @@ export const REPEAT_ORDER = 'REPEAT_ORDER'
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const GETFAVORITES = 'GETFAVORITES';
-export const CHECKOUT = 'CHECKOUT'
+export const CHECKOUT = 'CHECKOUT';
 
 
 export function getUser(mail) {
@@ -520,6 +520,11 @@ export function removeFromWishlist(id,pId) {
 }
 }
 
+export function sendEmail(payload) {
+  return ((dispatch) => {
+    axios.post('http://localhost:3001/sendEmail/', payload)
+  })
+}
 
 //PEDIDOS
 

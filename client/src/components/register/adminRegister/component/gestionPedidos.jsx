@@ -2,7 +2,6 @@
 import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido } from '../../../../actions';
-import MailSend from '../../../sendMail/sendMail';
 
 function GestionPedidos() {
 
@@ -472,7 +471,6 @@ function GestionPedidos() {
             </form>
         </div>
         </div>
-    <MailSend />
     </div>
     )
 }
