@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
+import { 
+  orderPost,
   addToWishList,
   addProductCart,
   getProducts, 
   ClearCart, 
-  orderPost
 } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
