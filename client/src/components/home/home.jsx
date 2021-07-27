@@ -174,7 +174,7 @@ export default function Home({ location }) {
                                   <h3 class="mb-0 font-weight-semibold">
                                     $ {el.price}
                                   </h3>
-                                  <FontAwesomeIcon
+                                 {user&&<FontAwesomeIcon
                                     className="highlight"
                                     icon={faHeart}
                                     type="button"
@@ -182,7 +182,7 @@ export default function Home({ location }) {
                                      onClick={(e) =>
                                        addingToWishList(user.id,el.id)
                                      }
-                                  />
+                                  />}
                                   {<ProductRating product={el} key={el.id} /> }
                                   <div
                                     style={{

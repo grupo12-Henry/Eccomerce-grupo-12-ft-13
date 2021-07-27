@@ -109,7 +109,7 @@ function GestionPedidos() {
                 </thead>
                 <tbody>
                     {
-                        pedidos&& pedidos.map(pedido => (
+                        Array.isArray(pedidos)&& pedidos.map(pedido => (
                             <tr>
                             <th scope="row">{pedido.id}</th>
                             <td>{pedido.date}</td>

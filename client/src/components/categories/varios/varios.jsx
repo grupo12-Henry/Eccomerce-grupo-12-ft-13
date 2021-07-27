@@ -113,7 +113,7 @@ function Varios() {
                                                                     </h6>{" "}
                                                                 </div>
                                                                 <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
-                                                                <FontAwesomeIcon
+                                                                {user&&<FontAwesomeIcon
                                                                     className="highlight"
                                                                     icon={faHeart}
                                                                     type="button"
@@ -121,7 +121,7 @@ function Varios() {
                                                                     onClick={(e) =>
                                                                         addingToWishList(user.id, el.id)
                                                                     }
-                                                                />
+                                                                />}
                                                                 <ProductRating product={el} key={el.id} />
                                                                 <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                                                     <i class="fa fa-cart-plus mr-2">Agregar</i>
