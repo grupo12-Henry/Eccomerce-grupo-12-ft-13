@@ -3,6 +3,7 @@ import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido, getProducts,  } from '../../../../actions';//deleteProdFromOrder
 
+
 function GestionPedidos() {
 
     //Estado de Redux. 
@@ -520,6 +521,9 @@ function GestionPedidos() {
                 </button>
             </form>
         </div>
+        </div>
+        <div>
+         
         </div>
     </div>
     )
