@@ -16,7 +16,7 @@ import getUser from "../../actions/index"
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch  } from 'react-redux'
 import ShoppingCart from "../shoppingCart/ShoppingCart";
 
@@ -25,6 +25,7 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [carritoOn, setCarritoOn] = useState(false) 
   const productCart = useSelector((state) => state.productCart)
+  const user1 = useSelector((state) => state.user)
 
   const handleLogin = (e) => {
 
@@ -32,22 +33,24 @@ const Nav = () => {
     setIsOpen(true);
   };
 
+  const history = useHistory();
   const { currentUser, logout } = useAuth();
 
   const handleLogOut = async () => {
     window.localStorage.removeItem('user')
     await logout();
     setIsOpen(false);
+    history.push("/home");
   };
 
   let estado = JSON.parse(window.localStorage.getItem("array"))
-  if(estado!== null){estado=estado.reverse()}
-  if(!productCart.length&&estado){
+  if(!!estado){estado=estado.reverse()}
+  if(!productCart?.length&&estado){
     for(let i=0; i<estado.length;i++){
-      for(let j=0;j<productCart.length;j++){
+      for(let j=0;j<productCart?.length;j++){
         if(productCart.length&&estado[i]!==undefined&&estado[i].id===productCart[j].id){i=i+1}
       }
-      if(estado[i]!==undefined)productCart.push(estado[i])
+      if(estado[i]!==undefined)productCart?.push(estado[i])
     }
   }
   
@@ -99,14 +102,14 @@ const Nav = () => {
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item href="/micuenta">Edit Profile</Dropdown.Item>
-                    <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
-                    {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL ? (
+                    <Dropdown.Item href="/micuenta">Mi cuenta</Dropdown.Item>
+                    <Dropdown.Item href="/update-profile">Cambiar contraseña</Dropdown.Item>
+                    {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL||user1&&user1.admin ? (
 												<Dropdown.Item href="/dashboard-admin">
-													Only Admin
+													Dashboard Admin
 												</Dropdown.Item>
 											) : null}
-                    <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogOut} href="/home">Cerrar Sesion</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
             ) :
@@ -126,7 +129,7 @@ const Nav = () => {
               <li class="sidebar-social ">
                 <a href="/compras" class="cart" title="Carrito" rel="nofollow">
                   <i class="fas fa-shopping-cart ">
-                    < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart.length}</span>
+                    < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart?.length}</span>
                     <img className=" d-flex mt-0 p-0" alt="cart img" src={cart} width="20px"/>
                   </i>
                 </a>

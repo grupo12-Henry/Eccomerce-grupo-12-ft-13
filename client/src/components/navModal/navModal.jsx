@@ -15,12 +15,15 @@ const MODAL_STYLES = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   backgroundColor: "#333333",
-  padding: "50px",
-  border: '4px solid #ebc28e',
-  borderRadius: '2px',
+  padding: "0.5rem 3rem 3rem 3rem",
+  boxShadow: '0px 0px 5px 3px #ebc28e',
+  borderRadius:'0.2rem',
   zIndex: 1000,
   color: '#fff',
-  textAlign: 'center'
+  textAlign: 'center', 
+  display: 'flex',
+  justifyContent: 'center',
+  flexDirection: 'column'
 };
 
 const OVERLAY_STYLES = {
@@ -29,6 +32,7 @@ const OVERLAY_STYLES = {
   left: "0",
   right: "0",
   bottom: "0",
+  borderRadius: '0.5rem',
   backgroundColor: "rgba(0, 0, 0, .7)",
   zIndex: 1000,
 };
@@ -43,7 +47,7 @@ export default function NavModal({ open, children, onClose }) {
 
   async function vamo (){
     if(currentUser){try{
-      dispatch( crearUsuario({mail:currentUser.email, name: `${currentUser.displayName}`, token:currentUser.refreshToken}))
+      dispatch( !window.localStorage.getItem('user')&&crearUsuario({mail:currentUser.email, name: `${currentUser.displayName}`, token:currentUser.refreshToken}))
     }catch(err){console.log(err)}}
   }
   vamo()
@@ -90,15 +94,13 @@ export default function NavModal({ open, children, onClose }) {
       {currentUser ? (
         <div style={OVERLAY_STYLES}>
           <div style={MODAL_STYLES}>
-            <button
-              class="btn btn-light"
-              margin-right="1rem"
-              width="3rem"
-              onClick={handleClose}
-            >
-              <CloseIcon />
-            </button>
-            <div>YA ESTAS LOGUEADO</div>
+          <div className='d-flex justify-content-end'>                
+              <CloseIcon onClick={handleClose} style={{height: '1.2rem'}}/>
+              </div>
+            
+            <div>
+              <p style={{marginTop:'1rem'}}>¡ESTAS LOGUEADO!</p>
+              </div>
             <button
               class="btn btn-light"
               margin-right="1rem"
@@ -119,37 +121,35 @@ export default function NavModal({ open, children, onClose }) {
             </div>
             
             {signup === true || login === true ? (
-              <button className="btn btn-dark" onClick={handleBackClose}>
+              <div>
+              <button className="btn btn-light"   onClick={handleBackClose}>
                 Volver
               </button>
+              </div>
             ) : (
+              <>
+              <div className='d-flex justify-content-end' style={{width: '120%'}}>                
+              <CloseIcon className='icon' onClick={handleClose} style={{height: '1.2rem'}}/>
+              </div>
               <div
                 class="btn-group-vertical"
                 role="group"
                 aria-label="Basic outlined example"
               >
-                <div className="div_button">
-              <button
-                class="btn btn-light"
-                margin-right="1rem"
-                width="3rem"
-                onClick={handleClose}
-              >
-                <CloseIcon />
-              </button>
-            </div>
-                <button class="btn btn-light" onClick={handleSignup}>
+                <button class="btn btn-light mb-3 mt-3" onClick={handleSignup}>
                   Registrate
                 </button>
-                <button class="btn btn-light" onClick={handleLogin1}>
+                <button class="btn btn-light mb-3" onClick={handleLogin1}>
                   Logueate con tu mail
                 </button>
                 <button class="btn btn-light" onClick={handleGoogle}>
                   Logueate con <img className="logo-google" src={logo} />
                 </button>
               </div>
-            )}
+              </>
+                          )}
           </div>
+
         </div>
       )}
     </StyledDiv>,

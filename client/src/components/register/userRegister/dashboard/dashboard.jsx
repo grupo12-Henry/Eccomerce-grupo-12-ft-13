@@ -11,7 +11,6 @@ export default function Dashboard() {
   const user = useSelector((state) => state.user);
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  console.log('EL CURREN', currentUser)
   const dispatch = useDispatch()
   const [User, setUser] = useState(user)
 
@@ -137,14 +136,14 @@ export default function Dashboard() {
                     <div class=" col-md-9 col-lg-9 ">
                       <div class="mb-2">
                       
-                            <Link to={`/micuenta/mispedidos/${user.id}`} ><a class="btn btn-dark">
+                            <Link to={`/micuenta/mispedidos/${user.id}`} ><a class="btn btn-dark mr-2">
                               Mis pedidos anteriores
                             </a>
                             </Link>
-                          
-                         <a href="#" class="btn btn-dark ml-5 ">
-                            Mis favoritos
+                            <Link to={`/micuenta/favoritos/${user.id}`} ><a class="btn btn-dark">  
+                             Mis favoritos
                           </a>
+                          </Link>
                           
                         </div>
                     </div>
