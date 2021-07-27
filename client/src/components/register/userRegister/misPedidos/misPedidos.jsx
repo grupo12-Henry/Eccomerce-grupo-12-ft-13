@@ -46,19 +46,18 @@ export default function MisPedidos({ match }) {
   //       dispatch(getPedidoDetail(id))  
   //   };
     
-  // }, [pedidos]);
+  // }, [pedidos]); 
 
   const repeatCart=(payload)=>{
-    payload.forEach(e=> {
-      let id = products.find(el=>el.id===e.id)
-      if(e.cantidad> id.stock)e.cantidad=e.stock
+    payload.forEach(e=>{
+    if(e.order_detail.cantidad> e.stock)e={...e, order_detail:{...e.order_detail, cantidad:e.stock, subTotal:e.stock*e.price}};
+    // if (e.stock<1){e=null}
     })
-    console.log('pedidoDetail repeat', pedidos)
+    console.log('payload si cambia', payload)
+    payload =  payload.filter(e=>e.stock>0);
+    console.log('payload filtrado', payload)
     dispatch(repeatOrder(payload));
     dispatch(getpedidosUser(match.params.id));
-    console.log('match.params', match.params.id)
-    console.log('pedidos', pedidos)
-    console.log('payload' , payload)
     history.push('/compras');
     // const timeout = setTimeout(() => {
       // }, 3000);
