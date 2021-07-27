@@ -187,9 +187,7 @@ case ADD_TO_CART:
       window.localStorage.setItem('array',JSON.stringify(state.productCart))
       console.log('productCart',state.productCart)
       //  let productosOrder = action.payload.forEach(e=>state.products.find(el=> el.id===e.id)) //e.id e.order_detail.cantidad)
-      return {
-         state
-      }
+      return state
       
       /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
       case CLEAR_CART:
