@@ -9,11 +9,12 @@ import Loading from '../loading/Loading';
 import { useHistory } from "react-router-dom";
 import NavModal from '../navModal/navModal';
 import FormCompras from './FormCompras';
+// const history = useHistory()
 
 
 function ShoppingCart(props) {
   const dispatch = useDispatch()
-  const cart = useSelector((state) => state.productCart);
+  let cart = useSelector((state) => state.productCart);
   const product = useSelector((state) => state.products);
   const [loading, setLoading] = useState(false);
 
@@ -28,9 +29,12 @@ function ShoppingCart(props) {
   useEffect(() => {
   }, [localStorage]);
 
-  useEffect(() => {
-  }, [cart]);
-
+  // useEffect(() => {
+  //   if (cart) {return null}
+  //   if(window.localStorage.getItem('array')){
+  //   cart = JSON.parse(window.localStorage.getItem('array'));
+  //   console.log(cart)}
+  // }, []);
 
   const addToCart = (el) => {
     dispatch(addProductCart(el.id));
@@ -81,7 +85,7 @@ useEffect(() => {
 
   const delFromCart = () => { }
 
-
+console.log('holaaa', cart)
   useEffect(() => {
     setTimeout(() => setLoading(true), 400);
   }, []);
