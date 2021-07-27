@@ -18,12 +18,12 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../loading/Loading";
 import ProductRating from "../productRating/productRating";
 import Roboto from "../chatbot/Chatbot";
-
-
-
-
 // import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import Sending from "../SendingT/SendingT";
+import SendingEmail from "../SendingT/sendmail";
+
+
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -125,6 +125,8 @@ export default function Home({ location }) {
     setTimeout(() => setLoading(true), 400);
   }, []);
 
+
+
   if (!loading) {
     return <Loading />;
   } else {
@@ -211,8 +213,8 @@ export default function Home({ location }) {
             </div>
           </div>
         </StyledDiv>
+         {/* <SendingEmail /> */}
         <Pages product={product} page={page} />
-        
         <Footer />
       </>
     );

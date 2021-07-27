@@ -65,11 +65,11 @@ useEffect(() => {
   const order=()=>{
     let user =  window.localStorage.getItem("user");
     let completo = user? {
-        idClient:user.split(',')[0].split(':')[1], 
-        adress:user.split(',')[5].split(':')[1], 
+        idClient:user?.split(',')[0].split(':')[1], 
+        adress:user?.split(',')[5].split(':')[1], 
         products: productsArray, 
         paymentMethod: 'efectivo', 
-        mail: user.split(',')[6].split(':')[1], 
+        mail: user?.split(',')[6].split(':')[1], 
         bill: montoTotal
     } : console.log('user is null');
     if (user){
