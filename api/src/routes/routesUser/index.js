@@ -252,8 +252,11 @@ router.put('/users/:id', async (req, res) => {
 //postea reviews de un producto. Id es el id de producto. 
 router.post('/reviews/:id', async (req, res)=>{
   const id =parseInt( req.params.id,10);
-  const value= parseInt(req.body.value,10)
-  const { description } = req.body;
+  console.log('ELID',id)
+  const value= parseInt( req.body.value,10)
+  console.log('ELVALUE',value)
+  const description = req.body.description;
+  console.log('description',description)
   try {
     const producto = await Product.findByPk(id)
     const newReview = await Review.create({
