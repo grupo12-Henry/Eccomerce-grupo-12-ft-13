@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
+import { 
+  orderPost,
   addToWishList,
   addProductCart,
   getProducts, 
   ClearCart, 
-  orderPost
 } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
@@ -112,11 +112,6 @@ export default function Home({ location }) {
     dispatch(addProductCart(id));
   };
 
-
-	useEffect(() => {
-		setTimeout(() => setLoading(true), 1000)
-	}, [])
-
   const addingToWishList = (Uid, productId) => {
     // const productFav = wishList?.filter(el=> el)
      // console.log('ELUSER', Uid, 'ELFAV', productId)
@@ -125,7 +120,6 @@ export default function Home({ location }) {
     };
   
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     setTimeout(() => setLoading(true), 400);

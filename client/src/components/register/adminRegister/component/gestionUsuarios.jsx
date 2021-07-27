@@ -96,7 +96,7 @@ function GestionUsuarios() {
                                     <td>{client?.state}</td>
 
                                     <td >
-                                        {client?.admin===true? (<button class="btn btn-sm btn-success">
+                                        {client?.admin==true? (<button class="btn btn-sm btn-success">
                                             ADMIN
                                         </button>) : null}
                                     </td>

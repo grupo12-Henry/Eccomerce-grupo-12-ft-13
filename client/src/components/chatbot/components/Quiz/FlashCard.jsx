@@ -15,7 +15,7 @@ const FlashCard = ({ question, answer, link, incrementIndex }) => {
       >
         {!showAnswer && question}
         {showAnswer && answer}
-        {showAnswer && (<a href={link}>Ver Recomendación</a>)}
+        {showAnswer && link && (<a href={link}>Ver Recomendación</a>)}
       </div>
       {showAnswer && (
         <button onClick={incrementIndex} className="flashcard-button">

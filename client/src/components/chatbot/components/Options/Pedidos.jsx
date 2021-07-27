@@ -13,11 +13,11 @@ const Pedidos = (props) => {
       handler: props.actionProvider.carrito,
       id: 2 
     },
-    { 
-        text: "Pedidos anteriores", //login, register, logout
-        handler: props.actionProvider.pedidosAnteriores,
-        id: 3 
-      }
+    // { 
+    //     text: "Pedidos anteriores", //login, register, logout
+    //     handler: props.actionProvider.pedidosAnteriores,
+    //     id: 3 
+    //   }
   
   ]
   

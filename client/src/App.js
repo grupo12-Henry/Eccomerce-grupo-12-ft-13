@@ -26,12 +26,9 @@ import misPedidos from './components/register/userRegister/misPedidos/misPedidos
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Nav from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
-
-import Loading from "./components/loading/Loading";
-
 import FormCompras from "./components/shoppingCart/FormCompras";
 import wishList from "./components/wishList/wishList";
-
+import writingReviews from './components/writingReviews/writingReviews'
 
 function App() {
 
@@ -50,10 +47,11 @@ function App() {
         <PrivateRouteUser component={wishList} exact path='/micuenta/favoritos/:id'/>
         <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
         <PrivateRouteUser component={Delivery} exact path='/delivery'/>
+        <PrivateRouteUser component={writingReviews} exact path='/reviews/:id'/>
         <Route component={LandingPage} exact path='/'/>
         <Route component={Nav} exact path='/compras'/>
         <Route component={ShoppingCart} exact path='/compras'/>
-        <Route component={Footer} exact path='/compras'/>
+        <Route component={Footer} exact path='/compras'/> 
         <Route component={About} exact path='/about'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>
@@ -64,11 +62,8 @@ function App() {
         <Route component={SignUp} exact path='/signup'/>
         <Route component={Login} exact path='/login'/>
         <Route component={Detail} exact path='/detail/:id'/>
-
-        <Route component={Loading} exact path='/loading'/>
-
         <Route component={FormCompras} exact path='/FormCompras'/>
-
+        
       </AuthProvider>
     </React.Fragment>
   )
