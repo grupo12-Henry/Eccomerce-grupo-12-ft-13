@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { Button, Form, Col, Row, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from '../loading/Loading';
-import { orderPost, Checkout, ClearCart } from '../../actions';
+import { orderPost, Checkout, ClearCart, sendMail } from '../../actions';
 import { useHistory } from "react-router-dom";
 import './FormCompras.css';
+import Nav from '../navbar/navbar';
+import NavCategories from '../navCategories/navCategories';
 // export default function FormCompras (){
     
 export default function FormCompras() {
@@ -44,7 +46,8 @@ export default function FormCompras() {
                                 } : console.log('user is null');
              if (completo){
                console.log(completo)
-                  dispatch(orderPost(completo)) // ver aqui porque no se hace
+                  dispatch(orderPost(completo)) 
+                  dispatch(sendMail({mail:completo.mail.slice(1,-1), subject:'compra realizada', text:'Gracias por su compra en VinotecApp, pronto tendra los productos para disfrutarlos con quien guste'})) //req.body.mail, req.body.subject, req.body.text
                   window.localStorage.removeItem('array');
                   window.localStorage.removeItem('pago');
                   dispatch(ClearCart())
@@ -57,7 +60,10 @@ export default function FormCompras() {
         }
     };
 
-    return (
+    return (<>
+      
+          <Nav />
+        <NavCategories />
        <div className='containerFormCompras'>
        <Form noValidate validated={validated} onSubmit={handleSubmit}>
          <Row className="mb-3">
@@ -132,6 +138,6 @@ data-url="data.json">
 
        </div>
     
-    );
+    );</>)
   }
   

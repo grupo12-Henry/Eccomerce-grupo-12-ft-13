@@ -26,23 +26,24 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-async function sendMail(mail, subject, text) {
+async function send(mail, subject, text) {
+    console.log(1, mail,2, subject,3, text)
     try {
     const email = await transporter.sendMail({
         from: 'grupo12ecommerce@gmail.com', // TODO: email sender
         to: mail, // TODO: email receiver
         subject: subject,
         text: text
-    }, (err) => {
+    }, console.log('email',email),(err) => {
         if (err) {
-            return consol.log('Error occurs');
+            return console.log('err',err);
         }
-        return consol.log('Email sent!!!');
-    });
+        return console.log('Email sent!!!');
+   });
     return email;
 } catch (error) {
-    console.log(error)
+    console.log('error',error)
 }
 }
 
-module.exports = {  sendMail };
+module.exports = {  send };
