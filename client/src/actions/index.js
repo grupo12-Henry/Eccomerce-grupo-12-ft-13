@@ -547,6 +547,12 @@ export function removeFromWishlist(id,pId) {
 }
 }
 
+export function sendMail(payload){
+  console.log('anda',payload)
+  return (dispatch)=>{
+    axios.post('http://localhost:3001/send-mail', payload)//req.body.mail, req.body.subject, req.body.text
+  }
+}
 
 //PEDIDOS
 

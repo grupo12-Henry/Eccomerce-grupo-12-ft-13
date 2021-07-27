@@ -17,7 +17,7 @@ function CartItem({ data }) {
  
 
   useEffect(() => {
-    setPrecioTotal(data.cantidad * data.price)
+    setPrecioTotal(data.cantidad<data.stock ? data.cantidad * data.price: data.stock*data.price)
   }, [precioTotal])
 
  

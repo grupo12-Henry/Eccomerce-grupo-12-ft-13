@@ -56,5 +56,6 @@ module.exports = (sequelize) => {
         ivaCost:{
             type: DataTypes.INTEGER,
         }
-    },{timestamps: false});
+    })
+    // },{timestamps: false});
 };
