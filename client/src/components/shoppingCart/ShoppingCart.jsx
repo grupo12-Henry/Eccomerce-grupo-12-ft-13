@@ -43,7 +43,7 @@ function ShoppingCart(props) {
 
 useEffect(() => {
   let aux = 0;
-  cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
+  cart?.forEach(e=> e.stock>0? aux = aux + (e.price * e.cantidad):null)
   setMontoTotal(aux)
 }, [cart,montoTotal , product])
 
@@ -104,7 +104,7 @@ console.log('holaaa', cart)
           <div className='container-articulos col-xl-11 row '>
             <hr />
             <article class='box'>
-              {cart?.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 
+              {cart?.length ? cart.map((item, index) => item !== undefined && item !== "undefined"&& item.stock>1 ? 
                 <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart}  onChange={() => console.log('funciona')}/>
                 : console.log(item)) : null}
             </article>

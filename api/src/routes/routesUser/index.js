@@ -17,9 +17,7 @@ router.post('/send-sms', async  (req, res) => {
 })
 
 router.post('/send-mail', async  (req, res) => {
-  console.log('req.body.sendmail',req.body)
   const response = await send( req.body.mail, req.body.subject, req.body.text)
-  console.log('response', response)
 	res.send('recibido')
 })
 

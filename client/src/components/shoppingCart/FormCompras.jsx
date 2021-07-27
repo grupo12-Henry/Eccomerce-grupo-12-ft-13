@@ -27,6 +27,7 @@ export default function FormCompras() {
         }
         if(formCompra.pago === 'efectivo'){
           let aux = 0;
+          console.log('cart de pago', cart)
           cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
             let productsArray = cart?.map(el=> 
                           el = {
@@ -45,7 +46,7 @@ export default function FormCompras() {
                                   
                                 } : console.log('user is null');
              if (completo){
-               console.log(completo)
+               console.log('completo',completo)
                   dispatch(orderPost(completo)) 
                   dispatch(sendMail({mail:completo.mail.slice(1,-1), subject:'compra realizada', text:'Gracias por su compra en VinotecApp, pronto tendra los productos para disfrutarlos con quien guste'})) //req.body.mail, req.body.subject, req.body.text
                   window.localStorage.removeItem('array');

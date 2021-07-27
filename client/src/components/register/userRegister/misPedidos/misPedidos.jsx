@@ -7,6 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 
 export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
   const pedidos = useSelector((state) => state.pedidosUser);
   const pedidoDetail = useSelector((state) => state.pedidoDetail);
   // const product = useSelector((state) => state.products);
@@ -48,6 +49,10 @@ export default function MisPedidos({ match }) {
   // }, [pedidos]);
 
   const repeatCart=(payload)=>{
+    payload.forEach(e=> {
+      let id = products.find(el=>el.id===e.id)
+      if(e.cantidad> id.stock)e.cantidad=e.stock
+    })
     console.log('pedidoDetail repeat', pedidos)
     dispatch(repeatOrder(payload));
     dispatch(getpedidosUser(match.params.id));
@@ -63,8 +68,13 @@ export default function MisPedidos({ match }) {
     dispatch(getPedidoDetail(id))  
     console.log(pedidoDetail)  
   };
+  console.log(products)
   const repeatProduct = (payload) => {
-    console.log('emi',payload)
+    console.log(products)
+    console.log('payload, emi',payload)
+    let id = products.find(e=>e.id===payload.productId)
+     if(id.stock<1) return alert('no hay suficiente stock');
+     if (id.stock<payload.cantidad){ return (payload={...payload, cantidad:id.stock}&&dispatch(addProductCart(payload))  && alert('solo pudimos agregar al carrito la cantidad disponible en stock'))}
     dispatch(addProductCart(payload))  
     // console.log(pedidoDetail)  
   };
@@ -156,7 +166,7 @@ export default function MisPedidos({ match }) {
                       <td>{el.order_detail.subTotal}</td>
                       <td>{el.order_detail.updatedAt.split('T')[0]}</td>
                       <td>
-                          <label for="vehicle1">
+                          <label for="vehicle1"> 
                             <button className='btn btn-primary'onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
                           </label>
                         </td>
