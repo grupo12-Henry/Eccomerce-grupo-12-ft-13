@@ -8,7 +8,9 @@ import { Link, useHistory } from "react-router-dom";
 export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
   const pedidos = useSelector((state) => state.pedidosUser);
+  
   const pedidoDetail = useSelector((state) => state.pedidoDetail);
+
   // const product = useSelector((state) => state.products);
   const history = useHistory()
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function MisPedidos({ match }) {
 }, []);
   //PEDIDOS ES CLIENTDETAILS DE JULI
   const [ordenes, setOrdenes] = useState();
-  console.log('vamooo emiiii',ordenes)
+ // console.log('vamooo emiiii',ordenes)
   // console.log("DETALLE PEDIDO", detallePedido);
 
   useEffect(() => {
@@ -62,7 +64,7 @@ export default function MisPedidos({ match }) {
     dispatch(addProductCart(payload))  
     // console.log(pedidoDetail)  
   };
-  console.log('pedidos',pedidos)  
+  //console.log('pedidos',pedidos)  
 
   return (
     <>
@@ -145,7 +147,7 @@ export default function MisPedidos({ match }) {
                     return (
                       <tr>
                         <th scope="row" style={{width: '20%'}}><img style={{width:'25%'}}src={el.image}/></th>
-                        <td><Link to='/reviews'>{el.name}</Link></td>
+                        <td><Link to={`/reviews/${el.id}`}>{el.name}</Link></td>
                       <td>{el.order_detail.cantidad}</td>
                       <td>{el.order_detail.subTotal}</td>
                       <td>{el.order_detail.updatedAt.split('T')[0]}</td>

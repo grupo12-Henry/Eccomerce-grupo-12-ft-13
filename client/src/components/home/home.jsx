@@ -37,7 +37,7 @@ export default function Home({ location }) {
   // console.log(historial)
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
-  console.log('all', allProducts)
+  
 
   
   const cart = JSON.parse(window.localStorage.getItem('array'))
@@ -57,7 +57,7 @@ export default function Home({ location }) {
         id: el.id
       
     })
-    console.log(42, productsArray)
+    
     let user =  window.localStorage.getItem("user");
     let completo = user? {
         idClient:user.split(',')[0].split(':')[1], 
@@ -70,7 +70,6 @@ export default function Home({ location }) {
     } : console.log('user is null');
     if (completo){
     dispatch(orderPost(completo))
-    console.log('hola')
     window.localStorage.removeItem('array');
     dispatch(ClearCart())
   }

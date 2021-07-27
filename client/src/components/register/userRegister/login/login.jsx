@@ -68,6 +68,7 @@ useEffect(async () => {
         dispatch(getUser(emailRef.current.value))
         e.preventDefault()
         try {
+            console.log('primero entre')
             setError('')
             setLoading(true)
 
@@ -82,6 +83,7 @@ useEffect(async () => {
                 }
         }
         catch {
+            console.log('entro directo')
             setError('Failed to Log In')
         }
         setLoading(false)
@@ -93,7 +95,7 @@ useEffect(async () => {
         <StyledDiv>
         <div className='container' >
             <form method='post' onSubmit={HandleSubmit}>
-                <p>{error}</p>
+                {<p>{error}</p>}
                 <div className='email'>
                     <label className='mr-4'>Correo Electronico: </label>
                     <input type='text' name='email' ref={emailRef} value={input.email} onChange={handleInputChange} required />

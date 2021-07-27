@@ -368,7 +368,7 @@ router.post('/orderPost', async (req, res) => {
 		subtotal,
 		cantidad
 	} = req.body;
-	if (!idMP) idMP = 62;
+	if (!idMP) idMP = 65;
 	try {
 		const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
 		if (encontrarPedido) return res.send('ya existe un pedido con ese id');
