@@ -2,6 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import { useAuth } from "../../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import Loading from "../../../../components/loading/Loading";
+import Nav from '../../../navbar/navbar'
+import Footer from '../../../footer/footer'
+
 
 export default function UpdateProfile() {
   const emailRef = useRef();
@@ -30,7 +33,7 @@ export default function UpdateProfile() {
 
     Promise.all(promises)
       .then(() => {
-        history.push("/dashboard");
+        history.push("/home");
       })
       .catch(() => {
         setError("Failed to update account");
@@ -50,48 +53,49 @@ export default function UpdateProfile() {
     return <Loading />;
   } else {
     return (
-      <header className="navbar">
+      <>
+      <Nav/>
+      <header className="navbar" style={{display: 'flex', justifyContent: 'center'}}>
         <nav>
-          <ul className="list">
-            <li className="list-item">
               <div>
-                <h2>Update Profile</h2>
+                <h2>Cambia tu contraseña</h2>
                 <p>{error}</p>
-                <form onSubmit={handleSubmit}>
-                  <label>Email</label>
+                <form onSubmit={handleSubmit} className='d-flex-column justify-content-center'>
+                  <label>Correo Electronico</label><br/>
                   <input
                     type="text"
                     name="email"
                     ref={emailRef}
                     required
                     defaultValue={currentUser.email}
-                  ></input>
-                  <label>Password</label>
+                  ></input><br/>
+                  <label  className='mt-3'>Contraseña</label><br/>
                   <input
+                  
                     type="password"
                     name="email"
                     ref={passwordRef}
-                    placeholder="Leave blank to keep the same"
-                  ></input>
-                  <label>Password Confirmation</label>
+                  ></input><br/>
+                  <label  className='mt-3'>Confirma tu contraseña</label><br/>
                   <input
+                  
                     type="password"
                     name="email"
                     ref={passwordConfirmRef}
-                    placeholder="Leave blank to keep the same"
-                  ></input>
-                  <button disabled={loading} className="SignUp" type="submit">
-                    Update
+                    ></input><br/>
+                  <button className="SignUp btn btn-success mt-3" type="submit">
+                    Actualizar
                   </button>
                 </form>
               </div>
               <div>
-                <Link to="/dashboard">Cancel</Link>
+                <Link className='btn btn-dark mt-3'to="/home">Cancel</Link>
               </div>
-            </li>
-          </ul>
+            
         </nav>
       </header>
+      <Footer/>
+      </>
     );
   }
 }

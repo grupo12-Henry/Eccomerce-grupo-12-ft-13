@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 // import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../../../../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 import { StyledDiv } from "./styled";
 import '../signUp/signup.css'
 
@@ -15,6 +15,8 @@ export default function Signup({ onClose }) {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+
+  
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -70,9 +72,7 @@ export default function Signup({ onClose }) {
                   </button>
                 </form>
               </div>
-              <div className='registred'>
-              Ya estás registrado? <Link to="/login" style={{color: '#ebc28e'}}>Logueate!</Link>
-              </div>
+              
             </li>
           </ul>
         </nav>
