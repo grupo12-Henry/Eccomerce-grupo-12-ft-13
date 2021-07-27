@@ -9,7 +9,7 @@ import { StyledDiv } from "./styled";
 export function validate(input) {
     
     let errors = {}
-
+    //Validaciones si existe formato correcto mail y pass
     if (!input.email) {
         errors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(input.email)) {
@@ -22,7 +22,8 @@ export function validate(input) {
         }
     }
     return errors;
-};
+}; 
+    // !-- Fin validaciones 
 
 export default function Login({ onClose }) {
     const user1=useSelector((state) => state.user)

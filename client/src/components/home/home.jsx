@@ -37,6 +37,8 @@ export default function Home({ location }) {
   // console.log(historial)
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
+  console.log('all', allProducts)
+
   
   const cart = JSON.parse(window.localStorage.getItem('array'))
   console.log(cart)
