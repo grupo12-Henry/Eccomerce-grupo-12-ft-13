@@ -54,7 +54,7 @@ export default function MisPedidos({ match }) {
     console.log('match.params', match.params.id)
     console.log('pedidos', pedidos)
     console.log('payload' , payload)
-    history.push('/home');
+    history.push('/compras');
     // const timeout = setTimeout(() => {
       // }, 3000);
     // history.push('/compras')
