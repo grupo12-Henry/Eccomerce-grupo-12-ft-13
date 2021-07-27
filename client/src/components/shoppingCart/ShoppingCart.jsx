@@ -25,10 +25,8 @@ function ShoppingCart(props) {
   const history = useHistory()
 
 
-
   useEffect(() => {
   }, [localStorage]);
-
 
 
   const addToCart = (el) => {
@@ -47,9 +45,6 @@ useEffect(() => {
     dispatch(ClearCart())
   }
 
-// const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
-  //idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad
-//  console.log('santiuser', user)
 
   let productsArray = cart?.map(el=> {
     return {
@@ -73,16 +68,12 @@ useEffect(() => {
         bill: montoTotal
     } : console.log('user is null');
     if (user){
-
-      console.log(cart)
       history.push('/FormCompras')
       // history.push('/pago')
       // dispatch(orderPost(completo));
       //  clearCart();
     // alert('pedido confirmado')
-  }    else{setIsOpen(true);}
-    
-    console.log('EL MONTO', montoTotal)
+    }else{setIsOpen(true);}
   }
 
   const delFromCart = () => { }

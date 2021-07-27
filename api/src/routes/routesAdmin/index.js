@@ -327,7 +327,7 @@ router.get('/pedidos/all', async (req, res) => { //envia todos los pedidos
 })
 
 router.post('/orderPost', async (req, res) => {
-	const {
+	let {
 		idMP,
 		idClient,
 		ticket,
