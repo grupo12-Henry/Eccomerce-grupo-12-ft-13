@@ -10,7 +10,6 @@ import Loading from '../../../loading/Loading';
 
 export default function AdminComponent() {
 
-  // const [error, setError] = useState('')
   const [productos, setProductos] = useState(false)
   const [usuarios, setUsuarios] = useState(false)
   const [pedidos, setPedidos] = useState(false)

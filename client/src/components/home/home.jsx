@@ -6,7 +6,6 @@ import {
   addProductCart,
   getProducts, 
   ClearCart, 
-  orderPost
 } from "../../actions/index";
 import StyledDiv from "./styled";
 import Nav from "../navbar/navbar";
