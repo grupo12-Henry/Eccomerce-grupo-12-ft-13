@@ -207,8 +207,8 @@ useEffect(() => {
             </div>
           </div>
         </StyledDiv>
-         {/* <SendingEmail /> */}
         <Pages product={product} page={page} />
+         {/* <SendingEmail /> */}
         <Footer />
       </>
     );

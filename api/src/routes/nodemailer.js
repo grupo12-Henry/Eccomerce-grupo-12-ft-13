@@ -18,28 +18,40 @@
                                  
 const nodemailer = require('nodemailer');
 
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: 'grupo12ecommerce@gmail.com',
+//         pass: 'Ecommerce12'
+//     }
+// });
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
+      host: 'smtp.gmail.com',
+      secure: true,// true for 465, false for other ports
+      port: 465,
+      auth: {
         user: 'grupo12ecommerce@gmail.com',
-        pass: 'Ecommerce12'
-    }
-});
-
-async function send(mail, subject, text) {
-    console.log(1, mail,2, subject,3, text)
+        pass: 'Ecommerce12',
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
+ async function send(mail, subject, text) {
     try {
     const email = await transporter.sendMail({
         from: 'grupo12ecommerce@gmail.com', // TODO: email sender
         to: mail, // TODO: email receiver
         subject: subject,
-        text: text
-    }, console.log('email',email),(err) => {
-        if (err) {
-            return console.log('err',err);
-        }
-        return console.log('Email sent!!!');
-   });
+        text: text,
+    }, //(err) => {
+        // if (err) {
+        //     return console.log('err',err);
+        // }
+        // return console.log('Email sent!!!');
+   //}
+   );
+   email;console.log(1,email)
     return email;
 } catch (error) {
     console.log('error',error)
