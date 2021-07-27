@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import { Button, Form, Col, Row, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from '../loading/Loading';
-import { orderPost, Checkout } from '../../actions';
+import { orderPost, Checkout, ClearCart } from '../../actions';
 import { useHistory } from "react-router-dom";
 import './FormCompras.css';
 // export default function FormCompras (){
-    
     
 export default function FormCompras() {
   const dispatch = useDispatch()
@@ -24,50 +23,42 @@ export default function FormCompras() {
           event.preventDefault();
           event.stopPropagation();
         }
-        if(formCompra.direccion=== 'Retiro en local'){
+        if(formCompra.pago === 'efectivo'){
           let aux = 0;
           cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
-          let productsArray = cart?.map(el=> 
+            let productsArray = cart?.map(el=> 
                           el = {
                           subtotal: el.price * el.cantidad,
                           cantidad: el.cantidad,
                           id: el.id
                           })
-          let user =  window.localStorage.getItem("user");
-          let completo = user? {
-          idClient:user.split(',')[0].split(':')[1], 
-          adress:formCompra.direccion,//user.split(',')[5].split(':')[1], 
-          paymentMethod: formCompra.pago, 
-          products: productsArray, 
-          mail: user.split(',')[6].split(':')[1], 
-          bill: aux,
-          idMP: pedidoIdMP
-          } : console.log('user is null');
-          if (completo){
-              dispatch(orderPost(completo))
-              window.localStorage.removeItem('array');
-              window.localStorage.removeItem('pago');
-              dispatch(ClearCart())
-              history.push('')// nvdjksdhbgkjwhesakuvhbsejgvbsjkeghdvkjbsgeuifvbwejkghaejkwgvbuiewbwgfvewjhbgvjkbweif
-          }
-
-        } else{
+            let user =  window.localStorage.getItem("user");
+            let completo = user? {
+                                  idClient:user.split(',')[0].split(':')[1], 
+                                  adress:formCompra.direccion,
+                                  paymentMethod: formCompra.pago, 
+                                  products: productsArray, 
+                                  mail: user.split(',')[6].split(':')[1], 
+                                  bill: aux,
+                                  
+                                } : console.log('user is null');
+             if (completo){
+               console.log(completo)
+                  dispatch(orderPost(completo)) // ver aqui porque no se hace
+                  window.localStorage.removeItem('array');
+                  window.localStorage.removeItem('pago');
+                  dispatch(ClearCart())
+                  history.push('/home') //ver este paso, cuando es en efectivo
+              }
+            } else{
       window.localStorage.setItem('pago',JSON.stringify(formCompra))
       dispatch(Checkout(cart));
       // dispatch(orderPost())
         }
     };
 
-
-
-        
-    
-
-
     return (
        <div className='containerFormCompras'>
-
-
        <Form noValidate validated={validated} onSubmit={handleSubmit}>
          <Row className="mb-3">
            <Form.Group as={Col} md="4" controlId="validationCustom01">

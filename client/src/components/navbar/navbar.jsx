@@ -102,14 +102,14 @@ const Nav = () => {
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item href="/micuenta">Edit Profile</Dropdown.Item>
-                    <Dropdown.Item href="/update-profile">Change Password</Dropdown.Item>
+                    <Dropdown.Item href="/micuenta">Mi cuenta</Dropdown.Item>
+                    <Dropdown.Item href="/update-profile">Cambiar contraseña</Dropdown.Item>
                     {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL||user1&&user1.admin ? (
 												<Dropdown.Item href="/dashboard-admin">
-													Only Admin
+													Dashboard Admin
 												</Dropdown.Item>
 											) : null}
-                    <Dropdown.Item onClick={handleLogOut} href="/home">Log Out</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogOut} href="/home">Cerrar Sesion</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
             ) :
