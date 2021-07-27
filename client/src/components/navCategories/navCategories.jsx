@@ -30,11 +30,11 @@ export default function navCategories() {
               <li class="nav-item">
                 <a class="navbar-brand" href="/whiskys" tabindex="-1" aria-disabled="true">Whiskys</a>
               </li>
-              <li class="nav-item">{user?
-              <Link to={`/micuenta/favoritos/${user.id}`} >
+              <li class="nav-item">
+              {user&&<Link to={`/micuenta/favoritos/${user&&user.id}`} >
                 <a class="navbar-brand" tabindex="-1" aria-disabled="true">Favoritos</a>
 
-                            </Link>:null}
+                            </Link>}
               </li>
             </ul>
           </div>

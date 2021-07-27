@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Nav from "../../../navbar/navbar";
 import Footer from "../../../footer/footer";
 import { getpedidosUser, getPedidoDetail, addProductCart, getProducts, repeatOrder } from "../../../../actions/index";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
@@ -148,13 +148,13 @@ export default function MisPedidos({ match }) {
                     return (
                       <tr>
                         <th scope="row" style={{width: '20%'}}><img style={{width:'25%'}}src={el.image}/></th>
-                        <td>{el.name}</td>
+                        <td><Link to='/reviews'>{el.name}</Link></td>
                       <td>{el.order_detail.cantidad}</td>
                       <td>{el.order_detail.subTotal}</td>
                       <td>{el.order_detail.updatedAt.split('T')[0]}</td>
                       <td>
                           <label for="vehicle1">
-                            <button onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
+                            <button className='btn btn-primary'onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
                           </label>
                         </td>
                         
