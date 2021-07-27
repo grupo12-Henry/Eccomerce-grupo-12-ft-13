@@ -7,14 +7,14 @@ import Caballero from '../../assets/images/caballero.png';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-function ControlledCarousel() {
+function ControlledCarousel(id) {
     const [index, setIndex] = useState(0);
+    
   
     const handleSelect = (selectedIndex, e) => {
       setIndex(selectedIndex);
     };
-  
+   
     return (
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
