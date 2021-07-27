@@ -9,11 +9,12 @@ import Loading from '../loading/Loading';
 import { useHistory } from "react-router-dom";
 import NavModal from '../navModal/navModal';
 import FormCompras from './FormCompras';
+// const history = useHistory()
 
 
 function ShoppingCart(props) {
   const dispatch = useDispatch()
-  const cart = useSelector((state) => state.productCart);
+  let cart = useSelector((state) => state.productCart);
   const product = useSelector((state) => state.products);
   const [loading, setLoading] = useState(false);
 
@@ -25,11 +26,15 @@ function ShoppingCart(props) {
   const history = useHistory()
 
 
-
   useEffect(() => {
   }, [localStorage]);
 
-
+  // useEffect(() => {
+  //   if (cart) {return null}
+  //   if(window.localStorage.getItem('array')){
+  //   cart = JSON.parse(window.localStorage.getItem('array'));
+  //   console.log(cart)}
+  // }, []);
 
   const addToCart = (el) => {
     dispatch(addProductCart(el.id));
@@ -47,9 +52,6 @@ useEffect(() => {
     dispatch(ClearCart())
   }
 
-// const Calculo = ()=>{ cart.map(e=> setMontoTotal(montoTotal+(e.cantidad*e.price)))};
-  //idClient,ticket, date,bill, paymentMethod,adress,mail,shippingDate,state,products,freight,guideNumber,cost,ivaCondition,ivaCost,subtotal,cantidad
-//  console.log('santiuser', user)
 
   let productsArray = cart?.map(el=> {
     return {
@@ -73,21 +75,17 @@ useEffect(() => {
         bill: montoTotal
     } : console.log('user is null');
     if (user){
-
-      console.log(cart)
       history.push('/FormCompras')
       // history.push('/pago')
       // dispatch(orderPost(completo));
       //  clearCart();
     // alert('pedido confirmado')
-  }    else{setIsOpen(true);}
-    
-    console.log('EL MONTO', montoTotal)
+    }else{setIsOpen(true);}
   }
 
   const delFromCart = () => { }
 
-
+console.log('holaaa', cart)
   useEffect(() => {
     setTimeout(() => setLoading(true), 400);
   }, []);

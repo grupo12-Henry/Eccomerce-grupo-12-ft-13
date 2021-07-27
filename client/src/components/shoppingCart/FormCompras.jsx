@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { Button, Form, Col, Row, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from '../loading/Loading';
-import { orderPost, Checkout } from '../../actions';
+import { orderPost, Checkout, ClearCart, sendMail } from '../../actions';
 import { useHistory } from "react-router-dom";
 import './FormCompras.css';
+import Nav from '../navbar/navbar';
+import NavCategories from '../navCategories/navCategories';
 // export default function FormCompras (){
-    
     
 export default function FormCompras() {
   const dispatch = useDispatch()
@@ -16,127 +17,120 @@ export default function FormCompras() {
      const cart = useSelector((state) => state.productCart);
      const user = useSelector((state) => state.user);
     const [validated, setValidated] = useState(false);
-  console.log('vamos emi', cart)
+    const [formCompra, setFormCompra] = useState({direccion:'Retiro en local', pago: 'tarjeta'})
+
     const handleSubmit = (event) => {
       const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-  
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        if(formCompra.pago === 'efectivo'){
+          let aux = 0;
+          cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
+            let productsArray = cart?.map(el=> 
+                          el = {
+                          subtotal: el.price * el.cantidad,
+                          cantidad: el.cantidad,
+                          id: el.id
+                          })
+            let user =  window.localStorage.getItem("user");
+            let completo = user? {
+                                  idClient:user.split(',')[0].split(':')[1], 
+                                  adress:formCompra.direccion,
+                                  paymentMethod: formCompra.pago, 
+                                  products: productsArray, 
+                                  mail: user.split(',')[6].split(':')[1], 
+                                  bill: aux,
+                                  
+                                } : console.log('user is null');
+             if (completo){
+               console.log(completo)
+                  dispatch(orderPost(completo)) 
+                  dispatch(sendMail({mail:completo.mail.slice(1,-1), subject:'compra realizada', text:'Gracias por su compra en VinotecApp, pronto tendra los productos para disfrutarlos con quien guste'})) //req.body.mail, req.body.subject, req.body.text
+                  window.localStorage.removeItem('array');
+                  window.localStorage.removeItem('pago');
+                  dispatch(ClearCart())
+                  history.push('/home') //ver este paso, cuando es en efectivo
+              }
+            } else{
+      window.localStorage.setItem('pago',JSON.stringify(formCompra))
       dispatch(Checkout(cart));
       // dispatch(orderPost())
+        }
     };
-  console.log(user)
 
-    return (
+    return (<>
+      
+          <Nav />
+        <NavCategories />
        <div className='containerFormCompras'>
        <Form noValidate validated={validated} onSubmit={handleSubmit}>
          <Row className="mb-3">
            <Form.Group as={Col} md="4" controlId="validationCustom01">
              <Form.Label>Direccion Envio</Form.Label>
              <Form.Control
+              onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value}); console.log('hola emi')}}
               required
               type="text"
               placeholder="First name"
               defaultValue={user.adress?user.adress:'Ingrese la direccion...'}
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group as={Col} md="4" controlId="validationCustom02">
-            <Form.Label>Direccion Facturacion</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder={user.adress?user.adress:'Ingrese la direccion...'}
-              defaultValue={user.adress?user.adress:'Ingrese la direccion...'}
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group as={Col} md="4" controlId="validationCustom02">
-            <Form.Label>Entregar a:</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Last name"
-              defaultValue={user.name}
-            />
-            <Form.Control.Feedback>Looks good! SE RE INSPIRARON</Form.Control.Feedback>
-          </Form.Group>
-
-          {/* <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-            <Form.Label>Username</Form.Label>
-            <InputGroup hasValidation>
-              <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-              <Form.Control
-                type="text"
-                placeholder="Username"
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-               Por favor elija su nombre de usuario.
-              </Form.Control.Feedback>
-            </InputGroup>
-          </Form.Group> */}
-
-        </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col} md="4" controlId="validationCustom03">
-            <Form.Label>Telefono de contacto</Form.Label>
-            <Form.Control type="text" placeholder="(   ) -" required />
-            <Form.Control.Feedback type="invalid">
-              Please provide a valid city.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom04">
-            <Form.Label>Provincia</Form.Label>
-            <Form.Control type="text" placeholder="Provincia" required />
-            <Form.Control.Feedback type="invalid">
-              Please provide a valid state.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
-            <Form.Label>Codigo Postal</Form.Label>
-            <Form.Control type="text" placeholder="Codigo Postal" required />
-            <Form.Control.Feedback type="invalid">
-              Codigo Postal Invalido.
-            </Form.Control.Feedback>
+            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
           </Form.Group>
 
           <Form.Group as={Col} md="3" controlId="validationCustom05">
             <span>Forma de Pago: </span>
-                    <select class="form-control form-control-sm mt-1 ml-2 form-row" 
+                    <select  onChange={(e)=>setFormCompra({...formCompra, pago:e.target.value})}
+                      class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name="paymentMethod" >
-                        {/* // value={} 
-                        // onChange={handleInputChange}> */}
-                        <option>Tarjeta</option>
-                        <option>Efectivo</option>
+                        <option value='tarjeta'>Tarjeta</option>
+                        <option value='efectivo' >Efectivo</option>
 
                     </select>
           </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
-            <span>Tipo de Factura: </span>
-                    <select class="form-control form-control-sm mt-1 ml-2 form-row" 
-                        name="paymentMethod" >
-                        {/* // value={} 
-                        // onChange={handleInputChange}> */}
-                        <option>Factura A</option>
-                        <option>Factura B</option>
-                        <option>Consumidor Final</option>
 
-                    </select>
-          </Form.Group>
         </Row>
-        <Form.Group className="mb-3">
+        <Row className="mb-3">          
+        
+        </Row>
+        <Form.Group className="mb">
           <Form.Check
             required
             label="Aceptar Terminos y condiciones"
             feedback="Debes aceptar los terminos y condiciones"
           />
         </Form.Group>
+        <table 
+
+class="table table-sm table-bordered mt-05 mr-03 mb-3 "
+data-toggle="table"
+data-pagination="true"
+data-search="true"
+data-url="data.json">
+<thead>
+    <tr>
+    <th scope="col" data-field="image" data-sortable="true">imagen</th>
+    <th scope="col" data-field="name" data-sortable="true" >producto</th>
+    <th scope="col" data-field="price" data-sortable="true" >Precio</th>
+    <th scope="col" data-field="cantidad" data-sortable="true" >cantidad</th>
+    <th scope="col" data-field="subtotal" data-sortable="true" >sub-total</th>
+    </tr>
+</thead>
+<tbody>
+    {
+        cart?.map(prod => (
+            <tr>
+            <td className='container-item'><img className='Imagen' src={prod.image} alt='imagen'/></td>
+            <td>{prod.name}</td>
+            <td>{prod.price}</td>                            
+            <td>{prod.cantidad}</td>
+            <td>{prod.cantidad*prod.price}</td>
+          </tr>
+        ))
+    }
+</tbody>
+</table>
         <Button type="submit">Confirmar Pago</Button>
         <Button onClick={()=>(history.push('/compras'))} class='btn btn-primary ml-4'>Volver Carrito</Button>
 
@@ -144,6 +138,6 @@ export default function FormCompras() {
 
        </div>
     
-    );
+    );</>)
   }
   

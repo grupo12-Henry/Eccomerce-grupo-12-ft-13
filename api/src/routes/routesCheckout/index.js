@@ -25,7 +25,8 @@ router.post('/', (req, res)=>{
             pending: 'http://localhost:3000/home?page=1',
           },
           auto_return: 'approved',
-         payer:{email:"test_user_80899844@testuser.com"}
+         payer:{email:"test_user_80899844@testuser.com"},
+         payment_methods: {excluded_payment_types:[ {"id":"ticket"}, {"id":"atm"}]}
     };
 
     req.body.forEach(x=> preference.items.push({id: x.id, currency_id:'ARS', quantity: x.cantidad, title: x.name||x.title, unit_price:x.price}))

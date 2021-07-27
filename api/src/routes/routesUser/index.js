@@ -7,7 +7,7 @@ const Sequelize = require('sequelize');
 const order = require('../../models/order');
 const Op = Sequelize.Op;
 const { sendMessage } = require('../twilio')
-const { sendMail } = require('../nodemailer')
+const { send } = require('../nodemailer')
 
 //FUNCIONAN OK:
 router.post('/send-sms', async  (req, res) => {
@@ -17,7 +17,9 @@ router.post('/send-sms', async  (req, res) => {
 })
 
 router.post('/send-mail', async  (req, res) => {
-  const response = await sendMail( req.body.mail, req.body.subject, req.body.text)
+  console.log('req.body.sendmail',req.body)
+  const response = await send( req.body.mail, req.body.subject, req.body.text)
+  console.log('response', response)
 	res.send('recibido')
 })
 
