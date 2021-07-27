@@ -41,7 +41,7 @@ export default function Home({ location }) {
   const cart = JSON.parse(window.localStorage.getItem('array'))
   console.log(pago)
 
-   useEffect(() => {
+useEffect(() => {
               let historial = (history.location.search.includes('&status=')?history.location.search.split('&status=')[1].split('&')[0]:null)//[5].split('&')[0])
               let pedidoIdMP= (history.location.search.includes('payment_id=')?history.location.search.split('payment_id=')[1].split('&')[0]:null)
               if (historial && historial === 'approved') {
@@ -49,30 +49,29 @@ export default function Home({ location }) {
                 let aux = 0;
                 cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
                 let productsArray = cart?.map(el=> 
-      el = {
-        subtotal: el.price * el.cantidad,
-        cantidad: el.cantidad,
-        id: el.id
-      
-    })
-    console.log(42, productsArray)
-    let user =  window.localStorage.getItem("user");
-    let completo = user? {
-        idClient:user.split(',')[0].split(':')[1], 
-        adress:pago.direccion,//user.split(',')[5].split(':')[1], 
-        paymentMethod: pago.pago, 
-        products: productsArray, 
-        mail: user.split(',')[6].split(':')[1], 
-        bill: aux,
-        idMP: pedidoIdMP
-    } : console.log('user is null');
-    if (completo){
-    dispatch(orderPost(completo))
-    console.log('hola')
-    window.localStorage.removeItem('array');
-    dispatch(ClearCart())
-  }
-  }
+                                                el = {
+                                                  subtotal: el.price * el.cantidad,
+                                                  cantidad: el.cantidad,
+                                                  id: el.id
+                                                
+                                              })
+                let user =  window.localStorage.getItem("user");
+                let completo = user? {
+                    idClient:user.split(',')[0].split(':')[1], 
+                    adress:pago.direccion,//user.split(',')[5].split(':')[1], 
+                    paymentMethod: pago.pago, 
+                    products: productsArray, 
+                    mail: user.split(',')[6].split(':')[1], 
+                    bill: aux,
+                    idMP: pedidoIdMP
+                } : console.log('user is null');
+                if (completo){
+                      dispatch(orderPost(completo))
+                      console.log('hola')
+                      window.localStorage.removeItem('array');
+                      dispatch(ClearCart())
+                }
+              }
 }, [])
 
 
@@ -84,9 +83,6 @@ export default function Home({ location }) {
     }
   }, [location.search]);
 
-  // let { currentUser } = useAuth();
-  // let usuario = currentUser
-  // console.log(usuario)
 
   useEffect(() => {
     const dbProducts = () => {
@@ -95,6 +91,7 @@ export default function Home({ location }) {
     dbProducts();
   }, [dispatch]);
 
+
   useEffect(() => {
     const dbProducts = () => {
       setAllProducts(product);
@@ -102,10 +99,12 @@ export default function Home({ location }) {
     dbProducts();
   }, [product]);
 
+
   const addToCart = (id) => {
     // showalert('Producto Agregado al carrito')
     dispatch(addProductCart(id));
   };
+
 
   const addingToWishList = (Uid, productId) => {
     // const productFav = wishList?.filter(el=> el)
@@ -114,6 +113,7 @@ export default function Home({ location }) {
      dispatch(addToWishList(Uid, body));
     };
   
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -134,9 +134,8 @@ export default function Home({ location }) {
             <div className="div_container">
               <div class="container d-flex justify-content-center mt-50 mb-50">
                 <div class="row container-product">
-                  {allProducts && allProducts.length > 0
-                    ? allProducts.slice((page - 1) * 9, page * 9).map((el) => {
-                     
+                  {allProducts && allProducts.length > 0?
+                   allProducts.slice((page - 1) * 9, page * 9).map((el) => { 
                         return el.stock > 0 ? (
                           <>
                             <div class="col-md-4 mt-2">
@@ -207,7 +206,6 @@ export default function Home({ location }) {
           </div>
         </StyledDiv>
         <Pages product={product} page={page} />
-        
         <Footer />
       </>
     );

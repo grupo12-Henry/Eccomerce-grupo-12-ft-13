@@ -28,6 +28,9 @@ function ShoppingCart(props) {
   useEffect(() => {
   }, [localStorage]);
 
+  useEffect(() => {
+  }, [cart]);
+
 
   const addToCart = (el) => {
     dispatch(addProductCart(el.id));

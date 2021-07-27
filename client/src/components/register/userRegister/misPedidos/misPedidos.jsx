@@ -51,9 +51,12 @@ export default function MisPedidos({ match }) {
     console.log('pedidoDetail repeat', pedidos)
     dispatch(repeatOrder(payload));
     dispatch(getpedidosUser(match.params.id));
-    const timeout = setTimeout(() => {
-      history.push('/compras');
-    }, 3000);
+    console.log('match.params', match.params.id)
+    console.log('pedidos', pedidos)
+    console.log('payload' , payload)
+    history.push('/compras');
+    // const timeout = setTimeout(() => {
+      // }, 3000);
     // history.push('/compras')
   }
   const insertDetail = (id) => {
