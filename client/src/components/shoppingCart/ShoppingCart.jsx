@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { addProductCart, ClearCart } from '../../actions';
+import { addProductCart, ClearCart, removeProductCart } from '../../actions';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
 import './shoppingCart.css';
@@ -25,34 +25,31 @@ function ShoppingCart(props) {
   const [form, setForm] = useState(false);
   const history = useHistory()
 
+useEffect(() => {
+}, [localStorage]);
 
-  useEffect(() => {
-  }, [localStorage]);
-
-  // useEffect(() => {
+// useEffect(() => {
   //   if (cart) {return null}
   //   if(window.localStorage.getItem('array')){
-  //   cart = JSON.parse(window.localStorage.getItem('array'));
-  //   console.log(cart)}
-  // }, []);
-
-  const addToCart = (el) => {
-    dispatch(addProductCart(el.id));
-    console.log();
-  };
-
-useEffect(() => {
-  let aux = 0;
-  cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
-  setMontoTotal(aux)
-}, [cart,montoTotal , product])
-
-  const clearCart = () => {
-    window.localStorage.removeItem('array')
-    dispatch(ClearCart())
-  }
-
-
+    //   cart = JSON.parse(window.localStorage.getItem('array'));
+    //   console.log(cart)}
+    // }, []);
+    
+    const addToCart = (el) => {
+      dispatch(addProductCart(el.id));
+    };
+    
+    useEffect(() => {
+      let aux = 0;
+      cart?.forEach(e=>e.stock>0? aux = aux + (e.price * (e.cantidad>e.stock?e.stock:e.cantidad)):console.log('sin stock'))
+      setMontoTotal(aux)
+    }, [cart,montoTotal , product])
+    
+    const clearCart = () => {
+      window.localStorage.removeItem('array')
+      dispatch(ClearCart())
+    }
+    
   let productsArray = cart?.map(el=> {
     return {
       subtotal: el.price * el.cantidad,
@@ -63,9 +60,8 @@ useEffect(() => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-
   const order=()=>{
-    if(!cart.length) return history.push('/home');
+    if(!cart||!cart.length) return history.push('/home');
     let user =  window.localStorage.getItem("user");
     let completo = user? {
         idClient:user?.split(',')[0].split(':')[1], 
@@ -86,7 +82,6 @@ useEffect(() => {
 
   const delFromCart = () => { }
 
-console.log('holaaa', cart)
   useEffect(() => {
     setTimeout(() => setLoading(true), 400);
   }, []);
@@ -100,11 +95,12 @@ console.log('holaaa', cart)
         {isOpen === true ?   <NavModal open={isOpen} onClose={() => setIsOpen(false)}/>:null}
         <div>
           <h3>Tu Carrito de compras</h3>
+          {/* <div class="mb-2">Tenes {cart?.length||0} productos en tu carrito ✔{" "}</div> */}
           <div class="mb-2">Tenes {cart?.length} productos en tu carrito ✔{" "}</div>
           <div className='container-articulos col-xl-11 row '>
             <hr />
             <article class='box'>
-              {cart?.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 
+              {cart?.length ? cart.map((item, index) => item !== undefined && item !== "undefined"&& item.stock>1 ? 
                 <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart}  onChange={() => console.log('funciona')}/>
                 : console.log(item)) : null}
             </article>
