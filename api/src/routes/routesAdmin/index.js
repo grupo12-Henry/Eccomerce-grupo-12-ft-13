@@ -17,11 +17,11 @@ const {
 const router = Router();
 
 
-router.get('/userMail', async (req, res)=>{
-    const mail = req.query.mail;
-    const user = await Client.findOne({where: {mail}})
-    user&&res.send(user)||res.sendStatus(400)
-})
+// router.get('/userMail', async (req, res)=>{
+//     const mail = req.query.mail;
+//     const user = await Client.findOne({where: {mail}})
+//     user&&res.send(user)||res.sendStatus(400)
+// })
 
 
 router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
@@ -125,7 +125,7 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 router.get('/productos/all', async (req, res) => { //devuelve todos los productos
 	const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0
 
-	try {
+	try{
 		const product = await Product.findAndCountAll({
 			limit: 8,
 			offset: offset,
@@ -138,7 +138,7 @@ router.get('/productos/all', async (req, res) => { //devuelve todos los producto
 })
 router.get('/productos/order', async (req, res) => {
 	//ordena (ascendente o descendente) los productos segun el campo que le envies 
-	const offset = req.query.offset ? parseInt(req.query.offset, 10) : 0 //default:0 , primeros 10
+	
 	const order = req.query.order ? req.query.order.toUpperCase() : 'ASC' //default:asc
 	const tipo = req.query.type ? req.query.type : 'name' //default:names
 	const type = req.query.name ? req.query.name : 'Vinos' //default:Vinos
@@ -148,14 +148,34 @@ router.get('/productos/order', async (req, res) => {
 			where: {
 				type: type
 			},
-			offset: offset,
+			
 			order: [
 				[tipo, order]
 			],
-			limit: 10,
+			
 
 		})
 		res.send(productos).status(200)
+	} catch (error) {
+		res.send(error).status(404)
+	}
+
+})
+router.get('/productos/subcategories', async (req, res) => { //envia todos los nombres de los productos
+	try {
+		const productos = await Product.findAll({
+			attributes: {
+				exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'stock','id','name','type']
+			}
+		})
+		let arrays=productos.map(product=>product.subcategories)
+		 arrays=arrays.join().split(',')
+	
+		let result = arrays.filter((item,index)=>{
+			return arrays.indexOf(item) === index;
+		  })
+		  console.log(result.length)
+		res.send(result)
 	} catch (error) {
 		res.send(error).status(404)
 	}
@@ -348,10 +368,9 @@ router.post('/orderPost', async (req, res) => {
 		subtotal,
 		cantidad
 	} = req.body;
-	if (!idMP) idMP = 62;
 	try {
-		const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
-		if (encontrarPedido) return res.send('ya existe un pedido con ese id');
+		if(idMP){const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
+		if (encontrarPedido) return res.send('ya existe un pedido con ese id');}
 		const user = await Client.findByPk(idClient)
 		const newOrder = await Order.create({
 			ticket,
