@@ -143,33 +143,33 @@ const rootReducer = (state = initialState, action) => {
         }
       }
 
-      if (!a.length) {
-        !action.payload.cantidad ?
-          nuevoItem = {
-            ...nuevoItem,
-            cantidad: 1
-          } : nuevoItem = {
-            ...nuevoItem, cantidad: action.payload.cantidad
-          }
-      }
-      let array = JSON.parse(window.localStorage.getItem("array"));
-      window.localStorage.setItem("array", JSON.stringify(array = state.productCart.concat(nuevoItem)))
-      return {
-        ...state,
-        productCart: state.productCart.concat(nuevoItem)
-      };
+  if (!a.length) {
+    !action.payload.cantidad?
+    nuevoItem = {
+      ...nuevoItem,
+      cantidad: 1
+    }: nuevoItem = {
+      ... nuevoItem, cantidad:action.payload.cantidad
+    }
+  }
+  let array = JSON.parse(window.localStorage.getItem("array"));
+  window.localStorage.setItem("array", JSON.stringify(array = state.productCart.concat(nuevoItem)))
+  return {
+    ...state,
+    productCart: state.productCart.concat(nuevoItem)
+  };
 
-    //ACTUALIZAR CANTIDAD DEL CARRITO EN UN PROD EN PARTICULAR 
-    case UPDATE_FROM_CART:
-      console.log(action.payload)
-      state = {
-        ...state,
-        productCart: state.productCart
-      }
-      return {
-        ...state,
-        productCart: state.productCart.map(e => e.id === action.payload.id ? e = { ...e, cantidad: (parseInt(action.payload.cantidad)) } : e)
-      }
+      //ACTUALIZAR CANTIDAD DEL CARRITO EN UN PROD EN PARTICULAR 
+      case UPDATE_FROM_CART:
+        // console.log(action.payload)
+        state = {
+          ...state,
+          productCart: state.productCart
+        }
+        return{
+          ...state,
+          productCart: state.productCart.map(e => e.id === action.payload.id? e = {...e, cantidad :(parseInt(action.payload.cantidad))} :e)
+        } 
     case REMOVE_ALL_FROM_CART:
       return {
         ...state,
@@ -177,7 +177,8 @@ const rootReducer = (state = initialState, action) => {
       }
     case REPEAT_ORDER:
       state.productCart = []
-      action.payload.forEach(e => {
+      console.log('quiero 2', action.payload)
+    action.payload?.forEach(e=>{
         // let newItem = {id:e.id, image: e.image, name:e.name, cantidad: e.order_detail.cantidad, price: e.price};
         let a = state.products.find(el => el.id === e.id);
         a = { ...a, cantidad: e.order_detail.cantidad }
@@ -188,24 +189,22 @@ const rootReducer = (state = initialState, action) => {
       window.localStorage.setItem('array', JSON.stringify(state.productCart))
       console.log('productCart', state.productCart)
       //  let productosOrder = action.payload.forEach(e=>state.products.find(el=> el.id===e.id)) //e.id e.order_detail.cantidad)
-      return {
-        state
-      }
-
-    /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
-    case CLEAR_CART:
-      return {
-        ...state,
-        productCart: []
-      };
-    // case GET_LOCAL_STORAGE: {
-    //   const array = JSON.parse(window.localStorage.getItem("santi"));
-    //   return {
-    //     ...state,
-    //     productCart: array ? state.productCart.slice().concat([array]) : state.productCart
-    //   }
-    // }
-
+      return state
+      
+      /*    case 'RemoveTodo': return state.filter(t => t.id != action.payload)*/ // despues necesito unos cerebritos por aca arriba|^|
+      case CLEAR_CART:
+        return {
+          ...state,
+          productCart: []
+        };
+      // case GET_LOCAL_STORAGE: {
+      //   const array = JSON.parse(window.localStorage.getItem("santi"));
+      //   return {
+      //     ...state,
+      //     productCart: array ? state.productCart.slice().concat([array]) : state.productCart
+      //   }
+      // }
+      
     case DELETE_LOCAL_STORAGE: {
       const array = JSON.parse(window.localStorage.getItem('array'));
       const arrayfiltrado = array && array.filter(element => element.id !== action.payload);
