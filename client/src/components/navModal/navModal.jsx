@@ -23,7 +23,8 @@ const MODAL_STYLES = {
   textAlign: 'center', 
   display: 'flex',
   justifyContent: 'center',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  cursor: 'pointer'
 };
 
 const OVERLAY_STYLES = {
@@ -35,6 +36,7 @@ const OVERLAY_STYLES = {
   borderRadius: '0.5rem',
   backgroundColor: "rgba(0, 0, 0, .7)",
   zIndex: 1000,
+  cursor: 'pointer'
 };
 
 export default function NavModal({ open, children, onClose }) {

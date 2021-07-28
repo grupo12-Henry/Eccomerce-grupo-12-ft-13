@@ -160,7 +160,7 @@ case ADD_TO_CART:
 
       //ACTUALIZAR CANTIDAD DEL CARRITO EN UN PROD EN PARTICULAR 
       case UPDATE_FROM_CART:
-        console.log(action.payload)
+        // console.log(action.payload)
         state = {
           ...state,
           productCart: state.productCart

@@ -34,18 +34,45 @@ export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const GETFAVORITES = 'GETFAVORITES';
 export const CHECKOUT = 'CHECKOUT'
+export const POST_REVIEW = 'POST_REVIEW'
+
 
 export function getUser(mail) {
   return (dispatch) => {
-    axios.get('http://localhost:3001/admin/userMail?mail=' + mail)
+    try {
+      axios.get('http://localhost:3001/admin/userMail?mail=' + mail)
       .then(response => 
       
         dispatch({
         type: POST_USER,
         payload: response.data
       }))
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
 }
+
+export function postReview(id,review) {
+  return (dispatch) => {
+    try {
+    console.log('LA',review)
+    axios.post('http://localhost:3001/reviews/'+id, review)
+    .then(response => 
+      dispatch({
+      type: POST_REVIEW,
+      payload: response.data,
+      
+    }))
+  }
+    catch (error) {
+    console.log(error)
+  }
+}
+}
+
+
 // export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
 // export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY'
 
@@ -126,6 +153,7 @@ export function getDetail(id) {
       })
   }
 };
+
 
 export function getLocalStorage(payload) {
   return {

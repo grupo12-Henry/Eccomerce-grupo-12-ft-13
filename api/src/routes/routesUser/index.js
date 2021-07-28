@@ -102,11 +102,9 @@ router.post('/clientesPost', async (req, res) => {
     token
 	} = req.body;
  try {
-  //  const response = await sendMail( mail, 'Bienvenido a Vinotecapp 🍷', 'Gracias por registrarte. Acompaña tus momentoscon los mejores sabaores.')
-    const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
-      defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
+   const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
+    defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })
-  
   return res.send(newClient)
   } catch(error){
    res.send(error).status(404);
@@ -254,8 +252,11 @@ router.put('/users/:id', async (req, res) => {
 //postea reviews de un producto. Id es el id de producto. 
 router.post('/reviews/:id', async (req, res)=>{
   const id =parseInt( req.params.id,10);
-  const value= parseInt(req.body.value,10)
-  const { description } = req.body;
+  console.log('ELID',id)
+  const value= parseInt( req.body.value,10)
+  console.log('ELVALUE',value)
+  const description = req.body.description;
+  console.log('description',description)
   try {
     const producto = await Product.findByPk(id)
     const newReview = await Review.create({

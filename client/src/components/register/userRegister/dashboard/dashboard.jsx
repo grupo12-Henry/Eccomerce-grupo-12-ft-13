@@ -80,11 +80,7 @@ export default function Dashboard() {
                         <h2>Modificar un usuario</h2>
                         <br />
                         <div >
-                          {/*   <input class="form-control mt-5 ml-5"
-                        required autoComplete='off' 
-                        name='id' 
-                        value={User.id}>
-                    </input> */}
+                         
                           <input class="form-control mt-2 ml-5"
                             placeholder={User.name || 'Name'}
                             name='name'
