@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido, getProducts, deleteProdFromOrder } from '../../../../actions';
+import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido, getProducts, editManyProducts } from '../../../../actions';
 
 
 function GestionPedidos() {
@@ -9,7 +9,7 @@ function GestionPedidos() {
     //Estado de Redux. 
     const pedidos = useSelector(state => state.pedidos);
     const pedidoDetail = useSelector(state => state.pedidoDetail);
-    const AllProducts = useSelector(state => state.products);
+    // const AllProducts = useSelector(state => state.products);
     const dispatch = useDispatch();
 
    
@@ -35,18 +35,25 @@ function GestionPedidos() {
     };  
 
     //MODIFICA el pedido.
-    const handlePedidosSubmit = (e) => {
+    const handlePedidosSubmit = async (e) => {
         // console.log(pedidoDetail.id, modifyPedido)
+        e.preventDefault();
+        // if (modifyPedido.state==='cancelado'){
+        //    const array = pedidoDetail?.products?.map (el => {
+        //       return {id:el.id,modify:{stock:el.stock+el.order_detail.cantidad}}  
+        //     })   
+        //    dispatch(editManyProducts(array))
+        // }
         if(window.confirm('¿Esta seguro de que desea modificar este pedido?')) {
             dispatch(putPedido(pedidoDetail.id, modifyPedido));
         } 
     };   
 
     //Borra UN producto del pedido seleccionado.
-    const handleDeleteProduct = (e) => {
-        e.preventDefault();
-        dispatch(deleteProdFromOrder( pedidoDetail.id, e.target.value))
-    }
+    // const handleDeleteProduct = (e) => {
+    //     e.preventDefault();
+    //     dispatch(deleteProdFromOrder( pedidoDetail.id, e.target.value))
+    // }
 
     //Estado local de los campos que MODIFICAN un pedido. 
     const [modifyPedido, setModifyPedido] = useState({
@@ -66,42 +73,43 @@ function GestionPedidos() {
         
     });
 
-    let [modifyCantidad_Detail, setModifyCantidad_Detail] = useState({
-        products:pedidoDetail&&pedidoDetail?.products?.map(el => {
-            return {
-                [el.name]:el.cantidad
-            }
-        })
-    });
+    // let [modifyCantidad_Detail, setModifyCantidad_Detail] = useState({
+    //     products:pedidoDetail&&pedidoDetail?.products?.map(el => {
+    //         return {
+    //             [el.name]:el.cantidad
+    //         }
+    //     })
+    // });
     
 
-    const handleCantidadChange = (e) => {
-        setModifyCantidad_Detail({
-            ...modifyCantidad_Detail,
-            [e.target.id]:e.target.value,
-          });
-    }
+    // const handleCantidadChange = (e) => {
+    //     setModifyCantidad_Detail({
+    //         ...modifyCantidad_Detail,
+    //         [e.target.id]:e.target.value,
+    //       });
+    // }
 
-    const handleCantidadSubmit = (a) => {
-        console.log(a)
-    }
+    // const handleCantidadSubmit = (a) => {
+    //     console.log(a)
+    // }
   
     useEffect(() => { 
-            console.log(modifyCantidad_Detail);
-        }, [modifyCantidad_Detail]);
+        console.log(pedidoDetail);
+    }, [pedidoDetail]);
 
 
     //Es como un handlechange de modifyPedido. Maneja el estado local. 
     const handleInputChange = (e) => {
+        
         setModifyPedido({
           ...modifyPedido,
           [e.target.name]:e.target.value,
         });
     }
     //Trae la información del detalle del pedido seleccionado al estado de Redux "pedidoDetail"
-    const insertPedidoInfo = (e) => {
-        dispatch(getPedidoDetail(e.target.value));
-    }
+    // const insertPedidoInfo = (e) => {
+    //     dispatch(getPedidoDetail(e.target.value));
+    // }
 
     return (
     <div class="container ml-5" className='jah287'>
@@ -136,7 +144,7 @@ function GestionPedidos() {
                     <th scope="col" data-field="state" data-sortable="true" >Estado del envio</th>
                     <th scope="col" data-field="shippingDate" data-sortable="true" >Fecha de envio</th>
                     <th scope="col" data-field="details" data-sortable="true" >Detalle</th>
-                    <th scope="col" data-field="modify" data-sortable="true" >Modificar</th>
+                    {/* <th scope="col" data-field="modify" data-sortable="true" >Modificar</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -156,11 +164,11 @@ function GestionPedidos() {
                                     Ver detalle
                                 </button>
                             </td>
-                            <td >
+                            {/* <td >
                                 <button class="btn btn-sm btn-info" value={pedido.id} onClick={(e) => { e.preventDefault(); insertPedidoInfo(e)}} >
                                     Modificar
                                 </button>
-                            </td>
+                            </td> */}
                             </tr>
                         )) 
                     }
@@ -187,6 +195,11 @@ function GestionPedidos() {
                         value={pedidoDetail.clientId}></input>}
                 </li>
 
+                <li class='form-inline'><span>Email cliente: </span>{pedidoDetail&&
+                (<input class="form-control form-control-sm mt-1 ml-2 form-row"                        
+                        name='name' 
+                        value={pedidoDetail.mail}></input>)}
+                </li>
 
                 <li class='form-inline'><span>Fecha de compra: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
@@ -194,20 +207,17 @@ function GestionPedidos() {
                         value={pedidoDetail.date}></input>}
                 </li>
 
-
                 <li class='form-inline'><span>Total: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                         name='name' 
                         value={pedidoDetail.bill}></input>}
                 </li>
 
-
                 <li class='form-inline'><span>Forma de Pago: </span>{pedidoDetail&&(
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                         name='name' 
                         value={pedidoDetail.paymentMethod}></input>)}
                 </li>
-
 
                 <li class='form-inline'><span>Ticket: </span>{pedidoDetail&&
                 (<input class="form-control form-control-sm mt-1 ml-2 form-row"                        
@@ -235,12 +245,11 @@ function GestionPedidos() {
                         <span class="mt-2 ml-3"> SubTotal: </span>
                         <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                             name='name' 
-                            value={el.order_detail.subTotal}>
+                            value={el.price*el.order_detail.cantidad}>
                         </input>
                         
                     </li>    
                 ))}
-
 
                 <li class='form-inline'><span>Dirección de envio: </span>{pedidoDetail&&
                 (<input class="form-control form-control-sm mt-1 ml-2 form-row"                        
@@ -248,20 +257,11 @@ function GestionPedidos() {
                         value={pedidoDetail.adress}></input>)}
                 </li>
 
-
-                <li class='form-inline'><span>Cod.Postal: </span>{pedidoDetail&&
-                (<input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                        name='name' 
-                        value={pedidoDetail.mail}></input>)}
-                </li>
-
-
                 <li class='form-inline'><span>Fecha de envio: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                         name='name' 
                         value={pedidoDetail.shippingDate}></input>}
                 </li>
-
 
                 <li class='form-inline'><span>Estado del envio: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
@@ -269,13 +269,11 @@ function GestionPedidos() {
                         value={pedidoDetail.state}></input>}
                 </li>
 
-
                 <li class='form-inline'><span>Costo de envio: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                         name='name' 
                         value={pedidoDetail.cost}></input>}
                 </li>
-
 
                 <li class='form-inline'><span>N° de guia: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
@@ -283,20 +281,17 @@ function GestionPedidos() {
                         value={pedidoDetail.guideNumber}></input>}
                 </li>
 
-
                 <li class='form-inline'><span>Transportista: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                         name='name' 
                         value={pedidoDetail.freight}></input>}
                 </li>
 
-
                 <li class='form-inline'><span>IVA: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                         name='name' 
                         value={pedidoDetail.ivaCost}></input>}
                 </li>
-
 
                 <li class='form-inline'><span>Situación impositiva: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-inline"                        
@@ -324,10 +319,19 @@ function GestionPedidos() {
                     <span>Cliente Numero: </span>
                     <input class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name='clientId' 
-                        type='number' 
+                        type='text' 
                         value={pedidoDetail?.clientId} />
                 </li>
                 <li class='form-inline'>
+                    <span>Email cliente: </span>
+                    <input class="form-control form-control-sm mt-1 ml-2 form-row" 
+                        name='mail' 
+                        type='text' 
+                        placeholder={pedidoDetail?.mail} 
+                        value={modifyPedido.mail} 
+                        onChange={handleInputChange}/>
+                </li>
+                 <li class='form-inline'>
                     <span>Fecha de compra: </span>
                     <input class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name='date' 
@@ -378,22 +382,19 @@ function GestionPedidos() {
                         <input class="form-control form-control-sm mt-1 ml-2 form-row"                         
                             id={`thisSelect${el.id}`}  
                             name={el.id} 
-                            value={modifyCantidad_Detail.products}
-                            type='number' 
+                            type='text' 
                             min={1} 
                             max={10}
-                            placeholder={el.order_detail.cantidad}
-                            onChange={(e)=>handleCantidadChange(e)} >
+                            value={el.order_detail.cantidad}>
                         </input>
 
                         <span class="mt-2 ml-3"> SubTotal: </span>
                         <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                             name={el.name} 
-                            value={el.price*el.order_detail.cantidad}
-                            placeholder={el.order_detail.subTotal}>
+                            value={el.price*el.order_detail.cantidad}>
                         </input>
 
-                        <button class="form-control form-control-sm mt-1 ml-3 form-row" 
+                        {/* <button class="form-control form-control-sm mt-1 ml-3 form-row" 
                             value={modifyCantidad_Detail.value}                  
                             onClick={(e) => {e.preventDefault(); handleCantidadSubmit(document.getElementById(`thisSelect${el.id}`).value)}} >
                                 Modificar Cantidad
@@ -403,35 +404,10 @@ function GestionPedidos() {
                             value={el.id}                     
                             onClick={(e) => handleDeleteProduct(e)} >
                                 Quitar
-                        </button>
+                        </button> */}
                         
                     </li>    
                 ))}
-
-    {/* onClick={(e) => { e.preventDefault(); filterTemperament(document.getElementById('tempSelect').value) }} */}
-
-                {/* { pedidoDetail.products.map (el => (     
-                <li class='form-inline'>
-                    <label>Producto: </label>
-                    <input                       
-                        name='name' 
-                        value={el.name}>
-                        placeholder={pedidoDetail.ticket }
-                    </input> 
-                        <label class="mt-2 ml-5">Cantidad: </label>
-                        <input class="form-control mt-2 ml-5 form-row"  
-                        type='number'                      
-                        name='name' 
-                        value={el.order_detail.cantidad}></input>
-                        <label class="mt-2 ml-5">SubTotal: </label>
-                        <input class="form-control mt-2 ml-5 form-row"                        
-                        type='number'    
-                        name='name' 
-                        value={el.order_detail.subTotal}></input>
-                </li>
-                      
-                       
-                ))} */}
 
                 <li class='form-inline'>
                     <span>Dirección de envio: </span>
@@ -440,15 +416,6 @@ function GestionPedidos() {
                         type='text' 
                         placeholder={pedidoDetail?.adress} 
                         value={modifyPedido.adress} 
-                        onChange={handleInputChange}/>
-                </li>
-                <li class='form-inline'>
-                    <span>Cód. Postal: </span>
-                    <input class="form-control form-control-sm mt-1 ml-2 form-row" 
-                        name='mail' 
-                        type='text' 
-                        placeholder={pedidoDetail?.mail} 
-                        value={modifyPedido.mail} 
                         onChange={handleInputChange}/>
                 </li>
                 <li class='form-inline'>

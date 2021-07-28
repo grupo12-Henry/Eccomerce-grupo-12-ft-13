@@ -396,7 +396,30 @@ export function Checkout(payload) {
 }
 // export async function editProduct(id, payload) {
 //   await axios.put('http://localhost:3001/admin/productos/' + id, payload)
+
+export async function editManyProducts(array) {
+ array.map(async producto => { 
+   try{
+     console.log('entra aca')
+     await axios.put("http://localhost:3001/admin/productos/" + producto.id, producto.modify)
+   } catch (err) {
+     console.log(err)
+   }
+      // .then((response) => {
+      //   //if (response) alert('El producto se modificó correctamente');
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // })
+  })
+  Promise.all(array)
+  .then(function() { alert('Los productos se modificaron correctamente') })
+  
+}
+
+
 export async function editProduct(id, payload) {
+  console.log('entra aca')
   await axios.put("http://localhost:3001/admin/productos/" + id, payload)
     .then((response) => {
       if (response) alert('El producto se modificó correctamente');
@@ -495,6 +518,7 @@ export function putPedido(id, payload) {
   return (dispatch) => {
     axios.put(`http://localhost:3001/admin/pedidos/id/${id}`, payload)
       .then(response => {
+        if(response) alert('el pedido se modificó correctamente');
         dispatch({
           type: PUTPEDIDO,
           payload: response.data

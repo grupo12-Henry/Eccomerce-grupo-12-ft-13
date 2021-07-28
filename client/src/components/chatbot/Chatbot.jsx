@@ -20,23 +20,57 @@ function Roboto() {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'end', position: 'fixed', zIndex: '1', marginLeft: '81%'}} >
-      <div style={{ maxWidth: "330px"}}>
+    <div> 
+      {robot === true? 
+       <div style={{ display: 'flex', justifyContent: 'end', position: 'fixed', zIndex: '1', marginLeft: '81%'}} >
+         <div style={{ maxWidth: "330px"}}>
+              <button class='btn btn-primary' onClick={chatbotHandler} style={{ display: 'flex', justifyContent: 'center', alignItems:'center', position: 'static', zIndex: '2', color:"white", borderRadius:'10px', marginLeft: '0%'}}>
+                <FontAwesomeIcon  icon={faRobot}/>
+              </button>
+                <Chatbot config={config} actionProvider={ActionProvider} messageParser={MessageParser} />     
+         </div>
+       </div>
+       :
+      <div style={{ display: 'flex', justifyContent: 'end', position: 'fixed', zIndex: '1', bottom: '100px', right:'2%', bottom:'2%'}} >
 
-        <button class='btn btn-primary' onClick={chatbotHandler} style={{ display: 'flex', justifyContent: 'center', alignItems:'center', position: 'static', zIndex: '2', color:"white", borderRadius:'10px', marginLeft: '0%'}}>
-          <FontAwesomeIcon  icon={faRobot}/>
-        </button>
+          <div  style={{ maxWidth: "330px"}}>
 
-        { robot === true ?
-            <Chatbot
-                config={config}
-                actionProvider={ActionProvider}
-                messageParser={MessageParser}
-              /> : null }
+            <button class='btn btn-primary' onClick={chatbotHandler} style={{ display: 'flex', justifyContent: 'center', alignItems:'center', position: 'static', zIndex: '2', color:"white", borderRadius:'10px', marginLeft: '0%', width:'5rem', height:'3rem'}}>
+              <FontAwesomeIcon  icon={faRobot} style={{width:'3rem', height:'2rem'}}/>
+            </button>  
+          </div>  
+                  
+          {/* <div className="hide"> 
+            Soy Nito ¿En qué puedo ayudarte?
+          </div> */}
         
+
       </div>
-    </div>
-  );
+       
+      }
+
+      </div>   
+   );
 }
+
+//   return (
+//     <div style={{ display: 'flex', justifyContent: 'end', position: 'fixed', zIndex: '1', marginLeft: '81%'}} >
+//       <div style={{ maxWidth: "330px"}}>
+
+//         <button class='btn btn-primary' onClick={chatbotHandler} style={{ display: 'flex', justifyContent: 'center', alignItems:'center', position: 'static', zIndex: '2', color:"white", borderRadius:'10px', marginLeft: '0%'}}>
+//           <FontAwesomeIcon  icon={faRobot}/>
+//         </button>
+
+//         { robot === true ?
+//             <Chatbot
+//                 config={config}
+//                 actionProvider={ActionProvider}
+//                 messageParser={MessageParser}
+//               /> : null }
+        
+//       </div>
+//     </div>
+//   );
+// }
 
 export default Roboto;
