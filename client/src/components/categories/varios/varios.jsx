@@ -60,6 +60,8 @@ function Varios() {
         setTimeout(() => setLoading(true), 400);
     }, []);
 
+    const style = {width: "16rem" }
+
     if (!loading) {
         return <Loading />;
     } else {
@@ -83,11 +85,11 @@ function Varios() {
                                     <div className=''>
                                         <button id='botonazo' className='btn btn-dark mr-2 mt-1' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
                                     </div>
-                                    <div class="row">
+                                    <div class="row col justify-content-evenly">
                                         {showProducts &&
                                             showProducts.map(el => {
                                                 return el.stock > 0 ? <>
-                                                    <div class="col-md-4 mt-2">
+                                                    <div class="justify-content-around align-items-center mb-3" style={style}>
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <div class="card-img-actions">
@@ -113,7 +115,7 @@ function Varios() {
                                                                     </h6>{" "}
                                                                 </div>
                                                                 <h3 class="mb-0 font-weight-semibold">${el.price}</h3>
-                                                                <FontAwesomeIcon
+                                                                {user&&<FontAwesomeIcon
                                                                     className="highlight"
                                                                     icon={faHeart}
                                                                     type="button"
@@ -121,7 +123,7 @@ function Varios() {
                                                                     onClick={(e) =>
                                                                         addingToWishList(user.id, el.id)
                                                                     }
-                                                                />
+                                                                />}
                                                                 <ProductRating product={el} key={el.id} />
                                                                 <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                                                     <i class="fa fa-cart-plus mr-2">Agregar</i>

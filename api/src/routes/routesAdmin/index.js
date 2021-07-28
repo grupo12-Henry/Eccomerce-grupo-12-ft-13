@@ -17,11 +17,11 @@ const {
 const router = Router();
 
 
-router.get('/userMail', async (req, res)=>{
-    const mail = req.query.mail;
-    const user = await Client.findOne({where: {mail}})
-    user&&res.send(user)||res.sendStatus(400)
-})
+// router.get('/userMail', async (req, res)=>{
+//     const mail = req.query.mail;
+//     const user = await Client.findOne({where: {mail}})
+//     user&&res.send(user)||res.sendStatus(400)
+// })
 
 
 router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado
@@ -368,10 +368,9 @@ router.post('/orderPost', async (req, res) => {
 		subtotal,
 		cantidad
 	} = req.body;
-	if (!idMP) idMP = 62;
 	try {
-		const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
-		if (encontrarPedido) return res.send('ya existe un pedido con ese id');
+		if(idMP){const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
+		if (encontrarPedido) return res.send('ya existe un pedido con ese id');}
 		const user = await Client.findByPk(idClient)
 		const newOrder = await Order.create({
 			ticket,

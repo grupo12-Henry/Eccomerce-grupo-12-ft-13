@@ -3,6 +3,7 @@ import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido } from '../../../../actions';
 
+
 function GestionPedidos() {
 
     //Estado de Redux. 
@@ -109,7 +110,7 @@ function GestionPedidos() {
                 </thead>
                 <tbody>
                     {
-                        pedidos&& pedidos.map(pedido => (
+                        Array.isArray(pedidos)&& pedidos.map(pedido => (
                             <tr>
                             <th scope="row">{pedido.id}</th>
                             <td>{pedido.date}</td>
@@ -455,6 +456,9 @@ function GestionPedidos() {
                 </button>
             </form>
         </div>
+        </div>
+        <div>
+         
         </div>
     </div>
     )

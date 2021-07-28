@@ -9,7 +9,7 @@ import { StyledDiv } from "./styled";
 export function validate(input) {
     
     let errors = {}
-
+    //Validaciones si existe formato correcto mail y pass
     if (!input.email) {
         errors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(input.email)) {
@@ -22,7 +22,8 @@ export function validate(input) {
         }
     }
     return errors;
-};
+}; 
+    // !-- Fin validaciones 
 
 export default function Login({ onClose }) {
     const user1=useSelector((state) => state.user)
@@ -67,6 +68,7 @@ useEffect(async () => {
         dispatch(getUser(emailRef.current.value))
         e.preventDefault()
         try {
+            console.log('primero entre')
             setError('')
             setLoading(true)
 
@@ -81,6 +83,7 @@ useEffect(async () => {
                 }
         }
         catch {
+            console.log('entro directo')
             setError('Failed to Log In')
         }
         setLoading(false)
@@ -92,7 +95,7 @@ useEffect(async () => {
         <StyledDiv>
         <div className='container' >
             <form method='post' onSubmit={HandleSubmit}>
-                <p>{error}</p>
+                {<p>{error}</p>}
                 <div className='email'>
                     <label className='mr-4'>Correo Electronico: </label>
                     <input type='text' name='email' ref={emailRef} value={input.email} onChange={handleInputChange} required />

@@ -6,8 +6,21 @@ const { v4: uuidv4 } = require('uuid');
 const Sequelize = require('sequelize');
 const order = require('../../models/order');
 const Op = Sequelize.Op;
+const { sendMessage } = require('../twilio')
+const { send } = require('../nodemailer')
 
 //FUNCIONAN OK:
+router.post('/send-sms', async  (req, res) => {
+  const response = await sendMessage( req.body.phone, req.body.testMessage)
+  console.log(response.sid)
+	res.send('recibido')
+})
+
+router.post('/send-mail', async  (req, res) => {
+  const response = await send( req.body.mail, req.body.subject, req.body.text)
+	res.send('recibido')
+})
+
 
 //trae todos los productos-->LISTO
 router.delete('/favoritos/:id',async(req,res) => {//elimina una relacion de producto-usuario
@@ -118,8 +131,8 @@ router.post('/clientesPost', async (req, res) => {
     token
 	} = req.body;
  try {
-    const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
-      defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
+   const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
+    defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })
   return res.send(newClient)
   } catch(error){
@@ -147,6 +160,7 @@ router.post('/clientesPost', async (req, res) => {
        products.forEach(e=>{
          newOrder.setProducts(e.id, {through:{cantidad: e.cantidad, subtotal: e.subtotal}}); 
          })
+         
        return res.send(newOrder)
        } catch(error){
         res.send(error).status(404);
@@ -267,8 +281,11 @@ router.put('/users/:id', async (req, res) => {
 //postea reviews de un producto. Id es el id de producto. 
 router.post('/reviews/:id', async (req, res)=>{
   const id =parseInt( req.params.id,10);
-  const value= parseInt(req.body.value,10)
-  const { description } = req.body;
+  console.log('ELID',id)
+  const value= parseInt( req.body.value,10)
+  console.log('ELVALUE',value)
+  const description = req.body.description;
+  console.log('description',description)
   try {
     const producto = await Product.findByPk(id)
     const newReview = await Review.create({
