@@ -21,6 +21,8 @@ import Roboto from "../chatbot/Chatbot";
 import { useHistory } from "react-router-dom";
 import Sending from "../SendingT/SendingT";
 import SendingEmail from "../SendingT/sendmail";
+import Maps from '../Maps/maps'
+import ContactUser from '../ContactUser/ContactUser'
 import Loading from '../loading/Loading';
 
 export default function Home({ location }) {
@@ -206,7 +208,9 @@ export default function Home({ location }) {
           </div>
         </StyledDiv>
         <Pages product={product} page={page} />
-        {/* <SendingEmail /> */}
+         {/* <SendingEmail /> */}
+        {/* <Maps/>  */}
+         {/* <ContactUser/> */}
         <Footer />
       </>
     );
