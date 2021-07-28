@@ -319,6 +319,7 @@ export function putUsuariosByadmin(id, usuario,token) {
    const user={...usuario,token}
     axios.put("http://localhost:3001/admin/users/" + id, user)
       .then((response) => {
+        if (response) alert ('El usuario se modificó correctamente');
         dispatch({
           type: PUT_USER,
           payload: response.data
