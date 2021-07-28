@@ -10,7 +10,7 @@ export const LandingPage = () => {
   // let historial = (history.location?.search?.split('=')[4].split('&')[0])
   // console.log(historial)
 	useEffect(() => {
-		setTimeout(() => setLoading(true), 400)
+		setTimeout(() => setLoading(true), 600)
 	}, [])
 
   if(!loading) {

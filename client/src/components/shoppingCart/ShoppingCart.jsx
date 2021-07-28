@@ -14,6 +14,7 @@ function ShoppingCart(props) {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.productCart);
   const product = useSelector((state) => state.products);
+  console.log('hola emi querido', product?product[0]:'no hay nada')
   const [loading, setLoading] = useState(false);
   let z = product.filter(e=> e.id === 106)
   const localStorage = useSelector((state) => state.arrayStorages);
@@ -42,12 +43,8 @@ useEffect(() => {
     
     useEffect(() => {
       let aux = 0;
-      // dispatch(getProducts());
-      // console.log(47 , product)
-      cart?.forEach(e=> {
+       cart?.forEach(e=> {
         let element = product.find(prod => prod.id === e.id)
-        console.log('cart' , cart)
-        console.log(50 , element)
         aux = aux + (e.cantidad * e.price)
         // element.stock >0? aux = aux + (e.price * (e.cantidad>element.stock? element.stock:e.cantidad)):console.log('sin stock')
       })
@@ -93,7 +90,7 @@ useEffect(() => {
   const delFromCart = () => { }
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
   if (!loading) {

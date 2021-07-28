@@ -16,22 +16,22 @@ export const ContactUser = () => {
   }
 
   return (
-    <form className="contact-form mt-5" onSubmit={sendEmail}>
-      <div className=" col-4 border border-1">
-      <div className=" form-row ">
-        <div className="col-md-6 form-group">
+    <form style={{display:'flex', width:'40%'}} className="contact-form  d-flex align-items-center justify-content-center" onSubmit={sendEmail}>
+      <div style={{ width:'100%', alignItems:'center', justifyContent:'center'}} className=" col-12 border ml-5 border-1">
+      {/* <div className=" form-row "> */}
+        <div style={{display:'flex', width:'200%'}} className="col-md-6 form-group">
           <input type="hidden" name="contact_number" />
           <label>Nombre: </label>
           <input type="text" name="user_name" />
         </div>
-        <div className=" col-md-6 form-group">
+        <div className="  form-group">
           <label>Correo electronico: </label>
           <input type="email" name="user_email" />
         </div>
-      </div>
-      <div className="form-group">
+     
+      <div class='row-3'>
         <label>Mensaje</label>
-        <textarea className="form-group" rows="3" name="message" />
+        <textarea  col="6" name="message" />
       </div>
       <div className="text-center">
         <input className="btn btn-dark mb-2" type="submit" value="Enviar" />
@@ -40,3 +40,4 @@ export const ContactUser = () => {
     </form>
   );
 }
+export default ContactUser;
