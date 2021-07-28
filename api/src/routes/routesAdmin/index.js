@@ -11,7 +11,7 @@ const {
 	auth,
 	authAdmin
 } = require('../controler')
-
+const { send } = require('../nodemailer')
 //modelos acá:
 
 const router = Router();
@@ -429,7 +429,7 @@ router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun l
 	try {
 		const order = await Order.findByPk(id)
 		if (order) {
-
+			
 			await order.update({
 				bill: bill || order.dataValues.bill,
 				date: date || order.dataValues.date,
@@ -445,6 +445,9 @@ router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun l
 				ticket: ticket || order.dataValues.ticket,
 				mail: mail || order.dataValues.mail,
 			});
+			// console.log(order.mail, order.mail.slice(1,-1))
+			const response = await send(order.mail||'marcosmc86@gmail.com', 'VinotecApp', "pedido "+state+' soyhenry.com')
+			console.log(2)
 			res.send(order).status(200)
 		} else {
 			res.sendStatus(400)

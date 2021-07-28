@@ -15,13 +15,15 @@ import Pages from "./paginado";
 import NavCategories from "../navCategories/navCategories";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import Loading from "../loading/Loading";
 import ProductRating from "../productRating/productRating";
 import Roboto from "../chatbot/Chatbot";
 // import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import Sending from "../SendingT/SendingT";
 import SendingEmail from "../SendingT/sendmail";
+import Maps from '../Maps/maps'
+import ContactUser from '../ContactUser/ContactUser'
+import Loading from '../loading/Loading';
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -116,11 +118,11 @@ export default function Home({ location }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
   if (!loading) {
-    return <Loading />;
+    return <Loading />
   } else {
     return (
       <>
@@ -206,7 +208,9 @@ export default function Home({ location }) {
           </div>
         </StyledDiv>
         <Pages product={product} page={page} />
-        {/* <SendingEmail /> */}
+         {/* <SendingEmail /> */}
+        {/* <Maps/>  */}
+         {/* <ContactUser/> */}
         <Footer />
       </>
     );
