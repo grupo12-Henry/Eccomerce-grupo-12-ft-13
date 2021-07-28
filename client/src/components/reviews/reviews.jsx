@@ -16,7 +16,7 @@ export default function Reviews() {
               <div class="overflow-auto !important">
               {product.reviews && product.reviews.map(el=>{
              return <table><div style={{ display: "flex", justifyContent: "center" }}>
-                <div class="text-muted mb-3">{el.description}</div>
+                <div class="text-muted mb-3">"{el.description}"</div>
               </div></table>})}</div>
             </div>
         

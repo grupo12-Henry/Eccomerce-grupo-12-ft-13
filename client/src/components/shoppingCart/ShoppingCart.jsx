@@ -16,6 +16,7 @@ function ShoppingCart(props) {
   const dispatch = useDispatch()
   let cart = useSelector((state) => state.productCart);
   const product = useSelector((state) => state.products);
+  console.log('hola emi querido', product?product[0]:'no hay nada')
   const [loading, setLoading] = useState(false);
 
   const localStorage = useSelector((state) => state.arrayStorages);
@@ -41,7 +42,7 @@ useEffect(() => {
     
     useEffect(() => {
       let aux = 0;
-      cart?.forEach(e=>e.stock>0? aux = aux + (e.price * (e.cantidad>e.stock?e.stock:e.cantidad)):console.log('sin stock'))
+      cart?.forEach(e=>(e.stock>0? aux = aux + (e.price * (e.cantidad>e.stock?e.stock:e.cantidad)):console.log('sin stock')))
       setMontoTotal(aux)
     }, [cart,montoTotal , product])
     
