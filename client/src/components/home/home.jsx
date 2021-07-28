@@ -24,6 +24,7 @@ import Roboto from "../chatbot/Chatbot";
 
 // import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import LoadingComponent from "../loading/LoadingComponent";
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -118,15 +119,15 @@ export default function Home({ location }) {
      let body = {productId:productId};
      dispatch(addToWishList(Uid, body));
     };
-  
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 700);
   }, []);
 
   if (!loading) {
-    return <Loading />;
+    return <LoadingComponent />
   } else {
     return (
       <>

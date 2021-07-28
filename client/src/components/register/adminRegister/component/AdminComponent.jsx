@@ -3,7 +3,7 @@ import GestionProductos from './gestionProductos'
 import GestionUsuarios from './gestionUsuarios'
 import GestionPedidos from './gestionPedidos'
 import Nav from "../../../navbar/navbar";
-import Footer from "../../../footer/footer";
+// import Footer from "../../../footer/footer";
 import {Link} from 'react-router-dom'
 // import SideBar from './SideBar';
 import Loading from '../../../loading/Loading';
