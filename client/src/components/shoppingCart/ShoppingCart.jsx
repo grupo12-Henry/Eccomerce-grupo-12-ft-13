@@ -43,15 +43,17 @@ useEffect(() => {
     useEffect(() => {
       let aux = 0;
       // dispatch(getProducts());
-      console.log(47 , product)
+      // console.log(47 , product)
       cart?.forEach(e=> {
         let element = product.find(prod => prod.id === e.id)
+        console.log('cart' , cart)
         console.log(50 , element)
-        element.stock >0? aux = aux + (e.price * (e.cantidad>element.stock? element.stock:e.cantidad)):console.log('sin stock')
+        aux = aux + (e.cantidad * e.price)
+        // element.stock >0? aux = aux + (e.price * (e.cantidad>element.stock? element.stock:e.cantidad)):console.log('sin stock')
       })
       // cart?.forEach(e=>e.stock>0? aux = aux + (e.price * (e.cantidad>e.stock?e.stock:e.cantidad)):console.log('sin stock'))
       setMontoTotal(aux)
-    }, [cart, montoTotal,product])
+    }, [cart, montoTotal, product])
     
     const clearCart = () => {
       window.localStorage.removeItem('array')

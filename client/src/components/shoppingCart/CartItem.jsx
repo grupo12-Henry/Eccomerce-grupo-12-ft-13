@@ -43,6 +43,18 @@ useEffect(() => {
     dispatch(removeProductCart(data.id))
   }
 
+  const alertStock = () => {
+    let element = product.find(prod => prod.id === data.id)
+    console.log(element)
+    console.log(element.stock)
+    console.log(data.cantidad)
+
+    if(element.stock === data.cantidad){
+      alert('No se pueden agregar mas unidades de este producto por falta de Stock')
+    }
+  
+  }
+
   const handleCountChange = (e) => {
     data.cantidad = parseInt((e.target.value));
     let array = JSON.parse(window.localStorage.getItem("array"));
@@ -59,7 +71,7 @@ useEffect(() => {
           <img src={data.image} className='Img col-2' alt='imagen' />
           <h6 className='col-3' >{data.name}</h6>
           <h6 className='col-2'>$ {data.price}.00</h6>
-          <input type='number' min={1} max={data.stock} onChange={handleCountChange} value={(data.cantidad>data.stock)? data.stock:data.cantidad} className='counter col-1' name='count' autoComplete='off' />
+          <input type='number' min={1} max={data.stock} onClick={alertStock} onChange={handleCountChange} value={(data.cantidad>data.stock)? data.stock:data.cantidad} className='counter col-1' name='count' autoComplete='off' />
           <h6 className='col-2'>$ {precioTotal}.00</h6>
           <button type="button" className='btn btn-danger col-1' onClick={() => delFromCart()} >✖</button>
         </div>
