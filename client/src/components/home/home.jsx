@@ -15,7 +15,6 @@ import Pages from "./paginado";
 import NavCategories from "../navCategories/navCategories";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import Loading from "../loading/Loading";
 import ProductRating from "../productRating/productRating";
 import Roboto from "../chatbot/Chatbot";
 
