@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../navbar/navbar';
 import winecup from './winecup.gif';
-import './loading.css';
+import './Loading.css';
 
 export default function LoadingComponent() {
   return (
