@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido, getProducts,  } from '../../../../actions';//deleteProdFromOrder
+import { getAllPedidos, getPedidosByState, getPedidoDetail, putPedido, getProducts, deleteProdFromOrder } from '../../../../actions';
 
 
 function GestionPedidos() {
@@ -12,9 +12,7 @@ function GestionPedidos() {
     const AllProducts = useSelector(state => state.products);
     const dispatch = useDispatch();
 
-    useEffect(() => { 
-        console.log(pedidoDetail);
-    }, [pedidoDetail]);
+   
 
     //Cuando renderiza el componente, me trae todos los pedidos.
     useEffect(() => { 
@@ -45,13 +43,13 @@ function GestionPedidos() {
     };   
 
     //Borra UN producto del pedido seleccionado.
-    // const handleDeleteProduct = (e) => {
-    //     e.preventDefault();
-    //     dispatch(deleteProdFromOrder( pedidoDetail.id, e.target.value))
-    // }
+    const handleDeleteProduct = (e) => {
+        e.preventDefault();
+        dispatch(deleteProdFromOrder( pedidoDetail.id, e.target.value))
+    }
 
     //Estado local de los campos que MODIFICAN un pedido. 
-    let [modifyPedido, setModifyPedido] = useState({
+    const [modifyPedido, setModifyPedido] = useState({
         date:"",
         bill:"",
         paymentMethod:"",
@@ -65,17 +63,32 @@ function GestionPedidos() {
         freight:"",
         ivaCost:"",
         ivaCondition:"",
-       
+        
     });
-    modifyPedido = {...modifyPedido,
-                    products:pedidoDetail&&pedidoDetail?.products?.map(el => {
-                        return {
-                            id:el.id,
-                            cantidad:el.order_detail.cantidad,
-                            subTotal:el.order_detail.subTotal
-                        }
-                    })
+
+    let [modifyCantidad_Detail, setModifyCantidad_Detail] = useState({
+        products:pedidoDetail&&pedidoDetail?.products?.map(el => {
+            return {
+                [el.name]:el.cantidad
+            }
+        })
+    });
+    
+
+    const handleCantidadChange = (e) => {
+        setModifyCantidad_Detail({
+            ...modifyCantidad_Detail,
+            [e.target.id]:e.target.value,
+          });
     }
+
+    const handleCantidadSubmit = (a) => {
+        console.log(a)
+    }
+  
+    useEffect(() => { 
+            console.log(modifyCantidad_Detail);
+        }, [modifyCantidad_Detail]);
 
 
     //Es como un handlechange de modifyPedido. Maneja el estado local. 
@@ -83,13 +96,6 @@ function GestionPedidos() {
         setModifyPedido({
           ...modifyPedido,
           [e.target.name]:e.target.value,
-        //   products:pedidoDetail&&pedidoDetail?.products?.map(el => {
-        //     return {
-        //         id:el.id,
-        //         cantidad:el.order_detail.cantidad,
-        //         subTotal:el.order_detail.subTotal
-        //     }
-        // })
         });
     }
     //Trae la información del detalle del pedido seleccionado al estado de Redux "pedidoDetail"
@@ -135,7 +141,7 @@ function GestionPedidos() {
                 </thead>
                 <tbody>
                     {
-                        pedidos&& pedidos.map(pedido => (
+                        Array.isArray(pedidos)&& pedidos.map(pedido => (
                             <tr>
                             <th scope="row">{pedido.id}</th>
                             <td>{pedido.date}</td>
@@ -361,48 +367,48 @@ function GestionPedidos() {
                 </li>
 
                 { pedidoDetail&&pedidoDetail?.products?.map (el => (     
-                    <li class='form-inline' value={el.id}>
+                    <li class='form-inline'>
 
                         <span> Producto: </span>
                         <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                            name='name' 
                             value={el.name}>
                         </input> 
 
                         <span class="mt-2 ml-3"> Cantidad: </span>
-                        <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                            name='name' 
-                            placeholder={el.order_detail.cantidad}>
+                        <input class="form-control form-control-sm mt-1 ml-2 form-row"                         
+                            id={`thisSelect${el.id}`}  
+                            name={el.id} 
+                            value={modifyCantidad_Detail.products}
+                            type='number' 
+                            min={1} 
+                            max={10}
+                            placeholder={el.order_detail.cantidad}
+                            onChange={(e)=>handleCantidadChange(e)} >
                         </input>
 
                         <span class="mt-2 ml-3"> SubTotal: </span>
                         <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
-                            name='name' 
+                            name={el.name} 
+                            value={el.price*el.order_detail.cantidad}
                             placeholder={el.order_detail.subTotal}>
                         </input>
 
-                        <button class="form-control form-control-sm mt-1 ml-3 form-row">                        
-                            {/*  onClick={handleDeleteProduct} > */}
+                        <button class="form-control form-control-sm mt-1 ml-3 form-row" 
+                            value={modifyCantidad_Detail.value}                  
+                            onClick={(e) => {e.preventDefault(); handleCantidadSubmit(document.getElementById(`thisSelect${el.id}`).value)}} >
+                                Modificar Cantidad
+                        </button>
+
+                        <button class="form-control form-control-sm mt-1 ml-3 form-row" 
+                            value={el.id}                     
+                            onClick={(e) => handleDeleteProduct(e)} >
                                 Quitar
                         </button>
                         
                     </li>    
                 ))}
 
-                <li class='form-inline'>
-                    <span>Agregar un Producto: </span>            
-                    <select class="form-control form-control-sm mt-1 ml-2 form-row" 
-                        name="state" 
-                        onChange={handleInputChange}>
-
-                        {AllProducts && AllProducts?.map( el => (
-                            <option key={el.id} value={el.id} > {el.name} </option>                            
-                        ))
-                        }
-
-                    </select>
-                </li>
-
+    {/* onClick={(e) => { e.preventDefault(); filterTemperament(document.getElementById('tempSelect').value) }} */}
 
                 {/* { pedidoDetail.products.map (el => (     
                 <li class='form-inline'>

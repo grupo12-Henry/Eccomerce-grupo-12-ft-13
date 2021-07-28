@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken'
 const {secret}= {secret:process.env.REACT_APP_SECRET_TOKEN};
-// export const DELETE_PROD_FROM_ORDER = 'DELETE_PROD_FROM_ORDER'
+export const DELETE_PROD_FROM_ORDER = 'DELETE_PROD_FROM_ORDER'
 export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS';
 export const GETNAMES = 'GETNAMES';
@@ -39,26 +39,33 @@ export const CHECKOUT = 'CHECKOUT'
 
 
 
-// export function deleteProdFromOrder(idOrder, idProd) {
-//   return (dispatch) => {
-//     axios.delete(`http://localhost:3001/admin/${idOrder}` + idProd)
-//       .then(response => 
-//         dispatch({
-//           type: DELETE_PROD_FROM_ORDER,
-//           payload: idProd
-//         }))
-//   }
-// }
+export function deleteProdFromOrder(idOrder, idProd) {
+  return (dispatch) => {
+    axios.delete(`http://localhost:3001/admin/pedidos/id/${idOrder}?idProd=${idProd}`)
+      .then(response => {
+        if (response) alert('Se eliminó producto del pedido');
+        dispatch({
+          type: DELETE_PROD_FROM_ORDER,
+          payload: idProd
+        })
+      })
+        .catch((err) => {
+          console.log(err)
+        })
+  }
+}
 
 export function getUser(mail) {
   return (dispatch) => {
     axios.get('http://localhost:3001/admin/userMail?mail=' + mail)
       .then(response => 
-      
         dispatch({
         type: POST_USER,
         payload: response.data
       }))
+      .catch((err) => {
+        console.log(err)
+      })
   }
 }
 // export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY'
