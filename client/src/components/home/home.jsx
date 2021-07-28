@@ -82,6 +82,11 @@ export default function Home({ location }) {
   }, []);
 
   useEffect(() => {
+      dispatch(getProducts());
+  }, []);
+
+
+  useEffect(() => {
     if (location.search !== "") {
       setPage(
         parseInt(location.search.slice(location.search.indexOf("=") + 1))
@@ -95,6 +100,7 @@ export default function Home({ location }) {
     };
     dbProducts();
   }, [dispatch]);
+
 
   useEffect(() => {
     const dbProducts = () => {

@@ -58,7 +58,7 @@ useEffect(() => {
              
               <h2 id='price'>$ {detail.price}</h2>
               <div>
-            <button className='btn' type="button" onClick={() => addToCart(detail.id, console.log('5', detail.id))} class="btn bg-cart">
+            <button className='btn' type="button" onClick={() => addToCart(detail.id)} class="btn bg-cart">
           
               <i class="fa fa-cart-plus mr-2">Agregar</i>
             </button>
