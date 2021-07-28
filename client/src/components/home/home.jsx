@@ -22,6 +22,8 @@ import Roboto from "../chatbot/Chatbot";
 import { useHistory } from "react-router-dom";
 import Sending from "../SendingT/SendingT";
 import SendingEmail from "../SendingT/sendmail";
+import Maps from '../Maps/maps'
+import ContactUser from '../ContactUser/ContactUser'
 
 
 
@@ -209,6 +211,8 @@ useEffect(() => {
         </StyledDiv>
         <Pages product={product} page={page} />
          {/* <SendingEmail /> */}
+        <Maps/> 
+         {/* <ContactUser/> */}
         <Footer />
       </>
     );
