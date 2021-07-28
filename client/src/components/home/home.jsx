@@ -104,7 +104,7 @@ export default function Home({ location }) {
 
   useEffect(() => {
     const dbProducts = () => {
-      setAllProducts(product);
+      setAllProducts(product.filter(e=>e.stock>0));
     };
     dbProducts();
   }, [product]);
