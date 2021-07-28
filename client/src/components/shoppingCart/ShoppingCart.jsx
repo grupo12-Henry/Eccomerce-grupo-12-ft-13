@@ -44,7 +44,7 @@ useEffect(() => {
     useEffect(() => {
       let aux = 0;
        cart?.forEach(e=> {
-        let element = product.find(prod => prod.id === e.id)
+        // let element = product.find(prod => prod.id === e.id)
         aux = aux + (e.cantidad * e.price)
         // element.stock >0? aux = aux + (e.price * (e.cantidad>element.stock? element.stock:e.cantidad)):console.log('sin stock')
       })

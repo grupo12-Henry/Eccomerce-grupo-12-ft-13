@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { removeProductCart, addProductCart, updateProductCart } from '../../actions';
+import { removeProductCart, addProductCart, updateProductCart, getProducts } from '../../actions';
 import './CartItem.css';
 
 function CartItem({ data }) {
@@ -12,18 +12,22 @@ function CartItem({ data }) {
 
   const dispatch = useDispatch()
 
-//   useEffect(() => {
-//     dispatch(getProducts());
-// }, []);
+  useEffect(() => {
+    dispatch(getProducts());
+}, []);
+
+
 // cada vez q cambie el cant, se impacte en el productCart
 //crear una action que cambie el valor de la cantidad,
 //traerme aqui el useDispatch y ejecutar esa action en el onChange de el cant ese, y le paso la cantidad
 //para que cambie el product card, y actualice el localstorage
 
+// console.log(data)
 
 useEffect(() => {
+  dispatch(getProducts());
   let element = product.find(prod => prod.id === data.id)
-  if(element.stock !== data.stock){
+  if(element && element.stock !== data.stock){
     data.stock = element.stock
   }
   setPrecioTotal(data.cantidad<data.stock ? data.cantidad * data.price: data.stock*data.price)
@@ -48,7 +52,6 @@ useEffect(() => {
     console.log(element)
     console.log(element.stock)
     console.log(data.cantidad)
-
     if(element.stock === data.cantidad){
       alert('No se pueden agregar mas unidades de este producto por falta de Stock')
     }
