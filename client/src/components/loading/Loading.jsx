@@ -1,11 +1,15 @@
 import React from 'react';
-import loading from '../../assets/images/winecup.gif';
-import './Loading.css';
+import Navbar from '../navbar/navbar';
+import winecup from './winecup.gif';
+import './loading.css';
 
-export default function Loading() {
+export default function LoadingComponent() {
   return (
-    <div className="sonDiv">
-      <img src={loading} alt='Loading'/>
+    <div className="component">
+        <Navbar />
+        <div className="img">
+          <img src={winecup} alt="Loading" />
+        </div>
     </div>
   )
 }

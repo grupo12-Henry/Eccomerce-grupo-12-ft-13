@@ -21,7 +21,7 @@ import Roboto from "../chatbot/Chatbot";
 import { useHistory } from "react-router-dom";
 import Sending from "../SendingT/SendingT";
 import SendingEmail from "../SendingT/sendmail";
-import LoadingComponent from '../loading/LoadingComponent';
+import Loading from '../loading/Loading';
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -116,11 +116,11 @@ export default function Home({ location }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 700);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
   if (!loading) {
-    return <LoadingComponent />
+    return <Loading />
   } else {
     return (
       <>

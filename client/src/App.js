@@ -29,7 +29,6 @@ import FormCompras from "./components/shoppingCart/FormCompras";
 import wishList from "./components/wishList/wishList";
 import writingReviews from './components/writingReviews/writingReviews'
 import LayoutAdmin from './components/dashboard-admin/layout/Layout';
-import LoadingComponent from "./components/loading/LoadingComponent";
 
 function App() {
 
@@ -52,7 +51,7 @@ function App() {
         <Route component={LandingPage} exact path='/'/>
         <Route component={Nav} exact path='/compras'/>
         <Route component={ShoppingCart} exact path='/compras'/>
-        <Route component={Footer} exact path='/compras'/> 
+        <Route component={Footer} exact path='/compras'/>
         <Route component={About} exact path='/about'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>

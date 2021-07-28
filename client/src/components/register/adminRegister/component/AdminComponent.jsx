@@ -26,7 +26,7 @@ export default function AdminComponent() {
   const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		setTimeout(() => setLoading(true), 400)
+		setTimeout(() => setLoading(true), 600)
 	}, [])
 
   if(!loading) {
