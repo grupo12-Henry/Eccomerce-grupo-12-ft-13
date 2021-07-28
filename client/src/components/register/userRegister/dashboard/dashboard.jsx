@@ -25,8 +25,8 @@ export default function Dashboard() {
     })
   }
 
-  const putSubmit = () => {
-    //e.preventDefault()
+  const putSubmit = (e) => {
+    e.preventDefault()
     window.localStorage.setItem('user', JSON.stringify(User))
     dispatch(putUsuarios(user.id, User))
   }
