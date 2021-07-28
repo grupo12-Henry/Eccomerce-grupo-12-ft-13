@@ -84,7 +84,7 @@ useEffect(() => {
   const delFromCart = () => { }
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
   if (!loading) {
@@ -226,7 +226,7 @@ export default ShoppingCart;
 //   const [loading, setLoading] = useState(false);
 
 //   useEffect(() => {
-//     setTimeout(() => setLoading(true), 400);
+//     setTimeout(() => setLoading(true), 600);
 //   }, []);
 
 //   if (!loading) {

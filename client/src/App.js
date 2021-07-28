@@ -19,7 +19,6 @@ import Varios from "./components/categories/varios/varios";
 import { AuthProvider } from "../src/contexts/AuthContext";
 import PrivateRouteUser from './components/register/userRegister/privateRouteUser/privateRouteUser';
 import PrivateRouteAdmin from "./components/register/adminRegister/privateRouteAdmin/privateRouteAdmin";
-import AdminComponent from './components/register/adminRegister/component/AdminComponent';
 import Delivery from './components/register/userRegister/component/confirmDelivery';
 import About from './components/about/about'
 import misPedidos from './components/register/userRegister/misPedidos/misPedidos';
@@ -29,6 +28,7 @@ import Footer from "./components/footer/footer";
 import FormCompras from "./components/shoppingCart/FormCompras";
 import wishList from "./components/wishList/wishList";
 import writingReviews from './components/writingReviews/writingReviews'
+import LayoutAdmin from './components/dashboard-admin/layout/Layout';
 
 function App() {
 
@@ -39,7 +39,7 @@ function App() {
   return (
     <React.Fragment>
       <AuthProvider>
-        <PrivateRouteAdmin component={AdminComponent} path='/dashboard-admin'/>
+        <PrivateRouteAdmin component={LayoutAdmin} path='/dashboard-admin'/>
         <PrivateRouteUser component={Dashboard} exact path='/micuenta/'/>
         <PrivateRouteUser component={misPedidos} exact path='/micuenta/mispedidos/:id'/>
         <PrivateRouteUser component={UpdateProfile} path='/update-profile'/>
@@ -51,7 +51,7 @@ function App() {
         <Route component={LandingPage} exact path='/'/>
         <Route component={Nav} exact path='/compras'/>
         <Route component={ShoppingCart} exact path='/compras'/>
-        <Route component={Footer} exact path='/compras'/> 
+        <Route component={Footer} exact path='/compras'/>
         <Route component={About} exact path='/about'/>
         <Route component={Home} exact path='/home'/>
         <Route component={Whiskys} exact path='/whiskys'/>
@@ -63,7 +63,6 @@ function App() {
         <Route component={Login} exact path='/login'/>
         <Route component={Detail} exact path='/detail/:id'/>
         <Route component={FormCompras} exact path='/FormCompras'/>
-        
       </AuthProvider>
     </React.Fragment>
   )

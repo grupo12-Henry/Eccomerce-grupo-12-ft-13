@@ -72,11 +72,40 @@ console.log(id , 'producto:',pId)
 
 })
 
+// require('dotenv').config();
+const nodemailer = require('nodemailer');
+const mailGun = require('nodemailer-mailgun-transport');
+const log = console.log;
 
+router.post('/sendEmail', (req, res) => {
 
+  const auth = {
+    auth: {
+        api_key: '41d0f4d82f94ae9a556df30e39a6a9ba-a0cfb957-5fc7f998',
+        domain: 'sandboxf54c11cc136544a99ae8c54074a8561e.mailgun.org'
+    }
+  };
 
+  const transporter = nodemailer.createTransport(mailGun(auth));
 
+  console.log(req.body)
+  const mailOptions = {
+    from: 'grupo12ecommerce@gmail.com',
+    to: req.body.email,
+    subject: req.body.subject,
+    text: req.body.text
+  };
 
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      log('ERROR: ', err);
+      return res.send(err);
+  }
+    log('Email sent!!!');
+    return res.json({ message: 'Email sent!!!!!' });
+  });
+
+})
 
 //trae el detalle de un producto -->LISTO
 router.get('/productos/:id', async (req, res) => {
