@@ -12,7 +12,7 @@ import cart from "../../assets/images/cart.png";
 import user from "../../assets/images/user.png";
 import Auto from "../searchbar/searchbar";
 import NavModal from "../navModal/navModal";
-import getUser, { removeProductCart } from "../../actions/index"
+import getUser, { removeProductCart, getProducts } from "../../actions/index"
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
@@ -126,13 +126,15 @@ const Nav = () => {
           
             <li class='d-flex mt-2'>
               <li class="sidebar-social ">
-                <a href="/compras" class="cart" title="Carrito" rel="nofollow">
-                  <i class="fas fa-shopping-cart ">
-                    {/* < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart?.length||0}</span> */}
-                    < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart?.filter(e=>e.stock>0).length}</span>
-                    <img className=" d-flex mt-0 p-0" alt="cart img" src={cart} width="20px"/>
-                  </i>
-                </a>
+                {/* <button onClick={()=>{dispatch(getProducts())}}>  */}
+                              <a href="/compras" class="cart" title="Carrito" rel="nofollow">
+                                <i class="fas fa-shopping-cart ">
+                                  {/* < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart?.length||0}</span> */}
+                                  < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart?.filter(e=>e.stock>0).length}</span>
+                                  <img className=" d-flex mt-0 p-0" alt="cart img" src={cart} width="20px"/>
+                                </i>
+                              </a>
+                {/* </button> */}
               </li>
             </li>
           </ul>

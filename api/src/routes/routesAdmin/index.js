@@ -400,8 +400,6 @@ router.post('/orderPost', async (req, res) => {
 				}
 			});
 			Product.decrement({stock: e.cantidad}, {where: {id: e.id}})
-			console.log(products, 'sprite zero')
-		
 		})
 		return res.send(newOrder)
 	} catch (error) {

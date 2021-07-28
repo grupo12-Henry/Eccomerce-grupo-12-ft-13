@@ -8,18 +8,33 @@ function CartItem({ data }) {
   // const [state, setState]= useState(1)
   const [precioTotal, setPrecioTotal] = useState(data.price * data.cantidad)
   const ProductsCart = useSelector((state) => state.productCart)
+  const product = useSelector((state) => state.products);
+
   const dispatch = useDispatch()
 
-  // cada vez q cambie el cant, se impacte en el productCart
-  //crear una action que cambie el valor de la cantidad,
-  //traerme aqui el useDispatch y ejecutar esa action en el onChange de el cant ese, y le paso la cantidad
-  //para que cambie el product card, y actualice el localstorage
- 
+//   useEffect(() => {
+//     dispatch(getProducts());
+// }, []);
+// cada vez q cambie el cant, se impacte en el productCart
+//crear una action que cambie el valor de la cantidad,
+//traerme aqui el useDispatch y ejecutar esa action en el onChange de el cant ese, y le paso la cantidad
+//para que cambie el product card, y actualice el localstorage
+
+
+useEffect(() => {
+  let element = product.find(prod => prod.id === data.id)
+  if(element.stock !== data.stock){
+    data.stock = element.stock
+  }
+  setPrecioTotal(data.cantidad<data.stock ? data.cantidad * data.price: data.stock*data.price)
+}, [precioTotal])
 
   useEffect(() => {
-    setPrecioTotal(data.cantidad<data.stock ? data.cantidad * data.price: data.stock*data.price)
-  }, [precioTotal])
-
+    // let element = product.find(prod => prod.id === data.id)
+    // if(element.stock !== data.stock){
+    //   data.stock = element.stock
+    // }
+}, []);
  
 
   const delFromCart = () => {
@@ -31,6 +46,7 @@ function CartItem({ data }) {
   const handleCountChange = (e) => {
     data.cantidad = parseInt((e.target.value));
     let array = JSON.parse(window.localStorage.getItem("array"));
+
     window.localStorage.setItem("array", JSON.stringify((!!array)?array.filter(e => e.id !== data.id).concat([{...data, cantidad: parseInt(data.cantidad)}]):array=[{...data, cantidad: parseInt(data.cantidad)}]))
     dispatch(updateProductCart({...data, cantidad:data.cantidad>data.stock?data.stock:data.cantidad}))//typeof data.cantidad === Number ?:1
     setPrecioTotal((data.cantidad>data.stock)?data.stock * data.price:data.cantidad*data.price)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { addProductCart, ClearCart, removeProductCart } from '../../actions';
+import { addProductCart, ClearCart, removeProductCart, getProducts } from '../../actions';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem'
 import './shoppingCart.css';
@@ -10,22 +10,24 @@ import { useHistory } from "react-router-dom";
 import NavModal from '../navModal/navModal';
 import FormCompras from './FormCompras';
 
-
 function ShoppingCart(props) {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.productCart);
   const product = useSelector((state) => state.products);
   const [loading, setLoading] = useState(false);
-
+  let z = product.filter(e=> e.id === 106)
   const localStorage = useSelector((state) => state.arrayStorages);
   const [montoTotal, setMontoTotal] = useState(0);
-
   const [allProducts, setAllProducts] = useState([]);
   const [form, setForm] = useState(false);
   const history = useHistory()
 
 useEffect(() => {
 }, [localStorage]);
+
+useEffect(() => {
+    dispatch(getProducts());
+}, []);
 
 // useEffect(() => {
   //   if (cart) {return null}
@@ -40,9 +42,16 @@ useEffect(() => {
     
     useEffect(() => {
       let aux = 0;
-      cart?.forEach(e=>e.stock>0? aux = aux + (e.price * (e.cantidad>e.stock?e.stock:e.cantidad)):console.log('sin stock'))
+      // dispatch(getProducts());
+      console.log(47 , product)
+      cart?.forEach(e=> {
+        let element = product.find(prod => prod.id === e.id)
+        console.log(50 , element)
+        element.stock >0? aux = aux + (e.price * (e.cantidad>element.stock? element.stock:e.cantidad)):console.log('sin stock')
+      })
+      // cart?.forEach(e=>e.stock>0? aux = aux + (e.price * (e.cantidad>e.stock?e.stock:e.cantidad)):console.log('sin stock'))
       setMontoTotal(aux)
-    }, [cart,montoTotal , product])
+    }, [cart, montoTotal,product])
     
     const clearCart = () => {
       window.localStorage.removeItem('array')
@@ -64,10 +73,10 @@ useEffect(() => {
     let user =  window.localStorage.getItem("user");
     let completo = user? {
         idClient:user.split(',')[0].split(':')[1], 
-        adress:user.split(',')[5].split(':')[1], 
+        adress:user?.split(',')[5]?.split(':')[1], 
         products: productsArray, 
         paymentMethod: 'efectivo', 
-        mail: user.split(',')[6].split(':')[1], 
+        mail: user.split(',')[6]?.split(':')[1], 
         bill: montoTotal
     } : console.log('user is null');
     if (user){

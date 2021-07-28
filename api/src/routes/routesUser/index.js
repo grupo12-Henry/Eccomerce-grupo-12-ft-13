@@ -102,7 +102,7 @@ router.post('/clientesPost', async (req, res) => {
     token
 	} = req.body;
  try {
-   const response = await sendMail( mail, 'Bienvenido a Vinotecapp 🍷', 'Gracias por registrarte. Acompaña tus momentoscon los mejores sabaores.')
+  //  const response = await sendMail( mail, 'Bienvenido a Vinotecapp 🍷', 'Gracias por registrarte. Acompaña tus momentoscon los mejores sabaores.')
     const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
       defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })

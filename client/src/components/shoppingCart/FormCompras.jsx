@@ -54,6 +54,8 @@ export default function FormCompras() {
                   window.localStorage.removeItem('pago');
                   dispatch(ClearCart())
                   history.push('/home') //ver este paso, cuando es en efectivo
+                  alert('El pedido ha sido confirmado!')
+
               }
             } else{
       window.localStorage.setItem('pago',JSON.stringify(formCompra))
