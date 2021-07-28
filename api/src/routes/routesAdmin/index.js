@@ -104,7 +104,7 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 	const token = req.headers.authorization && req.headers.authorization.split(' ')[1]
 	try {
 
-		const newClient = await Client.create({
+		const newClient = await Client.findOrCreate({
 
 			name,
 			lastName,
