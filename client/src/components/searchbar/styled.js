@@ -11,24 +11,23 @@ const Styled = styled.div`
 }
 
 .search input {
-  
   width: auto;
-  height: auto;
-  border-radius: 50px;
-  padding: 2%;
+  height: 35px;
+  border-radius: 2px;
+  padding: 5%;
+  font-family: 'Quicksand', sans-serif;
   outline: none;
-  background-color: rgba(238, 238, 238, 0.507);
+  background-color: #232323;
   border: 0;
-  margin: 0;
+  margin-left: 0;
   }
   
   .searchIcon {
     place-items: center;
-    position: absolute;
     margin-top: -29px;
-    height: 40px;
+    height: 28px;
     width:40px;
-    margin-left: 14%
+    margin-left: 75%
   }
   
   input:focus {

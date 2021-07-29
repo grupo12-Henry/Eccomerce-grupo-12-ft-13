@@ -8,11 +8,8 @@ import {
   ClearCart,
 } from "../../actions/index";
 import StyledDiv from "./styled";
-import Nav from "../navbar/navbar";
-import Footer from "../footer/footer";
 import { Link } from "react-router-dom";
 import Pages from "./paginado";
-import NavCategories from "../navCategories/navCategories";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import ProductRating from "../productRating/productRating";
@@ -37,7 +34,6 @@ export default function Home({ location }) {
   const [page, setPage] = useState(1);
   const pago = JSON.parse(window.localStorage.getItem("pago"));
   const cart = JSON.parse(window.localStorage.getItem("array"));
-  console.log(pago);
 
   useEffect(() => {
     let historial = history.location.search.includes("&status=")
@@ -80,12 +76,13 @@ export default function Home({ location }) {
   }, []);
 
   useEffect(() => {
-    if (location.search !== "") {
+    if (location?.search !== "") {
       setPage(
-        parseInt(location.search.slice(location.search.indexOf("=") + 1))
+        parseInt(location ? location.search.slice(location.search.indexOf("=") + 1): 1)
       );
     }
-  }, [location.search]);
+    console.log(page)
+  }, [location?.search]);
 
   useEffect(() => {
     const dbProducts = () => {
@@ -124,24 +121,21 @@ export default function Home({ location }) {
   } else {
     return (
       <>
-        <Nav />
-        <NavCategories />
         <Roboto />
         <StyledDiv>
           <div>
-            {/* <div class='mt-5 mb-3' >{carritoOn===true?<ShoppingCart/>:null}</div>  */}
             <div className="div_container">
               <div class="container d-flex justify-content-center mt-50 mb-50">
                 <div class="row container-product">
                   {allProducts && allProducts.length > 0
                     ? allProducts.slice((page - 1) * 9, page * 9).map((el) => {
-                        return el.stock > 0 ? (
-                          <>
+                      return (el.stock > 0 ? (
+                        <>
                             <div class="col-md-4 mt-2">
                               <div class="card">
                                 <div class="card-body">
                                   <div class="card-img-actions">
-                                    <Link to={`/detail/${el.id}`}>
+                                    <Link to={`/home/detail/${el.id}`}>
                                       <img
                                         src={el.image}
                                         class="card-img img-fluid"
@@ -156,7 +150,7 @@ export default function Home({ location }) {
                                     <h6 class="font-weight-semibold mb-2">
                                       {" "}
                                       <a
-                                        href={`/detail/${el.id}`}
+                                        href={`/home/detail/${el.id}`}
                                         class="text-default mb-2"
                                         data-abc="true"
                                       >
@@ -197,9 +191,9 @@ export default function Home({ location }) {
                               </div>
                             </div>
                           </>
-                        ) : null;
+                        ) : console.log('null') );
                       })
-                    : null}
+                     : console.log('null')}
                 </div>
               </div>
             </div>
@@ -207,7 +201,6 @@ export default function Home({ location }) {
         </StyledDiv>
         <Pages product={product} page={page} />
         {/* <SendingEmail /> */}
-        <Footer />
       </>
     );
   }

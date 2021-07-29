@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { StyledDiv } from "./styled";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../../src/contexts/AuthContext";
 import delivery from "../../assets/images/delivery-truck.png";
 import instagram from "../../assets/images/instagram.png";
 import twitter from "../../assets/images/twitter.png";
@@ -33,7 +33,6 @@ const Nav = () => {
     setIsOpen(true);
   };
 
-  const history = useHistory();
   const { currentUser, logout } = useAuth();
 
   // productCart.forEach(e=> {if(e.stock<1)removeProductCart(e.id)})
@@ -42,7 +41,7 @@ const Nav = () => {
     window.localStorage.removeItem('user')
     await logout();
     setIsOpen(false);
-    history.push("/home");
+    // history.push("/home");
   };
 
   let estado = JSON.parse(window.localStorage.getItem("array"))
@@ -132,7 +131,7 @@ const Nav = () => {
                 <a href="/compras" class="cart" title="Carrito" rel="nofollow">
                   <i class="fas fa-shopping-cart ">
                     {/* < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart?.length||0}</span> */}
-                    < span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart?.filter(e=>e.stock>0).length}</span>
+                    <span id="cart_menu_num" class=" ml-4 badge rounded-circle" data-action="cart-can">{productCart?.filter(e=>e.stock>0).length}</span>
                     <img className=" d-flex mt-0 p-0" alt="cart img" src={cart} width="20px"/>
                   </i>
                 </a>

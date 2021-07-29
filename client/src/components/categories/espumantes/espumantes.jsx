@@ -4,11 +4,8 @@ import { getProducts, addProductCart, addToWishList } from "../../../actions/ind
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
-import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
-import NavCategories from "../../navCategories/navCategories";
-import Footer from "../../footer/footer";
-import Loading from "../../loading/Loading";
+import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from "../../productRating/productRating";
 
 function Espumantes() {
@@ -92,8 +89,6 @@ function Espumantes() {
   } else {
     return (
       <>
-        <Nav />
-        <NavCategories />
         <StyledDiv>
           <div class="d-flex justify-content-center-md-center mt-5" >
             <div class="btn-group-vertical col-sm-2 mt-5 mb-1 justify-content-start md-start ">
@@ -165,7 +160,6 @@ function Espumantes() {
             </div>
           </div>
         </StyledDiv>
-        <Footer />
       </>
     );
   }

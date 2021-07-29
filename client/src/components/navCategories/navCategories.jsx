@@ -14,7 +14,7 @@ export default function navCategories() {
             <ul class="nav justify-content-center">
             <li class="nav-item">
             <a class="navbar-brand font-weight-bold" aria-current="page" href="/home">Home</a>
-              </li>              
+              </li>
             <li class="nav-item">
             <a class="navbar-brand" href="/vinos"> Vinos</a>
               </li> 
