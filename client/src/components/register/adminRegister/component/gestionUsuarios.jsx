@@ -42,7 +42,9 @@ function GestionUsuarios() {
     //Modifica un usuario
     const putSubmit = (ClientDetails, user) => {
         console.log(ClientDetails.id, 'user:', user)
-        dispatch(putUsuariosByadmin(ClientDetails.id, user,token))
+        if(window.confirm('¿Esta seguro de que desea modificar este usuario?')) {
+            dispatch(putUsuariosByadmin(ClientDetails.id, user,token))
+         } 
     }
     //Trae el detalle de un Usuario al estado de Redux ClientDetails
     const insertClientInfo = (e) => {

@@ -29,6 +29,8 @@ import FormCompras from "./components/shoppingCart/FormCompras";
 import wishList from "./components/wishList/wishList";
 import writingReviews from './components/writingReviews/writingReviews'
 import LayoutAdmin from './components/dashboard-admin/layout/Layout';
+import Sugeridos from './components/sugeridos/sugeridos';
+
 
 function App() {
 
@@ -63,6 +65,7 @@ function App() {
         <Route component={Login} exact path='/login'/>
         <Route component={Detail} exact path='/detail/:id'/>
         <Route component={FormCompras} exact path='/FormCompras'/>
+        <Route component={Sugeridos} exact path='/sugeridos'/>
       </AuthProvider>
     </React.Fragment>
   )
