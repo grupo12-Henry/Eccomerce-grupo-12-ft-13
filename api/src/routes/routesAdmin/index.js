@@ -140,8 +140,8 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 	try {
 
 		const newClient = await Client.findOrCreate({
-
-			name,
+					where:{mail:mail},
+		default:{	name,
 			lastName,
 			phone: phone + '',
 			state,
@@ -149,7 +149,7 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 			mail,
 			identityCard,
 			admin,
-			token
+			token}
 		})
 		res.send(newClient)
 	} catch (error) {
