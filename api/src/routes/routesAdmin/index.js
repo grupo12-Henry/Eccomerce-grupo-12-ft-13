@@ -220,7 +220,7 @@ router.get('/productos/names', async (req, res) => { //envia todos los nombres d
 	try {
 		const productos = await Product.findAll({
 			attributes: {
-				exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock']
+				exclude: ['createdAt', 'updatedAt', 'image']
 			}
 		})
 		res.send(productos)
