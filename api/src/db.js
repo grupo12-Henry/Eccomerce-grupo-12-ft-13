@@ -51,12 +51,6 @@ Product.belongsToMany(Category, { through: 'product_category',timestamps: false 
 Category.belongsToMany(Product, { through: 'product_category',timestamps: false });
 
 const order_detail = sequelize.define('order_detail', {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement:true,
-    primaryKey: true,
-    allowNull: false
-  },
   cantidad: {
     type: DataTypes.INTEGER,
     

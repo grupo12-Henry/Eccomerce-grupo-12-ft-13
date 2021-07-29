@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken'
 const {secret}= {secret:process.env.REACT_APP_SECRET_TOKEN};
-export const DELETE_PROD_FROM_ORDER = 'DELETE_PROD_FROM_ORDER'
+// export const DELETE_PROD_FROM_ORDER = 'DELETE_PROD_FROM_ORDER'
 export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS';
 export const GETNAMES = 'GETNAMES';
@@ -41,21 +41,21 @@ export const POST_REVIEW = 'POST_REVIEW'
 
 
 
-export function deleteProdFromOrder(idOrder, idProd) {
-  return (dispatch) => {
-    axios.delete(`http://localhost:3001/admin/pedidos/id/${idOrder}?idProd=${idProd}`)
-      .then(response => {
-        if (response) alert('Se eliminó producto del pedido');
-        dispatch({
-          type: DELETE_PROD_FROM_ORDER,
-          payload: idProd
-        })
-      })
-        .catch((err) => {
-          console.log(err)
-        })
-  }
-}
+// export function deleteProdFromOrder(idOrder, idProd) {
+//   return (dispatch) => {
+//     axios.delete(`http://localhost:3001/admin/pedidos/id/${idOrder}?idProd=${idProd}`)
+//       .then(response => {
+//         if (response) alert('Se eliminó producto del pedido');
+//         dispatch({
+//           type: DELETE_PROD_FROM_ORDER,
+//           payload: idProd
+//         })
+//       })
+//         .catch((err) => {
+//           console.log(err)
+//         })
+//   }
+// }
 
 export function getUser(mail) {
   return (dispatch) => {
@@ -419,7 +419,7 @@ export async function editManyProducts(array) {
 
 
 export async function editProduct(id, payload) {
-  console.log('entra aca')
+  // console.log('entra aca')
   await axios.put("http://localhost:3001/admin/productos/" + id, payload)
     .then((response) => {
       if (response) alert('El producto se modificó correctamente');

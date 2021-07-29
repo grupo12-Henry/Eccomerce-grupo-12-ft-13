@@ -24,7 +24,7 @@ import {
   REMOVE_FROM_WISHLIST,
   GETFAVORITES,
   CHECKOUT,
-  DELETE_PROD_FROM_ORDER
+  // DELETE_PROD_FROM_ORDER
 } from "../actions";
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -268,12 +268,12 @@ const rootReducer = (state = initialState, action) => {
       return (console.log('reducer', action.payload))
     }
 
-    case DELETE_PROD_FROM_ORDER: {
-      return {
-        ...state,
-        pedidoDetail: state.pedidoDetail?.filter(el => el.id !== action.payload)
-      }
-    };
+    // case DELETE_PROD_FROM_ORDER: {
+    //   return {
+    //     ...state,
+    //     pedidoDetail: state.pedidoDetail?.filter(el => el.id !== action.payload)
+    //   }
+    // };
 
     default:
       return state;
