@@ -24,6 +24,7 @@ import {
   REMOVE_FROM_WISHLIST,
   GETFAVORITES,
   CHECKOUT,
+  // DELETE_PROD_FROM_ORDER
 } from "../actions";
 // import CartItem from '../components/shoppingCart/CartItem';
 
@@ -40,8 +41,8 @@ const initialState = {
   pedidosUser: [],
   productCart: [],
   arrayStorages: [],
-  user:{},
-  wishList:[]
+  user: {},
+  wishList: []
 }
 
 
@@ -82,21 +83,21 @@ const rootReducer = (state = initialState, action) => {
 
     case PUTPEDIDO:
       return {};
-      //ADMIN DASHBOARD
+    //ADMIN DASHBOARD
 
     case GET_ALL_USERS:
       return {
         ...state,
         AllClients: action.payload,
       };
-      
-      case POST_USER:
-        window.localStorage.setItem('user',JSON.stringify(action.payload))
-       return {
-         ...state,
-         wishList:action.payload.products,
-         user: action.payload
-       } 
+
+    case POST_USER:
+      window.localStorage.setItem('user', JSON.stringify(action.payload))
+      return {
+        ...state,
+        wishList: action.payload.products,
+        user: action.payload
+      }
 
     case GET_USER_DETAILS:
       return {
@@ -126,21 +127,21 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pedidosUser: action.payload
       };
-//ACTION PARA AGREGAR PRODUCTOS AL CARRITO, CUANDO DAMOS CLICK EN AGREGAR SOBRE EL PRODUCTO
-//logica agregar funciona perfect!
-case ADD_TO_CART:
-  let nuevoItem = state.products.find(prod => ((action.payload.productId)?prod.id=== action.payload.productId: (prod.id === action.payload)))
-  let a = state.productCart.length ? state.productCart.filter(e => (e!== undefined&& nuevoItem!==undefined)? e.id === (nuevoItem.id):null) : ''
-  if (a.length) {
+    //ACTION PARA AGREGAR PRODUCTOS AL CARRITO, CUANDO DAMOS CLICK EN AGREGAR SOBRE EL PRODUCTO
+    //logica agregar funciona perfect!
+    case ADD_TO_CART:
+      let nuevoItem = state.products.find(prod => ((action.payload.productId) ? prod.id === action.payload.productId : (prod.id === action.payload)))
+      let a = state.productCart.length ? state.productCart.filter(e => (e !== undefined && nuevoItem !== undefined) ? e.id === (nuevoItem.id) : null) : ''
+      if (a.length) {
         nuevoItem = {
           ...nuevoItem,
-          cantidad: !action.payload.cantidad ?(parseInt(a[0].cantidad) + 1):(parseInt(a[0].cantidad)+action.payload.cantidad) // 
+          cantidad: !action.payload.cantidad ? (parseInt(a[0].cantidad) + 1) : (parseInt(a[0].cantidad) + action.payload.cantidad) // 
         }
         state = {
           ...state,
           productCart: state.productCart.filter(e => e.id !== nuevoItem.id)
         }
-  }
+      }
 
   if (!a.length) {
     !action.payload.cantidad?
@@ -179,14 +180,14 @@ case ADD_TO_CART:
       console.log('quiero 2', action.payload)
     action.payload?.forEach(e=>{
         // let newItem = {id:e.id, image: e.image, name:e.name, cantidad: e.order_detail.cantidad, price: e.price};
-       let a = state.products.find(el=> el.id === e.id );
-        a= {...a, cantidad: e.order_detail.cantidad}
-        state.productCart= state.productCart.concat(a)
-        
+        let a = state.products.find(el => el.id === e.id);
+        a = { ...a, cantidad: e.order_detail.cantidad }
+        state.productCart = state.productCart.concat(a)
+
       })
       // let arrayLocal = JSON.parse(window.localStorage.getItem("array"));
-      window.localStorage.setItem('array',JSON.stringify(state.productCart))
-      console.log('productCart',state.productCart)
+      window.localStorage.setItem('array', JSON.stringify(state.productCart))
+      console.log('productCart', state.productCart)
       //  let productosOrder = action.payload.forEach(e=>state.products.find(el=> el.id===e.id)) //e.id e.order_detail.cantidad)
       return state
       
@@ -216,26 +217,26 @@ case ADD_TO_CART:
 
 
     case GET_LOCAL_STORAGE: {
-        const array = JSON.parse(window.localStorage.getItem("array"));
-        const user=JSON.parse(window.localStorage.getItem('user'))
-        return {
-          ...state,
-          user: user,
-          arrayStorages: array ? state.arrayStorages?.slice().concat([array]) : state.arrayStorages
-        }
+      const array = JSON.parse(window.localStorage.getItem("array"));
+      const user = JSON.parse(window.localStorage.getItem('user'))
+      return {
+        ...state,
+        user: user,
+        arrayStorages: array ? state.arrayStorages?.slice().concat([array]) : state.arrayStorages
       }
+    }
 
-   
 
-      case ADD_LOCAL_STORAGE:{
-        const array = JSON.parse(window.localStorage.getItem("array"));
-        window.localStorage.setItem( "array", JSON.stringify( array? array.concat([action.payload]) : state.arrayStorages.concat([action.payload]) ) );
-        return {
-          ...state,
-          arrayStorages: state.arrayStorages.slice().concat([action.payload])
-        }
+
+    case ADD_LOCAL_STORAGE: {
+      const array = JSON.parse(window.localStorage.getItem("array"));
+      window.localStorage.setItem("array", JSON.stringify(array ? array.concat([action.payload]) : state.arrayStorages.concat([action.payload])));
+      return {
+        ...state,
+        arrayStorages: state.arrayStorages.slice().concat([action.payload])
       }
- 
+    }
+
 
 
 
@@ -246,30 +247,37 @@ case ADD_TO_CART:
         wishList: state.wishList.concat(action.payload),
       };
     }
-   case GETFAVORITES:{
-     return {
-       ...state,
-       wishList: action.payload
-     }
-   }
+    case GETFAVORITES: {
+      return {
+        ...state,
+        wishList: action.payload
+      }
+    }
     case REMOVE_FROM_WISHLIST: {
-     /* let user= JSON.parse(window.localStorage.getItem('user'))
-     user.products= user.products.filter(product =>product.id ===action.payload)
-     window.localStorage.removeItem('user')
-     window.localStorage.setItem('user',JSON.stringify(user)) */ 
-     
+      /* let user= JSON.parse(window.localStorage.getItem('user'))
+      user.products= user.products.filter(product =>product.id ===action.payload)
+      window.localStorage.removeItem('user')
+      window.localStorage.setItem('user',JSON.stringify(user)) */
+
       return {
         ...state,
         wishList: state.wishList.filter(el => el.id !== action.payload.productId)
       }
-  }
-  case CHECKOUT:{
-    return(console.log('reducer', action.payload))
-  }
+    }
+    case CHECKOUT: {
+      return (console.log('reducer', action.payload))
+    }
+
+    // case DELETE_PROD_FROM_ORDER: {
+    //   return {
+    //     ...state,
+    //     pedidoDetail: state.pedidoDetail?.filter(el => el.id !== action.payload)
+    //   }
+    // };
 
     default:
       return state;
-  };
+  }
 }
 
 export default rootReducer

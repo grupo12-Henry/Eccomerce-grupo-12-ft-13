@@ -267,7 +267,8 @@ router.put('/productos/:id', async (req, res) => { //modifica el producto selecc
 		subcategories
 	} = req.body
 	try {
-
+	console.log(id)
+	console.log(stock)
 		const product = await Product.findByPk(id)
 		await product.update({
 			name: name || product.dataValues.name,
@@ -480,7 +481,6 @@ router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun l
 			});
 			// console.log(order.mail, order.mail.slice(1,-1))
 			const response = await send(order.mail||'marcosmc86@gmail.com', 'VinotecApp', "pedido "+state+' soyhenry.com')
-			console.log(2)
 			res.send(order).status(200)
 		} else {
 			res.sendStatus(400)
@@ -528,11 +528,34 @@ router.put('/users/:id',async (req, res) => {
 	}
 })
 
-
-
-
-
-
-
+// router.delete('/pedidos/id/:id', async (req, res) => { //borra un producto de la tabla intermedia 'order_detail'
+// 	const id = req.params.id //id de pedido
+// 	const pId=parseInt(req.query.idProd,10)
+// 	console.log('OrdId:', id);
+// 	console.log('ProdId:', pId);
+// 	try {
+// 		const order = await Order.findByPk(id)
+// 		const product = await Product.findByPk(pId)
+// 		order.removeProducts(product)
+// 		res.send(order).status(200)
+// 	} catch (error) {
+// 		res.send(error).status(404);
+// 	}
+// });
+// router.put('/pedidos/id/:id', async (req, res) => { //modifica un producto de la tabla intermedia 'order_detail'
+// 	const id = req.params.id //id de pedido
+// 	const pId=parseInt(req.query.idProd,10)
+// 	console.log('OrdId:', id);
+// 	console.log('ProdId:', pId);
+// 	try {
+// 		const order = await Order.findByPk(id)
+// 		const product = await Product.findByPk(pId)
+// 		order.removeProducts(product)
+// 		res.send(order).status(200)
+// 	} catch (error) {
+// 		res.send(error).status(404);
+// 	}
+// });
+	
 
 module.exports = router

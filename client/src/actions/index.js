@@ -1,6 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken'
 const {secret}= {secret:process.env.REACT_APP_SECRET_TOKEN};
+// export const DELETE_PROD_FROM_ORDER = 'DELETE_PROD_FROM_ORDER'
 export const GETCARDS = 'GETCARDS';
 export const GETDETAILS = 'GETDETAILS';
 export const GETNAMES = 'GETNAMES';
@@ -37,12 +38,30 @@ export const CHECKOUT = 'CHECKOUT'
 export const POST_REVIEW = 'POST_REVIEW'
 
 
+
+
+
+// export function deleteProdFromOrder(idOrder, idProd) {
+//   return (dispatch) => {
+//     axios.delete(`http://localhost:3001/admin/pedidos/id/${idOrder}?idProd=${idProd}`)
+//       .then(response => {
+//         if (response) alert('Se eliminó producto del pedido');
+//         dispatch({
+//           type: DELETE_PROD_FROM_ORDER,
+//           payload: idProd
+//         })
+//       })
+//         .catch((err) => {
+//           console.log(err)
+//         })
+//   }
+// }
+
 export function getUser(mail) {
   return (dispatch) => {
     try {
       axios.get('http://localhost:3001/admin/userMail?mail=' + mail)
       .then(response => 
-      
         dispatch({
         type: POST_USER,
         payload: response.data
@@ -300,6 +319,7 @@ export function putUsuariosByadmin(id, usuario,token) {
    const user={...usuario,token}
     axios.put("http://localhost:3001/admin/users/" + id, user)
       .then((response) => {
+        if (response) alert ('El usuario se modificó correctamente');
         dispatch({
           type: PUT_USER,
           payload: response.data
@@ -376,7 +396,30 @@ export function Checkout(payload) {
 }
 // export async function editProduct(id, payload) {
 //   await axios.put('http://localhost:3001/admin/productos/' + id, payload)
+
+export async function editManyProducts(array) {
+ array.map(async producto => { 
+   try{
+     console.log('entra aca')
+     await axios.put("http://localhost:3001/admin/productos/" + producto.id, producto.modify)
+   } catch (err) {
+     console.log(err)
+   }
+      // .then((response) => {
+      //   //if (response) alert('El producto se modificó correctamente');
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // })
+  })
+  Promise.all(array)
+  .then(function() { alert('Los productos se modificaron correctamente') })
+  
+}
+
+
 export async function editProduct(id, payload) {
+  // console.log('entra aca')
   await axios.put("http://localhost:3001/admin/productos/" + id, payload)
     .then((response) => {
       if (response) alert('El producto se modificó correctamente');
@@ -475,6 +518,7 @@ export function putPedido(id, payload) {
   return (dispatch) => {
     axios.put(`http://localhost:3001/admin/pedidos/id/${id}`, payload)
       .then(response => {
+        if(response) alert('el pedido se modificó correctamente');
         dispatch({
           type: PUTPEDIDO,
           payload: response.data
