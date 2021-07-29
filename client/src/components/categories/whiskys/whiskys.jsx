@@ -63,13 +63,16 @@ function Whiskys() {
 
   useEffect(() => {
     const dbProducts = () => {
-      setAllProducts(product);
+      setAllProducts(product.filter(el=>el.type === "Whiskys"));
+      console.log(allProducts.length)
     };
     dbProducts();
   }, [product]);
 
+useEffect(() => {
   if (numberPage < 1) setnumberPage(1);
-  if (numberPage > 3) setnumberPage(3);
+  if (numberPage > Math.ceil(allProducts.length/9)) setnumberPage(numberPage-1); 
+}, [allProducts, numberPage]);
 
     const addToCart = (id) => {
         dispatch(addProductCart(id))
