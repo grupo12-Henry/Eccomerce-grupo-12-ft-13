@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, addProductCart, getProducts } from "../../actions/index";
 import StyledDiv from "./styled";
-import Nav from "../navbar/navbar";
-import Footer from "../footer/footer";
-import Loading from "../loading/Loading";
+import Loading from "../dashboard-user/loading/LoadingAdmin";
 import Reviews from "../reviews/reviews";
 
 export default function Detail({ match }) {
@@ -20,6 +18,8 @@ useEffect(() => {
 
   const product = useSelector((state) => state.productDetail);
   const [detail, setDetail] = useState([]);
+
+  console.log(match);
 
   useEffect(() => {
     dispatch(getDetail(match.params.id))
@@ -44,7 +44,6 @@ useEffect(() => {
   } else {
     return (
       <div>
-        <Nav />
         <StyledDiv>
           <section id='container'>
             <img id='image' src={detail.image} alt='' />
@@ -72,7 +71,6 @@ useEffect(() => {
             </div>
           </section>
         </StyledDiv>
-        <Footer />
       </div>
     );
 

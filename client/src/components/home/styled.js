@@ -70,12 +70,11 @@ a {
     display: flex;
     margin: 6%;
     margin-bottom: 0;
-    margin-top: 8%;
+    margin-top: -2%;
     height: 100%;
     width: 100%;
     align-items: center;
     position: relative;
-    box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .div_cards{

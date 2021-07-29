@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { StyledDiv } from "./styled";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../../src/contexts/AuthContext";
 import delivery from "../../assets/images/delivery-truck.png";
 import instagram from "../../assets/images/instagram.png";
 import twitter from "../../assets/images/twitter.png";
@@ -32,7 +32,6 @@ const Nav = () => {
     setIsOpen(true);
   };
 
-  const history = useHistory();
   const { currentUser, logout } = useAuth();
 
   // productCart.forEach(e=> {if(e.stock<1)removeProductCart(e.id)})
@@ -41,21 +40,9 @@ const Nav = () => {
     window.localStorage.removeItem('user')
     await logout();
     setIsOpen(false);
-    history.push("/home");
+    // history.push("/home");
   };
 
-  let estado = JSON.parse(window.localStorage.getItem("array"))
-  if(!!estado){estado=estado.reverse()}
-  if(!productCart?.length&&estado){
-    for(let i=0; i<estado.length;i++){
-      for(let j=0;j<productCart?.length;j++){
-        if(productCart.length&&estado[i]!==undefined&&estado[i].id===productCart[j].id){i=i+1}
-      }
-      if(estado[i]!==undefined)productCart?.push(estado[i])
-    }
-  }
-  
-  
   return (
     <StyledDiv>
       <div className="header-container">

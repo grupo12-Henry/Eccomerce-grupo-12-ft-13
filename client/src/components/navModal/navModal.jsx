@@ -47,6 +47,8 @@ export default function NavModal({ open, children, onClose }) {
   const dispatch = useDispatch()
   if (!open) return null;
 
+  console.log('holasanti')
+
   async function vamo (){
     if(currentUser){try{
       dispatch( !window.localStorage.getItem('user')&&crearUsuario({mail:currentUser.email, name: `${currentUser.displayName}`, token:currentUser.refreshToken}))
@@ -96,12 +98,11 @@ export default function NavModal({ open, children, onClose }) {
       {currentUser ? (
         <div style={OVERLAY_STYLES}>
           <div style={MODAL_STYLES}>
-              <div className='d-flex justify-content-end'>                
+              <div className='d-flex justify-content-end'>
                   <CloseIcon className='bClose' onClick={handleClose} style={{height: '2.2rem', width:'3rem', color:'red',borderRadius:'2px'}}/>
               </div>
-            
               <div>
-                 <p style={{marginTop:'1rem'}}>¡Ahora estas logueado!</p>
+                <p style={{marginTop:'1rem'}}>¡Ahora estas logueado!</p>
               </div>
             <button
               class="btn btn-light bLogout"

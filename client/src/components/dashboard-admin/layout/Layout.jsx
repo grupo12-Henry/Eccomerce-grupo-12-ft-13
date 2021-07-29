@@ -4,7 +4,7 @@ import Sidebar from '../sidebar/Sidebar';
 import Users from '../pages/users/Users';
 import Products from '../pages/products/Products';
 import Deliverys from '../pages/deliverys/Delivery';
-import LoadingAdmin from '../loading/LoadingAdmin';
+import LoadingAdmin from '../loading/LoadingUser';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export default function Layout() {

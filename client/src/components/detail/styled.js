@@ -5,7 +5,7 @@ const StyledDiv = styled.div`
     display: flex;
     margin-top: 2%;
     flex-direction: row;
-    margin-left: 10%;
+    margin-left: 0%;
     margin-right: 2%;
     justify-content: space-around;
 }
