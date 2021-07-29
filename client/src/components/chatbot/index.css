@@ -1,0 +1,13 @@
+.boton:hover > .mensaje
+        { background-color: rgb(180, 191, 240);
+          color: rgb(41, 40, 40);
+          /* margin-top: -3rem; */
+          display: block; 
+          margin-right: 1rem;
+}
+
+.mensaje{
+  display: none;
+  color: grey;
+  background-color: indianred;
+}
