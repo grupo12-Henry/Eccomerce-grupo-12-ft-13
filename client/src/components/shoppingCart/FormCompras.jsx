@@ -146,7 +146,7 @@ data-url="data.json">
   </tbody>
   </table>
         <Button type="submit" class="btn btn-dark">Confirmar Pago</Button>
-        <Button onClick={()=>(history.push('/home/compras'))} class='btn btn-dark ml-4'>Volver Carrito</Button>
+        <Button onClick={()=>(history.push('/home/compras'))} class='btn btn-dark ml-2'>Volver Carrito</Button>
       </Form>
       </div>
 </>)
