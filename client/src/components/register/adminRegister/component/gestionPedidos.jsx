@@ -152,12 +152,12 @@ function GestionPedidos() {
                         Array.isArray(pedidos)&& pedidos.map(pedido => (
                             <tr>
                             <th scope="row">{pedido.id}</th>
-                            <td>{pedido.date}</td>
+                            <td>{pedido.createdAt?.split('T')[0]}</td>
                             <td>{pedido.paymentMethod}</td>
                             <td>{pedido.bill}</td>
                             <td>{pedido.adress}</td>
                             <td>{pedido.ticket}</td>                            
-                            <td>{pedido.state}</td>
+                            <td>{pedido.state? pedido.state:'pendiente'}</td>
                             <td>{pedido.shippingDate}</td>
                             <td >
                                 <button class="btn btn-sm btn-info" value={pedido.id} onClick={(e) => { e.preventDefault(); handlePedidoDetail(e)}} >
@@ -204,7 +204,7 @@ function GestionPedidos() {
                 <li class='form-inline'><span>Fecha de compra: </span>{pedidoDetail&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                         name='name' 
-                        value={pedidoDetail.date}></input>}
+                        value={pedidoDetail?.createdAt? pedidoDetail.createdAt.split('T')[0]: pedidoDetail.date}></input>}
                 </li>
 
                 <li class='form-inline'><span>Total: </span>{pedidoDetail&&
@@ -263,10 +263,14 @@ function GestionPedidos() {
                         value={pedidoDetail.shippingDate}></input>}
                 </li>
 
-                <li class='form-inline'><span>Estado del envio: </span>{pedidoDetail&&
+                <li class='form-inline'><span>Estado del envio: </span>{pedidoDetail?.state?
+                //console.log(12421, pedidoDetail)&&
                 <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                         name='name' 
-                        value={pedidoDetail.state}></input>}
+                        value={pedidoDetail.state}></input>: pedidoDetail?.id &&
+                <input class="form-control form-control-sm mt-1 ml-2 form-row"                        
+                        name='name' 
+                        value={'pendiente'}></input>}
                 </li>
 
                 <li class='form-inline'><span>Costo de envio: </span>{pedidoDetail&&
@@ -336,7 +340,7 @@ function GestionPedidos() {
                     <input class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name='date' 
                         type='text' 
-                        placeholder={pedidoDetail?.date} 
+                        placeholder={pedidoDetail?.createdAt? pedidoDetail.createdAt.split('T')[0]: '...'} 
                         value={modifyPedido.date} 
                         onChange={handleInputChange}/>
                 </li>
