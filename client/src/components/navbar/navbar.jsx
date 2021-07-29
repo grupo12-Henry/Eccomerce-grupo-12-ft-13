@@ -43,18 +43,6 @@ const Nav = () => {
     // history.push("/home");
   };
 
-  let estado = JSON.parse(window.localStorage.getItem("array"))
-  if(!!estado){estado=estado.reverse()}
-  if(!productCart?.length&&estado){
-    for(let i=0; i<estado.length;i++){
-      for(let j=0;j<productCart?.length;j++){
-        if(productCart.length&&estado[i]!==undefined&&estado[i].id===productCart[j].id){i=i+1}
-      }
-      if(estado[i]!==undefined)productCart?.push(estado[i])
-    }
-  }
-  
-  
   return (
     <StyledDiv>
       <div className="header-container">

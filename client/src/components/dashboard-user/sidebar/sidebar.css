@@ -7,19 +7,15 @@
 }
 .searchBar{
   margin-top: -35px;
-  margin-left: 550px;
+  margin-left: 768px;
 }
-.usuario{
-  margin-left: -250px;
-  margin-right: 190px;
-  height: 35px;
-}
-.carrito{
-  margin-left: -250px;
-  height: 30px;
+.d-flex{
+  margin: 5px 1px 1px 1px;
+  list-style: none;
 }
 .dropdown{
   font-family: 'Quicksand', sans-serif;
   height:65px;
-  margin-left: 265px;
+  margin-top: 12px;
+  margin-left: -29px;
 }

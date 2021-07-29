@@ -49,13 +49,6 @@ const Auto = () => {
             value={wordEntered}
             onChange={handleFilter}
           />
-          <div className="searchIcon">
-            {filteredData.length === 0 ? (
-              <AiOutlineSearch />
-            ) : (
-              <CloseIcon id="clearBtn" onClick={clearInput} />
-            )}
-          </div>
         </div>
         {filteredData.length !== 0 && (
           <div className="dataResult">

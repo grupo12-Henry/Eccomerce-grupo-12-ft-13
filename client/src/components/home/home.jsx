@@ -29,6 +29,8 @@ export default function Home({ location }) {
   const productDetail = useSelector((state) => state.productDetail);
   const wishList = useSelector((state) => state.wishList);
 
+  console.log('product',product)
+
   // const cart = useSelector((state) => state.productCart);
   const history = useHistory();
   // console.log(historial)
@@ -36,7 +38,7 @@ export default function Home({ location }) {
   const [page, setPage] = useState(1);
   const pago = JSON.parse(window.localStorage.getItem("pago"));
   const cart = JSON.parse(window.localStorage.getItem("array"));
-
+  console.log('cart',cart)
   useEffect(() => {
     let historial = history.location.search.includes("&status=")
       ? history.location.search.split("&status=")[1].split("&")[0]

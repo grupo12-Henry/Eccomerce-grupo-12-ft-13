@@ -10,7 +10,7 @@ import Varios from '../pages/varios/Varios';
 import Contacto from '../pages/contacto/Contacto';
 import ShoppingCart from '../pages/shopping/ShoppingCart';
 import Detail from '../pages/detail/Detail';
-import Home1 from '../pages/home/Home';
+import Home from '../pages/home/Home';
 
 export default function Layout() {
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,7 @@ export default function Layout() {
     <Router>
       <Sidebar />
       <Switch>
-        <Route component={Home1} exact path="/home" />
+        <Route component={Home} exact path="/home" />
         <Route component={Vinos} exact path="/home/vinos" />
         <Route component={Cervezas} exact path="/home/cervezas" />
         <Route component={Espumantes} exact path="/home/espumantes" />
