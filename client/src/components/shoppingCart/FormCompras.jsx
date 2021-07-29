@@ -62,8 +62,10 @@ export default function FormCompras() {
     };
     const retiro = (e)=>{
       console.log('change', e.target.value); 
-      if (e.target.value!=='domicilio'){return (setFormCompra({...formCompra, direccion:e.target.value}), console.log('settt envio', envio), setEnvio(false))}
-       else { setEnvio(true)}
+      if (e.target.value!=='domicilio'){
+        return (setFormCompra({...formCompra, direccion:e.target.value}),
+         setEnvio(false))
+        } else { setEnvio(true)}
     }
 
     return (<>
@@ -92,9 +94,9 @@ export default function FormCompras() {
                     </select>
           </Form.Group>
           {envio?
-          <Form.Group as={Col} md="4" controlId="validationCustom01">
-            <Form.Label>Direccion Envio</Form.Label>
-            <Form.Control
+          <Form.Group as={Col} md="4" controlId="validationCustom01" style={{width:'5rem', height:'1rem'}}>
+            <span>Direccion Envio</span>
+            <Form.Control style={{height:'1.85rem', marginTop:'0.2rem', fontSize:'0.8rem'}}
               onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value}); console.log('hola emi')}}
               required
               type="text"
@@ -145,8 +147,8 @@ data-url="data.json">
     }
   </tbody>
   </table>
-        <Button type="submit" class="btn btn-dark">Confirmar Pago</Button>
-        <Button onClick={()=>(history.push('/home/compras'))} class='btn btn-dark ml-2'>Volver Carrito</Button>
+        <Button type="submit" class="btn btn-dark" style={{marginRight:'0.5rem'}}>Confirmar Pago</Button>
+        <Button onClick={()=>(history.push('/home/compras'))} class='btn btn-dark '>Volver Carrito</Button>
       </Form>
       </div>
 </>)
