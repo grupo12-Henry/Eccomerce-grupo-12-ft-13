@@ -39,14 +39,16 @@ function Varios() {
 
     useEffect(() => {
         const dbProducts = () => {
-            setAllProducts(product);
+          setAllProducts(product.filter(el=>el.type === "varios"));
+          console.log(allProducts.length)
         };
         dbProducts();
-    }, [product]);
-
-
-    if (numberPage < 1) setnumberPage(1);
-    if (numberPage > 2) setnumberPage(2);
+      }, [product]);
+    
+    useEffect(() => {
+      if (numberPage < 1) setnumberPage(1);
+      if (numberPage > Math.ceil(allProducts.length/9)) setnumberPage(numberPage-1); 
+    }, [allProducts, numberPage]);
 
     const addToCart = (id) => {
         dispatch(addProductCart(id))

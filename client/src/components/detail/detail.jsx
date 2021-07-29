@@ -6,6 +6,7 @@ import Loading from "../dashboard-user/loading/LoadingAdmin";
 import Reviews from "../reviews/reviews";
 
 export default function Detail({ match }) {
+  console.log('MATCH', match)
   const dispatch = useDispatch();
 
 useEffect(() => {

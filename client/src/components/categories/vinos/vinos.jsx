@@ -58,27 +58,30 @@ function Vinos() {
     };
     dbProducts();
   }, [dispatch]);
-
-  useEffect(() => {
-    const dbProducts = () => {
-      setAllProducts(product);
-    };
-    dbProducts();
-  }, [product]);
-
-  if (numberPage < 1) setnumberPage(1);
-  if (numberPage > 8 && !initialProducts) setnumberPage(1);
-
+  
   const handleCategories = () => {
     setAllProducts(product);
   };
-
+  
   const addToCart = (id) => {
     dispatch(addProductCart(id))
   }
-
-
+  
+  
   const [loading, setLoading] = useState(false);
+  
+    useEffect(() => {
+      const dbProducts = () => {
+        setAllProducts(product.filter(el=>el.type === "Vinos"));
+        console.log(allProducts.length)
+      };
+      dbProducts();
+    }, [product]);
+  
+  useEffect(() => {
+    if (numberPage < 1) setnumberPage(1);
+    if (numberPage > Math.ceil(allProducts.length/9)) setnumberPage(numberPage-1); 
+  }, [allProducts, numberPage]);
 
   useEffect(() => {
     setTimeout(() => setLoading(true), 600);
@@ -97,7 +100,7 @@ function Vinos() {
               {/* <button id='botonazo'className='btn btn-success' onClick={handleCategories}>CATEGORIAS</button> */}
               <div class="row col-sm-14  ml-1 ">
                 {subCategories.map(d => <button id='botonazo' className='btn btn-dark mt-1' key={d}
-                  onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d))) }}>{d} ({counts[d]})</button>)
+                  onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d)))}}>{d} ({counts[d]})</button>)
                 }
               </div>
             </div>
@@ -158,7 +161,7 @@ function Vinos() {
                       })}
                   </div>
                   <div class="justify-content-center">
-                    <button className='btn btn-dark ml-2 mt-1' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
+                    <button className='btn btn-dark ml-2 mt-1' onClick={() =>{  setnumberPage(numberPage + 1);if(numberPage > Math.ceil(allProducts/9)) setnumberPage(1)}}>SIGUENTE {numberPage}</button>
                   </div>
                 </div>
               </div>

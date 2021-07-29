@@ -61,13 +61,16 @@ function Espumantes() {
 
   useEffect(() => {
     const dbProducts = () => {
-      setAllProducts(product);
+      setAllProducts(product.filter(el=>el.type === "Espumantes"));
+      console.log(allProducts.length)
     };
     dbProducts();
   }, [product]);
 
-  if (numberPage < 1) setnumberPage(1);
-  if (numberPage > 3) setnumberPage(3);
+  useEffect(() => {
+    if (numberPage < 1) setnumberPage(1);
+    if (numberPage > Math.ceil(allProducts.length/9)) setnumberPage(numberPage-1); 
+  }, [allProducts, numberPage]);
 
   const handleCategories = () => {
     setAllProducts(product);
