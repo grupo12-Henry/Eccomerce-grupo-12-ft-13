@@ -18,6 +18,8 @@ import Roboto from "../chatbot/Chatbot";
 import { useHistory } from "react-router-dom";
 import Sending from "../SendingT/SendingT";
 import SendingEmail from "../SendingT/sendmail";
+import Maps from '../Maps/maps'
+import ContactUser from '../ContactUser/ContactUser'
 import Loading from '../loading/Loading';
 
 export default function Home({ location }) {
@@ -76,7 +78,12 @@ export default function Home({ location }) {
   }, []);
 
   useEffect(() => {
-    if (location?.search !== "") {
+      dispatch(getProducts());
+  }, []);
+
+
+  useEffect(() => {
+    if (location.search !== "") {
       setPage(
         parseInt(location ? location.search.slice(location.search.indexOf("=") + 1): 1)
       );
@@ -91,9 +98,10 @@ export default function Home({ location }) {
     dbProducts();
   }, [dispatch]);
 
+
   useEffect(() => {
     const dbProducts = () => {
-      setAllProducts(product);
+      setAllProducts(product.filter(e=>e.stock>0));
     };
     dbProducts();
   }, [product]);
@@ -200,7 +208,9 @@ export default function Home({ location }) {
           </div>
         </StyledDiv>
         <Pages product={product} page={page} />
-        {/* <SendingEmail /> */}
+         {/* <SendingEmail /> */}
+        {/* <Maps/>  */}
+         {/* <ContactUser/> */}
       </>
     );
   }
