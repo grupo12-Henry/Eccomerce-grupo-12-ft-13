@@ -140,7 +140,7 @@ function GestionPedidos() {
                     <th scope="col" data-field="paymentMethod" data-sortable="true" >Forma de Pago</th>
                     <th scope="col" data-field="bill" data-sortable="true" >Total</th>
                     <th scope="col" data-field="adress" data-sortable="false" >Dirección</th>
-                    <th scope="col" data-field="ticket" data-sortable="false" >Ticket</th>
+                    <th scope="col" data-field="ticket" data-sortable="false" >N° de Factura</th>
                     <th scope="col" data-field="state" data-sortable="true" >Estado del envio</th>
                     <th scope="col" data-field="shippingDate" data-sortable="true" >Fecha de envio</th>
                     <th scope="col" data-field="details" data-sortable="true" >Detalle</th>
@@ -219,7 +219,7 @@ function GestionPedidos() {
                         value={pedidoDetail.paymentMethod}></input>)}
                 </li>
 
-                <li class='form-inline'><span>Ticket: </span>{pedidoDetail&&
+                <li class='form-inline'><span>N° de Factura: </span>{pedidoDetail&&
                 (<input class="form-control form-control-sm mt-1 ml-2 form-row"                        
                         name='name' 
                         value={pedidoDetail.ticket}></input>)}
@@ -365,7 +365,7 @@ function GestionPedidos() {
                     </select>
                 </li>
                 <li class='form-inline'>
-                    <span>Ticket: </span>
+                    <span>N° de Factura: </span>
                     <input class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name='ticket' 
                         type='text' 
