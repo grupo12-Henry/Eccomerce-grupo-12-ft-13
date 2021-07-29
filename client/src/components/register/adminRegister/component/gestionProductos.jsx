@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Dropdown from "react-bootstrap/Dropdown";
 import { getProducts, addProduct, editProduct, deleteProduct, getDetail} from '../../../../actions';
 import axios from 'axios'
+// import Auto2 from './searchbarAdmin/searchBarAdmin'
 
 function GestionProductos() {
   const [subcategories,setSubcategories]=useState([])
@@ -84,14 +85,14 @@ function GestionProductos() {
   }
 
     return (
-      <div class='container' className='jah287'>
+      <div class='container d-flex flex-column' >
         {/* Tabla de productos */}
-        <div class='containter mt-05 ml-3 mr-03 mb-3'>
+        <div class='container d-flex flex-column mt-05 ml-3 mr-03 mb-3'>
         <ol className="d-flex " style={{listStyle:'none'}}>
           
           <li class="mt-3 "> <button class="btn btn-sm btn-info" name='order' value={!toggle.order} onClick={e=>navChange(e)} >{!toggle.order?'ASC':'DESC'} </button></li>
           <li class="mt-3 ml-3 "><button  class="btn btn-sm btn-info" name='por' value={!toggle.por} onClick={e=>navChange(e)}>{!toggle.por?'name':'price'}</button></li>
-          <li class="mt-3 ml-3">
+          <li class="ml-5">
             <Dropdown >
                   <Dropdown.Toggle class="btn btn-sm btn-info"  variant="success" id="dropdown-basic-button">
                     {toggle.filter}
@@ -105,6 +106,9 @@ function GestionProductos() {
                     <Dropdown.Item onClick={e=>navChange(e)} name="filter" key='varios' value='varios'>Varios</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown></li></ol>
+          {/* <div className="Auto">
+            <Auto2 search={setSubcategories}/>
+          </div> */}
           
           <h3 class='mt-03 ml-3 mr-03 mb-3'>Ver Productos</h3>
           <div class="table-responsive">
