@@ -1,5 +1,8 @@
-.componente{
+.form{
   font-family: 'Quicksand', sans-serif;
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  margin-left: 550px;
+  margin-top: -391px;
+  border: 2px solid;
+  border-radius:5px
 }

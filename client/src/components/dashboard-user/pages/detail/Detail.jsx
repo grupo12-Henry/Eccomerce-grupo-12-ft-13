@@ -5,11 +5,11 @@ import './detail.css'
 
 export default function Delivery({match}) {
   return (
-    <>
+    <div>
         <Sidebar />
       <div className="divDelDetail">
         <Detail match={match}/>
       </div>
-    </>
+    </div>
   )
 }

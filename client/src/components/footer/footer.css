@@ -1,0 +1,13 @@
+.componente{
+  background-color:black;
+  padding: 0;
+  position: relative;
+  margin-top: 580px;
+}
+.textos{
+  font-family: 'Quicksand' sans-serif;
+  color: white;
+}
+.logo{
+  color: white;
+}

@@ -21,6 +21,7 @@ import LayoutUser from './components/dashboard-user/layout/Layout';
 import Detail from '../src/components/dashboard-user/pages/detail/Detail';
 import MiCuenta from '../src/components/dashboard-user/pages//miCuenta/Cuenta';
 import Sugeridos from './components/sugeridos/sugeridos';
+import Footer from "./components/footer/footer";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <PrivateRouteUser component={MiCuenta} exact path='/home/micuenta'/>
         <PrivateRouteUser component={UpdateProfile} path='/home/update-profile'/>
         <Route component={Sugeridos} exact path='/sugeridos'/>
+        <Route component={Footer} exact path='/footer'/>
       </AuthProvider>
     </React.Fragment>
   )

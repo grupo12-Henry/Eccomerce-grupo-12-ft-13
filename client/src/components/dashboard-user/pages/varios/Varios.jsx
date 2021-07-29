@@ -1,11 +1,15 @@
 import React from 'react'
 import Varios from '../../../categories/varios/varios';
+import Sidebar from '../../sidebar/Sidebar';
 import './varios.css'
 
 export default function Delivery() {
   return (
-    <div className="componente">
-      <Varios />
-    </div>
+    <>
+      <Sidebar />
+      <div className="componente">
+        <Varios />
+      </div>
+    </>
   )
 }

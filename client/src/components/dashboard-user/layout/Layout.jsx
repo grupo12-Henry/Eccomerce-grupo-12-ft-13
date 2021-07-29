@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Sidebar from '../sidebar/Sidebar';
 import LoadingUser from '../loading/LoadingAdmin';
 import Vinos from '../pages/vinos/Vinos';
 import Cervezas from '../pages/cervezas/Cervezas';
@@ -24,7 +23,6 @@ export default function Layout() {
   } else
   return (
     <Router>
-      <Sidebar />
       <Switch>
         <Route component={Home} exact path="/home" />
         <Route component={Vinos} exact path="/home/vinos" />

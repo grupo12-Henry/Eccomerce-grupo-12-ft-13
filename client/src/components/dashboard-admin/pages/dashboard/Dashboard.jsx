@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Sidebar from "../../../dashboard-admin/sidebar/Sidebar";
 import "./dashboard.css";
+import Footer from "../../../footer/footer";
 
 export default function Dashboard() {
   const [productos, setProductos] = useState(false);
@@ -21,6 +23,8 @@ export default function Dashboard() {
   };
 
   return (
+      <>
+        <Sidebar />
     <div className="imgStyle">
       <div className="buttons">
         <a href={"/home"}>
@@ -44,6 +48,8 @@ export default function Dashboard() {
           </div>
         </Link>
       </div>
+      <Footer />
     </div>
+      </>
   );
 }

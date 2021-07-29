@@ -1,40 +1,50 @@
 import React from 'react';
-import { AiOutlineHome, AiOutlineArrowRight, AiOutlineMessage } from "react-icons/ai";
+import {
+  FaHome,
+  FaWineBottle,
+  FaWineGlassAlt,
+  FaFacebookMessenger
+} from 'react-icons/fa';
 
 export const SidebarData = [
   {
     title: 'Home',
     path: '/home',
-    icon: <AiOutlineHome />,
+    icon: <FaHome />,
   },
   {
     title: 'Vinos',
     path: '/home/vinos',
-    icon: <AiOutlineArrowRight />,
+    icon: <FaWineGlassAlt />,
+    subnav: [
+      {
+        title: 'vinos'
+      }
+    ]
   },
   {
     title: 'Cervezas',
     path: '/home/cervezas',
-    icon: <AiOutlineArrowRight />,
+    icon: <FaWineBottle />,
   },
   {
     title: 'Espumantes',
     path: '/home/espumantes',
-    icon: <AiOutlineArrowRight />,
+    icon: <FaWineBottle />,
   },
   {
     title: 'Whiskys',
     path: '/home/whiskys',
-    icon: <AiOutlineArrowRight />,
+    icon: <FaWineBottle />,
   },
   {
     title: 'Varios',
     path: '/home/varios',
-    icon: <AiOutlineArrowRight />,
+    icon: <FaWineBottle />,
   },
   {
     title: 'Contacto',
     path: '/home/contacto',
-    icon: <AiOutlineMessage />,
+    icon: <FaFacebookMessenger />,
   },
 ]

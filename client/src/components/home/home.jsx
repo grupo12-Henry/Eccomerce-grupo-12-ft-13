@@ -16,10 +16,6 @@ import ProductRating from "../productRating/productRating";
 import Roboto from "../chatbot/Chatbot";
 // import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-import Sending from "../SendingT/SendingT";
-import SendingEmail from "../SendingT/sendmail";
-import Maps from '../Maps/maps'
-import ContactUser from '../ContactUser/ContactUser'
 import Loading from '../loading/Loading';
 
 export default function Home({ location }) {
@@ -210,9 +206,6 @@ export default function Home({ location }) {
           </div>
         </StyledDiv>
         <Pages product={product} page={page} />
-         {/* <SendingEmail /> */}
-        {/* <Maps/>  */}
-         {/* <ContactUser/> */}
       </>
     );
   }
