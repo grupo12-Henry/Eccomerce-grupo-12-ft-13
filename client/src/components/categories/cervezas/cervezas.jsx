@@ -14,9 +14,9 @@ import ProductRating from "../../productRating/productRating";
 function Cervezas() {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
-
+  
   const [allProducts, setAllProducts] = useState([]);
-
+  
   const [numberPage, setnumberPage] = useState(1);
   const user = useSelector((state) => state.user)
   const addingToWishList = (Uid, productId) => {
@@ -28,10 +28,13 @@ function Cervezas() {
   const initialProducts = 9;
   const conteoFinal = numberPage * initialProducts;
   const conteoInicial = conteoFinal - initialProducts;
-
+  
   const showProducts = allProducts
     .filter((el) => el.type === "cervezas")
     .slice(conteoInicial, conteoFinal);
+  // setAllProducts( allProducts
+  //   .filter((el) => el.type === "cervezas")
+  //   .slice(conteoInicial, conteoFinal));
 
   // product.filter(el => el.type === 'cervezas').map(e => e.subcategories.forEach((el) => {
   let subCategories = [];
@@ -54,9 +57,6 @@ function Cervezas() {
 
   const countsSorted = Object.entries(counts).sort(([, b], [_, a]) => a - b);
 
-  console.log(countsSorted);
-  // console.log(subCategories)
-
   useEffect(() => {
     const dbProducts = () => {
       dispatch(getProducts());
@@ -66,17 +66,22 @@ function Cervezas() {
 
   useEffect(() => {
     const dbProducts = () => {
-      setAllProducts(product);
+      setAllProducts(product.filter(el=>el.type === "cervezas"));
+      console.log(allProducts.length)
     };
     dbProducts();
   }, [product]);
 
-  if (numberPage < 1) setnumberPage(1);
-  if (numberPage > 2) setnumberPage(2);
+  useEffect(() => {
+    if (numberPage < 1) setnumberPage(1);
+    if (numberPage > Math.ceil(allProducts.length/9)) setnumberPage(numberPage-1); 
+    console.log(allProducts.length, 'emiiiiii')
+  }, [allProducts, numberPage]);
+  
 
-  const handleCategories = () => {
-    setAllProducts(product);
-  };
+
+  // const handleCategories = () => {
+  // };
 
   const addToCart = (id) => {
     dispatch(addProductCart(id))
