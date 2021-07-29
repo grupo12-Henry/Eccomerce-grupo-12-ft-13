@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import StyledDiv from "../../detail/styled";
 import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from "../../productRating/productRating";
+import swal from 'sweetalert';
 
 function Varios() {
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function Varios() {
         // console.log('ELUSER', Uid, 'ELFAV', productId)
         let body = { productId: productId };
         dispatch(addToWishList(Uid, body));
+        swal("Se agregó a Favoritos!", 'Podrás ver este producto en tu sección Favoritos siempre que estes logueado.', "success");
     };
     let subCategories = []
     let counts = {}
