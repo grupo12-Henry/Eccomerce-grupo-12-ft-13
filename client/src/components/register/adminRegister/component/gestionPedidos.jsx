@@ -340,7 +340,7 @@ function GestionPedidos() {
                     <input class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name='date' 
                         type='text' 
-                        placeholder={pedidoDetail?.createdAt? pedidoDetail.createdAt.split('T')[0]: '...'} 
+                        placeholder={pedidoDetail?.createdAt? pedidoDetail.createdAt.split('T')[0]: null} 
                         value={modifyPedido.date} 
                         onChange={handleInputChange}/>
                 </li>

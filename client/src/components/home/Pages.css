@@ -12,13 +12,13 @@
   transition: 0.4s;
 }
 .nums:hover{
-  background-color: rgb(47, 173, 47);
+  background-color: rgb(#000000);
 }
 
 .Pagination {
     width: 100%;
     margin-bottom: 1%;;
-    background-color: rgba(82, 3, 3, 0.76);
+    background-color: rgba(0, 0,0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +27,7 @@
   
   .Pagination button {
     font-size: 1.2rem;
-    background-color: rgba(89, 5, 5, 0.712);
+    background-color: rgba(0, 0,0);
     outline: none;
     color: white;
     padding: 1rem;
@@ -37,7 +37,7 @@
   .Pagination button:hover, .Pagination button:focus{
     outline: none;
     border: none;
-    background-color: rgba(89, 5, 5, 0.336);
+    background-color: rgb(92, 89, 89);
     cursor: pointer;
   }
   
