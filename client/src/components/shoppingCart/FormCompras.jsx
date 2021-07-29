@@ -60,6 +60,11 @@ export default function FormCompras() {
       // dispatch(orderPost())
         }
     };
+    const retiro = (e)=>{
+      console.log('change', e.target.value); 
+      if (e.target.value!=='domicilio'){return (setFormCompra({...formCompra, direccion:e.target.value}), console.log('settt envio', envio), setEnvio(false))}
+       else { setEnvio(true)}
+    }
 
     return (<>
       <div className='containerFormCompras'>
@@ -69,7 +74,7 @@ export default function FormCompras() {
           <Form.Group as={Col} md="3" controlId="validationCustom05">
             <span>Forma de Entrega: </span>
             {/* onChange={(e)=>setFormCompra({...formCompra, pago:e.target.value})} */}
-                    <select onChange={(e)=>{e.target.value!=='domicilio'?setFormCompra({...formCompra, direccion:e.target.value})&&setEnvio(false):setEnvio(true)}}
+                    <select onChange={(e)=> retiro(e)}
                       class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name="paymentMethod" >
                         <option value='Retiro por el local'>Retiro por el local</option>
@@ -96,8 +101,9 @@ export default function FormCompras() {
               placeholder="Ingrese una direccion"
               defaultValue={user.adress?user.adress:null}
             />
+            {console.log(envio,  formCompra)}
             {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
-          </Form.Group>:setEnvio(false)}
+          </Form.Group>:console.log('estado en false', envio, formCompra)}
 
         </Row>
         <Row className="mb-3">
@@ -140,7 +146,7 @@ data-url="data.json">
   </tbody>
   </table>
         <Button type="submit" class="btn btn-dark">Confirmar Pago</Button>
-        <Button onClick={()=>(history.push('/compras'))} class='btn btn-dark ml-4'>Volver Carrito</Button>
+        <Button onClick={()=>(history.push('/home/compras'))} class='btn btn-dark ml-4'>Volver Carrito</Button>
       </Form>
       </div>
 </>)
