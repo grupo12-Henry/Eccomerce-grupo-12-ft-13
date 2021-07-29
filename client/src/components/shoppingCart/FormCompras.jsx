@@ -13,6 +13,8 @@ export default function FormCompras() {
      const history = useHistory()
      const cart = useSelector((state) => state.productCart);
      const user = useSelector((state) => state.user);
+     const [envio, setEnvio] = useState(false);
+
     const [validated, setValidated] = useState(false);
     const [formCompra, setFormCompra] = useState({direccion:'Retiro en local', pago: 'tarjeta'})
 
@@ -63,16 +65,16 @@ export default function FormCompras() {
       <div className='containerFormCompras'>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-3">
-          <Form.Group as={Col} md="4" controlId="validationCustom01">
-            <Form.Label>Direccion Envio</Form.Label>
-            <Form.Control
-              onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value}); console.log('hola emi')}}
-              required
-              type="text"
-              placeholder="First name"
-              defaultValue={user.adress?user.adress:'Ingrese la direccion...'}
-            />
-            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
+          
+          <Form.Group as={Col} md="3" controlId="validationCustom05">
+            <span>Forma de Entrega: </span>
+            {/* onChange={(e)=>setFormCompra({...formCompra, pago:e.target.value})} */}
+                    <select onChange={(e)=>{e.target.value!=='domicilio'?setFormCompra({...formCompra, direccion:e.target.value})&&setEnvio(false):setEnvio(true)}}
+                      class="form-control form-control-sm mt-1 ml-2 form-row" 
+                        name="paymentMethod" >
+                        <option value='Retiro por el local'>Retiro por el local</option>
+                        <option value='domicilio' >Envio a domicilio</option>
+                    </select>
           </Form.Group>
 
           <Form.Group as={Col} md="3" controlId="validationCustom05">
@@ -84,6 +86,18 @@ export default function FormCompras() {
                         <option value='efectivo' >Efectivo</option>
                     </select>
           </Form.Group>
+          {envio?
+          <Form.Group as={Col} md="4" controlId="validationCustom01">
+            <Form.Label>Direccion Envio</Form.Label>
+            <Form.Control
+              onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value}); console.log('hola emi')}}
+              required
+              type="text"
+              placeholder="Ingrese una direccion"
+              defaultValue={user.adress?user.adress:null}
+            />
+            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
+          </Form.Group>:setEnvio(false)}
 
         </Row>
         <Row className="mb-3">
