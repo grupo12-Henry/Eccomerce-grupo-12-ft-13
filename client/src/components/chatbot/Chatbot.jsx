@@ -9,8 +9,7 @@ import "./index.css";
 
 function Roboto() {
   
-  const [robot, setRobot] = useState(true)
-  const [cerrar, setCerrar] = useState(true)
+  const [robot, setRobot] = useState(false)
 
   const chatbotHandler = () => {
     setRobot(current => !current)
