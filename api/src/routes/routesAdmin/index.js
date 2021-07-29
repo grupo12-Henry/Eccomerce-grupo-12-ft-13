@@ -1,3 +1,5 @@
+const Sequelize=require('sequelize')
+Op = Sequelize.Op
 const {
 	Router
 } = require('express');
@@ -6,12 +8,12 @@ const {
 	Client,
 	Order,
 } = require('../../db');
-const Sequelize = require('sequelize');
 const {
 	auth,
 	authAdmin
 } = require('../controler')
-const { send } = require('../nodemailer')
+const { send } = require('../nodemailer');
+
 //modelos acá:
 
 const router = Router();
@@ -59,6 +61,39 @@ router.get('/detallePedido/:id', async (req, res) => { //envia detalle de un ped
 		res.send(error).status(404)
 	}
 })
+// router.get('/recomendados/:id',async (req,res)=>{
+// 	const id = req.params.id
+// 	try{
+// 		const cliente= await Client.findByPk(id,{
+// 			include:{model:Product}
+// 		   })
+// 		   //res.send(cliente.products)
+// 		var array=[]
+
+// 		   for(let i=0;i<cliente.products.length;i++){
+// 			array.push(await Product.findOne({where:{ subcategories:{[Op.like]: `%${cliente.products[i].subcategories[0]}%`}}}))
+// 		   }
+
+		
+
+
+// 		/* const productos = cliente.products&&cliente.products.forEach(async(prod)=>{
+		 
+// 		 return recomendado =await Product.findOne({where:{ subcategories:{[Op.like]: `%${prod.subcategories[0]}%`}}})
+// 		}) */
+// 		Promise.all(array)
+// 		.then(el=>{console.log(el); res.send(el)})
+// 	}			
+// 	catch(error){
+// 		res.send(error).status(404)
+
+// 	}
+
+
+
+// })
+
+
 
 router.delete('/producto/:id', async (req, res) => {
 	const id = req.params.id

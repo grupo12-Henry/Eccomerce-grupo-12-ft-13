@@ -8,6 +8,7 @@ import Loading from "../loading/Loading";
 import Reviews from "../reviews/reviews";
 
 export default function Detail({ match }) {
+  console.log('MATCH', match)
   const dispatch = useDispatch();
 
 useEffect(() => {
