@@ -1,13 +1,34 @@
-.componente{
-  background-color:black;
-  padding: 0;
-  position: relative;
-  margin-top: 580px;
+.div_conteiner{
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  width: 100%;
+	height: 18%;
+	overflow: hidden;
+	background-color: black;
 }
-.textos{
-  font-family: 'Quicksand' sans-serif;
-  color: white;
+
+.div_pagos{
+    margin: 0% 0% 0% 0%;
+    display: block;
+    align-items: center;
 }
-.logo{
-  color: white;
+
+.div_logo {
+    margin-bottom: 1%;
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 15px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.div_info {
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
 }

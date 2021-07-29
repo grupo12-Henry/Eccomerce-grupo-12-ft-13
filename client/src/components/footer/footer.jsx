@@ -1,36 +1,44 @@
-import React from "react";
-import pagos from '../../assets/images/pagos.png'
-import logo from '../../assets/images/logo.png'
-import {
-  FaWhatsapp,
-  FaFacebook,
-  FaInstagram,
-} from 'react-icons/fa';
-import {
-  MdEmail,
-  MdLocalGroceryStore,
-  MdPayment
-} from "react-icons/md";
-
+import React from 'react';
 import './footer.css';
+import logo from '../../assets/images/logo.jpg';
+import pagos from '../../assets/images/pagos.png'
+
+import {
+  FaInstagram,
+  FaTwitter,
+} from 'react-icons/fa';
 
 const Footer = () => {
-  return (
-    <div className="componente">
-      <div className="logo">
-        {/* <img src={logo} alt="Logo"/> */}
-      </div>
-      <div className="textos">
-        MEDIOS DE PAGO:
-      </div>
-      <div className="textos">
-        CONTACTO:
-      </div>
-      <div className="textos">
-        DIRECCION:
-      </div>
-    </div>
-  )
-};
+    return (
 
-export default Footer;
+        <div className='div_conteiner'>
+            <div className='div_pagos'>
+                <i>MEDIOS DE PAGO</i>
+                <hr />
+                <img src={pagos} alt='img pagos' width='120px' />
+            </div>
+            <div className='div_logo'>
+                <img src={logo} alt='img logo' width='300px' />
+                <i>BEBER CON MODERACIÓN. PROHIBIDA SU VENTA A MENORES DE 18 AÑOS.</i>
+            </div>
+            <div className='div_info'>
+                <div> Contáctanos <a href='/contact'>(+info)</a></div>
+                <div>
+                    <br />
+                    <FaInstagram />
+                    <i> @VinotecApp</i>
+                </div>
+                <br />
+                <div>
+                    <FaTwitter />
+                    <i> @Vinotec_App</i>
+                </div>
+            </div>
+            {<div className='div_info'>
+            </div>}
+        </div>
+
+    )
+}
+
+export default Footer

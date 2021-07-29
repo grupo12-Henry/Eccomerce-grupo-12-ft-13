@@ -48,8 +48,8 @@ export default function Dashboard() {
           </div>
         </Link>
       </div>
-      <Footer />
     </div>
+      <Footer className="footer"/>
       </>
   );
 }
