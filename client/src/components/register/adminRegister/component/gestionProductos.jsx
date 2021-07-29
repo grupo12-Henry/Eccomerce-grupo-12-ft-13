@@ -2,10 +2,14 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import Dropdown from "react-bootstrap/Dropdown";
-import { getProducts, addProduct, editProduct, deleteProduct, getDetail} from '../../../../actions';
+import { getProducts, addProduct, editProduct, deleteProduct, getDetail, getNames} from '../../../../actions';
 import axios from 'axios'
+import {AiOutlineSearch} from 'react-icons/ai';
+import CloseIcon from "@material-ui/icons/Close";
+// import Auto2 from './searchbarAdmin/searchBarAdmin'
 
 function GestionProductos() {
+  const AllProdsForSearch = useSelector(state => state.products);
   const [subcategories,setSubcategories]=useState([])
   const [toggle, setToggle]=useState({
     order:true,//'asc',
@@ -13,6 +17,9 @@ function GestionProductos() {
     por:true//'name'
   })
   const [AllProducts,setAllProducts ]= useState([]);
+  useEffect(() => { 
+    console.log(AllProducts);
+}, [AllProducts]);
   const productDetail = useSelector(state => state.productDetail);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -82,16 +89,54 @@ function GestionProductos() {
       deleteProduct(e.target.value);
      } 
   }
+  ////////////////////////////////////////////////AGREGADO PARA LA SEARCHBAR//////////////////////////////////
+  const product = useSelector((state) => state.names)
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+
+    const newFilter = product.filter((value) => {
+      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
+
+  useEffect(() => {
+    const dbProducts = () => {
+      dispatch(getNames());
+    };
+    dbProducts();
+  }, [dispatch]);
+
+  const handleSearchSubmit = (value) => {
+    setAllProducts(value);
+    setFilteredData([]);
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     return (
-      <div class='container' className='jah287'>
+      <div class='container d-flex flex-column' >
         {/* Tabla de productos */}
-        <div class='containter mt-05 ml-3 mr-03 mb-3'>
+        <div class='container d-flex flex-column mt-05 ml-3 mr-03 mb-3'>
         <ol className="d-flex " style={{listStyle:'none'}}>
           
           <li class="mt-3 "> <button class="btn btn-sm btn-info" name='order' value={!toggle.order} onClick={e=>navChange(e)} >{!toggle.order?'ASC':'DESC'} </button></li>
           <li class="mt-3 ml-3 "><button  class="btn btn-sm btn-info" name='por' value={!toggle.por} onClick={e=>navChange(e)}>{!toggle.por?'name':'price'}</button></li>
-          <li class="mt-3 ml-3">
+          <li class="ml-5">
             <Dropdown >
                   <Dropdown.Toggle class="btn btn-sm btn-info"  variant="success" id="dropdown-basic-button">
                     {toggle.filter}
@@ -104,7 +149,42 @@ function GestionProductos() {
                     <Dropdown.Item onClick={e=>navChange(e)} name="filter" key='bebidas' value='Bebidas'>Bebidas</Dropdown.Item>
                     <Dropdown.Item onClick={e=>navChange(e)} name="filter" key='varios' value='varios'>Varios</Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown></li></ol>
+                </Dropdown></li>
+
+                {/* ////AGREGADO//// */}
+
+                <li>
+                  <div class='form form-control-sm mt-2 ml-2 d-flex flex-column' className="search">
+                    <div className="searchInputs">
+                      <input
+                        class='form form-control-sm mt-1 ml-2 d-flex flex-column'
+                        type="text"
+                        placeholder='Search...'
+                        value={wordEntered}
+                        onChange={handleFilter}
+                      />
+                    </div>
+                    {filteredData.length !== 0 && (
+                      <div class="d-flex flex-column" className="dataResult">
+                        {filteredData.slice(0, 5).map((value, key) => {
+                          return (
+                            <button class="btn btn-sm btn-light d-flex flex-column" 
+                                className="dataItem" 
+                                value={value}
+                                onClick={ (e) =>{ handleSearchSubmit(value)}}>
+                              <p>{value.name} </p>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                </li>
+                </ol>
+
+
+                {/* ////AGREGADO//// */}
+          
           
           <h3 class='mt-03 ml-3 mr-03 mb-3'>Ver Productos</h3>
           <div class="table-responsive">
@@ -129,7 +209,7 @@ function GestionProductos() {
                 </thead>
                 <tbody>
                     {
-                        AllProducts && AllProducts.map(prod => (
+                        Array.isArray(AllProducts)? AllProducts.map(prod => (
                             <tr>
                             <th scope="row">{prod.id}</th>
                             <td>{prod.name}</td>
@@ -149,7 +229,27 @@ function GestionProductos() {
                               </button>
                             </td>
                             </tr>
-                        ))
+                        )) : ( 
+                          <tr>
+                            <th scope="row">{AllProducts.id}</th>
+                            <td>{AllProducts.name}</td>
+                            <td>{AllProducts.maker}</td>
+                            <td>{AllProducts.type}</td>
+                            <td>{AllProducts.subcategories}</td>
+                            <td>{AllProducts.stock}</td>                            
+                            <td>{AllProducts.price}</td>
+                            <td >
+                              <button class="btn btn-sm btn-info" value={AllProducts.id} onClick={(e) => insertProductInfo(e)} >
+                                  Modificar
+                              </button>
+                            </td>
+                            <td >
+                              <button class="btn btn-sm btn-danger" value={AllProducts.id} onClick={(e) => deleteSubmit(e)} >
+                                  Eliminar
+                              </button>
+                            </td>
+                            </tr>
+                        )
                     }
                 </tbody>
             </table>

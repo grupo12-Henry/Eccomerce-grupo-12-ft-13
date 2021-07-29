@@ -12,7 +12,7 @@
   transition: 0.4s;
 }
 .nums:hover{
-  background-color: rgb(47, 173, 47);
+  background-color: rgb(#000000);
 }
 
 .Pagination {
@@ -27,7 +27,7 @@
   
   .Pagination button {
     font-size: 1.2rem;
-    background-color: rgba(77, 77, 77, 0.452);
+    background-color: rgba(0, 0,0);
     outline: none;
     color: white;
     padding: 1rem;
@@ -37,7 +37,7 @@
   .Pagination button:hover, .Pagination button:focus{
     outline: none;
     border: none;
-    background-color: white;
+    background-color: rgb(92, 89, 89);
     cursor: pointer;
   }
   
