@@ -46,7 +46,7 @@ export default function FormCompras() {
              if (completo){
                console.log('completo',completo)
                   dispatch(orderPost(completo)) 
-                  dispatch(sendMail({mail:completo.mail.slice(1,-1), subject:'compra realizada', text:'Gracias por su compra en VinotecApp, pronto tendra los productos para disfrutarlos con quien guste'})) //req.body.mail, req.body.subject, req.body.text
+                  dispatch(sendMail({mail:completo.mail.slice(1,-1), subject:'compra realizada', text:'Gracias por su compra en VinotecApp, pronto tendra los productos para disfrutarlos con quien guste. Recuerda que puedes dejar comentarios y valorar los productos comprados desde "mi cuenta" en la seccion "mis pedidos anteriores". Al ver el detalle de tu pedido puedes clickear sobre el nombre del producto al cual le gustaria puntuar y comentar'})) //req.body.mail, req.body.subject, req.body.text
                   window.localStorage.removeItem('array');
                   window.localStorage.removeItem('pago');
                   dispatch(ClearCart())
