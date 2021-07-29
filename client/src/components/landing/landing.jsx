@@ -3,7 +3,7 @@ import { StyledDiv } from "./styled";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import ControlledCarousel from "./carrousel.jsx";
-import Loading from "../loading/Loading";
+import Loading from "../dashboard-user/loading/LoadingAdmin";
 export const LandingPage = () => {
   const [loading, setLoading] = useState(false)
   // const history = useHistory()

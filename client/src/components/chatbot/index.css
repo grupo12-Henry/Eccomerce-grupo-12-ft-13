@@ -1,13 +1,17 @@
-.boton:hover > .mensaje
-        { background-color: rgb(180, 191, 240);
-          color: rgb(41, 40, 40);
-          /* margin-top: -3rem; */
-          display: block; 
-          margin-right: 1rem;
+.boton:hover > .mensaje {
+  background-color: #E8F0F2;
+  color: rgb(50, 40, 40);
+  border: 2px solid #39A2DB;
+  position:absolute;
+  display: flex;
+  margin-right: 1rem;
+  border-radius: 50px;
+  border-bottom-right-radius: 0px;
+  padding: 1rem;
+  width: 9rem;
+  bottom: 55px;
+  right: 45px;
 }
-
-.mensaje{
+.mensaje {
   display: none;
-  color: grey;
-  background-color: indianred;
 }

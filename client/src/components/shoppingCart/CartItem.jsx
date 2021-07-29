@@ -55,7 +55,6 @@ useEffect(() => {
     if(element.stock === data.cantidad){
       alert('No se pueden agregar mas unidades de este producto por falta de Stock')
     }
-  
   }
 
   const handleCountChange = (e) => {

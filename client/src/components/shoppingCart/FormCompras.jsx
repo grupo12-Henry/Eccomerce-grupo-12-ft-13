@@ -7,11 +7,7 @@ import Loading from '../loading/Loading';
 import { orderPost, Checkout, ClearCart, sendMail } from '../../actions';
 import { useHistory } from "react-router-dom";
 import './FormCompras.css';
-import Nav from '../navbar/navbar';
-import NavCategories from '../navCategories/navCategories';
-import Footer from '../footer/footer'
-// export default function FormCompras (){
-    
+
 export default function FormCompras() {
   const dispatch = useDispatch()
      const history = useHistory()
@@ -44,7 +40,6 @@ export default function FormCompras() {
                                   products: productsArray, 
                                   mail: user.split(',')[6].split(':')[1], 
                                   bill: aux,
-                                  
                                 } : console.log('user is null');
              if (completo){
                console.log('completo',completo)
@@ -65,15 +60,12 @@ export default function FormCompras() {
     };
 
     return (<>
-      
-      <Nav />
-       <NavCategories />
-       <div className='containerFormCompras'>
-       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-         <Row className="mb-3">
-           <Form.Group as={Col} md="4" controlId="validationCustom01">
-             <Form.Label>Direccion Envio</Form.Label>
-             <Form.Control
+      <div className='containerFormCompras'>
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Row className="mb-3">
+          <Form.Group as={Col} md="4" controlId="validationCustom01">
+            <Form.Label>Direccion Envio</Form.Label>
+            <Form.Control
               onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value}); console.log('hola emi')}}
               required
               type="text"
@@ -90,13 +82,11 @@ export default function FormCompras() {
                         name="paymentMethod" >
                         <option value='tarjeta'>Tarjeta</option>
                         <option value='efectivo' >Efectivo</option>
-
                     </select>
           </Form.Group>
 
         </Row>
-        <Row className="mb-3">          
-        
+        <Row className="mb-3">
         </Row>
         <Form.Group className="mb">
           <Form.Check
@@ -105,7 +95,7 @@ export default function FormCompras() {
             feedback="Debes aceptar los terminos y condiciones"
           />
         </Form.Group>
-        <table 
+        <table
 
 class="table table-sm table-bordered mt-05 mr-03 mb-3 "
 data-toggle="table"
@@ -127,21 +117,17 @@ data-url="data.json">
             <tr>
             <td className='container-item'><img className='Imagen' src={prod.image} alt='imagen'/></td>
             <td>{prod.name}</td>
-            <td>{prod.price}</td>                            
+            <td>{prod.price}</td>
             <td>{prod.cantidad}</td>
             <td>{prod.cantidad*prod.price}</td>
           </tr>
         ))
     }
-</tbody>
-</table>
-        <Button type="submit">Confirmar Pago</Button>
-        <Button onClick={()=>(history.push('/compras'))} class='btn btn-primary ml-4'>Volver Carrito</Button>
-
+  </tbody>
+  </table>
+        <Button type="submit" class="btn btn-dark">Confirmar Pago</Button>
+        <Button onClick={()=>(history.push('/compras'))} class='btn btn-dark ml-4'>Volver Carrito</Button>
       </Form>
-
-       </div>
-       <Footer />
-    );</>)
+      </div>
+</>)
   }
-  

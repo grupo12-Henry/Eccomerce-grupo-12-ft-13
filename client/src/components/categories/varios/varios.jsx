@@ -4,11 +4,8 @@ import { getProducts, addProductCart, addToWishList } from "../../../actions/ind
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
-import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
-import NavCategories from "../../navCategories/navCategories";
-import Footer from "../../footer/footer";
-import Loading from "../../loading/Loading";
+import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from "../../productRating/productRating";
 
 function Varios() {
@@ -42,14 +39,16 @@ function Varios() {
 
     useEffect(() => {
         const dbProducts = () => {
-            setAllProducts(product);
+          setAllProducts(product.filter(el=>el.type === "varios"));
+          console.log(allProducts.length)
         };
         dbProducts();
-    }, [product]);
-
-
-    if (numberPage < 1) setnumberPage(1);
-    if (numberPage > 2) setnumberPage(2);
+      }, [product]);
+    
+    useEffect(() => {
+      if (numberPage < 1) setnumberPage(1);
+      if (numberPage > Math.ceil(allProducts.length/9)) setnumberPage(numberPage-1); 
+    }, [allProducts, numberPage]);
 
     const addToCart = (id) => {
         dispatch(addProductCart(id))
@@ -67,8 +66,6 @@ function Varios() {
     } else {
         return (
             <>
-                <Nav />
-                <NavCategories />
                 <StyledDiv>
                     <div class="d-flex justify-content-center-md-center mt-5 " >
                         <div class="btn-group-vertical col-sm-2 mt-5 mb-1 justify-content-start md-start ">
@@ -142,7 +139,6 @@ function Varios() {
                         </div>
                     </div>
                 </StyledDiv>
-                <Footer />
             </>
         );
     }

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getNames } from "../../actions";
-import SearchIcon from "@material-ui/icons/Search";
+import {AiOutlineSearch} from 'react-icons/ai';
 import CloseIcon from "@material-ui/icons/Close";
 import Styled from './styled'
-
 
 const Auto = () => {
   const dispatch = useDispatch();
@@ -46,23 +45,16 @@ const Auto = () => {
         <div className="searchInputs">
           <input
             type="text"
-            placeholder='Busca un producto...'
+            placeholder='Search...'
             value={wordEntered}
             onChange={handleFilter}
           />
-          <div className="searchIcon">
-            {filteredData.length === 0 ? (
-              <SearchIcon />
-            ) : (
-              <CloseIcon id="clearBtn" onClick={clearInput} />
-            )}
-          </div>
         </div>
         {filteredData.length !== 0 && (
           <div className="dataResult">
             {filteredData.slice(0, 5).map((value, key) => {
               return (
-                <a className="dataItem" href={`/detail/${value.id}`}>
+                <a className="dataItem" href={`/home/detail/${value.id}`}>
                   <p>{value.name} </p>
                 </a>
               );

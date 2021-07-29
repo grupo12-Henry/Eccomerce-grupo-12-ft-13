@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
-import Nav from "../../../navbar/navbar";
-import Footer from "../../../footer/footer";
 import Loading from "../../../loading/Loading";
 import { getUser, putUsuarios } from "../../../../actions";
 
@@ -54,7 +52,6 @@ export default function Dashboard() {
   }
   return (
     <>
-      <Nav />
       {currentUser ? (
         <div class="container-fluid">
           <div class="row">
@@ -149,7 +146,7 @@ export default function Dashboard() {
                     <Link to="/home" className="btn btn-dark mr-3">
                       VOLVER
                     </Link>
-                    <button className="btn btn-warning " onClick={handleLogout}>
+                    <button className="btn btn-danger " onClick={handleLogout}>
                       Cerrar Sesion
                     </button>
                   </div>
@@ -161,7 +158,6 @@ export default function Dashboard() {
       ) : (
         <div className="container">Volvé a loguearte</div>
       )}
-      <Footer />
     </>
   );
 }
