@@ -69,7 +69,8 @@ export default function FormCompras() {
           <Form.Group as={Col} md="3" controlId="validationCustom05">
             <span>Forma de Entrega: </span>
             {/* onChange={(e)=>setFormCompra({...formCompra, pago:e.target.value})} */}
-                    <select onChange={(e)=>{e.target.value!=='domicilio'?setFormCompra({...formCompra, direccion:e.target.value})&&setEnvio(false):setEnvio(true)}}
+                    <select onChange={(e)=>{e.target.value!=='domicilio'?setEnvio(false):setEnvio(true)}}
+                    
                       class="form-control form-control-sm mt-1 ml-2 form-row" 
                         name="paymentMethod" >
                         <option value='Retiro por el local'>Retiro por el local</option>
@@ -87,8 +88,8 @@ export default function FormCompras() {
                     </select>
           </Form.Group>
           {envio?
-          <Form.Group as={Col} md="4" controlId="validationCustom01">
-            <Form.Label>Direccion Envio</Form.Label>
+          <Form.Group as={Col} md="4" controlId="validationCustom01" style={{width:'5rem', height:'3rem'}}>
+            <span>Direccion Envio</span>
             <Form.Control
               onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value}); console.log('hola emi')}}
               required
@@ -96,9 +97,8 @@ export default function FormCompras() {
               placeholder="Ingrese una direccion"
               defaultValue={user.adress?user.adress:null}
             />
-            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
-          </Form.Group>:setEnvio(false)}
-
+          </Form.Group>:null}
+            
         </Row>
         <Row className="mb-3">
         </Row>
