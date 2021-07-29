@@ -7,6 +7,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import StyledDiv from "../../detail/styled";
 import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from '../../productRating/productRating'
+import swal from 'sweetalert';
 
 function Whiskys() {
   const dispatch = useDispatch();
@@ -47,6 +48,8 @@ function Whiskys() {
     // console.log('ELUSER', Uid, 'ELFAV', productId)
     let body = { productId: productId };
     dispatch(addToWishList(Uid, body));
+    swal("Se agregó a Favoritos!", 'Podrás ver este producto en tu sección Favoritos siempre que estes logueado.', "success");
+
   };
 
 

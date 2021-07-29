@@ -21,6 +21,7 @@ import SendingEmail from "../SendingT/sendmail";
 import Maps from '../Maps/maps'
 import ContactUser from '../ContactUser/ContactUser'
 import Loading from '../loading/Loading';
+import swal from 'sweetalert';
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -118,6 +119,7 @@ export default function Home({ location }) {
     // console.log('ELUSER', Uid, 'ELFAV', productId)
     let body = { productId: productId };
     dispatch(addToWishList(Uid, body));
+    swal("Se agregó a Favoritos!", 'Podrás ver este producto en tu sección Favoritos siempre que estes logueado.', "success");
   };
 
   const [loading, setLoading] = useState(false);
