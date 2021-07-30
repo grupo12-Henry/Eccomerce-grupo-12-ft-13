@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Nav from "../navbar/navbar";
-import Footer from "../footer/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { removeFromWishlist, addProductCart, getFavorites } from "../../actions/index";
@@ -10,7 +8,6 @@ import ProductRating from "../productRating/productRating";
 import Styled from "./styled";
 import swal from 'sweetalert';
 
-//import StyledDiv from "./styled";
 
 export default function WishList() {
   const dispatch = useDispatch();
@@ -34,20 +31,25 @@ const user= useSelector((state=> state.user))
     
   },[])
 
+  const style = {width: "44rem" }
  
   return (
     <>
-      <Nav />
       <Styled>
         <div>
           <div className="div_container">
             <div class="container d-flex justify-content-center mt-50 mb-50">
               <div class="row container-product">
-
+    
+            
+<div class="row col justify-content-evenly">
                  {wishList &&
+
                   wishList.map((el) => {
                     return (
                       <>
+                        <div class="justify-content-around align-items-center mb-3" style={style}>
+      
                         <div class="col-md-4 mt-2">
                           <div class="card">
                             <div class="card-body">
@@ -99,15 +101,16 @@ const user= useSelector((state=> state.user))
                             </div>
                           </div>
                         </div>
+                        </div>
                       </>
                     );
                   })} 
+                  </div>
               </div>
             </div>
           </div>
         </div>
       </Styled>
-      <Footer />
     </>
   );
 }

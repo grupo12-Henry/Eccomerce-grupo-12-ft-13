@@ -6,7 +6,6 @@ display: flex;
 
 .highlight {
    color: red
-    
     :hover{
         color: black
     }
@@ -73,6 +72,7 @@ a {
 
 .div_container{
     display: flex;
+    flex-direction: row !important;
     margin: 6%;
     margin-bottom: 0;
     margin-top: 1%;

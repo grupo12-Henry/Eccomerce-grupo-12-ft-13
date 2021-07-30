@@ -23,6 +23,13 @@ import MiCuenta from '../src/components/dashboard-user/pages//miCuenta/Cuenta';
 import Sugeridos from './components/sugeridos/sugeridos';
 import Footer from "./components/footer/footer";
 import Loading from "../src/components/dashboard-admin/loading/LoadingUser"
+import Vinos from "./components/dashboard-user/pages/vinos/Vinos";
+import Cervezas from "../src/components/dashboard-user/pages/cervezas/Cervezas"
+import Espumantes from '../src/components/dashboard-user/pages/espumantes/Espumantes';
+import Whiskys from '../src/components/dashboard-user/pages/whiskys/Whiskys';
+import Varios from '../src/components/dashboard-user/pages/varios/Varios';
+import Favorites from '../src/components/dashboard-user/pages/favoritos/favoritos';
+import Contacto from '../src/components/dashboard-user/pages/contacto/contacto2';
 
 function App() {
 
@@ -46,7 +53,14 @@ function App() {
         <Route component={ShoppingCart} exact path='/home/compras'/>
         <Route component={FormCompras} exact path='/home/compras-form'/>
         <PrivateRouteUser component={MiCuenta} exact path='/home/micuenta'/>
+        <Route component={Vinos} exact path='/home/vinos' />
+        <Route component={Cervezas} exact path='/home/cervezas' />
+        <Route component={Espumantes} exact path='/home/espumantes' />
+        <Route component={Favorites} exact path='/home/favoritos' />
+        <Route component={Varios} exact path='/home/varios' />
         <PrivateRouteUser component={UpdateProfile} path='/home/update-profile'/>
+        <Route component={Whiskys} exact path='/home/whiskys' />
+        <Route component={Contacto} exact path='/home/contacto' />
         <Route component={Sugeridos} exact path='/sugeridos'/>
         <Route component={Footer} exact path='/footer'/>
         <Route component={Loading} exact path='/loading'/>

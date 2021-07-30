@@ -11,7 +11,6 @@ export default function favoritos() {
         <WishList />
       </div>
       <div className="fotter">
-
       <Footer />
       </div>
     </>
