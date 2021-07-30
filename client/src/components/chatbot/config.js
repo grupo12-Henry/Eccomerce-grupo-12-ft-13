@@ -160,7 +160,7 @@ const config = {
             question: "En líneas generales, los Chardonnay frescos y aromáticos maridan muy bien con pollo asado o al horno.",
             answer: 
               "Sin embargo, si la preparación incluye arroz se puede optar por tintos frescos, como un Chateau Vieux Chardonnay. ",
-            link:"http://localhost:3000/detail/102",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/112",
             id: 1,
           },
         ],
@@ -172,10 +172,10 @@ const config = {
       props: {
         questions: [
           {
-            question: "Por su alto contenido graso, los cortes de cerdo combinan muy bien con blends tintos estructurados como Alma Mora Reserve Malbec o con varietales de Cabernet Sauvignon.",
+            question: "Por su alto contenido graso, los cortes de cerdo combinan muy bien con blends tintos estructurados como un Trumpeter Reserve Malbec o varietales de Cabernet Sauvignon.",
             answer:
               "Estos cortes con gran tenor graso deben ser acompañados por vinos que tengan mucha presencia tánica y buen cuerpo, ya que los taninos acompañan y “barren” la sensación grasa del cerdo, convirtiéndose en el complemento perfecto de estas carnes.",
-            link:"http://localhost:3000/detail/119",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/93",
             id: 1,
           },
         ],
@@ -189,8 +189,8 @@ const config = {
           {
             question: "Hay dos atributos que distinguen especialmente a la carne al horno: la “crostita” que se genera alrededor del corte por la reacción de Maillard y el adobado con distintos ingredientes y condimentos. ",
             answer:
-              "Por la sensación crocante, el sabor agridulce de la crosta que la envuelve y las notas especiadas del adobo, la carne cocida al horno combina muy bien con un Malbec de alta gama como Chateau Vieux Malbec.",
-            link:"http://localhost:3000/detail/101",
+              "Por la sensación crocante, el sabor agridulce de la crosta que la envuelve y las notas especiadas del adobo, la carne cocida al horno combina muy bien con un Malbec de alta gama como este Encuentro Rutini Malbec.",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/82",
             id: 1,
           },
         ],
@@ -205,14 +205,14 @@ const config = {
             question: "Si bien prácticamente todos los tintos de distintas variedades se combinan con el asado como no lo hace ninguna otra bebida, también existe un estilo de vino adecuado para cada uno de los protagonistas del ritual emblemático de la cocina argentina.",
             answer:
               "Para las achuras y provoletas, una buena opción es un Chardonnay joven, como Benjamin Nieto Chardonnay. Lo importante es servirlo bien frío y que tenga una acidez persistente para que resalten los atributos de los alimentos ricos en grasas y equilibren la sensación que dejan estos bocados en el paladar.",
-            link:"http://localhost:3000/detail/163",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/104",
             id: 1,
           },
           {
             question: "Cuando se da paso a la carne, sin dudas, es hora de descorchar los grandes tintos. Para los cortes vacunos el acompañante ideal tiene que ser maduro y estructurado; por ejemplo, un vacío combina inmejorablemente con un Alto Uxmal Malbec. ",
             answer:
               "Para el cordero, un Malbec jugoso y con buen cuerpo como Luigi Bosca Malbec es la mejor alternativa",
-            link:"http://localhost:3000/detail/89",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/99",
             id: 2,
           },
         ],
@@ -232,7 +232,7 @@ const config = {
             question: "En el caso del ceviche y el tiradito, por el limón predominante van muy bien con vinos secos aromáticos, con una acidez marcada y cierta mineralidad, como Benjamin Nieto Chardonnay.",
             answer:
               "Este tipo de vinos también acuerda muy bien con platos cocidos a base de vinagre, como el escabeche de pescado, y las preparaciones con salsa de tomate.",
-            link:"http://localhost:3000/detail/163",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/104",
             id: 1,
           },
         ],
@@ -247,7 +247,7 @@ const config = {
             question: "El vino blanco que mejor se adapta y potencia los sabores de la combinación de arroz y pescado fresco, es un vino semidulce o afrutado, como Benjamin Nieto Chardonnay.",
             answer:
               "Si se trata de piezas al estilo californiano, a base de queso crema y salmón, es mejor optar por un Sauvignon Blanc, con paso por barrica, como Rutini Sauvignon Blanc.",
-            link:"http://localhost:3000/detail/77",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/88",
             id: 1,
           },
         ],
@@ -261,8 +261,8 @@ const config = {
           {
             question: "Para el salmón, el atún, el bonito o el pez espada, el maridaje más adecuado es con vinos blancos melosos con mucho sabor y cuerpo, o blancos dulces y rosados muy frutales.",
             answer:
-              "Los vinos que mejor acompañarán las comidas antes mencionadas son Pinot Noir y Cosecha Tardía, como este Norton Cosecha Tardia Blanco",
-            link:"http://localhost:3000/detail/123",
+              "Los vinos que mejor acompañarán las comidas antes mencionadas son Pinot Noir y Sauvignon Blanc, como este Rutini Sauvignon Blanc",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/88",
             id: 1,
           },
         ],
@@ -277,7 +277,7 @@ const config = {
             question: "Una comida con mariscos suele ir bien con vinos blancos ligeros y con vinos espumantes, como Champagne. Si el platillo es picante, se puede llegar a maridar con un vino tinto de sabor más dulce.",
             answer:
               "Mi recomendación para acompañar una paella es un vino rosado, como este San Felipe Extra Dulce Rose de Malbec.",
-            link:"http://localhost:3000/detail/129",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/139",
             id: 1,
           },
         ],
@@ -297,7 +297,7 @@ const config = {
             question: "Para risottos no hay nada mejor que un Pinot Noir terroso y con reserva en barricas de roble.",
             answer:
               "También un Chardonnay con madera puede acompañar muy bien la cremosidad del arroz, como este Benjami Nieto",
-            link:"http://localhost:3000/detail/163",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/104",
             id: 1,
           },
         ],
@@ -312,7 +312,7 @@ const config = {
             question: "Las combinaciones de vegetales de sabor ligero van muy bien con vino como Zinfandel y Sauvignon Blanc añejo.",
             answer:
               "Una buena barbacoa de verduras, irá genial con un Sauvignon Blanc fermentado en barricas de roble, como este Rutini.",
-              link:"http://localhost:3000/detail/77",
+              link:"https://prueba-ecommerce.vercel.app/home/detail/88",
             id: 1,
           },
         ],
@@ -327,7 +327,7 @@ const config = {
             question: "Aqui lo importante es la salsa. La acidez del tomate invita a compartir con un vino tinto, varietal o blend, de cuerpo medio y un poco de acidez.",
             answer:
               "Cuando los quesos y la crema se apoderan del plato un Sauvignon Blanc, un Pinot Grigio o un cava o espumante frescos podrían ser la elección. Aqui te dejo una excelente recomendación.",
-              link:"http://localhost:3000/detail/82",
+              link:"https://prueba-ecommerce.vercel.app/home/detail/85",
             id: 1,
           },
         ],
@@ -342,7 +342,7 @@ const config = {
             question: "Si la picada contiene embutidos, quesos de sabores intensos o con pastas duras o semi-duras se puede maridar muy bien con vinos tintos que posean buen cuerpo, importante acidez, estructura y taninos marcados.",
             answer:
               "Si en la picada predominan los quesos y las conservas: Aperol spritz con rodajas de pomelo bien fresco. Si les gusta las cervezas lleven a la mesa cerveza amber roja, IPA o cerveza negra.",
-            link:"http://localhost:3000/detail/60",
+            link:"https://prueba-ecommerce.vercel.app/home/detail/67",
             id: 1,
           },
         ],
