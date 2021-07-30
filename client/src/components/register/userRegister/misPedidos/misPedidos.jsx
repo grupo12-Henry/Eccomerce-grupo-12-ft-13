@@ -106,11 +106,12 @@ export default function MisPedidos({ match }) {
               </thead>
               <tbody>
                 {pedidos?pedidos[0]?.orders.map((el) => {
+                  console.log(pedidos,'pedidos')
                   return (
                     <tr>
-                      <th scope="row">{el.date}</th>
+                      <th scope="row">{el.date?el.date:el.createdAt.split('T')[0]}</th>
                       <td>{el.id}</td>
-                      <td>{el.bill}</td>
+                      <td>$ {el.bill}</td>
                       <td>
                         <button
                           class="btn btn-sm btn-info"
@@ -158,6 +159,7 @@ export default function MisPedidos({ match }) {
               </thead>
               <tbody>
                 {pedidoDetail?.products?.map((el) =>
+                // {console.log(el)}
                    {
                     return (
                       <tr>
