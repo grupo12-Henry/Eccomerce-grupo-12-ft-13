@@ -19,7 +19,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: cursive;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 25px;
   width: 50rem;
   height: 30rem;
   padding: 1%;
@@ -30,7 +31,6 @@
 }
 
 .div_btn {
-
   display: flex;
   align-items: center;
   justify-content: center;
