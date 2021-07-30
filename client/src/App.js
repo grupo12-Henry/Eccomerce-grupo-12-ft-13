@@ -52,12 +52,12 @@ function App() {
         <Route component={Detail} exact path='/home/detail/:id'/>
         <Route component={ShoppingCart} exact path='/home/compras'/>
         <Route component={FormCompras} exact path='/home/compras-form'/>
-        <PrivateRouteUser component={MiCuenta} exact path='/home/micuenta'/>
         <Route component={Vinos} exact path='/home/vinos' />
         <Route component={Cervezas} exact path='/home/cervezas' />
         <Route component={Espumantes} exact path='/home/espumantes' />
         <Route component={Favorites} exact path='/home/favoritos' />
         <Route component={Varios} exact path='/home/varios' />
+        <PrivateRouteUser component={MiCuenta} exact path='/home/micuenta'/>
         <PrivateRouteUser component={UpdateProfile} path='/home/update-profile'/>
         <Route component={Whiskys} exact path='/home/whiskys' />
         <Route component={Contacto} exact path='/home/contacto' />
