@@ -1,14 +1,17 @@
-
 import styled from 'styled-components';
 
 
 const StyledDiv = styled.div`
 display: flex;
 
-.mt-50 {
-    margin-top: 50px;
-    margin-bottom: 50px;
+.highlight {
+   color: red
+    :hover{
+        color: black
+    }
 }
+
+
 
 .card {
     position: relative;
@@ -69,13 +72,15 @@ a {
 
 .div_container{
     display: flex;
+    flex-direction: row !important;
     margin: 6%;
     margin-bottom: 0;
-    margin-top: -2%;
+    margin-top: 1%;
     height: 100%;
     width: 100%;
     align-items: center;
     position: relative;
+    box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .div_cards{
@@ -95,11 +100,7 @@ a {
 .img_products{
     height: 200px;
     width: 200px;
-}
+}import styled from 'styled-components';
 
-.loadingCSS {
-    margin: 250px;
-}
 
-`
-export default StyledDiv
+const StyledDiv = styled.div`
