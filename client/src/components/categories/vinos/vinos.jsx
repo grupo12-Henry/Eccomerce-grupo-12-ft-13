@@ -7,6 +7,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import StyledDiv from "../../detail/styled";
 import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from "../../productRating/productRating";
+import swal from 'sweetalert';
 
 function Vinos() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function Vinos() {
     // console.log('ELUSER', Uid, 'ELFAV', productId)
     let body = { productId: productId };
     dispatch(addToWishList(Uid, body));
+    swal("Se agregó a Favoritos!", 'Podrás ver este producto en tu sección Favoritos siempre que estes logueado.', "success");
   };
   const [allProducts, setAllProducts] = useState([]);
 
@@ -118,7 +120,7 @@ function Vinos() {
                             <div class="card">
                               <div class="card-body">
                                 <div class="card-img-actions">
-                                  <Link to={`/detail/${el.id}`}>
+                                  <Link to={`/home/detail/${el.id}`}>
                                     <img
                                       src={el.image}
                                       class="card-img img-fluid"
@@ -132,7 +134,7 @@ function Vinos() {
                                 <div class="mb-2">
                                   <h6 class="font-weight-semibold mb-2">
                                     <a
-                                      href={`/detail/${el.id}`}
+                                      href={`/ome/detail/${el.id}`}
                                       class="text-default mb-2"
                                       data-abc="true"
                                     >
@@ -161,7 +163,7 @@ function Vinos() {
                       })}
                   </div>
                   <div class="justify-content-center">
-                    <button className='btn btn-dark ml-2 mt-1' onClick={() =>{  setnumberPage(numberPage + 1);if(numberPage > Math.ceil(allProducts/9)) setnumberPage(1)}}>SIGUENTE {numberPage}</button>
+                    <button className='btn btn-dark ml-2 mt-1' onClick={() =>{  setnumberPage(numberPage + 1);if(numberPage > Math.ceil(allProducts/9)) setnumberPage(1)}}>SIGUENTE</button>
                   </div>
                 </div>
               </div>

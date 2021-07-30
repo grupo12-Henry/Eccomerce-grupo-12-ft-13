@@ -100,6 +100,8 @@ export default function NavModal({ open, children, onClose }) {
           <div style={MODAL_STYLES}>
               <div className='d-flex justify-content-end' >
                   <CloseIcon className='bClose' onClick={handleClose} style={{height: '1.7rem', width:'2rem', color:'dc3545',borderRadius:'2px',marginLeft:'100%'}}/>
+              {/* <div className='d-flex justify-content-end'>
+                  <CloseIcon className='bClose' onClick={handleClose} style={{height: '2.2rem', width:'3rem', color:'white',borderRadius:'2px'}}/> */}
               </div>
               <div>
                 <p style={{marginTop:'1rem'}}>¡Ahora estas logueado!</p>

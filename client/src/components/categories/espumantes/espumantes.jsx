@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import StyledDiv from "../../detail/styled";
 import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from "../../productRating/productRating";
+import swal from 'sweetalert';
 
 function Espumantes() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function Espumantes() {
     // console.log('ELUSER', Uid, 'ELFAV', productId)
     let body = { productId: productId };
     dispatch(addToWishList(Uid, body));
+    swal("Se agregó a Favoritos!", 'Podrás ver este producto en tu sección Favoritos siempre que estes logueado.', "success");
   };
   const showProducts = allProducts
     .filter((el) => el.type === "Espumantes")
@@ -116,7 +118,7 @@ function Espumantes() {
                             <div class="card">
                               <div class="card-body">
                                 <div class="card-img-actions">
-                                  <Link to={`/detail/${el.id}`}>
+                                  <Link to={`/home/detail/${el.id}`}>
                                     <img
                                       src={el.image}
                                       class="card-img img-fluid"
@@ -129,7 +131,7 @@ function Espumantes() {
                               <div class="card-body bg-light text-center">
                                 <div class="mb-2">
                                   <h6 class="font-weight-semibold mb-2">
-                                    <a href={`/detail/${el.id}`} class="text-default mb-2"
+                                    <a href={`/home/detail/${el.id}`} class="text-default mb-2"
                                       data-abc="true">
                                       {el.name}
                                     </a>

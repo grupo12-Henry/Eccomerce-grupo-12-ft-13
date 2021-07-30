@@ -60,7 +60,7 @@ export default function MisPedidos({ match }) {
     console.log('payload filtrado', payload)
     dispatch(repeatOrder(payload));
     dispatch(getpedidosUser(match.params.id));
-    history.push('/compras');
+    history.push('/home/compras');
     // const timeout = setTimeout(() => {
       // }, 3000);
     // history.push('/compras')

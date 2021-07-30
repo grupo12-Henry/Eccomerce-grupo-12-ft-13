@@ -1,11 +1,10 @@
-.img{
+.imagenDeLoadingf{
 	display: flex;
 	justify-content: center;
 	margin-top: 115px;
 	margin-left: -20px;
-	margin-bottom: 102px;
+	margin-bottom: 181px;
 	height: 105px;
-	position: relative;
 }
 .component:before{
 	/* content:'';

@@ -52,7 +52,7 @@ const Auto = () => {
         </div>
         {filteredData.length !== 0 && (
           <div className="dataResult">
-            {filteredData.slice(0, 5).map((value, key) => {
+            {filteredData.slice(0, 3).map((value, key) => {
               return (
                 <a className="dataItem" href={`/home/detail/${value.id}`}>
                   <p>{value.name} </p>
