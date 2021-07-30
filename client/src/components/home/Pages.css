@@ -21,7 +21,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1%;
+    border-bottom: 0.1rem solid;
+    margin-top: 0.5rem;
   }
   
   .Pagination button {
