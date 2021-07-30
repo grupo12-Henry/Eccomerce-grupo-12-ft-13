@@ -1,35 +1,31 @@
 import React from 'react';
 import {
-  FiUsers,
-  FiDatabase
-} from "react-icons/fi";
-import { RiShoppingCartLine } from "react-icons/ri";
-import {AiOutlineHome, AiFillHighlight} from 'react-icons/ai';
+  FaHome,
+  FaWineBottle,
+  FaUser,
+  FaTruck,
+  FaFacebookMessenger
+} from "react-icons/fa";
 
 export const SidebarData = [
   {
     title: 'Dashboard',
     path: '/dashboard-admin',
-    icon: < AiOutlineHome />,
+    icon: <FaHome />
   },
-  // {
-  //   title: 'Home',
-  //   path: '/home',
-  //   icon: <AiOutlineHome />
-  // },
   {
     title: 'Usuarios',
     path: '/dashboard-admin/usuarios',
-    icon: <FiUsers />,
+    icon: <FaUser />,
   },
   {
     title: 'Productos',
     path: '/dashboard-admin/productos',
-    icon: <FiDatabase />,
+    icon: <FaWineBottle />,
   },
   {
     title: 'Pedidos',
     path: '/dashboard-admin/pedidos',
-    icon: <RiShoppingCartLine />,
+    icon: <FaTruck />,
   },
 ]

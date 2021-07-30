@@ -8,6 +8,7 @@ import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
 import logo from './logo.png';
 import admin from './admin.png';
+import SearchBar from '../../../components/searchbar/searchbar';
 import './sidebar.css';
 
 const Nav = styled.div`
@@ -62,6 +63,9 @@ const Sidebar = () => {
               <img src={admin} alt='Logo' className="adminStyle"/>
             </a>
           </div>
+          <div className="searchBar">
+                <SearchBar />
+            </div>
         </Nav>
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>

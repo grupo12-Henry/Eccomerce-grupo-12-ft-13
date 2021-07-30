@@ -70,8 +70,8 @@ a {
     display: flex;
     margin: 6%;
     margin-bottom: 0;
-    margin-top: -2%;
-    height: 100%;
+    margin-top: 7%;
+    height: 90%;
     width: 100%;
     align-items: center;
     position: relative;

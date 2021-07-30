@@ -120,7 +120,7 @@ function Vinos() {
                             <div class="card">
                               <div class="card-body">
                                 <div class="card-img-actions">
-                                  <Link to={`/detail/${el.id}`}>
+                                  <Link to={`/home/detail/${el.id}`}>
                                     <img
                                       src={el.image}
                                       class="card-img img-fluid"
@@ -134,7 +134,7 @@ function Vinos() {
                                 <div class="mb-2">
                                   <h6 class="font-weight-semibold mb-2">
                                     <a
-                                      href={`/detail/${el.id}`}
+                                      href={`/ome/detail/${el.id}`}
                                       class="text-default mb-2"
                                       data-abc="true"
                                     >
@@ -163,7 +163,7 @@ function Vinos() {
                       })}
                   </div>
                   <div class="justify-content-center">
-                    <button className='btn btn-dark ml-2 mt-1' onClick={() =>{  setnumberPage(numberPage + 1);if(numberPage > Math.ceil(allProducts/9)) setnumberPage(1)}}>SIGUENTE {numberPage}</button>
+                    <button className='btn btn-dark ml-2 mt-1' onClick={() =>{  setnumberPage(numberPage + 1);if(numberPage > Math.ceil(allProducts/9)) setnumberPage(1)}}>SIGUENTE</button>
                   </div>
                 </div>
               </div>

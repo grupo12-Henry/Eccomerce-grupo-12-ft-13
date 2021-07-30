@@ -16,10 +16,12 @@ import ProductRating from "../productRating/productRating";
 import Roboto from "../chatbot/Chatbot";
 // import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+// import Loading from '../../components/dashboard-user/loading/LoadingAdmin';
+import Footer from '../../components/footer/footer';
 import Sending from "../SendingT/SendingT";
 import SendingEmail from "../SendingT/sendmail";
 import Maps from '../Maps/maps'
-import ContactUser from '../ContactUser/ContactUser'
+// import ContactUser from '../ContactUser/ContactUser'
 import Loading from '../loading/Loading';
 import swal from 'sweetalert';
 
@@ -128,9 +130,9 @@ export default function Home({ location }) {
     setTimeout(() => setLoading(true), 600);
   }, []);
 
-  if (!loading) {
-    return <Loading />
-  } else {
+  // if (!loading) {
+  //   return <Loading />
+  // } else {
     return (
       <>
         <Roboto />
@@ -195,27 +197,24 @@ export default function Home({ location }) {
                                   <button
                                     type="button"
                                     onClick={() => addToCart(el.id)}
-                                    class="btn bg-cart"
+                                    class="btn btn-secondary"
                                   >
-                                    <i class="fa fa-cart-plus mr-2"></i> Agregar
-                                  </button>
+                                    <i class="fa fa-cart-plus mr-0"></i>Agregar</button>
                                 </div>
                               </div>
                             </div>
                           </>
                         ) : console.log('null') );
                       })
-                     : console.log('null')}
+                    : console.log('null')}
                 </div>
               </div>
             </div>
           </div>
         </StyledDiv>
         <Pages product={product} page={page} />
-         {/* <SendingEmail /> */}
-        {/* <Maps/>  */}
-         {/* <ContactUser/> */}
+        <Footer />
       </>
     );
-  }
+  
 }
