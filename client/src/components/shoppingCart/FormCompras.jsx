@@ -7,16 +7,14 @@ import Loading from '../loading/Loading';
 import { orderPost, Checkout, ClearCart, sendMail } from '../../actions';
 import { useHistory } from "react-router-dom";
 import './FormCompras.css';
-import Nav from '../navbar/navbar';
-import NavCategories from '../navCategories/navCategories';
-import Footer from '../footer/footer'
-// export default function FormCompras (){
-    
+
 export default function FormCompras() {
   const dispatch = useDispatch()
      const history = useHistory()
      const cart = useSelector((state) => state.productCart);
      const user = useSelector((state) => state.user);
+     const [envio, setEnvio] = useState(false);
+
     const [validated, setValidated] = useState(false);
     const [formCompra, setFormCompra] = useState({direccion:'Retiro en local', pago: 'tarjeta'})
 
@@ -44,13 +42,11 @@ export default function FormCompras() {
                                   products: productsArray, 
                                   mail: user.split(',')[6].split(':')[1], 
                                   bill: aux,
-                                  
                                 } : console.log('user is null');
              if (completo){
                console.log('completo',completo)
                   dispatch(orderPost(completo)) 
-                  dispatch(sendMail({mail:completo.mail.slice(1,-1), subject:'compra realizada', text:'Gracias por su compra en VinotecApp, pronto tendra los productos para disfrutarlos con quien guste'})) //req.body.mail, req.body.subject, req.body.text
-                  window.localStorage.removeItem('array');
+                  dispatch(sendMail({mail:completo.mail.slice(1,-1), subject:'compra realizada', text:'Gracias por su compra en VinotecApp, pronto tendra los productos para disfrutarlos con quien guste. Recuerda que puedes dejar comentarios y valorar los productos comprados desde "mi cuenta" en la seccion "mis pedidos anteriores". Al ver el detalle de tu pedido puedes clickear sobre el nombre del producto al cual le gustaria puntuar y comentar'})) //req.body.mail, req.body.subject, req.body.text                  window.localStorage.removeItem('array');
                   window.localStorage.removeItem('pago');
                   dispatch(ClearCart())
                   history.push('/home') //ver este paso, cuando es en efectivo
@@ -63,24 +59,28 @@ export default function FormCompras() {
       // dispatch(orderPost())
         }
     };
+    const retiro = (e)=>{
+      console.log('change', e.target.value); 
+      if (e.target.value!=='domicilio'){
+        return (setFormCompra({...formCompra, direccion:e.target.value}),
+         setEnvio(false))
+        } else { setEnvio(true)}
+    }
 
     return (<>
-      
-      <Nav />
-       <NavCategories />
-       <div className='containerFormCompras'>
-       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-         <Row className="mb-3">
-           <Form.Group as={Col} md="4" controlId="validationCustom01">
-             <Form.Label>Direccion Envio</Form.Label>
-             <Form.Control
-              onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value}); console.log('hola emi')}}
-              required
-              type="text"
-              placeholder="First name"
-              defaultValue={user.adress?user.adress:'Ingrese la direccion...'}
-            />
-            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
+      <div className='containerFormCompras'>
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Row className="mb-3">
+          
+          <Form.Group as={Col} md="3" controlId="validationCustom05">
+            <span>Forma de Entrega: </span>
+            {/* onChange={(e)=>setFormCompra({...formCompra, pago:e.target.value})} */}
+                    <select onChange={(e)=> retiro(e)}
+                      class="form-control form-control-sm mt-1 ml-2 form-row" 
+                        name="paymentMethod" >
+                        <option value='Retiro por el local'>Retiro por el local</option>
+                        <option value='domicilio' >Envio a domicilio</option>
+                    </select>
           </Form.Group>
 
           <Form.Group as={Col} md="3" controlId="validationCustom05">
@@ -90,13 +90,24 @@ export default function FormCompras() {
                         name="paymentMethod" >
                         <option value='tarjeta'>Tarjeta</option>
                         <option value='efectivo' >Efectivo</option>
-
                     </select>
           </Form.Group>
+          {envio?
+          <Form.Group as={Col} md="4" controlId="validationCustom01" style={{width:'5rem', height:'1rem'}}>
+            <span>Direccion Envio</span>
+            <Form.Control style={{height:'1.85rem', marginTop:'0.2rem', fontSize:'0.8rem'}}
+              onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value}); console.log('hola emi')}}
+              required
+              type="text"
+              placeholder="Ingrese una direccion"
+              defaultValue={user.adress?user.adress:null}
+            />
+            {console.log(envio,  formCompra)}
+            {/* <Form.Control.Feedback>Looks good!</Form.Control.Feedback> */}
+          </Form.Group>:console.log('estado en false', envio, formCompra)}
 
         </Row>
-        <Row className="mb-3">          
-        
+        <Row className="mb-3">
         </Row>
         <Form.Group className="mb">
           <Form.Check
@@ -105,7 +116,7 @@ export default function FormCompras() {
             feedback="Debes aceptar los terminos y condiciones"
           />
         </Form.Group>
-        <table 
+        <table
 
 class="table table-sm table-bordered mt-05 mr-03 mb-3 "
 data-toggle="table"
@@ -127,21 +138,17 @@ data-url="data.json">
             <tr>
             <td className='container-item'><img className='Imagen' src={prod.image} alt='imagen'/></td>
             <td>{prod.name}</td>
-            <td>{prod.price}</td>                            
+            <td>{prod.price}</td>
             <td>{prod.cantidad}</td>
             <td>{prod.cantidad*prod.price}</td>
           </tr>
         ))
     }
-</tbody>
-</table>
-        <Button type="submit">Confirmar Pago</Button>
-        <Button onClick={()=>(history.push('/compras'))} class='btn btn-primary ml-4'>Volver Carrito</Button>
-
+  </tbody>
+  </table>
+        <Button type="submit" class="btn btn-dark" style={{marginRight:'0.5rem'}}>Confirmar Pago</Button>
+        <Button onClick={()=>(history.push('/home/compras'))} class='btn btn-dark '>Volver Carrito</Button>
       </Form>
-
-       </div>
-       <Footer />
-    );</>)
+      </div>
+</>)
   }
-  

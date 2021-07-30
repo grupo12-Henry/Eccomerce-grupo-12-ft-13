@@ -10,6 +10,7 @@ import NavCategories from "../../navCategories/navCategories";
 import Footer from "../../footer/footer";
 import Loading from "../../loading/Loading";
 import ProductRating from "../../productRating/productRating";
+import swal from 'sweetalert';
 
 function Cervezas() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function Cervezas() {
     // console.log('ELUSER', Uid, 'ELFAV', productId)
     let body = { productId: productId };
     dispatch(addToWishList(Uid, body));
+    swal("Se agregó a Favoritos!", 'Podrás ver este producto en tu sección Favoritos siempre que estes logueado.', "success");
   };
   const initialProducts = 9;
   const conteoFinal = numberPage * initialProducts;

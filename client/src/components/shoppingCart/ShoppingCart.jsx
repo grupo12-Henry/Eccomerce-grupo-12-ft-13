@@ -103,8 +103,8 @@ useEffect(() => {
         <div>
           <h3>Tu Carrito de compras</h3>
           {/* <div class="mb-2">Tenes {cart?.length||0} productos en tu carrito ✔{" "}</div> */}
-          <div class="mb-2">Tenes {cart?.length} productos en tu carrito ✔{" "}</div>
-          <div className='container-articulos col-xl-11 row '>
+          <div class="mb-2">Tenes {cart?.length|| 0} productos en tu carrito ✔{" "}</div>
+          {/* <div class="mb-2">{cart.length > 0? Tenes {cart.length} productos en tu carrito ✔:No tenes productos en tu carrito} </div> */}          <div className='container-articulos col-xl-11 row '>
             <hr />
             <article class='box'>
               {cart?.length ? cart.map((item, index) => item !== undefined && item !== "undefined" ? 

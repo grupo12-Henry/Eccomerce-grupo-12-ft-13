@@ -8,6 +8,7 @@ import { removeFromWishlist, addProductCart, getFavorites } from "../../actions/
 import { Link } from "react-router-dom";
 import ProductRating from "../productRating/productRating";
 import Styled from "./styled";
+import swal from 'sweetalert';
 
 //import StyledDiv from "./styled";
 
@@ -17,15 +18,17 @@ export default function WishList() {
   console.log('wish',wishList)
   //const [wishList,setWishlist]=useState(wishlist);
 
-const user= useSelector((state=> state.user))
+  const user= useSelector((state=> state.user))
   const addToCart = (id) => {
     dispatch(addProductCart(id));
   };
  
- const deleteFromWishList = (Uid, productId) => {
+  const deleteFromWishList = (Uid, productId) => {
    
-   dispatch(removeFromWishlist(Uid,productId))
-};
+   dispatch(removeFromWishlist(Uid,productId));
+   swal("Se quitó de tus Favoritos",'Puedes volver a agregar este producto cuando desees.' , "error");
+  };
+
     
   useEffect(() => {
    user&&dispatch(getFavorites(user.id))

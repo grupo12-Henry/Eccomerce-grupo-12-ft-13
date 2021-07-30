@@ -140,7 +140,8 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 	try {
 
 		const newClient = await Client.findOrCreate({
-
+			where:{mail:mail},
+			default:{
 			name,
 			lastName,
 			phone: phone + '',
@@ -149,7 +150,7 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 			mail,
 			identityCard,
 			admin,
-			token
+			token}
 		})
 		res.send(newClient)
 	} catch (error) {
@@ -220,7 +221,7 @@ router.get('/productos/names', async (req, res) => { //envia todos los nombres d
 	try {
 		const productos = await Product.findAll({
 			attributes: {
-				exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock']
+				exclude: ['createdAt', 'updatedAt', 'image']
 			}
 		})
 		res.send(productos)
