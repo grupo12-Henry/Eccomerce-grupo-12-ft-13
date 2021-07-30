@@ -1,17 +1,14 @@
+
 import styled from 'styled-components';
 
 
 const StyledDiv = styled.div`
 display: flex;
 
-.highlight {
-   color: red
-    :hover{
-        color: black
-    }
+.mt-50 {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
-
-
 
 .card {
     position: relative;
@@ -72,15 +69,13 @@ a {
 
 .div_container{
     display: flex;
-    flex-direction: row !important;
     margin: 6%;
     margin-bottom: 0;
-    margin-top: 1%;
+    margin-top: -2%;
     height: 100%;
     width: 100%;
     align-items: center;
     position: relative;
-    box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .div_cards{
