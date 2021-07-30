@@ -37,6 +37,8 @@ router.delete('/favoritos/:id',async(req,res) => {//elimina una relacion de prod
     }
   
   })
+
+
 router.get('/productos/all', async (req, res) => {
   try {
      const array_product = await Product.findAll({include:{model:Review}})
@@ -179,7 +181,7 @@ router.get('/pedidos/:id',async (req, res)=>{
    const clientPedidos = await Client.findAll({
     include:{
      model: Order,
-     attributes:['date','ticket', 'id'],
+     attributes:['createdAt','ticket', 'id','date','bill'],
      include:[{model: Product, atributes:['name','price','image']}]
     },
    attributes: ['name', 'lastName'],
