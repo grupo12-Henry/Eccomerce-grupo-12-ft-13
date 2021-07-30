@@ -22,7 +22,7 @@ import Detail from '../src/components/dashboard-user/pages/detail/Detail';
 import MiCuenta from '../src/components/dashboard-user/pages//miCuenta/Cuenta';
 import Sugeridos from './components/sugeridos/sugeridos';
 import Footer from "./components/footer/footer";
-
+import Loading from "../src/components/dashboard-admin/loading/LoadingUser"
 
 function App() {
 
@@ -50,6 +50,7 @@ function App() {
         <PrivateRouteUser component={UpdateProfile} path='/home/update-profile'/>
         <Route component={Sugeridos} exact path='/sugeridos'/>
         <Route component={Footer} exact path='/footer'/>
+        <Route component={Loading} exact path='/loading'/>
       </AuthProvider>
     </React.Fragment>
   )

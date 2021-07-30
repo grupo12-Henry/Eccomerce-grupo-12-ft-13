@@ -17,12 +17,11 @@
 
 .Pagination {
     width: 100%;
-    margin-bottom: 1%;;
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 17%;
+    margin-top: 1%;
   }
   
   .Pagination button {

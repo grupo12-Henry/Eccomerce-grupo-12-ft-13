@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import emailjs from 'emailjs-com';
 import Maps from '../../../Maps/maps';
-import Sidebar from '../../sidebar/Sidebar';
+import Loading from '../../../dashboard-user/loading/LoadingAdmin';
 import './contacto.css'
 
 export const ContactUser = () => {
@@ -18,12 +18,19 @@ export const ContactUser = () => {
     e.target.reset()
   }
 
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(true), 600);
+  }, []);
+if (!loading) {
+    return <Loading />;
+  } else {
   return (
     <>
-    <Sidebar />
     <Maps />
     <div>
-    <div className="form">
+    <div className="formularioDeContacto">
       <section>
         <h3 class="h1-responsive text-left my-4 ml-5 mb-3">Contáctenos</h3>
         <div>
@@ -62,8 +69,11 @@ export const ContactUser = () => {
       </section>
     </div>
     </div>
+    <div className="fotter">
+    </div>
     </>
   );
+  }
 }
 
 export default ContactUser

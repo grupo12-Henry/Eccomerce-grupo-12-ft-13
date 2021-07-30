@@ -26,11 +26,11 @@ export const LandingPage = () => {
             </div>
             <hr/>
                 <p className="msg">
-                 VINOS - ESPUMANTES - WISKEYS - VARIOS
+                 VINOS  -  ESPUMANTES  -  WHISKIES  -  CERVEZAS
                 </p>
             <div className="div_btn">
               <Link to="/home">
-              <button className="btn">
+              <button className="btn btn-dark">
                    ENTRAR
                  </button>
                 {/* <img src={saca} alt="" />*/}

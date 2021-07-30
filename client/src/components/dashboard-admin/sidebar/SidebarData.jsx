@@ -28,9 +28,4 @@ export const SidebarData = [
     path: '/dashboard-admin/pedidos',
     icon: <FaTruck />,
   },
-  {
-    title: 'Mensajes',
-    path: '/dashboard-admin/mensajes',
-    icon: <FaFacebookMessenger />
-  }
 ]

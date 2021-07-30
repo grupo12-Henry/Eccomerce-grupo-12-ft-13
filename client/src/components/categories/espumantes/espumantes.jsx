@@ -116,7 +116,7 @@ function Espumantes() {
                             <div class="card">
                               <div class="card-body">
                                 <div class="card-img-actions">
-                                  <Link to={`/detail/${el.id}`}>
+                                  <Link to={`/home/detail/${el.id}`}>
                                     <img
                                       src={el.image}
                                       class="card-img img-fluid"
@@ -129,7 +129,7 @@ function Espumantes() {
                               <div class="card-body bg-light text-center">
                                 <div class="mb-2">
                                   <h6 class="font-weight-semibold mb-2">
-                                    <a href={`/detail/${el.id}`} class="text-default mb-2"
+                                    <a href={`/home/detail/${el.id}`} class="text-default mb-2"
                                       data-abc="true">
                                       {el.name}
                                     </a>

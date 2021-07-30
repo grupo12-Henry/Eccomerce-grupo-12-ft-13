@@ -22,7 +22,7 @@ const Footer = () => {
                 <i>BEBER CON MODERACIÓN. PROHIBIDA SU VENTA A MENORES DE 18 AÑOS.</i>
             </div>
             <div className='div_info'>
-                <div> Contáctanos <a href='/contact'>(+info)</a></div>
+                <div> Contáctanos <a href='/home/contacto'>(+info)</a></div>
                 <div>
                     <br />
                     <FaInstagram />

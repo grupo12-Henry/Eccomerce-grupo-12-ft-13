@@ -3,7 +3,8 @@ import {
   FaHome,
   FaWineBottle,
   FaWineGlassAlt,
-  FaFacebookMessenger
+  FaFacebookMessenger,
+  FaHeart
 } from 'react-icons/fa';
 
 export const SidebarData = [
@@ -47,4 +48,9 @@ export const SidebarData = [
     path: '/home/contacto',
     icon: <FaFacebookMessenger />,
   },
+  {
+    title: 'Favoritos',
+    path: '/home/favoritos',
+    icon: <FaHeart />,
+  }
 ]

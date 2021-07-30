@@ -6,10 +6,11 @@ import Cervezas from '../pages/cervezas/Cervezas';
 import Espumantes from '../pages/espumantes/Espumantes';
 import Whiskys from '../pages/whiskys/Whiskys';
 import Varios from '../pages/varios/Varios';
-import Contacto from '../pages/contacto/Contacto';
+import Contacto from '../pages/contacto/contacto2';
 import ShoppingCart from '../pages/shopping/ShoppingCart';
 import Detail from '../pages/detail/Detail';
 import Home from '../pages/home/Home';
+import Favoritos from '../pages/favoritos/favoritos';
 
 export default function Layout() {
   const [loading, setLoading] = useState(false);
@@ -32,6 +33,7 @@ export default function Layout() {
         <Route component={Varios} exact path="/home/varios" />
         <Route component={Contacto} exact path="/home/contacto" />
         <Route component={ShoppingCart} exact path="/home/compras" />
+        <Route component={Favoritos} exact path="/home/favoritos" />
         <Route component={Detail} exact path="/home/detail/:id" />
       </Switch>
     </Router>

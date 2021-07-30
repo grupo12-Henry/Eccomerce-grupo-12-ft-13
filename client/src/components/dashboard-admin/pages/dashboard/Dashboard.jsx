@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "../../../dashboard-admin/sidebar/Sidebar";
 import "./dashboard.css";
 import Footer from "../../../footer/footer";
+import Loading from "../../loading/LoadingUser";
 
 export default function Dashboard() {
   const [productos, setProductos] = useState(false);
@@ -22,6 +23,17 @@ export default function Dashboard() {
     setMensajes((current) => !current);
   };
 
+  const [loading, setLoading] = useState(false)
+ 
+	useEffect(() => {
+		setTimeout(() => setLoading(true), 400)
+	}, [])
+
+  if(!loading) {
+    return (
+      <Loading />
+    )
+  } else {
   return (
       <>
         <Sidebar />
@@ -49,7 +61,7 @@ export default function Dashboard() {
         </Link>
       </div>
     </div>
-      <Footer className="footer"/>
+      <Footer />
       </>
-  );
+  )};
 }

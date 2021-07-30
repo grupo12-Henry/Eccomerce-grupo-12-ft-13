@@ -1,6 +1,8 @@
 import React from 'react'
 import './loadingAdmin.css';
 import winecup from '../../loading/winecup.gif';
+import Sidebar from '../sidebar/Sidebar';
+import Footer from '../../footer/footer'
 
 export default function LoadingAdmin() {
   return (
