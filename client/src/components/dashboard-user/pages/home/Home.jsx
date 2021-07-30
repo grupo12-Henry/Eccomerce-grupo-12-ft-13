@@ -12,7 +12,6 @@ export default function Home1({ location }) {
         <Home location={location}/>
       </div>
       <div className="fotter">
-      <Footer />
       </div>
     </div>
   )

@@ -35,11 +35,10 @@ function App() {
       <AuthProvider>
         <PrivateRouteUser component={misPedidos} exact path='/micuenta/mispedidos/:id'/>
         <PrivateRouteUser component={wishList} exact path='/micuenta/favoritos/:id'/>
-        <PrivateRouteUser component={ForgotPassword} exact path='/forgotPassword'/>
+        <PrivateRouteUser component={ForgotPassword} exact path='/home/forgotPassword'/>
         <PrivateRouteUser component={Delivery} exact path='/delivery'/>
         <PrivateRouteUser component={writingReviews} exact path='/reviews/:id'/>
         <Route component={Login} exact path='/login'/>
-        {/* Rutas de prueba */}
         <PrivateRouteAdmin component={LayoutAdmin} path='/dashboard-admin'/>
         <Route component={Landing} exact path='/'/>
         <Route component={LayoutUser} exact path='/home' />

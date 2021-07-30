@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
-import Loading from "../../../loading/Loading";
+import Loading from "../../../dashboard-user/loading/LoadingAdmin";
 import { getUser, putUsuarios } from "../../../../actions";
 
 export default function Dashboard() {
