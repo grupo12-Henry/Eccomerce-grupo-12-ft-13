@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { GET_LOCAL_STORAGE } from "./actions/index";
 import { Route } from 'react-router-dom';
 import Landing from './components/landing/landing';
-import Login from './components/register/userRegister/login/login';
+import Login from '../src/components/register/userRegister/login/loginSolo';
 import UpdateProfile from './components/dashboard-user/pages/update-profile/Update';
 import ForgotPassword from './components/register/userRegister/forgotPassword/forgotPassword';
 import { AuthProvider } from "../src/contexts/AuthContext";

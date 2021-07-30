@@ -26,4 +26,7 @@ export const StyledDiv = styled.div`
 .signup_link{
     margin-bottom: 1rem;
 }
+
+.formulariodeLogin{
+}
 `
