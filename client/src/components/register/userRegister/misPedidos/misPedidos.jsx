@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Nav from "../../../navbar/navbar";
+import Sidebar from '../../../dashboard-user/sidebar/Sidebar';
 import Footer from "../../../footer/footer";
 import { getpedidosUser, getPedidoDetail, addProductCart, getProducts, repeatOrder } from "../../../../actions/index";
 import { Link, useHistory } from "react-router-dom";
@@ -83,7 +83,7 @@ export default function MisPedidos({ match }) {
 
   return (
     <>
-      <Nav />
+    <Sidebar />
       <div class="container">
         <div class="containter mt-05 ml-3 mr-03 mb-3" style={{width: 'inherit'}}>
           <h3 class="mt-03 ml-3 mr-03 mb-3">Ver mis pedidos</h3>

@@ -28,10 +28,11 @@ router.post('/', (req, res)=>{
          payer:{email:"test_user_80899844@testuser.com"},
          payment_methods: {excluded_payment_types:[ {"id":"ticket"}, {"id":"atm"}]}
     };
-
+console.log(1,req.body)
     req.body.forEach(x=> preference.items.push({id: x.id, currency_id:'ARS', quantity: x.cantidad, title: x.name||x.title, unit_price:x.price}))
       mercadopago.preferences.create(preference)
       .then(function(response){
+        console.log(2,req.body)
           res.send( response.body.sandbox_init_point)
       }).catch(function(error){
         console.log('error',error);

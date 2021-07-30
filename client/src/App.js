@@ -14,7 +14,7 @@ import Delivery from './components/register/userRegister/component/confirmDelive
 import misPedidos from './components/register/userRegister/misPedidos/misPedidos';
 import ShoppingCart from "./components/dashboard-user/pages/shopping/ShoppingCart";
 import FormCompras from "./components/dashboard-user/pages/formCompras/formCompras";
-import wishList from "./components/wishList/wishList";
+import wishList from "./components/dashboard-user/pages/favoritos/favoritos";
 import writingReviews from './components/writingReviews/writingReviews'
 import LayoutAdmin from './components/dashboard-admin/layout/Layout';
 import LayoutUser from './components/dashboard-user/layout/Layout';
