@@ -1,0 +1,8 @@
+.componente{
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+.fotter{
+  margin-top: 85px;
+}

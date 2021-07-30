@@ -1,7 +1,18 @@
 .containerFormCompras{
-  border: 5px solid grey;
-  margin-top: 5%;
-  margin-right: 5%;
-  margin-left: 5% ;
+  margin-top: 7%;
+  margin-right: 0%;
+  margin-left: 0% ;
   padding: 2%;
+}
+
+.Imagen{
+  object-fit: scale-down;
+  max-height: 3rem;
+}
+
+.container-item{
+  justify-content: center;
+}
+.mb{
+  display: none;
 }

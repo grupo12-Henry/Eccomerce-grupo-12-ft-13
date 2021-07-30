@@ -4,11 +4,8 @@ import { getProducts, addProductCart, addToWishList } from "../../../actions/ind
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
-import NavCategories from "../../navCategories/navCategories";
-import Footer from "../../footer/footer";
-import Loading from "../../loading/Loading";
+import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from '../../productRating/productRating'
 
 function Whiskys() {
@@ -63,13 +60,16 @@ function Whiskys() {
 
   useEffect(() => {
     const dbProducts = () => {
-      setAllProducts(product);
+      setAllProducts(product.filter(el=>el.type === "Whiskys"));
+      console.log(allProducts.length)
     };
     dbProducts();
   }, [product]);
 
+useEffect(() => {
   if (numberPage < 1) setnumberPage(1);
-  if (numberPage > 3) setnumberPage(3);
+  if (numberPage > Math.ceil(allProducts.length/9)) setnumberPage(numberPage-1); 
+}, [allProducts, numberPage]);
 
     const addToCart = (id) => {
         dispatch(addProductCart(id))
@@ -80,7 +80,7 @@ function Whiskys() {
     const [loading, setLoading] = useState(false);
   
     useEffect(() => {
-      setTimeout(() => setLoading(true), 400);
+      setTimeout(() => setLoading(true), 600);
     }, []);
   
     const style = {width: "16rem" }
@@ -90,8 +90,6 @@ function Whiskys() {
     } else {
     return (
       <>
-        <Nav />
-        <NavCategories />
         <StyledDiv>
           <div class="d-flex justify-content-center-md-center mt-5 " >
             <div class="btn-group-vertical col-sm-2 mt-5 mb-1 justify-content-start md-start">
@@ -115,7 +113,7 @@ function Whiskys() {
                             <div class="card">
                               <div class="card-body">
                                 <div class="card-img-actions">
-                                  <Link to={`/detail/${el.id}`}>
+                                  <Link to={`/home/detail/${el.id}`}>
                                     <img
                                       src={el.image}
                                       class="card-img img-fluid"
@@ -129,7 +127,7 @@ function Whiskys() {
                                 <div class="mb-2">
                                   <h6 class="font-weight-semibold mb-2">
                                     <a
-                                      href={`/detail/${el.id}`}
+                                      href={`/home/detail/${el.id}`}
                                       class="text-default mb-2"
                                       data-abc="true"
                                     >
@@ -138,7 +136,7 @@ function Whiskys() {
                                   </h6>{" "}
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
-                                <FontAwesomeIcon
+                              { user&& <FontAwesomeIcon
                                   className="highlight"
                                   icon={faHeart}
                                   type="button"
@@ -146,7 +144,7 @@ function Whiskys() {
                                   onClick={(e) =>
                                     addingToWishList(user.id, el.id)
                                   }
-                                />
+                                />}
                                 <ProductRating product={el} key={el.id} />
                                 <button type="button" onClick={() => addToCart(el.id)} class="btn bg-cart">
                                   <i class="fa fa-cart-plus mr-2">Agregar</i>
@@ -171,7 +169,6 @@ function Whiskys() {
             </div>
           </div>
         </StyledDiv>
-        <Footer />
       </>
     );
   }

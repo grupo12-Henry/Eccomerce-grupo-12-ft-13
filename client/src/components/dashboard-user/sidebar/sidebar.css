@@ -1,0 +1,21 @@
+.logo{
+  height:80px;
+  margin-bottom:5px;
+  margin-left: 10px;
+  padding:0;
+  align-items:center;
+}
+.searchBar{
+  margin-top: -35px;
+  margin-left: 768px;
+}
+.d-flex{
+  margin: 5px 1px 1px 1px;
+  list-style: none;
+}
+.dropdown{
+  font-family: 'Quicksand', sans-serif;
+  height:65px;
+  margin-top: 12px;
+  margin-left: -29px;
+}

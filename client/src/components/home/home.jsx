@@ -1,97 +1,94 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { 
+import {
   orderPost,
   addToWishList,
   addProductCart,
-  getProducts, 
-  ClearCart, 
+  getProducts,
+  ClearCart,
 } from "../../actions/index";
 import StyledDiv from "./styled";
-import Nav from "../navbar/navbar";
-import Footer from "../footer/footer";
 import { Link } from "react-router-dom";
 import Pages from "./paginado";
-import NavCategories from "../navCategories/navCategories";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import Loading from "../loading/Loading";
 import ProductRating from "../productRating/productRating";
 import Roboto from "../chatbot/Chatbot";
 // import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-import Sending from "../SendingT/SendingT";
-import SendingEmail from "../SendingT/sendmail";
-
-
+// import Loading from '../../components/dashboard-user/loading/LoadingAdmin';
+import Footer from '../../components/footer/footer';
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user);
   const product = useSelector((state) => state.products);
   const productDetail = useSelector((state) => state.productDetail);
   const wishList = useSelector((state) => state.wishList);
-  
+
+  console.log('product',product)
+
   // const cart = useSelector((state) => state.productCart);
-  const history = useHistory()
+  const history = useHistory();
   // console.log(historial)
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
-  
-  const cart = JSON.parse(window.localStorage.getItem('array'))
-  console.log(cart)
+  const pago = JSON.parse(window.localStorage.getItem("pago"));
+  const cart = JSON.parse(window.localStorage.getItem("array"));
+  console.log('cart',cart)
+  useEffect(() => {
+    let historial = history.location.search.includes("&status=")
+      ? history.location.search.split("&status=")[1].split("&")[0]
+      : null; //[5].split('&')[0])
+    let pedidoIdMP = history.location.search.includes("payment_id=")
+      ? history.location.search.split("payment_id=")[1].split("&")[0]
+      : null;
+    if (historial && historial === "approved") {
+      console.log(54);
+      let aux = 0;
+      cart?.forEach((e) => (aux = aux + e.price * e.cantidad));
+      let productsArray = cart?.map(
+        (el) =>
+          (el = {
+            subtotal: el.price * el.cantidad,
+            cantidad: el.cantidad,
+            id: el.id,
+          })
+      );
+      let user = window.localStorage.getItem("user");
+      let completo = user
+        ? {
+            idClient: user.split(",")[0].split(":")[1],
+            adress: pago.direccion, //user.split(',')[5].split(':')[1],
+            paymentMethod: pago.pago,
+            products: productsArray,
+            mail: user.split(",")[6].split(":")[1],
+            bill: aux,
+            idMP: pedidoIdMP,
+          }
+        : console.log("user is null");
+      if (completo) {
+        dispatch(orderPost(completo));
+        console.log("hola");
+        window.localStorage.removeItem("array");
+        dispatch(ClearCart());
+      }
+    }
+  }, []);
 
-            useEffect(() => {
-              let historial = (history.location.search.includes('&status=')?history.location.search.split('&status=')[1].split('&')[0]:null)//[5].split('&')[0])
-              let pedidoIdMP= (history.location.search.includes('payment_id=')?history.location.search.split('payment_id=')[1].split('&')[0]:null)
-              if (historial && historial === 'approved') {
-                console.log(54)
-                let aux = 0;
-                cart?.forEach(e=>  aux = aux + (e.price * e.cantidad))
-                let productsArray = cart?.map(el=> 
-      el = {
-        subtotal: el.price * el.cantidad,
-        cantidad: el.cantidad,
-        id: el.id
-      
-    })
-    console.log(42, productsArray)
-    let user =  window.localStorage.getItem("user");
-    let completo = user? {
-        idClient:user.split(',')[0].split(':')[1], 
-        adress:user.split(',')[5].split(':')[1], 
-        products: productsArray, 
-        paymentMethod: 'tarjeta', 
-        mail: user.split(',')[6].split(':')[1], 
-        bill: aux,
-        idMP: pedidoIdMP
-    } : console.log('user is null');
-    if (completo){
-    dispatch(orderPost(completo))
-    console.log('hola')
-    window.localStorage.removeItem('array');
-    dispatch(ClearCart())
-  }
-  }
-}, [])
-
-
-
-
-
+  useEffect(() => {
+      dispatch(getProducts());
+  }, []);
 
 
   useEffect(() => {
     if (location.search !== "") {
       setPage(
-        parseInt(location.search.slice(location.search.indexOf("=") + 1))
+        parseInt(location ? location.search.slice(location.search.indexOf("=") + 1): 1)
       );
     }
-  }, [location.search]);
-
-  // let { currentUser } = useAuth();
-  // let usuario = currentUser
-  // console.log(usuario)
+    console.log(page)
+  }, [location?.search]);
 
   useEffect(() => {
     const dbProducts = () => {
@@ -100,9 +97,10 @@ export default function Home({ location }) {
     dbProducts();
   }, [dispatch]);
 
+
   useEffect(() => {
     const dbProducts = () => {
-      setAllProducts(product);
+      setAllProducts(product.filter(e=>e.stock>0));
     };
     dbProducts();
   }, [product]);
@@ -114,43 +112,37 @@ export default function Home({ location }) {
 
   const addingToWishList = (Uid, productId) => {
     // const productFav = wishList?.filter(el=> el)
-     // console.log('ELUSER', Uid, 'ELFAV', productId)
-     let body = {productId:productId};
-     dispatch(addToWishList(Uid, body));
-    };
-  
+    // console.log('ELUSER', Uid, 'ELFAV', productId)
+    let body = { productId: productId };
+    dispatch(addToWishList(Uid, body));
+  };
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
-
-
-  if (!loading) {
-    return <Loading />;
-  } else {
+  // if (!loading) {
+  //   return <Loading />
+  // } else {
     return (
       <>
-        <Nav />
-        <NavCategories />
-        <Roboto/>
+        <Roboto />
         <StyledDiv>
           <div>
-            {/* <div class='mt-5 mb-3' >{carritoOn===true?<ShoppingCart/>:null}</div>  */}
             <div className="div_container">
               <div class="container d-flex justify-content-center mt-50 mb-50">
                 <div class="row container-product">
                   {allProducts && allProducts.length > 0
                     ? allProducts.slice((page - 1) * 9, page * 9).map((el) => {
-                     
-                        return el.stock > 0 ? (
-                          <>
+                      return (el.stock > 0 ? (
+                        <>
                             <div class="col-md-4 mt-2">
                               <div class="card">
                                 <div class="card-body">
                                   <div class="card-img-actions">
-                                    <Link to={`/detail/${el.id}`}>
+                                    <Link to={`/home/detail/${el.id}`}>
                                       <img
                                         src={el.image}
                                         class="card-img img-fluid"
@@ -165,7 +157,7 @@ export default function Home({ location }) {
                                     <h6 class="font-weight-semibold mb-2">
                                       {" "}
                                       <a
-                                        href={`/detail/${el.id}`}
+                                        href={`/home/detail/${el.id}`}
                                         class="text-default mb-2"
                                         data-abc="true"
                                       >
@@ -176,47 +168,46 @@ export default function Home({ location }) {
                                   <h3 class="mb-0 font-weight-semibold">
                                     $ {el.price}
                                   </h3>
-                                  <FontAwesomeIcon
-                                    className="highlight"
-                                    icon={faHeart}
-                                    type="button"
-                                    value={el.id}
-                                     onClick={(e) =>
-                                       addingToWishList(user.id,el.id)
-                                     }
-                                  />
-                                  {<ProductRating product={el} key={el.id} /> }
+                                  {user && (
+                                    <FontAwesomeIcon
+                                      className="highlight"
+                                      icon={faHeart}
+                                      type="button"
+                                      value={el.id}
+                                      onClick={(e) =>
+                                        addingToWishList(user.id, el.id)
+                                      }
+                                    />
+                                  )}
+                                  {<ProductRating product={el} key={el.id} />}
                                   <div
                                     style={{
                                       display: "flex",
                                       justifyContent: "center",
                                     }}
-                                  >
-                                  </div>
+                                  ></div>
 
                                   <button
                                     type="button"
                                     onClick={() => addToCart(el.id)}
-                                    class="btn bg-cart"
+                                    class="btn btn-secondary"
                                   >
-                                    <i class="fa fa-cart-plus mr-2"></i> Agregar
-                                  </button>
+                                    <i class="fa fa-cart-plus mr-0"></i>Agregar</button>
                                 </div>
                               </div>
                             </div>
                           </>
-                        ) : null;
+                        ) : console.log('null') );
                       })
-                    : null}
+                    : console.log('null')}
                 </div>
               </div>
             </div>
           </div>
         </StyledDiv>
-         {/* <SendingEmail /> */}
         <Pages product={product} page={page} />
         <Footer />
       </>
     );
-  }
+  
 }

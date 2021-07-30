@@ -7,7 +7,7 @@ const Sequelize = require('sequelize');
 const order = require('../../models/order');
 const Op = Sequelize.Op;
 const { sendMessage } = require('../twilio')
-const { sendMail } = require('../nodemailer')
+const { send } = require('../nodemailer')
 
 //FUNCIONAN OK:
 router.post('/send-sms', async  (req, res) => {
@@ -17,7 +17,7 @@ router.post('/send-sms', async  (req, res) => {
 })
 
 router.post('/send-mail', async  (req, res) => {
-  const response = await sendMail( req.body.mail, req.body.subject, req.body.text)
+  const response = await send( req.body.mail, req.body.subject, req.body.text)
 	res.send('recibido')
 })
 
@@ -72,11 +72,40 @@ console.log(id , 'producto:',pId)
 
 })
 
+// require('dotenv').config();
+const nodemailer = require('nodemailer');
+const mailGun = require('nodemailer-mailgun-transport');
+const log = console.log;
 
+router.post('/sendEmail', (req, res) => {
 
+  const auth = {
+    auth: {
+        api_key: '41d0f4d82f94ae9a556df30e39a6a9ba-a0cfb957-5fc7f998',
+        domain: 'sandboxf54c11cc136544a99ae8c54074a8561e.mailgun.org'
+    }
+  };
 
+  const transporter = nodemailer.createTransport(mailGun(auth));
 
+  console.log(req.body)
+  const mailOptions = {
+    from: 'grupo12ecommerce@gmail.com',
+    to: req.body.email,
+    subject: req.body.subject,
+    text: req.body.text
+  };
 
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      log('ERROR: ', err);
+      return res.send(err);
+  }
+    log('Email sent!!!');
+    return res.json({ message: 'Email sent!!!!!' });
+  });
+
+})
 
 //trae el detalle de un producto -->LISTO
 router.get('/productos/:id', async (req, res) => {
@@ -102,11 +131,11 @@ router.post('/clientesPost', async (req, res) => {
     token
 	} = req.body;
  try {
-   const response = await sendMail( mail, 'Bienvenido a Vinotecapp 🍷', 'Gracias por registrarte. Acompaña tus momentoscon los mejores sabaores.')
-    const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
-      defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
+  const response = await send(mail, 'VinotecApp', 'Gracias por su visita a nuestro sitio web. Esperamos vuelva pronto soyhenry.com')
+
+   const [newClient, status] = await Client.findOrCreate({ where:{mail},include:{model: Product},
+    defaults:{ name:name, lastName, phone, state, adress, mail, identityCard,token:token}
   })
-  
   return res.send(newClient)
   } catch(error){
    res.send(error).status(404);
@@ -254,8 +283,11 @@ router.put('/users/:id', async (req, res) => {
 //postea reviews de un producto. Id es el id de producto. 
 router.post('/reviews/:id', async (req, res)=>{
   const id =parseInt( req.params.id,10);
-  const value= parseInt(req.body.value,10)
-  const { description } = req.body;
+  console.log('ELID',id)
+  const value= parseInt( req.body.value,10)
+  console.log('ELVALUE',value)
+  const description = req.body.description;
+  console.log('description',description)
   try {
     const producto = await Product.findByPk(id)
     const newReview = await Review.create({

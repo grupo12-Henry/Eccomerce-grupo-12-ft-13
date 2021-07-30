@@ -2,8 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { useAuth } from "../../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import Loading from "../../../../components/loading/Loading";
-import Nav from '../../../navbar/navbar'
-import Footer from '../../../footer/footer'
 
 
 export default function UpdateProfile() {
@@ -46,7 +44,7 @@ export default function UpdateProfile() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
   if (!loading) {
@@ -54,7 +52,6 @@ export default function UpdateProfile() {
   } else {
     return (
       <>
-      <Nav/>
       <header className="navbar" style={{display: 'flex', justifyContent: 'center'}}>
         <nav>
               <div>
@@ -94,7 +91,6 @@ export default function UpdateProfile() {
             
         </nav>
       </header>
-      <Footer/>
       </>
     );
   }

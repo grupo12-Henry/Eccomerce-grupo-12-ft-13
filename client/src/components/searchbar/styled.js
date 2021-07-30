@@ -5,44 +5,39 @@ const Styled = styled.div`
 .search{
   align-items: center;
   justify-content: center;
-  margin-top: 35px;
+  margin-top: 25px;
   margin-right: 20% ;
-
 }
 
 .search input {
-  
-  width: auto;
-  height: auto;
-  border-radius: 50px;
-  padding: 2%;
+  width: 185px;
+  height: 35px;
+  border-radius: 2px;
+  padding: 5%;
+  font-family: 'Quicksand', sans-serif;
   outline: none;
-  background-color: rgba(238, 238, 238, 0.507);
+  background-color: white;
   border: 0;
-  margin: 0;
+  margin-left: 0;
   }
-  
   .searchIcon {
     place-items: center;
-    position: absolute;
     margin-top: -29px;
-    height: 40px;
+    height: 38px;
     width:40px;
-    margin-left: 14%
+    margin-left: 95%
   }
-  
   input:focus {
     outline: none;
   }
   .searchIcon svg {
     font-size: 25px;
   }
-  
   .dataResult {
     font-size: 80%;
     position:absolute !important;
-    margin-top: 2px;
-    width: auto;
+    margin-top: 0px;
+    width: 185px;
     height: auto;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;

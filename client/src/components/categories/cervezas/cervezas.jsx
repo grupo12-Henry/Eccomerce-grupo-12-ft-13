@@ -4,19 +4,16 @@ import { getProducts, addProductCart, addToWishList } from "../../../actions/ind
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
-import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
-import NavCategories from "../../navCategories/navCategories";
-import Footer from "../../footer/footer";
-import Loading from "../../loading/Loading";
+import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from "../../productRating/productRating";
 
 function Cervezas() {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
-
+  
   const [allProducts, setAllProducts] = useState([]);
-
+  
   const [numberPage, setnumberPage] = useState(1);
   const user = useSelector((state) => state.user)
   const addingToWishList = (Uid, productId) => {
@@ -28,10 +25,13 @@ function Cervezas() {
   const initialProducts = 9;
   const conteoFinal = numberPage * initialProducts;
   const conteoInicial = conteoFinal - initialProducts;
-
+  
   const showProducts = allProducts
     .filter((el) => el.type === "cervezas")
     .slice(conteoInicial, conteoFinal);
+  // setAllProducts( allProducts
+  //   .filter((el) => el.type === "cervezas")
+  //   .slice(conteoInicial, conteoFinal));
 
   // product.filter(el => el.type === 'cervezas').map(e => e.subcategories.forEach((el) => {
   let subCategories = [];
@@ -54,9 +54,6 @@ function Cervezas() {
 
   const countsSorted = Object.entries(counts).sort(([, b], [_, a]) => a - b);
 
-  console.log(countsSorted);
-  // console.log(subCategories)
-
   useEffect(() => {
     const dbProducts = () => {
       dispatch(getProducts());
@@ -66,17 +63,22 @@ function Cervezas() {
 
   useEffect(() => {
     const dbProducts = () => {
-      setAllProducts(product);
+      setAllProducts(product.filter(el=>el.type === "cervezas"));
+      console.log(allProducts.length)
     };
     dbProducts();
   }, [product]);
 
-  if (numberPage < 1) setnumberPage(1);
-  if (numberPage > 2) setnumberPage(2);
+  useEffect(() => {
+    if (numberPage < 1) setnumberPage(1);
+    if (numberPage > Math.ceil(allProducts.length/9)) setnumberPage(numberPage-1); 
+    console.log(allProducts.length, 'emiiiiii')
+  }, [allProducts, numberPage]);
+  
 
-  const handleCategories = () => {
-    setAllProducts(product);
-  };
+
+  // const handleCategories = () => {
+  // };
 
   const addToCart = (id) => {
     dispatch(addProductCart(id))
@@ -84,7 +86,7 @@ function Cervezas() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
   const style = {width: "16rem" }
@@ -94,8 +96,6 @@ function Cervezas() {
   } else {
     return (
       <>
-        <Nav />
-        <NavCategories />
         <StyledDiv>
           <div class="d-flex justify-content-center-md-center mt-5 " >
             <div class="btn-group-vertical col-sm-2 mt-5 mb-1 justify-content-start md-start ">
@@ -120,7 +120,7 @@ function Cervezas() {
                             <div class="card">
                               <div class="card-body">
                                 <div class="card-img-actions">
-                                  <Link to={`/detail/${el.id}`}>
+                                  <Link to={`/home/detail/${el.id}`}>
                                     <img
                                       src={el.image}
                                       class="card-img img-fluid"
@@ -134,7 +134,7 @@ function Cervezas() {
                                 <div class="mb-2">
                                   <h6 class="font-weight-semibold mb-2">
                                     <a
-                                      href={`/detail/${el.id}`}
+                                      href={`/home/detail/${el.id}`}
                                       class="text-default mb-2"
                                       data-abc="true"
                                     >
@@ -143,7 +143,7 @@ function Cervezas() {
                                   </h6>{" "}
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
-                                <FontAwesomeIcon
+                                {user&&<FontAwesomeIcon
                                   className="highlight"
                                   icon={faHeart}
                                   type="button"
@@ -151,7 +151,7 @@ function Cervezas() {
                                   onClick={(e) =>
                                     addingToWishList(user.id, el.id)
                                   }
-                                />
+                                />}
                                 {<ProductRating product={el} key={el.id} />}
                                 <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                   <i class="fa fa-cart-plus mr-2">Agregar</i>
@@ -176,7 +176,6 @@ function Cervezas() {
             </div>
           </div>
         </StyledDiv>
-        <Footer />
       </>
     );
   }

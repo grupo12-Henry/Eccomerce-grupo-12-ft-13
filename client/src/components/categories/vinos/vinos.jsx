@@ -4,11 +4,8 @@ import { getProducts, addProductCart, addToWishList } from "../../../actions/ind
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import Nav from '../../navbar/navbar';
 import StyledDiv from "../../detail/styled";
-import NavCategories from "../../navCategories/navCategories";
-import Footer from "../../footer/footer";
-import Loading from "../../loading/Loading";
+import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from "../../productRating/productRating";
 
 function Vinos() {
@@ -61,30 +58,33 @@ function Vinos() {
     };
     dbProducts();
   }, [dispatch]);
-
-  useEffect(() => {
-    const dbProducts = () => {
-      setAllProducts(product);
-    };
-    dbProducts();
-  }, [product]);
-
-  if (numberPage < 1) setnumberPage(1);
-  if (numberPage > 8 && !initialProducts) setnumberPage(1);
-
+  
   const handleCategories = () => {
     setAllProducts(product);
   };
-
+  
   const addToCart = (id) => {
     dispatch(addProductCart(id))
   }
-
-
+  
+  
   const [loading, setLoading] = useState(false);
+  
+    useEffect(() => {
+      const dbProducts = () => {
+        setAllProducts(product.filter(el=>el.type === "Vinos"));
+        console.log(allProducts.length)
+      };
+      dbProducts();
+    }, [product]);
+  
+  useEffect(() => {
+    if (numberPage < 1) setnumberPage(1);
+    if (numberPage > Math.ceil(allProducts.length/9)) setnumberPage(numberPage-1); 
+  }, [allProducts, numberPage]);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
   const style = {width: "16rem" }
@@ -94,15 +94,13 @@ function Vinos() {
   } else {
     return (
       <>
-        <Nav />
-        <NavCategories />
         <StyledDiv>
           <div class="d-flex justify-content-center-md-center mt-5 " >
             <div class="btn-group-vertical col-sm-2 mt-5 mb-1 justify-content-start md-start ">
               {/* <button id='botonazo'className='btn btn-success' onClick={handleCategories}>CATEGORIAS</button> */}
               <div class="row col-sm-14  ml-1 ">
                 {subCategories.map(d => <button id='botonazo' className='btn btn-dark mt-1' key={d}
-                  onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d))) }}>{d} ({counts[d]})</button>)
+                  onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d)))}}>{d} ({counts[d]})</button>)
                 }
               </div>
             </div>
@@ -120,7 +118,7 @@ function Vinos() {
                             <div class="card">
                               <div class="card-body">
                                 <div class="card-img-actions">
-                                  <Link to={`/detail/${el.id}`}>
+                                  <Link to={`/home/detail/${el.id}`}>
                                     <img
                                       src={el.image}
                                       class="card-img img-fluid"
@@ -134,7 +132,7 @@ function Vinos() {
                                 <div class="mb-2">
                                   <h6 class="font-weight-semibold mb-2">
                                     <a
-                                      href={`/detail/${el.id}`}
+                                      href={`/ome/detail/${el.id}`}
                                       class="text-default mb-2"
                                       data-abc="true"
                                     >
@@ -143,7 +141,7 @@ function Vinos() {
                                   </h6>{" "}
                                 </div>
                                 <h3 class="mb-0 font-weight-semibold">$ {el.price}</h3>
-                                <FontAwesomeIcon
+                                {user&&<FontAwesomeIcon
                                   className="highlight"
                                   icon={faHeart}
                                   type="button"
@@ -151,7 +149,7 @@ function Vinos() {
                                   onClick={(e) =>
                                     addingToWishList(user.id, el.id)
                                   }
-                                />
+                                />}
                                 <ProductRating product={el} key={el.id} />
                                 <button type="button" onClick={() => addToCart(el.id)} class="btn btn-outline-secondary">
                                   <i class="fa fa-cart-plus mr-2"></i> Agregar
@@ -163,14 +161,13 @@ function Vinos() {
                       })}
                   </div>
                   <div class="justify-content-center">
-                    <button className='btn btn-dark ml-2 mt-1' onClick={() => setnumberPage(numberPage + 1)}>SIGUENTE</button>
+                    <button className='btn btn-dark ml-2 mt-1' onClick={() =>{  setnumberPage(numberPage + 1);if(numberPage > Math.ceil(allProducts/9)) setnumberPage(1)}}>SIGUENTE</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </StyledDiv>
-        <Footer />
       </>
     );
   }

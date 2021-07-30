@@ -7,8 +7,11 @@ import { Link, useHistory } from "react-router-dom";
 
 export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
   const pedidos = useSelector((state) => state.pedidosUser);
+  
   const pedidoDetail = useSelector((state) => state.pedidoDetail);
+
   // const product = useSelector((state) => state.products);
   const history = useHistory()
   useEffect(() => {
@@ -23,7 +26,7 @@ export default function MisPedidos({ match }) {
 }, []);
   //PEDIDOS ES CLIENTDETAILS DE JULI
   const [ordenes, setOrdenes] = useState();
-  console.log('vamooo emiiii',ordenes)
+ // console.log('vamooo emiiii',ordenes)
   // console.log("DETALLE PEDIDO", detallePedido);
 
   useEffect(() => {
@@ -45,24 +48,38 @@ export default function MisPedidos({ match }) {
   //       dispatch(getPedidoDetail(id))  
   //   };
     
-  // }, [pedidos]);
+  // }, [pedidos]); 
 
   const repeatCart=(payload)=>{
-    console.log('pedidoDetail repeat', pedidos)
+    payload.forEach(e=>{
+    if(e.order_detail.cantidad> e.stock)e={...e, order_detail:{...e.order_detail, cantidad:e.stock, subTotal:e.stock*e.price}};
+    // if (e.stock<1){e=null}
+    })
+    console.log('payload si cambia', payload)
+    payload =  payload.filter(e=>e.stock>0);
+    console.log('payload filtrado', payload)
     dispatch(repeatOrder(payload));
     dispatch(getpedidosUser(match.params.id));
-    history.push('/compras')
+    history.push('/compras');
+    // const timeout = setTimeout(() => {
+      // }, 3000);
+    // history.push('/compras')
   }
   const insertDetail = (id) => {
     dispatch(getPedidoDetail(id))  
     console.log(pedidoDetail)  
   };
+  console.log(products)
   const repeatProduct = (payload) => {
-    console.log('emi',payload)
+    console.log(products)
+    console.log('payload, emi',payload)
+    let id = products.find(e=>e.id===payload.productId)
+     if(id.stock<1) return alert('no hay suficiente stock');
+     if (id.stock<payload.cantidad){ return (payload={...payload, cantidad:id.stock}&&dispatch(addProductCart(payload))  && alert('solo pudimos agregar al carrito la cantidad disponible en stock'))}
     dispatch(addProductCart(payload))  
     // console.log(pedidoDetail)  
   };
-  console.log('pedidos',pedidos)  
+  //console.log('pedidos',pedidos)  
 
   return (
     <>
@@ -145,13 +162,13 @@ export default function MisPedidos({ match }) {
                     return (
                       <tr>
                         <th scope="row" style={{width: '20%'}}><img style={{width:'25%'}}src={el.image}/></th>
-                        <td><Link to='/reviews'>{el.name}</Link></td>
+                        <td><Link to={`/reviews/${el.id}`}>{el.name}</Link></td>
                       <td>{el.order_detail.cantidad}</td>
                       <td>{el.order_detail.subTotal}</td>
                       <td>{el.order_detail.updatedAt.split('T')[0]}</td>
                       <td>
-                          <label for="vehicle1">
-                            <button className='btn btn-primary'onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
+                          <label for="vehicle1"> 
+                            <button className='btn btn-sm btn-info'onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
                           </label>
                         </td>
                         

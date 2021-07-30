@@ -1,0 +1,21 @@
+.img{
+	display: flex;
+	justify-content: center;
+	margin-top: 115px;
+	margin-left: -20px;
+	margin-bottom: 102px;
+	height: 105px;
+	position: relative;
+}
+.component:before{
+	/* content:'';
+	position: absolute;
+  top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.6); */
+}
+.fotter{
+	margin-top: 85px;
+}

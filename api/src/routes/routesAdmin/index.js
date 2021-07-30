@@ -1,3 +1,5 @@
+const Sequelize=require('sequelize')
+Op = Sequelize.Op
 const {
 	Router
 } = require('express');
@@ -6,11 +8,11 @@ const {
 	Client,
 	Order,
 } = require('../../db');
-const Sequelize = require('sequelize');
 const {
 	auth,
 	authAdmin
 } = require('../controler')
+const { send } = require('../nodemailer');
 
 //modelos acá:
 
@@ -59,6 +61,39 @@ router.get('/detallePedido/:id', async (req, res) => { //envia detalle de un ped
 		res.send(error).status(404)
 	}
 })
+// router.get('/recomendados/:id',async (req,res)=>{
+// 	const id = req.params.id
+// 	try{
+// 		const cliente= await Client.findByPk(id,{
+// 			include:{model:Product}
+// 		   })
+// 		   //res.send(cliente.products)
+// 		var array=[]
+
+// 		   for(let i=0;i<cliente.products.length;i++){
+// 			array.push(await Product.findOne({where:{ subcategories:{[Op.like]: `%${cliente.products[i].subcategories[0]}%`}}}))
+// 		   }
+
+		
+
+
+// 		/* const productos = cliente.products&&cliente.products.forEach(async(prod)=>{
+		 
+// 		 return recomendado =await Product.findOne({where:{ subcategories:{[Op.like]: `%${prod.subcategories[0]}%`}}})
+// 		}) */
+// 		Promise.all(array)
+// 		.then(el=>{console.log(el); res.send(el)})
+// 	}			
+// 	catch(error){
+// 		res.send(error).status(404)
+
+// 	}
+
+
+
+// })
+
+
 
 router.delete('/producto/:id', async (req, res) => {
 	const id = req.params.id
@@ -104,9 +139,9 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 	const token = req.headers.authorization && req.headers.authorization.split(' ')[1]
 	try {
 
-		const newClient = await Client.create({
-
-			name,
+		const newClient = await Client.findOrCreate({
+					where:{mail:mail},
+		default:{	name,
 			lastName,
 			phone: phone + '',
 			state,
@@ -114,7 +149,7 @@ router.post('/clientesPost', async (req, res) => { //crea un nuevo cliente
 			mail,
 			identityCard,
 			admin,
-			token
+			token}
 		})
 		res.send(newClient)
 	} catch (error) {
@@ -185,7 +220,7 @@ router.get('/productos/names', async (req, res) => { //envia todos los nombres d
 	try {
 		const productos = await Product.findAll({
 			attributes: {
-				exclude: ['createdAt', 'updatedAt', 'image', 'maker', 'price', 'Description', 'type', 'stock']
+				exclude: ['createdAt', 'updatedAt', 'image']
 			}
 		})
 		res.send(productos)
@@ -232,7 +267,8 @@ router.put('/productos/:id', async (req, res) => { //modifica el producto selecc
 		subcategories
 	} = req.body
 	try {
-
+	console.log(id)
+	console.log(stock)
 		const product = await Product.findByPk(id)
 		await product.update({
 			name: name || product.dataValues.name,
@@ -368,10 +404,9 @@ router.post('/orderPost', async (req, res) => {
 		subtotal,
 		cantidad
 	} = req.body;
-	if (!idMP) idMP = 62;
 	try {
-		const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
-		if (encontrarPedido) return res.send('ya existe un pedido con ese id');
+		if(idMP){const encontrarPedido = await Order.findOne({where:{idMP: idMP}})
+		if (encontrarPedido) return res.send('ya existe un pedido con ese id');}
 		const user = await Client.findByPk(idClient)
 		const newOrder = await Order.create({
 			ticket,
@@ -401,8 +436,6 @@ router.post('/orderPost', async (req, res) => {
 				}
 			});
 			Product.decrement({stock: e.cantidad}, {where: {id: e.id}})
-			console.log(products, 'sprite zero')
-		
 		})
 		return res.send(newOrder)
 	} catch (error) {
@@ -430,7 +463,7 @@ router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun l
 	try {
 		const order = await Order.findByPk(id)
 		if (order) {
-
+			
 			await order.update({
 				bill: bill || order.dataValues.bill,
 				date: date || order.dataValues.date,
@@ -446,6 +479,8 @@ router.put('/pedidos/id/:id', async (req, res) => { //modifica un pedido segun l
 				ticket: ticket || order.dataValues.ticket,
 				mail: mail || order.dataValues.mail,
 			});
+			// console.log(order.mail, order.mail.slice(1,-1))
+			const response = await send(order.mail||'marcosmc86@gmail.com', 'VinotecApp', "pedido "+state+' soyhenry.com')
 			res.send(order).status(200)
 		} else {
 			res.sendStatus(400)
@@ -493,11 +528,34 @@ router.put('/users/:id',async (req, res) => {
 	}
 })
 
-
-
-
-
-
-
+// router.delete('/pedidos/id/:id', async (req, res) => { //borra un producto de la tabla intermedia 'order_detail'
+// 	const id = req.params.id //id de pedido
+// 	const pId=parseInt(req.query.idProd,10)
+// 	console.log('OrdId:', id);
+// 	console.log('ProdId:', pId);
+// 	try {
+// 		const order = await Order.findByPk(id)
+// 		const product = await Product.findByPk(pId)
+// 		order.removeProducts(product)
+// 		res.send(order).status(200)
+// 	} catch (error) {
+// 		res.send(error).status(404);
+// 	}
+// });
+// router.put('/pedidos/id/:id', async (req, res) => { //modifica un producto de la tabla intermedia 'order_detail'
+// 	const id = req.params.id //id de pedido
+// 	const pId=parseInt(req.query.idProd,10)
+// 	console.log('OrdId:', id);
+// 	console.log('ProdId:', pId);
+// 	try {
+// 		const order = await Order.findByPk(id)
+// 		const product = await Product.findByPk(pId)
+// 		order.removeProducts(product)
+// 		res.send(order).status(200)
+// 	} catch (error) {
+// 		res.send(error).status(404);
+// 	}
+// });
+	
 
 module.exports = router

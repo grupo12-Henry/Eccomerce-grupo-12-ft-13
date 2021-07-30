@@ -7,7 +7,7 @@ export const StyledDiv = styled.div`
     align-items: center;
     justify-content:space-around;
     width: 100%;
-	height: 20%;
+	height: 70px;
     margin-bottom: 2%;
 	overflow: hidden;
 	background-color: #ffff;

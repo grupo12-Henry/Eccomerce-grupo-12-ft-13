@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Pages.css";
-import Loading from "../loading/Loading";
+import Loading from "../dashboard-user/loading/LoadingAdmin";
 
 export default function Pages({ product, page }) {
   const totalPages = Math.ceil(product.length / 9);
@@ -59,7 +59,7 @@ export default function Pages({ product, page }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
   if (!loading) {

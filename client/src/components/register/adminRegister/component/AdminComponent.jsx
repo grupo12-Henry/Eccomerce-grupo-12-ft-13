@@ -3,7 +3,7 @@ import GestionProductos from './gestionProductos'
 import GestionUsuarios from './gestionUsuarios'
 import GestionPedidos from './gestionPedidos'
 import Nav from "../../../navbar/navbar";
-import Footer from "../../../footer/footer";
+// import Footer from "../../../footer/footer";
 import {Link} from 'react-router-dom'
 // import SideBar from './SideBar';
 import Loading from '../../../loading/Loading';
@@ -26,7 +26,7 @@ export default function AdminComponent() {
   const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		setTimeout(() => setLoading(true), 400)
+		setTimeout(() => setLoading(true), 600)
 	}, [])
 
   if(!loading) {

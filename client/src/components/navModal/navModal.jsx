@@ -23,7 +23,8 @@ const MODAL_STYLES = {
   textAlign: 'center', 
   display: 'flex',
   justifyContent: 'center',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  cursor: 'pointer'
 };
 
 const OVERLAY_STYLES = {
@@ -35,6 +36,7 @@ const OVERLAY_STYLES = {
   borderRadius: '0.5rem',
   backgroundColor: "rgba(0, 0, 0, .7)",
   zIndex: 1000,
+  cursor: 'pointer'
 };
 
 export default function NavModal({ open, children, onClose }) {
@@ -44,6 +46,8 @@ export default function NavModal({ open, children, onClose }) {
   const { googleLogin } = useAuth();
   const dispatch = useDispatch()
   if (!open) return null;
+
+  console.log('holasanti')
 
   async function vamo (){
     if(currentUser){try{
@@ -94,20 +98,20 @@ export default function NavModal({ open, children, onClose }) {
       {currentUser ? (
         <div style={OVERLAY_STYLES}>
           <div style={MODAL_STYLES}>
-          <div className='d-flex justify-content-end'>                
-              <CloseIcon onClick={handleClose} style={{height: '1.2rem'}}/>
+              <div className='d-flex justify-content-end'>
+                  <CloseIcon className='bClose' onClick={handleClose} style={{height: '2.2rem', width:'3rem', color:'red',borderRadius:'2px'}}/>
               </div>
-            
-            <div>
-              <p style={{marginTop:'1rem'}}>¡ESTAS LOGUEADO!</p>
+              <div>
+                <p style={{marginTop:'1rem'}}>¡Ahora estas logueado!</p>
               </div>
             <button
-              class="btn btn-light"
-              margin-right="1rem"
-              width="3rem"
+              class="btn btn-light bLogout"
+              // className='bLogout'
+              // margin-right="1rem"
+              // width="3rem"
               onClick={handleLogout}
             >
-              DESLOGUEATE
+              Desloguearse
             </button>
           </div>
         </div>

@@ -1,0 +1,17 @@
+.imagenDeLoadingf{
+	display: flex;
+	justify-content: center;
+	margin-top: 115px;
+	margin-left: -20px;
+	margin-bottom: 181px;
+	height: 105px;
+}
+.component:before{
+	/* content:'';
+	position: absolute;
+  top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.6); */
+}

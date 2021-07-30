@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { StyledDiv } from "./styled";
+import "./landing.css";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.jpg";
+// import saca from "../../assets/images/sacacorchos.png";
 import ControlledCarousel from "./carrousel.jsx";
 import Loading from "../loading/Loading";
+
 export const LandingPage = () => {
   const [loading, setLoading] = useState(false)
-  // const history = useHistory()
-  // let historial = (history.location?.search?.split('=')[4].split('&')[0])
-  // console.log(historial)
+ 
 	useEffect(() => {
 		setTimeout(() => setLoading(true), 400)
 	}, [])
@@ -19,22 +19,27 @@ export const LandingPage = () => {
     )
   } else {
       return (
-        <StyledDiv>
           <div className="div_content">
+            <div className="msgContainer">
             <div>
-              <img src={logo} alt="img logo" width="360px" />
+              <img src={logo} alt="img logo" width="500rem" />
             </div>
-            <ControlledCarousel />
+            <hr/>
+                <p className="msg">
+                 VINOS  -  ESPUMANTES  -  WHISKIES  -  CERVEZAS
+                </p>
             <div className="div_btn">
               <Link to="/home">
-                <button className="btn">
-                  ENTRAR
-                </button>
+              <button className="btn btn-dark">
+                   ENTRAR
+                 </button>
+                {/* <img src={saca} alt="" />*/}
               </Link>
             </div>
+            </div>
           </div>
-        </StyledDiv>
       );
   };
 };
+
 export default LandingPage;

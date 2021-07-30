@@ -1,9 +1,9 @@
 .div_conteiner{
-    color:white;
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    width: 100%;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  width: 100%;
 	height: 18%;
 	overflow: hidden;
 	background-color: black;

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
-import Nav from "../../../navbar/navbar";
-import Footer from "../../../footer/footer";
 import Loading from "../../../loading/Loading";
 import { getUser, putUsuarios } from "../../../../actions";
 
@@ -25,8 +23,8 @@ export default function Dashboard() {
     })
   }
 
-  const putSubmit = () => {
-    //e.preventDefault()
+  const putSubmit = (e) => {
+    e.preventDefault()
     window.localStorage.setItem('user', JSON.stringify(User))
     dispatch(putUsuarios(user.id, User))
   }
@@ -46,7 +44,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setLoading(true), 400);
+    setTimeout(() => setLoading(true), 600);
   }, []);
 
   if (!loading) {
@@ -54,7 +52,6 @@ export default function Dashboard() {
   }
   return (
     <>
-      <Nav />
       {currentUser ? (
         <div class="container-fluid">
           <div class="row">
@@ -80,11 +77,7 @@ export default function Dashboard() {
                         <h2>Modificar un usuario</h2>
                         <br />
                         <div >
-                          {/*   <input class="form-control mt-5 ml-5"
-                        required autoComplete='off' 
-                        name='id' 
-                        value={User.id}>
-                    </input> */}
+                         
                           <input class="form-control mt-2 ml-5"
                             placeholder={User.name || 'Name'}
                             name='name'
@@ -153,7 +146,7 @@ export default function Dashboard() {
                     <Link to="/home" className="btn btn-dark mr-3">
                       VOLVER
                     </Link>
-                    <button className="btn btn-warning " onClick={handleLogout}>
+                    <button className="btn btn-danger " onClick={handleLogout}>
                       Cerrar Sesion
                     </button>
                   </div>
@@ -165,7 +158,6 @@ export default function Dashboard() {
       ) : (
         <div className="container">Volvé a loguearte</div>
       )}
-      <Footer />
     </>
   );
 }
