@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import ReactStars from "react-rating-stars-component";
 import { getDetail, postReview } from "../../actions";
 import { useHistory } from "react-router";
-import Nav from "../navbar/navbar";
 import Footer from "../footer/footer";
+import Sidebar from "../../components/dashboard-user/sidebar/Sidebar";
 
 export default function WritingReviews({ match }) {
   const dispatch = useDispatch();
@@ -48,8 +48,7 @@ export default function WritingReviews({ match }) {
 
   return (
     <>
-      <Nav />
-
+      <Sidebar />
       <div>
         <h2 class="d-flex justify-content-center">Calificá este producto</h2>
       </div>
