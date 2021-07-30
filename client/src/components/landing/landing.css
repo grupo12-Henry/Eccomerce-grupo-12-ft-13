@@ -1,0 +1,47 @@
+
+.div_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 100vh;
+    background-image: url("https://www.bonvivir.com/wp-content/uploads/2018/12/slider_tienda_1920x1080.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden
+}
+
+.msgContainer{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: cursive;
+    width: 50rem;
+    height: 30rem;
+    padding: 1%;
+    margin: 10% ;
+    backdrop-filter: blur(3px);
+    border: rgba(255, 255, 255, 0.63) 2px solid;
+    border-radius: 0 5% 0 5% ;
+}
+
+.div_btn {
+
+    background:steelblue ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:50px;
+    margin-bottom: 60px;
+}
+.btn { 
+background-color: black;
+border-radius: 5px;
+color: white;
+}
+ 
