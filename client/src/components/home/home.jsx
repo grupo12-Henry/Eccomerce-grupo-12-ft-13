@@ -25,6 +25,7 @@ import Maps from '../Maps/maps'
 import ContactUser from '../ContactUser/ContactUser'
 import Loading from '../loading/Loading';
 import swal from 'sweetalert';
+import Sugeridos from '../sugeridos/sugeridos'
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -137,6 +138,7 @@ export default function Home({ location }) {
         <Nav />
         <NavCategories />
         <Roboto />
+        <Sugeridos/>
         <StyledDiv>
           <div>
             {/* <div class='mt-5 mb-3' >{carritoOn===true?<ShoppingCart/>:null}</div>  */}
