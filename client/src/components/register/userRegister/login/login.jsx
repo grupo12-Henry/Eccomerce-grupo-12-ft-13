@@ -61,7 +61,7 @@ useEffect(async () => {
             passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD||true&&
             user&&user.admin===true) {
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push('/dashboard-admin')
+            history.push('/home')
         }else return
 },[user])
     async function HandleSubmit(e) {
@@ -76,7 +76,7 @@ useEffect(async () => {
                     passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD||true&&
                     user.admin===true) {
                     await login(emailRef.current.value, passwordRef.current.value)
-                    history.push('/dashboard-admin')
+                    history.push('/home')
                 } else {
                     await login(emailRef.current.value, passwordRef.current.value)
                     onClose()
