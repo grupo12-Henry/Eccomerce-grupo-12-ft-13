@@ -60,7 +60,6 @@ const Sidebar = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     setIsOpen(true);
-    console.log('holacami')
   };
 
   const history = useHistory();
@@ -92,16 +91,18 @@ const Sidebar = () => {
           <NavIcon to='#'>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
-          <div className='logo'>
-            <a href="/home">
-              <img src={logo} alt='Logo' className="logo"/>
-            </a>
-          </div>
-            <div className="searchBar">
+                <div className='logoHiden'>
+                  <a href="/home">
+                    <img src={logo} alt='Logo' className="logo"/>
+                  </a>
+                </div>
+            
+             <div className="searchBar">
                 <SearchBar />
             </div>
+
             <div>
-            <ul className="d-flex">
+                <ul className="d-flex">
             <li>
             {currentUser ? (
                   <Dropdown class="">
@@ -139,20 +140,21 @@ const Sidebar = () => {
               </li>
             </li>
           </ul>
-        </div>
-        <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
-        </NavModal>
+            </div>
+            
+            <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
+            </NavModal>
         </Nav>
-        <SidebarNav sidebar={sidebar}>
-          <SidebarWrap>
-            <NavIcon to='#'>
-              <AiIcons.AiOutlineClose onClick={showSidebar} />
-            </NavIcon>
-            {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
-            })}
-          </SidebarWrap>
-        </SidebarNav>
+                  <SidebarNav sidebar={sidebar}>
+                    <SidebarWrap>
+                      <NavIcon to='#'>
+                        <AiIcons.AiOutlineClose onClick={showSidebar} />
+                      </NavIcon>
+                      {SidebarData.map((item, index) => {
+                        return <SubMenu item={item} key={index} />;
+                      })}
+                    </SidebarWrap>
+                  </SidebarNav>
       </IconContext.Provider>
     </>
   )
