@@ -6,11 +6,11 @@ const Styled = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 25px;
-  margin-right: 20% ;
+  margin-right: 10% ;
 }
 
 .search input {
-  width: 185px;
+  width: 6rem;
   height: 35px;
   border-radius: 2px;
   padding: 5%;
