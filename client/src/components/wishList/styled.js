@@ -95,9 +95,6 @@ a {
   margin-top: 0.5rem;
 }
 
-.loadingCSS {
-    margin: 250px;
-}
 
-`;
+`
 export default StyledDiv;
