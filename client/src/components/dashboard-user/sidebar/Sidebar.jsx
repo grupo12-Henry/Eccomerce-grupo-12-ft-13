@@ -20,10 +20,10 @@ import './sidebar.css';
 const Nav = styled.div`
 background: black;
 height: 80px;
-display: flex;
-justify-content: flex-start;
 align-items: center;
 `;
+// display: flex;
+// justify-content: flex-start;
 
 const NavIcon = styled(Link)`
 margin-left: 2rem;
@@ -87,7 +87,7 @@ const Sidebar = () => {
   return (
     <>
       <IconContext.Provider value={{ color: 'white' }}>
-        <Nav>
+        <div className='Nav'>
           <NavIcon to='#'>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
@@ -144,7 +144,7 @@ const Sidebar = () => {
             
             <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
             </NavModal>
-        </Nav>
+        </div>
                   <SidebarNav sidebar={sidebar}>
                     <SidebarWrap>
                       <NavIcon to='#'>
