@@ -21,6 +21,7 @@ import Footer from '../../components/footer/footer';
 import Sending from "../SendingT/SendingT";
 import SendingEmail from "../SendingT/sendmail";
 import Maps from '../Maps/maps'
+import Sugeridos from '../sugeridos/sugeridos'
 // import ContactUser from '../ContactUser/ContactUser'
 import Loading from '../loading/Loading';
 import swal from 'sweetalert';
@@ -136,6 +137,7 @@ export default function Home({ location }) {
     return (
       <>
         <Roboto />
+        <Sugeridos/>
         <StyledDiv>
           <div>
             <div className="div_container">

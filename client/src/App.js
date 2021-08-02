@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { GET_LOCAL_STORAGE } from "./actions/index";
 import { Route } from 'react-router-dom';
 import Landing from './components/landing/landing';
-import Login from './components/register/userRegister/login/login';
+import Login from '../src/components/register/userRegister/login/loginSolo';
 import UpdateProfile from './components/dashboard-user/pages/update-profile/Update';
 import ForgotPassword from './components/register/userRegister/forgotPassword/forgotPassword';
 import { AuthProvider } from "../src/contexts/AuthContext";
@@ -14,7 +14,7 @@ import Delivery from './components/register/userRegister/component/confirmDelive
 import misPedidos from './components/register/userRegister/misPedidos/misPedidos';
 import ShoppingCart from "./components/dashboard-user/pages/shopping/ShoppingCart";
 import FormCompras from "./components/dashboard-user/pages/formCompras/formCompras";
-import wishList from "./components/wishList/wishList";
+import wishList from "./components/dashboard-user/pages/favoritos/favoritos";
 import writingReviews from './components/writingReviews/writingReviews'
 import LayoutAdmin from './components/dashboard-admin/layout/Layout';
 import LayoutUser from './components/dashboard-user/layout/Layout';

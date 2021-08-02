@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Nav from "../../../navbar/navbar";
+import Sidebar from '../../../dashboard-user/sidebar/Sidebar';
 import Footer from "../../../footer/footer";
 import { getpedidosUser, getPedidoDetail, addProductCart, getProducts, repeatOrder } from "../../../../actions/index";
 import { Link, useHistory } from "react-router-dom";
@@ -83,7 +83,7 @@ export default function MisPedidos({ match }) {
 
   return (
     <>
-      <Nav />
+    <Sidebar />
       <div class="container">
         <div class="containter mt-05 ml-3 mr-03 mb-3" style={{width: 'inherit'}}>
           <h3 class="mt-03 ml-3 mr-03 mb-3">Ver mis pedidos</h3>
@@ -106,11 +106,12 @@ export default function MisPedidos({ match }) {
               </thead>
               <tbody>
                 {pedidos?pedidos[0]?.orders.map((el) => {
+                  console.log(pedidos,'pedidos')
                   return (
                     <tr>
-                      <th scope="row">{el.date}</th>
+                      <th scope="row">{el.date?el.date:el.createdAt.split('T')[0]}</th>
                       <td>{el.id}</td>
-                      <td>{el.bill}</td>
+                      <td>$ {el.bill}</td>
                       <td>
                         <button
                           class="btn btn-sm btn-info"
@@ -158,6 +159,7 @@ export default function MisPedidos({ match }) {
               </thead>
               <tbody>
                 {pedidoDetail?.products?.map((el) =>
+                // {console.log(el)}
                    {
                     return (
                       <tr>
