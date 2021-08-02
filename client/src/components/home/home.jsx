@@ -131,14 +131,11 @@ export default function Home({ location }) {
   //   return <Loading />
   // } else {
     return (
-      <>
+      <>  
         <Roboto />
         <Sugeridos/>
         <StyledDiv>
-          <div>
-            <div className="div_container">
-              <div class="container d-flex justify-content-center mt-50 mb-50">
-                <div class="row container-product">
+              <div class="row container-product container div_container d-flex justify-content-center mt-50 mb-50">
                   {allProducts && allProducts.length > 0
                     ? allProducts.slice((page - 1) * 9, page * 9).map((el) => {
                       return (el.stock > 0 ? (
@@ -202,13 +199,10 @@ export default function Home({ location }) {
                               </div>
                             </div>
                           </>
-                        ) : console.log('null') );
+                        ) :null);
                       })
-                    : console.log('null')}
-                </div>
+                    :null}
               </div>
-            </div>
-          </div>
         </StyledDiv>
         <Pages product={product} page={page} />
         <Footer />
