@@ -33,7 +33,6 @@ export default function Home({ location }) {
   const productDetail = useSelector((state) => state.productDetail);
   const wishList = useSelector((state) => state.wishList);
 
-  console.log('product',product)
 
   // const cart = useSelector((state) => state.productCart);
   const history = useHistory();
@@ -42,7 +41,6 @@ export default function Home({ location }) {
   const [page, setPage] = useState(1);
   const pago = JSON.parse(window.localStorage.getItem("pago"));
   const cart = JSON.parse(window.localStorage.getItem("array"));
-  console.log('cart',cart)
   useEffect(() => {
     let historial = history.location.search.includes("&status=")
       ? history.location.search.split("&status=")[1].split("&")[0]
@@ -51,7 +49,6 @@ export default function Home({ location }) {
       ? history.location.search.split("payment_id=")[1].split("&")[0]
       : null;
     if (historial && historial === "approved") {
-      console.log(54);
       let aux = 0;
       cart?.forEach((e) => (aux = aux + e.price * e.cantidad));
       let productsArray = cart?.map(
@@ -76,7 +73,6 @@ export default function Home({ location }) {
         : console.log("user is null");
       if (completo) {
         dispatch(orderPost(completo));
-        console.log("hola");
         window.localStorage.removeItem("array");
         dispatch(ClearCart());
       }
@@ -94,7 +90,7 @@ export default function Home({ location }) {
         parseInt(location ? location.search.slice(location.search.indexOf("=") + 1): 1)
       );
     }
-    console.log(page)
+    
   }, [location?.search]);
 
   useEffect(() => {

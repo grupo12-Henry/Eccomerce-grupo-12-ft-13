@@ -11,6 +11,7 @@ export default function Signup({ onClose }) {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup } = useAuth();
+  console.log(signup)
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -29,7 +30,7 @@ export default function Signup({ onClose }) {
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
       history.push("/home");
-    } catch {
+      } catch {
       setError("Failed to create an account");
     }
 

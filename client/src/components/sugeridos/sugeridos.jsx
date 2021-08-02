@@ -23,10 +23,8 @@ export default function Sugeridos() {
   //console.log(user);
 
   //Array con subcategorias de favoritos del user
-  const copia = wishlistProducts
-    .map((el) => el.subcategories)
-    .join()
-    .split(",");
+  const copia = wishlistProducts? wishlistProducts.map((el) => el.subcategories).join().split(","):[console.log('copia')]
+    
 
   const random = () => {
     return Math.round(Math.random() * (4 - 0) + 0);
@@ -61,7 +59,6 @@ export default function Sugeridos() {
   //   };
   //   dbProducts();
   // }, [products]);
-  console.log("sugeridos", sugeridos);
 
   /////////////////////////////////////////////////////////////////////////
 
@@ -74,7 +71,7 @@ export default function Sugeridos() {
   return (
     <>
     {
-      wishlistProducts.length>0 && (
+      wishlistProducts ? wishlistProducts.length>0 && (
 
     <div className='mt-5 ml-5'>
     <h5>En base a tus favoritos te recomendamos</h5>
@@ -147,7 +144,7 @@ export default function Sugeridos() {
       
     </div>
     </div>
-      )
+      ):null
     }
     </>
   );

@@ -1,21 +1,103 @@
-.logo{
-  height:80px;
-  margin-bottom:5px;
+.logo {
+  height: 80px;
+  margin-bottom: 5px;
   margin-left: 10px;
-  padding:0;
-  align-items:center;
+  padding: 0;
+  align-items: center;
+ 
 }
-.searchBar{
+.searchBar {
   margin-top: -35px;
-  
+  margin-left: 768px;
 }
-.d-flex{
+.d-flex {
   margin: 5px 1px 1px 1px;
   list-style: none;
 }
-.dropdown{
-  font-family: 'Quicksand', sans-serif;
-  height:65px;
+.dropdown {
+  font-family: "Quicksand", sans-serif;
+  height: 65px;
   margin-top: 12px;
   margin-left: -29px;
+}
+
+
+
+@media (max-width: 1320px) {
+  .searchBar {
+    margin-left: 600px;
+  }
+
+}
+
+
+
+@media (max-width: 1149px) {
+  .searchBar {
+    margin-left: 400px;
+  }
+
+  /* #filtrosPropiedad, #filtrosDormitorios {
+      padding: 15px;
+     width: 49%;
+    
+    } */
+}
+
+@media (max-width: 954px) {
+  .searchBar {
+    margin-left: 250px;
+  }
+
+  /* #filtrosPropiedad, #filtrosDormitorios {
+        padding: 15px;
+       width: 49%;
+      
+      } */
+}
+
+@media (max-width: 798px) {
+  .searchBar {
+    margin-left: 100px;
+  }
+  .logoHiden{
+    display: block;
+  }
+
+  /* #filtrosPropiedad, #filtrosDormitorios {
+          padding: 15px;
+         width: 49%;
+        
+        } */
+}
+
+
+@media (max-width: 645x) {
+  .searchBar {
+    margin-left: 70px;
+  }
+
+  
+  .logoHiden{
+    display: none;
+  }
+
+  /* #filtrosPropiedad, #filtrosDormitorios {
+              padding: 15px;
+             width: 49%;
+            
+            } */
+}
+
+
+@media (max-width: 625x) {
+  .searchBar {
+    margin-left: 50px;
+  }
+
+  /* #filtrosPropiedad, #filtrosDormitorios {
+              padding: 15px;
+             width: 49%;
+            
+            } */
 }
