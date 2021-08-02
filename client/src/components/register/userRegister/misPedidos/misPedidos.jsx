@@ -163,7 +163,13 @@ export default function MisPedidos({ match }) {
                    {
                     return (
                       <tr>
-                        <th scope="row" style={{width: '20%'}}><img style={{width:'25%'}}src={el.image}/></th>
+                        {/* <th scope="row" >
+                          <img style={{width:'2rem'}}src={el.image}/>
+                          </th> */}
+                          <td>  
+                             <img style={{objectFit: 'scale-down',height: '4rem'}}src={el.image}/>
+                            
+                          </td>
                         <td><Link to={`/reviews/${el.id}`}>{el.name}</Link></td>
                       <td>{el.order_detail.cantidad}</td>
                       <td>{el.order_detail.subTotal}</td>
