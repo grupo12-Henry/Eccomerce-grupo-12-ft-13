@@ -19,11 +19,11 @@ const { send } = require('../nodemailer');
 const router = Router();
 
 
-// router.get('/userMail', async (req, res)=>{
-//     const mail = req.query.mail;
-//     const user = await Client.findOne({where: {mail}})
-//     user&&res.send(user)||res.sendStatus(400)
-// })
+router.get('/userMail', async (req, res)=>{
+    const mail = req.query.mail;
+    const user = await Client.findOne({where: {mail}})
+    user&&res.send(user)||res.sendStatus(400)
+})
 
 
 router.get('/pedidos/filter', async (req, res) => {//envia todos los pedidos con el estado especificado

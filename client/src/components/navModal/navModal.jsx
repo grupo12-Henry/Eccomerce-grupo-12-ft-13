@@ -15,7 +15,7 @@ const MODAL_STYLES = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   backgroundColor: "#333333",
-  padding: "0.5rem 3rem 3rem 3rem",
+  padding: "0.5rem 2.6rem 2.6rem 2.6rem",
   boxShadow: '0px 0px 5px 3px #ebc28e',
   borderRadius:'0.2rem',
   zIndex: 1000,
@@ -47,7 +47,7 @@ export default function NavModal({ open, children, onClose }) {
   const dispatch = useDispatch()
   if (!open) return null;
 
-  console.log('holasanti')
+    
 
   async function vamo (){
     if(currentUser){try{

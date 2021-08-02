@@ -32,8 +32,10 @@ export default function Login({ onClose }) {
     const user = window.localStorage.getItem('user')?user1:null
     const dispatch = useDispatch()
     const emailRef = useRef()
+    console.log('email', emailRef)
     const passwordRef = useRef()
     const { login } = useAuth()
+    console.log(login)
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
     const history = useHistory()
@@ -94,17 +96,17 @@ useEffect(async () => {
     }
 
     //<div className='back'><Link to='/'>BACK TO ANIME DATABASE</Link></div>
-    console.log('hola',user1)
+    //console.log('hola',user1)
 // if(user.admin)
     return (
         <>
         <StyledDiv>
         <div className='container' >
             <form className='formulariodeLogin' method='post' onSubmit={HandleSubmit}>
-                {<p>{error}</p>}
+                
                 <div className='email'>
                     <label className='mr-4'>Correo Electronico: </label>
-                    <input type='text' name='email' ref={emailRef} value={input.email} onChange={handleInputChange} required />
+                    <input type='text' name='email' ref={emailRef} value={input.email} onChange={handleInputChange} required='' />
                     <span></span>
                     {errors.email && (
                         <p className="danger">{errors.email}</p>
@@ -112,7 +114,7 @@ useEffect(async () => {
                 </div>
                 <div className='password'>
                     <label className='mr-4'>Contraseña: </label>
-                    <input type='password' name='password' ref={passwordRef} value={input.password} onChange={handleInputChange} required />
+                    <input type='password' name='password' ref={passwordRef} value={input.password} onChange={handleInputChange} required='' />
                     <span></span>
                     {errors.password && (
                         <p className="danger">{errors.password}</p>
@@ -121,7 +123,7 @@ useEffect(async () => {
                 <div className='pass'>
                     <Link className='pass' style={{color: '#ebc28e'}} to='/forgot-password'>Olvidaste tu contraseña?</Link>
                 </div>
-                <button disabled={loading} className='btn btn-light LogIn' type='submit'>Ingresar</button>
+                <button disabled={loading} className='btn btn-light LogIn'>Ingresar</button>
             </form>
             {/* <div className='signup_link'>No estas registrado?<Link className='signup_link2' to='/signup'>Registrate!</Link></div> */}
         </div>
