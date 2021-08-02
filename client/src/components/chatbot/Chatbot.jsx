@@ -20,7 +20,7 @@ function Roboto() {
   return (
     <div> 
       {robot === true? 
-       <div style={{ display: 'flex', justifyContent: 'end', position: 'fixed', zIndex: '1', marginLeft: '81%'}} >
+       <div style={{ display: 'flex', justifyContent: 'end', position: 'fixed', zIndex: '1', marginLeft: '10%'}} >
           <div style={{ maxWidth: "330px"}}>
               <button class='btn btn-primary' onClick={chatbotHandler} style={{ display: 'flex', justifyContent: 'center', alignItems:'center', position: 'static', zIndex: '2', color:"white", borderRadius:'10px', marginLeft: '0%'}}>
                 <FontAwesomeIcon  icon={faRobot}/>

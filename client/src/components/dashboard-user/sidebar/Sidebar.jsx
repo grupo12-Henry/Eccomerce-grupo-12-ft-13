@@ -8,7 +8,7 @@ import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
-import logo from './logo.png';
+import logo from '../../../assets/images/LogoFin.png';
 import SearchBar from '../../searchbar/searchbar';
 import {FiShoppingCart} from 'react-icons/fi';
 import {FaRegUser} from 'react-icons/fa';
@@ -36,7 +36,7 @@ align-items: center;
 
 const SidebarNav = styled.nav`
 background: black;
-width: 235px;
+width: 14rem;
 height: 100vh;
 display: flex;
 justify-content: center;
