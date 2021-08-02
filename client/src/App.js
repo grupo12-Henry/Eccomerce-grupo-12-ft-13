@@ -48,7 +48,7 @@ function App() {
         <Route component={Login} exact path='/login'/>
         <PrivateRouteAdmin component={LayoutAdmin} path='/dashboard-admin'/>
         <Route component={Landing} exact path='/'/>
-        <Route component={LayoutUser} exact path='/home' />
+        <Route component={LayoutUser} exact path='/home'/> 
         <Route component={Detail} exact path='/home/detail/:id'/>
         <Route component={ShoppingCart} exact path='/home/compras'/>
         <Route component={FormCompras} exact path='/home/compras-form'/>
