@@ -18,6 +18,13 @@ import Roboto from "../chatbot/Chatbot";
 import { useHistory } from "react-router-dom";
 // import Loading from '../../components/dashboard-user/loading/LoadingAdmin';
 import Footer from '../../components/footer/footer';
+import Sending from "../SendingT/SendingT";
+import SendingEmail from "../SendingT/sendmail";
+import Maps from '../Maps/maps'
+import Sugeridos from '../sugeridos/sugeridos'
+// import ContactUser from '../ContactUser/ContactUser'
+import Loading from '../loading/Loading';
+import swal from 'sweetalert';
 
 export default function Home({ location }) {
   const dispatch = useDispatch();
@@ -115,6 +122,7 @@ export default function Home({ location }) {
     // console.log('ELUSER', Uid, 'ELFAV', productId)
     let body = { productId: productId };
     dispatch(addToWishList(Uid, body));
+    swal("Se agregó a Favoritos!", 'Podrás ver este producto en tu sección Favoritos siempre que estes logueado.', "success");
   };
 
   const [loading, setLoading] = useState(false);
@@ -129,6 +137,7 @@ export default function Home({ location }) {
     return (
       <>
         <Roboto />
+        <Sugeridos/>
         <StyledDiv>
           <div>
             <div className="div_container">

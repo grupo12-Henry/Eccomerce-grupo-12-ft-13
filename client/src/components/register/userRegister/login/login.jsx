@@ -4,6 +4,8 @@ import {getUser} from "../../../../actions/index"
 import { useAuth } from '../../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom'
 import { StyledDiv } from "./styled";
+import Sidebar from '../../../dashboard-user/sidebar/Sidebar';
+import Footer from '../../../footer/footer';
 
 
 export function validate(input) {
@@ -36,6 +38,8 @@ export default function Login({ onClose }) {
     const [loading, setLoading] = useState(false)
     const history = useHistory()
 
+    
+
     const [input, setInput] = useState({
         email: '',
         password: '',
@@ -61,7 +65,7 @@ useEffect(async () => {
             passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD||true&&
             user&&user.admin===true) {
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push('/dashboard-admin')
+            history.push('/home')
         }else return
 },[user])
     async function HandleSubmit(e) {
@@ -76,7 +80,7 @@ useEffect(async () => {
                     passwordRef.current.value === process.env.REACT_APP_ADMIN_PASSWORD||true&&
                     user.admin===true) {
                     await login(emailRef.current.value, passwordRef.current.value)
-                    history.push('/dashboard-admin')
+                    history.push('/home')
                 } else {
                     await login(emailRef.current.value, passwordRef.current.value)
                     onClose()
@@ -90,11 +94,13 @@ useEffect(async () => {
     }
 
     //<div className='back'><Link to='/'>BACK TO ANIME DATABASE</Link></div>
-
+    console.log('hola',user1)
+// if(user.admin)
     return (
+        <>
         <StyledDiv>
         <div className='container' >
-            <form method='post' onSubmit={HandleSubmit}>
+            <form className='formulariodeLogin' method='post' onSubmit={HandleSubmit}>
                 {<p>{error}</p>}
                 <div className='email'>
                     <label className='mr-4'>Correo Electronico: </label>
@@ -120,5 +126,6 @@ useEffect(async () => {
             {/* <div className='signup_link'>No estas registrado?<Link className='signup_link2' to='/signup'>Registrate!</Link></div> */}
         </div>
         </StyledDiv>
+        </>
     )
 }

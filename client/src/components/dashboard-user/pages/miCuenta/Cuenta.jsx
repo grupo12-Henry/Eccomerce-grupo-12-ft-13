@@ -10,7 +10,9 @@ export default function Cuenta() {
       <div className="componenteDashboard">
         <Dashboard />
       </div>
+      <div className="footerdeCuenta">
       <Footer />
+      </div>
     </>
   )
 }

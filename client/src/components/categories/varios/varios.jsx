@@ -11,38 +11,29 @@ import { Link } from "react-router-dom";
 import StyledDiv from "../../detail/styled";
 import Loading from "../../dashboard-user/loading/LoadingAdmin";
 import ProductRating from "../../productRating/productRating";
+import swal from 'sweetalert';
 
 function Varios() {
-  const dispatch = useDispatch();
-  const product = useSelector((state) => state.products);
-  const [allProducts, setAllProducts] = useState([]);
-  const [numberPage, setnumberPage] = useState(1);
-  const initialProducts = 9;
-  const conteoFinal = numberPage * initialProducts;
-  const conteoInicial = conteoFinal - initialProducts;
-  const showProducts = allProducts
-    .filter((el) => el.type === "varios")
-    .slice(conteoInicial, conteoFinal);
-  const user = useSelector((state) => state.user);
-  const addingToWishList = (Uid, productId) => {
-    // const productFav = wishList?.filter(el=> el)
-    // console.log('ELUSER', Uid, 'ELFAV', productId)
-    let body = { productId: productId };
-    dispatch(addToWishList(Uid, body));
-  };
-  let subCategories = [];
-  let counts = {};
-  product
-    .filter((el) => el.type === "varios")
-    .map((e) =>
-      e.subcategories.forEach((c) =>
-        subCategories.indexOf(c) === -1 ? subCategories.push(c) : null
-      )
-    );
-  product
-    .filter((el) => el.type === "varios")
-    .map((e) =>
-      e.subcategories.forEach((el) => {
+    const dispatch = useDispatch();
+    const product = useSelector((state) => state.products);
+    const [allProducts, setAllProducts] = useState([]);
+    const [numberPage, setnumberPage] = useState(1);
+    const initialProducts = 9;
+    const conteoFinal = numberPage * initialProducts;
+    const conteoInicial = conteoFinal - initialProducts;
+    const showProducts = allProducts.filter(el => el.type === 'varios').slice(conteoInicial, conteoFinal);
+    const user = useSelector((state) => state.user)
+    const addingToWishList = (Uid, productId) => {
+        // const productFav = wishList?.filter(el=> el)
+        // console.log('ELUSER', Uid, 'ELFAV', productId)
+        let body = { productId: productId };
+        dispatch(addToWishList(Uid, body));
+        swal("Se agregó a Favoritos!", 'Podrás ver este producto en tu sección Favoritos siempre que estes logueado.', "success");
+    };
+    let subCategories = []
+    let counts = {}
+    product.filter(el => el.type === 'varios').map(e => e.subcategories.forEach(c => ((subCategories.indexOf(c) === -1) ? subCategories.push(c) : null)))
+    product.filter(el => el.type === 'varios').map(e => e.subcategories.forEach((el) => {
         counts[el] = counts[el] ? (counts[el] += 1) : 1;
       })
     );

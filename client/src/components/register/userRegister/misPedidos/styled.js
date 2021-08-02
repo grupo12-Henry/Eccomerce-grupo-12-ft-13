@@ -4,5 +4,4 @@ export const StyledDiv = styled.div`
 
 
 
-
 `
