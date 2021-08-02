@@ -79,12 +79,6 @@ a {
 .div_cards{
 }
 
-<<<<<<< HEAD
-.img_products{
-    height: 200px;
-    width: 200px;
-}import styled from 'styled-components';
-=======
 .contenedorDeFav{
   position: relative;
   display: block;
@@ -100,12 +94,7 @@ a {
 .card-img{
   margin-top: 0.5rem;
 }
->>>>>>> santi1
 
 
-<<<<<<< HEAD
-const StyledDiv = styled.div`
-=======
-`;
+`
 export default StyledDiv;
->>>>>>> santi1
