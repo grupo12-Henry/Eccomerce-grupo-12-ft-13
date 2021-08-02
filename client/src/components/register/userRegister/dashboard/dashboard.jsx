@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
 import Loading from "../../../dashboard-user/loading/LoadingAdmin";
 import { getUser, putUsuarios } from "../../../../actions";
-// import photo from '../../../../assets/images/avatar.png'
+import photo from '../../../../assets/images/avatar.png'
 
 export default function Dashboard() {
   const user = useSelector((state) => state.user);
@@ -73,7 +73,7 @@ export default function Dashboard() {
                       <img
                         style={{ borderRadius: "50%", height:'96px', width: '96px' }}
                         alt="User Pic"
-                        src={currentUser.photoURL || null}//photo
+                        src={currentUser.photoURL || photo}
                         class="img-circle img-responsive"
                       />
                     

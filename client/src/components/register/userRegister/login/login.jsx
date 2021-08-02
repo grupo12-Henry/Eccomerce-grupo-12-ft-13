@@ -123,7 +123,7 @@ useEffect(async () => {
                 <div className='pass'>
                     <Link className='pass' style={{color: '#ebc28e'}} to='/forgot-password'>Olvidaste tu contraseña?</Link>
                 </div>
-                <button className='btn btn-light LogIn'>Ingresar</button>
+                <button disabled={loading} className='btn btn-light LogIn'>Ingresar</button>
             </form>
             {/* <div className='signup_link'>No estas registrado?<Link className='signup_link2' to='/signup'>Registrate!</Link></div> */}
         </div>
