@@ -16,3 +16,55 @@
 .mb{
   display: none;
 }
+
+
+.contenedorInputs{
+  margin-top: 1rem;
+}
+
+/*MEDIAS QUERIES RESPONSIVE*/
+@media (min-width: 1201px) {
+  .contenedorInputs{
+    margin-top: 2rem;  }
+}
+
+@media (max-width: 1200px) {
+  .contenedorInputs{
+    margin-top: 3rem;  }
+}
+
+@media (max-width: 576px) {
+  .contenedorInputs{
+    margin-top: 5rem; 
+    font-size: smaller;
+   }
+   .btn{
+     width: 2rem;
+     font-size: small;
+   }
+   .botones{
+    display: flex;
+    /* font-size: 0.9rem; */
+   }
+   #bConfirmar{
+    font-size: smaller;
+    width: 5rem;   }
+   #bVolver{
+    font-size: smaller;
+    width: 5rem;
+     
+  }
+  .table{
+    font-size: smaller;
+  }
+  #tituloImg{
+    display: none;
+  }
+
+  #colImg{
+    display: none;
+
+  }
+
+}
+

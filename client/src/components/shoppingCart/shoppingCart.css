@@ -16,8 +16,7 @@
     color: #616263;
   }
   
-  
-  
+   
   .container-articulos{
     display: flex;
   }
@@ -44,21 +43,19 @@
     }
     #botonConfirmar{
       font-size: smaller;
-
+      width: 2rem;
     }
     #botonAgregar{
       font-size: smaller;
-
     }
     #botonLimpiar{
       font-size: smaller;
-
     }
 
   }
 
 
-  @media (max-width: 550px) {
+  @media (max-width: 590px) {
     .container-productos {
       font-size: 1rem;
     }
@@ -70,14 +67,15 @@
     }
     #botonConfirmar{
       font-size: small;
-
+      width: 6rem;
     }
     #botonAgregar{
       font-size: small;
-
+      width: 6rem;
     }
     #botonLimpiar{
       font-size: small;
+      width: 6rem;
 
     }
 
