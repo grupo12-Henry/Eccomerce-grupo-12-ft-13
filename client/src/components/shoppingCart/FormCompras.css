@@ -41,6 +41,8 @@
    .btn{
      width: 2rem;
      font-size: small;
+     padding: inherit;
+
    }
    .botones{
     display: flex;
