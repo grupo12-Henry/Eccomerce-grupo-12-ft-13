@@ -1081,17 +1081,7 @@ var datab = [
         PRECIO: 259,
         CATEGORIA: 'Vinos',
         SUBCATEGORIAS: ['Bodega Santa Julia', 'Malbec']
-      },
-      {
-        PRODUCTOS: 'Santa Julia Dulce Tinto',
-        URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Santa%20Julia%20Dulce%20Tinto.jpeg?alt=media&token=bedb1e1d-3446-482b-b52e-0c55f4c0367d',
-        Fabricante: 'BODEGA SANTA JULIA',
-        Detalle: 'Color: Rojo cereza intenso. Aroma: Notas de frutas rojas frescas (frutillas, cerezas, frambuesas). Sabor: Perfecto equilibrio entre azucar y acidez. Frutado, sobresalen las notas a frutas frescas.',
-        STOCK: 24,
-        PRECIO: 335,
-        CATEGORIA: 'Vinos',
-        SUBCATEGORIAS: ['Bodega Santa Julia', 'Dulce']
-      },
+      },      
       {
         PRODUCTOS: 'Carcassone Clásico Tinto 700 ml',
         URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Carcassone%20Cl%C3%A1sico%20Tinto%20700%20ml.jpg?alt=media&token=53e99197-1e48-4464-a520-18d5c076972b',
@@ -1161,39 +1151,7 @@ var datab = [
         PRECIO: 67,
         CATEGORIA: 'Vinos',
         SUBCATEGORIAS: ['Bodega Lopez', 'Malbec', '375ml']
-      },
-      {
-        PRODUCTOS: 'Lopez 750 ml Malbec',
-        URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Lopez%20750%20ml%20Malbec.jpg?alt=media&token=344599d1-9ab8-48ee-a527-c657a6daad6e',
-        Fabricante: 'BODEGA LOPEZ',
-        Detalle: 'Vino de color rojo granate y aromas frutados. ... De acuerdo a la preferencia del consumidor, el añejamiento de este vino en su botella puede prolongarse por un período de 10 años o más. Por sus características es un vino ideal para acompañar carnes rojas y comidas con salsas suaves.',
-        STOCK: 24,
-        PRECIO: 189.9,
-        CATEGORIA: 'Vinos',
-        SUBCATEGORIAS: ['Bodega Lopez', 'Malbec']
-      },
-      {
-        PRODUCTOS: 'Lopez 750 ml Blanco',
-        URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Lopez%20750%20ml%20Blanco.jpg?alt=media&token=aedb256e-f721-4b6a-b767-ee2f216160c4',
-        Fabricante: 'BODEGA LOPEZ',
-        Detalle: 'Presenta un color amarillo pálido, con reflejos dorados. Posee una boca almibarada, con gran balance entre dulzor y acidez, untuoso y un largo final. ... Por sus características es un vino ideal como complemento de postres, para acompañar quesos fuertes (queso azul), platos dulces y como aperitivo.',
-        STOCK: 24,
-        PRECIO: 149,
-        CATEGORIA: 'Vinos',
-        SUBCATEGORIAS: ['Bodega Lopez', 'Blanco']
-
-      },
-      {
-        PRODUCTOS: 'Lopez 375 ml Malbec',
-        URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/Lopez%20375%20ml%20Malbec.jpg?alt=media&token=ec105ee5-fc97-4b8c-92dd-d0d63214b7fc',
-        Fabricante: 'BODEGA LOPEZ',
-        Detalle: 'Vino de color rojo granate y aromas frutados. ... De acuerdo a la preferencia del consumidor, el añejamiento de este vino en su botella puede prolongarse por un período de 10 años o más. Por sus características es un vino ideal para acompañar carnes rojas y comidas con salsas suaves.',
-        STOCK: 24,
-        PRECIO: 115,
-        CATEGORIA: 'Vinos',
-        SUBCATEGORIAS: ['Bodega Lopez', 'Malbec']
-
-      },
+      },      
       {
         PRODUCTOS: 'DV Catena Malbec',
         URL: 'https://firebasestorage.googleapis.com/v0/b/ecommerce12-4268e.appspot.com/o/DV%20Catena%20Malbec%20Malbec.jpg?alt=media&token=66a5b610-fd8d-46aa-8d0d-4e59217c0701',
