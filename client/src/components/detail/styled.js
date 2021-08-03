@@ -1,19 +1,33 @@
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-#container{
-    display: flex;
-    margin-top: 2%;
-    flex-direction: row;
-    margin-left: 0%;
-    margin-right: 2%;
-    justify-content: space-around;
-}
 
-#image{
-    height: 55vh;
-    margin-bottom: 5%;
-}
+
+@media (max-width: 768px) {
+    .centrado {
+      margin-left:10%;
+      
+    }
+
+    #product {
+        height: 30vh !important
+    }
+
+    #name {
+        font-size: 180%
+    }
+
+    #maker {
+        font-size: 120%
+    }
+
+    .row {
+        margin: 0 !important
+    }
+
+  }
+  
+
 .card{
     height:100%;
 }
@@ -24,8 +38,8 @@ const StyledDiv = styled.div`
 
 
 #price {
-    text-align: center
-
+    text-align: center;
+    margin-bottom: 3%
 
 }
  #home{
@@ -33,11 +47,7 @@ const StyledDiv = styled.div`
     margin-top: 10rem important!;
  }
 
-#maker {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    text-align: center
-}
+
 
 .card-img img-fluid{
     object-fit: scale-down;
