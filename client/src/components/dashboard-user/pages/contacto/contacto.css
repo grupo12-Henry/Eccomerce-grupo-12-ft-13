@@ -6,3 +6,21 @@
 .fotterDe{
   margin-top: 85px;
 }
+.Responsive{
+  display: flex;
+  justify-content: space-around;
+}
+.pepe{
+  margin-left: 3%;
+}
+@media (max-width: 860px) {
+  .Responsive{
+    display:flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 576) {
+  .pepe{
+    margin-left: 0;
+  }
+}

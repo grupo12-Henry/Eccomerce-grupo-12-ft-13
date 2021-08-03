@@ -14,15 +14,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import ProductRating from "../productRating/productRating";
 import Roboto from "../chatbot/Chatbot";
-// import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-// import Loading from '../../components/dashboard-user/loading/LoadingAdmin';
 import Footer from '../../components/footer/footer';
-import Sending from "../SendingT/SendingT";
-import SendingEmail from "../SendingT/sendmail";
-import Maps from '../Maps/maps'
 import Sugeridos from '../sugeridos/sugeridos'
-// import ContactUser from '../ContactUser/ContactUser'
 import Loading from '../loading/Loading';
 import swal from 'sweetalert';
 
@@ -34,9 +28,8 @@ export default function Home({ location }) {
   const wishList = useSelector((state) => state.wishList);
 
 
-  // const cart = useSelector((state) => state.productCart);
   const history = useHistory();
-  // console.log(historial)
+ 
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(1);
   const pago = JSON.parse(window.localStorage.getItem("pago"));
@@ -131,10 +124,9 @@ export default function Home({ location }) {
   //   return <Loading />
   // } else {
     return (
-      <>
-
-        
+      <>  
         <Roboto />
+        <Sugeridos/>
         <StyledDiv>
               <div class="row container-product container div_container d-flex justify-content-center mt-50 mb-50">
                   {allProducts && allProducts.length > 0
@@ -204,13 +196,9 @@ export default function Home({ location }) {
                       })
                     :null}
               </div>
-           
-
         </StyledDiv>
         <Pages product={product} page={page} />
-
         <Footer />
       </>
     );
-  
 }
