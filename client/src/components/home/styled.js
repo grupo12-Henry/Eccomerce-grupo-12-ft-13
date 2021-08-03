@@ -100,5 +100,24 @@ a {
     margin: 250px;
 }
 
+.Agregar{
+    color: #ffffff;
+ border-radius:5px;
+ background-color: #313131;
+ padding-left:0.5rem;
+ padding-right:0.5rem;
+}
+
+h6, .h6{
+    height: 50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cardImg{
+    object-fit:scale-down;
+    height: 150px;
+}
 `
 export default StyledDiv
