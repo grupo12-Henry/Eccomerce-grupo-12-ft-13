@@ -62,10 +62,11 @@ h6, .h6 {
 
 /*MEDIAS QUERYS RESPONSIVE*/
 
-@media (max-width: 450px) {
+@media (max-width: 580px) {
  #bClear{
    width: 1rem;
     font-size: smaller;
+    margin-right: -1.1rem;
   }
   #iPrice{
     font-size: smaller;
@@ -74,17 +75,18 @@ h6, .h6 {
     display: none;
   }
   #iCounter{
-    /* font-size: smaller; */
+    font-size: smaller;
     text-align: start;
     font-size: smaller;
-    margin-left: auto;
-  }
+    margin-left: 1.1rem;
+    }
   
   #iName{
     font-size: smaller;
   }
   #iPriceT{
     font-size: smaller;
+    margin-left: -2rem;
   }
   #contenedor{
     display: flex;
