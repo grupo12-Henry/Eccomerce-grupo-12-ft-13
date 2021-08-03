@@ -105,7 +105,7 @@ function Varios() {
                       className="btn btn-dark mr-2 mt-1"
                       onClick={() => setnumberPage(numberPage - 1)}
                     >
-                      ANTERIOR
+                      ◀
                     </button>
                   </div>
                   <div class="row col justify-content-evenly">
@@ -177,7 +177,7 @@ function Varios() {
                       className="btn btn-dark ml-2 mt-1"
                       onClick={() => setnumberPage(numberPage + 1)}
                     >
-                      SIGUENTE
+                      ▶
                     </button>
                   </div>
                 </div>
