@@ -22,7 +22,7 @@ export const LandingPage = () => {
           <div className="div_content">
             <div className="msgContainer">
             <div>
-              <img src={logo} alt="img logo" width="500rem" />
+              <img src={logo} alt="img logo" className='LogoLanding' />
             </div>
             <hr/>
                 <p className="msg">
