@@ -12,7 +12,6 @@
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3),0px 3px 7px rgba(0, 0, 0, 0.3),0px 1px white inset, 0px -3px 2px rgba(0, 0, 0, 0.3) inset ;
     justify-content: space-around;
     align-items: center;
-   
     font-size: 1rem;
     color: #616263;
   }
@@ -31,3 +30,56 @@
   .boton{
     margin: 0.5rem;
   }
+
+
+  @media (max-width: 400px) {
+    .container-productos {
+      font-size: 0.75rem;
+    }
+    .text{
+      font-size: 0.90rem;
+    }
+    .botones{
+      font-size: smaller;
+    }
+    #botonConfirmar{
+      font-size: smaller;
+
+    }
+    #botonAgregar{
+      font-size: smaller;
+
+    }
+    #botonLimpiar{
+      font-size: smaller;
+
+    }
+
+  }
+
+
+  @media (max-width: 550px) {
+    .container-productos {
+      font-size: 1rem;
+    }
+    .text{
+      font-size: 0.90rem;
+    }
+    .botones{
+      font-size: small;
+    }
+    #botonConfirmar{
+      font-size: small;
+
+    }
+    #botonAgregar{
+      font-size: small;
+
+    }
+    #botonLimpiar{
+      font-size: small;
+
+    }
+
+  }
+    

@@ -58,3 +58,38 @@ h6, .h6 {
   width:0.7rem; */
   color:#616263 ;
 }
+
+
+/*MEDIAS QUERYS RESPONSIVE*/
+
+@media (max-width: 450px) {
+ #bClear{
+   width: 1rem;
+    font-size: smaller;
+  }
+  #iPrice{
+    font-size: smaller;
+  }
+  .Img{
+    display: none;
+  }
+  #iCounter{
+    /* font-size: smaller; */
+    text-align: start;
+    font-size: smaller;
+    margin-left: auto;
+  }
+  
+  #iName{
+    font-size: smaller;
+  }
+  #iPriceT{
+    font-size: smaller;
+  }
+  #contenedor{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+
+}
