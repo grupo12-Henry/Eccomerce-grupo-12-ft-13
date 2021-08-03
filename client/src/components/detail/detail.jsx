@@ -6,7 +6,6 @@ import Loading from "../dashboard-user/loading/LoadingAdmin";
 import Reviews from "../reviews/reviews";
 
 export default function Detail({ match }) {
-  console.log('MATCH', match)
   const dispatch = useDispatch();
 
 useEffect(() => {
@@ -19,7 +18,6 @@ useEffect(() => {
   const product = useSelector((state) => state.productDetail);
   const [detail, setDetail] = useState([]);
 
-  console.log(match);
 
   useEffect(() => {
     dispatch(getDetail(match.params.id))
