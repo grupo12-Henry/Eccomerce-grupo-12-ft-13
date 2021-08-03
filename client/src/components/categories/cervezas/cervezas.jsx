@@ -103,7 +103,7 @@ function Cervezas() {
             <div class="btn-group-vertical col-sm-2 mt-5 mb-1 justify-content-start md-start ">
               {/* <button id='botonazo'className='btn btn-success' onClick={handleCategories}>CATEGORIAS</button> */}
               <div class="row col-sm-14  ml-1 ">
-                {subCategories.map(d => <button id='botonazo' className='btn btn-dark mt-1' key={d}
+                {subCategories.map(d => <button className='btn btn-dark mt-1' key={d}
                   onClick={(e) => { e.preventDefault(); setAllProducts(product.filter(el => el.subcategories.includes(d))) }}>{d} ({counts[d]})</button>)
                 }
               </div>
@@ -112,7 +112,7 @@ function Cervezas() {
               <div class="d-flex justify-content-center mt-5 ">
                 <div class="container d-flex justify-content-center mt-50 mb-50 mw-100" >
                   <div className=''>
-                    <button id='botonazo' className='btn btn-dark mr-2 mt-1' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
+                    <button id='botonazo' className='btn btn-dark mr-2 mt-1' onClick={() => setnumberPage(numberPage - 1)}>◀</button>
                   </div>
                   <div class="row col justify-content-evenly">
                     {showProducts &&
@@ -170,7 +170,7 @@ function Cervezas() {
                       className="btn btn-dark ml-2 mt-1"
                       onClick={() => setnumberPage(numberPage + 1)}
                     >
-                      SIGUENTE
+                      ▶
                     </button>
                   </div>
                 </div>

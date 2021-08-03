@@ -110,7 +110,7 @@ function Vinos() {
               <div class="d-flex justify-content-center mt-5 mb-1 ">
                 <div class="container d-flex justify-content-center mt-50 mb-50 mw-100">
                   <div className=''>
-                    <button id='botonazo' className='btn btn-dark mr-2 mt-1' onClick={() => setnumberPage(numberPage - 1)}>ANTERIOR</button>
+                    <button id='botonazo' className='btn btn-dark mr-2 mt-1' onClick={() => setnumberPage(numberPage - 1)}>◀</button>
                   </div>
                   <div class="row col justify-content-evenly">
                     {showProducts &&
@@ -163,7 +163,7 @@ function Vinos() {
                       })}
                   </div>
                   <div class="justify-content-center">
-                    <button className='btn btn-dark ml-2 mt-1' onClick={() =>{  setnumberPage(numberPage + 1);if(numberPage > Math.ceil(allProducts/9)) setnumberPage(1)}}>SIGUENTE</button>
+                    <button className='btn btn-dark ml-2 mt-1' onClick={() =>{  setnumberPage(numberPage + 1);if(numberPage > Math.ceil(allProducts/9)) setnumberPage(1)}}>▶</button>
                   </div>
                 </div>
               </div>

@@ -6,7 +6,7 @@
 .nums{
   text-decoration: none;
   display: inline-block    ;
-  padding: 12px 20px 12px 20px;
+  padding: 1% 1% 1% 1%;
   background-color: turquoise;
   font-size: 25px;
   transition: 0.4s;
@@ -21,7 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 0.1rem solid;
+    border-bottom: 0.2rem solid;
     margin-top: 0.5rem;
   }
   
@@ -30,7 +30,7 @@
     background-color: rgba(0, 0,0);
     outline: none;
     color: white;
-    padding: 1rem;
+    padding: 1rem 0.6rem 1rem 0.6rem;
     border: none;
   }
   
