@@ -111,8 +111,8 @@ useEffect(() => {
           <h4 className='text'>Total productos:</h4>
           <h4 className='text'>${montoTotal}</h4>
           <div className='botones'>
-            <button id='botonConfirmar' className='btn btn-secondary m-14' onClick={order}>Confirmar Pedido</button>
-            <Link to='/home'><button id='botonAgregar' className='botones btn btn-secondary m-1' variant='success'>Agregar Productos</button></Link>
+            <button id='botonConfirmar' className='btn btn-secondary m-2' onClick={order}>Confirmar Pedido</button>
+            <Link to='/home'><button id='botonAgregar' className='botones btn btn-secondary m-2' variant='success'>Agregar Productos</button></Link>
           </div>
           <button id='botonLimpiar'className="btn btn-dark mb-2" onClick={() => clearCart()}>
             Limpiar Carrito
