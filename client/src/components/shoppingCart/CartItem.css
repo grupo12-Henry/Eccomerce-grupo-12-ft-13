@@ -67,6 +67,8 @@ h6, .h6 {
    width: 1rem;
     font-size: smaller;
     margin-right: -1.1rem;
+    padding: inherit;
+
   }
   #iPrice{
     font-size: smaller;
