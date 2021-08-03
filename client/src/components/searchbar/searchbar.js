@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getNames } from "../../actions";
 import {AiOutlineSearch} from 'react-icons/ai';
 import CloseIcon from "@material-ui/icons/Close";
-import Styled from './styled'
+// import Styled from './styled.css'
+import './styled.css'
+// import Styled from './styled.css'
 
 const Auto = () => {
   const dispatch = useDispatch();
@@ -40,7 +42,7 @@ const Auto = () => {
 
 
   return (
-    <Styled>
+    // <Styled>
       <div className="search">
         <div className="searchInputs">
           <input
@@ -62,7 +64,7 @@ const Auto = () => {
           </div>
         )}
       </div>
-    </Styled>
+    // </Styled>
   );
 };
 
