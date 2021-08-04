@@ -66,8 +66,7 @@ useEffect(() => {
             <input id='iCounter' className='col-3  counter col-sm-1' type='number' min={1} max={data.stock} onClick={alertStock} onChange={handleCountChange} value={(data.cantidad>data.stock)? data.stock:data.cantidad}  name='count' autoComplete='off' />
             <h6 id='iPriceT'className='col-1  col-sm-2 '>${precioTotal}</h6>
             <button id='bClear' type="button" className='btn btn-danger col-1 col-sm-1 ' onClick={() => delFromCart()} >✖</button>
-        <hr />
-        
+      
     </div>
   )
 }
