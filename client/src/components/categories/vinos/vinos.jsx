@@ -106,10 +106,12 @@ function Vinos() {
       <>
       <div className='pepe2'>
         <div class="container col-12 mt-5 mb-1 RespButtons">
-          <div style={{margin: '0% 3% 0% 3% '}}>
+          <div style={{margin: '0% 2.5% 0% 2.5% '}}>
             {subCategories.map((d) => (
+              counts[d]>3?
               <button
-                className="btn btn-dark btn-sm ml-1 mt-1 "
+                className="btn btn-dark btn-sm ml-1 mt-1"
+                style={{minWidth: '8rem'}}
                 key={d}
                 onClick={(e) => {
                   e.preventDefault();
@@ -119,7 +121,7 @@ function Vinos() {
                 }}
               >
                 {d} ({counts[d]})
-              </button>
+              </button> : null
             ))}
           </div>
         </div>
@@ -198,6 +200,7 @@ function Vinos() {
                                     type="button"
                                     onClick={() => addToCart(el.id)}
                                     class="btn btn-outline-secondary"
+                                    style={{minWidth: '8rem'}}
                                   >
                                     <i class="fa fa-cart-plus mr-2"></i> Agregar
                                   </button>

@@ -30,3 +30,13 @@
         width: 12rem;
     }
 } 
+@media (max-width: 370px) { 
+    .RespButtons{
+        display: flex;
+        align-items: flex-start;
+        justify-items: flex-start;
+        justify-content: flex-start;
+        width: 1rem !important;
+        height: 2.5rem !important;
+    }
+ }
