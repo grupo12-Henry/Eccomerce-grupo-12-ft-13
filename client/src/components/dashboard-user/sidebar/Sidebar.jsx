@@ -80,58 +80,60 @@ const Sidebar = () => {
     <>
       <IconContext.Provider value={{ color: 'white' }}>
         <div className='Nav'>
+          <div className='LogoBar'>
           <NavIcon to='#'>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
-                <div className='logoHiden'>
-                  <a href="/home">
-                    <img src={logo} alt='Logo' className="logo"/>
+            <div className='logoHiden'>
+              <a href="/home">
+                <img src={logo} alt='Logo' className="logo"/>
+              </a>
+            </div>
+          </div>
+          
+          <div className='RightSideClase'>
+          <div className='searchBar'>
+            <div className="RealSBClase">
+              <SearchBar />
+            </div>
+            <div className="DDClase">              
+              <div  >
+                {currentUser ? (
+                      <Dropdown class="">
+                      <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Dropdown.Item href="/home/micuenta">Mi cuenta</Dropdown.Item>
+                        <Dropdown.Item href="/home/update-profile">Cambiar contraseña</Dropdown.Item>
+                        {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL||user1 && user1.admin ? (
+                            <Dropdown.Item href="/dashboard-admin">
+                              Dashboard Admin
+                            </Dropdown.Item>
+                          ) : null}
+                        <Dropdown.Item onClick={handleLogOut} href="/home">Cerrar Sesion</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                ) :
+                (
+                <div>
+                  <a href="/user" onClick={handleLogin}>
+                    <FaRegUser />
                   </a>
                 </div>
-             <div className="searchBar">
-                <SearchBar />
-            </div>
-
-            <div>
-                <ul className="d-flex">
-            <li>
-            {currentUser ? (
-                  <Dropdown class="">
-                  <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="/home/micuenta">Mi cuenta</Dropdown.Item>
-                    <Dropdown.Item href="/home/update-profile">Cambiar contraseña</Dropdown.Item>
-                    {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL||user1 && user1.admin ? (
-												<Dropdown.Item href="/dashboard-admin">
-													Dashboard Admin
-												</Dropdown.Item>
-											) : null}
-                    <Dropdown.Item onClick={handleLogOut} href="/home">Cerrar Sesion</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-            ) :
-            (
-              <li class="p-0 m-3">
-                <a href="/user" onClick={handleLogin}>
-                  <FaRegUser />
-                </a>
-              </li>
-            )
-            }
-            </li>
-            <li class='m-3 mr-3'>
-              <li class="sidebar-social">
+                )
+                }
+              </div>              
+              <div class="sidebar-social m-3 " className='MyCarOClase'>
                 <a href="/home/compras" class="cart" title="Carrito" rel="nofollow">
                   <i class="fas fa-shopping-cart">
                     <FiShoppingCart />
                     <span id="cart_menu_num" class="top-0 start-100 translate-middle badge rounded-pill bg-danger" data-action="cart-can">{productCart?.filter(e=>e.stock>0).length}</span>
                   </i>
-                </a>
-              </li>
-            </li>
-          </ul>
+                </a>                  
+              </div>              
             </div>
+          </div>
+          </div>
             
             <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
             </NavModal>
