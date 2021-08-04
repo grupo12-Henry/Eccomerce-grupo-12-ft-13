@@ -59,17 +59,6 @@ useEffect(() => {
     setPrecioTotal((data.cantidad>data.stock)?data.stock * data.price:data.cantidad*data.price)
   }
   return (
-<<<<<<< HEAD
-    <div >
-        <div className='container-item d-flex row'>
-          <img src={data.image} className='Img col-2' alt='imagen' />
-          <h6 className='col-3' >{data.name}</h6>
-          <h6 className='col-2'>${data.price}</h6>
-          <input type='number' min={1} max={data.stock} onClick={alertStock} onChange={handleCountChange} value={(data.cantidad>data.stock)? data.stock:data.cantidad} className='counter col-1' name='count' autoComplete='off' />
-          <h6 className='col-2'>${precioTotal}</h6>
-          <button type="button" className='btn btn-danger col-1' onClick={() => delFromCart()} >✖</button>
-        </div>
-=======
      <div id='contenedor' className='container-item d-flex row'>
             <img src={data.image} className='Img col-sm-2' alt='imagen' />
             <h6 id='iName' className='col-12 col-sm-3' >{data.name}</h6>
@@ -79,7 +68,6 @@ useEffect(() => {
             <button id='bClear' type="button" className='btn btn-danger col-1 col-sm-1 ' onClick={() => delFromCart()} >✖</button>
         <hr />
         
->>>>>>> main
     </div>
   )
 }

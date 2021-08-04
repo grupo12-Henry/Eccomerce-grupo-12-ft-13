@@ -11,6 +11,7 @@ export default function Dashboard() {
   console.log('USER', user)
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
+  console.log('EL',currentUser)
   const dispatch = useDispatch()
   const [User, setUser] = useState(user)
 
@@ -55,6 +56,7 @@ export default function Dashboard() {
   return (
     <>
       {currentUser ? (
+        
         <div class="container-fluid">
           <div class="row">
             <div class=" col-sm-12  col-lg-9 ">
