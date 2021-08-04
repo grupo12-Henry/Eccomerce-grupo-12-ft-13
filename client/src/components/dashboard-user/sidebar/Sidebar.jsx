@@ -96,51 +96,53 @@ const Sidebar = () => {
                     <img src={logo} alt='Logo' className="logo"/>
                   </a>
                 </div>
-            
-             <div className="searchBar">
-                <SearchBar />
+          {/* <div className=''> */}
+
+            <div className="searchBar">
+              <SearchBar />
             </div>
 
             <div>
-                <ul className="d-flex">
-            <li>
-            {currentUser ? (
-                  <Dropdown class="">
-                  <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="/home/micuenta">Mi cuenta</Dropdown.Item>
-                    <Dropdown.Item href="/home/update-profile">Cambiar contraseña</Dropdown.Item>
-                    {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL||user1 && user1.admin ? (
-												<Dropdown.Item href="/dashboard-admin">
-													Dashboard Admin
-												</Dropdown.Item>
-											) : null}
-                    <Dropdown.Item onClick={handleLogOut} href="/home">Cerrar Sesion</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-            ) :
-            (
-              <li class="p-0 m-3">
-                <a href="/user" onClick={handleLogin}>
-                  <FaRegUser />
-                </a>
-              </li>
-            )
-            }
-            </li>
-            <li class='m-3'>
-              <li class="sidebar-social">
-                <a href="/home/compras" class="cart" title="Carrito" rel="nofollow">
-                  <i class="fas fa-shopping-cart">
-                    <FiShoppingCart />
-                    <span id="cart_menu_num" class="top-0 start-100 translate-middle badge rounded-pill bg-danger" data-action="cart-can">{productCart?.filter(e=>e.stock>0).length}</span>
-                  </i>
-                </a>
-              </li>
-            </li>
-          </ul>
+              <ul className="d-flex">
+                <li>
+                {currentUser ? (
+                      <Dropdown class="">
+                      <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Dropdown.Item href="/home/micuenta">Mi cuenta</Dropdown.Item>
+                        <Dropdown.Item href="/home/update-profile">Cambiar contraseña</Dropdown.Item>
+                        {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL||user1 && user1.admin ? (
+                            <Dropdown.Item href="/dashboard-admin">
+                              Dashboard Admin
+                            </Dropdown.Item>
+                          ) : null}
+                        <Dropdown.Item onClick={handleLogOut} href="/home">Cerrar Sesion</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                ) :
+                (
+                  <li class="p-0 m-3">
+                    <a href="/user" onClick={handleLogin}>
+                      <FaRegUser />
+                    </a>
+                  </li>
+                )
+                }
+                </li>
+                <li class='m-3'>
+                  <li class="sidebar-social">
+                    <a href="/home/compras" class="cart" title="Carrito" rel="nofollow">
+                      <i class="fas fa-shopping-cart">
+                        <FiShoppingCart />
+                        <span id="cart_menu_num" class="top-0 start-100 translate-middle badge rounded-pill bg-danger" data-action="cart-can">{productCart?.filter(e=>e.stock>0).length}</span>
+                      </i>
+                    </a>
+                  </li>
+                </li>
+              </ul>
             </div>
+          {/* </div> */}
             
             <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
             </NavModal>

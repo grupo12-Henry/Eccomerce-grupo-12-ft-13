@@ -81,6 +81,7 @@ export default function WishList() {
                     type="button"
                     onClick={() => addToCart(el.id)}
                     class="btn bg-cart"
+                    style={{minWidth: '8rem'}}
                   >
                     <i class="fa fa-cart-plus mr-2"></i> Agregar
                   </button>
