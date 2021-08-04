@@ -4,6 +4,8 @@ import Sidebar from '../../../dashboard-user/sidebar/Sidebar';
 import Footer from "../../../footer/footer";
 import { getpedidosUser, getPedidoDetail, addProductCart, getProducts, repeatOrder } from "../../../../actions/index";
 import { Link, useHistory } from "react-router-dom";
+import './misPedidos.css'
+
 
 export default function MisPedidos({ match }) {
   const dispatch = useDispatch();
@@ -84,12 +86,15 @@ export default function MisPedidos({ match }) {
   return (
     <>
     <Sidebar />
-      <div class="container">
-        <div class="containter mt-05 ml-3 mr-03 mb-3" style={{width: 'inherit'}}>
+      <div class="container-fluid">
+        {/* <div class="containter mt-05 ml-3 mr-03 mb-3" style={{width: 'inherit'}}> */}
+        <div className='row col-12'> 
           <h3 class="mt-03 ml-3 mr-03 mb-3">Ver mis pedidos</h3>
-          <div class="table-responsive" style={{overflow: 'hidden', textAlign:'center'}}>
+          </div>
+
+          <div className='row col-12'>
             <table
-              class="table table-sm table-bordered mt-05 ml-3 mr-03 mb-3 "
+              class="table table-sm table-bordered "
               data-toggle="table"
               data-pagination="true"
               data-search="true"
@@ -113,7 +118,8 @@ export default function MisPedidos({ match }) {
                       <td>{el.id}</td>
                       <td>$ {el.bill}</td>
                       <td>
-                        <button
+                        <button id='bDetalle'
+
                           class="btn btn-sm btn-info"
                           value={el.id}
                           onClick={(e) => {
@@ -126,6 +132,7 @@ export default function MisPedidos({ match }) {
                       </td>
                       <td>
                           <button
+                            id='bConfirmar'
                             class="btn btn-sm btn-info"
                             value={el.id}
                             onClick={(e) => repeatCart(el.products) } 
@@ -138,17 +145,20 @@ export default function MisPedidos({ match }) {
                 }):null}
               </tbody>
             </table>
+          </div>
 
-            <table
-              class="table table-sm table-bordered mt-05 ml-3 mr-03 mb-3 "
-              data-toggle="table"
-              data-pagination="true"
-              data-search="true"
-              data-url="data.json"
-            >
+
+             <div className='row col-12'>
+              <table
+                class="table table-sm table-bordered"
+                data-toggle="table"
+                data-pagination="true"
+                data-search="true"
+                data-url="data.json"
+              >
               <thead>
                 <tr>
-                  <th scope="col-md 3">IMAGEN</th>
+                  <th id='tituloImg' scope="col-md 3">IMAGEN</th>
                   <th scope="col">NOMBRE</th>
                   <th scope="col">CANTIDAD</th>
                   <th scope="col">SUBTOTAL</th>
@@ -159,14 +169,11 @@ export default function MisPedidos({ match }) {
               </thead>
               <tbody>
                 {pedidoDetail?.products?.map((el) =>
-                // {console.log(el)}
                    {
                     return (
                       <tr>
-                        {/* <th scope="row" >
-                          <img style={{width:'2rem'}}src={el.image}/>
-                          </th> */}
-                          <td>  
+                        
+                          <td id='colImg'>  
                              <img style={{objectFit: 'scale-down',height: '4rem'}}src={el.image}/>
                             
                           </td>
@@ -176,7 +183,9 @@ export default function MisPedidos({ match }) {
                       <td>{el.order_detail.updatedAt.split('T')[0]}</td>
                       <td>
                           <label for="vehicle1"> 
-                            <button className='btn btn-sm btn-info'onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
+                            <button  id='bAgregar'
+
+                             className='btn btn-sm btn-info'onClick={()=>repeatProduct(el.order_detail)}>agregar al carrito</button>
                           </label>
                         </td>
                         
@@ -187,7 +196,9 @@ export default function MisPedidos({ match }) {
               </tbody>
             </table>
           </div>
-        </div>
+
+          
+      
       </div>
 
     

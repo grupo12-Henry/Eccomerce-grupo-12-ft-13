@@ -157,28 +157,40 @@
 
   .searchBar {
     z-index: 1;
-    margin-left: 50px;
+    margin-left: 150px;
   }
-
-  /* #filtrosPropiedad, #filtrosDormitorios {
-              padding: 15px;
-             width: 49%;
-            
-            } */
 }
 
+@media (max-width: 539px) {
+  .searchBar {
+    margin-left: 70px;
+  }
+
+}
+@media (max-width: 440px) {
+  .searchBar {
+    margin-left: 30px;
+  }
+
+}
+
+
 @media (max-width: 365px) {
-  .Nav {
+  /* .Nav {
     width: 100%;
     background: black;
     height: 80px;
     align-items: center;
     display: flex;
     justify-content: flex-start;
-  }
+  } */
 
   .searchBar {
     z-index: 1;
     margin-left: 15px;
+    margin-right: -40px;
+  }
+  .sidebar-social{
+    margin-left: -10px;
   }
 }

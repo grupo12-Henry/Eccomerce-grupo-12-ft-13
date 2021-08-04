@@ -1,0 +1,35 @@
+
+
+@media (max-width: 450px) {
+  #tituloImg{
+    display: none;
+  }
+  #colImg{
+    display: none;
+  }
+  table{
+    font-size: xx-small;
+  }
+  th{
+    font-size: xx-small;
+  }
+  td{
+    font-size: xx-small;
+  }
+  #bAgregar{
+    width: min-content;
+    font-size: xx-small;
+    }
+    #bConfirmar{
+      width: min-content;
+      font-size: xx-small;
+      }
+      #bDetalle{
+        width: min-content;
+        font-size: xx-small;
+        }
+        h3{
+          font-size: larger;        }    
+}
+
+  

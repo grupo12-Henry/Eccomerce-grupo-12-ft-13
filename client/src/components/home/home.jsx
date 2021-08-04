@@ -140,7 +140,8 @@ export default function Home({ location }) {
                                     <Link to={`/home/detail/${el.id}`}>
                                       <img
                                         src={el.image}
-                                        class="card-img img-fluid"
+                                        // class="card-img img-fluid"
+                                        className="cardImg"
                                         height="100"
                                         alt=""
                                       />
@@ -149,11 +150,12 @@ export default function Home({ location }) {
                                 </div>
                                 <div class="card-body bg-light text-center">
                                   <div class="mb-2">
-                                    <h6 class="font-weight-semibold mb-2">
+                                    <h6>
+                                    {/* <h6 class="font-weight-semibold mb-2"> */}
                                       {" "}
                                       <a
                                         href={`/home/detail/${el.id}`}
-                                        class="text-default mb-2"
+                                        class="text-default mb-2 "
                                         data-abc="true"
                                       >
                                         {el.name}
@@ -185,7 +187,8 @@ export default function Home({ location }) {
                                   <button
                                     type="button"
                                     onClick={() => addToCart(el.id)}
-                                    class="btn btn-secondary"
+                                    // class="btn btn-secondary"
+                                    className='Agregar'
                                   >
                                     <i class="fa fa-cart-plus mr-0"></i>Agregar</button>
                                 </div>
