@@ -72,9 +72,9 @@ useEffect(() => {
         <div className='container-item d-flex row'>
           <img src={data.image} className='Img col-2' alt='imagen' />
           <h6 className='col-3' >{data.name}</h6>
-          <h6 className='col-2'>$ {data.price}.00</h6>
+          <h6 className='col-2'>${data.price}</h6>
           <input type='number' min={1} max={data.stock} onClick={alertStock} onChange={handleCountChange} value={(data.cantidad>data.stock)? data.stock:data.cantidad} className='counter col-1' name='count' autoComplete='off' />
-          <h6 className='col-2'>$ {precioTotal}.00</h6>
+          <h6 className='col-2'>${precioTotal}</h6>
           <button type="button" className='btn btn-danger col-1' onClick={() => delFromCart()} >✖</button>
         </div>
     </div>
