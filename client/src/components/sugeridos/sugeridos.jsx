@@ -24,21 +24,25 @@ export default function Sugeridos() {
 
   //Array con subcategorias de favoritos del user
   const copia = wishlistProducts? wishlistProducts.map((el) => el.subcategories).join().split(","):[console.log('copia')]
-    
+    const categories_ = wishlistProducts&& wishlistProducts.map(el=>el.type)||[]
 
   const random = () => {
     return Math.round(Math.random() * (4 - 0) + 0);
   };
+const sumarProd=function(){
 
   products.forEach((producto) => {
     if (
-      producto.subcategories[Math.round(Math.random() * (4 - 0) + 0)] ===
-      copia[random()]
+      producto.subcategories[Math.round(Math.random() * (4 - 0) + 0)] === copia[Math.round(Math.random() * (4 - 0) + 0)]&& categories_.includes(producto.type)
     ) {
+      
       sugeridos.length < 8 && setSugeridos(sugeridos.concat([producto]));
+     
     }
   });
-
+  
+}
+sugeridos.length<8&& sumarProd()
   const [allProducts, setAllProducts] = useState([]);
 
   //Traigo los favoritos del user (por id)
