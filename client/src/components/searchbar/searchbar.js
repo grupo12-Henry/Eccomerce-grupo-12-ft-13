@@ -45,7 +45,7 @@ const Auto = () => {
         <div className="searchInputs">
           <input
             type="text"
-            placeholder='Search...'
+            placeholder='Buscar...'
             value={wordEntered}
             onChange={handleFilter}
           />

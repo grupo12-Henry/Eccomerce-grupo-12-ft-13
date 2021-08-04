@@ -13,17 +13,9 @@ import SearchBar from '../../searchbar/searchbar';
 import {FiShoppingCart} from 'react-icons/fi';
 import {FaRegUser} from 'react-icons/fa';
 import { useAuth } from "../../../contexts/AuthContext";
-import { useSelector, useDispatch  } from 'react-redux';
+import { useSelector } from 'react-redux';
 import NavModal from '../../navModal/navModal';
 import './sidebar.css';
-
-const Nav = styled.div`
-background: black;
-height: 80px;
-align-items: center;
-`;
-// display: flex;
-// justify-content: flex-start;
 
 const NavIcon = styled(Link)`
 margin-left: 2rem;
@@ -96,7 +88,6 @@ const Sidebar = () => {
                     <img src={logo} alt='Logo' className="logo"/>
                   </a>
                 </div>
-            
              <div className="searchBar">
                 <SearchBar />
             </div>
@@ -129,7 +120,7 @@ const Sidebar = () => {
             )
             }
             </li>
-            <li class='m-3'>
+            <li class='m-3 mr-3'>
               <li class="sidebar-social">
                 <a href="/home/compras" class="cart" title="Carrito" rel="nofollow">
                   <i class="fas fa-shopping-cart">
