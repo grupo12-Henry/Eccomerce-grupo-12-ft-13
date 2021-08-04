@@ -88,23 +88,24 @@ const Sidebar = () => {
     <>
       <IconContext.Provider value={{ color: 'white' }}>
         <div className='Nav'>
+          <div className='LogoBar'>
           <NavIcon to='#'>
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
-                <div className='logoHiden'>
-                  <a href="/home">
-                    <img src={logo} alt='Logo' className="logo"/>
-                  </a>
-                </div>
-          {/* <div className=''> */}
-
-            <div className="searchBar">
+            <div className='logoHiden'>
+              <a href="/home">
+                <img src={logo} alt='Logo' className="logo"/>
+              </a>
+            </div>
+          </div>
+          
+          <div className='RightSideClase'>
+          <div className='searchBar'>
+            <div className="RealSBClase">
               <SearchBar />
             </div>
-
-            <div>
-              <ul className="d-flex">
-                <li>
+            <div className="DDClase">              
+              <div  >
                 {currentUser ? (
                       <Dropdown class="">
                       <Dropdown.Toggle variant="dark" id="dropdown-basic">
@@ -122,27 +123,25 @@ const Sidebar = () => {
                     </Dropdown>
                 ) :
                 (
-                  <li class="p-0 m-3">
-                    <a href="/user" onClick={handleLogin}>
-                      <FaRegUser />
-                    </a>
-                  </li>
+                <div>
+                  <a href="/user" onClick={handleLogin}>
+                    <FaRegUser />
+                  </a>
+                </div>
                 )
                 }
-                </li>
-                <li class='m-3'>
-                  <li class="sidebar-social">
-                    <a href="/home/compras" class="cart" title="Carrito" rel="nofollow">
-                      <i class="fas fa-shopping-cart">
-                        <FiShoppingCart />
-                        <span id="cart_menu_num" class="top-0 start-100 translate-middle badge rounded-pill bg-danger" data-action="cart-can">{productCart?.filter(e=>e.stock>0).length}</span>
-                      </i>
-                    </a>
-                  </li>
-                </li>
-              </ul>
+              </div>              
+              <div class="sidebar-social m-3 " className='MyCarOClase'>
+                <a href="/home/compras" class="cart" title="Carrito" rel="nofollow">
+                  <i class="fas fa-shopping-cart">
+                    <FiShoppingCart />
+                    <span id="cart_menu_num" class="top-0 start-100 translate-middle badge rounded-pill bg-danger" data-action="cart-can">{productCart?.filter(e=>e.stock>0).length}</span>
+                  </i>
+                </a>                  
+              </div>              
             </div>
-          {/* </div> */}
+          </div>
+          </div>
             
             <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
             </NavModal>
