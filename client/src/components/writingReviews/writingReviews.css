@@ -1,0 +1,64 @@
+
+h2{
+  color: #343a40;
+}
+
+.container-fluid{
+  /* border: 2px solid gray; */
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem;
+  /* margin-left: 5rem; */
+}
+
+#pcalifica{
+  margin-top: 1rem;
+}
+
+/* @media (min-width: 1001px) {
+  #bConfirmar{
+    width: 11rem;
+    font-size: inherit;
+  }
+} */
+
+@media (max-width: 1000px) {
+  #bConfirmar{
+    width: 11rem;
+    font-size: inherit;
+  }
+}
+
+
+
+
+@media (max-width: 657px) {
+  #bConfirmar{
+    width: 15rem;
+  font-size: inherit;
+  }
+ 
+  }
+
+
+
+@media (max-width: 576px) {
+  #pcalifica{
+    font-size: larger;
+  }
+  #pName{
+    font-size: larger;
+  }
+  #pMaker{
+    font-size: larger;
+  }
+  #bConfirmar{
+    width: 10rem;
+    font-size: revert;
+  }
+  
+  }
+
+
+
+ 

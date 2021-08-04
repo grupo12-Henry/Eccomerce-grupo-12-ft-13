@@ -6,12 +6,13 @@ const Styled = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 25px;
-  margin-right: 10% ;
+  margin-right: 5% ;
 }
 
 .search input {
-  width: 6rem;
-  height: 35px;
+  display: flex;
+  width: 8rem;
+  height: 2.2rem;
   border-radius: 2px;
   padding: 5%;
   font-family: 'Quicksand', sans-serif;
@@ -75,6 +76,5 @@ const Styled = styled.div`
   #clearBtn {
     cursor: pointer;
   }
-
 `
 export default Styled

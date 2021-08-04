@@ -69,11 +69,13 @@ export default function FormCompras() {
     }
 
     return (<>
-      <div className='containerFormCompras'>
+      <div className='containerFormCompras  '>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-3">
-          
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
+
+          <div className='container contenedorInputs row'>
+
+          <Form.Group className='col-9 ' as={Col} md="3" controlId="validationCustom05">
             <span>Forma de Entrega: </span>
             {/* onChange={(e)=>setFormCompra({...formCompra, pago:e.target.value})} */}
                     <select onChange={(e)=> retiro(e)}
@@ -84,7 +86,7 @@ export default function FormCompras() {
                     </select>
           </Form.Group>
 
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
+          <Form.Group className='col-9 ' as={Col} md="3" controlId="validationCustom05">
             <span>Forma de Pago: </span>
                     <select  onChange={(e)=>setFormCompra({...formCompra, pago:e.target.value})}
                       class="form-control form-control-sm mt-1 ml-2 form-row" 
@@ -94,7 +96,7 @@ export default function FormCompras() {
                     </select>
           </Form.Group>
           {envio?
-          <Form.Group as={Col} md="4" controlId="validationCustom01" style={{width:'5rem', height:'1rem'}}>
+          <Form.Group className='col-9 ' as={Col} md="4" controlId="validationCustom01" style={{width:'5rem', height:'1rem'}}>
             <span>Direccion Envio</span>
             <Form.Control style={{height:'1.85rem', marginTop:'0.2rem', fontSize:'0.8rem'}}
               onChange={(e)=>{ setFormCompra({...formCompra, direccion:e.target.value});}}
@@ -104,7 +106,8 @@ export default function FormCompras() {
               defaultValue={user.adress?user.adress:null}
             />
           </Form.Group>:null}
-            
+                      </div>
+
         </Row>
         <Row className="mb-3">
         </Row>
@@ -115,16 +118,21 @@ export default function FormCompras() {
             feedback="Debes aceptar los terminos y condiciones"
           />
         </Form.Group>
+        <div className='col-11 col-md-8'>
+
+        
         <table
 
-class="table table-sm table-bordered mt-05 mr-03 mb-3 "
+// class="table table-sm table-bordered mt-05 mr-01 mb-3 "
+class="table table-sm table-bordered mt-05 mb-3 "
+
 data-toggle="table"
 data-pagination="true"
 data-search="true"
 data-url="data.json">
 <thead>
     <tr>
-    <th scope="col" data-field="image" data-sortable="true">imagen</th>
+    <th id='tituloImg' scope="col" data-field="image" data-sortable="true">imagen</th>
     <th scope="col" data-field="name" data-sortable="true" >producto</th>
     <th scope="col" data-field="price" data-sortable="true" >Precio</th>
     <th scope="col" data-field="cantidad" data-sortable="true" >cantidad</th>
@@ -135,7 +143,7 @@ data-url="data.json">
     {
         cart?.map(prod => (
             <tr>
-            <td className='container-item'><img className='Imagen' src={prod.image} alt='imagen'/></td>
+            <td id='colImg' className='container-item'><img className='Imagen' src={prod.image} alt='imagen'/></td>
             <td>{prod.name}</td>
             <td>{prod.price}</td>
             <td>{prod.cantidad}</td>
@@ -145,8 +153,12 @@ data-url="data.json">
     }
   </tbody>
   </table>
-        <Button type="submit" class="btn btn-dark" style={{marginRight:'0.5rem'}}>Confirmar Pago</Button>
-        <Button onClick={()=>(history.push('/home/compras'))} class='btn btn-dark '>Volver Carrito</Button>
+  </div>
+        <div className='botones '>
+        <Button id='bConfirmar' type="submit" class="col-9 btn btn-dark" style={{marginRight:'0.5rem'}}>Confirmar Pago</Button>
+        <Button id='bVolver' onClick={()=>(history.push('/home/compras'))} class='col-9 btn btn-dark '>Volver Carrito</Button>
+        </div>
+        
       </Form>
       </div>
 </>)
