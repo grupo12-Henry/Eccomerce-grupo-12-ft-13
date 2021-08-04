@@ -13,17 +13,9 @@ import SearchBar from '../../searchbar/searchbar';
 import {FiShoppingCart} from 'react-icons/fi';
 import {FaRegUser} from 'react-icons/fa';
 import { useAuth } from "../../../contexts/AuthContext";
-import { useSelector, useDispatch  } from 'react-redux';
+import { useSelector } from 'react-redux';
 import NavModal from '../../navModal/navModal';
 import './sidebar.css';
-
-const Nav = styled.div`
-background: black;
-height: 80px;
-align-items: center;
-`;
-// display: flex;
-// justify-content: flex-start;
 
 const NavIcon = styled(Link)`
 margin-left: 2rem;
