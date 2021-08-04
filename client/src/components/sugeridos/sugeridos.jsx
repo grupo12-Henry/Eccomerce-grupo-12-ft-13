@@ -36,13 +36,14 @@ const sumarProd=function(){
       producto.subcategories[Math.round(Math.random() * (4 - 0) + 0)] === copia[Math.round(Math.random() * (4 - 0) + 0)]&& categories_.includes(producto.type)
     ) {
       
-      sugeridos.length < 8 && setSugeridos(sugeridos.concat([producto]));
+      sugeridos.length < 8&& !sugeridos.includes(producto) && setSugeridos(sugeridos.concat([producto]));
      
     }
   });
   
 }
 sugeridos.length<8&& sumarProd()
+console.log(sugeridos)
   const [allProducts, setAllProducts] = useState([]);
 
   //Traigo los favoritos del user (por id)
