@@ -17,7 +17,7 @@ const Styled = styled.div` */
   height: 35px;
   border-radius: 2px;
   padding: 5%;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Roboto', sans-serif;
   outline: none;
   background-color: white;
   border: 0;
