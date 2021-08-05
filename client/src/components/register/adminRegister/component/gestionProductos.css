@@ -1,0 +1,83 @@
+ #botonera{
+   margin-left: 1rem;
+  /* display: flex;
+  justify-content: space-evenly;
+  align-items: baseline; */
+  
+}
+
+#Stock{
+  width: 1rem;
+}
+#cStock{
+  width: 1rem;
+}
+#cPrice{
+  width: 1rem;
+}
+#Price{
+  width: 1rem;
+}
+
+#search{
+  margin-left: inherit;
+  height: 2rem;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  border: 1px solid;
+    width: 15rem;
+    height: 2rem;
+
+}
+
+#bPrice{
+  width: 10rem;
+  height: 3rem;
+}
+
+#bAsc{
+  width: 10rem;
+  height: 3rem;
+}
+
+
+table{
+  margin-top: 2rem;
+  font-size: x-small;
+}
+
+#bModificar{
+  width: auto;
+  font-size: x-small;}
+
+#bEliminar{
+  width: auto;
+  font-size: x-small;
+}
+
+#formModificar{
+  margin-top: 4rem;
+}
+
+#formCrear{
+  margin-top: 4rem;
+}
+
+
+@media (max-width: 400px) {
+  #bAsc{
+    font-size: x-small;
+  }
+  #bPrice{
+    font-size: x-small;
+  }
+  #combo{
+    font-size: x-small;
+  }
+  #search{
+    font-size: x-small;
+  }
+}
+
+
+
