@@ -1,4 +1,28 @@
 .container-productos{
+
+    position: relative;
+    display: block;
+    width: 60rem;
+      height: auto;
+    min-height: 360px;
+    text-align: center;
+    border-radius: 1rem;
+    margin: 2rem;
+    border: 0.1rem solid rgba(94, 3, 3, 0.726);
+    background: white;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3),0px 3px 7px rgba(0, 0, 0, 0.3),0px 1px white inset, 0px -3px 2px rgba(0, 0, 0, 0.3) inset ;
+    justify-content: space-around;
+    align-items: center;
+   
+    font-size: 1rem;
+    color: #616263;
+  }
+  
+  
+  
+  .container-articulos{
+    display: flex;
+
   position: relative;
   display: block;
   width: 60rem;
@@ -37,10 +61,17 @@
   }
   .text{
     font-size: 0.90rem;
+
   }
   .botones{
     font-size: smaller;
   }
+
+  
+  .boton{
+    margin: 0.5rem;
+  }
+
   #botonConfirmar{
     font-size: smaller;
     width: 2rem;
@@ -81,3 +112,4 @@
 
 }
   
+

@@ -546,7 +546,7 @@ export function addToWishList(id,pId) {
   return (dispatch) => {
     axios.post(`http://localhost:3001/favoritos/${id}`, pId)
       .then(response => {
-       console.log(response.data)
+       
         dispatch({
           type: ADD_TO_WISHLIST,
           payload: response.data
@@ -597,42 +597,3 @@ export function sendMail(payload){
     axios.post('http://localhost:3001/send-mail', payload)//req.body.mail, req.body.subject, req.body.text
   }
 }
-
-//PEDIDOS
-
-// export function getNamesQuery(name){
-//     return (dispatch) => {
-//         axios.get('http://localhost:3001/productos/?name='+ name)
-//         .then(response => {
-//             dispatch({ type: GETNAMESQ, payload: response.data})
-//         })
-//         .catch((err) =>{
-//             console.log(err)
-//         })
-//     }
-// }
-// export const incrementCartQuantity = id => {
-//     return{
-//         type: INCREMENT_CART_ITEM_QUANTITY,
-//         payload: id
-//     }
-// };
-// export const decrementCartQuantity = id => {
-//     return {
-//         type: DECREMENT_CART_ITEM_QUANTITY,
-//         payload: id
-//     }
-//   };
-/*
-
-
-
-
-
-
-//ACTIONS DEL ADMIN
-
-//USUARIOS GET, POST Y PUT y DELETE
-// axios.defaults.baseURL ="http://localhost:3001";
-
-*/
