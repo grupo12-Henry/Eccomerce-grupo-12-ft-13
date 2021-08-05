@@ -106,7 +106,7 @@ useEffect(() => {
                 <CartItem className='Article' key={item.id} data={item} delFromCart={delFromCart}  onChange={() => console.log('funciona')}/>
                 : console.log(item)) : null}
             </article>
-            <hr />
+            <br/>
           </div>
           <h4 className='text'>Total productos:</h4>
           <h4 className='text'>${montoTotal}</h4>

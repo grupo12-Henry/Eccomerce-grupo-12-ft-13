@@ -91,7 +91,7 @@ function Cervezas() {
     setTimeout(() => setLoading(true), 600);
   }, []);
 
-  const style = {width: "16rem" }
+  // const style = {width: "16rem" }
 
   if (!loading) {
     return <Loading />;
@@ -104,6 +104,7 @@ function Cervezas() {
           {subCategories.map((d) => (
             <button
               className="btn btn-dark btn-sm ml-1 mt-1 "
+              style={{minWidth: '8rem'}}
               key={d}
               onClick={(e) => {
                 e.preventDefault();
@@ -184,7 +185,7 @@ function Cervezas() {
                                 }
                               />}
                               <ProductRating product={el} key={el.id} />
-                              <button type="button" onClick={() => addToCart(el.id)} class="btn bg-cart">
+                              <button type="button" onClick={() => addToCart(el.id)} class="btn bg-cart" style={{minWidth: '8rem'}}>
                                 <i class="fa fa-cart-plus mr-2">Agregar</i>
                               </button>
                             </div>
