@@ -2,6 +2,159 @@
   height: 80px;
   margin-bottom: 5px;
   margin-left: 10px;
+  padding: 0;
+  align-items: center;
+
+}
+.Nav {
+  background: black;
+  height: 80px;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+.searchBar {
+  margin-top: -35px;
+  margin-left: 750px;
+}
+.d-flex {
+  margin: 2rem;
+  margin-top: 3rem ;
+  list-style: none;
+}
+.dropdown {
+  font-family: "Quicksand", sans-serif;
+  height: 65px;
+  margin-top: 12px;
+}
+.LoguitoUserClase{
+  height: 65px;
+  margin-top: 12px;
+  margin-right: 1rem;
+}
+.LogosRight{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 7rem;
+  margin: 1rem;
+}
+.myCarO{
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+@media (max-width: 1380px) {
+  .searchBar {
+    margin-left: 480px;
+  }
+  .Nav {
+    width: 100%;
+    background: black;
+    height: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 1149px) {
+  .Nav {
+    width: 1149px;
+    background: black;
+    height: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .searchBar {
+    margin-left: 450px;
+  }
+}
+@media (max-width: 954px) {
+  .Nav {
+    width: 954px;
+    background: black;
+    height: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .searchBar {
+    margin-left: 300px;
+  }
+}
+@media (max-width: 802px) {
+  .Nav {
+    width: 798px;
+    background: black;
+    height: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .searchBar {
+    margin-left: 150px;
+  }
+}
+@media (max-width: 645px) {
+  .Nav {
+    width: 645px;
+    background: black;
+    height: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .searchBar {
+    z-index: 1;
+    margin-left: 200px;
+  }
+  .logoHiden {
+    display: none;
+  }
+}
+@media (max-width: 625px) {
+  .Nav {
+    width: 100%;
+    background: black;
+    height: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .searchBar {
+    z-index: 1;
+    margin-left: 150px;
+  }
+}
+@media (max-width: 539px) {
+  .searchBar {
+    margin-left: 70px;
+  }
+}
+@media (max-width: 440px) {
+  .searchBar {
+    margin-left: 30px;
+  }
+}
+@media (max-width: 365px) {
+  .searchBar {
+    z-index: 1;
+    margin-left: 15px;
+    margin-right: -10px;
+  }
+  .sidebar-social{
+    margin-left: -10px;
+  }
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* .logo {
+  height: 80px;
+  margin-bottom: 5px;
+  margin-left: 10px;
   margin-top: 10px;
 }
 .Nav {
@@ -13,7 +166,6 @@
 }
 .LogoBar{
   display: flex;
-  /* position: relative; */
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -60,4 +212,4 @@
   .logoHiden {
     display: none;
   }
-}
+}  */
