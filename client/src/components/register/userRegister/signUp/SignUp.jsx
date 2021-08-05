@@ -68,6 +68,7 @@ export default function Signup({ onClose }) {
                   ></input>
                   </div>
                   <br/>
+
                   <button disabled={loading} className="btn btn-light " style={{minWidth: '8rem'}} type="submit">
                     Registrate
                   </button>

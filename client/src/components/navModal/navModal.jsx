@@ -103,10 +103,20 @@ export default function NavModal({ open, children, onClose }) {
               {/* <div className='d-flex justify-content-end'>
                   <CloseIcon className='bClose' onClick={handleClose} style={{height: '2.2rem', width:'3rem', color:'white',borderRadius:'2px'}}/> */}
               </div>
-              <div>
+               <div>
                 <p style={{marginTop:'1rem'}}>¡Ahora estas logueado!</p>
-              </div>
-           
+
+              </div> 
+            <button
+              class="btn btn-light bLogout"
+              // className='bLogout'
+              // margin-right="1rem"
+              // width="3rem"
+              onClick={handleLogout}
+            >
+              Desloguearse
+            </button>
+
           </div>
         </div> 
       ) : (
@@ -126,7 +136,7 @@ export default function NavModal({ open, children, onClose }) {
               </div>
             ) : (
               <>
-              <div className='d-flex justify-content-end' style={{width: '120%'}}>                
+              <div className='d-flex justify-content-end' style={{width: '100%', height: 'auto', margin: '0'}}>                
               <CloseIcon className='icon' onClick={handleClose} style={{height: '1.2rem'}}/>
               </div>
               <div
@@ -134,13 +144,13 @@ export default function NavModal({ open, children, onClose }) {
                 role="group"
                 aria-label="Basic outlined example"
               >
-                <button class="btn btn-light mb-3 mt-3" onClick={handleSignup}>
+                <button style={{minWidth: '7rem'}} class="btn btn-light mb-3 mt-3" onClick={handleSignup}>
                   Registrate
                 </button>
-                <button class="btn btn-light mb-3" onClick={handleLogin1}>
-                  Logueate con tu mail
+                <button style={{minWidth: '7rem'}} class="btn btn-light mb-3" onClick={handleLogin1}>
+                  Logueate
                 </button>
-                <button class="btn btn-light" onClick={handleGoogle}>
+                <button style={{minWidth: '7rem'}} class="btn btn-light" onClick={handleGoogle}>
                   Logueate con <img className="logo-google" src={logo} />
                 </button>
               </div>
