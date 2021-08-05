@@ -40,10 +40,10 @@ export default function Signup({ onClose }) {
   return (
     <StyledDiv>
       {/* <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}> */}
-      <header className="navbar">
+      <header className="navbar p-0">
         <nav>
-          <ul className="list">
-            <li className="list-item">
+          <ul className="list p-0">
+            <li className="list-item p-0 col-sm-10">
               <div>
                 
                 <p>{error}</p>
