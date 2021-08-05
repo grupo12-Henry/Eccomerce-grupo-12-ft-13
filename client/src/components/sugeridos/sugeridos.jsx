@@ -21,24 +21,28 @@ export default function Sugeridos() {
   //Estado con datos del user
   const user = useSelector((state) => state.user);
   //console.log(user);
-
   //Array con subcategorias de favoritos del user
   const copia = wishlistProducts? wishlistProducts.map((el) => el.subcategories).join().split(","):[console.log('copia')]
-    
+    const categories_ = wishlistProducts&& wishlistProducts.map(el=>el.type)||[]
 
   const random = () => {
     return Math.round(Math.random() * (4 - 0) + 0);
   };
+const sumarProd=function(){
 
   products.forEach((producto) => {
     if (
-      producto.subcategories[Math.round(Math.random() * (4 - 0) + 0)] ===
-      copia[random()]
+      producto.subcategories[Math.round(Math.random() * (4 - 0) + 0)] === copia[Math.round(Math.random() * (4 - 0) + 0)]&& categories_.includes(producto.type)
     ) {
-      sugeridos.length < 8 && setSugeridos(sugeridos.concat([producto]));
+      
+      sugeridos.length < 8&& !sugeridos.includes(producto) && setSugeridos(sugeridos.concat([producto]));
+     
     }
   });
-
+  
+}
+sugeridos.length<8&& sumarProd()
+console.log(sugeridos)
   const [allProducts, setAllProducts] = useState([]);
 
   //Traigo los favoritos del user (por id)
@@ -74,9 +78,9 @@ export default function Sugeridos() {
       wishlistProducts ? wishlistProducts.length>0 && (
 
     <div className='mt-5 ml-5'>
-    <h5>En base a tus favoritos te recomendamos</h5>
+    <h5>En base a tus favoritos</h5>
     
-    <div style={{ marginLeft: "37%", marginTop:'50px' }} >
+    <div  className='pisando' style={{ marginLeft: "37%", marginTop:'50px' }} >
 
       
        
@@ -89,7 +93,7 @@ export default function Sugeridos() {
                 <div classname='cards'>
                  
                   <img
-                  
+                    className='img_style'
                     src={sugeridos[0].image}
                     alt=""
                     width="260px"
@@ -99,17 +103,17 @@ export default function Sugeridos() {
               
               </Link>
               
-              <Carousel.Caption></Carousel.Caption>
+              
             </Carousel.Item>
           )}
 
           {sugeridos[1] && (
             <Carousel.Item>
+              
               <Link to={`/home/detail/${sugeridos[1].id}`}>
               <div classname='cards'>
                 <img
-                  //style={{ marginLeft: "37%" }}
-                  //className="d-block w-200"
+                  className='img_style'
                   src={sugeridos[1].image}
                   alt=""
                   width="260px"
@@ -117,17 +121,17 @@ export default function Sugeridos() {
                 />
                 </div>
               </Link>
-              <Carousel.Caption></Carousel.Caption>
+             
             </Carousel.Item>
           )}
 
           {sugeridos[2] && (
             <Carousel.Item>
+              
               <Link to={`/home/detail/${sugeridos[2].id}`}>
               <div classname='cards'>
                 <img
-                  //style={{ marginLeft: "37%" }}
-                  //className="d-block w-200"
+                  className='img_style'
                   src={sugeridos[2].image}
                   alt=""
                   width="260px"
@@ -136,7 +140,7 @@ export default function Sugeridos() {
                 />
                 </div>
               </Link>
-              <Carousel.Caption></Carousel.Caption>
+           
             </Carousel.Item>
           )}
         </Carousel>

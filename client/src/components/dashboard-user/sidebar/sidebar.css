@@ -18,14 +18,14 @@
   align-items: center;
   justify-content: flex-start;
   left: 10px !important;
-  margin: 2%;
+  margin-top: 2%;
 }
 
 .RightSideClase{
   position: relative;
   display: flex;
   justify-content: flex-start;
-  margin-right: 80px;
+  margin-right: 100px;
 }
 .searchBar {
   display: flex;
@@ -36,23 +36,24 @@
 }
 .DDClase {
   position:relative;
-  margin: 50px 10px 10px 10px;
+  margin: 18px 10px 20px 30px;
   list-style: none;
   justify-content: flex-end;
 }
 .RealSBClase{
   position:relative;
   list-style: none;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   justify-content: flex-end;
+
 }
 .dropdown {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Roboto", sans-serif;
   height: 65px;
 }
 .MyCarOClase{
   position: absolute;
-   top: 0px;
+  top: 0px;
   left: 70px;
   margin: 1%;
 }
