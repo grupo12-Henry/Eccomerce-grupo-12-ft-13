@@ -13,5 +13,13 @@
     .pisando {
       margin-left: 7% !important
     }
+
+    .img_style {
+      height: 10rem;
+    }
+    
 }
 
+.img_style {
+  object-fit: scale-down;
+}

@@ -78,7 +78,7 @@ console.log(sugeridos)
       wishlistProducts ? wishlistProducts.length>0 && (
 
     <div className='mt-5 ml-5'>
-    <h5>En base a tus favoritos te recomendamos</h5>
+    <h5>En base a tus favoritos</h5>
     
     <div  className='pisando' style={{ marginLeft: "37%", marginTop:'50px' }} >
 
@@ -93,7 +93,7 @@ console.log(sugeridos)
                 <div classname='cards'>
                  
                   <img
-                  
+                    className='img_style'
                     src={sugeridos[0].image}
                     alt=""
                     width="260px"
@@ -113,8 +113,7 @@ console.log(sugeridos)
               <Link to={`/home/detail/${sugeridos[1].id}`}>
               <div classname='cards'>
                 <img
-                  //style={{ marginLeft: "37%" }}
-                  //className="d-block w-200"
+                  className='img_style'
                   src={sugeridos[1].image}
                   alt=""
                   width="260px"
@@ -132,8 +131,7 @@ console.log(sugeridos)
               <Link to={`/home/detail/${sugeridos[2].id}`}>
               <div classname='cards'>
                 <img
-                  //style={{ marginLeft: "37%" }}
-                  //className="d-block w-200"
+                  className='img_style'
                   src={sugeridos[2].image}
                   alt=""
                   width="260px"
