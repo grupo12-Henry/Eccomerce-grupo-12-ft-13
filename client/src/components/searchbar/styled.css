@@ -13,11 +13,11 @@ const Styled = styled.div` */
   }
 }
 .search input {
-  width: 10rem;
+  width: 12rem;
   height: 35px;
   border-radius: 2px;
   padding: 5%;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Roboto', sans-serif;
   outline: none;
   background-color: white;
   border: 0;

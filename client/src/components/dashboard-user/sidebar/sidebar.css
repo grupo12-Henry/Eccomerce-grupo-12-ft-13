@@ -6,7 +6,6 @@
   align-items: center;
 
 }
-
 .Nav {
   background: black;
   height: 80px;
@@ -14,31 +13,40 @@
   display: flex;
   justify-content: flex-start;
 }
-
 .searchBar {
   margin-top: -35px;
-  margin-left: 650px;
+  margin-left: 750px;
 }
-
 .d-flex {
-  margin: 3px 1px 1px 1px;
+  margin: 2rem;
+  margin-top: 3rem ;
   list-style: none;
 }
-
 .dropdown {
   font-family: "Quicksand", sans-serif;
   height: 65px;
   margin-top: 12px;
-  margin-left: -29px;
 }
-
-
-
+.LoguitoUserClase{
+  height: 65px;
+  margin-top: 12px;
+  margin-right: 1rem;
+}
+.LogosRight{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 7rem;
+  margin: 1rem;
+}
+.myCarO{
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
 @media (max-width: 1380px) {
   .searchBar {
     margin-left: 480px;
   }
-
   .Nav {
     width: 100%;
     background: black;
@@ -47,11 +55,7 @@
     display: flex;
     justify-content: flex-start;
   }
-
 }
-
-
-
 @media (max-width: 1149px) {
   .Nav {
     width: 1149px;
@@ -61,18 +65,10 @@
     display: flex;
     justify-content: flex-start;
   }
-
   .searchBar {
     margin-left: 450px;
   }
-
-  /* #filtrosPropiedad, #filtrosDormitorios {
-      padding: 15px;
-     width: 49%;
-    
-    } */
 }
-
 @media (max-width: 954px) {
   .Nav {
     width: 954px;
@@ -82,19 +78,11 @@
     display: flex;
     justify-content: flex-start;
   }
-
   .searchBar {
     margin-left: 300px;
   }
-
-  /* #filtrosPropiedad, #filtrosDormitorios {
-        padding: 15px;
-       width: 49%;
-      
-      } */
 }
-
-@media (max-width: 798px) {
+@media (max-width: 802px) {
   .Nav {
     width: 798px;
     background: black;
@@ -103,20 +91,10 @@
     display: flex;
     justify-content: flex-start;
   }
-
   .searchBar {
     margin-left: 150px;
   }
-
-
-  /* #filtrosPropiedad, #filtrosDormitorios {
-          padding: 15px;
-          width: 49%;
-          
-        } */
 }
-
-
 @media (max-width: 645px) {
   .Nav {
     width: 645px;
@@ -126,25 +104,14 @@
     display: flex;
     justify-content: flex-start;
   }
-
   .searchBar {
     z-index: 1;
     margin-left: 200px;
   }
-
-
   .logoHiden {
     display: none;
   }
-
-  /* #filtrosPropiedad, #filtrosDormitorios {
-              padding: 15px;
-             width: 49%;
-            
-            } */
 }
-
-
 @media (max-width: 625px) {
   .Nav {
     width: 100%;
@@ -154,43 +121,96 @@
     display: flex;
     justify-content: flex-start;
   }
-
   .searchBar {
     z-index: 1;
     margin-left: 150px;
   }
 }
-
 @media (max-width: 539px) {
   .searchBar {
     margin-left: 70px;
   }
-
 }
 @media (max-width: 440px) {
   .searchBar {
     margin-left: 30px;
   }
-
 }
-
-
 @media (max-width: 365px) {
-  /* .Nav {
-    width: 100%;
-    background: black;
-    height: 80px;
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
-  } */
-
   .searchBar {
     z-index: 1;
     margin-left: 15px;
-    margin-right: -40px;
+    margin-right: -10px;
   }
   .sidebar-social{
     margin-left: -10px;
   }
 }
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* .logo {
+  height: 80px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.Nav {
+  background: black;
+  height: auto;
+  width:auto;
+  display: flex;
+  justify-content: space-between;
+}
+.LogoBar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  left: 10px !important;
+  margin-top: 2%;
+}
+
+.RightSideClase{
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 100px;
+}
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 2%;
+}
+.DDClase {
+  position:relative;
+  margin: 18px 10px 20px 30px;
+  list-style: none;
+  justify-content: flex-end;
+}
+.RealSBClase{
+  position:relative;
+  list-style: none;
+  margin-bottom: 30px;
+  justify-content: flex-end;
+
+}
+.dropdown {
+  font-family: "Roboto", sans-serif;
+  height: 65px;
+}
+.MyCarOClase{
+  position: absolute;
+  top: 0px;
+  left: 70px;
+  margin: 1%;
+}
+@media (max-width: 645px) {
+  .logoHiden {
+    display: none;
+  }
+}  */
