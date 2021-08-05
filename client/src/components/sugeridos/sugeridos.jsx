@@ -21,7 +21,6 @@ export default function Sugeridos() {
   //Estado con datos del user
   const user = useSelector((state) => state.user);
   //console.log(user);
-
   //Array con subcategorias de favoritos del user
   const copia = wishlistProducts? wishlistProducts.map((el) => el.subcategories).join().split(","):[console.log('copia')]
     const categories_ = wishlistProducts&& wishlistProducts.map(el=>el.type)||[]
@@ -79,9 +78,9 @@ console.log(sugeridos)
       wishlistProducts ? wishlistProducts.length>0 && (
 
     <div className='mt-5 ml-5'>
-    <h5>En base a tus favoritos te recomendamos</h5>
+    <h5>En base a tus favoritos</h5>
     
-    <div style={{ marginLeft: "37%", marginTop:'50px' }} >
+    <div  className='pisando' style={{ marginLeft: "37%", marginTop:'50px' }} >
 
       
        
@@ -94,7 +93,7 @@ console.log(sugeridos)
                 <div classname='cards'>
                  
                   <img
-                  
+                    className='img_style'
                     src={sugeridos[0].image}
                     alt=""
                     width="260px"
@@ -104,17 +103,17 @@ console.log(sugeridos)
               
               </Link>
               
-              <Carousel.Caption></Carousel.Caption>
+              
             </Carousel.Item>
           )}
 
           {sugeridos[1] && (
             <Carousel.Item>
+              
               <Link to={`/home/detail/${sugeridos[1].id}`}>
               <div classname='cards'>
                 <img
-                  //style={{ marginLeft: "37%" }}
-                  //className="d-block w-200"
+                  className='img_style'
                   src={sugeridos[1].image}
                   alt=""
                   width="260px"
@@ -122,17 +121,17 @@ console.log(sugeridos)
                 />
                 </div>
               </Link>
-              <Carousel.Caption></Carousel.Caption>
+             
             </Carousel.Item>
           )}
 
           {sugeridos[2] && (
             <Carousel.Item>
+              
               <Link to={`/home/detail/${sugeridos[2].id}`}>
               <div classname='cards'>
                 <img
-                  //style={{ marginLeft: "37%" }}
-                  //className="d-block w-200"
+                  className='img_style'
                   src={sugeridos[2].image}
                   alt=""
                   width="260px"
@@ -141,7 +140,7 @@ console.log(sugeridos)
                 />
                 </div>
               </Link>
-              <Carousel.Caption></Carousel.Caption>
+           
             </Carousel.Item>
           )}
         </Carousel>

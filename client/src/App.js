@@ -31,6 +31,7 @@ import Varios from '../src/components/dashboard-user/pages/varios/Varios';
 import Favorites from '../src/components/dashboard-user/pages/favoritos/favoritos';
 import Contacto from '../src/components/dashboard-user/pages/contacto/contacto2';
 
+
 function App() {
 
   const dispatch = useDispatch()
