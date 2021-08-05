@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
-  font-size: 25px;
+  font-size: 24px;
   width: 45rem;
   height: 25rem;
   padding: 1%;
@@ -31,7 +31,7 @@
 }
 .LogoLanding{
   width:45rem;
-  margin-left: 3rem;
+  margin-left: 1rem;
 }
 
 .div_btn {
@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: center;
   margin-top:50px;
-  margin-bottom: 60px;
+  margin-bottom:10%;
 }
 .btn { 
   background-color: black;
